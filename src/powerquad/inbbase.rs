@@ -1,103 +1,39 @@
 #[doc = "Register `INBBASE` reader"]
-pub struct R(crate::R<INBBASE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<INBBASE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<INBBASE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<INBBASE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<InbbaseSpec>;
 #[doc = "Register `INBBASE` writer"]
-pub struct W(crate::W<INBBASE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<INBBASE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<INBBASE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<INBBASE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<InbbaseSpec>;
 #[doc = "Field `inbbase` reader - Base address register for the input B region"]
-pub struct INBBASE_R(crate::FieldReader<u32, u32>);
-impl INBBASE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        INBBASE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INBBASE_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type InbbaseR = crate::FieldReader<u32>;
 #[doc = "Field `inbbase` writer - Base address register for the input B region"]
-pub struct INBBASE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INBBASE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type InbbaseW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Base address register for the input B region"]
     #[inline(always)]
-    pub fn inbbase(&self) -> INBBASE_R {
-        INBBASE_R::new(self.bits as u32)
+    pub fn inbbase(&self) -> InbbaseR {
+        InbbaseR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Base address register for the input B region"]
     #[inline(always)]
-    pub fn inbbase(&mut self) -> INBBASE_W {
-        INBBASE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn inbbase(&mut self) -> InbbaseW<InbbaseSpec> {
+        InbbaseW::new(self, 0)
     }
 }
-#[doc = "Base address register for input B region\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [inbbase](index.html) module"]
-pub struct INBBASE_SPEC;
-impl crate::RegisterSpec for INBBASE_SPEC {
+#[doc = "Base address register for input B region\n\nYou can [`read`](crate::Reg::read) this register and get [`inbbase::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inbbase::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct InbbaseSpec;
+impl crate::RegisterSpec for InbbaseSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [inbbase::R](R) reader structure"]
-impl crate::Readable for INBBASE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [inbbase::W](W) writer structure"]
-impl crate::Writable for INBBASE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`inbbase::R`](R) reader structure"]
+impl crate::Readable for InbbaseSpec {}
+#[doc = "`write(|w| ..)` method takes [`inbbase::W`](W) writer structure"]
+impl crate::Writable for InbbaseSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets INBBASE to value 0"]
-impl crate::Resettable for INBBASE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for InbbaseSpec {
+    const RESET_VALUE: u32 = 0;
 }

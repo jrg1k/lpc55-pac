@@ -1,118 +1,65 @@
 #[doc = "Register `INTSTAT` reader"]
-pub struct R(crate::R<INTSTAT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<INTSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<INTSTAT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<INTSTAT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IntstatSpec>;
 #[doc = "Register `INTSTAT` writer"]
-pub struct W(crate::W<INTSTAT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<INTSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<INTSTAT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<INTSTAT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IntstatSpec>;
 #[doc = "If set, interrupt is caused by accelerator being done.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DONE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Done {
     #[doc = "0: Not caused by accelerator being done"]
-    NOT_CAUSED = 0,
+    NotCaused = 0,
     #[doc = "1: Caused by accelerator being done"]
-    CAUSED = 1,
+    Caused = 1,
 }
-impl From<DONE_A> for bool {
+impl From<Done> for bool {
     #[inline(always)]
-    fn from(variant: DONE_A) -> Self {
+    fn from(variant: Done) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `DONE` reader - If set, interrupt is caused by accelerator being done."]
-pub struct DONE_R(crate::FieldReader<bool, DONE_A>);
-impl DONE_R {
+pub type DoneR = crate::BitReader<Done>;
+impl DoneR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DONE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DONE_A {
+    pub const fn variant(&self) -> Done {
         match self.bits {
-            false => DONE_A::NOT_CAUSED,
-            true => DONE_A::CAUSED,
+            false => Done::NotCaused,
+            true => Done::Caused,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_CAUSED`"]
+    #[doc = "Not caused by accelerator being done"]
     #[inline(always)]
     pub fn is_not_caused(&self) -> bool {
-        **self == DONE_A::NOT_CAUSED
+        *self == Done::NotCaused
     }
-    #[doc = "Checks if the value of the field is `CAUSED`"]
+    #[doc = "Caused by accelerator being done"]
     #[inline(always)]
     pub fn is_caused(&self) -> bool {
-        **self == DONE_A::CAUSED
-    }
-}
-impl core::ops::Deref for DONE_R {
-    type Target = crate::FieldReader<bool, DONE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Done::Caused
     }
 }
 impl R {
     #[doc = "Bit 0 - If set, interrupt is caused by accelerator being done."]
     #[inline(always)]
-    pub fn done(&self) -> DONE_R {
-        DONE_R::new((self.bits & 0x01) != 0)
+    pub fn done(&self) -> DoneR {
+        DoneR::new((self.bits & 1) != 0)
     }
 }
-impl W {
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
-    }
-}
-#[doc = "Interrupt status bits (mask of INTENSET and STATUS)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [intstat](index.html) module"]
-pub struct INTSTAT_SPEC;
-impl crate::RegisterSpec for INTSTAT_SPEC {
+impl W {}
+#[doc = "Interrupt status bits (mask of INTENSET and STATUS)\n\nYou can [`read`](crate::Reg::read) this register and get [`intstat::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`intstat::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IntstatSpec;
+impl crate::RegisterSpec for IntstatSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [intstat::R](R) reader structure"]
-impl crate::Readable for INTSTAT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [intstat::W](W) writer structure"]
-impl crate::Writable for INTSTAT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`intstat::R`](R) reader structure"]
+impl crate::Readable for IntstatSpec {}
+#[doc = "`write(|w| ..)` method takes [`intstat::W`](W) writer structure"]
+impl crate::Writable for IntstatSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets INTSTAT to value 0"]
-impl crate::Resettable for INTSTAT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for IntstatSpec {
+    const RESET_VALUE: u32 = 0;
 }

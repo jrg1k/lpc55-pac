@@ -1,385 +1,123 @@
 #[doc = "Register `USBCMD` reader"]
-pub struct R(crate::R<USBCMD_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<USBCMD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<USBCMD_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<USBCMD_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<UsbcmdSpec>;
 #[doc = "Register `USBCMD` writer"]
-pub struct W(crate::W<USBCMD_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<USBCMD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<USBCMD_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<USBCMD_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<UsbcmdSpec>;
 #[doc = "Field `RS` reader - Run/Stop: 1b = Run."]
-pub struct RS_R(crate::FieldReader<bool, bool>);
-impl RS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RS_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RsR = crate::BitReader;
 #[doc = "Field `RS` writer - Run/Stop: 1b = Run."]
-pub struct RS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RS_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type RsW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `HCRESET` reader - Host Controller Reset: This control bit is used by the software to reset the host controller."]
-pub struct HCRESET_R(crate::FieldReader<bool, bool>);
-impl HCRESET_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        HCRESET_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for HCRESET_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type HcresetR = crate::BitReader;
 #[doc = "Field `HCRESET` writer - Host Controller Reset: This control bit is used by the software to reset the host controller."]
-pub struct HCRESET_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HCRESET_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type HcresetW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FLS` reader - Frame List Size: This field specifies the size of the frame list."]
-pub struct FLS_R(crate::FieldReader<u8, u8>);
-impl FLS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        FLS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FLS_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FlsR = crate::FieldReader;
 #[doc = "Field `FLS` writer - Frame List Size: This field specifies the size of the frame list."]
-pub struct FLS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FLS_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 2)) | ((value as u32 & 0x03) << 2);
-        self.w
-    }
-}
+pub type FlsW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `LHCR` reader - Light Host Controller Reset: This bit allows the driver software to reset the host controller without affecting the state of the ports."]
-pub struct LHCR_R(crate::FieldReader<bool, bool>);
-impl LHCR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LHCR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for LHCR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type LhcrR = crate::BitReader;
 #[doc = "Field `LHCR` writer - Light Host Controller Reset: This bit allows the driver software to reset the host controller without affecting the state of the ports."]
-pub struct LHCR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LHCR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
-    }
-}
+pub type LhcrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ATL_EN` reader - ATL List enabled."]
-pub struct ATL_EN_R(crate::FieldReader<bool, bool>);
-impl ATL_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ATL_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ATL_EN_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AtlEnR = crate::BitReader;
 #[doc = "Field `ATL_EN` writer - ATL List enabled."]
-pub struct ATL_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ATL_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type AtlEnW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ISO_EN` reader - ISO List enabled."]
-pub struct ISO_EN_R(crate::FieldReader<bool, bool>);
-impl ISO_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ISO_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ISO_EN_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IsoEnR = crate::BitReader;
 #[doc = "Field `ISO_EN` writer - ISO List enabled."]
-pub struct ISO_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ISO_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
-    }
-}
+pub type IsoEnW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INT_EN` reader - INT List enabled."]
-pub struct INT_EN_R(crate::FieldReader<bool, bool>);
-impl INT_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        INT_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INT_EN_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IntEnR = crate::BitReader;
 #[doc = "Field `INT_EN` writer - INT List enabled."]
-pub struct INT_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INT_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
-    }
-}
+pub type IntEnW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Run/Stop: 1b = Run."]
     #[inline(always)]
-    pub fn rs(&self) -> RS_R {
-        RS_R::new((self.bits & 0x01) != 0)
+    pub fn rs(&self) -> RsR {
+        RsR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Host Controller Reset: This control bit is used by the software to reset the host controller."]
     #[inline(always)]
-    pub fn hcreset(&self) -> HCRESET_R {
-        HCRESET_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn hcreset(&self) -> HcresetR {
+        HcresetR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bits 2:3 - Frame List Size: This field specifies the size of the frame list."]
     #[inline(always)]
-    pub fn fls(&self) -> FLS_R {
-        FLS_R::new(((self.bits >> 2) & 0x03) as u8)
+    pub fn fls(&self) -> FlsR {
+        FlsR::new(((self.bits >> 2) & 3) as u8)
     }
     #[doc = "Bit 7 - Light Host Controller Reset: This bit allows the driver software to reset the host controller without affecting the state of the ports."]
     #[inline(always)]
-    pub fn lhcr(&self) -> LHCR_R {
-        LHCR_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn lhcr(&self) -> LhcrR {
+        LhcrR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - ATL List enabled."]
     #[inline(always)]
-    pub fn atl_en(&self) -> ATL_EN_R {
-        ATL_EN_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn atl_en(&self) -> AtlEnR {
+        AtlEnR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - ISO List enabled."]
     #[inline(always)]
-    pub fn iso_en(&self) -> ISO_EN_R {
-        ISO_EN_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn iso_en(&self) -> IsoEnR {
+        IsoEnR::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - INT List enabled."]
     #[inline(always)]
-    pub fn int_en(&self) -> INT_EN_R {
-        INT_EN_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn int_en(&self) -> IntEnR {
+        IntEnR::new(((self.bits >> 10) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Run/Stop: 1b = Run."]
     #[inline(always)]
-    pub fn rs(&mut self) -> RS_W {
-        RS_W { w: self }
+    pub fn rs(&mut self) -> RsW<UsbcmdSpec> {
+        RsW::new(self, 0)
     }
     #[doc = "Bit 1 - Host Controller Reset: This control bit is used by the software to reset the host controller."]
     #[inline(always)]
-    pub fn hcreset(&mut self) -> HCRESET_W {
-        HCRESET_W { w: self }
+    pub fn hcreset(&mut self) -> HcresetW<UsbcmdSpec> {
+        HcresetW::new(self, 1)
     }
     #[doc = "Bits 2:3 - Frame List Size: This field specifies the size of the frame list."]
     #[inline(always)]
-    pub fn fls(&mut self) -> FLS_W {
-        FLS_W { w: self }
+    pub fn fls(&mut self) -> FlsW<UsbcmdSpec> {
+        FlsW::new(self, 2)
     }
     #[doc = "Bit 7 - Light Host Controller Reset: This bit allows the driver software to reset the host controller without affecting the state of the ports."]
     #[inline(always)]
-    pub fn lhcr(&mut self) -> LHCR_W {
-        LHCR_W { w: self }
+    pub fn lhcr(&mut self) -> LhcrW<UsbcmdSpec> {
+        LhcrW::new(self, 7)
     }
     #[doc = "Bit 8 - ATL List enabled."]
     #[inline(always)]
-    pub fn atl_en(&mut self) -> ATL_EN_W {
-        ATL_EN_W { w: self }
+    pub fn atl_en(&mut self) -> AtlEnW<UsbcmdSpec> {
+        AtlEnW::new(self, 8)
     }
     #[doc = "Bit 9 - ISO List enabled."]
     #[inline(always)]
-    pub fn iso_en(&mut self) -> ISO_EN_W {
-        ISO_EN_W { w: self }
+    pub fn iso_en(&mut self) -> IsoEnW<UsbcmdSpec> {
+        IsoEnW::new(self, 9)
     }
     #[doc = "Bit 10 - INT List enabled."]
     #[inline(always)]
-    pub fn int_en(&mut self) -> INT_EN_W {
-        INT_EN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn int_en(&mut self) -> IntEnW<UsbcmdSpec> {
+        IntEnW::new(self, 10)
     }
 }
-#[doc = "USB Command register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [usbcmd](index.html) module"]
-pub struct USBCMD_SPEC;
-impl crate::RegisterSpec for USBCMD_SPEC {
+#[doc = "USB Command register\n\nYou can [`read`](crate::Reg::read) this register and get [`usbcmd::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usbcmd::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UsbcmdSpec;
+impl crate::RegisterSpec for UsbcmdSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [usbcmd::R](R) reader structure"]
-impl crate::Readable for USBCMD_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [usbcmd::W](W) writer structure"]
-impl crate::Writable for USBCMD_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`usbcmd::R`](R) reader structure"]
+impl crate::Readable for UsbcmdSpec {}
+#[doc = "`write(|w| ..)` method takes [`usbcmd::W`](W) writer structure"]
+impl crate::Writable for UsbcmdSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets USBCMD to value 0"]
-impl crate::Resettable for USBCMD_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for UsbcmdSpec {
+    const RESET_VALUE: u32 = 0;
 }

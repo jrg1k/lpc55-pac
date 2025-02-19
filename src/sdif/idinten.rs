@@ -1,395 +1,123 @@
 #[doc = "Register `IDINTEN` reader"]
-pub struct R(crate::R<IDINTEN_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<IDINTEN_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<IDINTEN_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<IDINTEN_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IdintenSpec>;
 #[doc = "Register `IDINTEN` writer"]
-pub struct W(crate::W<IDINTEN_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<IDINTEN_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<IDINTEN_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<IDINTEN_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IdintenSpec>;
 #[doc = "Field `TI` reader - Transmit Interrupt Enable."]
-pub struct TI_R(crate::FieldReader<bool, bool>);
-impl TI_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TI_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for TI_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type TiR = crate::BitReader;
 #[doc = "Field `TI` writer - Transmit Interrupt Enable."]
-pub struct TI_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TI_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type TiW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RI` reader - Receive Interrupt Enable."]
-pub struct RI_R(crate::FieldReader<bool, bool>);
-impl RI_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RI_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RI_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RiR = crate::BitReader;
 #[doc = "Field `RI` writer - Receive Interrupt Enable."]
-pub struct RI_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RI_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type RiW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FBE` reader - Fatal Bus Error Enable."]
-pub struct FBE_R(crate::FieldReader<bool, bool>);
-impl FBE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FBE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FBE_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FbeR = crate::BitReader;
 #[doc = "Field `FBE` writer - Fatal Bus Error Enable."]
-pub struct FBE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FBE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type FbeW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DU` reader - Descriptor Unavailable Interrupt."]
-pub struct DU_R(crate::FieldReader<bool, bool>);
-impl DU_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DU_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DU_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DuR = crate::BitReader;
 #[doc = "Field `DU` writer - Descriptor Unavailable Interrupt."]
-pub struct DU_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DU_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type DuW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CES` reader - Card Error summary Interrupt Enable."]
-pub struct CES_R(crate::FieldReader<bool, bool>);
-impl CES_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CES_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CES_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CesR = crate::BitReader;
 #[doc = "Field `CES` writer - Card Error summary Interrupt Enable."]
-pub struct CES_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CES_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
-    }
-}
+pub type CesW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NIS` reader - Normal Interrupt Summary Enable."]
-pub struct NIS_R(crate::FieldReader<bool, bool>);
-impl NIS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NIS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NIS_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NisR = crate::BitReader;
 #[doc = "Field `NIS` writer - Normal Interrupt Summary Enable."]
-pub struct NIS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NIS_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type NisW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `AIS` reader - Abnormal Interrupt Summary Enable."]
-pub struct AIS_R(crate::FieldReader<bool, bool>);
-impl AIS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        AIS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for AIS_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AisR = crate::BitReader;
 #[doc = "Field `AIS` writer - Abnormal Interrupt Summary Enable."]
-pub struct AIS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> AIS_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
-    }
-}
+pub type AisW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Transmit Interrupt Enable."]
     #[inline(always)]
-    pub fn ti(&self) -> TI_R {
-        TI_R::new((self.bits & 0x01) != 0)
+    pub fn ti(&self) -> TiR {
+        TiR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Receive Interrupt Enable."]
     #[inline(always)]
-    pub fn ri(&self) -> RI_R {
-        RI_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn ri(&self) -> RiR {
+        RiR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Fatal Bus Error Enable."]
     #[inline(always)]
-    pub fn fbe(&self) -> FBE_R {
-        FBE_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn fbe(&self) -> FbeR {
+        FbeR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 4 - Descriptor Unavailable Interrupt."]
     #[inline(always)]
-    pub fn du(&self) -> DU_R {
-        DU_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn du(&self) -> DuR {
+        DuR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Card Error summary Interrupt Enable."]
     #[inline(always)]
-    pub fn ces(&self) -> CES_R {
-        CES_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn ces(&self) -> CesR {
+        CesR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 8 - Normal Interrupt Summary Enable."]
     #[inline(always)]
-    pub fn nis(&self) -> NIS_R {
-        NIS_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn nis(&self) -> NisR {
+        NisR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Abnormal Interrupt Summary Enable."]
     #[inline(always)]
-    pub fn ais(&self) -> AIS_R {
-        AIS_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn ais(&self) -> AisR {
+        AisR::new(((self.bits >> 9) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Transmit Interrupt Enable."]
     #[inline(always)]
-    pub fn ti(&mut self) -> TI_W {
-        TI_W { w: self }
+    pub fn ti(&mut self) -> TiW<IdintenSpec> {
+        TiW::new(self, 0)
     }
     #[doc = "Bit 1 - Receive Interrupt Enable."]
     #[inline(always)]
-    pub fn ri(&mut self) -> RI_W {
-        RI_W { w: self }
+    pub fn ri(&mut self) -> RiW<IdintenSpec> {
+        RiW::new(self, 1)
     }
     #[doc = "Bit 2 - Fatal Bus Error Enable."]
     #[inline(always)]
-    pub fn fbe(&mut self) -> FBE_W {
-        FBE_W { w: self }
+    pub fn fbe(&mut self) -> FbeW<IdintenSpec> {
+        FbeW::new(self, 2)
     }
     #[doc = "Bit 4 - Descriptor Unavailable Interrupt."]
     #[inline(always)]
-    pub fn du(&mut self) -> DU_W {
-        DU_W { w: self }
+    pub fn du(&mut self) -> DuW<IdintenSpec> {
+        DuW::new(self, 4)
     }
     #[doc = "Bit 5 - Card Error summary Interrupt Enable."]
     #[inline(always)]
-    pub fn ces(&mut self) -> CES_W {
-        CES_W { w: self }
+    pub fn ces(&mut self) -> CesW<IdintenSpec> {
+        CesW::new(self, 5)
     }
     #[doc = "Bit 8 - Normal Interrupt Summary Enable."]
     #[inline(always)]
-    pub fn nis(&mut self) -> NIS_W {
-        NIS_W { w: self }
+    pub fn nis(&mut self) -> NisW<IdintenSpec> {
+        NisW::new(self, 8)
     }
     #[doc = "Bit 9 - Abnormal Interrupt Summary Enable."]
     #[inline(always)]
-    pub fn ais(&mut self) -> AIS_W {
-        AIS_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn ais(&mut self) -> AisW<IdintenSpec> {
+        AisW::new(self, 9)
     }
 }
-#[doc = "Internal DMAC Interrupt Enable register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [idinten](index.html) module"]
-pub struct IDINTEN_SPEC;
-impl crate::RegisterSpec for IDINTEN_SPEC {
+#[doc = "Internal DMAC Interrupt Enable register\n\nYou can [`read`](crate::Reg::read) this register and get [`idinten::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`idinten::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IdintenSpec;
+impl crate::RegisterSpec for IdintenSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [idinten::R](R) reader structure"]
-impl crate::Readable for IDINTEN_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [idinten::W](W) writer structure"]
-impl crate::Writable for IDINTEN_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`idinten::R`](R) reader structure"]
+impl crate::Readable for IdintenSpec {}
+#[doc = "`write(|w| ..)` method takes [`idinten::W`](W) writer structure"]
+impl crate::Writable for IdintenSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IDINTEN to value 0"]
-impl crate::Resettable for IDINTEN_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for IdintenSpec {
+    const RESET_VALUE: u32 = 0;
 }

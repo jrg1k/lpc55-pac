@@ -1,103 +1,39 @@
 #[doc = "Register `HCBULKCURRENTED` reader"]
-pub struct R(crate::R<HCBULKCURRENTED_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<HCBULKCURRENTED_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<HCBULKCURRENTED_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<HCBULKCURRENTED_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<HcbulkcurrentedSpec>;
 #[doc = "Register `HCBULKCURRENTED` writer"]
-pub struct W(crate::W<HCBULKCURRENTED_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<HCBULKCURRENTED_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<HCBULKCURRENTED_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<HCBULKCURRENTED_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<HcbulkcurrentedSpec>;
 #[doc = "Field `BCED` reader - BulkCurrentED This is advanced to the next ED after the HC has served the current one."]
-pub struct BCED_R(crate::FieldReader<u32, u32>);
-impl BCED_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        BCED_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for BCED_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type BcedR = crate::FieldReader<u32>;
 #[doc = "Field `BCED` writer - BulkCurrentED This is advanced to the next ED after the HC has served the current one."]
-pub struct BCED_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BCED_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0fff_ffff << 4)) | ((value as u32 & 0x0fff_ffff) << 4);
-        self.w
-    }
-}
+pub type BcedW<'a, REG> = crate::FieldWriter<'a, REG, 28, u32>;
 impl R {
     #[doc = "Bits 4:31 - BulkCurrentED This is advanced to the next ED after the HC has served the current one."]
     #[inline(always)]
-    pub fn bced(&self) -> BCED_R {
-        BCED_R::new(((self.bits >> 4) & 0x0fff_ffff) as u32)
+    pub fn bced(&self) -> BcedR {
+        BcedR::new((self.bits >> 4) & 0x0fff_ffff)
     }
 }
 impl W {
     #[doc = "Bits 4:31 - BulkCurrentED This is advanced to the next ED after the HC has served the current one."]
     #[inline(always)]
-    pub fn bced(&mut self) -> BCED_W {
-        BCED_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn bced(&mut self) -> BcedW<HcbulkcurrentedSpec> {
+        BcedW::new(self, 4)
     }
 }
-#[doc = "Contains the physical address of the current endpoint descriptor of the bulk list\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hcbulkcurrented](index.html) module"]
-pub struct HCBULKCURRENTED_SPEC;
-impl crate::RegisterSpec for HCBULKCURRENTED_SPEC {
+#[doc = "Contains the physical address of the current endpoint descriptor of the bulk list\n\nYou can [`read`](crate::Reg::read) this register and get [`hcbulkcurrented::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hcbulkcurrented::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct HcbulkcurrentedSpec;
+impl crate::RegisterSpec for HcbulkcurrentedSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [hcbulkcurrented::R](R) reader structure"]
-impl crate::Readable for HCBULKCURRENTED_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [hcbulkcurrented::W](W) writer structure"]
-impl crate::Writable for HCBULKCURRENTED_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`hcbulkcurrented::R`](R) reader structure"]
+impl crate::Readable for HcbulkcurrentedSpec {}
+#[doc = "`write(|w| ..)` method takes [`hcbulkcurrented::W`](W) writer structure"]
+impl crate::Writable for HcbulkcurrentedSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HCBULKCURRENTED to value 0"]
-impl crate::Resettable for HCBULKCURRENTED_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for HcbulkcurrentedSpec {
+    const RESET_VALUE: u32 = 0;
 }

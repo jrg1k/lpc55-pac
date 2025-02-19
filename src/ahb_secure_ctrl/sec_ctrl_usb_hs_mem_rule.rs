@@ -1,514 +1,413 @@
 #[doc = "Register `SEC_CTRL_USB_HS_MEM_RULE` reader"]
-pub struct R(crate::R<SEC_CTRL_USB_HS_MEM_RULE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_CTRL_USB_HS_MEM_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_CTRL_USB_HS_MEM_RULE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_CTRL_USB_HS_MEM_RULE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecCtrlUsbHsMemRuleSpec>;
 #[doc = "Register `SEC_CTRL_USB_HS_MEM_RULE` writer"]
-pub struct W(crate::W<SEC_CTRL_USB_HS_MEM_RULE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_CTRL_USB_HS_MEM_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_CTRL_USB_HS_MEM_RULE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_CTRL_USB_HS_MEM_RULE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecCtrlUsbHsMemRuleSpec>;
 #[doc = "Address space: 0x4010_0000 - 0x4010_0FFF\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SRAM_SECT_0_RULE_A {
+pub enum SramSect0Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<SRAM_SECT_0_RULE_A> for u8 {
+impl From<SramSect0Rule> for u8 {
     #[inline(always)]
-    fn from(variant: SRAM_SECT_0_RULE_A) -> Self {
+    fn from(variant: SramSect0Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SramSect0Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for SramSect0Rule {}
 #[doc = "Field `SRAM_SECT_0_RULE` reader - Address space: 0x4010_0000 - 0x4010_0FFF"]
-pub struct SRAM_SECT_0_RULE_R(crate::FieldReader<u8, SRAM_SECT_0_RULE_A>);
-impl SRAM_SECT_0_RULE_R {
+pub type SramSect0RuleR = crate::FieldReader<SramSect0Rule>;
+impl SramSect0RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SRAM_SECT_0_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_SECT_0_RULE_A {
+    pub const fn variant(&self) -> SramSect0Rule {
         match self.bits {
-            0 => SRAM_SECT_0_RULE_A::ENUM_NS_NP,
-            1 => SRAM_SECT_0_RULE_A::ENUM_NS_P,
-            2 => SRAM_SECT_0_RULE_A::ENUM_S_NP,
-            3 => SRAM_SECT_0_RULE_A::ENUM_S_P,
+            0 => SramSect0Rule::EnumNsNp,
+            1 => SramSect0Rule::EnumNsP,
+            2 => SramSect0Rule::EnumSNp,
+            3 => SramSect0Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == SRAM_SECT_0_RULE_A::ENUM_NS_NP
+        *self == SramSect0Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == SRAM_SECT_0_RULE_A::ENUM_NS_P
+        *self == SramSect0Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == SRAM_SECT_0_RULE_A::ENUM_S_NP
+        *self == SramSect0Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == SRAM_SECT_0_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for SRAM_SECT_0_RULE_R {
-    type Target = crate::FieldReader<u8, SRAM_SECT_0_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SramSect0Rule::EnumSP
     }
 }
 #[doc = "Field `SRAM_SECT_0_RULE` writer - Address space: 0x4010_0000 - 0x4010_0FFF"]
-pub struct SRAM_SECT_0_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_SECT_0_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_SECT_0_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type SramSect0RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, SramSect0Rule, crate::Safe>;
+impl<'a, REG> SramSect0RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_0_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect0Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_0_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect0Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_0_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect0Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_0_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect0Rule::EnumSP)
     }
 }
 #[doc = "Address space: 0x4010_1000 - 0x4010_1FFF\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SRAM_SECT_1_RULE_A {
+pub enum SramSect1Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<SRAM_SECT_1_RULE_A> for u8 {
+impl From<SramSect1Rule> for u8 {
     #[inline(always)]
-    fn from(variant: SRAM_SECT_1_RULE_A) -> Self {
+    fn from(variant: SramSect1Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SramSect1Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for SramSect1Rule {}
 #[doc = "Field `SRAM_SECT_1_RULE` reader - Address space: 0x4010_1000 - 0x4010_1FFF"]
-pub struct SRAM_SECT_1_RULE_R(crate::FieldReader<u8, SRAM_SECT_1_RULE_A>);
-impl SRAM_SECT_1_RULE_R {
+pub type SramSect1RuleR = crate::FieldReader<SramSect1Rule>;
+impl SramSect1RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SRAM_SECT_1_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_SECT_1_RULE_A {
+    pub const fn variant(&self) -> SramSect1Rule {
         match self.bits {
-            0 => SRAM_SECT_1_RULE_A::ENUM_NS_NP,
-            1 => SRAM_SECT_1_RULE_A::ENUM_NS_P,
-            2 => SRAM_SECT_1_RULE_A::ENUM_S_NP,
-            3 => SRAM_SECT_1_RULE_A::ENUM_S_P,
+            0 => SramSect1Rule::EnumNsNp,
+            1 => SramSect1Rule::EnumNsP,
+            2 => SramSect1Rule::EnumSNp,
+            3 => SramSect1Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == SRAM_SECT_1_RULE_A::ENUM_NS_NP
+        *self == SramSect1Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == SRAM_SECT_1_RULE_A::ENUM_NS_P
+        *self == SramSect1Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == SRAM_SECT_1_RULE_A::ENUM_S_NP
+        *self == SramSect1Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == SRAM_SECT_1_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for SRAM_SECT_1_RULE_R {
-    type Target = crate::FieldReader<u8, SRAM_SECT_1_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SramSect1Rule::EnumSP
     }
 }
 #[doc = "Field `SRAM_SECT_1_RULE` writer - Address space: 0x4010_1000 - 0x4010_1FFF"]
-pub struct SRAM_SECT_1_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_SECT_1_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_SECT_1_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type SramSect1RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, SramSect1Rule, crate::Safe>;
+impl<'a, REG> SramSect1RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_1_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect1Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_1_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect1Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_1_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect1Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_1_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 4)) | ((value as u32 & 0x03) << 4);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect1Rule::EnumSP)
     }
 }
 #[doc = "Address space: 0x4010_2000 - 0x4010_2FFF\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SRAM_SECT_2_RULE_A {
+pub enum SramSect2Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<SRAM_SECT_2_RULE_A> for u8 {
+impl From<SramSect2Rule> for u8 {
     #[inline(always)]
-    fn from(variant: SRAM_SECT_2_RULE_A) -> Self {
+    fn from(variant: SramSect2Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SramSect2Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for SramSect2Rule {}
 #[doc = "Field `SRAM_SECT_2_RULE` reader - Address space: 0x4010_2000 - 0x4010_2FFF"]
-pub struct SRAM_SECT_2_RULE_R(crate::FieldReader<u8, SRAM_SECT_2_RULE_A>);
-impl SRAM_SECT_2_RULE_R {
+pub type SramSect2RuleR = crate::FieldReader<SramSect2Rule>;
+impl SramSect2RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SRAM_SECT_2_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_SECT_2_RULE_A {
+    pub const fn variant(&self) -> SramSect2Rule {
         match self.bits {
-            0 => SRAM_SECT_2_RULE_A::ENUM_NS_NP,
-            1 => SRAM_SECT_2_RULE_A::ENUM_NS_P,
-            2 => SRAM_SECT_2_RULE_A::ENUM_S_NP,
-            3 => SRAM_SECT_2_RULE_A::ENUM_S_P,
+            0 => SramSect2Rule::EnumNsNp,
+            1 => SramSect2Rule::EnumNsP,
+            2 => SramSect2Rule::EnumSNp,
+            3 => SramSect2Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == SRAM_SECT_2_RULE_A::ENUM_NS_NP
+        *self == SramSect2Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == SRAM_SECT_2_RULE_A::ENUM_NS_P
+        *self == SramSect2Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == SRAM_SECT_2_RULE_A::ENUM_S_NP
+        *self == SramSect2Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == SRAM_SECT_2_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for SRAM_SECT_2_RULE_R {
-    type Target = crate::FieldReader<u8, SRAM_SECT_2_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SramSect2Rule::EnumSP
     }
 }
 #[doc = "Field `SRAM_SECT_2_RULE` writer - Address space: 0x4010_2000 - 0x4010_2FFF"]
-pub struct SRAM_SECT_2_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_SECT_2_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_SECT_2_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type SramSect2RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, SramSect2Rule, crate::Safe>;
+impl<'a, REG> SramSect2RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_2_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect2Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_2_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect2Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_2_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect2Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_2_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 8)) | ((value as u32 & 0x03) << 8);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect2Rule::EnumSP)
     }
 }
 #[doc = "Address space: 0x4010_3000 - 0x4010_3FFF\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SRAM_SECT_3_RULE_A {
+pub enum SramSect3Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<SRAM_SECT_3_RULE_A> for u8 {
+impl From<SramSect3Rule> for u8 {
     #[inline(always)]
-    fn from(variant: SRAM_SECT_3_RULE_A) -> Self {
+    fn from(variant: SramSect3Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SramSect3Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for SramSect3Rule {}
 #[doc = "Field `SRAM_SECT_3_RULE` reader - Address space: 0x4010_3000 - 0x4010_3FFF"]
-pub struct SRAM_SECT_3_RULE_R(crate::FieldReader<u8, SRAM_SECT_3_RULE_A>);
-impl SRAM_SECT_3_RULE_R {
+pub type SramSect3RuleR = crate::FieldReader<SramSect3Rule>;
+impl SramSect3RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SRAM_SECT_3_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_SECT_3_RULE_A {
+    pub const fn variant(&self) -> SramSect3Rule {
         match self.bits {
-            0 => SRAM_SECT_3_RULE_A::ENUM_NS_NP,
-            1 => SRAM_SECT_3_RULE_A::ENUM_NS_P,
-            2 => SRAM_SECT_3_RULE_A::ENUM_S_NP,
-            3 => SRAM_SECT_3_RULE_A::ENUM_S_P,
+            0 => SramSect3Rule::EnumNsNp,
+            1 => SramSect3Rule::EnumNsP,
+            2 => SramSect3Rule::EnumSNp,
+            3 => SramSect3Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
-    #[inline(always)]
-    pub fn is_enum_ns_np(&self) -> bool {
-        **self == SRAM_SECT_3_RULE_A::ENUM_NS_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
-    #[inline(always)]
-    pub fn is_enum_ns_p(&self) -> bool {
-        **self == SRAM_SECT_3_RULE_A::ENUM_NS_P
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
-    #[inline(always)]
-    pub fn is_enum_s_np(&self) -> bool {
-        **self == SRAM_SECT_3_RULE_A::ENUM_S_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
-    #[inline(always)]
-    pub fn is_enum_s_p(&self) -> bool {
-        **self == SRAM_SECT_3_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for SRAM_SECT_3_RULE_R {
-    type Target = crate::FieldReader<u8, SRAM_SECT_3_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_SECT_3_RULE` writer - Address space: 0x4010_3000 - 0x4010_3FFF"]
-pub struct SRAM_SECT_3_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_SECT_3_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_SECT_3_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_3_RULE_A::ENUM_NS_NP)
+    pub fn is_enum_ns_np(&self) -> bool {
+        *self == SramSect3Rule::EnumNsNp
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_3_RULE_A::ENUM_NS_P)
+    pub fn is_enum_ns_p(&self) -> bool {
+        *self == SramSect3Rule::EnumNsP
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(SRAM_SECT_3_RULE_A::ENUM_S_NP)
+    pub fn is_enum_s_np(&self) -> bool {
+        *self == SramSect3Rule::EnumSNp
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(SRAM_SECT_3_RULE_A::ENUM_S_P)
+    pub fn is_enum_s_p(&self) -> bool {
+        *self == SramSect3Rule::EnumSP
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `SRAM_SECT_3_RULE` writer - Address space: 0x4010_3000 - 0x4010_3FFF"]
+pub type SramSect3RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, SramSect3Rule, crate::Safe>;
+impl<'a, REG> SramSect3RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 12)) | ((value as u32 & 0x03) << 12);
-        self.w
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect3Rule::EnumNsNp)
+    }
+    #[doc = "Non-secure and Privilege access allowed."]
+    #[inline(always)]
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect3Rule::EnumNsP)
+    }
+    #[doc = "Secure and Non-priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect3Rule::EnumSNp)
+    }
+    #[doc = "Secure and Priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SramSect3Rule::EnumSP)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Address space: 0x4010_0000 - 0x4010_0FFF"]
     #[inline(always)]
-    pub fn sram_sect_0_rule(&self) -> SRAM_SECT_0_RULE_R {
-        SRAM_SECT_0_RULE_R::new((self.bits & 0x03) as u8)
+    pub fn sram_sect_0_rule(&self) -> SramSect0RuleR {
+        SramSect0RuleR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 4:5 - Address space: 0x4010_1000 - 0x4010_1FFF"]
     #[inline(always)]
-    pub fn sram_sect_1_rule(&self) -> SRAM_SECT_1_RULE_R {
-        SRAM_SECT_1_RULE_R::new(((self.bits >> 4) & 0x03) as u8)
+    pub fn sram_sect_1_rule(&self) -> SramSect1RuleR {
+        SramSect1RuleR::new(((self.bits >> 4) & 3) as u8)
     }
     #[doc = "Bits 8:9 - Address space: 0x4010_2000 - 0x4010_2FFF"]
     #[inline(always)]
-    pub fn sram_sect_2_rule(&self) -> SRAM_SECT_2_RULE_R {
-        SRAM_SECT_2_RULE_R::new(((self.bits >> 8) & 0x03) as u8)
+    pub fn sram_sect_2_rule(&self) -> SramSect2RuleR {
+        SramSect2RuleR::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 12:13 - Address space: 0x4010_3000 - 0x4010_3FFF"]
     #[inline(always)]
-    pub fn sram_sect_3_rule(&self) -> SRAM_SECT_3_RULE_R {
-        SRAM_SECT_3_RULE_R::new(((self.bits >> 12) & 0x03) as u8)
+    pub fn sram_sect_3_rule(&self) -> SramSect3RuleR {
+        SramSect3RuleR::new(((self.bits >> 12) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Address space: 0x4010_0000 - 0x4010_0FFF"]
     #[inline(always)]
-    pub fn sram_sect_0_rule(&mut self) -> SRAM_SECT_0_RULE_W {
-        SRAM_SECT_0_RULE_W { w: self }
+    pub fn sram_sect_0_rule(&mut self) -> SramSect0RuleW<SecCtrlUsbHsMemRuleSpec> {
+        SramSect0RuleW::new(self, 0)
     }
     #[doc = "Bits 4:5 - Address space: 0x4010_1000 - 0x4010_1FFF"]
     #[inline(always)]
-    pub fn sram_sect_1_rule(&mut self) -> SRAM_SECT_1_RULE_W {
-        SRAM_SECT_1_RULE_W { w: self }
+    pub fn sram_sect_1_rule(&mut self) -> SramSect1RuleW<SecCtrlUsbHsMemRuleSpec> {
+        SramSect1RuleW::new(self, 4)
     }
     #[doc = "Bits 8:9 - Address space: 0x4010_2000 - 0x4010_2FFF"]
     #[inline(always)]
-    pub fn sram_sect_2_rule(&mut self) -> SRAM_SECT_2_RULE_W {
-        SRAM_SECT_2_RULE_W { w: self }
+    pub fn sram_sect_2_rule(&mut self) -> SramSect2RuleW<SecCtrlUsbHsMemRuleSpec> {
+        SramSect2RuleW::new(self, 8)
     }
     #[doc = "Bits 12:13 - Address space: 0x4010_3000 - 0x4010_3FFF"]
     #[inline(always)]
-    pub fn sram_sect_3_rule(&mut self) -> SRAM_SECT_3_RULE_W {
-        SRAM_SECT_3_RULE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn sram_sect_3_rule(&mut self) -> SramSect3RuleW<SecCtrlUsbHsMemRuleSpec> {
+        SramSect3RuleW::new(self, 12)
     }
 }
-#[doc = "Security access rules for RAM_USB_HS.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_ctrl_usb_hs_mem_rule](index.html) module"]
-pub struct SEC_CTRL_USB_HS_MEM_RULE_SPEC;
-impl crate::RegisterSpec for SEC_CTRL_USB_HS_MEM_RULE_SPEC {
+#[doc = "Security access rules for RAM_USB_HS.\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_ctrl_usb_hs_mem_rule::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_ctrl_usb_hs_mem_rule::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecCtrlUsbHsMemRuleSpec;
+impl crate::RegisterSpec for SecCtrlUsbHsMemRuleSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_ctrl_usb_hs_mem_rule::R](R) reader structure"]
-impl crate::Readable for SEC_CTRL_USB_HS_MEM_RULE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_ctrl_usb_hs_mem_rule::W](W) writer structure"]
-impl crate::Writable for SEC_CTRL_USB_HS_MEM_RULE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_ctrl_usb_hs_mem_rule::R`](R) reader structure"]
+impl crate::Readable for SecCtrlUsbHsMemRuleSpec {}
+#[doc = "`write(|w| ..)` method takes [`sec_ctrl_usb_hs_mem_rule::W`](W) writer structure"]
+impl crate::Writable for SecCtrlUsbHsMemRuleSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_CTRL_USB_HS_MEM_RULE to value 0"]
-impl crate::Resettable for SEC_CTRL_USB_HS_MEM_RULE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecCtrlUsbHsMemRuleSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,222 +1,147 @@
 #[doc = "Register `COMP_INT_STATUS` reader"]
-pub struct R(crate::R<COMP_INT_STATUS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<COMP_INT_STATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<COMP_INT_STATUS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<COMP_INT_STATUS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CompIntStatusSpec>;
 #[doc = "Register `COMP_INT_STATUS` writer"]
-pub struct W(crate::W<COMP_INT_STATUS_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<COMP_INT_STATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<COMP_INT_STATUS_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<COMP_INT_STATUS_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CompIntStatusSpec>;
 #[doc = "Interrupt status BEFORE Interrupt Enable.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum STATUS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Status {
     #[doc = "0: no interrupt pending."]
-    NO_INT = 0,
+    NoInt = 0,
     #[doc = "1: interrupt pending."]
-    PENDING = 1,
+    Pending = 1,
 }
-impl From<STATUS_A> for bool {
+impl From<Status> for bool {
     #[inline(always)]
-    fn from(variant: STATUS_A) -> Self {
+    fn from(variant: Status) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `STATUS` reader - Interrupt status BEFORE Interrupt Enable."]
-pub struct STATUS_R(crate::FieldReader<bool, STATUS_A>);
-impl STATUS_R {
+pub type StatusR = crate::BitReader<Status>;
+impl StatusR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        STATUS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> STATUS_A {
+    pub const fn variant(&self) -> Status {
         match self.bits {
-            false => STATUS_A::NO_INT,
-            true => STATUS_A::PENDING,
+            false => Status::NoInt,
+            true => Status::Pending,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INT`"]
+    #[doc = "no interrupt pending."]
     #[inline(always)]
     pub fn is_no_int(&self) -> bool {
-        **self == STATUS_A::NO_INT
+        *self == Status::NoInt
     }
-    #[doc = "Checks if the value of the field is `PENDING`"]
+    #[doc = "interrupt pending."]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        **self == STATUS_A::PENDING
-    }
-}
-impl core::ops::Deref for STATUS_R {
-    type Target = crate::FieldReader<bool, STATUS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Status::Pending
     }
 }
 #[doc = "Interrupt status AFTER Interrupt Enable.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum INT_STATUS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum IntStatus {
     #[doc = "0: no interrupt pending."]
-    NO_INT = 0,
+    NoInt = 0,
     #[doc = "1: interrupt pending."]
-    PENDING = 1,
+    Pending = 1,
 }
-impl From<INT_STATUS_A> for bool {
+impl From<IntStatus> for bool {
     #[inline(always)]
-    fn from(variant: INT_STATUS_A) -> Self {
+    fn from(variant: IntStatus) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `INT_STATUS` reader - Interrupt status AFTER Interrupt Enable."]
-pub struct INT_STATUS_R(crate::FieldReader<bool, INT_STATUS_A>);
-impl INT_STATUS_R {
+pub type IntStatusR = crate::BitReader<IntStatus>;
+impl IntStatusR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        INT_STATUS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> INT_STATUS_A {
+    pub const fn variant(&self) -> IntStatus {
         match self.bits {
-            false => INT_STATUS_A::NO_INT,
-            true => INT_STATUS_A::PENDING,
+            false => IntStatus::NoInt,
+            true => IntStatus::Pending,
         }
     }
-    #[doc = "Checks if the value of the field is `NO_INT`"]
+    #[doc = "no interrupt pending."]
     #[inline(always)]
     pub fn is_no_int(&self) -> bool {
-        **self == INT_STATUS_A::NO_INT
+        *self == IntStatus::NoInt
     }
-    #[doc = "Checks if the value of the field is `PENDING`"]
+    #[doc = "interrupt pending."]
     #[inline(always)]
     pub fn is_pending(&self) -> bool {
-        **self == INT_STATUS_A::PENDING
-    }
-}
-impl core::ops::Deref for INT_STATUS_R {
-    type Target = crate::FieldReader<bool, INT_STATUS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == IntStatus::Pending
     }
 }
 #[doc = "comparator analog output.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VAL_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Val {
     #[doc = "0: P+ is smaller than P-."]
-    SMALLER = 0,
+    Smaller = 0,
     #[doc = "1: P+ is greater than P-."]
-    GREATER = 1,
+    Greater = 1,
 }
-impl From<VAL_A> for bool {
+impl From<Val> for bool {
     #[inline(always)]
-    fn from(variant: VAL_A) -> Self {
+    fn from(variant: Val) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VAL` reader - comparator analog output."]
-pub struct VAL_R(crate::FieldReader<bool, VAL_A>);
-impl VAL_R {
+pub type ValR = crate::BitReader<Val>;
+impl ValR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VAL_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VAL_A {
+    pub const fn variant(&self) -> Val {
         match self.bits {
-            false => VAL_A::SMALLER,
-            true => VAL_A::GREATER,
+            false => Val::Smaller,
+            true => Val::Greater,
         }
     }
-    #[doc = "Checks if the value of the field is `SMALLER`"]
+    #[doc = "P+ is smaller than P-."]
     #[inline(always)]
     pub fn is_smaller(&self) -> bool {
-        **self == VAL_A::SMALLER
+        *self == Val::Smaller
     }
-    #[doc = "Checks if the value of the field is `GREATER`"]
+    #[doc = "P+ is greater than P-."]
     #[inline(always)]
     pub fn is_greater(&self) -> bool {
-        **self == VAL_A::GREATER
-    }
-}
-impl core::ops::Deref for VAL_R {
-    type Target = crate::FieldReader<bool, VAL_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Val::Greater
     }
 }
 impl R {
     #[doc = "Bit 0 - Interrupt status BEFORE Interrupt Enable."]
     #[inline(always)]
-    pub fn status(&self) -> STATUS_R {
-        STATUS_R::new((self.bits & 0x01) != 0)
+    pub fn status(&self) -> StatusR {
+        StatusR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Interrupt status AFTER Interrupt Enable."]
     #[inline(always)]
-    pub fn int_status(&self) -> INT_STATUS_R {
-        INT_STATUS_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn int_status(&self) -> IntStatusR {
+        IntStatusR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - comparator analog output."]
     #[inline(always)]
-    pub fn val(&self) -> VAL_R {
-        VAL_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn val(&self) -> ValR {
+        ValR::new(((self.bits >> 2) & 1) != 0)
     }
 }
-impl W {
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
-    }
-}
-#[doc = "Comparator Interrupt status\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [comp_int_status](index.html) module"]
-pub struct COMP_INT_STATUS_SPEC;
-impl crate::RegisterSpec for COMP_INT_STATUS_SPEC {
+impl W {}
+#[doc = "Comparator Interrupt status\n\nYou can [`read`](crate::Reg::read) this register and get [`comp_int_status::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`comp_int_status::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CompIntStatusSpec;
+impl crate::RegisterSpec for CompIntStatusSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [comp_int_status::R](R) reader structure"]
-impl crate::Readable for COMP_INT_STATUS_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [comp_int_status::W](W) writer structure"]
-impl crate::Writable for COMP_INT_STATUS_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`comp_int_status::R`](R) reader structure"]
+impl crate::Readable for CompIntStatusSpec {}
+#[doc = "`write(|w| ..)` method takes [`comp_int_status::W`](W) writer structure"]
+impl crate::Writable for CompIntStatusSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets COMP_INT_STATUS to value 0"]
-impl crate::Resettable for COMP_INT_STATUS_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CompIntStatusSpec {
+    const RESET_VALUE: u32 = 0;
 }

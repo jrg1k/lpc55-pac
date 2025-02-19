@@ -1,197 +1,102 @@
 #[doc = "Register `PAUSE` reader"]
-pub struct R(crate::R<PAUSE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PAUSE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PAUSE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PAUSE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PauseSpec>;
 #[doc = "Register `PAUSE` writer"]
-pub struct W(crate::W<PAUSE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PAUSE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PAUSE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PAUSE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PauseSpec>;
 #[doc = "Field `PAUSEDLY` reader - Pause Delay"]
-pub struct PAUSEDLY_R(crate::FieldReader<u16, u16>);
-impl PAUSEDLY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        PAUSEDLY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PAUSEDLY_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PausedlyR = crate::FieldReader<u16>;
 #[doc = "Field `PAUSEDLY` writer - Pause Delay"]
-pub struct PAUSEDLY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PAUSEDLY_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01ff) | (value as u32 & 0x01ff);
-        self.w
-    }
-}
+pub type PausedlyW<'a, REG> = crate::FieldWriter<'a, REG, 9, u16>;
 #[doc = "PAUSE Option Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PAUSEEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pauseen {
     #[doc = "0: Pause operation disabled"]
-    PAUSEEN_0 = 0,
+    Pauseen0 = 0,
     #[doc = "1: Pause operation enabled"]
-    PAUSEEN_1 = 1,
+    Pauseen1 = 1,
 }
-impl From<PAUSEEN_A> for bool {
+impl From<Pauseen> for bool {
     #[inline(always)]
-    fn from(variant: PAUSEEN_A) -> Self {
+    fn from(variant: Pauseen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PAUSEEN` reader - PAUSE Option Enable"]
-pub struct PAUSEEN_R(crate::FieldReader<bool, PAUSEEN_A>);
-impl PAUSEEN_R {
+pub type PauseenR = crate::BitReader<Pauseen>;
+impl PauseenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PAUSEEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PAUSEEN_A {
+    pub const fn variant(&self) -> Pauseen {
         match self.bits {
-            false => PAUSEEN_A::PAUSEEN_0,
-            true => PAUSEEN_A::PAUSEEN_1,
+            false => Pauseen::Pauseen0,
+            true => Pauseen::Pauseen1,
         }
-    }
-    #[doc = "Checks if the value of the field is `PAUSEEN_0`"]
-    #[inline(always)]
-    pub fn is_pauseen_0(&self) -> bool {
-        **self == PAUSEEN_A::PAUSEEN_0
-    }
-    #[doc = "Checks if the value of the field is `PAUSEEN_1`"]
-    #[inline(always)]
-    pub fn is_pauseen_1(&self) -> bool {
-        **self == PAUSEEN_A::PAUSEEN_1
-    }
-}
-impl core::ops::Deref for PAUSEEN_R {
-    type Target = crate::FieldReader<bool, PAUSEEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PAUSEEN` writer - PAUSE Option Enable"]
-pub struct PAUSEEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PAUSEEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PAUSEEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Pause operation disabled"]
     #[inline(always)]
-    pub fn pauseen_0(self) -> &'a mut W {
-        self.variant(PAUSEEN_A::PAUSEEN_0)
+    pub fn is_pauseen_0(&self) -> bool {
+        *self == Pauseen::Pauseen0
     }
     #[doc = "Pause operation enabled"]
     #[inline(always)]
-    pub fn pauseen_1(self) -> &'a mut W {
-        self.variant(PAUSEEN_A::PAUSEEN_1)
+    pub fn is_pauseen_1(&self) -> bool {
+        *self == Pauseen::Pauseen1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PAUSEEN` writer - PAUSE Option Enable"]
+pub type PauseenW<'a, REG> = crate::BitWriter<'a, REG, Pauseen>;
+impl<'a, REG> PauseenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Pause operation disabled"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn pauseen_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Pauseen::Pauseen0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Pause operation enabled"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
-        self.w
+    pub fn pauseen_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Pauseen::Pauseen1)
     }
 }
 impl R {
     #[doc = "Bits 0:8 - Pause Delay"]
     #[inline(always)]
-    pub fn pausedly(&self) -> PAUSEDLY_R {
-        PAUSEDLY_R::new((self.bits & 0x01ff) as u16)
+    pub fn pausedly(&self) -> PausedlyR {
+        PausedlyR::new((self.bits & 0x01ff) as u16)
     }
     #[doc = "Bit 31 - PAUSE Option Enable"]
     #[inline(always)]
-    pub fn pauseen(&self) -> PAUSEEN_R {
-        PAUSEEN_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn pauseen(&self) -> PauseenR {
+        PauseenR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:8 - Pause Delay"]
     #[inline(always)]
-    pub fn pausedly(&mut self) -> PAUSEDLY_W {
-        PAUSEDLY_W { w: self }
+    pub fn pausedly(&mut self) -> PausedlyW<PauseSpec> {
+        PausedlyW::new(self, 0)
     }
     #[doc = "Bit 31 - PAUSE Option Enable"]
     #[inline(always)]
-    pub fn pauseen(&mut self) -> PAUSEEN_W {
-        PAUSEEN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn pauseen(&mut self) -> PauseenW<PauseSpec> {
+        PauseenW::new(self, 31)
     }
 }
-#[doc = "ADC Pause Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pause](index.html) module"]
-pub struct PAUSE_SPEC;
-impl crate::RegisterSpec for PAUSE_SPEC {
+#[doc = "ADC Pause Register\n\nYou can [`read`](crate::Reg::read) this register and get [`pause::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pause::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PauseSpec;
+impl crate::RegisterSpec for PauseSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pause::R](R) reader structure"]
-impl crate::Readable for PAUSE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pause::W](W) writer structure"]
-impl crate::Writable for PAUSE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pause::R`](R) reader structure"]
+impl crate::Readable for PauseSpec {}
+#[doc = "`write(|w| ..)` method takes [`pause::W`](W) writer structure"]
+impl crate::Writable for PauseSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PAUSE to value 0"]
-impl crate::Resettable for PAUSE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PauseSpec {
+    const RESET_VALUE: u32 = 0;
 }

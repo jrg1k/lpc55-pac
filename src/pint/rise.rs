@@ -1,103 +1,39 @@
 #[doc = "Register `RISE` reader"]
-pub struct R(crate::R<RISE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RISE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RISE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RISE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<RiseSpec>;
 #[doc = "Register `RISE` writer"]
-pub struct W(crate::W<RISE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<RISE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<RISE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<RISE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<RiseSpec>;
 #[doc = "Field `RDET` reader - Rising edge detect. Bit n detects the rising edge of the pin selected in PINTSELn. Read 0: No rising edge has been detected on this pin since Reset or the last time a one was written to this bit. Write 0: no operation. Read 1: a rising edge has been detected since Reset or the last time a one was written to this bit. Write 1: clear rising edge detection for this pin."]
-pub struct RDET_R(crate::FieldReader<u8, u8>);
-impl RDET_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        RDET_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RDET_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RdetR = crate::FieldReader;
 #[doc = "Field `RDET` writer - Rising edge detect. Bit n detects the rising edge of the pin selected in PINTSELn. Read 0: No rising edge has been detected on this pin since Reset or the last time a one was written to this bit. Write 0: no operation. Read 1: a rising edge has been detected since Reset or the last time a one was written to this bit. Write 1: clear rising edge detection for this pin."]
-pub struct RDET_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RDET_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type RdetW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Rising edge detect. Bit n detects the rising edge of the pin selected in PINTSELn. Read 0: No rising edge has been detected on this pin since Reset or the last time a one was written to this bit. Write 0: no operation. Read 1: a rising edge has been detected since Reset or the last time a one was written to this bit. Write 1: clear rising edge detection for this pin."]
     #[inline(always)]
-    pub fn rdet(&self) -> RDET_R {
-        RDET_R::new((self.bits & 0xff) as u8)
+    pub fn rdet(&self) -> RdetR {
+        RdetR::new((self.bits & 0xff) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Rising edge detect. Bit n detects the rising edge of the pin selected in PINTSELn. Read 0: No rising edge has been detected on this pin since Reset or the last time a one was written to this bit. Write 0: no operation. Read 1: a rising edge has been detected since Reset or the last time a one was written to this bit. Write 1: clear rising edge detection for this pin."]
     #[inline(always)]
-    pub fn rdet(&mut self) -> RDET_W {
-        RDET_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn rdet(&mut self) -> RdetW<RiseSpec> {
+        RdetW::new(self, 0)
     }
 }
-#[doc = "Pin interrupt rising edge register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rise](index.html) module"]
-pub struct RISE_SPEC;
-impl crate::RegisterSpec for RISE_SPEC {
+#[doc = "Pin interrupt rising edge register\n\nYou can [`read`](crate::Reg::read) this register and get [`rise::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rise::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct RiseSpec;
+impl crate::RegisterSpec for RiseSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [rise::R](R) reader structure"]
-impl crate::Readable for RISE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [rise::W](W) writer structure"]
-impl crate::Writable for RISE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`rise::R`](R) reader structure"]
+impl crate::Readable for RiseSpec {}
+#[doc = "`write(|w| ..)` method takes [`rise::W`](W) writer structure"]
+impl crate::Writable for RiseSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets RISE to value 0"]
-impl crate::Resettable for RISE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for RiseSpec {
+    const RESET_VALUE: u32 = 0;
 }

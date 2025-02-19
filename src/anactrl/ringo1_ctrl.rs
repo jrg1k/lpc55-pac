@@ -1,969 +1,613 @@
 #[doc = "Register `RINGO1_CTRL` reader"]
-pub struct R(crate::R<RINGO1_CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RINGO1_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RINGO1_CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RINGO1_CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Ringo1CtrlSpec>;
 #[doc = "Register `RINGO1_CTRL` writer"]
-pub struct W(crate::W<RINGO1_CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<RINGO1_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<RINGO1_CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<RINGO1_CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Ringo1CtrlSpec>;
 #[doc = "Select short or long ringo (for all ringos types).\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum S_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum S {
     #[doc = "0: Select short ringo (few elements)."]
-    SHORT = 0,
+    Short = 0,
     #[doc = "1: Select long ringo (many elements)."]
-    LONG = 1,
+    Long = 1,
 }
-impl From<S_A> for bool {
+impl From<S> for bool {
     #[inline(always)]
-    fn from(variant: S_A) -> Self {
+    fn from(variant: S) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `S` reader - Select short or long ringo (for all ringos types)."]
-pub struct S_R(crate::FieldReader<bool, S_A>);
-impl S_R {
+pub type SR = crate::BitReader<S>;
+impl SR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        S_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> S_A {
+    pub const fn variant(&self) -> S {
         match self.bits {
-            false => S_A::SHORT,
-            true => S_A::LONG,
+            false => S::Short,
+            true => S::Long,
         }
-    }
-    #[doc = "Checks if the value of the field is `SHORT`"]
-    #[inline(always)]
-    pub fn is_short(&self) -> bool {
-        **self == S_A::SHORT
-    }
-    #[doc = "Checks if the value of the field is `LONG`"]
-    #[inline(always)]
-    pub fn is_long(&self) -> bool {
-        **self == S_A::LONG
-    }
-}
-impl core::ops::Deref for S_R {
-    type Target = crate::FieldReader<bool, S_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `S` writer - Select short or long ringo (for all ringos types)."]
-pub struct S_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> S_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: S_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Select short ringo (few elements)."]
     #[inline(always)]
-    pub fn short(self) -> &'a mut W {
-        self.variant(S_A::SHORT)
+    pub fn is_short(&self) -> bool {
+        *self == S::Short
     }
     #[doc = "Select long ringo (many elements)."]
     #[inline(always)]
-    pub fn long(self) -> &'a mut W {
-        self.variant(S_A::LONG)
+    pub fn is_long(&self) -> bool {
+        *self == S::Long
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `S` writer - Select short or long ringo (for all ringos types)."]
+pub type SW<'a, REG> = crate::BitWriter<'a, REG, S>;
+impl<'a, REG> SW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Select short ringo (few elements)."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn short(self) -> &'a mut crate::W<REG> {
+        self.variant(S::Short)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Select long ringo (many elements)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn long(self) -> &'a mut crate::W<REG> {
+        self.variant(S::Long)
     }
 }
 #[doc = "Ringo frequency output divider.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fs {
     #[doc = "0: High frequency output (frequency lower than 100 MHz)."]
-    FAST = 0,
+    Fast = 0,
     #[doc = "1: Low frequency output (frequency lower than 10 MHz)."]
-    SLOW = 1,
+    Slow = 1,
 }
-impl From<FS_A> for bool {
+impl From<Fs> for bool {
     #[inline(always)]
-    fn from(variant: FS_A) -> Self {
+    fn from(variant: Fs) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FS` reader - Ringo frequency output divider."]
-pub struct FS_R(crate::FieldReader<bool, FS_A>);
-impl FS_R {
+pub type FsR = crate::BitReader<Fs>;
+impl FsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FS_A {
+    pub const fn variant(&self) -> Fs {
         match self.bits {
-            false => FS_A::FAST,
-            true => FS_A::SLOW,
+            false => Fs::Fast,
+            true => Fs::Slow,
         }
-    }
-    #[doc = "Checks if the value of the field is `FAST`"]
-    #[inline(always)]
-    pub fn is_fast(&self) -> bool {
-        **self == FS_A::FAST
-    }
-    #[doc = "Checks if the value of the field is `SLOW`"]
-    #[inline(always)]
-    pub fn is_slow(&self) -> bool {
-        **self == FS_A::SLOW
-    }
-}
-impl core::ops::Deref for FS_R {
-    type Target = crate::FieldReader<bool, FS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FS` writer - Ringo frequency output divider."]
-pub struct FS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FS_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "High frequency output (frequency lower than 100 MHz)."]
     #[inline(always)]
-    pub fn fast(self) -> &'a mut W {
-        self.variant(FS_A::FAST)
+    pub fn is_fast(&self) -> bool {
+        *self == Fs::Fast
     }
     #[doc = "Low frequency output (frequency lower than 10 MHz)."]
     #[inline(always)]
-    pub fn slow(self) -> &'a mut W {
-        self.variant(FS_A::SLOW)
+    pub fn is_slow(&self) -> bool {
+        *self == Fs::Slow
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FS` writer - Ringo frequency output divider."]
+pub type FsW<'a, REG> = crate::BitWriter<'a, REG, Fs>;
+impl<'a, REG> FsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "High frequency output (frequency lower than 100 MHz)."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn fast(self) -> &'a mut crate::W<REG> {
+        self.variant(Fs::Fast)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Low frequency output (frequency lower than 10 MHz)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn slow(self) -> &'a mut crate::W<REG> {
+        self.variant(Fs::Slow)
     }
 }
 #[doc = "Ringo module Power control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PD_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pd {
     #[doc = "0: The Ringo module is enabled."]
-    POWERED_ON = 0,
+    PoweredOn = 0,
     #[doc = "1: The Ringo module is disabled."]
-    POWERED_DOWN = 1,
+    PoweredDown = 1,
 }
-impl From<PD_A> for bool {
+impl From<Pd> for bool {
     #[inline(always)]
-    fn from(variant: PD_A) -> Self {
+    fn from(variant: Pd) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PD` reader - Ringo module Power control."]
-pub struct PD_R(crate::FieldReader<bool, PD_A>);
-impl PD_R {
+pub type PdR = crate::BitReader<Pd>;
+impl PdR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PD_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PD_A {
+    pub const fn variant(&self) -> Pd {
         match self.bits {
-            false => PD_A::POWERED_ON,
-            true => PD_A::POWERED_DOWN,
+            false => Pd::PoweredOn,
+            true => Pd::PoweredDown,
         }
-    }
-    #[doc = "Checks if the value of the field is `POWERED_ON`"]
-    #[inline(always)]
-    pub fn is_powered_on(&self) -> bool {
-        **self == PD_A::POWERED_ON
-    }
-    #[doc = "Checks if the value of the field is `POWERED_DOWN`"]
-    #[inline(always)]
-    pub fn is_powered_down(&self) -> bool {
-        **self == PD_A::POWERED_DOWN
-    }
-}
-impl core::ops::Deref for PD_R {
-    type Target = crate::FieldReader<bool, PD_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PD` writer - Ringo module Power control."]
-pub struct PD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PD_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PD_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The Ringo module is enabled."]
     #[inline(always)]
-    pub fn powered_on(self) -> &'a mut W {
-        self.variant(PD_A::POWERED_ON)
+    pub fn is_powered_on(&self) -> bool {
+        *self == Pd::PoweredOn
     }
     #[doc = "The Ringo module is disabled."]
     #[inline(always)]
-    pub fn powered_down(self) -> &'a mut W {
-        self.variant(PD_A::POWERED_DOWN)
+    pub fn is_powered_down(&self) -> bool {
+        *self == Pd::PoweredDown
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PD` writer - Ringo module Power control."]
+pub type PdW<'a, REG> = crate::BitWriter<'a, REG, Pd>;
+impl<'a, REG> PdW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The Ringo module is enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn powered_on(self) -> &'a mut crate::W<REG> {
+        self.variant(Pd::PoweredOn)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The Ringo module is disabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn powered_down(self) -> &'a mut crate::W<REG> {
+        self.variant(Pd::PoweredDown)
     }
 }
 #[doc = ".\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_R24_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ER24 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_R24_A> for bool {
+impl From<ER24> for bool {
     #[inline(always)]
-    fn from(variant: E_R24_A) -> Self {
+    fn from(variant: ER24) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_R24` reader - ."]
-pub struct E_R24_R(crate::FieldReader<bool, E_R24_A>);
-impl E_R24_R {
+pub type ER24R = crate::BitReader<ER24>;
+impl ER24R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_R24_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_R24_A {
+    pub const fn variant(&self) -> ER24 {
         match self.bits {
-            false => E_R24_A::DISABLE,
-            true => E_R24_A::ENABLE,
+            false => ER24::Disable,
+            true => ER24::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_R24_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_R24_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_R24_R {
-    type Target = crate::FieldReader<bool, E_R24_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_R24` writer - ."]
-pub struct E_R24_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_R24_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_R24_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_R24_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == ER24::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_R24_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == ER24::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_R24` writer - ."]
+pub type ER24W<'a, REG> = crate::BitWriter<'a, REG, ER24>;
+impl<'a, REG> ER24W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(ER24::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(ER24::Enable)
     }
 }
 #[doc = ".\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_R35_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ER35 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_R35_A> for bool {
+impl From<ER35> for bool {
     #[inline(always)]
-    fn from(variant: E_R35_A) -> Self {
+    fn from(variant: ER35) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_R35` reader - ."]
-pub struct E_R35_R(crate::FieldReader<bool, E_R35_A>);
-impl E_R35_R {
+pub type ER35R = crate::BitReader<ER35>;
+impl ER35R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_R35_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_R35_A {
+    pub const fn variant(&self) -> ER35 {
         match self.bits {
-            false => E_R35_A::DISABLE,
-            true => E_R35_A::ENABLE,
+            false => ER35::Disable,
+            true => ER35::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_R35_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_R35_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_R35_R {
-    type Target = crate::FieldReader<bool, E_R35_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_R35` writer - ."]
-pub struct E_R35_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_R35_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_R35_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_R35_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == ER35::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_R35_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == ER35::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_R35` writer - ."]
+pub type ER35W<'a, REG> = crate::BitWriter<'a, REG, ER35>;
+impl<'a, REG> ER35W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(ER35::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(ER35::Enable)
     }
 }
 #[doc = "Metal 2 (M2) monitor control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_M2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EM2 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_M2_A> for bool {
+impl From<EM2> for bool {
     #[inline(always)]
-    fn from(variant: E_M2_A) -> Self {
+    fn from(variant: EM2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_M2` reader - Metal 2 (M2) monitor control."]
-pub struct E_M2_R(crate::FieldReader<bool, E_M2_A>);
-impl E_M2_R {
+pub type EM2R = crate::BitReader<EM2>;
+impl EM2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_M2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_M2_A {
+    pub const fn variant(&self) -> EM2 {
         match self.bits {
-            false => E_M2_A::DISABLE,
-            true => E_M2_A::ENABLE,
+            false => EM2::Disable,
+            true => EM2::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_M2_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_M2_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_M2_R {
-    type Target = crate::FieldReader<bool, E_M2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_M2` writer - Metal 2 (M2) monitor control."]
-pub struct E_M2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_M2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_M2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_M2_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EM2::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_M2_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == EM2::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_M2` writer - Metal 2 (M2) monitor control."]
+pub type EM2W<'a, REG> = crate::BitWriter<'a, REG, EM2>;
+impl<'a, REG> EM2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM2::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM2::Enable)
     }
 }
 #[doc = "Metal 3 (M3) monitor control.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_M3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EM3 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_M3_A> for bool {
+impl From<EM3> for bool {
     #[inline(always)]
-    fn from(variant: E_M3_A) -> Self {
+    fn from(variant: EM3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_M3` reader - Metal 3 (M3) monitor control."]
-pub struct E_M3_R(crate::FieldReader<bool, E_M3_A>);
-impl E_M3_R {
+pub type EM3R = crate::BitReader<EM3>;
+impl EM3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_M3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_M3_A {
+    pub const fn variant(&self) -> EM3 {
         match self.bits {
-            false => E_M3_A::DISABLE,
-            true => E_M3_A::ENABLE,
+            false => EM3::Disable,
+            true => EM3::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_M3_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_M3_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_M3_R {
-    type Target = crate::FieldReader<bool, E_M3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_M3` writer - Metal 3 (M3) monitor control."]
-pub struct E_M3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_M3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_M3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_M3_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EM3::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_M3_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == EM3::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_M3` writer - Metal 3 (M3) monitor control."]
+pub type EM3W<'a, REG> = crate::BitWriter<'a, REG, EM3>;
+impl<'a, REG> EM3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM3::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM3::Enable)
     }
 }
 #[doc = "Metal 4 (M4) monitor control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_M4_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EM4 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_M4_A> for bool {
+impl From<EM4> for bool {
     #[inline(always)]
-    fn from(variant: E_M4_A) -> Self {
+    fn from(variant: EM4) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_M4` reader - Metal 4 (M4) monitor control."]
-pub struct E_M4_R(crate::FieldReader<bool, E_M4_A>);
-impl E_M4_R {
+pub type EM4R = crate::BitReader<EM4>;
+impl EM4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_M4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_M4_A {
+    pub const fn variant(&self) -> EM4 {
         match self.bits {
-            false => E_M4_A::DISABLE,
-            true => E_M4_A::ENABLE,
+            false => EM4::Disable,
+            true => EM4::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_M4_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_M4_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_M4_R {
-    type Target = crate::FieldReader<bool, E_M4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_M4` writer - Metal 4 (M4) monitor control."]
-pub struct E_M4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_M4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_M4_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_M4_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EM4::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_M4_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == EM4::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_M4` writer - Metal 4 (M4) monitor control."]
+pub type EM4W<'a, REG> = crate::BitWriter<'a, REG, EM4>;
+impl<'a, REG> EM4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM4::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM4::Enable)
     }
 }
 #[doc = "Metal 5 (M5) monitor control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum E_M5_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EM5 {
     #[doc = "0: Ringo is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Ringo is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<E_M5_A> for bool {
+impl From<EM5> for bool {
     #[inline(always)]
-    fn from(variant: E_M5_A) -> Self {
+    fn from(variant: EM5) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `E_M5` reader - Metal 5 (M5) monitor control."]
-pub struct E_M5_R(crate::FieldReader<bool, E_M5_A>);
-impl E_M5_R {
+pub type EM5R = crate::BitReader<EM5>;
+impl EM5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        E_M5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> E_M5_A {
+    pub const fn variant(&self) -> EM5 {
         match self.bits {
-            false => E_M5_A::DISABLE,
-            true => E_M5_A::ENABLE,
+            false => EM5::Disable,
+            true => EM5::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == E_M5_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == E_M5_A::ENABLE
-    }
-}
-impl core::ops::Deref for E_M5_R {
-    type Target = crate::FieldReader<bool, E_M5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `E_M5` writer - Metal 5 (M5) monitor control."]
-pub struct E_M5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> E_M5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: E_M5_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(E_M5_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EM5::Disable
     }
     #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(E_M5_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == EM5::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `E_M5` writer - Metal 5 (M5) monitor control."]
+pub type EM5W<'a, REG> = crate::BitWriter<'a, REG, EM5>;
+impl<'a, REG> EM5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Ringo is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM5::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Ringo is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EM5::Enable)
     }
 }
 #[doc = "Field `DIVISOR` reader - Ringo out Clock divider value. Frequency Output = Frequency input / (DIViSOR+1). (minimum = Frequency input / 16)"]
-pub struct DIVISOR_R(crate::FieldReader<u8, u8>);
-impl DIVISOR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        DIVISOR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DIVISOR_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DivisorR = crate::FieldReader;
 #[doc = "Field `DIVISOR` writer - Ringo out Clock divider value. Frequency Output = Frequency input / (DIViSOR+1). (minimum = Frequency input / 16)"]
-pub struct DIVISOR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIVISOR_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | ((value as u32 & 0x0f) << 16);
-        self.w
-    }
-}
+pub type DivisorW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `DIV_UPDATE_REQ` reader - Ringo clock out Divider status flag. Set when a change is made to the divider value, cleared when the change is complete."]
-pub struct DIV_UPDATE_REQ_R(crate::FieldReader<bool, bool>);
-impl DIV_UPDATE_REQ_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DIV_UPDATE_REQ_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DIV_UPDATE_REQ_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DivUpdateReqR = crate::BitReader;
 impl R {
     #[doc = "Bit 0 - Select short or long ringo (for all ringos types)."]
     #[inline(always)]
-    pub fn s(&self) -> S_R {
-        S_R::new((self.bits & 0x01) != 0)
+    pub fn s(&self) -> SR {
+        SR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Ringo frequency output divider."]
     #[inline(always)]
-    pub fn fs(&self) -> FS_R {
-        FS_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn fs(&self) -> FsR {
+        FsR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Ringo module Power control."]
     #[inline(always)]
-    pub fn pd(&self) -> PD_R {
-        PD_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn pd(&self) -> PdR {
+        PdR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - ."]
     #[inline(always)]
-    pub fn e_r24(&self) -> E_R24_R {
-        E_R24_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn e_r24(&self) -> ER24R {
+        ER24R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - ."]
     #[inline(always)]
-    pub fn e_r35(&self) -> E_R35_R {
-        E_R35_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn e_r35(&self) -> ER35R {
+        ER35R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Metal 2 (M2) monitor control."]
     #[inline(always)]
-    pub fn e_m2(&self) -> E_M2_R {
-        E_M2_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn e_m2(&self) -> EM2R {
+        EM2R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Metal 3 (M3) monitor control."]
     #[inline(always)]
-    pub fn e_m3(&self) -> E_M3_R {
-        E_M3_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn e_m3(&self) -> EM3R {
+        EM3R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Metal 4 (M4) monitor control."]
     #[inline(always)]
-    pub fn e_m4(&self) -> E_M4_R {
-        E_M4_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn e_m4(&self) -> EM4R {
+        EM4R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Metal 5 (M5) monitor control."]
     #[inline(always)]
-    pub fn e_m5(&self) -> E_M5_R {
-        E_M5_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn e_m5(&self) -> EM5R {
+        EM5R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bits 16:19 - Ringo out Clock divider value. Frequency Output = Frequency input / (DIViSOR+1). (minimum = Frequency input / 16)"]
     #[inline(always)]
-    pub fn divisor(&self) -> DIVISOR_R {
-        DIVISOR_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn divisor(&self) -> DivisorR {
+        DivisorR::new(((self.bits >> 16) & 0x0f) as u8)
     }
     #[doc = "Bit 31 - Ringo clock out Divider status flag. Set when a change is made to the divider value, cleared when the change is complete."]
     #[inline(always)]
-    pub fn div_update_req(&self) -> DIV_UPDATE_REQ_R {
-        DIV_UPDATE_REQ_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn div_update_req(&self) -> DivUpdateReqR {
+        DivUpdateReqR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Select short or long ringo (for all ringos types)."]
     #[inline(always)]
-    pub fn s(&mut self) -> S_W {
-        S_W { w: self }
+    pub fn s(&mut self) -> SW<Ringo1CtrlSpec> {
+        SW::new(self, 0)
     }
     #[doc = "Bit 1 - Ringo frequency output divider."]
     #[inline(always)]
-    pub fn fs(&mut self) -> FS_W {
-        FS_W { w: self }
+    pub fn fs(&mut self) -> FsW<Ringo1CtrlSpec> {
+        FsW::new(self, 1)
     }
     #[doc = "Bit 2 - Ringo module Power control."]
     #[inline(always)]
-    pub fn pd(&mut self) -> PD_W {
-        PD_W { w: self }
+    pub fn pd(&mut self) -> PdW<Ringo1CtrlSpec> {
+        PdW::new(self, 2)
     }
     #[doc = "Bit 3 - ."]
     #[inline(always)]
-    pub fn e_r24(&mut self) -> E_R24_W {
-        E_R24_W { w: self }
+    pub fn e_r24(&mut self) -> ER24W<Ringo1CtrlSpec> {
+        ER24W::new(self, 3)
     }
     #[doc = "Bit 4 - ."]
     #[inline(always)]
-    pub fn e_r35(&mut self) -> E_R35_W {
-        E_R35_W { w: self }
+    pub fn e_r35(&mut self) -> ER35W<Ringo1CtrlSpec> {
+        ER35W::new(self, 4)
     }
     #[doc = "Bit 5 - Metal 2 (M2) monitor control."]
     #[inline(always)]
-    pub fn e_m2(&mut self) -> E_M2_W {
-        E_M2_W { w: self }
+    pub fn e_m2(&mut self) -> EM2W<Ringo1CtrlSpec> {
+        EM2W::new(self, 5)
     }
     #[doc = "Bit 6 - Metal 3 (M3) monitor control."]
     #[inline(always)]
-    pub fn e_m3(&mut self) -> E_M3_W {
-        E_M3_W { w: self }
+    pub fn e_m3(&mut self) -> EM3W<Ringo1CtrlSpec> {
+        EM3W::new(self, 6)
     }
     #[doc = "Bit 7 - Metal 4 (M4) monitor control."]
     #[inline(always)]
-    pub fn e_m4(&mut self) -> E_M4_W {
-        E_M4_W { w: self }
+    pub fn e_m4(&mut self) -> EM4W<Ringo1CtrlSpec> {
+        EM4W::new(self, 7)
     }
     #[doc = "Bit 8 - Metal 5 (M5) monitor control."]
     #[inline(always)]
-    pub fn e_m5(&mut self) -> E_M5_W {
-        E_M5_W { w: self }
+    pub fn e_m5(&mut self) -> EM5W<Ringo1CtrlSpec> {
+        EM5W::new(self, 8)
     }
     #[doc = "Bits 16:19 - Ringo out Clock divider value. Frequency Output = Frequency input / (DIViSOR+1). (minimum = Frequency input / 16)"]
     #[inline(always)]
-    pub fn divisor(&mut self) -> DIVISOR_W {
-        DIVISOR_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn divisor(&mut self) -> DivisorW<Ringo1CtrlSpec> {
+        DivisorW::new(self, 16)
     }
 }
-#[doc = "Second Ring Oscillator module control register.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ringo1_ctrl](index.html) module"]
-pub struct RINGO1_CTRL_SPEC;
-impl crate::RegisterSpec for RINGO1_CTRL_SPEC {
+#[doc = "Second Ring Oscillator module control register.\n\nYou can [`read`](crate::Reg::read) this register and get [`ringo1_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ringo1_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Ringo1CtrlSpec;
+impl crate::RegisterSpec for Ringo1CtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ringo1_ctrl::R](R) reader structure"]
-impl crate::Readable for RINGO1_CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ringo1_ctrl::W](W) writer structure"]
-impl crate::Writable for RINGO1_CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ringo1_ctrl::R`](R) reader structure"]
+impl crate::Readable for Ringo1CtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`ringo1_ctrl::W`](W) writer structure"]
+impl crate::Writable for Ringo1CtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets RINGO1_CTRL to value 0x40"]
-impl crate::Resettable for RINGO1_CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x40
-    }
+impl crate::Resettable for Ringo1CtrlSpec {
+    const RESET_VALUE: u32 = 0x40;
 }

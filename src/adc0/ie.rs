@@ -1,739 +1,527 @@
 #[doc = "Register `IE` reader"]
-pub struct R(crate::R<IE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<IE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<IE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<IE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IeSpec>;
 #[doc = "Register `IE` writer"]
-pub struct W(crate::W<IE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<IE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<IE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<IE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IeSpec>;
 #[doc = "FIFO 0 Watermark Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FWMIE0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fwmie0 {
     #[doc = "0: FIFO 0 watermark interrupts are not enabled."]
-    FWMIE0_0 = 0,
+    Fwmie0_0 = 0,
     #[doc = "1: FIFO 0 watermark interrupts are enabled."]
-    FWMIE0_1 = 1,
+    Fwmie0_1 = 1,
 }
-impl From<FWMIE0_A> for bool {
+impl From<Fwmie0> for bool {
     #[inline(always)]
-    fn from(variant: FWMIE0_A) -> Self {
+    fn from(variant: Fwmie0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FWMIE0` reader - FIFO 0 Watermark Interrupt Enable"]
-pub struct FWMIE0_R(crate::FieldReader<bool, FWMIE0_A>);
-impl FWMIE0_R {
+pub type Fwmie0R = crate::BitReader<Fwmie0>;
+impl Fwmie0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FWMIE0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FWMIE0_A {
+    pub const fn variant(&self) -> Fwmie0 {
         match self.bits {
-            false => FWMIE0_A::FWMIE0_0,
-            true => FWMIE0_A::FWMIE0_1,
+            false => Fwmie0::Fwmie0_0,
+            true => Fwmie0::Fwmie0_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FWMIE0_0`"]
-    #[inline(always)]
-    pub fn is_fwmie0_0(&self) -> bool {
-        **self == FWMIE0_A::FWMIE0_0
-    }
-    #[doc = "Checks if the value of the field is `FWMIE0_1`"]
-    #[inline(always)]
-    pub fn is_fwmie0_1(&self) -> bool {
-        **self == FWMIE0_A::FWMIE0_1
-    }
-}
-impl core::ops::Deref for FWMIE0_R {
-    type Target = crate::FieldReader<bool, FWMIE0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FWMIE0` writer - FIFO 0 Watermark Interrupt Enable"]
-pub struct FWMIE0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FWMIE0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FWMIE0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "FIFO 0 watermark interrupts are not enabled."]
     #[inline(always)]
-    pub fn fwmie0_0(self) -> &'a mut W {
-        self.variant(FWMIE0_A::FWMIE0_0)
+    pub fn is_fwmie0_0(&self) -> bool {
+        *self == Fwmie0::Fwmie0_0
     }
     #[doc = "FIFO 0 watermark interrupts are enabled."]
     #[inline(always)]
-    pub fn fwmie0_1(self) -> &'a mut W {
-        self.variant(FWMIE0_A::FWMIE0_1)
+    pub fn is_fwmie0_1(&self) -> bool {
+        *self == Fwmie0::Fwmie0_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FWMIE0` writer - FIFO 0 Watermark Interrupt Enable"]
+pub type Fwmie0W<'a, REG> = crate::BitWriter<'a, REG, Fwmie0>;
+impl<'a, REG> Fwmie0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "FIFO 0 watermark interrupts are not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn fwmie0_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Fwmie0::Fwmie0_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "FIFO 0 watermark interrupts are enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn fwmie0_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Fwmie0::Fwmie0_1)
     }
 }
 #[doc = "Result FIFO 0 Overflow Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFIE0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fofie0 {
     #[doc = "0: FIFO 0 overflow interrupts are not enabled."]
-    FOFIE0_0 = 0,
+    Fofie0_0 = 0,
     #[doc = "1: FIFO 0 overflow interrupts are enabled."]
-    FOFIE0_1 = 1,
+    Fofie0_1 = 1,
 }
-impl From<FOFIE0_A> for bool {
+impl From<Fofie0> for bool {
     #[inline(always)]
-    fn from(variant: FOFIE0_A) -> Self {
+    fn from(variant: Fofie0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFIE0` reader - Result FIFO 0 Overflow Interrupt Enable"]
-pub struct FOFIE0_R(crate::FieldReader<bool, FOFIE0_A>);
-impl FOFIE0_R {
+pub type Fofie0R = crate::BitReader<Fofie0>;
+impl Fofie0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFIE0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFIE0_A {
+    pub const fn variant(&self) -> Fofie0 {
         match self.bits {
-            false => FOFIE0_A::FOFIE0_0,
-            true => FOFIE0_A::FOFIE0_1,
+            false => Fofie0::Fofie0_0,
+            true => Fofie0::Fofie0_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFIE0_0`"]
-    #[inline(always)]
-    pub fn is_fofie0_0(&self) -> bool {
-        **self == FOFIE0_A::FOFIE0_0
-    }
-    #[doc = "Checks if the value of the field is `FOFIE0_1`"]
-    #[inline(always)]
-    pub fn is_fofie0_1(&self) -> bool {
-        **self == FOFIE0_A::FOFIE0_1
-    }
-}
-impl core::ops::Deref for FOFIE0_R {
-    type Target = crate::FieldReader<bool, FOFIE0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFIE0` writer - Result FIFO 0 Overflow Interrupt Enable"]
-pub struct FOFIE0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFIE0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFIE0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "FIFO 0 overflow interrupts are not enabled."]
     #[inline(always)]
-    pub fn fofie0_0(self) -> &'a mut W {
-        self.variant(FOFIE0_A::FOFIE0_0)
+    pub fn is_fofie0_0(&self) -> bool {
+        *self == Fofie0::Fofie0_0
     }
     #[doc = "FIFO 0 overflow interrupts are enabled."]
     #[inline(always)]
-    pub fn fofie0_1(self) -> &'a mut W {
-        self.variant(FOFIE0_A::FOFIE0_1)
+    pub fn is_fofie0_1(&self) -> bool {
+        *self == Fofie0::Fofie0_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFIE0` writer - Result FIFO 0 Overflow Interrupt Enable"]
+pub type Fofie0W<'a, REG> = crate::BitWriter<'a, REG, Fofie0>;
+impl<'a, REG> Fofie0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "FIFO 0 overflow interrupts are not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn fofie0_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Fofie0::Fofie0_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "FIFO 0 overflow interrupts are enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn fofie0_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Fofie0::Fofie0_1)
     }
 }
 #[doc = "FIFO1 Watermark Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FWMIE1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fwmie1 {
     #[doc = "0: FIFO1 watermark interrupts are not enabled."]
-    FWMIE1_0 = 0,
+    Fwmie1_0 = 0,
     #[doc = "1: FIFO1 watermark interrupts are enabled."]
-    FWMIE1_1 = 1,
+    Fwmie1_1 = 1,
 }
-impl From<FWMIE1_A> for bool {
+impl From<Fwmie1> for bool {
     #[inline(always)]
-    fn from(variant: FWMIE1_A) -> Self {
+    fn from(variant: Fwmie1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FWMIE1` reader - FIFO1 Watermark Interrupt Enable"]
-pub struct FWMIE1_R(crate::FieldReader<bool, FWMIE1_A>);
-impl FWMIE1_R {
+pub type Fwmie1R = crate::BitReader<Fwmie1>;
+impl Fwmie1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FWMIE1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FWMIE1_A {
+    pub const fn variant(&self) -> Fwmie1 {
         match self.bits {
-            false => FWMIE1_A::FWMIE1_0,
-            true => FWMIE1_A::FWMIE1_1,
+            false => Fwmie1::Fwmie1_0,
+            true => Fwmie1::Fwmie1_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FWMIE1_0`"]
-    #[inline(always)]
-    pub fn is_fwmie1_0(&self) -> bool {
-        **self == FWMIE1_A::FWMIE1_0
-    }
-    #[doc = "Checks if the value of the field is `FWMIE1_1`"]
-    #[inline(always)]
-    pub fn is_fwmie1_1(&self) -> bool {
-        **self == FWMIE1_A::FWMIE1_1
-    }
-}
-impl core::ops::Deref for FWMIE1_R {
-    type Target = crate::FieldReader<bool, FWMIE1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FWMIE1` writer - FIFO1 Watermark Interrupt Enable"]
-pub struct FWMIE1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FWMIE1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FWMIE1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "FIFO1 watermark interrupts are not enabled."]
     #[inline(always)]
-    pub fn fwmie1_0(self) -> &'a mut W {
-        self.variant(FWMIE1_A::FWMIE1_0)
+    pub fn is_fwmie1_0(&self) -> bool {
+        *self == Fwmie1::Fwmie1_0
     }
     #[doc = "FIFO1 watermark interrupts are enabled."]
     #[inline(always)]
-    pub fn fwmie1_1(self) -> &'a mut W {
-        self.variant(FWMIE1_A::FWMIE1_1)
+    pub fn is_fwmie1_1(&self) -> bool {
+        *self == Fwmie1::Fwmie1_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FWMIE1` writer - FIFO1 Watermark Interrupt Enable"]
+pub type Fwmie1W<'a, REG> = crate::BitWriter<'a, REG, Fwmie1>;
+impl<'a, REG> Fwmie1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "FIFO1 watermark interrupts are not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn fwmie1_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Fwmie1::Fwmie1_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "FIFO1 watermark interrupts are enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn fwmie1_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Fwmie1::Fwmie1_1)
     }
 }
 #[doc = "Result FIFO1 Overflow Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFIE1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fofie1 {
     #[doc = "0: No result FIFO1 overflow has occurred since the last time the flag was cleared."]
-    FOFIE1_0 = 0,
+    Fofie1_0 = 0,
     #[doc = "1: At least one result FIFO1 overflow has occurred since the last time the flag was cleared."]
-    FOFIE1_1 = 1,
+    Fofie1_1 = 1,
 }
-impl From<FOFIE1_A> for bool {
+impl From<Fofie1> for bool {
     #[inline(always)]
-    fn from(variant: FOFIE1_A) -> Self {
+    fn from(variant: Fofie1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFIE1` reader - Result FIFO1 Overflow Interrupt Enable"]
-pub struct FOFIE1_R(crate::FieldReader<bool, FOFIE1_A>);
-impl FOFIE1_R {
+pub type Fofie1R = crate::BitReader<Fofie1>;
+impl Fofie1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFIE1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFIE1_A {
+    pub const fn variant(&self) -> Fofie1 {
         match self.bits {
-            false => FOFIE1_A::FOFIE1_0,
-            true => FOFIE1_A::FOFIE1_1,
+            false => Fofie1::Fofie1_0,
+            true => Fofie1::Fofie1_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFIE1_0`"]
-    #[inline(always)]
-    pub fn is_fofie1_0(&self) -> bool {
-        **self == FOFIE1_A::FOFIE1_0
-    }
-    #[doc = "Checks if the value of the field is `FOFIE1_1`"]
-    #[inline(always)]
-    pub fn is_fofie1_1(&self) -> bool {
-        **self == FOFIE1_A::FOFIE1_1
-    }
-}
-impl core::ops::Deref for FOFIE1_R {
-    type Target = crate::FieldReader<bool, FOFIE1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFIE1` writer - Result FIFO1 Overflow Interrupt Enable"]
-pub struct FOFIE1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFIE1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFIE1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No result FIFO1 overflow has occurred since the last time the flag was cleared."]
     #[inline(always)]
-    pub fn fofie1_0(self) -> &'a mut W {
-        self.variant(FOFIE1_A::FOFIE1_0)
+    pub fn is_fofie1_0(&self) -> bool {
+        *self == Fofie1::Fofie1_0
     }
     #[doc = "At least one result FIFO1 overflow has occurred since the last time the flag was cleared."]
     #[inline(always)]
-    pub fn fofie1_1(self) -> &'a mut W {
-        self.variant(FOFIE1_A::FOFIE1_1)
+    pub fn is_fofie1_1(&self) -> bool {
+        *self == Fofie1::Fofie1_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFIE1` writer - Result FIFO1 Overflow Interrupt Enable"]
+pub type Fofie1W<'a, REG> = crate::BitWriter<'a, REG, Fofie1>;
+impl<'a, REG> Fofie1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No result FIFO1 overflow has occurred since the last time the flag was cleared."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn fofie1_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Fofie1::Fofie1_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "At least one result FIFO1 overflow has occurred since the last time the flag was cleared."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn fofie1_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Fofie1::Fofie1_1)
     }
 }
 #[doc = "Trigger Exception Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TEXC_IE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum TexcIe {
     #[doc = "0: Trigger exception interrupts are disabled."]
-    TEXC_IE_0 = 0,
+    TexcIe0 = 0,
     #[doc = "1: Trigger exception interrupts are enabled."]
-    TEXC_IE_1 = 1,
+    TexcIe1 = 1,
 }
-impl From<TEXC_IE_A> for bool {
+impl From<TexcIe> for bool {
     #[inline(always)]
-    fn from(variant: TEXC_IE_A) -> Self {
+    fn from(variant: TexcIe) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TEXC_IE` reader - Trigger Exception Interrupt Enable"]
-pub struct TEXC_IE_R(crate::FieldReader<bool, TEXC_IE_A>);
-impl TEXC_IE_R {
+pub type TexcIeR = crate::BitReader<TexcIe>;
+impl TexcIeR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TEXC_IE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TEXC_IE_A {
+    pub const fn variant(&self) -> TexcIe {
         match self.bits {
-            false => TEXC_IE_A::TEXC_IE_0,
-            true => TEXC_IE_A::TEXC_IE_1,
+            false => TexcIe::TexcIe0,
+            true => TexcIe::TexcIe1,
         }
-    }
-    #[doc = "Checks if the value of the field is `TEXC_IE_0`"]
-    #[inline(always)]
-    pub fn is_texc_ie_0(&self) -> bool {
-        **self == TEXC_IE_A::TEXC_IE_0
-    }
-    #[doc = "Checks if the value of the field is `TEXC_IE_1`"]
-    #[inline(always)]
-    pub fn is_texc_ie_1(&self) -> bool {
-        **self == TEXC_IE_A::TEXC_IE_1
-    }
-}
-impl core::ops::Deref for TEXC_IE_R {
-    type Target = crate::FieldReader<bool, TEXC_IE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TEXC_IE` writer - Trigger Exception Interrupt Enable"]
-pub struct TEXC_IE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TEXC_IE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TEXC_IE_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Trigger exception interrupts are disabled."]
     #[inline(always)]
-    pub fn texc_ie_0(self) -> &'a mut W {
-        self.variant(TEXC_IE_A::TEXC_IE_0)
+    pub fn is_texc_ie_0(&self) -> bool {
+        *self == TexcIe::TexcIe0
     }
     #[doc = "Trigger exception interrupts are enabled."]
     #[inline(always)]
-    pub fn texc_ie_1(self) -> &'a mut W {
-        self.variant(TEXC_IE_A::TEXC_IE_1)
+    pub fn is_texc_ie_1(&self) -> bool {
+        *self == TexcIe::TexcIe1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TEXC_IE` writer - Trigger Exception Interrupt Enable"]
+pub type TexcIeW<'a, REG> = crate::BitWriter<'a, REG, TexcIe>;
+impl<'a, REG> TexcIeW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Trigger exception interrupts are disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn texc_ie_0(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcIe::TexcIe0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger exception interrupts are enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn texc_ie_1(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcIe::TexcIe1)
     }
 }
 #[doc = "Trigger Completion Interrupt Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u16)]
-pub enum TCOMP_IE_A {
+pub enum TcompIe {
     #[doc = "0: Trigger completion interrupts are disabled."]
-    TCOMP_IE_0 = 0,
+    TcompIe0 = 0,
     #[doc = "1: Trigger completion interrupts are enabled for trigger source 0 only."]
-    TCOMP_IE_1 = 1,
+    TcompIe1 = 1,
     #[doc = "2: Trigger completion interrupts are enabled for trigger source 1 only."]
-    TCOMP_IE_2 = 2,
+    TcompIe2 = 2,
     #[doc = "3: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_3 = 3,
+    TcompIe3 = 3,
     #[doc = "4: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_4 = 4,
+    TcompIe4 = 4,
     #[doc = "5: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_5 = 5,
+    TcompIe5 = 5,
     #[doc = "6: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_6 = 6,
+    TcompIe6 = 6,
     #[doc = "7: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_7 = 7,
+    TcompIe7 = 7,
     #[doc = "8: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_8 = 8,
+    TcompIe8 = 8,
     #[doc = "9: Associated trigger completion interrupts are enabled."]
-    TCOMP_IE_9 = 9,
+    TcompIe9 = 9,
     #[doc = "65535: Trigger completion interrupts are enabled for every trigger source."]
-    TCOMP_IE_65535 = 65535,
+    TcompIe65535 = 65535,
 }
-impl From<TCOMP_IE_A> for u16 {
+impl From<TcompIe> for u16 {
     #[inline(always)]
-    fn from(variant: TCOMP_IE_A) -> Self {
+    fn from(variant: TcompIe) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for TcompIe {
+    type Ux = u16;
+}
+impl crate::IsEnum for TcompIe {}
 #[doc = "Field `TCOMP_IE` reader - Trigger Completion Interrupt Enable"]
-pub struct TCOMP_IE_R(crate::FieldReader<u16, TCOMP_IE_A>);
-impl TCOMP_IE_R {
+pub type TcompIeR = crate::FieldReader<TcompIe>;
+impl TcompIeR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        TCOMP_IE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<TCOMP_IE_A> {
+    pub const fn variant(&self) -> Option<TcompIe> {
         match self.bits {
-            0 => Some(TCOMP_IE_A::TCOMP_IE_0),
-            1 => Some(TCOMP_IE_A::TCOMP_IE_1),
-            2 => Some(TCOMP_IE_A::TCOMP_IE_2),
-            3 => Some(TCOMP_IE_A::TCOMP_IE_3),
-            4 => Some(TCOMP_IE_A::TCOMP_IE_4),
-            5 => Some(TCOMP_IE_A::TCOMP_IE_5),
-            6 => Some(TCOMP_IE_A::TCOMP_IE_6),
-            7 => Some(TCOMP_IE_A::TCOMP_IE_7),
-            8 => Some(TCOMP_IE_A::TCOMP_IE_8),
-            9 => Some(TCOMP_IE_A::TCOMP_IE_9),
-            65535 => Some(TCOMP_IE_A::TCOMP_IE_65535),
+            0 => Some(TcompIe::TcompIe0),
+            1 => Some(TcompIe::TcompIe1),
+            2 => Some(TcompIe::TcompIe2),
+            3 => Some(TcompIe::TcompIe3),
+            4 => Some(TcompIe::TcompIe4),
+            5 => Some(TcompIe::TcompIe5),
+            6 => Some(TcompIe::TcompIe6),
+            7 => Some(TcompIe::TcompIe7),
+            8 => Some(TcompIe::TcompIe8),
+            9 => Some(TcompIe::TcompIe9),
+            65535 => Some(TcompIe::TcompIe65535),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_0`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_0(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_0
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_1`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_1(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_1
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_2`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_2(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_2
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_3`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_3(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_3
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_4`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_4(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_4
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_5`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_5(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_5
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_6`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_6(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_6
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_7`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_7(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_7
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_8`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_8(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_8
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_9`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_9(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_9
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_IE_65535`"]
-    #[inline(always)]
-    pub fn is_tcomp_ie_65535(&self) -> bool {
-        **self == TCOMP_IE_A::TCOMP_IE_65535
-    }
-}
-impl core::ops::Deref for TCOMP_IE_R {
-    type Target = crate::FieldReader<u16, TCOMP_IE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TCOMP_IE` writer - Trigger Completion Interrupt Enable"]
-pub struct TCOMP_IE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TCOMP_IE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TCOMP_IE_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "Trigger completion interrupts are disabled."]
     #[inline(always)]
-    pub fn tcomp_ie_0(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_0)
+    pub fn is_tcomp_ie_0(&self) -> bool {
+        *self == TcompIe::TcompIe0
     }
     #[doc = "Trigger completion interrupts are enabled for trigger source 0 only."]
     #[inline(always)]
-    pub fn tcomp_ie_1(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_1)
+    pub fn is_tcomp_ie_1(&self) -> bool {
+        *self == TcompIe::TcompIe1
     }
     #[doc = "Trigger completion interrupts are enabled for trigger source 1 only."]
     #[inline(always)]
-    pub fn tcomp_ie_2(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_2)
+    pub fn is_tcomp_ie_2(&self) -> bool {
+        *self == TcompIe::TcompIe2
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_3(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_3)
+    pub fn is_tcomp_ie_3(&self) -> bool {
+        *self == TcompIe::TcompIe3
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_4(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_4)
+    pub fn is_tcomp_ie_4(&self) -> bool {
+        *self == TcompIe::TcompIe4
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_5(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_5)
+    pub fn is_tcomp_ie_5(&self) -> bool {
+        *self == TcompIe::TcompIe5
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_6(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_6)
+    pub fn is_tcomp_ie_6(&self) -> bool {
+        *self == TcompIe::TcompIe6
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_7(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_7)
+    pub fn is_tcomp_ie_7(&self) -> bool {
+        *self == TcompIe::TcompIe7
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_8(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_8)
+    pub fn is_tcomp_ie_8(&self) -> bool {
+        *self == TcompIe::TcompIe8
     }
     #[doc = "Associated trigger completion interrupts are enabled."]
     #[inline(always)]
-    pub fn tcomp_ie_9(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_9)
+    pub fn is_tcomp_ie_9(&self) -> bool {
+        *self == TcompIe::TcompIe9
     }
     #[doc = "Trigger completion interrupts are enabled for every trigger source."]
     #[inline(always)]
-    pub fn tcomp_ie_65535(self) -> &'a mut W {
-        self.variant(TCOMP_IE_A::TCOMP_IE_65535)
+    pub fn is_tcomp_ie_65535(&self) -> bool {
+        *self == TcompIe::TcompIe65535
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `TCOMP_IE` writer - Trigger Completion Interrupt Enable"]
+pub type TcompIeW<'a, REG> = crate::FieldWriter<'a, REG, 16, TcompIe>;
+impl<'a, REG> TcompIeW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u16>,
+{
+    #[doc = "Trigger completion interrupts are disabled."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
+    pub fn tcomp_ie_0(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe0)
+    }
+    #[doc = "Trigger completion interrupts are enabled for trigger source 0 only."]
+    #[inline(always)]
+    pub fn tcomp_ie_1(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe1)
+    }
+    #[doc = "Trigger completion interrupts are enabled for trigger source 1 only."]
+    #[inline(always)]
+    pub fn tcomp_ie_2(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe2)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_3(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe3)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_4(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe4)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_5(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe5)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_6(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe6)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_7(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe7)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_8(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe8)
+    }
+    #[doc = "Associated trigger completion interrupts are enabled."]
+    #[inline(always)]
+    pub fn tcomp_ie_9(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe9)
+    }
+    #[doc = "Trigger completion interrupts are enabled for every trigger source."]
+    #[inline(always)]
+    pub fn tcomp_ie_65535(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompIe::TcompIe65535)
     }
 }
 impl R {
     #[doc = "Bit 0 - FIFO 0 Watermark Interrupt Enable"]
     #[inline(always)]
-    pub fn fwmie0(&self) -> FWMIE0_R {
-        FWMIE0_R::new((self.bits & 0x01) != 0)
+    pub fn fwmie0(&self) -> Fwmie0R {
+        Fwmie0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Result FIFO 0 Overflow Interrupt Enable"]
     #[inline(always)]
-    pub fn fofie0(&self) -> FOFIE0_R {
-        FOFIE0_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn fofie0(&self) -> Fofie0R {
+        Fofie0R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - FIFO1 Watermark Interrupt Enable"]
     #[inline(always)]
-    pub fn fwmie1(&self) -> FWMIE1_R {
-        FWMIE1_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn fwmie1(&self) -> Fwmie1R {
+        Fwmie1R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Result FIFO1 Overflow Interrupt Enable"]
     #[inline(always)]
-    pub fn fofie1(&self) -> FOFIE1_R {
-        FOFIE1_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn fofie1(&self) -> Fofie1R {
+        Fofie1R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 8 - Trigger Exception Interrupt Enable"]
     #[inline(always)]
-    pub fn texc_ie(&self) -> TEXC_IE_R {
-        TEXC_IE_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn texc_ie(&self) -> TexcIeR {
+        TexcIeR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bits 16:31 - Trigger Completion Interrupt Enable"]
     #[inline(always)]
-    pub fn tcomp_ie(&self) -> TCOMP_IE_R {
-        TCOMP_IE_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn tcomp_ie(&self) -> TcompIeR {
+        TcompIeR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bit 0 - FIFO 0 Watermark Interrupt Enable"]
     #[inline(always)]
-    pub fn fwmie0(&mut self) -> FWMIE0_W {
-        FWMIE0_W { w: self }
+    pub fn fwmie0(&mut self) -> Fwmie0W<IeSpec> {
+        Fwmie0W::new(self, 0)
     }
     #[doc = "Bit 1 - Result FIFO 0 Overflow Interrupt Enable"]
     #[inline(always)]
-    pub fn fofie0(&mut self) -> FOFIE0_W {
-        FOFIE0_W { w: self }
+    pub fn fofie0(&mut self) -> Fofie0W<IeSpec> {
+        Fofie0W::new(self, 1)
     }
     #[doc = "Bit 2 - FIFO1 Watermark Interrupt Enable"]
     #[inline(always)]
-    pub fn fwmie1(&mut self) -> FWMIE1_W {
-        FWMIE1_W { w: self }
+    pub fn fwmie1(&mut self) -> Fwmie1W<IeSpec> {
+        Fwmie1W::new(self, 2)
     }
     #[doc = "Bit 3 - Result FIFO1 Overflow Interrupt Enable"]
     #[inline(always)]
-    pub fn fofie1(&mut self) -> FOFIE1_W {
-        FOFIE1_W { w: self }
+    pub fn fofie1(&mut self) -> Fofie1W<IeSpec> {
+        Fofie1W::new(self, 3)
     }
     #[doc = "Bit 8 - Trigger Exception Interrupt Enable"]
     #[inline(always)]
-    pub fn texc_ie(&mut self) -> TEXC_IE_W {
-        TEXC_IE_W { w: self }
+    pub fn texc_ie(&mut self) -> TexcIeW<IeSpec> {
+        TexcIeW::new(self, 8)
     }
     #[doc = "Bits 16:31 - Trigger Completion Interrupt Enable"]
     #[inline(always)]
-    pub fn tcomp_ie(&mut self) -> TCOMP_IE_W {
-        TCOMP_IE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn tcomp_ie(&mut self) -> TcompIeW<IeSpec> {
+        TcompIeW::new(self, 16)
     }
 }
-#[doc = "Interrupt Enable Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ie](index.html) module"]
-pub struct IE_SPEC;
-impl crate::RegisterSpec for IE_SPEC {
+#[doc = "Interrupt Enable Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ie::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ie::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IeSpec;
+impl crate::RegisterSpec for IeSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ie::R](R) reader structure"]
-impl crate::Readable for IE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ie::W](W) writer structure"]
-impl crate::Writable for IE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ie::R`](R) reader structure"]
+impl crate::Readable for IeSpec {}
+#[doc = "`write(|w| ..)` method takes [`ie::W`](W) writer structure"]
+impl crate::Writable for IeSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IE to value 0"]
-impl crate::Resettable for IE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for IeSpec {
+    const RESET_VALUE: u32 = 0;
 }

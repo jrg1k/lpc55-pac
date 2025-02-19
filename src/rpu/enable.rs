@@ -1,818 +1,249 @@
 #[doc = "Register `ENABLE` reader"]
-pub struct R(crate::R<ENABLE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ENABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ENABLE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ENABLE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<EnableSpec>;
 #[doc = "Register `ENABLE` writer"]
-pub struct W(crate::W<ENABLE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ENABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ENABLE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ENABLE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<EnableSpec>;
 #[doc = "Field `PATCH0` reader - Patch 0 control bit"]
-pub struct PATCH0_R(crate::FieldReader<bool, bool>);
-impl PATCH0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH0_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch0R = crate::BitReader;
 #[doc = "Field `PATCH0` writer - Patch 0 control bit"]
-pub struct PATCH0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH0_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type Patch0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH1` reader - Patch 1 control bit"]
-pub struct PATCH1_R(crate::FieldReader<bool, bool>);
-impl PATCH1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH1_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch1R = crate::BitReader;
 #[doc = "Field `PATCH1` writer - Patch 1 control bit"]
-pub struct PATCH1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH1_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type Patch1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH2` reader - Patch 2 control bit"]
-pub struct PATCH2_R(crate::FieldReader<bool, bool>);
-impl PATCH2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH2_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch2R = crate::BitReader;
 #[doc = "Field `PATCH2` writer - Patch 2 control bit"]
-pub struct PATCH2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type Patch2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH3` reader - Patch 3 control bit"]
-pub struct PATCH3_R(crate::FieldReader<bool, bool>);
-impl PATCH3_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH3_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH3_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch3R = crate::BitReader;
 #[doc = "Field `PATCH3` writer - Patch 3 control bit"]
-pub struct PATCH3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH3_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type Patch3W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH4` reader - Patch 4 control bit"]
-pub struct PATCH4_R(crate::FieldReader<bool, bool>);
-impl PATCH4_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH4_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH4_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch4R = crate::BitReader;
 #[doc = "Field `PATCH4` writer - Patch 4 control bit"]
-pub struct PATCH4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH4_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type Patch4W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH5` reader - Patch 5 control bit"]
-pub struct PATCH5_R(crate::FieldReader<bool, bool>);
-impl PATCH5_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH5_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH5_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch5R = crate::BitReader;
 #[doc = "Field `PATCH5` writer - Patch 5 control bit"]
-pub struct PATCH5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH5_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
-    }
-}
+pub type Patch5W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH6` reader - Patch 6 control bit"]
-pub struct PATCH6_R(crate::FieldReader<bool, bool>);
-impl PATCH6_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH6_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH6_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch6R = crate::BitReader;
 #[doc = "Field `PATCH6` writer - Patch 6 control bit"]
-pub struct PATCH6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH6_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
-    }
-}
+pub type Patch6W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH7` reader - Patch 7 control bit"]
-pub struct PATCH7_R(crate::FieldReader<bool, bool>);
-impl PATCH7_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH7_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH7_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch7R = crate::BitReader;
 #[doc = "Field `PATCH7` writer - Patch 7 control bit"]
-pub struct PATCH7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH7_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
-    }
-}
+pub type Patch7W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH8` reader - Patch 8 control bit"]
-pub struct PATCH8_R(crate::FieldReader<bool, bool>);
-impl PATCH8_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH8_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH8_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch8R = crate::BitReader;
 #[doc = "Field `PATCH8` writer - Patch 8 control bit"]
-pub struct PATCH8_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH8_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type Patch8W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH9` reader - Patch 9 control bit"]
-pub struct PATCH9_R(crate::FieldReader<bool, bool>);
-impl PATCH9_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH9_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH9_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch9R = crate::BitReader;
 #[doc = "Field `PATCH9` writer - Patch 9 control bit"]
-pub struct PATCH9_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH9_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
-    }
-}
+pub type Patch9W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH10` reader - Patch 10 control bit"]
-pub struct PATCH10_R(crate::FieldReader<bool, bool>);
-impl PATCH10_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH10_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH10_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch10R = crate::BitReader;
 #[doc = "Field `PATCH10` writer - Patch 10 control bit"]
-pub struct PATCH10_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH10_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
-    }
-}
+pub type Patch10W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH11` reader - Patch 11 control bit"]
-pub struct PATCH11_R(crate::FieldReader<bool, bool>);
-impl PATCH11_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH11_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH11_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch11R = crate::BitReader;
 #[doc = "Field `PATCH11` writer - Patch 11 control bit"]
-pub struct PATCH11_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH11_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
-    }
-}
+pub type Patch11W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH12` reader - Patch 12 control bit"]
-pub struct PATCH12_R(crate::FieldReader<bool, bool>);
-impl PATCH12_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH12_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH12_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch12R = crate::BitReader;
 #[doc = "Field `PATCH12` writer - Patch 12 control bit"]
-pub struct PATCH12_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH12_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | ((value as u32 & 0x01) << 12);
-        self.w
-    }
-}
+pub type Patch12W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH13` reader - Patch 13 control bit"]
-pub struct PATCH13_R(crate::FieldReader<bool, bool>);
-impl PATCH13_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH13_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH13_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch13R = crate::BitReader;
 #[doc = "Field `PATCH13` writer - Patch 13 control bit"]
-pub struct PATCH13_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH13_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | ((value as u32 & 0x01) << 13);
-        self.w
-    }
-}
+pub type Patch13W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH14` reader - Patch 14 control bit"]
-pub struct PATCH14_R(crate::FieldReader<bool, bool>);
-impl PATCH14_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH14_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH14_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch14R = crate::BitReader;
 #[doc = "Field `PATCH14` writer - Patch 14 control bit"]
-pub struct PATCH14_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH14_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u32 & 0x01) << 14);
-        self.w
-    }
-}
+pub type Patch14W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PATCH15` reader - Patch 15 control bit"]
-pub struct PATCH15_R(crate::FieldReader<bool, bool>);
-impl PATCH15_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PATCH15_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PATCH15_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Patch15R = crate::BitReader;
 #[doc = "Field `PATCH15` writer - Patch 15 control bit"]
-pub struct PATCH15_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PATCH15_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
-        self.w
-    }
-}
+pub type Patch15W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Patch 0 control bit"]
     #[inline(always)]
-    pub fn patch0(&self) -> PATCH0_R {
-        PATCH0_R::new((self.bits & 0x01) != 0)
+    pub fn patch0(&self) -> Patch0R {
+        Patch0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Patch 1 control bit"]
     #[inline(always)]
-    pub fn patch1(&self) -> PATCH1_R {
-        PATCH1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn patch1(&self) -> Patch1R {
+        Patch1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Patch 2 control bit"]
     #[inline(always)]
-    pub fn patch2(&self) -> PATCH2_R {
-        PATCH2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn patch2(&self) -> Patch2R {
+        Patch2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Patch 3 control bit"]
     #[inline(always)]
-    pub fn patch3(&self) -> PATCH3_R {
-        PATCH3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn patch3(&self) -> Patch3R {
+        Patch3R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Patch 4 control bit"]
     #[inline(always)]
-    pub fn patch4(&self) -> PATCH4_R {
-        PATCH4_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn patch4(&self) -> Patch4R {
+        Patch4R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Patch 5 control bit"]
     #[inline(always)]
-    pub fn patch5(&self) -> PATCH5_R {
-        PATCH5_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn patch5(&self) -> Patch5R {
+        Patch5R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Patch 6 control bit"]
     #[inline(always)]
-    pub fn patch6(&self) -> PATCH6_R {
-        PATCH6_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn patch6(&self) -> Patch6R {
+        Patch6R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Patch 7 control bit"]
     #[inline(always)]
-    pub fn patch7(&self) -> PATCH7_R {
-        PATCH7_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn patch7(&self) -> Patch7R {
+        Patch7R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Patch 8 control bit"]
     #[inline(always)]
-    pub fn patch8(&self) -> PATCH8_R {
-        PATCH8_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn patch8(&self) -> Patch8R {
+        Patch8R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Patch 9 control bit"]
     #[inline(always)]
-    pub fn patch9(&self) -> PATCH9_R {
-        PATCH9_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn patch9(&self) -> Patch9R {
+        Patch9R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Patch 10 control bit"]
     #[inline(always)]
-    pub fn patch10(&self) -> PATCH10_R {
-        PATCH10_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn patch10(&self) -> Patch10R {
+        Patch10R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Patch 11 control bit"]
     #[inline(always)]
-    pub fn patch11(&self) -> PATCH11_R {
-        PATCH11_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn patch11(&self) -> Patch11R {
+        Patch11R::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 12 - Patch 12 control bit"]
     #[inline(always)]
-    pub fn patch12(&self) -> PATCH12_R {
-        PATCH12_R::new(((self.bits >> 12) & 0x01) != 0)
+    pub fn patch12(&self) -> Patch12R {
+        Patch12R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Patch 13 control bit"]
     #[inline(always)]
-    pub fn patch13(&self) -> PATCH13_R {
-        PATCH13_R::new(((self.bits >> 13) & 0x01) != 0)
+    pub fn patch13(&self) -> Patch13R {
+        Patch13R::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - Patch 14 control bit"]
     #[inline(always)]
-    pub fn patch14(&self) -> PATCH14_R {
-        PATCH14_R::new(((self.bits >> 14) & 0x01) != 0)
+    pub fn patch14(&self) -> Patch14R {
+        Patch14R::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - Patch 15 control bit"]
     #[inline(always)]
-    pub fn patch15(&self) -> PATCH15_R {
-        PATCH15_R::new(((self.bits >> 15) & 0x01) != 0)
+    pub fn patch15(&self) -> Patch15R {
+        Patch15R::new(((self.bits >> 15) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Patch 0 control bit"]
     #[inline(always)]
-    pub fn patch0(&mut self) -> PATCH0_W {
-        PATCH0_W { w: self }
+    pub fn patch0(&mut self) -> Patch0W<EnableSpec> {
+        Patch0W::new(self, 0)
     }
     #[doc = "Bit 1 - Patch 1 control bit"]
     #[inline(always)]
-    pub fn patch1(&mut self) -> PATCH1_W {
-        PATCH1_W { w: self }
+    pub fn patch1(&mut self) -> Patch1W<EnableSpec> {
+        Patch1W::new(self, 1)
     }
     #[doc = "Bit 2 - Patch 2 control bit"]
     #[inline(always)]
-    pub fn patch2(&mut self) -> PATCH2_W {
-        PATCH2_W { w: self }
+    pub fn patch2(&mut self) -> Patch2W<EnableSpec> {
+        Patch2W::new(self, 2)
     }
     #[doc = "Bit 3 - Patch 3 control bit"]
     #[inline(always)]
-    pub fn patch3(&mut self) -> PATCH3_W {
-        PATCH3_W { w: self }
+    pub fn patch3(&mut self) -> Patch3W<EnableSpec> {
+        Patch3W::new(self, 3)
     }
     #[doc = "Bit 4 - Patch 4 control bit"]
     #[inline(always)]
-    pub fn patch4(&mut self) -> PATCH4_W {
-        PATCH4_W { w: self }
+    pub fn patch4(&mut self) -> Patch4W<EnableSpec> {
+        Patch4W::new(self, 4)
     }
     #[doc = "Bit 5 - Patch 5 control bit"]
     #[inline(always)]
-    pub fn patch5(&mut self) -> PATCH5_W {
-        PATCH5_W { w: self }
+    pub fn patch5(&mut self) -> Patch5W<EnableSpec> {
+        Patch5W::new(self, 5)
     }
     #[doc = "Bit 6 - Patch 6 control bit"]
     #[inline(always)]
-    pub fn patch6(&mut self) -> PATCH6_W {
-        PATCH6_W { w: self }
+    pub fn patch6(&mut self) -> Patch6W<EnableSpec> {
+        Patch6W::new(self, 6)
     }
     #[doc = "Bit 7 - Patch 7 control bit"]
     #[inline(always)]
-    pub fn patch7(&mut self) -> PATCH7_W {
-        PATCH7_W { w: self }
+    pub fn patch7(&mut self) -> Patch7W<EnableSpec> {
+        Patch7W::new(self, 7)
     }
     #[doc = "Bit 8 - Patch 8 control bit"]
     #[inline(always)]
-    pub fn patch8(&mut self) -> PATCH8_W {
-        PATCH8_W { w: self }
+    pub fn patch8(&mut self) -> Patch8W<EnableSpec> {
+        Patch8W::new(self, 8)
     }
     #[doc = "Bit 9 - Patch 9 control bit"]
     #[inline(always)]
-    pub fn patch9(&mut self) -> PATCH9_W {
-        PATCH9_W { w: self }
+    pub fn patch9(&mut self) -> Patch9W<EnableSpec> {
+        Patch9W::new(self, 9)
     }
     #[doc = "Bit 10 - Patch 10 control bit"]
     #[inline(always)]
-    pub fn patch10(&mut self) -> PATCH10_W {
-        PATCH10_W { w: self }
+    pub fn patch10(&mut self) -> Patch10W<EnableSpec> {
+        Patch10W::new(self, 10)
     }
     #[doc = "Bit 11 - Patch 11 control bit"]
     #[inline(always)]
-    pub fn patch11(&mut self) -> PATCH11_W {
-        PATCH11_W { w: self }
+    pub fn patch11(&mut self) -> Patch11W<EnableSpec> {
+        Patch11W::new(self, 11)
     }
     #[doc = "Bit 12 - Patch 12 control bit"]
     #[inline(always)]
-    pub fn patch12(&mut self) -> PATCH12_W {
-        PATCH12_W { w: self }
+    pub fn patch12(&mut self) -> Patch12W<EnableSpec> {
+        Patch12W::new(self, 12)
     }
     #[doc = "Bit 13 - Patch 13 control bit"]
     #[inline(always)]
-    pub fn patch13(&mut self) -> PATCH13_W {
-        PATCH13_W { w: self }
+    pub fn patch13(&mut self) -> Patch13W<EnableSpec> {
+        Patch13W::new(self, 13)
     }
     #[doc = "Bit 14 - Patch 14 control bit"]
     #[inline(always)]
-    pub fn patch14(&mut self) -> PATCH14_W {
-        PATCH14_W { w: self }
+    pub fn patch14(&mut self) -> Patch14W<EnableSpec> {
+        Patch14W::new(self, 14)
     }
     #[doc = "Bit 15 - Patch 15 control bit"]
     #[inline(always)]
-    pub fn patch15(&mut self) -> PATCH15_W {
-        PATCH15_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn patch15(&mut self) -> Patch15W<EnableSpec> {
+        Patch15W::new(self, 15)
     }
 }
-#[doc = "Enable register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [enable](index.html) module"]
-pub struct ENABLE_SPEC;
-impl crate::RegisterSpec for ENABLE_SPEC {
+#[doc = "Enable register\n\nYou can [`read`](crate::Reg::read) this register and get [`enable::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`enable::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct EnableSpec;
+impl crate::RegisterSpec for EnableSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [enable::R](R) reader structure"]
-impl crate::Readable for ENABLE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [enable::W](W) writer structure"]
-impl crate::Writable for ENABLE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`enable::R`](R) reader structure"]
+impl crate::Readable for EnableSpec {}
+#[doc = "`write(|w| ..)` method takes [`enable::W`](W) writer structure"]
+impl crate::Writable for EnableSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ENABLE to value 0"]
-impl crate::Resettable for ENABLE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for EnableSpec {
+    const RESET_VALUE: u32 = 0;
 }

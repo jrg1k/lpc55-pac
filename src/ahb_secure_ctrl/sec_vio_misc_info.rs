@@ -1,284 +1,224 @@
 #[doc = "Register `sec_vio_misc_info[%s]` reader"]
-pub struct R(crate::R<SEC_VIO_MISC_INFO_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_VIO_MISC_INFO_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_VIO_MISC_INFO_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_VIO_MISC_INFO_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecVioMiscInfoSpec>;
 #[doc = "security violation access read/write indicator.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SEC_VIO_INFO_WRITE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SecVioInfoWrite {
     #[doc = "0: Read access."]
-    READ = 0,
+    Read = 0,
     #[doc = "1: Write access."]
-    WRITE = 1,
+    Write = 1,
 }
-impl From<SEC_VIO_INFO_WRITE_A> for bool {
+impl From<SecVioInfoWrite> for bool {
     #[inline(always)]
-    fn from(variant: SEC_VIO_INFO_WRITE_A) -> Self {
+    fn from(variant: SecVioInfoWrite) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SEC_VIO_INFO_WRITE` reader - security violation access read/write indicator."]
-pub struct SEC_VIO_INFO_WRITE_R(crate::FieldReader<bool, SEC_VIO_INFO_WRITE_A>);
-impl SEC_VIO_INFO_WRITE_R {
+pub type SecVioInfoWriteR = crate::BitReader<SecVioInfoWrite>;
+impl SecVioInfoWriteR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SEC_VIO_INFO_WRITE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SEC_VIO_INFO_WRITE_A {
+    pub const fn variant(&self) -> SecVioInfoWrite {
         match self.bits {
-            false => SEC_VIO_INFO_WRITE_A::READ,
-            true => SEC_VIO_INFO_WRITE_A::WRITE,
+            false => SecVioInfoWrite::Read,
+            true => SecVioInfoWrite::Write,
         }
     }
-    #[doc = "Checks if the value of the field is `READ`"]
+    #[doc = "Read access."]
     #[inline(always)]
     pub fn is_read(&self) -> bool {
-        **self == SEC_VIO_INFO_WRITE_A::READ
+        *self == SecVioInfoWrite::Read
     }
-    #[doc = "Checks if the value of the field is `WRITE`"]
+    #[doc = "Write access."]
     #[inline(always)]
     pub fn is_write(&self) -> bool {
-        **self == SEC_VIO_INFO_WRITE_A::WRITE
-    }
-}
-impl core::ops::Deref for SEC_VIO_INFO_WRITE_R {
-    type Target = crate::FieldReader<bool, SEC_VIO_INFO_WRITE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SecVioInfoWrite::Write
     }
 }
 #[doc = "security violation access data/code indicator.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SEC_VIO_INFO_DATA_ACCESS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SecVioInfoDataAccess {
     #[doc = "0: Code access."]
-    CODE = 0,
+    Code = 0,
     #[doc = "1: Data access."]
-    DATA = 1,
+    Data = 1,
 }
-impl From<SEC_VIO_INFO_DATA_ACCESS_A> for bool {
+impl From<SecVioInfoDataAccess> for bool {
     #[inline(always)]
-    fn from(variant: SEC_VIO_INFO_DATA_ACCESS_A) -> Self {
+    fn from(variant: SecVioInfoDataAccess) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SEC_VIO_INFO_DATA_ACCESS` reader - security violation access data/code indicator."]
-pub struct SEC_VIO_INFO_DATA_ACCESS_R(crate::FieldReader<bool, SEC_VIO_INFO_DATA_ACCESS_A>);
-impl SEC_VIO_INFO_DATA_ACCESS_R {
+pub type SecVioInfoDataAccessR = crate::BitReader<SecVioInfoDataAccess>;
+impl SecVioInfoDataAccessR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SEC_VIO_INFO_DATA_ACCESS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SEC_VIO_INFO_DATA_ACCESS_A {
+    pub const fn variant(&self) -> SecVioInfoDataAccess {
         match self.bits {
-            false => SEC_VIO_INFO_DATA_ACCESS_A::CODE,
-            true => SEC_VIO_INFO_DATA_ACCESS_A::DATA,
+            false => SecVioInfoDataAccess::Code,
+            true => SecVioInfoDataAccess::Data,
         }
     }
-    #[doc = "Checks if the value of the field is `CODE`"]
+    #[doc = "Code access."]
     #[inline(always)]
     pub fn is_code(&self) -> bool {
-        **self == SEC_VIO_INFO_DATA_ACCESS_A::CODE
+        *self == SecVioInfoDataAccess::Code
     }
-    #[doc = "Checks if the value of the field is `DATA`"]
+    #[doc = "Data access."]
     #[inline(always)]
     pub fn is_data(&self) -> bool {
-        **self == SEC_VIO_INFO_DATA_ACCESS_A::DATA
-    }
-}
-impl core::ops::Deref for SEC_VIO_INFO_DATA_ACCESS_R {
-    type Target = crate::FieldReader<bool, SEC_VIO_INFO_DATA_ACCESS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SecVioInfoDataAccess::Data
     }
 }
 #[doc = "Field `SEC_VIO_INFO_MASTER_SEC_LEVEL` reader - bit \\[5:4\\]: master sec level and privilege level bit \\[7:6\\]: anti-pol value for master sec level and privilege level"]
-pub struct SEC_VIO_INFO_MASTER_SEC_LEVEL_R(crate::FieldReader<u8, u8>);
-impl SEC_VIO_INFO_MASTER_SEC_LEVEL_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SEC_VIO_INFO_MASTER_SEC_LEVEL_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SEC_VIO_INFO_MASTER_SEC_LEVEL_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SecVioInfoMasterSecLevelR = crate::FieldReader;
 #[doc = "security violation master number\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SEC_VIO_INFO_MASTER_A {
+pub enum SecVioInfoMaster {
     #[doc = "0: CPU0 Code."]
-    VALUE_0 = 0,
+    Value0 = 0,
     #[doc = "1: CPU0 System."]
-    VALUE_1 = 1,
+    Value1 = 1,
     #[doc = "2: CPU1 Data."]
-    VALUE_2 = 2,
+    Value2 = 2,
     #[doc = "3: CPU1 System."]
-    VALUE_3 = 3,
+    Value3 = 3,
     #[doc = "4: USB-HS Device."]
-    VALUE_4 = 4,
+    Value4 = 4,
     #[doc = "5: SDMA0."]
-    VALUE_5 = 5,
+    Value5 = 5,
     #[doc = "8: SDIO."]
-    VALUE_8 = 8,
+    Value8 = 8,
     #[doc = "9: PowerQuad."]
-    VALUE_9 = 9,
+    Value9 = 9,
     #[doc = "10: HASH."]
-    VALUE_10 = 10,
+    Value10 = 10,
     #[doc = "11: USB-FS Host."]
-    VALUE_11 = 11,
+    Value11 = 11,
     #[doc = "12: SDMA1."]
-    VALUE_12 = 12,
+    Value12 = 12,
 }
-impl From<SEC_VIO_INFO_MASTER_A> for u8 {
+impl From<SecVioInfoMaster> for u8 {
     #[inline(always)]
-    fn from(variant: SEC_VIO_INFO_MASTER_A) -> Self {
+    fn from(variant: SecVioInfoMaster) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SecVioInfoMaster {
+    type Ux = u8;
+}
+impl crate::IsEnum for SecVioInfoMaster {}
 #[doc = "Field `SEC_VIO_INFO_MASTER` reader - security violation master number"]
-pub struct SEC_VIO_INFO_MASTER_R(crate::FieldReader<u8, SEC_VIO_INFO_MASTER_A>);
-impl SEC_VIO_INFO_MASTER_R {
+pub type SecVioInfoMasterR = crate::FieldReader<SecVioInfoMaster>;
+impl SecVioInfoMasterR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SEC_VIO_INFO_MASTER_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SEC_VIO_INFO_MASTER_A> {
+    pub const fn variant(&self) -> Option<SecVioInfoMaster> {
         match self.bits {
-            0 => Some(SEC_VIO_INFO_MASTER_A::VALUE_0),
-            1 => Some(SEC_VIO_INFO_MASTER_A::VALUE_1),
-            2 => Some(SEC_VIO_INFO_MASTER_A::VALUE_2),
-            3 => Some(SEC_VIO_INFO_MASTER_A::VALUE_3),
-            4 => Some(SEC_VIO_INFO_MASTER_A::VALUE_4),
-            5 => Some(SEC_VIO_INFO_MASTER_A::VALUE_5),
-            8 => Some(SEC_VIO_INFO_MASTER_A::VALUE_8),
-            9 => Some(SEC_VIO_INFO_MASTER_A::VALUE_9),
-            10 => Some(SEC_VIO_INFO_MASTER_A::VALUE_10),
-            11 => Some(SEC_VIO_INFO_MASTER_A::VALUE_11),
-            12 => Some(SEC_VIO_INFO_MASTER_A::VALUE_12),
+            0 => Some(SecVioInfoMaster::Value0),
+            1 => Some(SecVioInfoMaster::Value1),
+            2 => Some(SecVioInfoMaster::Value2),
+            3 => Some(SecVioInfoMaster::Value3),
+            4 => Some(SecVioInfoMaster::Value4),
+            5 => Some(SecVioInfoMaster::Value5),
+            8 => Some(SecVioInfoMaster::Value8),
+            9 => Some(SecVioInfoMaster::Value9),
+            10 => Some(SecVioInfoMaster::Value10),
+            11 => Some(SecVioInfoMaster::Value11),
+            12 => Some(SecVioInfoMaster::Value12),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
+    #[doc = "CPU0 Code."]
     #[inline(always)]
     pub fn is_value_0(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_0
+        *self == SecVioInfoMaster::Value0
     }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
+    #[doc = "CPU0 System."]
     #[inline(always)]
     pub fn is_value_1(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_1
+        *self == SecVioInfoMaster::Value1
     }
-    #[doc = "Checks if the value of the field is `VALUE_2`"]
+    #[doc = "CPU1 Data."]
     #[inline(always)]
     pub fn is_value_2(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_2
+        *self == SecVioInfoMaster::Value2
     }
-    #[doc = "Checks if the value of the field is `VALUE_3`"]
+    #[doc = "CPU1 System."]
     #[inline(always)]
     pub fn is_value_3(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_3
+        *self == SecVioInfoMaster::Value3
     }
-    #[doc = "Checks if the value of the field is `VALUE_4`"]
+    #[doc = "USB-HS Device."]
     #[inline(always)]
     pub fn is_value_4(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_4
+        *self == SecVioInfoMaster::Value4
     }
-    #[doc = "Checks if the value of the field is `VALUE_5`"]
+    #[doc = "SDMA0."]
     #[inline(always)]
     pub fn is_value_5(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_5
+        *self == SecVioInfoMaster::Value5
     }
-    #[doc = "Checks if the value of the field is `VALUE_8`"]
+    #[doc = "SDIO."]
     #[inline(always)]
     pub fn is_value_8(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_8
+        *self == SecVioInfoMaster::Value8
     }
-    #[doc = "Checks if the value of the field is `VALUE_9`"]
+    #[doc = "PowerQuad."]
     #[inline(always)]
     pub fn is_value_9(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_9
+        *self == SecVioInfoMaster::Value9
     }
-    #[doc = "Checks if the value of the field is `VALUE_10`"]
+    #[doc = "HASH."]
     #[inline(always)]
     pub fn is_value_10(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_10
+        *self == SecVioInfoMaster::Value10
     }
-    #[doc = "Checks if the value of the field is `VALUE_11`"]
+    #[doc = "USB-FS Host."]
     #[inline(always)]
     pub fn is_value_11(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_11
+        *self == SecVioInfoMaster::Value11
     }
-    #[doc = "Checks if the value of the field is `VALUE_12`"]
+    #[doc = "SDMA1."]
     #[inline(always)]
     pub fn is_value_12(&self) -> bool {
-        **self == SEC_VIO_INFO_MASTER_A::VALUE_12
-    }
-}
-impl core::ops::Deref for SEC_VIO_INFO_MASTER_R {
-    type Target = crate::FieldReader<u8, SEC_VIO_INFO_MASTER_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == SecVioInfoMaster::Value12
     }
 }
 impl R {
     #[doc = "Bit 0 - security violation access read/write indicator."]
     #[inline(always)]
-    pub fn sec_vio_info_write(&self) -> SEC_VIO_INFO_WRITE_R {
-        SEC_VIO_INFO_WRITE_R::new((self.bits & 0x01) != 0)
+    pub fn sec_vio_info_write(&self) -> SecVioInfoWriteR {
+        SecVioInfoWriteR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - security violation access data/code indicator."]
     #[inline(always)]
-    pub fn sec_vio_info_data_access(&self) -> SEC_VIO_INFO_DATA_ACCESS_R {
-        SEC_VIO_INFO_DATA_ACCESS_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn sec_vio_info_data_access(&self) -> SecVioInfoDataAccessR {
+        SecVioInfoDataAccessR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bits 4:7 - bit \\[5:4\\]: master sec level and privilege level bit \\[7:6\\]: anti-pol value for master sec level and privilege level"]
     #[inline(always)]
-    pub fn sec_vio_info_master_sec_level(&self) -> SEC_VIO_INFO_MASTER_SEC_LEVEL_R {
-        SEC_VIO_INFO_MASTER_SEC_LEVEL_R::new(((self.bits >> 4) & 0x0f) as u8)
+    pub fn sec_vio_info_master_sec_level(&self) -> SecVioInfoMasterSecLevelR {
+        SecVioInfoMasterSecLevelR::new(((self.bits >> 4) & 0x0f) as u8)
     }
     #[doc = "Bits 8:11 - security violation master number"]
     #[inline(always)]
-    pub fn sec_vio_info_master(&self) -> SEC_VIO_INFO_MASTER_R {
-        SEC_VIO_INFO_MASTER_R::new(((self.bits >> 8) & 0x0f) as u8)
+    pub fn sec_vio_info_master(&self) -> SecVioInfoMasterR {
+        SecVioInfoMasterR::new(((self.bits >> 8) & 0x0f) as u8)
     }
 }
-#[doc = "most recent security violation miscellaneous information for AHB port n\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_vio_misc_info](index.html) module"]
-pub struct SEC_VIO_MISC_INFO_SPEC;
-impl crate::RegisterSpec for SEC_VIO_MISC_INFO_SPEC {
+#[doc = "most recent security violation miscellaneous information for AHB port n\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_vio_misc_info::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecVioMiscInfoSpec;
+impl crate::RegisterSpec for SecVioMiscInfoSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_vio_misc_info::R](R) reader structure"]
-impl crate::Readable for SEC_VIO_MISC_INFO_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`sec_vio_misc_info::R`](R) reader structure"]
+impl crate::Readable for SecVioMiscInfoSpec {}
 #[doc = "`reset()` method sets sec_vio_misc_info[%s]
 to value 0"]
-impl crate::Resettable for SEC_VIO_MISC_INFO_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecVioMiscInfoSpec {
+    const RESET_VALUE: u32 = 0;
 }

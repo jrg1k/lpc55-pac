@@ -1,489 +1,151 @@
 #[doc = "Register `HCINTERRUPTDISABLE` reader"]
-pub struct R(crate::R<HCINTERRUPTDISABLE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<HCINTERRUPTDISABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<HCINTERRUPTDISABLE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<HCINTERRUPTDISABLE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<HcinterruptdisableSpec>;
 #[doc = "Register `HCINTERRUPTDISABLE` writer"]
-pub struct W(crate::W<HCINTERRUPTDISABLE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<HCINTERRUPTDISABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<HCINTERRUPTDISABLE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<HCINTERRUPTDISABLE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<HcinterruptdisableSpec>;
 #[doc = "Field `SO` reader - Scheduling Overrun interrupt."]
-pub struct SO_R(crate::FieldReader<bool, bool>);
-impl SO_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SO_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SO_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SoR = crate::BitReader;
 #[doc = "Field `SO` writer - Scheduling Overrun interrupt."]
-pub struct SO_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SO_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type SoW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WDH` reader - HcDoneHead Writeback interrupt."]
-pub struct WDH_R(crate::FieldReader<bool, bool>);
-impl WDH_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDH_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for WDH_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type WdhR = crate::BitReader;
 #[doc = "Field `WDH` writer - HcDoneHead Writeback interrupt."]
-pub struct WDH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDH_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type WdhW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SF` reader - Start of Frame interrupt."]
-pub struct SF_R(crate::FieldReader<bool, bool>);
-impl SF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SF_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SfR = crate::BitReader;
 #[doc = "Field `SF` writer - Start of Frame interrupt."]
-pub struct SF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SF_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type SfW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RD` reader - Resume Detect interrupt."]
-pub struct RD_R(crate::FieldReader<bool, bool>);
-impl RD_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RD_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RD_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RdR = crate::BitReader;
 #[doc = "Field `RD` writer - Resume Detect interrupt."]
-pub struct RD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RD_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type RdW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UE` reader - Unrecoverable Error interrupt."]
-pub struct UE_R(crate::FieldReader<bool, bool>);
-impl UE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        UE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for UE_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type UeR = crate::BitReader;
 #[doc = "Field `UE` writer - Unrecoverable Error interrupt."]
-pub struct UE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type UeW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FNO` reader - Frame Number Overflow interrupt."]
-pub struct FNO_R(crate::FieldReader<bool, bool>);
-impl FNO_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FNO_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FNO_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FnoR = crate::BitReader;
 #[doc = "Field `FNO` writer - Frame Number Overflow interrupt."]
-pub struct FNO_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FNO_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
-    }
-}
+pub type FnoW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `RHSC` reader - Root Hub Status Change interrupt."]
-pub struct RHSC_R(crate::FieldReader<bool, bool>);
-impl RHSC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RHSC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RHSC_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RhscR = crate::BitReader;
 #[doc = "Field `RHSC` writer - Root Hub Status Change interrupt."]
-pub struct RHSC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RHSC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
-    }
-}
+pub type RhscW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OC` reader - Ownership Change interrupt."]
-pub struct OC_R(crate::FieldReader<bool, bool>);
-impl OC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        OC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OC_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OcR = crate::BitReader;
 #[doc = "Field `OC` writer - Ownership Change interrupt."]
-pub struct OC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 30)) | ((value as u32 & 0x01) << 30);
-        self.w
-    }
-}
+pub type OcW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `MIE` reader - A 0 written to this field is ignored by HC."]
-pub struct MIE_R(crate::FieldReader<bool, bool>);
-impl MIE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MIE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for MIE_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type MieR = crate::BitReader;
 #[doc = "Field `MIE` writer - A 0 written to this field is ignored by HC."]
-pub struct MIE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MIE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
-        self.w
-    }
-}
+pub type MieW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Scheduling Overrun interrupt."]
     #[inline(always)]
-    pub fn so(&self) -> SO_R {
-        SO_R::new((self.bits & 0x01) != 0)
+    pub fn so(&self) -> SoR {
+        SoR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - HcDoneHead Writeback interrupt."]
     #[inline(always)]
-    pub fn wdh(&self) -> WDH_R {
-        WDH_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn wdh(&self) -> WdhR {
+        WdhR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Start of Frame interrupt."]
     #[inline(always)]
-    pub fn sf(&self) -> SF_R {
-        SF_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn sf(&self) -> SfR {
+        SfR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Resume Detect interrupt."]
     #[inline(always)]
-    pub fn rd(&self) -> RD_R {
-        RD_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn rd(&self) -> RdR {
+        RdR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Unrecoverable Error interrupt."]
     #[inline(always)]
-    pub fn ue(&self) -> UE_R {
-        UE_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn ue(&self) -> UeR {
+        UeR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Frame Number Overflow interrupt."]
     #[inline(always)]
-    pub fn fno(&self) -> FNO_R {
-        FNO_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn fno(&self) -> FnoR {
+        FnoR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Root Hub Status Change interrupt."]
     #[inline(always)]
-    pub fn rhsc(&self) -> RHSC_R {
-        RHSC_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn rhsc(&self) -> RhscR {
+        RhscR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 30 - Ownership Change interrupt."]
     #[inline(always)]
-    pub fn oc(&self) -> OC_R {
-        OC_R::new(((self.bits >> 30) & 0x01) != 0)
+    pub fn oc(&self) -> OcR {
+        OcR::new(((self.bits >> 30) & 1) != 0)
     }
     #[doc = "Bit 31 - A 0 written to this field is ignored by HC."]
     #[inline(always)]
-    pub fn mie(&self) -> MIE_R {
-        MIE_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn mie(&self) -> MieR {
+        MieR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Scheduling Overrun interrupt."]
     #[inline(always)]
-    pub fn so(&mut self) -> SO_W {
-        SO_W { w: self }
+    pub fn so(&mut self) -> SoW<HcinterruptdisableSpec> {
+        SoW::new(self, 0)
     }
     #[doc = "Bit 1 - HcDoneHead Writeback interrupt."]
     #[inline(always)]
-    pub fn wdh(&mut self) -> WDH_W {
-        WDH_W { w: self }
+    pub fn wdh(&mut self) -> WdhW<HcinterruptdisableSpec> {
+        WdhW::new(self, 1)
     }
     #[doc = "Bit 2 - Start of Frame interrupt."]
     #[inline(always)]
-    pub fn sf(&mut self) -> SF_W {
-        SF_W { w: self }
+    pub fn sf(&mut self) -> SfW<HcinterruptdisableSpec> {
+        SfW::new(self, 2)
     }
     #[doc = "Bit 3 - Resume Detect interrupt."]
     #[inline(always)]
-    pub fn rd(&mut self) -> RD_W {
-        RD_W { w: self }
+    pub fn rd(&mut self) -> RdW<HcinterruptdisableSpec> {
+        RdW::new(self, 3)
     }
     #[doc = "Bit 4 - Unrecoverable Error interrupt."]
     #[inline(always)]
-    pub fn ue(&mut self) -> UE_W {
-        UE_W { w: self }
+    pub fn ue(&mut self) -> UeW<HcinterruptdisableSpec> {
+        UeW::new(self, 4)
     }
     #[doc = "Bit 5 - Frame Number Overflow interrupt."]
     #[inline(always)]
-    pub fn fno(&mut self) -> FNO_W {
-        FNO_W { w: self }
+    pub fn fno(&mut self) -> FnoW<HcinterruptdisableSpec> {
+        FnoW::new(self, 5)
     }
     #[doc = "Bit 6 - Root Hub Status Change interrupt."]
     #[inline(always)]
-    pub fn rhsc(&mut self) -> RHSC_W {
-        RHSC_W { w: self }
+    pub fn rhsc(&mut self) -> RhscW<HcinterruptdisableSpec> {
+        RhscW::new(self, 6)
     }
     #[doc = "Bit 30 - Ownership Change interrupt."]
     #[inline(always)]
-    pub fn oc(&mut self) -> OC_W {
-        OC_W { w: self }
+    pub fn oc(&mut self) -> OcW<HcinterruptdisableSpec> {
+        OcW::new(self, 30)
     }
     #[doc = "Bit 31 - A 0 written to this field is ignored by HC."]
     #[inline(always)]
-    pub fn mie(&mut self) -> MIE_W {
-        MIE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn mie(&mut self) -> MieW<HcinterruptdisableSpec> {
+        MieW::new(self, 31)
     }
 }
-#[doc = "The bits in this register are used to disable corresponding bits in the HCInterruptStatus register and in turn disable that event leading to hardware interrupt\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hcinterruptdisable](index.html) module"]
-pub struct HCINTERRUPTDISABLE_SPEC;
-impl crate::RegisterSpec for HCINTERRUPTDISABLE_SPEC {
+#[doc = "The bits in this register are used to disable corresponding bits in the HCInterruptStatus register and in turn disable that event leading to hardware interrupt\n\nYou can [`read`](crate::Reg::read) this register and get [`hcinterruptdisable::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hcinterruptdisable::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct HcinterruptdisableSpec;
+impl crate::RegisterSpec for HcinterruptdisableSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [hcinterruptdisable::R](R) reader structure"]
-impl crate::Readable for HCINTERRUPTDISABLE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [hcinterruptdisable::W](W) writer structure"]
-impl crate::Writable for HCINTERRUPTDISABLE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`hcinterruptdisable::R`](R) reader structure"]
+impl crate::Readable for HcinterruptdisableSpec {}
+#[doc = "`write(|w| ..)` method takes [`hcinterruptdisable::W`](W) writer structure"]
+impl crate::Writable for HcinterruptdisableSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HCINTERRUPTDISABLE to value 0"]
-impl crate::Resettable for HCINTERRUPTDISABLE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for HcinterruptdisableSpec {
+    const RESET_VALUE: u32 = 0;
 }

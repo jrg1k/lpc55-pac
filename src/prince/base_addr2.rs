@@ -1,123 +1,46 @@
 #[doc = "Register `BASE_ADDR2` reader"]
-pub struct R(crate::R<BASE_ADDR2_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<BASE_ADDR2_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<BASE_ADDR2_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<BASE_ADDR2_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<BaseAddr2Spec>;
 #[doc = "Register `BASE_ADDR2` writer"]
-pub struct W(crate::W<BASE_ADDR2_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<BASE_ADDR2_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<BASE_ADDR2_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<BASE_ADDR2_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<BaseAddr2Spec>;
 #[doc = "Field `ADDR_FIXED` reader - Fixed portion of the base address of region 2."]
-pub struct ADDR_FIXED_R(crate::FieldReader<u32, u32>);
-impl ADDR_FIXED_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        ADDR_FIXED_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ADDR_FIXED_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AddrFixedR = crate::FieldReader<u32>;
 #[doc = "Field `ADDR_PRG` reader - Programmable portion of the base address of region 2."]
-pub struct ADDR_PRG_R(crate::FieldReader<u8, u8>);
-impl ADDR_PRG_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ADDR_PRG_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ADDR_PRG_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AddrPrgR = crate::FieldReader;
 #[doc = "Field `ADDR_PRG` writer - Programmable portion of the base address of region 2."]
-pub struct ADDR_PRG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADDR_PRG_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 18)) | ((value as u32 & 0x03) << 18);
-        self.w
-    }
-}
+pub type AddrPrgW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:17 - Fixed portion of the base address of region 2."]
     #[inline(always)]
-    pub fn addr_fixed(&self) -> ADDR_FIXED_R {
-        ADDR_FIXED_R::new((self.bits & 0x0003_ffff) as u32)
+    pub fn addr_fixed(&self) -> AddrFixedR {
+        AddrFixedR::new(self.bits & 0x0003_ffff)
     }
     #[doc = "Bits 18:19 - Programmable portion of the base address of region 2."]
     #[inline(always)]
-    pub fn addr_prg(&self) -> ADDR_PRG_R {
-        ADDR_PRG_R::new(((self.bits >> 18) & 0x03) as u8)
+    pub fn addr_prg(&self) -> AddrPrgR {
+        AddrPrgR::new(((self.bits >> 18) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 18:19 - Programmable portion of the base address of region 2."]
     #[inline(always)]
-    pub fn addr_prg(&mut self) -> ADDR_PRG_W {
-        ADDR_PRG_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn addr_prg(&mut self) -> AddrPrgW<BaseAddr2Spec> {
+        AddrPrgW::new(self, 18)
     }
 }
-#[doc = "Base Address for region 2 register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [base_addr2](index.html) module"]
-pub struct BASE_ADDR2_SPEC;
-impl crate::RegisterSpec for BASE_ADDR2_SPEC {
+#[doc = "Base Address for region 2 register\n\nYou can [`read`](crate::Reg::read) this register and get [`base_addr2::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`base_addr2::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct BaseAddr2Spec;
+impl crate::RegisterSpec for BaseAddr2Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [base_addr2::R](R) reader structure"]
-impl crate::Readable for BASE_ADDR2_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [base_addr2::W](W) writer structure"]
-impl crate::Writable for BASE_ADDR2_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`base_addr2::R`](R) reader structure"]
+impl crate::Readable for BaseAddr2Spec {}
+#[doc = "`write(|w| ..)` method takes [`base_addr2::W`](W) writer structure"]
+impl crate::Writable for BaseAddr2Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BASE_ADDR2 to value 0x0008_0000"]
-impl crate::Resettable for BASE_ADDR2_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0008_0000
-    }
+impl crate::Resettable for BaseAddr2Spec {
+    const RESET_VALUE: u32 = 0x0008_0000;
 }

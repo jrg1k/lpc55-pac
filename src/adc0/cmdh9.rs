@@ -1,988 +1,821 @@
 #[doc = "Register `CMDH9` reader"]
-pub struct R(crate::R<CMDH9_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CMDH9_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CMDH9_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CMDH9_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Cmdh9Spec>;
 #[doc = "Register `CMDH9` writer"]
-pub struct W(crate::W<CMDH9_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CMDH9_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CMDH9_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CMDH9_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Cmdh9Spec>;
 #[doc = "Wait for trigger assertion before execution.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WAIT_TRIG_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum WaitTrig {
     #[doc = "0: This command will be automatically executed."]
-    WAIT_TRIG_0 = 0,
+    WaitTrig0 = 0,
     #[doc = "1: The active trigger must be asserted again before executing this command."]
-    WAIT_TRIG_1 = 1,
+    WaitTrig1 = 1,
 }
-impl From<WAIT_TRIG_A> for bool {
+impl From<WaitTrig> for bool {
     #[inline(always)]
-    fn from(variant: WAIT_TRIG_A) -> Self {
+    fn from(variant: WaitTrig) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WAIT_TRIG` reader - Wait for trigger assertion before execution."]
-pub struct WAIT_TRIG_R(crate::FieldReader<bool, WAIT_TRIG_A>);
-impl WAIT_TRIG_R {
+pub type WaitTrigR = crate::BitReader<WaitTrig>;
+impl WaitTrigR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WAIT_TRIG_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WAIT_TRIG_A {
+    pub const fn variant(&self) -> WaitTrig {
         match self.bits {
-            false => WAIT_TRIG_A::WAIT_TRIG_0,
-            true => WAIT_TRIG_A::WAIT_TRIG_1,
+            false => WaitTrig::WaitTrig0,
+            true => WaitTrig::WaitTrig1,
         }
-    }
-    #[doc = "Checks if the value of the field is `WAIT_TRIG_0`"]
-    #[inline(always)]
-    pub fn is_wait_trig_0(&self) -> bool {
-        **self == WAIT_TRIG_A::WAIT_TRIG_0
-    }
-    #[doc = "Checks if the value of the field is `WAIT_TRIG_1`"]
-    #[inline(always)]
-    pub fn is_wait_trig_1(&self) -> bool {
-        **self == WAIT_TRIG_A::WAIT_TRIG_1
-    }
-}
-impl core::ops::Deref for WAIT_TRIG_R {
-    type Target = crate::FieldReader<bool, WAIT_TRIG_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WAIT_TRIG` writer - Wait for trigger assertion before execution."]
-pub struct WAIT_TRIG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WAIT_TRIG_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WAIT_TRIG_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "This command will be automatically executed."]
     #[inline(always)]
-    pub fn wait_trig_0(self) -> &'a mut W {
-        self.variant(WAIT_TRIG_A::WAIT_TRIG_0)
+    pub fn is_wait_trig_0(&self) -> bool {
+        *self == WaitTrig::WaitTrig0
     }
     #[doc = "The active trigger must be asserted again before executing this command."]
     #[inline(always)]
-    pub fn wait_trig_1(self) -> &'a mut W {
-        self.variant(WAIT_TRIG_A::WAIT_TRIG_1)
+    pub fn is_wait_trig_1(&self) -> bool {
+        *self == WaitTrig::WaitTrig1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WAIT_TRIG` writer - Wait for trigger assertion before execution."]
+pub type WaitTrigW<'a, REG> = crate::BitWriter<'a, REG, WaitTrig>;
+impl<'a, REG> WaitTrigW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "This command will be automatically executed."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn wait_trig_0(self) -> &'a mut crate::W<REG> {
+        self.variant(WaitTrig::WaitTrig0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The active trigger must be asserted again before executing this command."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn wait_trig_1(self) -> &'a mut crate::W<REG> {
+        self.variant(WaitTrig::WaitTrig1)
     }
 }
 #[doc = "Loop with Increment\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LWI_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lwi {
     #[doc = "0: Auto channel increment disabled"]
-    LWI_0 = 0,
+    Lwi0 = 0,
     #[doc = "1: Auto channel increment enabled"]
-    LWI_1 = 1,
+    Lwi1 = 1,
 }
-impl From<LWI_A> for bool {
+impl From<Lwi> for bool {
     #[inline(always)]
-    fn from(variant: LWI_A) -> Self {
+    fn from(variant: Lwi) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LWI` reader - Loop with Increment"]
-pub struct LWI_R(crate::FieldReader<bool, LWI_A>);
-impl LWI_R {
+pub type LwiR = crate::BitReader<Lwi>;
+impl LwiR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LWI_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LWI_A {
+    pub const fn variant(&self) -> Lwi {
         match self.bits {
-            false => LWI_A::LWI_0,
-            true => LWI_A::LWI_1,
+            false => Lwi::Lwi0,
+            true => Lwi::Lwi1,
         }
-    }
-    #[doc = "Checks if the value of the field is `LWI_0`"]
-    #[inline(always)]
-    pub fn is_lwi_0(&self) -> bool {
-        **self == LWI_A::LWI_0
-    }
-    #[doc = "Checks if the value of the field is `LWI_1`"]
-    #[inline(always)]
-    pub fn is_lwi_1(&self) -> bool {
-        **self == LWI_A::LWI_1
-    }
-}
-impl core::ops::Deref for LWI_R {
-    type Target = crate::FieldReader<bool, LWI_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LWI` writer - Loop with Increment"]
-pub struct LWI_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LWI_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LWI_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Auto channel increment disabled"]
     #[inline(always)]
-    pub fn lwi_0(self) -> &'a mut W {
-        self.variant(LWI_A::LWI_0)
+    pub fn is_lwi_0(&self) -> bool {
+        *self == Lwi::Lwi0
     }
     #[doc = "Auto channel increment enabled"]
     #[inline(always)]
-    pub fn lwi_1(self) -> &'a mut W {
-        self.variant(LWI_A::LWI_1)
+    pub fn is_lwi_1(&self) -> bool {
+        *self == Lwi::Lwi1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LWI` writer - Loop with Increment"]
+pub type LwiW<'a, REG> = crate::BitWriter<'a, REG, Lwi>;
+impl<'a, REG> LwiW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Auto channel increment disabled"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn lwi_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Lwi::Lwi0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Auto channel increment enabled"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn lwi_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Lwi::Lwi1)
     }
 }
 #[doc = "Sample Time Select\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum STS_A {
+pub enum Sts {
     #[doc = "0: Minimum sample time of 3 ADCK cycles."]
-    STS_0 = 0,
+    Sts0 = 0,
     #[doc = "1: 3 + 21 ADCK cycles; 5 ADCK cycles total sample time."]
-    STS_1 = 1,
+    Sts1 = 1,
     #[doc = "2: 3 + 22 ADCK cycles; 7 ADCK cycles total sample time."]
-    STS_2 = 2,
+    Sts2 = 2,
     #[doc = "3: 3 + 23 ADCK cycles; 11 ADCK cycles total sample time."]
-    STS_3 = 3,
+    Sts3 = 3,
     #[doc = "4: 3 + 24 ADCK cycles; 19 ADCK cycles total sample time."]
-    STS_4 = 4,
+    Sts4 = 4,
     #[doc = "5: 3 + 25 ADCK cycles; 35 ADCK cycles total sample time."]
-    STS_5 = 5,
+    Sts5 = 5,
     #[doc = "6: 3 + 26 ADCK cycles; 67 ADCK cycles total sample time."]
-    STS_6 = 6,
+    Sts6 = 6,
     #[doc = "7: 3 + 27 ADCK cycles; 131 ADCK cycles total sample time."]
-    STS_7 = 7,
+    Sts7 = 7,
 }
-impl From<STS_A> for u8 {
+impl From<Sts> for u8 {
     #[inline(always)]
-    fn from(variant: STS_A) -> Self {
+    fn from(variant: Sts) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Sts {
+    type Ux = u8;
+}
+impl crate::IsEnum for Sts {}
 #[doc = "Field `STS` reader - Sample Time Select"]
-pub struct STS_R(crate::FieldReader<u8, STS_A>);
-impl STS_R {
+pub type StsR = crate::FieldReader<Sts>;
+impl StsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        STS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> STS_A {
+    pub const fn variant(&self) -> Sts {
         match self.bits {
-            0 => STS_A::STS_0,
-            1 => STS_A::STS_1,
-            2 => STS_A::STS_2,
-            3 => STS_A::STS_3,
-            4 => STS_A::STS_4,
-            5 => STS_A::STS_5,
-            6 => STS_A::STS_6,
-            7 => STS_A::STS_7,
+            0 => Sts::Sts0,
+            1 => Sts::Sts1,
+            2 => Sts::Sts2,
+            3 => Sts::Sts3,
+            4 => Sts::Sts4,
+            5 => Sts::Sts5,
+            6 => Sts::Sts6,
+            7 => Sts::Sts7,
             _ => unreachable!(),
         }
-    }
-    #[doc = "Checks if the value of the field is `STS_0`"]
-    #[inline(always)]
-    pub fn is_sts_0(&self) -> bool {
-        **self == STS_A::STS_0
-    }
-    #[doc = "Checks if the value of the field is `STS_1`"]
-    #[inline(always)]
-    pub fn is_sts_1(&self) -> bool {
-        **self == STS_A::STS_1
-    }
-    #[doc = "Checks if the value of the field is `STS_2`"]
-    #[inline(always)]
-    pub fn is_sts_2(&self) -> bool {
-        **self == STS_A::STS_2
-    }
-    #[doc = "Checks if the value of the field is `STS_3`"]
-    #[inline(always)]
-    pub fn is_sts_3(&self) -> bool {
-        **self == STS_A::STS_3
-    }
-    #[doc = "Checks if the value of the field is `STS_4`"]
-    #[inline(always)]
-    pub fn is_sts_4(&self) -> bool {
-        **self == STS_A::STS_4
-    }
-    #[doc = "Checks if the value of the field is `STS_5`"]
-    #[inline(always)]
-    pub fn is_sts_5(&self) -> bool {
-        **self == STS_A::STS_5
-    }
-    #[doc = "Checks if the value of the field is `STS_6`"]
-    #[inline(always)]
-    pub fn is_sts_6(&self) -> bool {
-        **self == STS_A::STS_6
-    }
-    #[doc = "Checks if the value of the field is `STS_7`"]
-    #[inline(always)]
-    pub fn is_sts_7(&self) -> bool {
-        **self == STS_A::STS_7
-    }
-}
-impl core::ops::Deref for STS_R {
-    type Target = crate::FieldReader<u8, STS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `STS` writer - Sample Time Select"]
-pub struct STS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: STS_A) -> &'a mut W {
-        self.bits(variant.into())
     }
     #[doc = "Minimum sample time of 3 ADCK cycles."]
     #[inline(always)]
-    pub fn sts_0(self) -> &'a mut W {
-        self.variant(STS_A::STS_0)
+    pub fn is_sts_0(&self) -> bool {
+        *self == Sts::Sts0
     }
     #[doc = "3 + 21 ADCK cycles; 5 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_1(self) -> &'a mut W {
-        self.variant(STS_A::STS_1)
+    pub fn is_sts_1(&self) -> bool {
+        *self == Sts::Sts1
     }
     #[doc = "3 + 22 ADCK cycles; 7 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_2(self) -> &'a mut W {
-        self.variant(STS_A::STS_2)
+    pub fn is_sts_2(&self) -> bool {
+        *self == Sts::Sts2
     }
     #[doc = "3 + 23 ADCK cycles; 11 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_3(self) -> &'a mut W {
-        self.variant(STS_A::STS_3)
+    pub fn is_sts_3(&self) -> bool {
+        *self == Sts::Sts3
     }
     #[doc = "3 + 24 ADCK cycles; 19 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_4(self) -> &'a mut W {
-        self.variant(STS_A::STS_4)
+    pub fn is_sts_4(&self) -> bool {
+        *self == Sts::Sts4
     }
     #[doc = "3 + 25 ADCK cycles; 35 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_5(self) -> &'a mut W {
-        self.variant(STS_A::STS_5)
+    pub fn is_sts_5(&self) -> bool {
+        *self == Sts::Sts5
     }
     #[doc = "3 + 26 ADCK cycles; 67 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_6(self) -> &'a mut W {
-        self.variant(STS_A::STS_6)
+    pub fn is_sts_6(&self) -> bool {
+        *self == Sts::Sts6
     }
     #[doc = "3 + 27 ADCK cycles; 131 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn sts_7(self) -> &'a mut W {
-        self.variant(STS_A::STS_7)
+    pub fn is_sts_7(&self) -> bool {
+        *self == Sts::Sts7
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `STS` writer - Sample Time Select"]
+pub type StsW<'a, REG> = crate::FieldWriter<'a, REG, 3, Sts, crate::Safe>;
+impl<'a, REG> StsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Minimum sample time of 3 ADCK cycles."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 8)) | ((value as u32 & 0x07) << 8);
-        self.w
+    pub fn sts_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts0)
+    }
+    #[doc = "3 + 21 ADCK cycles; 5 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts1)
+    }
+    #[doc = "3 + 22 ADCK cycles; 7 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts2)
+    }
+    #[doc = "3 + 23 ADCK cycles; 11 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts3)
+    }
+    #[doc = "3 + 24 ADCK cycles; 19 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_4(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts4)
+    }
+    #[doc = "3 + 25 ADCK cycles; 35 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_5(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts5)
+    }
+    #[doc = "3 + 26 ADCK cycles; 67 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_6(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts6)
+    }
+    #[doc = "3 + 27 ADCK cycles; 131 ADCK cycles total sample time."]
+    #[inline(always)]
+    pub fn sts_7(self) -> &'a mut crate::W<REG> {
+        self.variant(Sts::Sts7)
     }
 }
 #[doc = "Hardware Average Select\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum AVGS_A {
+pub enum Avgs {
     #[doc = "0: Single conversion."]
-    AVGS_0 = 0,
+    Avgs0 = 0,
     #[doc = "1: 2 conversions averaged."]
-    AVGS_1 = 1,
+    Avgs1 = 1,
     #[doc = "2: 4 conversions averaged."]
-    AVGS_2 = 2,
+    Avgs2 = 2,
     #[doc = "3: 8 conversions averaged."]
-    AVGS_3 = 3,
+    Avgs3 = 3,
     #[doc = "4: 16 conversions averaged."]
-    AVGS_4 = 4,
+    Avgs4 = 4,
     #[doc = "5: 32 conversions averaged."]
-    AVGS_5 = 5,
+    Avgs5 = 5,
     #[doc = "6: 64 conversions averaged."]
-    AVGS_6 = 6,
+    Avgs6 = 6,
     #[doc = "7: 128 conversions averaged."]
-    AVGS_7 = 7,
+    Avgs7 = 7,
 }
-impl From<AVGS_A> for u8 {
+impl From<Avgs> for u8 {
     #[inline(always)]
-    fn from(variant: AVGS_A) -> Self {
+    fn from(variant: Avgs) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Avgs {
+    type Ux = u8;
+}
+impl crate::IsEnum for Avgs {}
 #[doc = "Field `AVGS` reader - Hardware Average Select"]
-pub struct AVGS_R(crate::FieldReader<u8, AVGS_A>);
-impl AVGS_R {
+pub type AvgsR = crate::FieldReader<Avgs>;
+impl AvgsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        AVGS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> AVGS_A {
+    pub const fn variant(&self) -> Avgs {
         match self.bits {
-            0 => AVGS_A::AVGS_0,
-            1 => AVGS_A::AVGS_1,
-            2 => AVGS_A::AVGS_2,
-            3 => AVGS_A::AVGS_3,
-            4 => AVGS_A::AVGS_4,
-            5 => AVGS_A::AVGS_5,
-            6 => AVGS_A::AVGS_6,
-            7 => AVGS_A::AVGS_7,
+            0 => Avgs::Avgs0,
+            1 => Avgs::Avgs1,
+            2 => Avgs::Avgs2,
+            3 => Avgs::Avgs3,
+            4 => Avgs::Avgs4,
+            5 => Avgs::Avgs5,
+            6 => Avgs::Avgs6,
+            7 => Avgs::Avgs7,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `AVGS_0`"]
-    #[inline(always)]
-    pub fn is_avgs_0(&self) -> bool {
-        **self == AVGS_A::AVGS_0
-    }
-    #[doc = "Checks if the value of the field is `AVGS_1`"]
-    #[inline(always)]
-    pub fn is_avgs_1(&self) -> bool {
-        **self == AVGS_A::AVGS_1
-    }
-    #[doc = "Checks if the value of the field is `AVGS_2`"]
-    #[inline(always)]
-    pub fn is_avgs_2(&self) -> bool {
-        **self == AVGS_A::AVGS_2
-    }
-    #[doc = "Checks if the value of the field is `AVGS_3`"]
-    #[inline(always)]
-    pub fn is_avgs_3(&self) -> bool {
-        **self == AVGS_A::AVGS_3
-    }
-    #[doc = "Checks if the value of the field is `AVGS_4`"]
-    #[inline(always)]
-    pub fn is_avgs_4(&self) -> bool {
-        **self == AVGS_A::AVGS_4
-    }
-    #[doc = "Checks if the value of the field is `AVGS_5`"]
-    #[inline(always)]
-    pub fn is_avgs_5(&self) -> bool {
-        **self == AVGS_A::AVGS_5
-    }
-    #[doc = "Checks if the value of the field is `AVGS_6`"]
-    #[inline(always)]
-    pub fn is_avgs_6(&self) -> bool {
-        **self == AVGS_A::AVGS_6
-    }
-    #[doc = "Checks if the value of the field is `AVGS_7`"]
-    #[inline(always)]
-    pub fn is_avgs_7(&self) -> bool {
-        **self == AVGS_A::AVGS_7
-    }
-}
-impl core::ops::Deref for AVGS_R {
-    type Target = crate::FieldReader<u8, AVGS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `AVGS` writer - Hardware Average Select"]
-pub struct AVGS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> AVGS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: AVGS_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Single conversion."]
     #[inline(always)]
-    pub fn avgs_0(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_0)
+    pub fn is_avgs_0(&self) -> bool {
+        *self == Avgs::Avgs0
     }
     #[doc = "2 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_1(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_1)
+    pub fn is_avgs_1(&self) -> bool {
+        *self == Avgs::Avgs1
     }
     #[doc = "4 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_2(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_2)
+    pub fn is_avgs_2(&self) -> bool {
+        *self == Avgs::Avgs2
     }
     #[doc = "8 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_3(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_3)
+    pub fn is_avgs_3(&self) -> bool {
+        *self == Avgs::Avgs3
     }
     #[doc = "16 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_4(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_4)
+    pub fn is_avgs_4(&self) -> bool {
+        *self == Avgs::Avgs4
     }
     #[doc = "32 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_5(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_5)
+    pub fn is_avgs_5(&self) -> bool {
+        *self == Avgs::Avgs5
     }
     #[doc = "64 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_6(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_6)
+    pub fn is_avgs_6(&self) -> bool {
+        *self == Avgs::Avgs6
     }
     #[doc = "128 conversions averaged."]
     #[inline(always)]
-    pub fn avgs_7(self) -> &'a mut W {
-        self.variant(AVGS_A::AVGS_7)
+    pub fn is_avgs_7(&self) -> bool {
+        *self == Avgs::Avgs7
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `AVGS` writer - Hardware Average Select"]
+pub type AvgsW<'a, REG> = crate::FieldWriter<'a, REG, 3, Avgs, crate::Safe>;
+impl<'a, REG> AvgsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Single conversion."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 12)) | ((value as u32 & 0x07) << 12);
-        self.w
+    pub fn avgs_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs0)
+    }
+    #[doc = "2 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs1)
+    }
+    #[doc = "4 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs2)
+    }
+    #[doc = "8 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs3)
+    }
+    #[doc = "16 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_4(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs4)
+    }
+    #[doc = "32 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_5(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs5)
+    }
+    #[doc = "64 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_6(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs6)
+    }
+    #[doc = "128 conversions averaged."]
+    #[inline(always)]
+    pub fn avgs_7(self) -> &'a mut crate::W<REG> {
+        self.variant(Avgs::Avgs7)
     }
 }
 #[doc = "Loop Count Select\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LOOP_A {
+pub enum Loop {
     #[doc = "0: Looping not enabled. Command executes 1 time."]
-    LOOP_0 = 0,
+    Loop0 = 0,
     #[doc = "1: Loop 1 time. Command executes 2 times."]
-    LOOP_1 = 1,
+    Loop1 = 1,
     #[doc = "2: Loop 2 times. Command executes 3 times."]
-    LOOP_2 = 2,
+    Loop2 = 2,
     #[doc = "3: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_3 = 3,
+    Loop3 = 3,
     #[doc = "4: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_4 = 4,
+    Loop4 = 4,
     #[doc = "5: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_5 = 5,
+    Loop5 = 5,
     #[doc = "6: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_6 = 6,
+    Loop6 = 6,
     #[doc = "7: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_7 = 7,
+    Loop7 = 7,
     #[doc = "8: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_8 = 8,
+    Loop8 = 8,
     #[doc = "9: Loop corresponding number of times. Command executes LOOP+1 times."]
-    LOOP_9 = 9,
+    Loop9 = 9,
     #[doc = "15: Loop 15 times. Command executes 16 times."]
-    LOOP_15 = 15,
+    Loop15 = 15,
 }
-impl From<LOOP_A> for u8 {
+impl From<Loop> for u8 {
     #[inline(always)]
-    fn from(variant: LOOP_A) -> Self {
+    fn from(variant: Loop) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Loop {
+    type Ux = u8;
+}
+impl crate::IsEnum for Loop {}
 #[doc = "Field `LOOP` reader - Loop Count Select"]
-pub struct LOOP_R(crate::FieldReader<u8, LOOP_A>);
-impl LOOP_R {
+pub type LoopR = crate::FieldReader<Loop>;
+impl LoopR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LOOP_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<LOOP_A> {
+    pub const fn variant(&self) -> Option<Loop> {
         match self.bits {
-            0 => Some(LOOP_A::LOOP_0),
-            1 => Some(LOOP_A::LOOP_1),
-            2 => Some(LOOP_A::LOOP_2),
-            3 => Some(LOOP_A::LOOP_3),
-            4 => Some(LOOP_A::LOOP_4),
-            5 => Some(LOOP_A::LOOP_5),
-            6 => Some(LOOP_A::LOOP_6),
-            7 => Some(LOOP_A::LOOP_7),
-            8 => Some(LOOP_A::LOOP_8),
-            9 => Some(LOOP_A::LOOP_9),
-            15 => Some(LOOP_A::LOOP_15),
+            0 => Some(Loop::Loop0),
+            1 => Some(Loop::Loop1),
+            2 => Some(Loop::Loop2),
+            3 => Some(Loop::Loop3),
+            4 => Some(Loop::Loop4),
+            5 => Some(Loop::Loop5),
+            6 => Some(Loop::Loop6),
+            7 => Some(Loop::Loop7),
+            8 => Some(Loop::Loop8),
+            9 => Some(Loop::Loop9),
+            15 => Some(Loop::Loop15),
             _ => None,
         }
-    }
-    #[doc = "Checks if the value of the field is `LOOP_0`"]
-    #[inline(always)]
-    pub fn is_loop_0(&self) -> bool {
-        **self == LOOP_A::LOOP_0
-    }
-    #[doc = "Checks if the value of the field is `LOOP_1`"]
-    #[inline(always)]
-    pub fn is_loop_1(&self) -> bool {
-        **self == LOOP_A::LOOP_1
-    }
-    #[doc = "Checks if the value of the field is `LOOP_2`"]
-    #[inline(always)]
-    pub fn is_loop_2(&self) -> bool {
-        **self == LOOP_A::LOOP_2
-    }
-    #[doc = "Checks if the value of the field is `LOOP_3`"]
-    #[inline(always)]
-    pub fn is_loop_3(&self) -> bool {
-        **self == LOOP_A::LOOP_3
-    }
-    #[doc = "Checks if the value of the field is `LOOP_4`"]
-    #[inline(always)]
-    pub fn is_loop_4(&self) -> bool {
-        **self == LOOP_A::LOOP_4
-    }
-    #[doc = "Checks if the value of the field is `LOOP_5`"]
-    #[inline(always)]
-    pub fn is_loop_5(&self) -> bool {
-        **self == LOOP_A::LOOP_5
-    }
-    #[doc = "Checks if the value of the field is `LOOP_6`"]
-    #[inline(always)]
-    pub fn is_loop_6(&self) -> bool {
-        **self == LOOP_A::LOOP_6
-    }
-    #[doc = "Checks if the value of the field is `LOOP_7`"]
-    #[inline(always)]
-    pub fn is_loop_7(&self) -> bool {
-        **self == LOOP_A::LOOP_7
-    }
-    #[doc = "Checks if the value of the field is `LOOP_8`"]
-    #[inline(always)]
-    pub fn is_loop_8(&self) -> bool {
-        **self == LOOP_A::LOOP_8
-    }
-    #[doc = "Checks if the value of the field is `LOOP_9`"]
-    #[inline(always)]
-    pub fn is_loop_9(&self) -> bool {
-        **self == LOOP_A::LOOP_9
-    }
-    #[doc = "Checks if the value of the field is `LOOP_15`"]
-    #[inline(always)]
-    pub fn is_loop_15(&self) -> bool {
-        **self == LOOP_A::LOOP_15
-    }
-}
-impl core::ops::Deref for LOOP_R {
-    type Target = crate::FieldReader<u8, LOOP_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOOP` writer - Loop Count Select"]
-pub struct LOOP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOOP_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOOP_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
     }
     #[doc = "Looping not enabled. Command executes 1 time."]
     #[inline(always)]
-    pub fn loop_0(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_0)
+    pub fn is_loop_0(&self) -> bool {
+        *self == Loop::Loop0
     }
     #[doc = "Loop 1 time. Command executes 2 times."]
     #[inline(always)]
-    pub fn loop_1(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_1)
+    pub fn is_loop_1(&self) -> bool {
+        *self == Loop::Loop1
     }
     #[doc = "Loop 2 times. Command executes 3 times."]
     #[inline(always)]
-    pub fn loop_2(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_2)
+    pub fn is_loop_2(&self) -> bool {
+        *self == Loop::Loop2
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_3(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_3)
+    pub fn is_loop_3(&self) -> bool {
+        *self == Loop::Loop3
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_4(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_4)
+    pub fn is_loop_4(&self) -> bool {
+        *self == Loop::Loop4
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_5(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_5)
+    pub fn is_loop_5(&self) -> bool {
+        *self == Loop::Loop5
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_6(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_6)
+    pub fn is_loop_6(&self) -> bool {
+        *self == Loop::Loop6
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_7(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_7)
+    pub fn is_loop_7(&self) -> bool {
+        *self == Loop::Loop7
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_8(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_8)
+    pub fn is_loop_8(&self) -> bool {
+        *self == Loop::Loop8
     }
     #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
     #[inline(always)]
-    pub fn loop_9(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_9)
+    pub fn is_loop_9(&self) -> bool {
+        *self == Loop::Loop9
     }
     #[doc = "Loop 15 times. Command executes 16 times."]
     #[inline(always)]
-    pub fn loop_15(self) -> &'a mut W {
-        self.variant(LOOP_A::LOOP_15)
+    pub fn is_loop_15(&self) -> bool {
+        *self == Loop::Loop15
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `LOOP` writer - Loop Count Select"]
+pub type LoopW<'a, REG> = crate::FieldWriter<'a, REG, 4, Loop>;
+impl<'a, REG> LoopW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Looping not enabled. Command executes 1 time."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | ((value as u32 & 0x0f) << 16);
-        self.w
+    pub fn loop_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop0)
+    }
+    #[doc = "Loop 1 time. Command executes 2 times."]
+    #[inline(always)]
+    pub fn loop_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop1)
+    }
+    #[doc = "Loop 2 times. Command executes 3 times."]
+    #[inline(always)]
+    pub fn loop_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop2)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop3)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_4(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop4)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_5(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop5)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_6(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop6)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_7(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop7)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_8(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop8)
+    }
+    #[doc = "Loop corresponding number of times. Command executes LOOP+1 times."]
+    #[inline(always)]
+    pub fn loop_9(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop9)
+    }
+    #[doc = "Loop 15 times. Command executes 16 times."]
+    #[inline(always)]
+    pub fn loop_15(self) -> &'a mut crate::W<REG> {
+        self.variant(Loop::Loop15)
     }
 }
 #[doc = "Next Command Select\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum NEXT_A {
+pub enum Next {
     #[doc = "0: No next command defined. Terminate conversions at completion of current command. If lower priority trigger pending, begin command associated with lower priority trigger."]
-    NEXT_0 = 0,
+    Next0 = 0,
     #[doc = "1: Select CMD1 command buffer register as next command."]
-    NEXT_1 = 1,
+    Next1 = 1,
     #[doc = "2: Select corresponding CMD command buffer register as next command"]
-    NEXT_2 = 2,
+    Next2 = 2,
     #[doc = "3: Select corresponding CMD command buffer register as next command"]
-    NEXT_3 = 3,
+    Next3 = 3,
     #[doc = "4: Select corresponding CMD command buffer register as next command"]
-    NEXT_4 = 4,
+    Next4 = 4,
     #[doc = "5: Select corresponding CMD command buffer register as next command"]
-    NEXT_5 = 5,
+    Next5 = 5,
     #[doc = "6: Select corresponding CMD command buffer register as next command"]
-    NEXT_6 = 6,
+    Next6 = 6,
     #[doc = "7: Select corresponding CMD command buffer register as next command"]
-    NEXT_7 = 7,
+    Next7 = 7,
     #[doc = "8: Select corresponding CMD command buffer register as next command"]
-    NEXT_8 = 8,
+    Next8 = 8,
     #[doc = "9: Select corresponding CMD command buffer register as next command"]
-    NEXT_9 = 9,
+    Next9 = 9,
     #[doc = "15: Select CMD15 command buffer register as next command."]
-    NEXT_15 = 15,
+    Next15 = 15,
 }
-impl From<NEXT_A> for u8 {
+impl From<Next> for u8 {
     #[inline(always)]
-    fn from(variant: NEXT_A) -> Self {
+    fn from(variant: Next) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Next {
+    type Ux = u8;
+}
+impl crate::IsEnum for Next {}
 #[doc = "Field `NEXT` reader - Next Command Select"]
-pub struct NEXT_R(crate::FieldReader<u8, NEXT_A>);
-impl NEXT_R {
+pub type NextR = crate::FieldReader<Next>;
+impl NextR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        NEXT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<NEXT_A> {
+    pub const fn variant(&self) -> Option<Next> {
         match self.bits {
-            0 => Some(NEXT_A::NEXT_0),
-            1 => Some(NEXT_A::NEXT_1),
-            2 => Some(NEXT_A::NEXT_2),
-            3 => Some(NEXT_A::NEXT_3),
-            4 => Some(NEXT_A::NEXT_4),
-            5 => Some(NEXT_A::NEXT_5),
-            6 => Some(NEXT_A::NEXT_6),
-            7 => Some(NEXT_A::NEXT_7),
-            8 => Some(NEXT_A::NEXT_8),
-            9 => Some(NEXT_A::NEXT_9),
-            15 => Some(NEXT_A::NEXT_15),
+            0 => Some(Next::Next0),
+            1 => Some(Next::Next1),
+            2 => Some(Next::Next2),
+            3 => Some(Next::Next3),
+            4 => Some(Next::Next4),
+            5 => Some(Next::Next5),
+            6 => Some(Next::Next6),
+            7 => Some(Next::Next7),
+            8 => Some(Next::Next8),
+            9 => Some(Next::Next9),
+            15 => Some(Next::Next15),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `NEXT_0`"]
-    #[inline(always)]
-    pub fn is_next_0(&self) -> bool {
-        **self == NEXT_A::NEXT_0
-    }
-    #[doc = "Checks if the value of the field is `NEXT_1`"]
-    #[inline(always)]
-    pub fn is_next_1(&self) -> bool {
-        **self == NEXT_A::NEXT_1
-    }
-    #[doc = "Checks if the value of the field is `NEXT_2`"]
-    #[inline(always)]
-    pub fn is_next_2(&self) -> bool {
-        **self == NEXT_A::NEXT_2
-    }
-    #[doc = "Checks if the value of the field is `NEXT_3`"]
-    #[inline(always)]
-    pub fn is_next_3(&self) -> bool {
-        **self == NEXT_A::NEXT_3
-    }
-    #[doc = "Checks if the value of the field is `NEXT_4`"]
-    #[inline(always)]
-    pub fn is_next_4(&self) -> bool {
-        **self == NEXT_A::NEXT_4
-    }
-    #[doc = "Checks if the value of the field is `NEXT_5`"]
-    #[inline(always)]
-    pub fn is_next_5(&self) -> bool {
-        **self == NEXT_A::NEXT_5
-    }
-    #[doc = "Checks if the value of the field is `NEXT_6`"]
-    #[inline(always)]
-    pub fn is_next_6(&self) -> bool {
-        **self == NEXT_A::NEXT_6
-    }
-    #[doc = "Checks if the value of the field is `NEXT_7`"]
-    #[inline(always)]
-    pub fn is_next_7(&self) -> bool {
-        **self == NEXT_A::NEXT_7
-    }
-    #[doc = "Checks if the value of the field is `NEXT_8`"]
-    #[inline(always)]
-    pub fn is_next_8(&self) -> bool {
-        **self == NEXT_A::NEXT_8
-    }
-    #[doc = "Checks if the value of the field is `NEXT_9`"]
-    #[inline(always)]
-    pub fn is_next_9(&self) -> bool {
-        **self == NEXT_A::NEXT_9
-    }
-    #[doc = "Checks if the value of the field is `NEXT_15`"]
-    #[inline(always)]
-    pub fn is_next_15(&self) -> bool {
-        **self == NEXT_A::NEXT_15
-    }
-}
-impl core::ops::Deref for NEXT_R {
-    type Target = crate::FieldReader<u8, NEXT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `NEXT` writer - Next Command Select"]
-pub struct NEXT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NEXT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: NEXT_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "No next command defined. Terminate conversions at completion of current command. If lower priority trigger pending, begin command associated with lower priority trigger."]
     #[inline(always)]
-    pub fn next_0(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_0)
+    pub fn is_next_0(&self) -> bool {
+        *self == Next::Next0
     }
     #[doc = "Select CMD1 command buffer register as next command."]
     #[inline(always)]
-    pub fn next_1(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_1)
+    pub fn is_next_1(&self) -> bool {
+        *self == Next::Next1
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_2(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_2)
+    pub fn is_next_2(&self) -> bool {
+        *self == Next::Next2
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_3(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_3)
+    pub fn is_next_3(&self) -> bool {
+        *self == Next::Next3
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_4(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_4)
+    pub fn is_next_4(&self) -> bool {
+        *self == Next::Next4
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_5(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_5)
+    pub fn is_next_5(&self) -> bool {
+        *self == Next::Next5
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_6(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_6)
+    pub fn is_next_6(&self) -> bool {
+        *self == Next::Next6
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_7(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_7)
+    pub fn is_next_7(&self) -> bool {
+        *self == Next::Next7
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_8(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_8)
+    pub fn is_next_8(&self) -> bool {
+        *self == Next::Next8
     }
     #[doc = "Select corresponding CMD command buffer register as next command"]
     #[inline(always)]
-    pub fn next_9(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_9)
+    pub fn is_next_9(&self) -> bool {
+        *self == Next::Next9
     }
     #[doc = "Select CMD15 command buffer register as next command."]
     #[inline(always)]
-    pub fn next_15(self) -> &'a mut W {
-        self.variant(NEXT_A::NEXT_15)
+    pub fn is_next_15(&self) -> bool {
+        *self == Next::Next15
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `NEXT` writer - Next Command Select"]
+pub type NextW<'a, REG> = crate::FieldWriter<'a, REG, 4, Next>;
+impl<'a, REG> NextW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "No next command defined. Terminate conversions at completion of current command. If lower priority trigger pending, begin command associated with lower priority trigger."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 24)) | ((value as u32 & 0x0f) << 24);
-        self.w
+    pub fn next_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next0)
+    }
+    #[doc = "Select CMD1 command buffer register as next command."]
+    #[inline(always)]
+    pub fn next_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next1)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next2)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next3)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_4(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next4)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_5(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next5)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_6(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next6)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_7(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next7)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_8(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next8)
+    }
+    #[doc = "Select corresponding CMD command buffer register as next command"]
+    #[inline(always)]
+    pub fn next_9(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next9)
+    }
+    #[doc = "Select CMD15 command buffer register as next command."]
+    #[inline(always)]
+    pub fn next_15(self) -> &'a mut crate::W<REG> {
+        self.variant(Next::Next15)
     }
 }
 impl R {
     #[doc = "Bit 2 - Wait for trigger assertion before execution."]
     #[inline(always)]
-    pub fn wait_trig(&self) -> WAIT_TRIG_R {
-        WAIT_TRIG_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn wait_trig(&self) -> WaitTrigR {
+        WaitTrigR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 7 - Loop with Increment"]
     #[inline(always)]
-    pub fn lwi(&self) -> LWI_R {
-        LWI_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn lwi(&self) -> LwiR {
+        LwiR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bits 8:10 - Sample Time Select"]
     #[inline(always)]
-    pub fn sts(&self) -> STS_R {
-        STS_R::new(((self.bits >> 8) & 0x07) as u8)
+    pub fn sts(&self) -> StsR {
+        StsR::new(((self.bits >> 8) & 7) as u8)
     }
     #[doc = "Bits 12:14 - Hardware Average Select"]
     #[inline(always)]
-    pub fn avgs(&self) -> AVGS_R {
-        AVGS_R::new(((self.bits >> 12) & 0x07) as u8)
+    pub fn avgs(&self) -> AvgsR {
+        AvgsR::new(((self.bits >> 12) & 7) as u8)
     }
     #[doc = "Bits 16:19 - Loop Count Select"]
     #[inline(always)]
-    pub fn loop_(&self) -> LOOP_R {
-        LOOP_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn loop_(&self) -> LoopR {
+        LoopR::new(((self.bits >> 16) & 0x0f) as u8)
     }
     #[doc = "Bits 24:27 - Next Command Select"]
     #[inline(always)]
-    pub fn next(&self) -> NEXT_R {
-        NEXT_R::new(((self.bits >> 24) & 0x0f) as u8)
+    pub fn next(&self) -> NextR {
+        NextR::new(((self.bits >> 24) & 0x0f) as u8)
     }
 }
 impl W {
     #[doc = "Bit 2 - Wait for trigger assertion before execution."]
     #[inline(always)]
-    pub fn wait_trig(&mut self) -> WAIT_TRIG_W {
-        WAIT_TRIG_W { w: self }
+    pub fn wait_trig(&mut self) -> WaitTrigW<Cmdh9Spec> {
+        WaitTrigW::new(self, 2)
     }
     #[doc = "Bit 7 - Loop with Increment"]
     #[inline(always)]
-    pub fn lwi(&mut self) -> LWI_W {
-        LWI_W { w: self }
+    pub fn lwi(&mut self) -> LwiW<Cmdh9Spec> {
+        LwiW::new(self, 7)
     }
     #[doc = "Bits 8:10 - Sample Time Select"]
     #[inline(always)]
-    pub fn sts(&mut self) -> STS_W {
-        STS_W { w: self }
+    pub fn sts(&mut self) -> StsW<Cmdh9Spec> {
+        StsW::new(self, 8)
     }
     #[doc = "Bits 12:14 - Hardware Average Select"]
     #[inline(always)]
-    pub fn avgs(&mut self) -> AVGS_W {
-        AVGS_W { w: self }
+    pub fn avgs(&mut self) -> AvgsW<Cmdh9Spec> {
+        AvgsW::new(self, 12)
     }
     #[doc = "Bits 16:19 - Loop Count Select"]
     #[inline(always)]
-    pub fn loop_(&mut self) -> LOOP_W {
-        LOOP_W { w: self }
+    pub fn loop_(&mut self) -> LoopW<Cmdh9Spec> {
+        LoopW::new(self, 16)
     }
     #[doc = "Bits 24:27 - Next Command Select"]
     #[inline(always)]
-    pub fn next(&mut self) -> NEXT_W {
-        NEXT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn next(&mut self) -> NextW<Cmdh9Spec> {
+        NextW::new(self, 24)
     }
 }
-#[doc = "ADC Command High Buffer Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cmdh9](index.html) module"]
-pub struct CMDH9_SPEC;
-impl crate::RegisterSpec for CMDH9_SPEC {
+#[doc = "ADC Command High Buffer Register\n\nYou can [`read`](crate::Reg::read) this register and get [`cmdh9::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cmdh9::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Cmdh9Spec;
+impl crate::RegisterSpec for Cmdh9Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [cmdh9::R](R) reader structure"]
-impl crate::Readable for CMDH9_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [cmdh9::W](W) writer structure"]
-impl crate::Writable for CMDH9_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`cmdh9::R`](R) reader structure"]
+impl crate::Readable for Cmdh9Spec {}
+#[doc = "`write(|w| ..)` method takes [`cmdh9::W`](W) writer structure"]
+impl crate::Writable for Cmdh9Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CMDH9 to value 0"]
-impl crate::Resettable for CMDH9_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Cmdh9Spec {
+    const RESET_VALUE: u32 = 0;
 }

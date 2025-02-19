@@ -1,178 +1,121 @@
 #[doc = "Register `SEC_CTRL_RAM2_SLAVE_RULE` reader"]
-pub struct R(crate::R<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecCtrlRam2SlaveRuleSpec>;
 #[doc = "Register `SEC_CTRL_RAM2_SLAVE_RULE` writer"]
-pub struct W(crate::W<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_CTRL_RAM2_SLAVE_RULE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecCtrlRam2SlaveRuleSpec>;
 #[doc = "Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum RAM2_RULE_A {
+pub enum Ram2Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<RAM2_RULE_A> for u8 {
+impl From<Ram2Rule> for u8 {
     #[inline(always)]
-    fn from(variant: RAM2_RULE_A) -> Self {
+    fn from(variant: Ram2Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Ram2Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for Ram2Rule {}
 #[doc = "Field `RAM2_RULE` reader - Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF"]
-pub struct RAM2_RULE_R(crate::FieldReader<u8, RAM2_RULE_A>);
-impl RAM2_RULE_R {
+pub type Ram2RuleR = crate::FieldReader<Ram2Rule>;
+impl Ram2RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        RAM2_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RAM2_RULE_A {
+    pub const fn variant(&self) -> Ram2Rule {
         match self.bits {
-            0 => RAM2_RULE_A::ENUM_NS_NP,
-            1 => RAM2_RULE_A::ENUM_NS_P,
-            2 => RAM2_RULE_A::ENUM_S_NP,
-            3 => RAM2_RULE_A::ENUM_S_P,
+            0 => Ram2Rule::EnumNsNp,
+            1 => Ram2Rule::EnumNsP,
+            2 => Ram2Rule::EnumSNp,
+            3 => Ram2Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
-    #[inline(always)]
-    pub fn is_enum_ns_np(&self) -> bool {
-        **self == RAM2_RULE_A::ENUM_NS_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
-    #[inline(always)]
-    pub fn is_enum_ns_p(&self) -> bool {
-        **self == RAM2_RULE_A::ENUM_NS_P
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
-    #[inline(always)]
-    pub fn is_enum_s_np(&self) -> bool {
-        **self == RAM2_RULE_A::ENUM_S_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
-    #[inline(always)]
-    pub fn is_enum_s_p(&self) -> bool {
-        **self == RAM2_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for RAM2_RULE_R {
-    type Target = crate::FieldReader<u8, RAM2_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RAM2_RULE` writer - Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF"]
-pub struct RAM2_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RAM2_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RAM2_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(RAM2_RULE_A::ENUM_NS_NP)
+    pub fn is_enum_ns_np(&self) -> bool {
+        *self == Ram2Rule::EnumNsNp
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(RAM2_RULE_A::ENUM_NS_P)
+    pub fn is_enum_ns_p(&self) -> bool {
+        *self == Ram2Rule::EnumNsP
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(RAM2_RULE_A::ENUM_S_NP)
+    pub fn is_enum_s_np(&self) -> bool {
+        *self == Ram2Rule::EnumSNp
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(RAM2_RULE_A::ENUM_S_P)
+    pub fn is_enum_s_p(&self) -> bool {
+        *self == Ram2Rule::EnumSP
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `RAM2_RULE` writer - Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF"]
+pub type Ram2RuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, Ram2Rule, crate::Safe>;
+impl<'a, REG> Ram2RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ram2Rule::EnumNsNp)
+    }
+    #[doc = "Non-secure and Privilege access allowed."]
+    #[inline(always)]
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ram2Rule::EnumNsP)
+    }
+    #[doc = "Secure and Non-priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ram2Rule::EnumSNp)
+    }
+    #[doc = "Secure and Priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ram2Rule::EnumSP)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF"]
     #[inline(always)]
-    pub fn ram2_rule(&self) -> RAM2_RULE_R {
-        RAM2_RULE_R::new((self.bits & 0x03) as u8)
+    pub fn ram2_rule(&self) -> Ram2RuleR {
+        Ram2RuleR::new((self.bits & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Security access rules for the whole RAM2 : 0x2002_0000 - 0x2002_FFFF"]
     #[inline(always)]
-    pub fn ram2_rule(&mut self) -> RAM2_RULE_W {
-        RAM2_RULE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn ram2_rule(&mut self) -> Ram2RuleW<SecCtrlRam2SlaveRuleSpec> {
+        Ram2RuleW::new(self, 0)
     }
 }
-#[doc = "Security access rules for RAM2 slaves.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_ctrl_ram2_slave_rule](index.html) module"]
-pub struct SEC_CTRL_RAM2_SLAVE_RULE_SPEC;
-impl crate::RegisterSpec for SEC_CTRL_RAM2_SLAVE_RULE_SPEC {
+#[doc = "Security access rules for RAM2 slaves.\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_ctrl_ram2_slave_rule::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_ctrl_ram2_slave_rule::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecCtrlRam2SlaveRuleSpec;
+impl crate::RegisterSpec for SecCtrlRam2SlaveRuleSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_ctrl_ram2_slave_rule::R](R) reader structure"]
-impl crate::Readable for SEC_CTRL_RAM2_SLAVE_RULE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_ctrl_ram2_slave_rule::W](W) writer structure"]
-impl crate::Writable for SEC_CTRL_RAM2_SLAVE_RULE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_ctrl_ram2_slave_rule::R`](R) reader structure"]
+impl crate::Readable for SecCtrlRam2SlaveRuleSpec {}
+#[doc = "`write(|w| ..)` method takes [`sec_ctrl_ram2_slave_rule::W`](W) writer structure"]
+impl crate::Writable for SecCtrlRam2SlaveRuleSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_CTRL_RAM2_SLAVE_RULE to value 0"]
-impl crate::Resettable for SEC_CTRL_RAM2_SLAVE_RULE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecCtrlRam2SlaveRuleSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,290 +1,218 @@
 #[doc = "Register `SEC_CTRL_APB_BRIDGE1_MEM_CTRL0` reader"]
-pub struct R(crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecCtrlApbBridge1MemCtrl0Spec>;
 #[doc = "Register `SEC_CTRL_APB_BRIDGE1_MEM_CTRL0` writer"]
-pub struct W(crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecCtrlApbBridge1MemCtrl0Spec>;
 #[doc = "Power Management Controller\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PMC_RULE_A {
+pub enum PmcRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<PMC_RULE_A> for u8 {
+impl From<PmcRule> for u8 {
     #[inline(always)]
-    fn from(variant: PMC_RULE_A) -> Self {
+    fn from(variant: PmcRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for PmcRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for PmcRule {}
 #[doc = "Field `PMC_RULE` reader - Power Management Controller"]
-pub struct PMC_RULE_R(crate::FieldReader<u8, PMC_RULE_A>);
-impl PMC_RULE_R {
+pub type PmcRuleR = crate::FieldReader<PmcRule>;
+impl PmcRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PMC_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PMC_RULE_A {
+    pub const fn variant(&self) -> PmcRule {
         match self.bits {
-            0 => PMC_RULE_A::ENUM_NS_NP,
-            1 => PMC_RULE_A::ENUM_NS_P,
-            2 => PMC_RULE_A::ENUM_S_NP,
-            3 => PMC_RULE_A::ENUM_S_P,
+            0 => PmcRule::EnumNsNp,
+            1 => PmcRule::EnumNsP,
+            2 => PmcRule::EnumSNp,
+            3 => PmcRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == PMC_RULE_A::ENUM_NS_NP
+        *self == PmcRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == PMC_RULE_A::ENUM_NS_P
+        *self == PmcRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == PMC_RULE_A::ENUM_S_NP
+        *self == PmcRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == PMC_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for PMC_RULE_R {
-    type Target = crate::FieldReader<u8, PMC_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == PmcRule::EnumSP
     }
 }
 #[doc = "Field `PMC_RULE` writer - Power Management Controller"]
-pub struct PMC_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PMC_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PMC_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type PmcRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, PmcRule, crate::Safe>;
+impl<'a, REG> PmcRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(PMC_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(PmcRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(PMC_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(PmcRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(PMC_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(PmcRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(PMC_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(PmcRule::EnumSP)
     }
 }
 #[doc = "System Controller\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SYSCTRL_RULE_A {
+pub enum SysctrlRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<SYSCTRL_RULE_A> for u8 {
+impl From<SysctrlRule> for u8 {
     #[inline(always)]
-    fn from(variant: SYSCTRL_RULE_A) -> Self {
+    fn from(variant: SysctrlRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for SysctrlRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for SysctrlRule {}
 #[doc = "Field `SYSCTRL_RULE` reader - System Controller"]
-pub struct SYSCTRL_RULE_R(crate::FieldReader<u8, SYSCTRL_RULE_A>);
-impl SYSCTRL_RULE_R {
+pub type SysctrlRuleR = crate::FieldReader<SysctrlRule>;
+impl SysctrlRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SYSCTRL_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SYSCTRL_RULE_A {
+    pub const fn variant(&self) -> SysctrlRule {
         match self.bits {
-            0 => SYSCTRL_RULE_A::ENUM_NS_NP,
-            1 => SYSCTRL_RULE_A::ENUM_NS_P,
-            2 => SYSCTRL_RULE_A::ENUM_S_NP,
-            3 => SYSCTRL_RULE_A::ENUM_S_P,
+            0 => SysctrlRule::EnumNsNp,
+            1 => SysctrlRule::EnumNsP,
+            2 => SysctrlRule::EnumSNp,
+            3 => SysctrlRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
-    #[inline(always)]
-    pub fn is_enum_ns_np(&self) -> bool {
-        **self == SYSCTRL_RULE_A::ENUM_NS_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
-    #[inline(always)]
-    pub fn is_enum_ns_p(&self) -> bool {
-        **self == SYSCTRL_RULE_A::ENUM_NS_P
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
-    #[inline(always)]
-    pub fn is_enum_s_np(&self) -> bool {
-        **self == SYSCTRL_RULE_A::ENUM_S_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
-    #[inline(always)]
-    pub fn is_enum_s_p(&self) -> bool {
-        **self == SYSCTRL_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for SYSCTRL_RULE_R {
-    type Target = crate::FieldReader<u8, SYSCTRL_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SYSCTRL_RULE` writer - System Controller"]
-pub struct SYSCTRL_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SYSCTRL_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SYSCTRL_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(SYSCTRL_RULE_A::ENUM_NS_NP)
+    pub fn is_enum_ns_np(&self) -> bool {
+        *self == SysctrlRule::EnumNsNp
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(SYSCTRL_RULE_A::ENUM_NS_P)
+    pub fn is_enum_ns_p(&self) -> bool {
+        *self == SysctrlRule::EnumNsP
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(SYSCTRL_RULE_A::ENUM_S_NP)
+    pub fn is_enum_s_np(&self) -> bool {
+        *self == SysctrlRule::EnumSNp
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(SYSCTRL_RULE_A::ENUM_S_P)
+    pub fn is_enum_s_p(&self) -> bool {
+        *self == SysctrlRule::EnumSP
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `SYSCTRL_RULE` writer - System Controller"]
+pub type SysctrlRuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, SysctrlRule, crate::Safe>;
+impl<'a, REG> SysctrlRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 12)) | ((value as u32 & 0x03) << 12);
-        self.w
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SysctrlRule::EnumNsNp)
+    }
+    #[doc = "Non-secure and Privilege access allowed."]
+    #[inline(always)]
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SysctrlRule::EnumNsP)
+    }
+    #[doc = "Secure and Non-priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(SysctrlRule::EnumSNp)
+    }
+    #[doc = "Secure and Priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(SysctrlRule::EnumSP)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Power Management Controller"]
     #[inline(always)]
-    pub fn pmc_rule(&self) -> PMC_RULE_R {
-        PMC_RULE_R::new((self.bits & 0x03) as u8)
+    pub fn pmc_rule(&self) -> PmcRuleR {
+        PmcRuleR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 12:13 - System Controller"]
     #[inline(always)]
-    pub fn sysctrl_rule(&self) -> SYSCTRL_RULE_R {
-        SYSCTRL_RULE_R::new(((self.bits >> 12) & 0x03) as u8)
+    pub fn sysctrl_rule(&self) -> SysctrlRuleR {
+        SysctrlRuleR::new(((self.bits >> 12) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Power Management Controller"]
     #[inline(always)]
-    pub fn pmc_rule(&mut self) -> PMC_RULE_W {
-        PMC_RULE_W { w: self }
+    pub fn pmc_rule(&mut self) -> PmcRuleW<SecCtrlApbBridge1MemCtrl0Spec> {
+        PmcRuleW::new(self, 0)
     }
     #[doc = "Bits 12:13 - System Controller"]
     #[inline(always)]
-    pub fn sysctrl_rule(&mut self) -> SYSCTRL_RULE_W {
-        SYSCTRL_RULE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn sysctrl_rule(&mut self) -> SysctrlRuleW<SecCtrlApbBridge1MemCtrl0Spec> {
+        SysctrlRuleW::new(self, 12)
     }
 }
-#[doc = "Security access rules for APB Bridge 1 peripherals. Each APB bridge sector is 4 Kbytes. There are 32 APB Bridge 1 sectors in total.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_ctrl_apb_bridge1_mem_ctrl0](index.html) module"]
-pub struct SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC;
-impl crate::RegisterSpec for SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC {
+#[doc = "Security access rules for APB Bridge 1 peripherals. Each APB bridge sector is 4 Kbytes. There are 32 APB Bridge 1 sectors in total.\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_ctrl_apb_bridge1_mem_ctrl0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_ctrl_apb_bridge1_mem_ctrl0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecCtrlApbBridge1MemCtrl0Spec;
+impl crate::RegisterSpec for SecCtrlApbBridge1MemCtrl0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_ctrl_apb_bridge1_mem_ctrl0::R](R) reader structure"]
-impl crate::Readable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_ctrl_apb_bridge1_mem_ctrl0::W](W) writer structure"]
-impl crate::Writable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_ctrl_apb_bridge1_mem_ctrl0::R`](R) reader structure"]
+impl crate::Readable for SecCtrlApbBridge1MemCtrl0Spec {}
+#[doc = "`write(|w| ..)` method takes [`sec_ctrl_apb_bridge1_mem_ctrl0::W`](W) writer structure"]
+impl crate::Writable for SecCtrlApbBridge1MemCtrl0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_CTRL_APB_BRIDGE1_MEM_CTRL0 to value 0"]
-impl crate::Resettable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecCtrlApbBridge1MemCtrl0Spec {
+    const RESET_VALUE: u32 = 0;
 }

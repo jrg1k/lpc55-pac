@@ -1,1194 +1,781 @@
 #[doc = "Register `SEC_VIO_INFO_VALID` reader"]
-pub struct R(crate::R<SEC_VIO_INFO_VALID_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_VIO_INFO_VALID_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_VIO_INFO_VALID_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_VIO_INFO_VALID_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecVioInfoValidSpec>;
 #[doc = "Register `SEC_VIO_INFO_VALID` writer"]
-pub struct W(crate::W<SEC_VIO_INFO_VALID_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_VIO_INFO_VALID_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_VIO_INFO_VALID_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_VIO_INFO_VALID_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecVioInfoValidSpec>;
 #[doc = "violation information valid flag for AHB port 0. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid0 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID0_A> for bool {
+impl From<VioInfoValid0> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID0_A) -> Self {
+    fn from(variant: VioInfoValid0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID0` reader - violation information valid flag for AHB port 0. Write 1 to clear."]
-pub struct VIO_INFO_VALID0_R(crate::FieldReader<bool, VIO_INFO_VALID0_A>);
-impl VIO_INFO_VALID0_R {
+pub type VioInfoValid0R = crate::BitReader<VioInfoValid0>;
+impl VioInfoValid0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID0_A {
+    pub const fn variant(&self) -> VioInfoValid0 {
         match self.bits {
-            false => VIO_INFO_VALID0_A::NOT_VALID,
-            true => VIO_INFO_VALID0_A::VALID,
+            false => VioInfoValid0::NotValid,
+            true => VioInfoValid0::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID0_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID0_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID0_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID0` writer - violation information valid flag for AHB port 0. Write 1 to clear."]
-pub struct VIO_INFO_VALID0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID0_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid0::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID0_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid0::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID0` writer - violation information valid flag for AHB port 0. Write 1 to clear."]
+pub type VioInfoValid0W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid0>;
+impl<'a, REG> VioInfoValid0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid0::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid0::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 1. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid1 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID1_A> for bool {
+impl From<VioInfoValid1> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID1_A) -> Self {
+    fn from(variant: VioInfoValid1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID1` reader - violation information valid flag for AHB port 1. Write 1 to clear."]
-pub struct VIO_INFO_VALID1_R(crate::FieldReader<bool, VIO_INFO_VALID1_A>);
-impl VIO_INFO_VALID1_R {
+pub type VioInfoValid1R = crate::BitReader<VioInfoValid1>;
+impl VioInfoValid1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID1_A {
+    pub const fn variant(&self) -> VioInfoValid1 {
         match self.bits {
-            false => VIO_INFO_VALID1_A::NOT_VALID,
-            true => VIO_INFO_VALID1_A::VALID,
+            false => VioInfoValid1::NotValid,
+            true => VioInfoValid1::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID1_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID1_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID1_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID1` writer - violation information valid flag for AHB port 1. Write 1 to clear."]
-pub struct VIO_INFO_VALID1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID1_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid1::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID1_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid1::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID1` writer - violation information valid flag for AHB port 1. Write 1 to clear."]
+pub type VioInfoValid1W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid1>;
+impl<'a, REG> VioInfoValid1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid1::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid1::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 2. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid2 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID2_A> for bool {
+impl From<VioInfoValid2> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID2_A) -> Self {
+    fn from(variant: VioInfoValid2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID2` reader - violation information valid flag for AHB port 2. Write 1 to clear."]
-pub struct VIO_INFO_VALID2_R(crate::FieldReader<bool, VIO_INFO_VALID2_A>);
-impl VIO_INFO_VALID2_R {
+pub type VioInfoValid2R = crate::BitReader<VioInfoValid2>;
+impl VioInfoValid2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID2_A {
+    pub const fn variant(&self) -> VioInfoValid2 {
         match self.bits {
-            false => VIO_INFO_VALID2_A::NOT_VALID,
-            true => VIO_INFO_VALID2_A::VALID,
+            false => VioInfoValid2::NotValid,
+            true => VioInfoValid2::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID2_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID2_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID2_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID2` writer - violation information valid flag for AHB port 2. Write 1 to clear."]
-pub struct VIO_INFO_VALID2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID2_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid2::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID2_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid2::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID2` writer - violation information valid flag for AHB port 2. Write 1 to clear."]
+pub type VioInfoValid2W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid2>;
+impl<'a, REG> VioInfoValid2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid2::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid2::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 3. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid3 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID3_A> for bool {
+impl From<VioInfoValid3> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID3_A) -> Self {
+    fn from(variant: VioInfoValid3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID3` reader - violation information valid flag for AHB port 3. Write 1 to clear."]
-pub struct VIO_INFO_VALID3_R(crate::FieldReader<bool, VIO_INFO_VALID3_A>);
-impl VIO_INFO_VALID3_R {
+pub type VioInfoValid3R = crate::BitReader<VioInfoValid3>;
+impl VioInfoValid3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID3_A {
+    pub const fn variant(&self) -> VioInfoValid3 {
         match self.bits {
-            false => VIO_INFO_VALID3_A::NOT_VALID,
-            true => VIO_INFO_VALID3_A::VALID,
+            false => VioInfoValid3::NotValid,
+            true => VioInfoValid3::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID3_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID3_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID3_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID3` writer - violation information valid flag for AHB port 3. Write 1 to clear."]
-pub struct VIO_INFO_VALID3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID3_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid3::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID3_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid3::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID3` writer - violation information valid flag for AHB port 3. Write 1 to clear."]
+pub type VioInfoValid3W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid3>;
+impl<'a, REG> VioInfoValid3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid3::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid3::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 4. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID4_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid4 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID4_A> for bool {
+impl From<VioInfoValid4> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID4_A) -> Self {
+    fn from(variant: VioInfoValid4) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID4` reader - violation information valid flag for AHB port 4. Write 1 to clear."]
-pub struct VIO_INFO_VALID4_R(crate::FieldReader<bool, VIO_INFO_VALID4_A>);
-impl VIO_INFO_VALID4_R {
+pub type VioInfoValid4R = crate::BitReader<VioInfoValid4>;
+impl VioInfoValid4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID4_A {
+    pub const fn variant(&self) -> VioInfoValid4 {
         match self.bits {
-            false => VIO_INFO_VALID4_A::NOT_VALID,
-            true => VIO_INFO_VALID4_A::VALID,
+            false => VioInfoValid4::NotValid,
+            true => VioInfoValid4::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID4_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID4_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID4_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID4` writer - violation information valid flag for AHB port 4. Write 1 to clear."]
-pub struct VIO_INFO_VALID4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID4_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID4_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid4::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID4_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid4::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID4` writer - violation information valid flag for AHB port 4. Write 1 to clear."]
+pub type VioInfoValid4W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid4>;
+impl<'a, REG> VioInfoValid4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid4::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid4::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 5. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID5_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid5 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID5_A> for bool {
+impl From<VioInfoValid5> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID5_A) -> Self {
+    fn from(variant: VioInfoValid5) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID5` reader - violation information valid flag for AHB port 5. Write 1 to clear."]
-pub struct VIO_INFO_VALID5_R(crate::FieldReader<bool, VIO_INFO_VALID5_A>);
-impl VIO_INFO_VALID5_R {
+pub type VioInfoValid5R = crate::BitReader<VioInfoValid5>;
+impl VioInfoValid5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID5_A {
+    pub const fn variant(&self) -> VioInfoValid5 {
         match self.bits {
-            false => VIO_INFO_VALID5_A::NOT_VALID,
-            true => VIO_INFO_VALID5_A::VALID,
+            false => VioInfoValid5::NotValid,
+            true => VioInfoValid5::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID5_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID5_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID5_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID5` writer - violation information valid flag for AHB port 5. Write 1 to clear."]
-pub struct VIO_INFO_VALID5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID5_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID5_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid5::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID5_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid5::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID5` writer - violation information valid flag for AHB port 5. Write 1 to clear."]
+pub type VioInfoValid5W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid5>;
+impl<'a, REG> VioInfoValid5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid5::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid5::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 6. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID6_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid6 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID6_A> for bool {
+impl From<VioInfoValid6> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID6_A) -> Self {
+    fn from(variant: VioInfoValid6) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID6` reader - violation information valid flag for AHB port 6. Write 1 to clear."]
-pub struct VIO_INFO_VALID6_R(crate::FieldReader<bool, VIO_INFO_VALID6_A>);
-impl VIO_INFO_VALID6_R {
+pub type VioInfoValid6R = crate::BitReader<VioInfoValid6>;
+impl VioInfoValid6R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID6_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID6_A {
+    pub const fn variant(&self) -> VioInfoValid6 {
         match self.bits {
-            false => VIO_INFO_VALID6_A::NOT_VALID,
-            true => VIO_INFO_VALID6_A::VALID,
+            false => VioInfoValid6::NotValid,
+            true => VioInfoValid6::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID6_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID6_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID6_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID6_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID6` writer - violation information valid flag for AHB port 6. Write 1 to clear."]
-pub struct VIO_INFO_VALID6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID6_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID6_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID6_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid6::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID6_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid6::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID6` writer - violation information valid flag for AHB port 6. Write 1 to clear."]
+pub type VioInfoValid6W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid6>;
+impl<'a, REG> VioInfoValid6W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid6::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid6::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 7. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID7_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid7 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID7_A> for bool {
+impl From<VioInfoValid7> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID7_A) -> Self {
+    fn from(variant: VioInfoValid7) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID7` reader - violation information valid flag for AHB port 7. Write 1 to clear."]
-pub struct VIO_INFO_VALID7_R(crate::FieldReader<bool, VIO_INFO_VALID7_A>);
-impl VIO_INFO_VALID7_R {
+pub type VioInfoValid7R = crate::BitReader<VioInfoValid7>;
+impl VioInfoValid7R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID7_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID7_A {
+    pub const fn variant(&self) -> VioInfoValid7 {
         match self.bits {
-            false => VIO_INFO_VALID7_A::NOT_VALID,
-            true => VIO_INFO_VALID7_A::VALID,
+            false => VioInfoValid7::NotValid,
+            true => VioInfoValid7::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID7_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID7_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID7_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID7_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID7` writer - violation information valid flag for AHB port 7. Write 1 to clear."]
-pub struct VIO_INFO_VALID7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID7_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID7_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID7_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid7::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID7_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid7::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID7` writer - violation information valid flag for AHB port 7. Write 1 to clear."]
+pub type VioInfoValid7W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid7>;
+impl<'a, REG> VioInfoValid7W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid7::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid7::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 8. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID8_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid8 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID8_A> for bool {
+impl From<VioInfoValid8> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID8_A) -> Self {
+    fn from(variant: VioInfoValid8) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID8` reader - violation information valid flag for AHB port 8. Write 1 to clear."]
-pub struct VIO_INFO_VALID8_R(crate::FieldReader<bool, VIO_INFO_VALID8_A>);
-impl VIO_INFO_VALID8_R {
+pub type VioInfoValid8R = crate::BitReader<VioInfoValid8>;
+impl VioInfoValid8R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID8_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID8_A {
+    pub const fn variant(&self) -> VioInfoValid8 {
         match self.bits {
-            false => VIO_INFO_VALID8_A::NOT_VALID,
-            true => VIO_INFO_VALID8_A::VALID,
+            false => VioInfoValid8::NotValid,
+            true => VioInfoValid8::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID8_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID8_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID8_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID8_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID8` writer - violation information valid flag for AHB port 8. Write 1 to clear."]
-pub struct VIO_INFO_VALID8_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID8_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID8_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID8_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid8::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID8_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid8::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID8` writer - violation information valid flag for AHB port 8. Write 1 to clear."]
+pub type VioInfoValid8W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid8>;
+impl<'a, REG> VioInfoValid8W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid8::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid8::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 9. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID9_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid9 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID9_A> for bool {
+impl From<VioInfoValid9> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID9_A) -> Self {
+    fn from(variant: VioInfoValid9) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID9` reader - violation information valid flag for AHB port 9. Write 1 to clear."]
-pub struct VIO_INFO_VALID9_R(crate::FieldReader<bool, VIO_INFO_VALID9_A>);
-impl VIO_INFO_VALID9_R {
+pub type VioInfoValid9R = crate::BitReader<VioInfoValid9>;
+impl VioInfoValid9R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID9_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID9_A {
+    pub const fn variant(&self) -> VioInfoValid9 {
         match self.bits {
-            false => VIO_INFO_VALID9_A::NOT_VALID,
-            true => VIO_INFO_VALID9_A::VALID,
+            false => VioInfoValid9::NotValid,
+            true => VioInfoValid9::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID9_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID9_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID9_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID9_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID9` writer - violation information valid flag for AHB port 9. Write 1 to clear."]
-pub struct VIO_INFO_VALID9_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID9_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID9_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID9_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid9::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID9_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid9::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID9` writer - violation information valid flag for AHB port 9. Write 1 to clear."]
+pub type VioInfoValid9W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid9>;
+impl<'a, REG> VioInfoValid9W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid9::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid9::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 10. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID10_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid10 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID10_A> for bool {
+impl From<VioInfoValid10> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID10_A) -> Self {
+    fn from(variant: VioInfoValid10) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID10` reader - violation information valid flag for AHB port 10. Write 1 to clear."]
-pub struct VIO_INFO_VALID10_R(crate::FieldReader<bool, VIO_INFO_VALID10_A>);
-impl VIO_INFO_VALID10_R {
+pub type VioInfoValid10R = crate::BitReader<VioInfoValid10>;
+impl VioInfoValid10R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID10_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID10_A {
+    pub const fn variant(&self) -> VioInfoValid10 {
         match self.bits {
-            false => VIO_INFO_VALID10_A::NOT_VALID,
-            true => VIO_INFO_VALID10_A::VALID,
+            false => VioInfoValid10::NotValid,
+            true => VioInfoValid10::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID10_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID10_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID10_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID10_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID10` writer - violation information valid flag for AHB port 10. Write 1 to clear."]
-pub struct VIO_INFO_VALID10_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID10_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID10_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID10_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid10::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID10_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid10::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID10` writer - violation information valid flag for AHB port 10. Write 1 to clear."]
+pub type VioInfoValid10W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid10>;
+impl<'a, REG> VioInfoValid10W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid10::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid10::Valid)
     }
 }
 #[doc = "violation information valid flag for AHB port 11. Write 1 to clear.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VIO_INFO_VALID11_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum VioInfoValid11 {
     #[doc = "0: Not valid."]
-    NOT_VALID = 0,
+    NotValid = 0,
     #[doc = "1: Valid (violation occurred)."]
-    VALID = 1,
+    Valid = 1,
 }
-impl From<VIO_INFO_VALID11_A> for bool {
+impl From<VioInfoValid11> for bool {
     #[inline(always)]
-    fn from(variant: VIO_INFO_VALID11_A) -> Self {
+    fn from(variant: VioInfoValid11) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VIO_INFO_VALID11` reader - violation information valid flag for AHB port 11. Write 1 to clear."]
-pub struct VIO_INFO_VALID11_R(crate::FieldReader<bool, VIO_INFO_VALID11_A>);
-impl VIO_INFO_VALID11_R {
+pub type VioInfoValid11R = crate::BitReader<VioInfoValid11>;
+impl VioInfoValid11R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VIO_INFO_VALID11_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VIO_INFO_VALID11_A {
+    pub const fn variant(&self) -> VioInfoValid11 {
         match self.bits {
-            false => VIO_INFO_VALID11_A::NOT_VALID,
-            true => VIO_INFO_VALID11_A::VALID,
+            false => VioInfoValid11::NotValid,
+            true => VioInfoValid11::Valid,
         }
-    }
-    #[doc = "Checks if the value of the field is `NOT_VALID`"]
-    #[inline(always)]
-    pub fn is_not_valid(&self) -> bool {
-        **self == VIO_INFO_VALID11_A::NOT_VALID
-    }
-    #[doc = "Checks if the value of the field is `VALID`"]
-    #[inline(always)]
-    pub fn is_valid(&self) -> bool {
-        **self == VIO_INFO_VALID11_A::VALID
-    }
-}
-impl core::ops::Deref for VIO_INFO_VALID11_R {
-    type Target = crate::FieldReader<bool, VIO_INFO_VALID11_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VIO_INFO_VALID11` writer - violation information valid flag for AHB port 11. Write 1 to clear."]
-pub struct VIO_INFO_VALID11_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VIO_INFO_VALID11_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VIO_INFO_VALID11_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Not valid."]
     #[inline(always)]
-    pub fn not_valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID11_A::NOT_VALID)
+    pub fn is_not_valid(&self) -> bool {
+        *self == VioInfoValid11::NotValid
     }
     #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn valid(self) -> &'a mut W {
-        self.variant(VIO_INFO_VALID11_A::VALID)
+    pub fn is_valid(&self) -> bool {
+        *self == VioInfoValid11::Valid
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VIO_INFO_VALID11` writer - violation information valid flag for AHB port 11. Write 1 to clear."]
+pub type VioInfoValid11W<'a, REG> = crate::BitWriter<'a, REG, VioInfoValid11>;
+impl<'a, REG> VioInfoValid11W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Not valid."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn not_valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid11::NotValid)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Valid (violation occurred)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn valid(self) -> &'a mut crate::W<REG> {
+        self.variant(VioInfoValid11::Valid)
     }
 }
 impl R {
     #[doc = "Bit 0 - violation information valid flag for AHB port 0. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid0(&self) -> VIO_INFO_VALID0_R {
-        VIO_INFO_VALID0_R::new((self.bits & 0x01) != 0)
+    pub fn vio_info_valid0(&self) -> VioInfoValid0R {
+        VioInfoValid0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - violation information valid flag for AHB port 1. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid1(&self) -> VIO_INFO_VALID1_R {
-        VIO_INFO_VALID1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn vio_info_valid1(&self) -> VioInfoValid1R {
+        VioInfoValid1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - violation information valid flag for AHB port 2. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid2(&self) -> VIO_INFO_VALID2_R {
-        VIO_INFO_VALID2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn vio_info_valid2(&self) -> VioInfoValid2R {
+        VioInfoValid2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - violation information valid flag for AHB port 3. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid3(&self) -> VIO_INFO_VALID3_R {
-        VIO_INFO_VALID3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn vio_info_valid3(&self) -> VioInfoValid3R {
+        VioInfoValid3R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - violation information valid flag for AHB port 4. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid4(&self) -> VIO_INFO_VALID4_R {
-        VIO_INFO_VALID4_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn vio_info_valid4(&self) -> VioInfoValid4R {
+        VioInfoValid4R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - violation information valid flag for AHB port 5. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid5(&self) -> VIO_INFO_VALID5_R {
-        VIO_INFO_VALID5_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn vio_info_valid5(&self) -> VioInfoValid5R {
+        VioInfoValid5R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - violation information valid flag for AHB port 6. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid6(&self) -> VIO_INFO_VALID6_R {
-        VIO_INFO_VALID6_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn vio_info_valid6(&self) -> VioInfoValid6R {
+        VioInfoValid6R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - violation information valid flag for AHB port 7. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid7(&self) -> VIO_INFO_VALID7_R {
-        VIO_INFO_VALID7_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn vio_info_valid7(&self) -> VioInfoValid7R {
+        VioInfoValid7R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - violation information valid flag for AHB port 8. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid8(&self) -> VIO_INFO_VALID8_R {
-        VIO_INFO_VALID8_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn vio_info_valid8(&self) -> VioInfoValid8R {
+        VioInfoValid8R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - violation information valid flag for AHB port 9. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid9(&self) -> VIO_INFO_VALID9_R {
-        VIO_INFO_VALID9_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn vio_info_valid9(&self) -> VioInfoValid9R {
+        VioInfoValid9R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - violation information valid flag for AHB port 10. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid10(&self) -> VIO_INFO_VALID10_R {
-        VIO_INFO_VALID10_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn vio_info_valid10(&self) -> VioInfoValid10R {
+        VioInfoValid10R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - violation information valid flag for AHB port 11. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid11(&self) -> VIO_INFO_VALID11_R {
-        VIO_INFO_VALID11_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn vio_info_valid11(&self) -> VioInfoValid11R {
+        VioInfoValid11R::new(((self.bits >> 11) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - violation information valid flag for AHB port 0. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid0(&mut self) -> VIO_INFO_VALID0_W {
-        VIO_INFO_VALID0_W { w: self }
+    pub fn vio_info_valid0(&mut self) -> VioInfoValid0W<SecVioInfoValidSpec> {
+        VioInfoValid0W::new(self, 0)
     }
     #[doc = "Bit 1 - violation information valid flag for AHB port 1. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid1(&mut self) -> VIO_INFO_VALID1_W {
-        VIO_INFO_VALID1_W { w: self }
+    pub fn vio_info_valid1(&mut self) -> VioInfoValid1W<SecVioInfoValidSpec> {
+        VioInfoValid1W::new(self, 1)
     }
     #[doc = "Bit 2 - violation information valid flag for AHB port 2. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid2(&mut self) -> VIO_INFO_VALID2_W {
-        VIO_INFO_VALID2_W { w: self }
+    pub fn vio_info_valid2(&mut self) -> VioInfoValid2W<SecVioInfoValidSpec> {
+        VioInfoValid2W::new(self, 2)
     }
     #[doc = "Bit 3 - violation information valid flag for AHB port 3. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid3(&mut self) -> VIO_INFO_VALID3_W {
-        VIO_INFO_VALID3_W { w: self }
+    pub fn vio_info_valid3(&mut self) -> VioInfoValid3W<SecVioInfoValidSpec> {
+        VioInfoValid3W::new(self, 3)
     }
     #[doc = "Bit 4 - violation information valid flag for AHB port 4. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid4(&mut self) -> VIO_INFO_VALID4_W {
-        VIO_INFO_VALID4_W { w: self }
+    pub fn vio_info_valid4(&mut self) -> VioInfoValid4W<SecVioInfoValidSpec> {
+        VioInfoValid4W::new(self, 4)
     }
     #[doc = "Bit 5 - violation information valid flag for AHB port 5. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid5(&mut self) -> VIO_INFO_VALID5_W {
-        VIO_INFO_VALID5_W { w: self }
+    pub fn vio_info_valid5(&mut self) -> VioInfoValid5W<SecVioInfoValidSpec> {
+        VioInfoValid5W::new(self, 5)
     }
     #[doc = "Bit 6 - violation information valid flag for AHB port 6. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid6(&mut self) -> VIO_INFO_VALID6_W {
-        VIO_INFO_VALID6_W { w: self }
+    pub fn vio_info_valid6(&mut self) -> VioInfoValid6W<SecVioInfoValidSpec> {
+        VioInfoValid6W::new(self, 6)
     }
     #[doc = "Bit 7 - violation information valid flag for AHB port 7. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid7(&mut self) -> VIO_INFO_VALID7_W {
-        VIO_INFO_VALID7_W { w: self }
+    pub fn vio_info_valid7(&mut self) -> VioInfoValid7W<SecVioInfoValidSpec> {
+        VioInfoValid7W::new(self, 7)
     }
     #[doc = "Bit 8 - violation information valid flag for AHB port 8. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid8(&mut self) -> VIO_INFO_VALID8_W {
-        VIO_INFO_VALID8_W { w: self }
+    pub fn vio_info_valid8(&mut self) -> VioInfoValid8W<SecVioInfoValidSpec> {
+        VioInfoValid8W::new(self, 8)
     }
     #[doc = "Bit 9 - violation information valid flag for AHB port 9. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid9(&mut self) -> VIO_INFO_VALID9_W {
-        VIO_INFO_VALID9_W { w: self }
+    pub fn vio_info_valid9(&mut self) -> VioInfoValid9W<SecVioInfoValidSpec> {
+        VioInfoValid9W::new(self, 9)
     }
     #[doc = "Bit 10 - violation information valid flag for AHB port 10. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid10(&mut self) -> VIO_INFO_VALID10_W {
-        VIO_INFO_VALID10_W { w: self }
+    pub fn vio_info_valid10(&mut self) -> VioInfoValid10W<SecVioInfoValidSpec> {
+        VioInfoValid10W::new(self, 10)
     }
     #[doc = "Bit 11 - violation information valid flag for AHB port 11. Write 1 to clear."]
     #[inline(always)]
-    pub fn vio_info_valid11(&mut self) -> VIO_INFO_VALID11_W {
-        VIO_INFO_VALID11_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn vio_info_valid11(&mut self) -> VioInfoValid11W<SecVioInfoValidSpec> {
+        VioInfoValid11W::new(self, 11)
     }
 }
-#[doc = "security violation address/information registers valid flags\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_vio_info_valid](index.html) module"]
-pub struct SEC_VIO_INFO_VALID_SPEC;
-impl crate::RegisterSpec for SEC_VIO_INFO_VALID_SPEC {
+#[doc = "security violation address/information registers valid flags\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_vio_info_valid::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_vio_info_valid::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecVioInfoValidSpec;
+impl crate::RegisterSpec for SecVioInfoValidSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_vio_info_valid::R](R) reader structure"]
-impl crate::Readable for SEC_VIO_INFO_VALID_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_vio_info_valid::W](W) writer structure"]
-impl crate::Writable for SEC_VIO_INFO_VALID_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_vio_info_valid::R`](R) reader structure"]
+impl crate::Readable for SecVioInfoValidSpec {}
+#[doc = "`write(|w| ..)` method takes [`sec_vio_info_valid::W`](W) writer structure"]
+impl crate::Writable for SecVioInfoValidSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_VIO_INFO_VALID to value 0"]
-impl crate::Resettable for SEC_VIO_INFO_VALID_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecVioInfoValidSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,1090 +1,683 @@
 #[doc = "Register `DCFG_CC_SOCU_PIN` reader"]
-pub struct R(crate::R<DCFG_CC_SOCU_PIN_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<DCFG_CC_SOCU_PIN_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<DCFG_CC_SOCU_PIN_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<DCFG_CC_SOCU_PIN_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<DcfgCcSocuPinSpec>;
 #[doc = "Register `DCFG_CC_SOCU_PIN` writer"]
-pub struct W(crate::W<DCFG_CC_SOCU_PIN_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<DCFG_CC_SOCU_PIN_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<DCFG_CC_SOCU_PIN_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<DCFG_CC_SOCU_PIN_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<DcfgCcSocuPinSpec>;
 #[doc = "Non Secure non-invasive debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum NIDEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Niden {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<NIDEN_A> for bool {
+impl From<Niden> for bool {
     #[inline(always)]
-    fn from(variant: NIDEN_A) -> Self {
+    fn from(variant: Niden) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `NIDEN` reader - Non Secure non-invasive debug enable"]
-pub struct NIDEN_R(crate::FieldReader<bool, NIDEN_A>);
-impl NIDEN_R {
+pub type NidenR = crate::BitReader<Niden>;
+impl NidenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NIDEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> NIDEN_A {
+    pub const fn variant(&self) -> Niden {
         match self.bits {
-            false => NIDEN_A::VALUE_0,
-            true => NIDEN_A::VALUE_1,
+            false => Niden::Enable,
+            true => Niden::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == NIDEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == NIDEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for NIDEN_R {
-    type Target = crate::FieldReader<bool, NIDEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `NIDEN` writer - Non Secure non-invasive debug enable"]
-pub struct NIDEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NIDEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: NIDEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(NIDEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Niden::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(NIDEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Niden::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `NIDEN` writer - Non Secure non-invasive debug enable"]
+pub type NidenW<'a, REG> = crate::BitWriter<'a, REG, Niden>;
+impl<'a, REG> NidenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Niden::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Niden::Disable)
     }
 }
 #[doc = "Non Secure debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DBGEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Dbgen {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<DBGEN_A> for bool {
+impl From<Dbgen> for bool {
     #[inline(always)]
-    fn from(variant: DBGEN_A) -> Self {
+    fn from(variant: Dbgen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `DBGEN` reader - Non Secure debug enable"]
-pub struct DBGEN_R(crate::FieldReader<bool, DBGEN_A>);
-impl DBGEN_R {
+pub type DbgenR = crate::BitReader<Dbgen>;
+impl DbgenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DBGEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DBGEN_A {
+    pub const fn variant(&self) -> Dbgen {
         match self.bits {
-            false => DBGEN_A::VALUE_0,
-            true => DBGEN_A::VALUE_1,
+            false => Dbgen::Enable,
+            true => Dbgen::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == DBGEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == DBGEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for DBGEN_R {
-    type Target = crate::FieldReader<bool, DBGEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DBGEN` writer - Non Secure debug enable"]
-pub struct DBGEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DBGEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DBGEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(DBGEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Dbgen::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(DBGEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Dbgen::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `DBGEN` writer - Non Secure debug enable"]
+pub type DbgenW<'a, REG> = crate::BitWriter<'a, REG, Dbgen>;
+impl<'a, REG> DbgenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Dbgen::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Dbgen::Disable)
     }
 }
 #[doc = "Secure non-invasive debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SPNIDEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Spniden {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<SPNIDEN_A> for bool {
+impl From<Spniden> for bool {
     #[inline(always)]
-    fn from(variant: SPNIDEN_A) -> Self {
+    fn from(variant: Spniden) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SPNIDEN` reader - Secure non-invasive debug enable"]
-pub struct SPNIDEN_R(crate::FieldReader<bool, SPNIDEN_A>);
-impl SPNIDEN_R {
+pub type SpnidenR = crate::BitReader<Spniden>;
+impl SpnidenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SPNIDEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SPNIDEN_A {
+    pub const fn variant(&self) -> Spniden {
         match self.bits {
-            false => SPNIDEN_A::VALUE_0,
-            true => SPNIDEN_A::VALUE_1,
+            false => Spniden::Enable,
+            true => Spniden::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == SPNIDEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == SPNIDEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for SPNIDEN_R {
-    type Target = crate::FieldReader<bool, SPNIDEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SPNIDEN` writer - Secure non-invasive debug enable"]
-pub struct SPNIDEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SPNIDEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SPNIDEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(SPNIDEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Spniden::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(SPNIDEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Spniden::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SPNIDEN` writer - Secure non-invasive debug enable"]
+pub type SpnidenW<'a, REG> = crate::BitWriter<'a, REG, Spniden>;
+impl<'a, REG> SpnidenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Spniden::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Spniden::Disable)
     }
 }
 #[doc = "Secure invasive debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SPIDEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Spiden {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<SPIDEN_A> for bool {
+impl From<Spiden> for bool {
     #[inline(always)]
-    fn from(variant: SPIDEN_A) -> Self {
+    fn from(variant: Spiden) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SPIDEN` reader - Secure invasive debug enable"]
-pub struct SPIDEN_R(crate::FieldReader<bool, SPIDEN_A>);
-impl SPIDEN_R {
+pub type SpidenR = crate::BitReader<Spiden>;
+impl SpidenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SPIDEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SPIDEN_A {
+    pub const fn variant(&self) -> Spiden {
         match self.bits {
-            false => SPIDEN_A::VALUE_0,
-            true => SPIDEN_A::VALUE_1,
+            false => Spiden::Enable,
+            true => Spiden::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == SPIDEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == SPIDEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for SPIDEN_R {
-    type Target = crate::FieldReader<bool, SPIDEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SPIDEN` writer - Secure invasive debug enable"]
-pub struct SPIDEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SPIDEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SPIDEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(SPIDEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Spiden::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(SPIDEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Spiden::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SPIDEN` writer - Secure invasive debug enable"]
+pub type SpidenW<'a, REG> = crate::BitWriter<'a, REG, Spiden>;
+impl<'a, REG> SpidenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Spiden::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Spiden::Disable)
     }
 }
 #[doc = "JTAG TAP enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TAPEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Tapen {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<TAPEN_A> for bool {
+impl From<Tapen> for bool {
     #[inline(always)]
-    fn from(variant: TAPEN_A) -> Self {
+    fn from(variant: Tapen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TAPEN` reader - JTAG TAP enable"]
-pub struct TAPEN_R(crate::FieldReader<bool, TAPEN_A>);
-impl TAPEN_R {
+pub type TapenR = crate::BitReader<Tapen>;
+impl TapenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TAPEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TAPEN_A {
+    pub const fn variant(&self) -> Tapen {
         match self.bits {
-            false => TAPEN_A::VALUE_0,
-            true => TAPEN_A::VALUE_1,
+            false => Tapen::Enable,
+            true => Tapen::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == TAPEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == TAPEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for TAPEN_R {
-    type Target = crate::FieldReader<bool, TAPEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TAPEN` writer - JTAG TAP enable"]
-pub struct TAPEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TAPEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TAPEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(TAPEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Tapen::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(TAPEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Tapen::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TAPEN` writer - JTAG TAP enable"]
+pub type TapenW<'a, REG> = crate::BitWriter<'a, REG, Tapen>;
+impl<'a, REG> TapenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Tapen::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Tapen::Disable)
     }
 }
 #[doc = "CPU1 (Micro cortex M33) invasive debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CPU1_DBGEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cpu1Dbgen {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<CPU1_DBGEN_A> for bool {
+impl From<Cpu1Dbgen> for bool {
     #[inline(always)]
-    fn from(variant: CPU1_DBGEN_A) -> Self {
+    fn from(variant: Cpu1Dbgen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CPU1_DBGEN` reader - CPU1 (Micro cortex M33) invasive debug enable"]
-pub struct CPU1_DBGEN_R(crate::FieldReader<bool, CPU1_DBGEN_A>);
-impl CPU1_DBGEN_R {
+pub type Cpu1DbgenR = crate::BitReader<Cpu1Dbgen>;
+impl Cpu1DbgenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CPU1_DBGEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CPU1_DBGEN_A {
+    pub const fn variant(&self) -> Cpu1Dbgen {
         match self.bits {
-            false => CPU1_DBGEN_A::VALUE_0,
-            true => CPU1_DBGEN_A::VALUE_1,
+            false => Cpu1Dbgen::Enable,
+            true => Cpu1Dbgen::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == CPU1_DBGEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == CPU1_DBGEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for CPU1_DBGEN_R {
-    type Target = crate::FieldReader<bool, CPU1_DBGEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CPU1_DBGEN` writer - CPU1 (Micro cortex M33) invasive debug enable"]
-pub struct CPU1_DBGEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPU1_DBGEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CPU1_DBGEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(CPU1_DBGEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Cpu1Dbgen::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(CPU1_DBGEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Cpu1Dbgen::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CPU1_DBGEN` writer - CPU1 (Micro cortex M33) invasive debug enable"]
+pub type Cpu1DbgenW<'a, REG> = crate::BitWriter<'a, REG, Cpu1Dbgen>;
+impl<'a, REG> Cpu1DbgenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1Dbgen::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1Dbgen::Disable)
     }
 }
 #[doc = "ISP Boot Command enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ISP_CMD_EN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum IspCmdEn {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<ISP_CMD_EN_A> for bool {
+impl From<IspCmdEn> for bool {
     #[inline(always)]
-    fn from(variant: ISP_CMD_EN_A) -> Self {
+    fn from(variant: IspCmdEn) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ISP_CMD_EN` reader - ISP Boot Command enable"]
-pub struct ISP_CMD_EN_R(crate::FieldReader<bool, ISP_CMD_EN_A>);
-impl ISP_CMD_EN_R {
+pub type IspCmdEnR = crate::BitReader<IspCmdEn>;
+impl IspCmdEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ISP_CMD_EN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ISP_CMD_EN_A {
+    pub const fn variant(&self) -> IspCmdEn {
         match self.bits {
-            false => ISP_CMD_EN_A::VALUE_0,
-            true => ISP_CMD_EN_A::VALUE_1,
+            false => IspCmdEn::Enable,
+            true => IspCmdEn::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == ISP_CMD_EN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == ISP_CMD_EN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for ISP_CMD_EN_R {
-    type Target = crate::FieldReader<bool, ISP_CMD_EN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ISP_CMD_EN` writer - ISP Boot Command enable"]
-pub struct ISP_CMD_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ISP_CMD_EN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ISP_CMD_EN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(ISP_CMD_EN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == IspCmdEn::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(ISP_CMD_EN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == IspCmdEn::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ISP_CMD_EN` writer - ISP Boot Command enable"]
+pub type IspCmdEnW<'a, REG> = crate::BitWriter<'a, REG, IspCmdEn>;
+impl<'a, REG> IspCmdEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(IspCmdEn::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(IspCmdEn::Disable)
     }
 }
 #[doc = "FA Command enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FA_CMD_EN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FaCmdEn {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<FA_CMD_EN_A> for bool {
+impl From<FaCmdEn> for bool {
     #[inline(always)]
-    fn from(variant: FA_CMD_EN_A) -> Self {
+    fn from(variant: FaCmdEn) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FA_CMD_EN` reader - FA Command enable"]
-pub struct FA_CMD_EN_R(crate::FieldReader<bool, FA_CMD_EN_A>);
-impl FA_CMD_EN_R {
+pub type FaCmdEnR = crate::BitReader<FaCmdEn>;
+impl FaCmdEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FA_CMD_EN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FA_CMD_EN_A {
+    pub const fn variant(&self) -> FaCmdEn {
         match self.bits {
-            false => FA_CMD_EN_A::VALUE_0,
-            true => FA_CMD_EN_A::VALUE_1,
+            false => FaCmdEn::Enable,
+            true => FaCmdEn::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == FA_CMD_EN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == FA_CMD_EN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for FA_CMD_EN_R {
-    type Target = crate::FieldReader<bool, FA_CMD_EN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FA_CMD_EN` writer - FA Command enable"]
-pub struct FA_CMD_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FA_CMD_EN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FA_CMD_EN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(FA_CMD_EN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == FaCmdEn::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(FA_CMD_EN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == FaCmdEn::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FA_CMD_EN` writer - FA Command enable"]
+pub type FaCmdEnW<'a, REG> = crate::BitWriter<'a, REG, FaCmdEn>;
+impl<'a, REG> FaCmdEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(FaCmdEn::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(FaCmdEn::Disable)
     }
 }
 #[doc = "Flash Mass Erase Command enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ME_CMD_EN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum MeCmdEn {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<ME_CMD_EN_A> for bool {
+impl From<MeCmdEn> for bool {
     #[inline(always)]
-    fn from(variant: ME_CMD_EN_A) -> Self {
+    fn from(variant: MeCmdEn) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ME_CMD_EN` reader - Flash Mass Erase Command enable"]
-pub struct ME_CMD_EN_R(crate::FieldReader<bool, ME_CMD_EN_A>);
-impl ME_CMD_EN_R {
+pub type MeCmdEnR = crate::BitReader<MeCmdEn>;
+impl MeCmdEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ME_CMD_EN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ME_CMD_EN_A {
+    pub const fn variant(&self) -> MeCmdEn {
         match self.bits {
-            false => ME_CMD_EN_A::VALUE_0,
-            true => ME_CMD_EN_A::VALUE_1,
+            false => MeCmdEn::Enable,
+            true => MeCmdEn::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == ME_CMD_EN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == ME_CMD_EN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for ME_CMD_EN_R {
-    type Target = crate::FieldReader<bool, ME_CMD_EN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ME_CMD_EN` writer - Flash Mass Erase Command enable"]
-pub struct ME_CMD_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ME_CMD_EN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ME_CMD_EN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(ME_CMD_EN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == MeCmdEn::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(ME_CMD_EN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == MeCmdEn::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ME_CMD_EN` writer - Flash Mass Erase Command enable"]
+pub type MeCmdEnW<'a, REG> = crate::BitWriter<'a, REG, MeCmdEn>;
+impl<'a, REG> MeCmdEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(MeCmdEn::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(MeCmdEn::Disable)
     }
 }
 #[doc = "CPU1 (Micro cortex M33) non-invasive debug enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CPU1_NIDEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cpu1Niden {
     #[doc = "0: Use DAP to enable"]
-    VALUE_0 = 0,
+    Enable = 0,
     #[doc = "1: Fixed state"]
-    VALUE_1 = 1,
+    Disable = 1,
 }
-impl From<CPU1_NIDEN_A> for bool {
+impl From<Cpu1Niden> for bool {
     #[inline(always)]
-    fn from(variant: CPU1_NIDEN_A) -> Self {
+    fn from(variant: Cpu1Niden) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CPU1_NIDEN` reader - CPU1 (Micro cortex M33) non-invasive debug enable"]
-pub struct CPU1_NIDEN_R(crate::FieldReader<bool, CPU1_NIDEN_A>);
-impl CPU1_NIDEN_R {
+pub type Cpu1NidenR = crate::BitReader<Cpu1Niden>;
+impl Cpu1NidenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CPU1_NIDEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CPU1_NIDEN_A {
+    pub const fn variant(&self) -> Cpu1Niden {
         match self.bits {
-            false => CPU1_NIDEN_A::VALUE_0,
-            true => CPU1_NIDEN_A::VALUE_1,
+            false => Cpu1Niden::Enable,
+            true => Cpu1Niden::Disable,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE_0`"]
-    #[inline(always)]
-    pub fn is_value_0(&self) -> bool {
-        **self == CPU1_NIDEN_A::VALUE_0
-    }
-    #[doc = "Checks if the value of the field is `VALUE_1`"]
-    #[inline(always)]
-    pub fn is_value_1(&self) -> bool {
-        **self == CPU1_NIDEN_A::VALUE_1
-    }
-}
-impl core::ops::Deref for CPU1_NIDEN_R {
-    type Target = crate::FieldReader<bool, CPU1_NIDEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CPU1_NIDEN` writer - CPU1 (Micro cortex M33) non-invasive debug enable"]
-pub struct CPU1_NIDEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPU1_NIDEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CPU1_NIDEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn value_0(self) -> &'a mut W {
-        self.variant(CPU1_NIDEN_A::VALUE_0)
+    pub fn is_enable(&self) -> bool {
+        *self == Cpu1Niden::Enable
     }
     #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn value_1(self) -> &'a mut W {
-        self.variant(CPU1_NIDEN_A::VALUE_1)
+    pub fn is_disable(&self) -> bool {
+        *self == Cpu1Niden::Disable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CPU1_NIDEN` writer - CPU1 (Micro cortex M33) non-invasive debug enable"]
+pub type Cpu1NidenW<'a, REG> = crate::BitWriter<'a, REG, Cpu1Niden>;
+impl<'a, REG> Cpu1NidenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Use DAP to enable"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1Niden::Enable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Fixed state"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1Niden::Disable)
     }
 }
 #[doc = "Field `UUID_CHECK` reader - Enforce UUID match during Debug authentication."]
-pub struct UUID_CHECK_R(crate::FieldReader<bool, bool>);
-impl UUID_CHECK_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        UUID_CHECK_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for UUID_CHECK_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type UuidCheckR = crate::BitReader;
 #[doc = "Field `UUID_CHECK` writer - Enforce UUID match during Debug authentication."]
-pub struct UUID_CHECK_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UUID_CHECK_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
-        self.w
-    }
-}
+pub type UuidCheckW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `INVERSE_VALUE` reader - inverse value of bits \\[15:0\\]"]
-pub struct INVERSE_VALUE_R(crate::FieldReader<u16, u16>);
-impl INVERSE_VALUE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        INVERSE_VALUE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INVERSE_VALUE_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type InverseValueR = crate::FieldReader<u16>;
 #[doc = "Field `INVERSE_VALUE` writer - inverse value of bits \\[15:0\\]"]
-pub struct INVERSE_VALUE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INVERSE_VALUE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
-    }
-}
+pub type InverseValueW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bit 0 - Non Secure non-invasive debug enable"]
     #[inline(always)]
-    pub fn niden(&self) -> NIDEN_R {
-        NIDEN_R::new((self.bits & 0x01) != 0)
+    pub fn niden(&self) -> NidenR {
+        NidenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Non Secure debug enable"]
     #[inline(always)]
-    pub fn dbgen(&self) -> DBGEN_R {
-        DBGEN_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn dbgen(&self) -> DbgenR {
+        DbgenR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Secure non-invasive debug enable"]
     #[inline(always)]
-    pub fn spniden(&self) -> SPNIDEN_R {
-        SPNIDEN_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn spniden(&self) -> SpnidenR {
+        SpnidenR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Secure invasive debug enable"]
     #[inline(always)]
-    pub fn spiden(&self) -> SPIDEN_R {
-        SPIDEN_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn spiden(&self) -> SpidenR {
+        SpidenR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - JTAG TAP enable"]
     #[inline(always)]
-    pub fn tapen(&self) -> TAPEN_R {
-        TAPEN_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn tapen(&self) -> TapenR {
+        TapenR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - CPU1 (Micro cortex M33) invasive debug enable"]
     #[inline(always)]
-    pub fn cpu1_dbgen(&self) -> CPU1_DBGEN_R {
-        CPU1_DBGEN_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn cpu1_dbgen(&self) -> Cpu1DbgenR {
+        Cpu1DbgenR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - ISP Boot Command enable"]
     #[inline(always)]
-    pub fn isp_cmd_en(&self) -> ISP_CMD_EN_R {
-        ISP_CMD_EN_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn isp_cmd_en(&self) -> IspCmdEnR {
+        IspCmdEnR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - FA Command enable"]
     #[inline(always)]
-    pub fn fa_cmd_en(&self) -> FA_CMD_EN_R {
-        FA_CMD_EN_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn fa_cmd_en(&self) -> FaCmdEnR {
+        FaCmdEnR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Flash Mass Erase Command enable"]
     #[inline(always)]
-    pub fn me_cmd_en(&self) -> ME_CMD_EN_R {
-        ME_CMD_EN_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn me_cmd_en(&self) -> MeCmdEnR {
+        MeCmdEnR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - CPU1 (Micro cortex M33) non-invasive debug enable"]
     #[inline(always)]
-    pub fn cpu1_niden(&self) -> CPU1_NIDEN_R {
-        CPU1_NIDEN_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn cpu1_niden(&self) -> Cpu1NidenR {
+        Cpu1NidenR::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 15 - Enforce UUID match during Debug authentication."]
     #[inline(always)]
-    pub fn uuid_check(&self) -> UUID_CHECK_R {
-        UUID_CHECK_R::new(((self.bits >> 15) & 0x01) != 0)
+    pub fn uuid_check(&self) -> UuidCheckR {
+        UuidCheckR::new(((self.bits >> 15) & 1) != 0)
     }
     #[doc = "Bits 16:31 - inverse value of bits \\[15:0\\]"]
     #[inline(always)]
-    pub fn inverse_value(&self) -> INVERSE_VALUE_R {
-        INVERSE_VALUE_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn inverse_value(&self) -> InverseValueR {
+        InverseValueR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bit 0 - Non Secure non-invasive debug enable"]
     #[inline(always)]
-    pub fn niden(&mut self) -> NIDEN_W {
-        NIDEN_W { w: self }
+    pub fn niden(&mut self) -> NidenW<DcfgCcSocuPinSpec> {
+        NidenW::new(self, 0)
     }
     #[doc = "Bit 1 - Non Secure debug enable"]
     #[inline(always)]
-    pub fn dbgen(&mut self) -> DBGEN_W {
-        DBGEN_W { w: self }
+    pub fn dbgen(&mut self) -> DbgenW<DcfgCcSocuPinSpec> {
+        DbgenW::new(self, 1)
     }
     #[doc = "Bit 2 - Secure non-invasive debug enable"]
     #[inline(always)]
-    pub fn spniden(&mut self) -> SPNIDEN_W {
-        SPNIDEN_W { w: self }
+    pub fn spniden(&mut self) -> SpnidenW<DcfgCcSocuPinSpec> {
+        SpnidenW::new(self, 2)
     }
     #[doc = "Bit 3 - Secure invasive debug enable"]
     #[inline(always)]
-    pub fn spiden(&mut self) -> SPIDEN_W {
-        SPIDEN_W { w: self }
+    pub fn spiden(&mut self) -> SpidenW<DcfgCcSocuPinSpec> {
+        SpidenW::new(self, 3)
     }
     #[doc = "Bit 4 - JTAG TAP enable"]
     #[inline(always)]
-    pub fn tapen(&mut self) -> TAPEN_W {
-        TAPEN_W { w: self }
+    pub fn tapen(&mut self) -> TapenW<DcfgCcSocuPinSpec> {
+        TapenW::new(self, 4)
     }
     #[doc = "Bit 5 - CPU1 (Micro cortex M33) invasive debug enable"]
     #[inline(always)]
-    pub fn cpu1_dbgen(&mut self) -> CPU1_DBGEN_W {
-        CPU1_DBGEN_W { w: self }
+    pub fn cpu1_dbgen(&mut self) -> Cpu1DbgenW<DcfgCcSocuPinSpec> {
+        Cpu1DbgenW::new(self, 5)
     }
     #[doc = "Bit 6 - ISP Boot Command enable"]
     #[inline(always)]
-    pub fn isp_cmd_en(&mut self) -> ISP_CMD_EN_W {
-        ISP_CMD_EN_W { w: self }
+    pub fn isp_cmd_en(&mut self) -> IspCmdEnW<DcfgCcSocuPinSpec> {
+        IspCmdEnW::new(self, 6)
     }
     #[doc = "Bit 7 - FA Command enable"]
     #[inline(always)]
-    pub fn fa_cmd_en(&mut self) -> FA_CMD_EN_W {
-        FA_CMD_EN_W { w: self }
+    pub fn fa_cmd_en(&mut self) -> FaCmdEnW<DcfgCcSocuPinSpec> {
+        FaCmdEnW::new(self, 7)
     }
     #[doc = "Bit 8 - Flash Mass Erase Command enable"]
     #[inline(always)]
-    pub fn me_cmd_en(&mut self) -> ME_CMD_EN_W {
-        ME_CMD_EN_W { w: self }
+    pub fn me_cmd_en(&mut self) -> MeCmdEnW<DcfgCcSocuPinSpec> {
+        MeCmdEnW::new(self, 8)
     }
     #[doc = "Bit 9 - CPU1 (Micro cortex M33) non-invasive debug enable"]
     #[inline(always)]
-    pub fn cpu1_niden(&mut self) -> CPU1_NIDEN_W {
-        CPU1_NIDEN_W { w: self }
+    pub fn cpu1_niden(&mut self) -> Cpu1NidenW<DcfgCcSocuPinSpec> {
+        Cpu1NidenW::new(self, 9)
     }
     #[doc = "Bit 15 - Enforce UUID match during Debug authentication."]
     #[inline(always)]
-    pub fn uuid_check(&mut self) -> UUID_CHECK_W {
-        UUID_CHECK_W { w: self }
+    pub fn uuid_check(&mut self) -> UuidCheckW<DcfgCcSocuPinSpec> {
+        UuidCheckW::new(self, 15)
     }
     #[doc = "Bits 16:31 - inverse value of bits \\[15:0\\]"]
     #[inline(always)]
-    pub fn inverse_value(&mut self) -> INVERSE_VALUE_W {
-        INVERSE_VALUE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn inverse_value(&mut self) -> InverseValueW<DcfgCcSocuPinSpec> {
+        InverseValueW::new(self, 16)
     }
 }
-#[doc = "With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [dcfg_cc_socu_pin](index.html) module"]
-pub struct DCFG_CC_SOCU_PIN_SPEC;
-impl crate::RegisterSpec for DCFG_CC_SOCU_PIN_SPEC {
+#[doc = "With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access.\n\nYou can [`read`](crate::Reg::read) this register and get [`dcfg_cc_socu_pin::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dcfg_cc_socu_pin::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct DcfgCcSocuPinSpec;
+impl crate::RegisterSpec for DcfgCcSocuPinSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [dcfg_cc_socu_pin::R](R) reader structure"]
-impl crate::Readable for DCFG_CC_SOCU_PIN_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [dcfg_cc_socu_pin::W](W) writer structure"]
-impl crate::Writable for DCFG_CC_SOCU_PIN_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`dcfg_cc_socu_pin::R`](R) reader structure"]
+impl crate::Readable for DcfgCcSocuPinSpec {}
+#[doc = "`write(|w| ..)` method takes [`dcfg_cc_socu_pin::W`](W) writer structure"]
+impl crate::Writable for DcfgCcSocuPinSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DCFG_CC_SOCU_PIN to value 0"]
-impl crate::Resettable for DCFG_CC_SOCU_PIN_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for DcfgCcSocuPinSpec {
+    const RESET_VALUE: u32 = 0;
 }

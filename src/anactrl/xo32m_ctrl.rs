@@ -1,348 +1,256 @@
 #[doc = "Register `XO32M_CTRL` reader"]
-pub struct R(crate::R<XO32M_CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<XO32M_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<XO32M_CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<XO32M_CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Xo32mCtrlSpec>;
 #[doc = "Register `XO32M_CTRL` writer"]
-pub struct W(crate::W<XO32M_CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<XO32M_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<XO32M_CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<XO32M_CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Xo32mCtrlSpec>;
+#[doc = "Field `SLAVE` reader - Xo in slave mode."]
+pub type SlaveR = crate::BitReader;
+#[doc = "Field `SLAVE` writer - Xo in slave mode."]
+pub type SlaveW<'a, REG> = crate::BitWriter<'a, REG>;
+#[doc = "Field `OSC_CAP_IN` reader - Tune capa banks of High speed Crystal Oscillator input pin"]
+pub type OscCapInR = crate::FieldReader;
+#[doc = "Field `OSC_CAP_IN` writer - Tune capa banks of High speed Crystal Oscillator input pin"]
+pub type OscCapInW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
+#[doc = "Field `OSC_CAP_OUT` reader - Tune capa banks of High speed Crystal Oscillator output pin"]
+pub type OscCapOutR = crate::FieldReader;
+#[doc = "Field `OSC_CAP_OUT` writer - Tune capa banks of High speed Crystal Oscillator output pin"]
+pub type OscCapOutW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 #[doc = "Bypass enable of XO AC buffer enable in pll and top level.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ACBUF_PASS_ENABLE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum AcbufPassEnable {
     #[doc = "0: XO AC buffer bypass is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: XO AC buffer bypass is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ACBUF_PASS_ENABLE_A> for bool {
+impl From<AcbufPassEnable> for bool {
     #[inline(always)]
-    fn from(variant: ACBUF_PASS_ENABLE_A) -> Self {
+    fn from(variant: AcbufPassEnable) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ACBUF_PASS_ENABLE` reader - Bypass enable of XO AC buffer enable in pll and top level."]
-pub struct ACBUF_PASS_ENABLE_R(crate::FieldReader<bool, ACBUF_PASS_ENABLE_A>);
-impl ACBUF_PASS_ENABLE_R {
+pub type AcbufPassEnableR = crate::BitReader<AcbufPassEnable>;
+impl AcbufPassEnableR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ACBUF_PASS_ENABLE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ACBUF_PASS_ENABLE_A {
+    pub const fn variant(&self) -> AcbufPassEnable {
         match self.bits {
-            false => ACBUF_PASS_ENABLE_A::DISABLE,
-            true => ACBUF_PASS_ENABLE_A::ENABLE,
+            false => AcbufPassEnable::Disable,
+            true => AcbufPassEnable::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ACBUF_PASS_ENABLE_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ACBUF_PASS_ENABLE_A::ENABLE
-    }
-}
-impl core::ops::Deref for ACBUF_PASS_ENABLE_R {
-    type Target = crate::FieldReader<bool, ACBUF_PASS_ENABLE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ACBUF_PASS_ENABLE` writer - Bypass enable of XO AC buffer enable in pll and top level."]
-pub struct ACBUF_PASS_ENABLE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ACBUF_PASS_ENABLE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ACBUF_PASS_ENABLE_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "XO AC buffer bypass is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ACBUF_PASS_ENABLE_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == AcbufPassEnable::Disable
     }
     #[doc = "XO AC buffer bypass is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ACBUF_PASS_ENABLE_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == AcbufPassEnable::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ACBUF_PASS_ENABLE` writer - Bypass enable of XO AC buffer enable in pll and top level."]
+pub type AcbufPassEnableW<'a, REG> = crate::BitWriter<'a, REG, AcbufPassEnable>;
+impl<'a, REG> AcbufPassEnableW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "XO AC buffer bypass is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(AcbufPassEnable::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "XO AC buffer bypass is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 22)) | ((value as u32 & 0x01) << 22);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(AcbufPassEnable::Enable)
     }
 }
 #[doc = "Enable High speed Crystal oscillator output to USB HS PLL.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ENABLE_PLL_USB_OUT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EnablePllUsbOut {
     #[doc = "0: High speed Crystal oscillator output to USB HS PLL is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: High speed Crystal oscillator output to USB HS PLL is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ENABLE_PLL_USB_OUT_A> for bool {
+impl From<EnablePllUsbOut> for bool {
     #[inline(always)]
-    fn from(variant: ENABLE_PLL_USB_OUT_A) -> Self {
+    fn from(variant: EnablePllUsbOut) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ENABLE_PLL_USB_OUT` reader - Enable High speed Crystal oscillator output to USB HS PLL."]
-pub struct ENABLE_PLL_USB_OUT_R(crate::FieldReader<bool, ENABLE_PLL_USB_OUT_A>);
-impl ENABLE_PLL_USB_OUT_R {
+pub type EnablePllUsbOutR = crate::BitReader<EnablePllUsbOut>;
+impl EnablePllUsbOutR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ENABLE_PLL_USB_OUT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ENABLE_PLL_USB_OUT_A {
+    pub const fn variant(&self) -> EnablePllUsbOut {
         match self.bits {
-            false => ENABLE_PLL_USB_OUT_A::DISABLE,
-            true => ENABLE_PLL_USB_OUT_A::ENABLE,
+            false => EnablePllUsbOut::Disable,
+            true => EnablePllUsbOut::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ENABLE_PLL_USB_OUT_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ENABLE_PLL_USB_OUT_A::ENABLE
-    }
-}
-impl core::ops::Deref for ENABLE_PLL_USB_OUT_R {
-    type Target = crate::FieldReader<bool, ENABLE_PLL_USB_OUT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ENABLE_PLL_USB_OUT` writer - Enable High speed Crystal oscillator output to USB HS PLL."]
-pub struct ENABLE_PLL_USB_OUT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENABLE_PLL_USB_OUT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ENABLE_PLL_USB_OUT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "High speed Crystal oscillator output to USB HS PLL is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ENABLE_PLL_USB_OUT_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EnablePllUsbOut::Disable
     }
     #[doc = "High speed Crystal oscillator output to USB HS PLL is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ENABLE_PLL_USB_OUT_A::ENABLE)
-    }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | ((value as u32 & 0x01) << 23);
-        self.w
+    pub fn is_enable(&self) -> bool {
+        *self == EnablePllUsbOut::Enable
     }
 }
-#[doc = "Enable XO 32 MHz output to CPU system.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ENABLE_SYSTEM_CLK_OUT_A {
+#[doc = "Field `ENABLE_PLL_USB_OUT` writer - Enable High speed Crystal oscillator output to USB HS PLL."]
+pub type EnablePllUsbOutW<'a, REG> = crate::BitWriter<'a, REG, EnablePllUsbOut>;
+impl<'a, REG> EnablePllUsbOutW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "High speed Crystal oscillator output to USB HS PLL is disabled."]
+    #[inline(always)]
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EnablePllUsbOut::Disable)
+    }
+    #[doc = "High speed Crystal oscillator output to USB HS PLL is enabled."]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EnablePllUsbOut::Enable)
+    }
+}
+#[doc = "Enable High speed Crystal oscillator output to CPU system.\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum EnableSystemClkOut {
     #[doc = "0: High speed Crystal oscillator output to CPU system is disabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: High speed Crystal oscillator output to CPU system is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ENABLE_SYSTEM_CLK_OUT_A> for bool {
+impl From<EnableSystemClkOut> for bool {
     #[inline(always)]
-    fn from(variant: ENABLE_SYSTEM_CLK_OUT_A) -> Self {
+    fn from(variant: EnableSystemClkOut) -> Self {
         variant as u8 != 0
     }
 }
-#[doc = "Field `ENABLE_SYSTEM_CLK_OUT` reader - Enable XO 32 MHz output to CPU system."]
-pub struct ENABLE_SYSTEM_CLK_OUT_R(crate::FieldReader<bool, ENABLE_SYSTEM_CLK_OUT_A>);
-impl ENABLE_SYSTEM_CLK_OUT_R {
+#[doc = "Field `ENABLE_SYSTEM_CLK_OUT` reader - Enable High speed Crystal oscillator output to CPU system."]
+pub type EnableSystemClkOutR = crate::BitReader<EnableSystemClkOut>;
+impl EnableSystemClkOutR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ENABLE_SYSTEM_CLK_OUT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ENABLE_SYSTEM_CLK_OUT_A {
+    pub const fn variant(&self) -> EnableSystemClkOut {
         match self.bits {
-            false => ENABLE_SYSTEM_CLK_OUT_A::DISABLE,
-            true => ENABLE_SYSTEM_CLK_OUT_A::ENABLE,
+            false => EnableSystemClkOut::Disable,
+            true => EnableSystemClkOut::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ENABLE_SYSTEM_CLK_OUT_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ENABLE_SYSTEM_CLK_OUT_A::ENABLE
-    }
-}
-impl core::ops::Deref for ENABLE_SYSTEM_CLK_OUT_R {
-    type Target = crate::FieldReader<bool, ENABLE_SYSTEM_CLK_OUT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ENABLE_SYSTEM_CLK_OUT` writer - Enable XO 32 MHz output to CPU system."]
-pub struct ENABLE_SYSTEM_CLK_OUT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENABLE_SYSTEM_CLK_OUT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ENABLE_SYSTEM_CLK_OUT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "High speed Crystal oscillator output to CPU system is disabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ENABLE_SYSTEM_CLK_OUT_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == EnableSystemClkOut::Disable
     }
     #[doc = "High speed Crystal oscillator output to CPU system is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ENABLE_SYSTEM_CLK_OUT_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == EnableSystemClkOut::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ENABLE_SYSTEM_CLK_OUT` writer - Enable High speed Crystal oscillator output to CPU system."]
+pub type EnableSystemClkOutW<'a, REG> = crate::BitWriter<'a, REG, EnableSystemClkOut>;
+impl<'a, REG> EnableSystemClkOutW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "High speed Crystal oscillator output to CPU system is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(EnableSystemClkOut::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "High speed Crystal oscillator output to CPU system is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 24)) | ((value as u32 & 0x01) << 24);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(EnableSystemClkOut::Enable)
     }
 }
 impl R {
+    #[doc = "Bit 4 - Xo in slave mode."]
+    #[inline(always)]
+    pub fn slave(&self) -> SlaveR {
+        SlaveR::new(((self.bits >> 4) & 1) != 0)
+    }
+    #[doc = "Bits 8:14 - Tune capa banks of High speed Crystal Oscillator input pin"]
+    #[inline(always)]
+    pub fn osc_cap_in(&self) -> OscCapInR {
+        OscCapInR::new(((self.bits >> 8) & 0x7f) as u8)
+    }
+    #[doc = "Bits 15:21 - Tune capa banks of High speed Crystal Oscillator output pin"]
+    #[inline(always)]
+    pub fn osc_cap_out(&self) -> OscCapOutR {
+        OscCapOutR::new(((self.bits >> 15) & 0x7f) as u8)
+    }
     #[doc = "Bit 22 - Bypass enable of XO AC buffer enable in pll and top level."]
     #[inline(always)]
-    pub fn acbuf_pass_enable(&self) -> ACBUF_PASS_ENABLE_R {
-        ACBUF_PASS_ENABLE_R::new(((self.bits >> 22) & 0x01) != 0)
+    pub fn acbuf_pass_enable(&self) -> AcbufPassEnableR {
+        AcbufPassEnableR::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - Enable High speed Crystal oscillator output to USB HS PLL."]
     #[inline(always)]
-    pub fn enable_pll_usb_out(&self) -> ENABLE_PLL_USB_OUT_R {
-        ENABLE_PLL_USB_OUT_R::new(((self.bits >> 23) & 0x01) != 0)
+    pub fn enable_pll_usb_out(&self) -> EnablePllUsbOutR {
+        EnablePllUsbOutR::new(((self.bits >> 23) & 1) != 0)
     }
-    #[doc = "Bit 24 - Enable XO 32 MHz output to CPU system."]
+    #[doc = "Bit 24 - Enable High speed Crystal oscillator output to CPU system."]
     #[inline(always)]
-    pub fn enable_system_clk_out(&self) -> ENABLE_SYSTEM_CLK_OUT_R {
-        ENABLE_SYSTEM_CLK_OUT_R::new(((self.bits >> 24) & 0x01) != 0)
+    pub fn enable_system_clk_out(&self) -> EnableSystemClkOutR {
+        EnableSystemClkOutR::new(((self.bits >> 24) & 1) != 0)
     }
 }
 impl W {
+    #[doc = "Bit 4 - Xo in slave mode."]
+    #[inline(always)]
+    pub fn slave(&mut self) -> SlaveW<Xo32mCtrlSpec> {
+        SlaveW::new(self, 4)
+    }
+    #[doc = "Bits 8:14 - Tune capa banks of High speed Crystal Oscillator input pin"]
+    #[inline(always)]
+    pub fn osc_cap_in(&mut self) -> OscCapInW<Xo32mCtrlSpec> {
+        OscCapInW::new(self, 8)
+    }
+    #[doc = "Bits 15:21 - Tune capa banks of High speed Crystal Oscillator output pin"]
+    #[inline(always)]
+    pub fn osc_cap_out(&mut self) -> OscCapOutW<Xo32mCtrlSpec> {
+        OscCapOutW::new(self, 15)
+    }
     #[doc = "Bit 22 - Bypass enable of XO AC buffer enable in pll and top level."]
     #[inline(always)]
-    pub fn acbuf_pass_enable(&mut self) -> ACBUF_PASS_ENABLE_W {
-        ACBUF_PASS_ENABLE_W { w: self }
+    pub fn acbuf_pass_enable(&mut self) -> AcbufPassEnableW<Xo32mCtrlSpec> {
+        AcbufPassEnableW::new(self, 22)
     }
     #[doc = "Bit 23 - Enable High speed Crystal oscillator output to USB HS PLL."]
     #[inline(always)]
-    pub fn enable_pll_usb_out(&mut self) -> ENABLE_PLL_USB_OUT_W {
-        ENABLE_PLL_USB_OUT_W { w: self }
+    pub fn enable_pll_usb_out(&mut self) -> EnablePllUsbOutW<Xo32mCtrlSpec> {
+        EnablePllUsbOutW::new(self, 23)
     }
-    #[doc = "Bit 24 - Enable XO 32 MHz output to CPU system."]
+    #[doc = "Bit 24 - Enable High speed Crystal oscillator output to CPU system."]
     #[inline(always)]
-    pub fn enable_system_clk_out(&mut self) -> ENABLE_SYSTEM_CLK_OUT_W {
-        ENABLE_SYSTEM_CLK_OUT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn enable_system_clk_out(&mut self) -> EnableSystemClkOutW<Xo32mCtrlSpec> {
+        EnableSystemClkOutW::new(self, 24)
     }
 }
-#[doc = "High speed Crystal Oscillator Control register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [xo32m_ctrl](index.html) module"]
-pub struct XO32M_CTRL_SPEC;
-impl crate::RegisterSpec for XO32M_CTRL_SPEC {
+#[doc = "High speed Crystal Oscillator Control register\n\nYou can [`read`](crate::Reg::read) this register and get [`xo32m_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`xo32m_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Xo32mCtrlSpec;
+impl crate::RegisterSpec for Xo32mCtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [xo32m_ctrl::R](R) reader structure"]
-impl crate::Readable for XO32M_CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [xo32m_ctrl::W](W) writer structure"]
-impl crate::Writable for XO32M_CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`xo32m_ctrl::R`](R) reader structure"]
+impl crate::Readable for Xo32mCtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`xo32m_ctrl::W`](W) writer structure"]
+impl crate::Writable for Xo32mCtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets XO32M_CTRL to value 0x0021_428a"]
-impl crate::Resettable for XO32M_CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0021_428a
-    }
+impl crate::Resettable for Xo32mCtrlSpec {
+    const RESET_VALUE: u32 = 0x0021_428a;
 }

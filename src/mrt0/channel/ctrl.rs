@@ -1,259 +1,171 @@
 #[doc = "Register `CTRL` reader"]
-pub struct R(crate::R<CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CtrlSpec>;
 #[doc = "Register `CTRL` writer"]
-pub struct W(crate::W<CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CtrlSpec>;
 #[doc = "Enable the TIMERn interrupt.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum INTEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Inten {
     #[doc = "0: Disabled. TIMERn interrupt is disabled."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: Enabled. TIMERn interrupt is enabled."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<INTEN_A> for bool {
+impl From<Inten> for bool {
     #[inline(always)]
-    fn from(variant: INTEN_A) -> Self {
+    fn from(variant: Inten) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `INTEN` reader - Enable the TIMERn interrupt."]
-pub struct INTEN_R(crate::FieldReader<bool, INTEN_A>);
-impl INTEN_R {
+pub type IntenR = crate::BitReader<Inten>;
+impl IntenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        INTEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> INTEN_A {
+    pub const fn variant(&self) -> Inten {
         match self.bits {
-            false => INTEN_A::DISABLED,
-            true => INTEN_A::ENABLED,
+            false => Inten::Disabled,
+            true => Inten::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == INTEN_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == INTEN_A::ENABLED
-    }
-}
-impl core::ops::Deref for INTEN_R {
-    type Target = crate::FieldReader<bool, INTEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `INTEN` writer - Enable the TIMERn interrupt."]
-pub struct INTEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INTEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: INTEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disabled. TIMERn interrupt is disabled."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(INTEN_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Inten::Disabled
     }
     #[doc = "Enabled. TIMERn interrupt is enabled."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(INTEN_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Inten::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `INTEN` writer - Enable the TIMERn interrupt."]
+pub type IntenW<'a, REG> = crate::BitWriter<'a, REG, Inten>;
+impl<'a, REG> IntenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disabled. TIMERn interrupt is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Inten::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enabled. TIMERn interrupt is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Inten::Enabled)
     }
 }
 #[doc = "Selects timer mode.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum MODE_A {
+pub enum Mode {
     #[doc = "0: Repeat interrupt mode."]
-    REPEAT_INTERRUPT_MODE = 0,
+    RepeatInterruptMode = 0,
     #[doc = "1: One-shot interrupt mode."]
-    ONE_SHOT_INTERRUPT_MODE = 1,
+    OneShotInterruptMode = 1,
     #[doc = "2: One-shot stall mode."]
-    ONE_SHOT_STALL_MODE = 2,
+    OneShotStallMode = 2,
 }
-impl From<MODE_A> for u8 {
+impl From<Mode> for u8 {
     #[inline(always)]
-    fn from(variant: MODE_A) -> Self {
+    fn from(variant: Mode) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Mode {
+    type Ux = u8;
+}
+impl crate::IsEnum for Mode {}
 #[doc = "Field `MODE` reader - Selects timer mode."]
-pub struct MODE_R(crate::FieldReader<u8, MODE_A>);
-impl MODE_R {
+pub type ModeR = crate::FieldReader<Mode>;
+impl ModeR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        MODE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<MODE_A> {
+    pub const fn variant(&self) -> Option<Mode> {
         match self.bits {
-            0 => Some(MODE_A::REPEAT_INTERRUPT_MODE),
-            1 => Some(MODE_A::ONE_SHOT_INTERRUPT_MODE),
-            2 => Some(MODE_A::ONE_SHOT_STALL_MODE),
+            0 => Some(Mode::RepeatInterruptMode),
+            1 => Some(Mode::OneShotInterruptMode),
+            2 => Some(Mode::OneShotStallMode),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `REPEAT_INTERRUPT_MODE`"]
-    #[inline(always)]
-    pub fn is_repeat_interrupt_mode(&self) -> bool {
-        **self == MODE_A::REPEAT_INTERRUPT_MODE
-    }
-    #[doc = "Checks if the value of the field is `ONE_SHOT_INTERRUPT_MODE`"]
-    #[inline(always)]
-    pub fn is_one_shot_interrupt_mode(&self) -> bool {
-        **self == MODE_A::ONE_SHOT_INTERRUPT_MODE
-    }
-    #[doc = "Checks if the value of the field is `ONE_SHOT_STALL_MODE`"]
-    #[inline(always)]
-    pub fn is_one_shot_stall_mode(&self) -> bool {
-        **self == MODE_A::ONE_SHOT_STALL_MODE
-    }
-}
-impl core::ops::Deref for MODE_R {
-    type Target = crate::FieldReader<u8, MODE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MODE` writer - Selects timer mode."]
-pub struct MODE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MODE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MODE_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "Repeat interrupt mode."]
     #[inline(always)]
-    pub fn repeat_interrupt_mode(self) -> &'a mut W {
-        self.variant(MODE_A::REPEAT_INTERRUPT_MODE)
+    pub fn is_repeat_interrupt_mode(&self) -> bool {
+        *self == Mode::RepeatInterruptMode
     }
     #[doc = "One-shot interrupt mode."]
     #[inline(always)]
-    pub fn one_shot_interrupt_mode(self) -> &'a mut W {
-        self.variant(MODE_A::ONE_SHOT_INTERRUPT_MODE)
+    pub fn is_one_shot_interrupt_mode(&self) -> bool {
+        *self == Mode::OneShotInterruptMode
     }
     #[doc = "One-shot stall mode."]
     #[inline(always)]
-    pub fn one_shot_stall_mode(self) -> &'a mut W {
-        self.variant(MODE_A::ONE_SHOT_STALL_MODE)
+    pub fn is_one_shot_stall_mode(&self) -> bool {
+        *self == Mode::OneShotStallMode
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `MODE` writer - Selects timer mode."]
+pub type ModeW<'a, REG> = crate::FieldWriter<'a, REG, 2, Mode>;
+impl<'a, REG> ModeW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Repeat interrupt mode."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 1)) | ((value as u32 & 0x03) << 1);
-        self.w
+    pub fn repeat_interrupt_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Mode::RepeatInterruptMode)
+    }
+    #[doc = "One-shot interrupt mode."]
+    #[inline(always)]
+    pub fn one_shot_interrupt_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Mode::OneShotInterruptMode)
+    }
+    #[doc = "One-shot stall mode."]
+    #[inline(always)]
+    pub fn one_shot_stall_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Mode::OneShotStallMode)
     }
 }
 impl R {
     #[doc = "Bit 0 - Enable the TIMERn interrupt."]
     #[inline(always)]
-    pub fn inten(&self) -> INTEN_R {
-        INTEN_R::new((self.bits & 0x01) != 0)
+    pub fn inten(&self) -> IntenR {
+        IntenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bits 1:2 - Selects timer mode."]
     #[inline(always)]
-    pub fn mode(&self) -> MODE_R {
-        MODE_R::new(((self.bits >> 1) & 0x03) as u8)
+    pub fn mode(&self) -> ModeR {
+        ModeR::new(((self.bits >> 1) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - Enable the TIMERn interrupt."]
     #[inline(always)]
-    pub fn inten(&mut self) -> INTEN_W {
-        INTEN_W { w: self }
+    pub fn inten(&mut self) -> IntenW<CtrlSpec> {
+        IntenW::new(self, 0)
     }
     #[doc = "Bits 1:2 - Selects timer mode."]
     #[inline(always)]
-    pub fn mode(&mut self) -> MODE_W {
-        MODE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn mode(&mut self) -> ModeW<CtrlSpec> {
+        ModeW::new(self, 1)
     }
 }
-#[doc = "MRT Control register. This register controls the MRT modes.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctrl](index.html) module"]
-pub struct CTRL_SPEC;
-impl crate::RegisterSpec for CTRL_SPEC {
+#[doc = "MRT Control register. This register controls the MRT modes.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CtrlSpec;
+impl crate::RegisterSpec for CtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ctrl::R](R) reader structure"]
-impl crate::Readable for CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ctrl::W](W) writer structure"]
-impl crate::Writable for CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ctrl::R`](R) reader structure"]
+impl crate::Readable for CtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
+impl crate::Writable for CtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
-impl crate::Resettable for CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CtrlSpec {
+    const RESET_VALUE: u32 = 0;
 }

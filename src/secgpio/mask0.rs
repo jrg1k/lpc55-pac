@@ -1,103 +1,39 @@
 #[doc = "Register `MASK0` reader"]
-pub struct R(crate::R<MASK0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MASK0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MASK0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MASK0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Mask0Spec>;
 #[doc = "Register `MASK0` writer"]
-pub struct W(crate::W<MASK0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MASK0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MASK0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MASK0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Mask0Spec>;
 #[doc = "Field `MASKP` reader - Controls which bits corresponding to PIOm_n are active in the MPORT register (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package.0 = Read MPORT: pin state; write MPORT: load output bit. 1 = Read MPORT: 0; write MPORT: output bit not affected."]
-pub struct MASKP_R(crate::FieldReader<u32, u32>);
-impl MASKP_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        MASKP_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for MASKP_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type MaskpR = crate::FieldReader<u32>;
 #[doc = "Field `MASKP` writer - Controls which bits corresponding to PIOm_n are active in the MPORT register (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package.0 = Read MPORT: pin state; write MPORT: load output bit. 1 = Read MPORT: 0; write MPORT: output bit not affected."]
-pub struct MASKP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MASKP_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type MaskpW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Controls which bits corresponding to PIOm_n are active in the MPORT register (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package.0 = Read MPORT: pin state; write MPORT: load output bit. 1 = Read MPORT: 0; write MPORT: output bit not affected."]
     #[inline(always)]
-    pub fn maskp(&self) -> MASKP_R {
-        MASKP_R::new(self.bits as u32)
+    pub fn maskp(&self) -> MaskpR {
+        MaskpR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Controls which bits corresponding to PIOm_n are active in the MPORT register (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package.0 = Read MPORT: pin state; write MPORT: load output bit. 1 = Read MPORT: 0; write MPORT: output bit not affected."]
     #[inline(always)]
-    pub fn maskp(&mut self) -> MASKP_W {
-        MASKP_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn maskp(&mut self) -> MaskpW<Mask0Spec> {
+        MaskpW::new(self, 0)
     }
 }
-#[doc = "Mask register for all port GPIO pins\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mask0](index.html) module"]
-pub struct MASK0_SPEC;
-impl crate::RegisterSpec for MASK0_SPEC {
+#[doc = "Mask register for all port GPIO pins\n\nYou can [`read`](crate::Reg::read) this register and get [`mask0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mask0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Mask0Spec;
+impl crate::RegisterSpec for Mask0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [mask0::R](R) reader structure"]
-impl crate::Readable for MASK0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [mask0::W](W) writer structure"]
-impl crate::Writable for MASK0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`mask0::R`](R) reader structure"]
+impl crate::Readable for Mask0Spec {}
+#[doc = "`write(|w| ..)` method takes [`mask0::W`](W) writer structure"]
+impl crate::Writable for Mask0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MASK0 to value 0"]
-impl crate::Resettable for MASK0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Mask0Spec {
+    const RESET_VALUE: u32 = 0;
 }

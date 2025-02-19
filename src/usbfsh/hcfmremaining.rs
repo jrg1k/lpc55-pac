@@ -1,106 +1,38 @@
 #[doc = "Register `HCFMREMAINING` reader"]
-pub struct R(crate::R<HCFMREMAINING_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<HCFMREMAINING_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<HCFMREMAINING_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<HCFMREMAINING_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<HcfmremainingSpec>;
 #[doc = "Register `HCFMREMAINING` writer"]
-pub struct W(crate::W<HCFMREMAINING_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<HCFMREMAINING_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<HCFMREMAINING_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<HCFMREMAINING_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<HcfmremainingSpec>;
 #[doc = "Field `FR` reader - FrameRemaining This counter is decremented at each bit time."]
-pub struct FR_R(crate::FieldReader<u16, u16>);
-impl FR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        FR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FR_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FrR = crate::FieldReader<u16>;
 #[doc = "Field `FRT` reader - FrameRemainingToggle This bit is loaded from the FrameIntervalToggle field of HcFmInterval whenever FrameRemaining reaches 0."]
-pub struct FRT_R(crate::FieldReader<bool, bool>);
-impl FRT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FRT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FRT_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FrtR = crate::BitReader;
 impl R {
     #[doc = "Bits 0:13 - FrameRemaining This counter is decremented at each bit time."]
     #[inline(always)]
-    pub fn fr(&self) -> FR_R {
-        FR_R::new((self.bits & 0x3fff) as u16)
+    pub fn fr(&self) -> FrR {
+        FrR::new((self.bits & 0x3fff) as u16)
     }
     #[doc = "Bit 31 - FrameRemainingToggle This bit is loaded from the FrameIntervalToggle field of HcFmInterval whenever FrameRemaining reaches 0."]
     #[inline(always)]
-    pub fn frt(&self) -> FRT_R {
-        FRT_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn frt(&self) -> FrtR {
+        FrtR::new(((self.bits >> 31) & 1) != 0)
     }
 }
-impl W {
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
-    }
-}
-#[doc = "A 14-bit counter showing the bit time remaining in the current frame\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hcfmremaining](index.html) module"]
-pub struct HCFMREMAINING_SPEC;
-impl crate::RegisterSpec for HCFMREMAINING_SPEC {
+impl W {}
+#[doc = "A 14-bit counter showing the bit time remaining in the current frame\n\nYou can [`read`](crate::Reg::read) this register and get [`hcfmremaining::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hcfmremaining::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct HcfmremainingSpec;
+impl crate::RegisterSpec for HcfmremainingSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [hcfmremaining::R](R) reader structure"]
-impl crate::Readable for HCFMREMAINING_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [hcfmremaining::W](W) writer structure"]
-impl crate::Writable for HCFMREMAINING_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`hcfmremaining::R`](R) reader structure"]
+impl crate::Readable for HcfmremainingSpec {}
+#[doc = "`write(|w| ..)` method takes [`hcfmremaining::W`](W) writer structure"]
+impl crate::Writable for HcfmremainingSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HCFMREMAINING to value 0"]
-impl crate::Resettable for HCFMREMAINING_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for HcfmremainingSpec {
+    const RESET_VALUE: u32 = 0;
 }

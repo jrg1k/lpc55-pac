@@ -1,254 +1,151 @@
 #[doc = "Register `CPUCTRL` reader"]
-pub struct R(crate::R<CPUCTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CPUCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CPUCTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CPUCTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CpuctrlSpec>;
 #[doc = "Register `CPUCTRL` writer"]
-pub struct W(crate::W<CPUCTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CPUCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CPUCTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CPUCTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CpuctrlSpec>;
 #[doc = "CPU1 clock enable.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CPU1CLKEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cpu1clken {
     #[doc = "0: The CPU1 clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The CPU1 clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<CPU1CLKEN_A> for bool {
+impl From<Cpu1clken> for bool {
     #[inline(always)]
-    fn from(variant: CPU1CLKEN_A) -> Self {
+    fn from(variant: Cpu1clken) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CPU1CLKEN` reader - CPU1 clock enable."]
-pub struct CPU1CLKEN_R(crate::FieldReader<bool, CPU1CLKEN_A>);
-impl CPU1CLKEN_R {
+pub type Cpu1clkenR = crate::BitReader<Cpu1clken>;
+impl Cpu1clkenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CPU1CLKEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CPU1CLKEN_A {
+    pub const fn variant(&self) -> Cpu1clken {
         match self.bits {
-            false => CPU1CLKEN_A::DISABLE,
-            true => CPU1CLKEN_A::ENABLE,
+            false => Cpu1clken::Disable,
+            true => Cpu1clken::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == CPU1CLKEN_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == CPU1CLKEN_A::ENABLE
-    }
-}
-impl core::ops::Deref for CPU1CLKEN_R {
-    type Target = crate::FieldReader<bool, CPU1CLKEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CPU1CLKEN` writer - CPU1 clock enable."]
-pub struct CPU1CLKEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPU1CLKEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CPU1CLKEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The CPU1 clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(CPU1CLKEN_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Cpu1clken::Disable
     }
     #[doc = "The CPU1 clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(CPU1CLKEN_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Cpu1clken::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CPU1CLKEN` writer - CPU1 clock enable."]
+pub type Cpu1clkenW<'a, REG> = crate::BitWriter<'a, REG, Cpu1clken>;
+impl<'a, REG> Cpu1clkenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The CPU1 clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1clken::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The CPU1 clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1clken::Enable)
     }
 }
 #[doc = "CPU1 reset.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CPU1RSTEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cpu1rsten {
     #[doc = "0: The CPU1 is not being reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: The CPU1 is being reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<CPU1RSTEN_A> for bool {
+impl From<Cpu1rsten> for bool {
     #[inline(always)]
-    fn from(variant: CPU1RSTEN_A) -> Self {
+    fn from(variant: Cpu1rsten) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CPU1RSTEN` reader - CPU1 reset."]
-pub struct CPU1RSTEN_R(crate::FieldReader<bool, CPU1RSTEN_A>);
-impl CPU1RSTEN_R {
+pub type Cpu1rstenR = crate::BitReader<Cpu1rsten>;
+impl Cpu1rstenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CPU1RSTEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CPU1RSTEN_A {
+    pub const fn variant(&self) -> Cpu1rsten {
         match self.bits {
-            false => CPU1RSTEN_A::RELEASED,
-            true => CPU1RSTEN_A::ASSERTED,
+            false => Cpu1rsten::Released,
+            true => Cpu1rsten::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == CPU1RSTEN_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == CPU1RSTEN_A::ASSERTED
-    }
-}
-impl core::ops::Deref for CPU1RSTEN_R {
-    type Target = crate::FieldReader<bool, CPU1RSTEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CPU1RSTEN` writer - CPU1 reset."]
-pub struct CPU1RSTEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CPU1RSTEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CPU1RSTEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The CPU1 is not being reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(CPU1RSTEN_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Cpu1rsten::Released
     }
     #[doc = "The CPU1 is being reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(CPU1RSTEN_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Cpu1rsten::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CPU1RSTEN` writer - CPU1 reset."]
+pub type Cpu1rstenW<'a, REG> = crate::BitWriter<'a, REG, Cpu1rsten>;
+impl<'a, REG> Cpu1rstenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The CPU1 is not being reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1rsten::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The CPU1 is being reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Cpu1rsten::Asserted)
     }
 }
 impl R {
     #[doc = "Bit 3 - CPU1 clock enable."]
     #[inline(always)]
-    pub fn cpu1clken(&self) -> CPU1CLKEN_R {
-        CPU1CLKEN_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn cpu1clken(&self) -> Cpu1clkenR {
+        Cpu1clkenR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 5 - CPU1 reset."]
     #[inline(always)]
-    pub fn cpu1rsten(&self) -> CPU1RSTEN_R {
-        CPU1RSTEN_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn cpu1rsten(&self) -> Cpu1rstenR {
+        Cpu1rstenR::new(((self.bits >> 5) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 3 - CPU1 clock enable."]
     #[inline(always)]
-    pub fn cpu1clken(&mut self) -> CPU1CLKEN_W {
-        CPU1CLKEN_W { w: self }
+    pub fn cpu1clken(&mut self) -> Cpu1clkenW<CpuctrlSpec> {
+        Cpu1clkenW::new(self, 3)
     }
     #[doc = "Bit 5 - CPU1 reset."]
     #[inline(always)]
-    pub fn cpu1rsten(&mut self) -> CPU1RSTEN_W {
-        CPU1RSTEN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cpu1rsten(&mut self) -> Cpu1rstenW<CpuctrlSpec> {
+        Cpu1rstenW::new(self, 5)
     }
 }
-#[doc = "CPU Control for multiple processors\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cpuctrl](index.html) module"]
-pub struct CPUCTRL_SPEC;
-impl crate::RegisterSpec for CPUCTRL_SPEC {
+#[doc = "CPU Control for multiple processors\n\nYou can [`read`](crate::Reg::read) this register and get [`cpuctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cpuctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CpuctrlSpec;
+impl crate::RegisterSpec for CpuctrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [cpuctrl::R](R) reader structure"]
-impl crate::Readable for CPUCTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [cpuctrl::W](W) writer structure"]
-impl crate::Writable for CPUCTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`cpuctrl::R`](R) reader structure"]
+impl crate::Readable for CpuctrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`cpuctrl::W`](W) writer structure"]
+impl crate::Writable for CpuctrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CPUCTRL to value 0x2c"]
-impl crate::Resettable for CPUCTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x2c
-    }
+impl crate::Resettable for CpuctrlSpec {
+    const RESET_VALUE: u32 = 0x2c;
 }

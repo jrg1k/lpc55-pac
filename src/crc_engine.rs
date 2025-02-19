@@ -1,42 +1,53 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00 - CRC mode register"]
-    pub mode: crate::Reg<mode::MODE_SPEC>,
-    #[doc = "0x04 - CRC seed register"]
-    pub seed: crate::Reg<seed::SEED_SPEC>,
+    mode: Mode,
+    seed: Seed,
     _reserved_2_sum: [u8; 0x04],
 }
 impl RegisterBlock {
+    #[doc = "0x00 - CRC mode register"]
+    #[inline(always)]
+    pub const fn mode(&self) -> &Mode {
+        &self.mode
+    }
+    #[doc = "0x04 - CRC seed register"]
+    #[inline(always)]
+    pub const fn seed(&self) -> &Seed {
+        &self.seed
+    }
     #[doc = "0x08 - CRC data register"]
     #[inline(always)]
-    pub fn wr_data(&self) -> &crate::Reg<wr_data::WR_DATA_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(8usize)
-                as *const crate::Reg<wr_data::WR_DATA_SPEC>)
-        }
+    pub const fn wr_data(&self) -> &WrData {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(8).cast() }
     }
     #[doc = "0x08 - CRC checksum register"]
     #[inline(always)]
-    pub fn sum(&self) -> &crate::Reg<sum::SUM_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(8usize) as *const crate::Reg<sum::SUM_SPEC>)
-        }
+    pub const fn sum(&self) -> &Sum {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(8).cast() }
     }
 }
-#[doc = "MODE register accessor: an alias for `Reg<MODE_SPEC>`"]
-pub type MODE = crate::Reg<mode::MODE_SPEC>;
+#[doc = "MODE (rw) register accessor: CRC mode register\n\nYou can [`read`](crate::Reg::read) this register and get [`mode::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mode::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mode`]
+module"]
+#[doc(alias = "MODE")]
+pub type Mode = crate::Reg<mode::ModeSpec>;
 #[doc = "CRC mode register"]
 pub mod mode;
-#[doc = "SEED register accessor: an alias for `Reg<SEED_SPEC>`"]
-pub type SEED = crate::Reg<seed::SEED_SPEC>;
+#[doc = "SEED (rw) register accessor: CRC seed register\n\nYou can [`read`](crate::Reg::read) this register and get [`seed::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`seed::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@seed`]
+module"]
+#[doc(alias = "SEED")]
+pub type Seed = crate::Reg<seed::SeedSpec>;
 #[doc = "CRC seed register"]
 pub mod seed;
-#[doc = "SUM register accessor: an alias for `Reg<SUM_SPEC>`"]
-pub type SUM = crate::Reg<sum::SUM_SPEC>;
+#[doc = "SUM (r) register accessor: CRC checksum register\n\nYou can [`read`](crate::Reg::read) this register and get [`sum::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sum`]
+module"]
+#[doc(alias = "SUM")]
+pub type Sum = crate::Reg<sum::SumSpec>;
 #[doc = "CRC checksum register"]
 pub mod sum;
-#[doc = "WR_DATA register accessor: an alias for `Reg<WR_DATA_SPEC>`"]
-pub type WR_DATA = crate::Reg<wr_data::WR_DATA_SPEC>;
+#[doc = "WR_DATA (w) register accessor: CRC data register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wr_data::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@wr_data`]
+module"]
+#[doc(alias = "WR_DATA")]
+pub type WrData = crate::Reg<wr_data::WrDataSpec>;
 #[doc = "CRC data register"]
 pub mod wr_data;

@@ -1,106 +1,38 @@
 #[doc = "Register `COUNTER_VAL` reader"]
-pub struct R(crate::R<COUNTER_VAL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<COUNTER_VAL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<COUNTER_VAL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<COUNTER_VAL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CounterValSpec>;
 #[doc = "Register `COUNTER_VAL` writer"]
-pub struct W(crate::W<COUNTER_VAL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<COUNTER_VAL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<COUNTER_VAL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<COUNTER_VAL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CounterValSpec>;
 #[doc = "Field `CLK_RATIO` reader - Gives the ratio between the internal clocks frequencies and the register clock frequency for evaluation and certification purposes."]
-pub struct CLK_RATIO_R(crate::FieldReader<u8, u8>);
-impl CLK_RATIO_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CLK_RATIO_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CLK_RATIO_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type ClkRatioR = crate::FieldReader;
 #[doc = "Field `REFRESH_CNT` reader - Incremented (till max possible value) each time COUNTER was updated since last reading to any *_NUMBER."]
-pub struct REFRESH_CNT_R(crate::FieldReader<u8, u8>);
-impl REFRESH_CNT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        REFRESH_CNT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for REFRESH_CNT_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RefreshCntR = crate::FieldReader;
 impl R {
     #[doc = "Bits 0:7 - Gives the ratio between the internal clocks frequencies and the register clock frequency for evaluation and certification purposes."]
     #[inline(always)]
-    pub fn clk_ratio(&self) -> CLK_RATIO_R {
-        CLK_RATIO_R::new((self.bits & 0xff) as u8)
+    pub fn clk_ratio(&self) -> ClkRatioR {
+        ClkRatioR::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bits 8:12 - Incremented (till max possible value) each time COUNTER was updated since last reading to any *_NUMBER."]
     #[inline(always)]
-    pub fn refresh_cnt(&self) -> REFRESH_CNT_R {
-        REFRESH_CNT_R::new(((self.bits >> 8) & 0x1f) as u8)
+    pub fn refresh_cnt(&self) -> RefreshCntR {
+        RefreshCntR::new(((self.bits >> 8) & 0x1f) as u8)
     }
 }
-impl W {
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
-    }
-}
-#[doc = "no description available\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [counter_val](index.html) module"]
-pub struct COUNTER_VAL_SPEC;
-impl crate::RegisterSpec for COUNTER_VAL_SPEC {
+impl W {}
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`counter_val::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`counter_val::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CounterValSpec;
+impl crate::RegisterSpec for CounterValSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [counter_val::R](R) reader structure"]
-impl crate::Readable for COUNTER_VAL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [counter_val::W](W) writer structure"]
-impl crate::Writable for COUNTER_VAL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`counter_val::R`](R) reader structure"]
+impl crate::Readable for CounterValSpec {}
+#[doc = "`write(|w| ..)` method takes [`counter_val::W`](W) writer structure"]
+impl crate::Writable for CounterValSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets COUNTER_VAL to value 0"]
-impl crate::Resettable for COUNTER_VAL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CounterValSpec {
+    const RESET_VALUE: u32 = 0;
 }

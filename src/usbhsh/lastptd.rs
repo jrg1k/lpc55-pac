@@ -1,177 +1,67 @@
 #[doc = "Register `LASTPTD` reader"]
-pub struct R(crate::R<LASTPTD_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<LASTPTD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<LASTPTD_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<LASTPTD_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<LastptdSpec>;
 #[doc = "Register `LASTPTD` writer"]
-pub struct W(crate::W<LASTPTD_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<LASTPTD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<LASTPTD_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<LASTPTD_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<LastptdSpec>;
 #[doc = "Field `ATL_LAST` reader - If hardware has reached this PTD and the J bit is not set, it will go to PTD0 as the next PTD to be processed."]
-pub struct ATL_LAST_R(crate::FieldReader<u8, u8>);
-impl ATL_LAST_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ATL_LAST_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ATL_LAST_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AtlLastR = crate::FieldReader;
 #[doc = "Field `ATL_LAST` writer - If hardware has reached this PTD and the J bit is not set, it will go to PTD0 as the next PTD to be processed."]
-pub struct ATL_LAST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ATL_LAST_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x1f) | (value as u32 & 0x1f);
-        self.w
-    }
-}
+pub type AtlLastW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `ISO_LAST` reader - This indicates the last PTD in the ISO list."]
-pub struct ISO_LAST_R(crate::FieldReader<u8, u8>);
-impl ISO_LAST_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ISO_LAST_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ISO_LAST_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IsoLastR = crate::FieldReader;
 #[doc = "Field `ISO_LAST` writer - This indicates the last PTD in the ISO list."]
-pub struct ISO_LAST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ISO_LAST_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 8)) | ((value as u32 & 0x1f) << 8);
-        self.w
-    }
-}
+pub type IsoLastW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `INT_LAST` reader - This indicates the last PTD in the INT list."]
-pub struct INT_LAST_R(crate::FieldReader<u8, u8>);
-impl INT_LAST_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INT_LAST_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INT_LAST_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IntLastR = crate::FieldReader;
 #[doc = "Field `INT_LAST` writer - This indicates the last PTD in the INT list."]
-pub struct INT_LAST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INT_LAST_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 16)) | ((value as u32 & 0x1f) << 16);
-        self.w
-    }
-}
+pub type IntLastW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:4 - If hardware has reached this PTD and the J bit is not set, it will go to PTD0 as the next PTD to be processed."]
     #[inline(always)]
-    pub fn atl_last(&self) -> ATL_LAST_R {
-        ATL_LAST_R::new((self.bits & 0x1f) as u8)
+    pub fn atl_last(&self) -> AtlLastR {
+        AtlLastR::new((self.bits & 0x1f) as u8)
     }
     #[doc = "Bits 8:12 - This indicates the last PTD in the ISO list."]
     #[inline(always)]
-    pub fn iso_last(&self) -> ISO_LAST_R {
-        ISO_LAST_R::new(((self.bits >> 8) & 0x1f) as u8)
+    pub fn iso_last(&self) -> IsoLastR {
+        IsoLastR::new(((self.bits >> 8) & 0x1f) as u8)
     }
     #[doc = "Bits 16:20 - This indicates the last PTD in the INT list."]
     #[inline(always)]
-    pub fn int_last(&self) -> INT_LAST_R {
-        INT_LAST_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn int_last(&self) -> IntLastR {
+        IntLastR::new(((self.bits >> 16) & 0x1f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:4 - If hardware has reached this PTD and the J bit is not set, it will go to PTD0 as the next PTD to be processed."]
     #[inline(always)]
-    pub fn atl_last(&mut self) -> ATL_LAST_W {
-        ATL_LAST_W { w: self }
+    pub fn atl_last(&mut self) -> AtlLastW<LastptdSpec> {
+        AtlLastW::new(self, 0)
     }
     #[doc = "Bits 8:12 - This indicates the last PTD in the ISO list."]
     #[inline(always)]
-    pub fn iso_last(&mut self) -> ISO_LAST_W {
-        ISO_LAST_W { w: self }
+    pub fn iso_last(&mut self) -> IsoLastW<LastptdSpec> {
+        IsoLastW::new(self, 8)
     }
     #[doc = "Bits 16:20 - This indicates the last PTD in the INT list."]
     #[inline(always)]
-    pub fn int_last(&mut self) -> INT_LAST_W {
-        INT_LAST_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn int_last(&mut self) -> IntLastW<LastptdSpec> {
+        IntLastW::new(self, 16)
     }
 }
-#[doc = "Marks the last PTD in the list for ISO, INT and ATL\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [lastptd](index.html) module"]
-pub struct LASTPTD_SPEC;
-impl crate::RegisterSpec for LASTPTD_SPEC {
+#[doc = "Marks the last PTD in the list for ISO, INT and ATL\n\nYou can [`read`](crate::Reg::read) this register and get [`lastptd::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lastptd::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct LastptdSpec;
+impl crate::RegisterSpec for LastptdSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [lastptd::R](R) reader structure"]
-impl crate::Readable for LASTPTD_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [lastptd::W](W) writer structure"]
-impl crate::Writable for LASTPTD_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`lastptd::R`](R) reader structure"]
+impl crate::Readable for LastptdSpec {}
+#[doc = "`write(|w| ..)` method takes [`lastptd::W`](W) writer structure"]
+impl crate::Writable for LastptdSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets LASTPTD to value 0"]
-impl crate::Resettable for LASTPTD_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for LastptdSpec {
+    const RESET_VALUE: u32 = 0;
 }

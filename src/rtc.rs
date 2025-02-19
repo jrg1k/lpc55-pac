@@ -1,41 +1,85 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00 - RTC control register"]
-    pub ctrl: crate::Reg<ctrl::CTRL_SPEC>,
-    #[doc = "0x04 - RTC match register"]
-    pub match_: crate::Reg<match_::MATCH_SPEC>,
-    #[doc = "0x08 - RTC counter register"]
-    pub count: crate::Reg<count::COUNT_SPEC>,
-    #[doc = "0x0c - High-resolution/wake-up timer control register"]
-    pub wake: crate::Reg<wake::WAKE_SPEC>,
-    #[doc = "0x10 - Sub-second counter register"]
-    pub subsec: crate::Reg<subsec::SUBSEC_SPEC>,
+    ctrl: Ctrl,
+    match_: Match,
+    count: Count,
+    wake: Wake,
+    subsec: Subsec,
     _reserved5: [u8; 0x2c],
-    #[doc = "0x40..0x60 - General Purpose register"]
-    pub gpreg: [crate::Reg<gpreg::GPREG_SPEC>; 8],
+    gpreg: [Gpreg; 8],
 }
-#[doc = "CTRL register accessor: an alias for `Reg<CTRL_SPEC>`"]
-pub type CTRL = crate::Reg<ctrl::CTRL_SPEC>;
+impl RegisterBlock {
+    #[doc = "0x00 - RTC control register"]
+    #[inline(always)]
+    pub const fn ctrl(&self) -> &Ctrl {
+        &self.ctrl
+    }
+    #[doc = "0x04 - RTC match register"]
+    #[inline(always)]
+    pub const fn match_(&self) -> &Match {
+        &self.match_
+    }
+    #[doc = "0x08 - RTC counter register"]
+    #[inline(always)]
+    pub const fn count(&self) -> &Count {
+        &self.count
+    }
+    #[doc = "0x0c - High-resolution/wake-up timer control register"]
+    #[inline(always)]
+    pub const fn wake(&self) -> &Wake {
+        &self.wake
+    }
+    #[doc = "0x10 - Sub-second counter register"]
+    #[inline(always)]
+    pub const fn subsec(&self) -> &Subsec {
+        &self.subsec
+    }
+    #[doc = "0x40..0x60 - General Purpose register"]
+    #[inline(always)]
+    pub const fn gpreg(&self, n: usize) -> &Gpreg {
+        &self.gpreg[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x40..0x60 - General Purpose register"]
+    #[inline(always)]
+    pub fn gpreg_iter(&self) -> impl Iterator<Item = &Gpreg> {
+        self.gpreg.iter()
+    }
+}
+#[doc = "CTRL (rw) register accessor: RTC control register\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`]
+module"]
+#[doc(alias = "CTRL")]
+pub type Ctrl = crate::Reg<ctrl::CtrlSpec>;
 #[doc = "RTC control register"]
 pub mod ctrl;
-#[doc = "MATCH register accessor: an alias for `Reg<MATCH_SPEC>`"]
-pub type MATCH = crate::Reg<match_::MATCH_SPEC>;
+#[doc = "MATCH (rw) register accessor: RTC match register\n\nYou can [`read`](crate::Reg::read) this register and get [`match_::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`match_::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@match_`]
+module"]
+#[doc(alias = "MATCH")]
+pub type Match = crate::Reg<match_::MatchSpec>;
 #[doc = "RTC match register"]
 pub mod match_;
-#[doc = "COUNT register accessor: an alias for `Reg<COUNT_SPEC>`"]
-pub type COUNT = crate::Reg<count::COUNT_SPEC>;
+#[doc = "COUNT (rw) register accessor: RTC counter register\n\nYou can [`read`](crate::Reg::read) this register and get [`count::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`count::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@count`]
+module"]
+#[doc(alias = "COUNT")]
+pub type Count = crate::Reg<count::CountSpec>;
 #[doc = "RTC counter register"]
 pub mod count;
-#[doc = "WAKE register accessor: an alias for `Reg<WAKE_SPEC>`"]
-pub type WAKE = crate::Reg<wake::WAKE_SPEC>;
+#[doc = "WAKE (rw) register accessor: High-resolution/wake-up timer control register\n\nYou can [`read`](crate::Reg::read) this register and get [`wake::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wake::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@wake`]
+module"]
+#[doc(alias = "WAKE")]
+pub type Wake = crate::Reg<wake::WakeSpec>;
 #[doc = "High-resolution/wake-up timer control register"]
 pub mod wake;
-#[doc = "SUBSEC register accessor: an alias for `Reg<SUBSEC_SPEC>`"]
-pub type SUBSEC = crate::Reg<subsec::SUBSEC_SPEC>;
+#[doc = "SUBSEC (rw) register accessor: Sub-second counter register\n\nYou can [`read`](crate::Reg::read) this register and get [`subsec::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`subsec::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@subsec`]
+module"]
+#[doc(alias = "SUBSEC")]
+pub type Subsec = crate::Reg<subsec::SubsecSpec>;
 #[doc = "Sub-second counter register"]
 pub mod subsec;
-#[doc = "GPREG register accessor: an alias for `Reg<GPREG_SPEC>`"]
-pub type GPREG = crate::Reg<gpreg::GPREG_SPEC>;
+#[doc = "GPREG (rw) register accessor: General Purpose register\n\nYou can [`read`](crate::Reg::read) this register and get [`gpreg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`gpreg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@gpreg`]
+module"]
+#[doc(alias = "GPREG")]
+pub type Gpreg = crate::Reg<gpreg::GpregSpec>;
 #[doc = "General Purpose register"]
 pub mod gpreg;

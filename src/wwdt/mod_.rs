@@ -1,442 +1,242 @@
 #[doc = "Register `MOD` reader"]
-pub struct R(crate::R<MOD_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MOD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MOD_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MOD_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ModSpec>;
 #[doc = "Register `MOD` writer"]
-pub struct W(crate::W<MOD_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MOD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MOD_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MOD_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<ModSpec>;
 #[doc = "Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WDEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Wden {
     #[doc = "0: Stop. The watchdog timer is stopped."]
-    STOP = 0,
+    Stop = 0,
     #[doc = "1: Run. The watchdog timer is running."]
-    RUN = 1,
+    Run = 1,
 }
-impl From<WDEN_A> for bool {
+impl From<Wden> for bool {
     #[inline(always)]
-    fn from(variant: WDEN_A) -> Self {
+    fn from(variant: Wden) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WDEN` reader - Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently."]
-pub struct WDEN_R(crate::FieldReader<bool, WDEN_A>);
-impl WDEN_R {
+pub type WdenR = crate::BitReader<Wden>;
+impl WdenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WDEN_A {
+    pub const fn variant(&self) -> Wden {
         match self.bits {
-            false => WDEN_A::STOP,
-            true => WDEN_A::RUN,
+            false => Wden::Stop,
+            true => Wden::Run,
         }
-    }
-    #[doc = "Checks if the value of the field is `STOP`"]
-    #[inline(always)]
-    pub fn is_stop(&self) -> bool {
-        **self == WDEN_A::STOP
-    }
-    #[doc = "Checks if the value of the field is `RUN`"]
-    #[inline(always)]
-    pub fn is_run(&self) -> bool {
-        **self == WDEN_A::RUN
-    }
-}
-impl core::ops::Deref for WDEN_R {
-    type Target = crate::FieldReader<bool, WDEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WDEN` writer - Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently."]
-pub struct WDEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WDEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Stop. The watchdog timer is stopped."]
     #[inline(always)]
-    pub fn stop(self) -> &'a mut W {
-        self.variant(WDEN_A::STOP)
+    pub fn is_stop(&self) -> bool {
+        *self == Wden::Stop
     }
     #[doc = "Run. The watchdog timer is running."]
     #[inline(always)]
-    pub fn run(self) -> &'a mut W {
-        self.variant(WDEN_A::RUN)
+    pub fn is_run(&self) -> bool {
+        *self == Wden::Run
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WDEN` writer - Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently."]
+pub type WdenW<'a, REG> = crate::BitWriter<'a, REG, Wden>;
+impl<'a, REG> WdenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Stop. The watchdog timer is stopped."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn stop(self) -> &'a mut crate::W<REG> {
+        self.variant(Wden::Stop)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Run. The watchdog timer is running."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn run(self) -> &'a mut crate::W<REG> {
+        self.variant(Wden::Run)
     }
 }
 #[doc = "Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WDRESET_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Wdreset {
     #[doc = "0: Interrupt. A watchdog time-out will not cause a chip reset."]
-    INTERRUPT = 0,
+    Interrupt = 0,
     #[doc = "1: Reset. A watchdog time-out will cause a chip reset."]
-    RESET = 1,
+    Reset = 1,
 }
-impl From<WDRESET_A> for bool {
+impl From<Wdreset> for bool {
     #[inline(always)]
-    fn from(variant: WDRESET_A) -> Self {
+    fn from(variant: Wdreset) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WDRESET` reader - Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0."]
-pub struct WDRESET_R(crate::FieldReader<bool, WDRESET_A>);
-impl WDRESET_R {
+pub type WdresetR = crate::BitReader<Wdreset>;
+impl WdresetR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDRESET_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WDRESET_A {
+    pub const fn variant(&self) -> Wdreset {
         match self.bits {
-            false => WDRESET_A::INTERRUPT,
-            true => WDRESET_A::RESET,
+            false => Wdreset::Interrupt,
+            true => Wdreset::Reset,
         }
-    }
-    #[doc = "Checks if the value of the field is `INTERRUPT`"]
-    #[inline(always)]
-    pub fn is_interrupt(&self) -> bool {
-        **self == WDRESET_A::INTERRUPT
-    }
-    #[doc = "Checks if the value of the field is `RESET`"]
-    #[inline(always)]
-    pub fn is_reset(&self) -> bool {
-        **self == WDRESET_A::RESET
-    }
-}
-impl core::ops::Deref for WDRESET_R {
-    type Target = crate::FieldReader<bool, WDRESET_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WDRESET` writer - Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0."]
-pub struct WDRESET_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDRESET_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WDRESET_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Interrupt. A watchdog time-out will not cause a chip reset."]
     #[inline(always)]
-    pub fn interrupt(self) -> &'a mut W {
-        self.variant(WDRESET_A::INTERRUPT)
+    pub fn is_interrupt(&self) -> bool {
+        *self == Wdreset::Interrupt
     }
     #[doc = "Reset. A watchdog time-out will cause a chip reset."]
     #[inline(always)]
-    pub fn reset(self) -> &'a mut W {
-        self.variant(WDRESET_A::RESET)
+    pub fn is_reset(&self) -> bool {
+        *self == Wdreset::Reset
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WDRESET` writer - Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0."]
+pub type WdresetW<'a, REG> = crate::BitWriter<'a, REG, Wdreset>;
+impl<'a, REG> WdresetW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Interrupt. A watchdog time-out will not cause a chip reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn interrupt(self) -> &'a mut crate::W<REG> {
+        self.variant(Wdreset::Interrupt)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Reset. A watchdog time-out will cause a chip reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn reset(self) -> &'a mut crate::W<REG> {
+        self.variant(Wdreset::Reset)
     }
 }
 #[doc = "Field `WDTOF` reader - Watchdog time-out flag. Set when the watchdog timer times out, by a feed error, or by events associated with WDPROTECT. Cleared by software writing a 0 to this bit position. Causes a chip reset if WDRESET = 1."]
-pub struct WDTOF_R(crate::FieldReader<bool, bool>);
-impl WDTOF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDTOF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for WDTOF_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type WdtofR = crate::BitReader;
 #[doc = "Field `WDTOF` writer - Watchdog time-out flag. Set when the watchdog timer times out, by a feed error, or by events associated with WDPROTECT. Cleared by software writing a 0 to this bit position. Causes a chip reset if WDRESET = 1."]
-pub struct WDTOF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDTOF_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type WdtofW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `WDINT` reader - Warning interrupt flag. Set when the timer is at or below the value in WDWARNINT. Cleared by software writing a 1 to this bit position. Note that this bit cannot be cleared while the WARNINT value is equal to the value of the TV register. This can occur if the value of WARNINT is 0 and the WDRESET bit is 0 when TV decrements to 0."]
-pub struct WDINT_R(crate::FieldReader<bool, bool>);
-impl WDINT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDINT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for WDINT_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type WdintR = crate::BitReader;
 #[doc = "Field `WDINT` writer - Warning interrupt flag. Set when the timer is at or below the value in WDWARNINT. Cleared by software writing a 1 to this bit position. Note that this bit cannot be cleared while the WARNINT value is equal to the value of the TV register. This can occur if the value of WARNINT is 0 and the WDRESET bit is 0 when TV decrements to 0."]
-pub struct WDINT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDINT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type WdintW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Watchdog update mode. This bit can be set once by software and is only cleared by a reset.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WDPROTECT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Wdprotect {
     #[doc = "0: Flexible. The watchdog time-out value (TC) can be changed at any time."]
-    FLEXIBLE = 0,
+    Flexible = 0,
     #[doc = "1: Threshold. The watchdog time-out value (TC) can be changed only after the counter is below the value of WDWARNINT and WDWINDOW."]
-    THRESHOLD = 1,
+    Threshold = 1,
 }
-impl From<WDPROTECT_A> for bool {
+impl From<Wdprotect> for bool {
     #[inline(always)]
-    fn from(variant: WDPROTECT_A) -> Self {
+    fn from(variant: Wdprotect) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WDPROTECT` reader - Watchdog update mode. This bit can be set once by software and is only cleared by a reset."]
-pub struct WDPROTECT_R(crate::FieldReader<bool, WDPROTECT_A>);
-impl WDPROTECT_R {
+pub type WdprotectR = crate::BitReader<Wdprotect>;
+impl WdprotectR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WDPROTECT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WDPROTECT_A {
+    pub const fn variant(&self) -> Wdprotect {
         match self.bits {
-            false => WDPROTECT_A::FLEXIBLE,
-            true => WDPROTECT_A::THRESHOLD,
+            false => Wdprotect::Flexible,
+            true => Wdprotect::Threshold,
         }
-    }
-    #[doc = "Checks if the value of the field is `FLEXIBLE`"]
-    #[inline(always)]
-    pub fn is_flexible(&self) -> bool {
-        **self == WDPROTECT_A::FLEXIBLE
-    }
-    #[doc = "Checks if the value of the field is `THRESHOLD`"]
-    #[inline(always)]
-    pub fn is_threshold(&self) -> bool {
-        **self == WDPROTECT_A::THRESHOLD
-    }
-}
-impl core::ops::Deref for WDPROTECT_R {
-    type Target = crate::FieldReader<bool, WDPROTECT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WDPROTECT` writer - Watchdog update mode. This bit can be set once by software and is only cleared by a reset."]
-pub struct WDPROTECT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WDPROTECT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WDPROTECT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Flexible. The watchdog time-out value (TC) can be changed at any time."]
     #[inline(always)]
-    pub fn flexible(self) -> &'a mut W {
-        self.variant(WDPROTECT_A::FLEXIBLE)
+    pub fn is_flexible(&self) -> bool {
+        *self == Wdprotect::Flexible
     }
     #[doc = "Threshold. The watchdog time-out value (TC) can be changed only after the counter is below the value of WDWARNINT and WDWINDOW."]
     #[inline(always)]
-    pub fn threshold(self) -> &'a mut W {
-        self.variant(WDPROTECT_A::THRESHOLD)
+    pub fn is_threshold(&self) -> bool {
+        *self == Wdprotect::Threshold
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WDPROTECT` writer - Watchdog update mode. This bit can be set once by software and is only cleared by a reset."]
+pub type WdprotectW<'a, REG> = crate::BitWriter<'a, REG, Wdprotect>;
+impl<'a, REG> WdprotectW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Flexible. The watchdog time-out value (TC) can be changed at any time."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn flexible(self) -> &'a mut crate::W<REG> {
+        self.variant(Wdprotect::Flexible)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Threshold. The watchdog time-out value (TC) can be changed only after the counter is below the value of WDWARNINT and WDWINDOW."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn threshold(self) -> &'a mut crate::W<REG> {
+        self.variant(Wdprotect::Threshold)
     }
 }
 impl R {
     #[doc = "Bit 0 - Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently."]
     #[inline(always)]
-    pub fn wden(&self) -> WDEN_R {
-        WDEN_R::new((self.bits & 0x01) != 0)
+    pub fn wden(&self) -> WdenR {
+        WdenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0."]
     #[inline(always)]
-    pub fn wdreset(&self) -> WDRESET_R {
-        WDRESET_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn wdreset(&self) -> WdresetR {
+        WdresetR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Watchdog time-out flag. Set when the watchdog timer times out, by a feed error, or by events associated with WDPROTECT. Cleared by software writing a 0 to this bit position. Causes a chip reset if WDRESET = 1."]
     #[inline(always)]
-    pub fn wdtof(&self) -> WDTOF_R {
-        WDTOF_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn wdtof(&self) -> WdtofR {
+        WdtofR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Warning interrupt flag. Set when the timer is at or below the value in WDWARNINT. Cleared by software writing a 1 to this bit position. Note that this bit cannot be cleared while the WARNINT value is equal to the value of the TV register. This can occur if the value of WARNINT is 0 and the WDRESET bit is 0 when TV decrements to 0."]
     #[inline(always)]
-    pub fn wdint(&self) -> WDINT_R {
-        WDINT_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn wdint(&self) -> WdintR {
+        WdintR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Watchdog update mode. This bit can be set once by software and is only cleared by a reset."]
     #[inline(always)]
-    pub fn wdprotect(&self) -> WDPROTECT_R {
-        WDPROTECT_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn wdprotect(&self) -> WdprotectR {
+        WdprotectR::new(((self.bits >> 4) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Watchdog enable bit. Once this bit is set to one and a watchdog feed is performed, the watchdog timer will run permanently."]
     #[inline(always)]
-    pub fn wden(&mut self) -> WDEN_W {
-        WDEN_W { w: self }
+    pub fn wden(&mut self) -> WdenW<ModSpec> {
+        WdenW::new(self, 0)
     }
     #[doc = "Bit 1 - Watchdog reset enable bit. Once this bit has been written with a 1 it cannot be re-written with a 0."]
     #[inline(always)]
-    pub fn wdreset(&mut self) -> WDRESET_W {
-        WDRESET_W { w: self }
+    pub fn wdreset(&mut self) -> WdresetW<ModSpec> {
+        WdresetW::new(self, 1)
     }
     #[doc = "Bit 2 - Watchdog time-out flag. Set when the watchdog timer times out, by a feed error, or by events associated with WDPROTECT. Cleared by software writing a 0 to this bit position. Causes a chip reset if WDRESET = 1."]
     #[inline(always)]
-    pub fn wdtof(&mut self) -> WDTOF_W {
-        WDTOF_W { w: self }
+    pub fn wdtof(&mut self) -> WdtofW<ModSpec> {
+        WdtofW::new(self, 2)
     }
     #[doc = "Bit 3 - Warning interrupt flag. Set when the timer is at or below the value in WDWARNINT. Cleared by software writing a 1 to this bit position. Note that this bit cannot be cleared while the WARNINT value is equal to the value of the TV register. This can occur if the value of WARNINT is 0 and the WDRESET bit is 0 when TV decrements to 0."]
     #[inline(always)]
-    pub fn wdint(&mut self) -> WDINT_W {
-        WDINT_W { w: self }
+    pub fn wdint(&mut self) -> WdintW<ModSpec> {
+        WdintW::new(self, 3)
     }
     #[doc = "Bit 4 - Watchdog update mode. This bit can be set once by software and is only cleared by a reset."]
     #[inline(always)]
-    pub fn wdprotect(&mut self) -> WDPROTECT_W {
-        WDPROTECT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn wdprotect(&mut self) -> WdprotectW<ModSpec> {
+        WdprotectW::new(self, 4)
     }
 }
-#[doc = "Watchdog mode register. This register contains the basic mode and status of the Watchdog Timer.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [mod_](index.html) module"]
-pub struct MOD_SPEC;
-impl crate::RegisterSpec for MOD_SPEC {
+#[doc = "Watchdog mode register. This register contains the basic mode and status of the Watchdog Timer.\n\nYou can [`read`](crate::Reg::read) this register and get [`mod_::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mod_::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ModSpec;
+impl crate::RegisterSpec for ModSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [mod_::R](R) reader structure"]
-impl crate::Readable for MOD_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [mod_::W](W) writer structure"]
-impl crate::Writable for MOD_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`mod_::R`](R) reader structure"]
+impl crate::Readable for ModSpec {}
+#[doc = "`write(|w| ..)` method takes [`mod_::W`](W) writer structure"]
+impl crate::Writable for ModSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MOD to value 0"]
-impl crate::Resettable for MOD_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for ModSpec {
+    const RESET_VALUE: u32 = 0;
 }

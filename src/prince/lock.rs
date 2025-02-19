@@ -1,442 +1,277 @@
 #[doc = "Register `LOCK` reader"]
-pub struct R(crate::R<LOCK_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<LOCK_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<LOCK_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<LOCK_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<LockSpec>;
 #[doc = "Register `LOCK` writer"]
-pub struct W(crate::W<LOCK_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<LOCK_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<LOCK_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<LOCK_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<LockSpec>;
 #[doc = "Lock Region 0 registers.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOCKREG0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lockreg0 {
     #[doc = "0: Disabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are writable.."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: Enabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are not writable.."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<LOCKREG0_A> for bool {
+impl From<Lockreg0> for bool {
     #[inline(always)]
-    fn from(variant: LOCKREG0_A) -> Self {
+    fn from(variant: Lockreg0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LOCKREG0` reader - Lock Region 0 registers."]
-pub struct LOCKREG0_R(crate::FieldReader<bool, LOCKREG0_A>);
-impl LOCKREG0_R {
+pub type Lockreg0R = crate::BitReader<Lockreg0>;
+impl Lockreg0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LOCKREG0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LOCKREG0_A {
+    pub const fn variant(&self) -> Lockreg0 {
         match self.bits {
-            false => LOCKREG0_A::DISABLED,
-            true => LOCKREG0_A::ENABLED,
+            false => Lockreg0::Disabled,
+            true => Lockreg0::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == LOCKREG0_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == LOCKREG0_A::ENABLED
-    }
-}
-impl core::ops::Deref for LOCKREG0_R {
-    type Target = crate::FieldReader<bool, LOCKREG0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOCKREG0` writer - Lock Region 0 registers."]
-pub struct LOCKREG0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCKREG0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOCKREG0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are writable.."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LOCKREG0_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Lockreg0::Disabled
     }
     #[doc = "Enabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are not writable.."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(LOCKREG0_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Lockreg0::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LOCKREG0` writer - Lock Region 0 registers."]
+pub type Lockreg0W<'a, REG> = crate::BitWriter<'a, REG, Lockreg0>;
+impl<'a, REG> Lockreg0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are writable.."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg0::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enabled. IV_LSB0, IV_MSB0, BASE_ADDR0, and SR_ENABLE0 are not writable.."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg0::Enabled)
     }
 }
 #[doc = "Lock Region 1 registers.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOCKREG1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lockreg1 {
     #[doc = "0: Disabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are writable.."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: Enabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are not writable.."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<LOCKREG1_A> for bool {
+impl From<Lockreg1> for bool {
     #[inline(always)]
-    fn from(variant: LOCKREG1_A) -> Self {
+    fn from(variant: Lockreg1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LOCKREG1` reader - Lock Region 1 registers."]
-pub struct LOCKREG1_R(crate::FieldReader<bool, LOCKREG1_A>);
-impl LOCKREG1_R {
+pub type Lockreg1R = crate::BitReader<Lockreg1>;
+impl Lockreg1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LOCKREG1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LOCKREG1_A {
+    pub const fn variant(&self) -> Lockreg1 {
         match self.bits {
-            false => LOCKREG1_A::DISABLED,
-            true => LOCKREG1_A::ENABLED,
+            false => Lockreg1::Disabled,
+            true => Lockreg1::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == LOCKREG1_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == LOCKREG1_A::ENABLED
-    }
-}
-impl core::ops::Deref for LOCKREG1_R {
-    type Target = crate::FieldReader<bool, LOCKREG1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOCKREG1` writer - Lock Region 1 registers."]
-pub struct LOCKREG1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCKREG1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOCKREG1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are writable.."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LOCKREG1_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Lockreg1::Disabled
     }
     #[doc = "Enabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are not writable.."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(LOCKREG1_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Lockreg1::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LOCKREG1` writer - Lock Region 1 registers."]
+pub type Lockreg1W<'a, REG> = crate::BitWriter<'a, REG, Lockreg1>;
+impl<'a, REG> Lockreg1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are writable.."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg1::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enabled. IV_LSB1, IV_MSB1, BASE_ADDR1, and SR_ENABLE1 are not writable.."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg1::Enabled)
     }
 }
 #[doc = "Lock Region 2 registers.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOCKREG2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lockreg2 {
     #[doc = "0: Disabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are writable.."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: Enabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are not writable.."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<LOCKREG2_A> for bool {
+impl From<Lockreg2> for bool {
     #[inline(always)]
-    fn from(variant: LOCKREG2_A) -> Self {
+    fn from(variant: Lockreg2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LOCKREG2` reader - Lock Region 2 registers."]
-pub struct LOCKREG2_R(crate::FieldReader<bool, LOCKREG2_A>);
-impl LOCKREG2_R {
+pub type Lockreg2R = crate::BitReader<Lockreg2>;
+impl Lockreg2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LOCKREG2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LOCKREG2_A {
+    pub const fn variant(&self) -> Lockreg2 {
         match self.bits {
-            false => LOCKREG2_A::DISABLED,
-            true => LOCKREG2_A::ENABLED,
+            false => Lockreg2::Disabled,
+            true => Lockreg2::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == LOCKREG2_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == LOCKREG2_A::ENABLED
-    }
-}
-impl core::ops::Deref for LOCKREG2_R {
-    type Target = crate::FieldReader<bool, LOCKREG2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOCKREG2` writer - Lock Region 2 registers."]
-pub struct LOCKREG2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCKREG2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOCKREG2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are writable.."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LOCKREG2_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Lockreg2::Disabled
     }
     #[doc = "Enabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are not writable.."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(LOCKREG2_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Lockreg2::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LOCKREG2` writer - Lock Region 2 registers."]
+pub type Lockreg2W<'a, REG> = crate::BitWriter<'a, REG, Lockreg2>;
+impl<'a, REG> Lockreg2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are writable.."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg2::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enabled. IV_LSB2, IV_MSB2, BASE_ADDR2, and SR_ENABLE2 are not writable.."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockreg2::Enabled)
     }
 }
 #[doc = "Lock the Mask registers.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOCKMASK_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lockmask {
     #[doc = "0: Disabled. MASK_LSB, and MASK_MSB are writable.."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: Enabled. MASK_LSB, and MASK_MSB are not writable.."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<LOCKMASK_A> for bool {
+impl From<Lockmask> for bool {
     #[inline(always)]
-    fn from(variant: LOCKMASK_A) -> Self {
+    fn from(variant: Lockmask) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LOCKMASK` reader - Lock the Mask registers."]
-pub struct LOCKMASK_R(crate::FieldReader<bool, LOCKMASK_A>);
-impl LOCKMASK_R {
+pub type LockmaskR = crate::BitReader<Lockmask>;
+impl LockmaskR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LOCKMASK_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LOCKMASK_A {
+    pub const fn variant(&self) -> Lockmask {
         match self.bits {
-            false => LOCKMASK_A::DISABLED,
-            true => LOCKMASK_A::ENABLED,
+            false => Lockmask::Disabled,
+            true => Lockmask::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == LOCKMASK_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == LOCKMASK_A::ENABLED
-    }
-}
-impl core::ops::Deref for LOCKMASK_R {
-    type Target = crate::FieldReader<bool, LOCKMASK_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOCKMASK` writer - Lock the Mask registers."]
-pub struct LOCKMASK_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCKMASK_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOCKMASK_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disabled. MASK_LSB, and MASK_MSB are writable.."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LOCKMASK_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Lockmask::Disabled
     }
     #[doc = "Enabled. MASK_LSB, and MASK_MSB are not writable.."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(LOCKMASK_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Lockmask::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LOCKMASK` writer - Lock the Mask registers."]
+pub type LockmaskW<'a, REG> = crate::BitWriter<'a, REG, Lockmask>;
+impl<'a, REG> LockmaskW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disabled. MASK_LSB, and MASK_MSB are writable.."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockmask::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enabled. MASK_LSB, and MASK_MSB are not writable.."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Lockmask::Enabled)
     }
 }
 impl R {
     #[doc = "Bit 0 - Lock Region 0 registers."]
     #[inline(always)]
-    pub fn lockreg0(&self) -> LOCKREG0_R {
-        LOCKREG0_R::new((self.bits & 0x01) != 0)
+    pub fn lockreg0(&self) -> Lockreg0R {
+        Lockreg0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Lock Region 1 registers."]
     #[inline(always)]
-    pub fn lockreg1(&self) -> LOCKREG1_R {
-        LOCKREG1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn lockreg1(&self) -> Lockreg1R {
+        Lockreg1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Lock Region 2 registers."]
     #[inline(always)]
-    pub fn lockreg2(&self) -> LOCKREG2_R {
-        LOCKREG2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn lockreg2(&self) -> Lockreg2R {
+        Lockreg2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 8 - Lock the Mask registers."]
     #[inline(always)]
-    pub fn lockmask(&self) -> LOCKMASK_R {
-        LOCKMASK_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn lockmask(&self) -> LockmaskR {
+        LockmaskR::new(((self.bits >> 8) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Lock Region 0 registers."]
     #[inline(always)]
-    pub fn lockreg0(&mut self) -> LOCKREG0_W {
-        LOCKREG0_W { w: self }
+    pub fn lockreg0(&mut self) -> Lockreg0W<LockSpec> {
+        Lockreg0W::new(self, 0)
     }
     #[doc = "Bit 1 - Lock Region 1 registers."]
     #[inline(always)]
-    pub fn lockreg1(&mut self) -> LOCKREG1_W {
-        LOCKREG1_W { w: self }
+    pub fn lockreg1(&mut self) -> Lockreg1W<LockSpec> {
+        Lockreg1W::new(self, 1)
     }
     #[doc = "Bit 2 - Lock Region 2 registers."]
     #[inline(always)]
-    pub fn lockreg2(&mut self) -> LOCKREG2_W {
-        LOCKREG2_W { w: self }
+    pub fn lockreg2(&mut self) -> Lockreg2W<LockSpec> {
+        Lockreg2W::new(self, 2)
     }
     #[doc = "Bit 8 - Lock the Mask registers."]
     #[inline(always)]
-    pub fn lockmask(&mut self) -> LOCKMASK_W {
-        LOCKMASK_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn lockmask(&mut self) -> LockmaskW<LockSpec> {
+        LockmaskW::new(self, 8)
     }
 }
-#[doc = "Lock register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [lock](index.html) module"]
-pub struct LOCK_SPEC;
-impl crate::RegisterSpec for LOCK_SPEC {
+#[doc = "Lock register\n\nYou can [`read`](crate::Reg::read) this register and get [`lock::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lock::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct LockSpec;
+impl crate::RegisterSpec for LockSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [lock::R](R) reader structure"]
-impl crate::Readable for LOCK_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [lock::W](W) writer structure"]
-impl crate::Writable for LOCK_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`lock::R`](R) reader structure"]
+impl crate::Readable for LockSpec {}
+#[doc = "`write(|w| ..)` method takes [`lock::W`](W) writer structure"]
+impl crate::Writable for LockSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets LOCK to value 0"]
-impl crate::Resettable for LOCK_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for LockSpec {
+    const RESET_VALUE: u32 = 0;
 }

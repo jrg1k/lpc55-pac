@@ -1,399 +1,550 @@
 #[doc = "Register `PRINCE_BASE_ADDR` reader"]
-pub struct R(crate::R<PRINCE_BASE_ADDR_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PRINCE_BASE_ADDR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PRINCE_BASE_ADDR_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PRINCE_BASE_ADDR_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PrinceBaseAddrSpec>;
 #[doc = "Register `PRINCE_BASE_ADDR` writer"]
-pub struct W(crate::W<PRINCE_BASE_ADDR_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PRINCE_BASE_ADDR_SPEC>;
+pub type W = crate::W<PrinceBaseAddrSpec>;
+#[doc = "Field `ADDR0_PRG` reader - Programmable portion of the base address of region 0"]
+pub type Addr0PrgR = crate::FieldReader;
+#[doc = "Field `ADDR0_PRG` writer - Programmable portion of the base address of region 0"]
+pub type Addr0PrgW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+#[doc = "Field `ADDR1_PRG` reader - Programmable portion of the base address of region 1"]
+pub type Addr1PrgR = crate::FieldReader;
+#[doc = "Field `ADDR1_PRG` writer - Programmable portion of the base address of region 1"]
+pub type Addr1PrgW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+#[doc = "Field `ADDR2_PRG` reader - Programmable portion of the base address of region 2"]
+pub type Addr2PrgR = crate::FieldReader;
+#[doc = "Field `ADDR2_PRG` writer - Programmable portion of the base address of region 2"]
+pub type Addr2PrgW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+#[doc = "Lock PRINCE region0 settings\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum LockReg0 {
+    #[doc = "0: Region is not locked"]
+    Unlock = 0,
+    #[doc = "1: Region is locked"]
+    Lock = 1,
+    #[doc = "2: Region is locked"]
+    Value2 = 2,
+    #[doc = "3: Region is locked"]
+    Value3 = 3,
+}
+impl From<LockReg0> for u8 {
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    fn from(variant: LockReg0) -> Self {
+        variant as _
     }
 }
-impl core::ops::DerefMut for W {
+impl crate::FieldSpec for LockReg0 {
+    type Ux = u8;
+}
+impl crate::IsEnum for LockReg0 {}
+#[doc = "Field `LOCK_REG0` reader - Lock PRINCE region0 settings"]
+pub type LockReg0R = crate::FieldReader<LockReg0>;
+impl LockReg0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
+    pub const fn variant(&self) -> LockReg0 {
+        match self.bits {
+            0 => LockReg0::Unlock,
+            1 => LockReg0::Lock,
+            2 => LockReg0::Value2,
+            3 => LockReg0::Value3,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Region is not locked"]
+    #[inline(always)]
+    pub fn is_unlock(&self) -> bool {
+        *self == LockReg0::Unlock
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_lock(&self) -> bool {
+        *self == LockReg0::Lock
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_value_2(&self) -> bool {
+        *self == LockReg0::Value2
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_value_3(&self) -> bool {
+        *self == LockReg0::Value3
     }
 }
-impl From<crate::W<PRINCE_BASE_ADDR_SPEC>> for W {
+#[doc = "Field `LOCK_REG0` writer - Lock PRINCE region0 settings"]
+pub type LockReg0W<'a, REG> = crate::FieldWriter<'a, REG, 2, LockReg0, crate::Safe>;
+impl<'a, REG> LockReg0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Region is not locked"]
     #[inline(always)]
-    fn from(writer: crate::W<PRINCE_BASE_ADDR_SPEC>) -> Self {
-        W(writer)
+    pub fn unlock(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg0::Unlock)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn lock(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg0::Lock)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn value_2(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg0::Value2)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn value_3(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg0::Value3)
     }
 }
-#[doc = "Field `ADDR0_PRG` reader - Programmable portion of the base address of region 0."]
-pub struct ADDR0_PRG_R(crate::FieldReader<u8, u8>);
-impl ADDR0_PRG_R {
+#[doc = "Lock PRINCE region1 settings\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum LockReg1 {
+    #[doc = "0: Region is not locked"]
+    Unlock = 0,
+    #[doc = "1: Region is locked"]
+    Lock = 1,
+    #[doc = "2: Region is locked"]
+    Value2 = 2,
+    #[doc = "3: Region is locked"]
+    Value3 = 3,
+}
+impl From<LockReg1> for u8 {
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ADDR0_PRG_R(crate::FieldReader::new(bits))
+    fn from(variant: LockReg1) -> Self {
+        variant as _
     }
 }
-impl core::ops::Deref for ADDR0_PRG_R {
-    type Target = crate::FieldReader<u8, u8>;
+impl crate::FieldSpec for LockReg1 {
+    type Ux = u8;
+}
+impl crate::IsEnum for LockReg1 {}
+#[doc = "Field `LOCK_REG1` reader - Lock PRINCE region1 settings"]
+pub type LockReg1R = crate::FieldReader<LockReg1>;
+impl LockReg1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub const fn variant(&self) -> LockReg1 {
+        match self.bits {
+            0 => LockReg1::Unlock,
+            1 => LockReg1::Lock,
+            2 => LockReg1::Value2,
+            3 => LockReg1::Value3,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Region is not locked"]
+    #[inline(always)]
+    pub fn is_unlock(&self) -> bool {
+        *self == LockReg1::Unlock
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_lock(&self) -> bool {
+        *self == LockReg1::Lock
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_value_2(&self) -> bool {
+        *self == LockReg1::Value2
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn is_value_3(&self) -> bool {
+        *self == LockReg1::Value3
     }
 }
-#[doc = "Field `ADDR0_PRG` writer - Programmable portion of the base address of region 0."]
-pub struct ADDR0_PRG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADDR0_PRG_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Field `LOCK_REG1` writer - Lock PRINCE region1 settings"]
+pub type LockReg1W<'a, REG> = crate::FieldWriter<'a, REG, 2, LockReg1, crate::Safe>;
+impl<'a, REG> LockReg1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Region is not locked"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0f) | (value as u32 & 0x0f);
-        self.w
+    pub fn unlock(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg1::Unlock)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn lock(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg1::Lock)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn value_2(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg1::Value2)
+    }
+    #[doc = "Region is locked"]
+    #[inline(always)]
+    pub fn value_3(self) -> &'a mut crate::W<REG> {
+        self.variant(LockReg1::Value3)
     }
 }
-#[doc = "Field `ADDR1_PRG` reader - Programmable portion of the base address of region 1."]
-pub struct ADDR1_PRG_R(crate::FieldReader<u8, u8>);
-impl ADDR1_PRG_R {
+#[doc = "For PRINCE region0 enable checking whether all encrypted pages are erased together\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum Reg0EraseCheckEn {
+    #[doc = "0: Region is disabled"]
+    Disable = 0,
+    #[doc = "1: Region is enabled"]
+    Enable = 1,
+    #[doc = "2: Region is enabled"]
+    Value2 = 2,
+    #[doc = "3: Region is enabled"]
+    Value3 = 3,
+}
+impl From<Reg0EraseCheckEn> for u8 {
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ADDR1_PRG_R(crate::FieldReader::new(bits))
+    fn from(variant: Reg0EraseCheckEn) -> Self {
+        variant as _
     }
 }
-impl core::ops::Deref for ADDR1_PRG_R {
-    type Target = crate::FieldReader<u8, u8>;
+impl crate::FieldSpec for Reg0EraseCheckEn {
+    type Ux = u8;
+}
+impl crate::IsEnum for Reg0EraseCheckEn {}
+#[doc = "Field `REG0_ERASE_CHECK_EN` reader - For PRINCE region0 enable checking whether all encrypted pages are erased together"]
+pub type Reg0EraseCheckEnR = crate::FieldReader<Reg0EraseCheckEn>;
+impl Reg0EraseCheckEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub const fn variant(&self) -> Reg0EraseCheckEn {
+        match self.bits {
+            0 => Reg0EraseCheckEn::Disable,
+            1 => Reg0EraseCheckEn::Enable,
+            2 => Reg0EraseCheckEn::Value2,
+            3 => Reg0EraseCheckEn::Value3,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Region is disabled"]
+    #[inline(always)]
+    pub fn is_disable(&self) -> bool {
+        *self == Reg0EraseCheckEn::Disable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_enable(&self) -> bool {
+        *self == Reg0EraseCheckEn::Enable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_2(&self) -> bool {
+        *self == Reg0EraseCheckEn::Value2
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_3(&self) -> bool {
+        *self == Reg0EraseCheckEn::Value3
     }
 }
-#[doc = "Field `ADDR1_PRG` writer - Programmable portion of the base address of region 1."]
-pub struct ADDR1_PRG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADDR1_PRG_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Field `REG0_ERASE_CHECK_EN` writer - For PRINCE region0 enable checking whether all encrypted pages are erased together"]
+pub type Reg0EraseCheckEnW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Reg0EraseCheckEn, crate::Safe>;
+impl<'a, REG> Reg0EraseCheckEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Region is disabled"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 4)) | ((value as u32 & 0x0f) << 4);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg0EraseCheckEn::Disable)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg0EraseCheckEn::Enable)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn value_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg0EraseCheckEn::Value2)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn value_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg0EraseCheckEn::Value3)
     }
 }
-#[doc = "Field `ADDR2_PRG` reader - Programmable portion of the base address of region 2."]
-pub struct ADDR2_PRG_R(crate::FieldReader<u8, u8>);
-impl ADDR2_PRG_R {
+#[doc = "For PRINCE region1 enable checking whether all encrypted pages are erased together\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum Reg1EraseCheckEn {
+    #[doc = "0: Region is disabled"]
+    Disable = 0,
+    #[doc = "1: Region is enabled"]
+    Enable = 1,
+    #[doc = "2: Region is enabled"]
+    Value2 = 2,
+    #[doc = "3: Region is enabled"]
+    Value3 = 3,
+}
+impl From<Reg1EraseCheckEn> for u8 {
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ADDR2_PRG_R(crate::FieldReader::new(bits))
+    fn from(variant: Reg1EraseCheckEn) -> Self {
+        variant as _
     }
 }
-impl core::ops::Deref for ADDR2_PRG_R {
-    type Target = crate::FieldReader<u8, u8>;
+impl crate::FieldSpec for Reg1EraseCheckEn {
+    type Ux = u8;
+}
+impl crate::IsEnum for Reg1EraseCheckEn {}
+#[doc = "Field `REG1_ERASE_CHECK_EN` reader - For PRINCE region1 enable checking whether all encrypted pages are erased together"]
+pub type Reg1EraseCheckEnR = crate::FieldReader<Reg1EraseCheckEn>;
+impl Reg1EraseCheckEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub const fn variant(&self) -> Reg1EraseCheckEn {
+        match self.bits {
+            0 => Reg1EraseCheckEn::Disable,
+            1 => Reg1EraseCheckEn::Enable,
+            2 => Reg1EraseCheckEn::Value2,
+            3 => Reg1EraseCheckEn::Value3,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Region is disabled"]
+    #[inline(always)]
+    pub fn is_disable(&self) -> bool {
+        *self == Reg1EraseCheckEn::Disable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_enable(&self) -> bool {
+        *self == Reg1EraseCheckEn::Enable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_2(&self) -> bool {
+        *self == Reg1EraseCheckEn::Value2
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_3(&self) -> bool {
+        *self == Reg1EraseCheckEn::Value3
     }
 }
-#[doc = "Field `ADDR2_PRG` writer - Programmable portion of the base address of region 2."]
-pub struct ADDR2_PRG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADDR2_PRG_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Field `REG1_ERASE_CHECK_EN` writer - For PRINCE region1 enable checking whether all encrypted pages are erased together"]
+pub type Reg1EraseCheckEnW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Reg1EraseCheckEn, crate::Safe>;
+impl<'a, REG> Reg1EraseCheckEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Region is disabled"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 8)) | ((value as u32 & 0x0f) << 8);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg1EraseCheckEn::Disable)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg1EraseCheckEn::Enable)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn value_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg1EraseCheckEn::Value2)
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn value_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg1EraseCheckEn::Value3)
     }
 }
-#[doc = "Field `LOCK_REG0` reader - Lock PRINCE region0 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG0_R(crate::FieldReader<u8, u8>);
-impl LOCK_REG0_R {
+#[doc = "For PRINCE region2 enable checking whether all encrypted pages are erased together\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum Reg2EraseCheckEn {
+    #[doc = "0: Region is disabled"]
+    Disable = 0,
+    #[doc = "1: Region is enabled"]
+    Enable = 1,
+    #[doc = "2: Region is enabled"]
+    Value2 = 2,
+    #[doc = "3: Region is enabled"]
+    Value3 = 3,
+}
+impl From<Reg2EraseCheckEn> for u8 {
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LOCK_REG0_R(crate::FieldReader::new(bits))
+    fn from(variant: Reg2EraseCheckEn) -> Self {
+        variant as _
     }
 }
-impl core::ops::Deref for LOCK_REG0_R {
-    type Target = crate::FieldReader<u8, u8>;
+impl crate::FieldSpec for Reg2EraseCheckEn {
+    type Ux = u8;
+}
+impl crate::IsEnum for Reg2EraseCheckEn {}
+#[doc = "Field `REG2_ERASE_CHECK_EN` reader - For PRINCE region2 enable checking whether all encrypted pages are erased together"]
+pub type Reg2EraseCheckEnR = crate::FieldReader<Reg2EraseCheckEn>;
+impl Reg2EraseCheckEnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub const fn variant(&self) -> Reg2EraseCheckEn {
+        match self.bits {
+            0 => Reg2EraseCheckEn::Disable,
+            1 => Reg2EraseCheckEn::Enable,
+            2 => Reg2EraseCheckEn::Value2,
+            3 => Reg2EraseCheckEn::Value3,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Region is disabled"]
+    #[inline(always)]
+    pub fn is_disable(&self) -> bool {
+        *self == Reg2EraseCheckEn::Disable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_enable(&self) -> bool {
+        *self == Reg2EraseCheckEn::Enable
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_2(&self) -> bool {
+        *self == Reg2EraseCheckEn::Value2
+    }
+    #[doc = "Region is enabled"]
+    #[inline(always)]
+    pub fn is_value_3(&self) -> bool {
+        *self == Reg2EraseCheckEn::Value3
     }
 }
-#[doc = "Field `LOCK_REG0` writer - Lock PRINCE region0 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCK_REG0_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+#[doc = "Field `REG2_ERASE_CHECK_EN` writer - For PRINCE region2 enable checking whether all encrypted pages are erased together"]
+pub type Reg2EraseCheckEnW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Reg2EraseCheckEn, crate::Safe>;
+impl<'a, REG> Reg2EraseCheckEnW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Region is disabled"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | ((value as u32 & 0x03) << 16);
-        self.w
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg2EraseCheckEn::Disable)
     }
-}
-#[doc = "Field `LOCK_REG1` reader - Lock PRINCE region1 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG1_R(crate::FieldReader<u8, u8>);
-impl LOCK_REG1_R {
+    #[doc = "Region is enabled"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LOCK_REG1_R(crate::FieldReader::new(bits))
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg2EraseCheckEn::Enable)
     }
-}
-impl core::ops::Deref for LOCK_REG1_R {
-    type Target = crate::FieldReader<u8, u8>;
+    #[doc = "Region is enabled"]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub fn value_2(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg2EraseCheckEn::Value2)
     }
-}
-#[doc = "Field `LOCK_REG1` writer - Lock PRINCE region1 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCK_REG1_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+    #[doc = "Region is enabled"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 18)) | ((value as u32 & 0x03) << 18);
-        self.w
-    }
-}
-#[doc = "Field `LOCK_REG2` reader - Lock PRINCE region2 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG2_R(crate::FieldReader<u8, u8>);
-impl LOCK_REG2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LOCK_REG2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for LOCK_REG2_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOCK_REG2` writer - Lock PRINCE region2 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
-pub struct LOCK_REG2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOCK_REG2_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
-        self.w
-    }
-}
-#[doc = "Field `REG0_ERASE_CHECK_EN` reader - For PRINCE region0 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG0_ERASE_CHECK_EN_R(crate::FieldReader<u8, u8>);
-impl REG0_ERASE_CHECK_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        REG0_ERASE_CHECK_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for REG0_ERASE_CHECK_EN_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `REG0_ERASE_CHECK_EN` writer - For PRINCE region0 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG0_ERASE_CHECK_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> REG0_ERASE_CHECK_EN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 24)) | ((value as u32 & 0x03) << 24);
-        self.w
-    }
-}
-#[doc = "Field `REG1_ERASE_CHECK_EN` reader - For PRINCE region1 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG1_ERASE_CHECK_EN_R(crate::FieldReader<u8, u8>);
-impl REG1_ERASE_CHECK_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        REG1_ERASE_CHECK_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for REG1_ERASE_CHECK_EN_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `REG1_ERASE_CHECK_EN` writer - For PRINCE region1 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG1_ERASE_CHECK_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> REG1_ERASE_CHECK_EN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 26)) | ((value as u32 & 0x03) << 26);
-        self.w
-    }
-}
-#[doc = "Field `REG2_ERASE_CHECK_EN` reader - For PRINCE region2 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG2_ERASE_CHECK_EN_R(crate::FieldReader<u8, u8>);
-impl REG2_ERASE_CHECK_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        REG2_ERASE_CHECK_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for REG2_ERASE_CHECK_EN_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `REG2_ERASE_CHECK_EN` writer - For PRINCE region2 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-pub struct REG2_ERASE_CHECK_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> REG2_ERASE_CHECK_EN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 28)) | ((value as u32 & 0x03) << 28);
-        self.w
+    pub fn value_3(self) -> &'a mut crate::W<REG> {
+        self.variant(Reg2EraseCheckEn::Value3)
     }
 }
 impl R {
-    #[doc = "Bits 0:3 - Programmable portion of the base address of region 0."]
+    #[doc = "Bits 0:3 - Programmable portion of the base address of region 0"]
     #[inline(always)]
-    pub fn addr0_prg(&self) -> ADDR0_PRG_R {
-        ADDR0_PRG_R::new((self.bits & 0x0f) as u8)
+    pub fn addr0_prg(&self) -> Addr0PrgR {
+        Addr0PrgR::new((self.bits & 0x0f) as u8)
     }
-    #[doc = "Bits 4:7 - Programmable portion of the base address of region 1."]
+    #[doc = "Bits 4:7 - Programmable portion of the base address of region 1"]
     #[inline(always)]
-    pub fn addr1_prg(&self) -> ADDR1_PRG_R {
-        ADDR1_PRG_R::new(((self.bits >> 4) & 0x0f) as u8)
+    pub fn addr1_prg(&self) -> Addr1PrgR {
+        Addr1PrgR::new(((self.bits >> 4) & 0x0f) as u8)
     }
-    #[doc = "Bits 8:11 - Programmable portion of the base address of region 2."]
+    #[doc = "Bits 8:11 - Programmable portion of the base address of region 2"]
     #[inline(always)]
-    pub fn addr2_prg(&self) -> ADDR2_PRG_R {
-        ADDR2_PRG_R::new(((self.bits >> 8) & 0x0f) as u8)
+    pub fn addr2_prg(&self) -> Addr2PrgR {
+        Addr2PrgR::new(((self.bits >> 8) & 0x0f) as u8)
     }
-    #[doc = "Bits 16:17 - Lock PRINCE region0 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 18:19 - Lock PRINCE region0 settings"]
     #[inline(always)]
-    pub fn lock_reg0(&self) -> LOCK_REG0_R {
-        LOCK_REG0_R::new(((self.bits >> 16) & 0x03) as u8)
+    pub fn lock_reg0(&self) -> LockReg0R {
+        LockReg0R::new(((self.bits >> 18) & 3) as u8)
     }
-    #[doc = "Bits 18:19 - Lock PRINCE region1 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 20:21 - Lock PRINCE region1 settings"]
     #[inline(always)]
-    pub fn lock_reg1(&self) -> LOCK_REG1_R {
-        LOCK_REG1_R::new(((self.bits >> 18) & 0x03) as u8)
+    pub fn lock_reg1(&self) -> LockReg1R {
+        LockReg1R::new(((self.bits >> 20) & 3) as u8)
     }
-    #[doc = "Bits 20:21 - Lock PRINCE region2 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 24:25 - For PRINCE region0 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn lock_reg2(&self) -> LOCK_REG2_R {
-        LOCK_REG2_R::new(((self.bits >> 20) & 0x03) as u8)
+    pub fn reg0_erase_check_en(&self) -> Reg0EraseCheckEnR {
+        Reg0EraseCheckEnR::new(((self.bits >> 24) & 3) as u8)
     }
-    #[doc = "Bits 24:25 - For PRINCE region0 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
+    #[doc = "Bits 26:27 - For PRINCE region1 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn reg0_erase_check_en(&self) -> REG0_ERASE_CHECK_EN_R {
-        REG0_ERASE_CHECK_EN_R::new(((self.bits >> 24) & 0x03) as u8)
+    pub fn reg1_erase_check_en(&self) -> Reg1EraseCheckEnR {
+        Reg1EraseCheckEnR::new(((self.bits >> 26) & 3) as u8)
     }
-    #[doc = "Bits 26:27 - For PRINCE region1 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
+    #[doc = "Bits 28:29 - For PRINCE region2 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn reg1_erase_check_en(&self) -> REG1_ERASE_CHECK_EN_R {
-        REG1_ERASE_CHECK_EN_R::new(((self.bits >> 26) & 0x03) as u8)
-    }
-    #[doc = "Bits 28:29 - For PRINCE region2 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-    #[inline(always)]
-    pub fn reg2_erase_check_en(&self) -> REG2_ERASE_CHECK_EN_R {
-        REG2_ERASE_CHECK_EN_R::new(((self.bits >> 28) & 0x03) as u8)
+    pub fn reg2_erase_check_en(&self) -> Reg2EraseCheckEnR {
+        Reg2EraseCheckEnR::new(((self.bits >> 28) & 3) as u8)
     }
 }
 impl W {
-    #[doc = "Bits 0:3 - Programmable portion of the base address of region 0."]
+    #[doc = "Bits 0:3 - Programmable portion of the base address of region 0"]
     #[inline(always)]
-    pub fn addr0_prg(&mut self) -> ADDR0_PRG_W {
-        ADDR0_PRG_W { w: self }
+    pub fn addr0_prg(&mut self) -> Addr0PrgW<PrinceBaseAddrSpec> {
+        Addr0PrgW::new(self, 0)
     }
-    #[doc = "Bits 4:7 - Programmable portion of the base address of region 1."]
+    #[doc = "Bits 4:7 - Programmable portion of the base address of region 1"]
     #[inline(always)]
-    pub fn addr1_prg(&mut self) -> ADDR1_PRG_W {
-        ADDR1_PRG_W { w: self }
+    pub fn addr1_prg(&mut self) -> Addr1PrgW<PrinceBaseAddrSpec> {
+        Addr1PrgW::new(self, 4)
     }
-    #[doc = "Bits 8:11 - Programmable portion of the base address of region 2."]
+    #[doc = "Bits 8:11 - Programmable portion of the base address of region 2"]
     #[inline(always)]
-    pub fn addr2_prg(&mut self) -> ADDR2_PRG_W {
-        ADDR2_PRG_W { w: self }
+    pub fn addr2_prg(&mut self) -> Addr2PrgW<PrinceBaseAddrSpec> {
+        Addr2PrgW::new(self, 8)
     }
-    #[doc = "Bits 16:17 - Lock PRINCE region0 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 18:19 - Lock PRINCE region0 settings"]
     #[inline(always)]
-    pub fn lock_reg0(&mut self) -> LOCK_REG0_W {
-        LOCK_REG0_W { w: self }
+    pub fn lock_reg0(&mut self) -> LockReg0W<PrinceBaseAddrSpec> {
+        LockReg0W::new(self, 18)
     }
-    #[doc = "Bits 18:19 - Lock PRINCE region1 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 20:21 - Lock PRINCE region1 settings"]
     #[inline(always)]
-    pub fn lock_reg1(&mut self) -> LOCK_REG1_W {
-        LOCK_REG1_W { w: self }
+    pub fn lock_reg1(&mut self) -> LockReg1W<PrinceBaseAddrSpec> {
+        LockReg1W::new(self, 20)
     }
-    #[doc = "Bits 20:21 - Lock PRINCE region2 settings. 00 - Region is not locked. 01, 10, 11 - Region is locked."]
+    #[doc = "Bits 24:25 - For PRINCE region0 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn lock_reg2(&mut self) -> LOCK_REG2_W {
-        LOCK_REG2_W { w: self }
+    pub fn reg0_erase_check_en(&mut self) -> Reg0EraseCheckEnW<PrinceBaseAddrSpec> {
+        Reg0EraseCheckEnW::new(self, 24)
     }
-    #[doc = "Bits 24:25 - For PRINCE region0 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
+    #[doc = "Bits 26:27 - For PRINCE region1 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn reg0_erase_check_en(&mut self) -> REG0_ERASE_CHECK_EN_W {
-        REG0_ERASE_CHECK_EN_W { w: self }
+    pub fn reg1_erase_check_en(&mut self) -> Reg1EraseCheckEnW<PrinceBaseAddrSpec> {
+        Reg1EraseCheckEnW::new(self, 26)
     }
-    #[doc = "Bits 26:27 - For PRINCE region1 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
+    #[doc = "Bits 28:29 - For PRINCE region2 enable checking whether all encrypted pages are erased together"]
     #[inline(always)]
-    pub fn reg1_erase_check_en(&mut self) -> REG1_ERASE_CHECK_EN_W {
-        REG1_ERASE_CHECK_EN_W { w: self }
-    }
-    #[doc = "Bits 28:29 - For PRINCE region2 enable checking whether all encrypted pages are erased together. 00 - Check is disabled. 01, 10, 11 - Check is enabled."]
-    #[inline(always)]
-    pub fn reg2_erase_check_en(&mut self) -> REG2_ERASE_CHECK_EN_W {
-        REG2_ERASE_CHECK_EN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn reg2_erase_check_en(&mut self) -> Reg2EraseCheckEnW<PrinceBaseAddrSpec> {
+        Reg2EraseCheckEnW::new(self, 28)
     }
 }
-#[doc = ".\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [prince_base_addr](index.html) module"]
-pub struct PRINCE_BASE_ADDR_SPEC;
-impl crate::RegisterSpec for PRINCE_BASE_ADDR_SPEC {
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_base_addr::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_base_addr::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PrinceBaseAddrSpec;
+impl crate::RegisterSpec for PrinceBaseAddrSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [prince_base_addr::R](R) reader structure"]
-impl crate::Readable for PRINCE_BASE_ADDR_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [prince_base_addr::W](W) writer structure"]
-impl crate::Writable for PRINCE_BASE_ADDR_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`prince_base_addr::R`](R) reader structure"]
+impl crate::Readable for PrinceBaseAddrSpec {}
+#[doc = "`write(|w| ..)` method takes [`prince_base_addr::W`](W) writer structure"]
+impl crate::Writable for PrinceBaseAddrSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRINCE_BASE_ADDR to value 0"]
-impl crate::Resettable for PRINCE_BASE_ADDR_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PrinceBaseAddrSpec {
+    const RESET_VALUE: u32 = 0;
 }

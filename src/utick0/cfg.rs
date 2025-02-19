@@ -1,442 +1,137 @@
 #[doc = "Register `CFG` reader"]
-pub struct R(crate::R<CFG_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CFG_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CFG_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CfgSpec>;
 #[doc = "Register `CFG` writer"]
-pub struct W(crate::W<CFG_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CFG_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CFG_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CfgSpec>;
 #[doc = "Field `CAPEN0` reader - Enable Capture 0. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN0_R(crate::FieldReader<bool, bool>);
-impl CAPEN0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPEN0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPEN0_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Capen0R = crate::BitReader;
 #[doc = "Field `CAPEN0` writer - Enable Capture 0. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPEN0_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type Capen0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPEN1` reader - Enable Capture 1. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN1_R(crate::FieldReader<bool, bool>);
-impl CAPEN1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPEN1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPEN1_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Capen1R = crate::BitReader;
 #[doc = "Field `CAPEN1` writer - Enable Capture 1. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPEN1_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type Capen1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPEN2` reader - Enable Capture 2. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN2_R(crate::FieldReader<bool, bool>);
-impl CAPEN2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPEN2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPEN2_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Capen2R = crate::BitReader;
 #[doc = "Field `CAPEN2` writer - Enable Capture 2. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPEN2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type Capen2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPEN3` reader - Enable Capture 3. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN3_R(crate::FieldReader<bool, bool>);
-impl CAPEN3_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPEN3_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPEN3_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Capen3R = crate::BitReader;
 #[doc = "Field `CAPEN3` writer - Enable Capture 3. 1 = Enabled, 0 = Disabled."]
-pub struct CAPEN3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPEN3_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type Capen3W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPPOL0` reader - Capture Polarity 0. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL0_R(crate::FieldReader<bool, bool>);
-impl CAPPOL0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPPOL0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPPOL0_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Cappol0R = crate::BitReader;
 #[doc = "Field `CAPPOL0` writer - Capture Polarity 0. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPPOL0_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type Cappol0W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPPOL1` reader - Capture Polarity 1. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL1_R(crate::FieldReader<bool, bool>);
-impl CAPPOL1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPPOL1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPPOL1_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Cappol1R = crate::BitReader;
 #[doc = "Field `CAPPOL1` writer - Capture Polarity 1. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPPOL1_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
-    }
-}
+pub type Cappol1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPPOL2` reader - Capture Polarity 2. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL2_R(crate::FieldReader<bool, bool>);
-impl CAPPOL2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPPOL2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPPOL2_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Cappol2R = crate::BitReader;
 #[doc = "Field `CAPPOL2` writer - Capture Polarity 2. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPPOL2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
-    }
-}
+pub type Cappol2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CAPPOL3` reader - Capture Polarity 3. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL3_R(crate::FieldReader<bool, bool>);
-impl CAPPOL3_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAPPOL3_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPPOL3_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Cappol3R = crate::BitReader;
 #[doc = "Field `CAPPOL3` writer - Capture Polarity 3. 0 = Positive edge capture, 1 = Negative edge capture."]
-pub struct CAPPOL3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPPOL3_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
-    }
-}
+pub type Cappol3W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Enable Capture 0. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen0(&self) -> CAPEN0_R {
-        CAPEN0_R::new((self.bits & 0x01) != 0)
+    pub fn capen0(&self) -> Capen0R {
+        Capen0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Enable Capture 1. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen1(&self) -> CAPEN1_R {
-        CAPEN1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn capen1(&self) -> Capen1R {
+        Capen1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Enable Capture 2. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen2(&self) -> CAPEN2_R {
-        CAPEN2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn capen2(&self) -> Capen2R {
+        Capen2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Enable Capture 3. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen3(&self) -> CAPEN3_R {
-        CAPEN3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn capen3(&self) -> Capen3R {
+        Capen3R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 8 - Capture Polarity 0. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol0(&self) -> CAPPOL0_R {
-        CAPPOL0_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn cappol0(&self) -> Cappol0R {
+        Cappol0R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Capture Polarity 1. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol1(&self) -> CAPPOL1_R {
-        CAPPOL1_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn cappol1(&self) -> Cappol1R {
+        Cappol1R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Capture Polarity 2. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol2(&self) -> CAPPOL2_R {
-        CAPPOL2_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn cappol2(&self) -> Cappol2R {
+        Cappol2R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Capture Polarity 3. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol3(&self) -> CAPPOL3_R {
-        CAPPOL3_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn cappol3(&self) -> Cappol3R {
+        Cappol3R::new(((self.bits >> 11) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Enable Capture 0. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen0(&mut self) -> CAPEN0_W {
-        CAPEN0_W { w: self }
+    pub fn capen0(&mut self) -> Capen0W<CfgSpec> {
+        Capen0W::new(self, 0)
     }
     #[doc = "Bit 1 - Enable Capture 1. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen1(&mut self) -> CAPEN1_W {
-        CAPEN1_W { w: self }
+    pub fn capen1(&mut self) -> Capen1W<CfgSpec> {
+        Capen1W::new(self, 1)
     }
     #[doc = "Bit 2 - Enable Capture 2. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen2(&mut self) -> CAPEN2_W {
-        CAPEN2_W { w: self }
+    pub fn capen2(&mut self) -> Capen2W<CfgSpec> {
+        Capen2W::new(self, 2)
     }
     #[doc = "Bit 3 - Enable Capture 3. 1 = Enabled, 0 = Disabled."]
     #[inline(always)]
-    pub fn capen3(&mut self) -> CAPEN3_W {
-        CAPEN3_W { w: self }
+    pub fn capen3(&mut self) -> Capen3W<CfgSpec> {
+        Capen3W::new(self, 3)
     }
     #[doc = "Bit 8 - Capture Polarity 0. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol0(&mut self) -> CAPPOL0_W {
-        CAPPOL0_W { w: self }
+    pub fn cappol0(&mut self) -> Cappol0W<CfgSpec> {
+        Cappol0W::new(self, 8)
     }
     #[doc = "Bit 9 - Capture Polarity 1. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol1(&mut self) -> CAPPOL1_W {
-        CAPPOL1_W { w: self }
+    pub fn cappol1(&mut self) -> Cappol1W<CfgSpec> {
+        Cappol1W::new(self, 9)
     }
     #[doc = "Bit 10 - Capture Polarity 2. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol2(&mut self) -> CAPPOL2_W {
-        CAPPOL2_W { w: self }
+    pub fn cappol2(&mut self) -> Cappol2W<CfgSpec> {
+        Cappol2W::new(self, 10)
     }
     #[doc = "Bit 11 - Capture Polarity 3. 0 = Positive edge capture, 1 = Negative edge capture."]
     #[inline(always)]
-    pub fn cappol3(&mut self) -> CAPPOL3_W {
-        CAPPOL3_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cappol3(&mut self) -> Cappol3W<CfgSpec> {
+        Cappol3W::new(self, 11)
     }
 }
-#[doc = "Capture configuration register.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
-pub struct CFG_SPEC;
-impl crate::RegisterSpec for CFG_SPEC {
+#[doc = "Capture configuration register.\n\nYou can [`read`](crate::Reg::read) this register and get [`cfg::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cfg::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CfgSpec;
+impl crate::RegisterSpec for CfgSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [cfg::R](R) reader structure"]
-impl crate::Readable for CFG_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [cfg::W](W) writer structure"]
-impl crate::Writable for CFG_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`cfg::R`](R) reader structure"]
+impl crate::Readable for CfgSpec {}
+#[doc = "`write(|w| ..)` method takes [`cfg::W`](W) writer structure"]
+impl crate::Writable for CfgSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CFG to value 0"]
-impl crate::Resettable for CFG_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CfgSpec {
+    const RESET_VALUE: u32 = 0;
 }

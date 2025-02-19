@@ -1,2040 +1,1348 @@
 #[doc = "Register `AHBCLKCTRL0` reader"]
-pub struct R(crate::R<AHBCLKCTRL0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<AHBCLKCTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<AHBCLKCTRL0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<AHBCLKCTRL0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Ahbclkctrl0Spec>;
 #[doc = "Register `AHBCLKCTRL0` writer"]
-pub struct W(crate::W<AHBCLKCTRL0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<AHBCLKCTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<AHBCLKCTRL0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<AHBCLKCTRL0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Ahbclkctrl0Spec>;
 #[doc = "Enables the clock for the ROM.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ROM_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rom {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ROM_A> for bool {
+impl From<Rom> for bool {
     #[inline(always)]
-    fn from(variant: ROM_A) -> Self {
+    fn from(variant: Rom) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ROM` reader - Enables the clock for the ROM."]
-pub struct ROM_R(crate::FieldReader<bool, ROM_A>);
-impl ROM_R {
+pub type RomR = crate::BitReader<Rom>;
+impl RomR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ROM_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ROM_A {
+    pub const fn variant(&self) -> Rom {
         match self.bits {
-            false => ROM_A::DISABLE,
-            true => ROM_A::ENABLE,
+            false => Rom::Disable,
+            true => Rom::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ROM_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ROM_A::ENABLE
-    }
-}
-impl core::ops::Deref for ROM_R {
-    type Target = crate::FieldReader<bool, ROM_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ROM` writer - Enables the clock for the ROM."]
-pub struct ROM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ROM_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ROM_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ROM_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Rom::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ROM_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Rom::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ROM` writer - Enables the clock for the ROM."]
+pub type RomW<'a, REG> = crate::BitWriter<'a, REG, Rom>;
+impl<'a, REG> RomW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Rom::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Rom::Enable)
     }
 }
 #[doc = "Enables the clock for the SRAM Controller 1.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl1 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<SRAM_CTRL1_A> for bool {
+impl From<SramCtrl1> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL1_A) -> Self {
+    fn from(variant: SramCtrl1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL1` reader - Enables the clock for the SRAM Controller 1."]
-pub struct SRAM_CTRL1_R(crate::FieldReader<bool, SRAM_CTRL1_A>);
-impl SRAM_CTRL1_R {
+pub type SramCtrl1R = crate::BitReader<SramCtrl1>;
+impl SramCtrl1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL1_A {
+    pub const fn variant(&self) -> SramCtrl1 {
         match self.bits {
-            false => SRAM_CTRL1_A::DISABLE,
-            true => SRAM_CTRL1_A::ENABLE,
+            false => SramCtrl1::Disable,
+            true => SramCtrl1::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == SRAM_CTRL1_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == SRAM_CTRL1_A::ENABLE
-    }
-}
-impl core::ops::Deref for SRAM_CTRL1_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL1` writer - Enables the clock for the SRAM Controller 1."]
-pub struct SRAM_CTRL1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL1_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == SramCtrl1::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL1_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == SramCtrl1::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL1` writer - Enables the clock for the SRAM Controller 1."]
+pub type SramCtrl1W<'a, REG> = crate::BitWriter<'a, REG, SramCtrl1>;
+impl<'a, REG> SramCtrl1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl1::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl1::Enable)
     }
 }
 #[doc = "Enables the clock for the SRAM Controller 2.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl2 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<SRAM_CTRL2_A> for bool {
+impl From<SramCtrl2> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL2_A) -> Self {
+    fn from(variant: SramCtrl2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL2` reader - Enables the clock for the SRAM Controller 2."]
-pub struct SRAM_CTRL2_R(crate::FieldReader<bool, SRAM_CTRL2_A>);
-impl SRAM_CTRL2_R {
+pub type SramCtrl2R = crate::BitReader<SramCtrl2>;
+impl SramCtrl2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL2_A {
+    pub const fn variant(&self) -> SramCtrl2 {
         match self.bits {
-            false => SRAM_CTRL2_A::DISABLE,
-            true => SRAM_CTRL2_A::ENABLE,
+            false => SramCtrl2::Disable,
+            true => SramCtrl2::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == SRAM_CTRL2_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == SRAM_CTRL2_A::ENABLE
-    }
-}
-impl core::ops::Deref for SRAM_CTRL2_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL2` writer - Enables the clock for the SRAM Controller 2."]
-pub struct SRAM_CTRL2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL2_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == SramCtrl2::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL2_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == SramCtrl2::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL2` writer - Enables the clock for the SRAM Controller 2."]
+pub type SramCtrl2W<'a, REG> = crate::BitWriter<'a, REG, SramCtrl2>;
+impl<'a, REG> SramCtrl2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl2::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl2::Enable)
     }
 }
 #[doc = "Enables the clock for the SRAM Controller 3.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl3 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<SRAM_CTRL3_A> for bool {
+impl From<SramCtrl3> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL3_A) -> Self {
+    fn from(variant: SramCtrl3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL3` reader - Enables the clock for the SRAM Controller 3."]
-pub struct SRAM_CTRL3_R(crate::FieldReader<bool, SRAM_CTRL3_A>);
-impl SRAM_CTRL3_R {
+pub type SramCtrl3R = crate::BitReader<SramCtrl3>;
+impl SramCtrl3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL3_A {
+    pub const fn variant(&self) -> SramCtrl3 {
         match self.bits {
-            false => SRAM_CTRL3_A::DISABLE,
-            true => SRAM_CTRL3_A::ENABLE,
+            false => SramCtrl3::Disable,
+            true => SramCtrl3::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == SRAM_CTRL3_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == SRAM_CTRL3_A::ENABLE
-    }
-}
-impl core::ops::Deref for SRAM_CTRL3_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL3` writer - Enables the clock for the SRAM Controller 3."]
-pub struct SRAM_CTRL3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL3_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == SramCtrl3::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL3_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == SramCtrl3::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL3` writer - Enables the clock for the SRAM Controller 3."]
+pub type SramCtrl3W<'a, REG> = crate::BitWriter<'a, REG, SramCtrl3>;
+impl<'a, REG> SramCtrl3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl3::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl3::Enable)
     }
 }
 #[doc = "Enables the clock for the SRAM Controller 4.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL4_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl4 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<SRAM_CTRL4_A> for bool {
+impl From<SramCtrl4> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL4_A) -> Self {
+    fn from(variant: SramCtrl4) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL4` reader - Enables the clock for the SRAM Controller 4."]
-pub struct SRAM_CTRL4_R(crate::FieldReader<bool, SRAM_CTRL4_A>);
-impl SRAM_CTRL4_R {
+pub type SramCtrl4R = crate::BitReader<SramCtrl4>;
+impl SramCtrl4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL4_A {
+    pub const fn variant(&self) -> SramCtrl4 {
         match self.bits {
-            false => SRAM_CTRL4_A::DISABLE,
-            true => SRAM_CTRL4_A::ENABLE,
+            false => SramCtrl4::Disable,
+            true => SramCtrl4::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == SRAM_CTRL4_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == SRAM_CTRL4_A::ENABLE
-    }
-}
-impl core::ops::Deref for SRAM_CTRL4_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL4` writer - Enables the clock for the SRAM Controller 4."]
-pub struct SRAM_CTRL4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL4_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL4_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == SramCtrl4::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(SRAM_CTRL4_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == SramCtrl4::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL4` writer - Enables the clock for the SRAM Controller 4."]
+pub type SramCtrl4W<'a, REG> = crate::BitWriter<'a, REG, SramCtrl4>;
+impl<'a, REG> SramCtrl4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl4::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl4::Enable)
     }
 }
 #[doc = "Enables the clock for the Flash controller.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FLASH_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Flash {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FLASH_A> for bool {
+impl From<Flash> for bool {
     #[inline(always)]
-    fn from(variant: FLASH_A) -> Self {
+    fn from(variant: Flash) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FLASH` reader - Enables the clock for the Flash controller."]
-pub struct FLASH_R(crate::FieldReader<bool, FLASH_A>);
-impl FLASH_R {
+pub type FlashR = crate::BitReader<Flash>;
+impl FlashR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FLASH_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FLASH_A {
+    pub const fn variant(&self) -> Flash {
         match self.bits {
-            false => FLASH_A::DISABLE,
-            true => FLASH_A::ENABLE,
+            false => Flash::Disable,
+            true => Flash::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FLASH_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FLASH_A::ENABLE
-    }
-}
-impl core::ops::Deref for FLASH_R {
-    type Target = crate::FieldReader<bool, FLASH_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FLASH` writer - Enables the clock for the Flash controller."]
-pub struct FLASH_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FLASH_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FLASH_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FLASH_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Flash::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FLASH_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Flash::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FLASH` writer - Enables the clock for the Flash controller."]
+pub type FlashW<'a, REG> = crate::BitWriter<'a, REG, Flash>;
+impl<'a, REG> FlashW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Flash::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Flash::Enable)
     }
 }
 #[doc = "Enables the clock for the FMC controller.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FMC_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fmc {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FMC_A> for bool {
+impl From<Fmc> for bool {
     #[inline(always)]
-    fn from(variant: FMC_A) -> Self {
+    fn from(variant: Fmc) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FMC` reader - Enables the clock for the FMC controller."]
-pub struct FMC_R(crate::FieldReader<bool, FMC_A>);
-impl FMC_R {
+pub type FmcR = crate::BitReader<Fmc>;
+impl FmcR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FMC_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FMC_A {
+    pub const fn variant(&self) -> Fmc {
         match self.bits {
-            false => FMC_A::DISABLE,
-            true => FMC_A::ENABLE,
+            false => Fmc::Disable,
+            true => Fmc::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FMC_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FMC_A::ENABLE
-    }
-}
-impl core::ops::Deref for FMC_R {
-    type Target = crate::FieldReader<bool, FMC_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FMC` writer - Enables the clock for the FMC controller."]
-pub struct FMC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FMC_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FMC_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FMC_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Fmc::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FMC_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Fmc::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FMC` writer - Enables the clock for the FMC controller."]
+pub type FmcW<'a, REG> = crate::BitWriter<'a, REG, Fmc>;
+impl<'a, REG> FmcW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fmc::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fmc::Enable)
     }
 }
 #[doc = "Enables the clock for the Input Mux.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MUX_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Mux {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<MUX_A> for bool {
+impl From<Mux> for bool {
     #[inline(always)]
-    fn from(variant: MUX_A) -> Self {
+    fn from(variant: Mux) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `MUX` reader - Enables the clock for the Input Mux."]
-pub struct MUX_R(crate::FieldReader<bool, MUX_A>);
-impl MUX_R {
+pub type MuxR = crate::BitReader<Mux>;
+impl MuxR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MUX_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> MUX_A {
+    pub const fn variant(&self) -> Mux {
         match self.bits {
-            false => MUX_A::DISABLE,
-            true => MUX_A::ENABLE,
+            false => Mux::Disable,
+            true => Mux::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == MUX_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == MUX_A::ENABLE
-    }
-}
-impl core::ops::Deref for MUX_R {
-    type Target = crate::FieldReader<bool, MUX_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MUX` writer - Enables the clock for the Input Mux."]
-pub struct MUX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MUX_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MUX_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(MUX_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Mux::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(MUX_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Mux::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `MUX` writer - Enables the clock for the Input Mux."]
+pub type MuxW<'a, REG> = crate::BitWriter<'a, REG, Mux>;
+impl<'a, REG> MuxW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Mux::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Mux::Enable)
     }
 }
 #[doc = "Enables the clock for the I/O controller.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IOCON_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Iocon {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<IOCON_A> for bool {
+impl From<Iocon> for bool {
     #[inline(always)]
-    fn from(variant: IOCON_A) -> Self {
+    fn from(variant: Iocon) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `IOCON` reader - Enables the clock for the I/O controller."]
-pub struct IOCON_R(crate::FieldReader<bool, IOCON_A>);
-impl IOCON_R {
+pub type IoconR = crate::BitReader<Iocon>;
+impl IoconR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        IOCON_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IOCON_A {
+    pub const fn variant(&self) -> Iocon {
         match self.bits {
-            false => IOCON_A::DISABLE,
-            true => IOCON_A::ENABLE,
+            false => Iocon::Disable,
+            true => Iocon::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == IOCON_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == IOCON_A::ENABLE
-    }
-}
-impl core::ops::Deref for IOCON_R {
-    type Target = crate::FieldReader<bool, IOCON_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `IOCON` writer - Enables the clock for the I/O controller."]
-pub struct IOCON_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> IOCON_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: IOCON_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(IOCON_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Iocon::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(IOCON_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Iocon::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `IOCON` writer - Enables the clock for the I/O controller."]
+pub type IoconW<'a, REG> = crate::BitWriter<'a, REG, Iocon>;
+impl<'a, REG> IoconW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Iocon::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | ((value as u32 & 0x01) << 13);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Iocon::Enable)
     }
 }
 #[doc = "Enables the clock for the GPIO0.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio0 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<GPIO0_A> for bool {
+impl From<Gpio0> for bool {
     #[inline(always)]
-    fn from(variant: GPIO0_A) -> Self {
+    fn from(variant: Gpio0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO0` reader - Enables the clock for the GPIO0."]
-pub struct GPIO0_R(crate::FieldReader<bool, GPIO0_A>);
-impl GPIO0_R {
+pub type Gpio0R = crate::BitReader<Gpio0>;
+impl Gpio0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO0_A {
+    pub const fn variant(&self) -> Gpio0 {
         match self.bits {
-            false => GPIO0_A::DISABLE,
-            true => GPIO0_A::ENABLE,
+            false => Gpio0::Disable,
+            true => Gpio0::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == GPIO0_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == GPIO0_A::ENABLE
-    }
-}
-impl core::ops::Deref for GPIO0_R {
-    type Target = crate::FieldReader<bool, GPIO0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO0` writer - Enables the clock for the GPIO0."]
-pub struct GPIO0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(GPIO0_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Gpio0::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(GPIO0_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Gpio0::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO0` writer - Enables the clock for the GPIO0."]
+pub type Gpio0W<'a, REG> = crate::BitWriter<'a, REG, Gpio0>;
+impl<'a, REG> Gpio0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio0::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u32 & 0x01) << 14);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio0::Enable)
     }
 }
 #[doc = "Enables the clock for the GPIO1.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio1 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<GPIO1_A> for bool {
+impl From<Gpio1> for bool {
     #[inline(always)]
-    fn from(variant: GPIO1_A) -> Self {
+    fn from(variant: Gpio1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO1` reader - Enables the clock for the GPIO1."]
-pub struct GPIO1_R(crate::FieldReader<bool, GPIO1_A>);
-impl GPIO1_R {
+pub type Gpio1R = crate::BitReader<Gpio1>;
+impl Gpio1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO1_A {
+    pub const fn variant(&self) -> Gpio1 {
         match self.bits {
-            false => GPIO1_A::DISABLE,
-            true => GPIO1_A::ENABLE,
+            false => Gpio1::Disable,
+            true => Gpio1::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == GPIO1_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == GPIO1_A::ENABLE
-    }
-}
-impl core::ops::Deref for GPIO1_R {
-    type Target = crate::FieldReader<bool, GPIO1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO1` writer - Enables the clock for the GPIO1."]
-pub struct GPIO1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(GPIO1_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Gpio1::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(GPIO1_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Gpio1::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO1` writer - Enables the clock for the GPIO1."]
+pub type Gpio1W<'a, REG> = crate::BitWriter<'a, REG, Gpio1>;
+impl<'a, REG> Gpio1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio1::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio1::Enable)
     }
 }
 #[doc = "Enables the clock for the GPIO2.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio2 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<GPIO2_A> for bool {
+impl From<Gpio2> for bool {
     #[inline(always)]
-    fn from(variant: GPIO2_A) -> Self {
+    fn from(variant: Gpio2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO2` reader - Enables the clock for the GPIO2."]
-pub struct GPIO2_R(crate::FieldReader<bool, GPIO2_A>);
-impl GPIO2_R {
+pub type Gpio2R = crate::BitReader<Gpio2>;
+impl Gpio2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO2_A {
+    pub const fn variant(&self) -> Gpio2 {
         match self.bits {
-            false => GPIO2_A::DISABLE,
-            true => GPIO2_A::ENABLE,
+            false => Gpio2::Disable,
+            true => Gpio2::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == GPIO2_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == GPIO2_A::ENABLE
-    }
-}
-impl core::ops::Deref for GPIO2_R {
-    type Target = crate::FieldReader<bool, GPIO2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO2` writer - Enables the clock for the GPIO2."]
-pub struct GPIO2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(GPIO2_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Gpio2::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(GPIO2_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Gpio2::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO2` writer - Enables the clock for the GPIO2."]
+pub type Gpio2W<'a, REG> = crate::BitWriter<'a, REG, Gpio2>;
+impl<'a, REG> Gpio2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio2::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 16)) | ((value as u32 & 0x01) << 16);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio2::Enable)
     }
 }
 #[doc = "Enables the clock for the GPIO3.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio3 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<GPIO3_A> for bool {
+impl From<Gpio3> for bool {
     #[inline(always)]
-    fn from(variant: GPIO3_A) -> Self {
+    fn from(variant: Gpio3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO3` reader - Enables the clock for the GPIO3."]
-pub struct GPIO3_R(crate::FieldReader<bool, GPIO3_A>);
-impl GPIO3_R {
+pub type Gpio3R = crate::BitReader<Gpio3>;
+impl Gpio3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO3_A {
+    pub const fn variant(&self) -> Gpio3 {
         match self.bits {
-            false => GPIO3_A::DISABLE,
-            true => GPIO3_A::ENABLE,
+            false => Gpio3::Disable,
+            true => Gpio3::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == GPIO3_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == GPIO3_A::ENABLE
-    }
-}
-impl core::ops::Deref for GPIO3_R {
-    type Target = crate::FieldReader<bool, GPIO3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO3` writer - Enables the clock for the GPIO3."]
-pub struct GPIO3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(GPIO3_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Gpio3::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(GPIO3_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Gpio3::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO3` writer - Enables the clock for the GPIO3."]
+pub type Gpio3W<'a, REG> = crate::BitWriter<'a, REG, Gpio3>;
+impl<'a, REG> Gpio3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio3::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 17)) | ((value as u32 & 0x01) << 17);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio3::Enable)
     }
 }
 #[doc = "Enables the clock for the Pin interrupt (PINT).\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PINT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Pint {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<PINT_A> for bool {
+impl From<Pint> for bool {
     #[inline(always)]
-    fn from(variant: PINT_A) -> Self {
+    fn from(variant: Pint) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PINT` reader - Enables the clock for the Pin interrupt (PINT)."]
-pub struct PINT_R(crate::FieldReader<bool, PINT_A>);
-impl PINT_R {
+pub type PintR = crate::BitReader<Pint>;
+impl PintR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PINT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PINT_A {
+    pub const fn variant(&self) -> Pint {
         match self.bits {
-            false => PINT_A::DISABLE,
-            true => PINT_A::ENABLE,
+            false => Pint::Disable,
+            true => Pint::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == PINT_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == PINT_A::ENABLE
-    }
-}
-impl core::ops::Deref for PINT_R {
-    type Target = crate::FieldReader<bool, PINT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PINT` writer - Enables the clock for the Pin interrupt (PINT)."]
-pub struct PINT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PINT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PINT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(PINT_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Pint::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(PINT_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Pint::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PINT` writer - Enables the clock for the Pin interrupt (PINT)."]
+pub type PintW<'a, REG> = crate::BitWriter<'a, REG, Pint>;
+impl<'a, REG> PintW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Pint::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 18)) | ((value as u32 & 0x01) << 18);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Pint::Enable)
     }
 }
 #[doc = "Enables the clock for the Group interrupt (GINT).\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GINT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gint {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<GINT_A> for bool {
+impl From<Gint> for bool {
     #[inline(always)]
-    fn from(variant: GINT_A) -> Self {
+    fn from(variant: Gint) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GINT` reader - Enables the clock for the Group interrupt (GINT)."]
-pub struct GINT_R(crate::FieldReader<bool, GINT_A>);
-impl GINT_R {
+pub type GintR = crate::BitReader<Gint>;
+impl GintR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GINT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GINT_A {
+    pub const fn variant(&self) -> Gint {
         match self.bits {
-            false => GINT_A::DISABLE,
-            true => GINT_A::ENABLE,
+            false => Gint::Disable,
+            true => Gint::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == GINT_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == GINT_A::ENABLE
-    }
-}
-impl core::ops::Deref for GINT_R {
-    type Target = crate::FieldReader<bool, GINT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GINT` writer - Enables the clock for the Group interrupt (GINT)."]
-pub struct GINT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GINT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GINT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(GINT_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Gint::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(GINT_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Gint::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GINT` writer - Enables the clock for the Group interrupt (GINT)."]
+pub type GintW<'a, REG> = crate::BitWriter<'a, REG, Gint>;
+impl<'a, REG> GintW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gint::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 19)) | ((value as u32 & 0x01) << 19);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Gint::Enable)
     }
 }
 #[doc = "Enables the clock for the DMA0.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DMA0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Dma0 {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<DMA0_A> for bool {
+impl From<Dma0> for bool {
     #[inline(always)]
-    fn from(variant: DMA0_A) -> Self {
+    fn from(variant: Dma0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `DMA0` reader - Enables the clock for the DMA0."]
-pub struct DMA0_R(crate::FieldReader<bool, DMA0_A>);
-impl DMA0_R {
+pub type Dma0R = crate::BitReader<Dma0>;
+impl Dma0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DMA0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DMA0_A {
+    pub const fn variant(&self) -> Dma0 {
         match self.bits {
-            false => DMA0_A::DISABLE,
-            true => DMA0_A::ENABLE,
+            false => Dma0::Disable,
+            true => Dma0::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == DMA0_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == DMA0_A::ENABLE
-    }
-}
-impl core::ops::Deref for DMA0_R {
-    type Target = crate::FieldReader<bool, DMA0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DMA0` writer - Enables the clock for the DMA0."]
-pub struct DMA0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DMA0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DMA0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(DMA0_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Dma0::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(DMA0_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Dma0::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `DMA0` writer - Enables the clock for the DMA0."]
+pub type Dma0W<'a, REG> = crate::BitWriter<'a, REG, Dma0>;
+impl<'a, REG> Dma0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma0::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 20)) | ((value as u32 & 0x01) << 20);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma0::Enable)
     }
 }
 #[doc = "Enables the clock for the CRCGEN.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CRCGEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Crcgen {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<CRCGEN_A> for bool {
+impl From<Crcgen> for bool {
     #[inline(always)]
-    fn from(variant: CRCGEN_A) -> Self {
+    fn from(variant: Crcgen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CRCGEN` reader - Enables the clock for the CRCGEN."]
-pub struct CRCGEN_R(crate::FieldReader<bool, CRCGEN_A>);
-impl CRCGEN_R {
+pub type CrcgenR = crate::BitReader<Crcgen>;
+impl CrcgenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CRCGEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CRCGEN_A {
+    pub const fn variant(&self) -> Crcgen {
         match self.bits {
-            false => CRCGEN_A::DISABLE,
-            true => CRCGEN_A::ENABLE,
+            false => Crcgen::Disable,
+            true => Crcgen::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == CRCGEN_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == CRCGEN_A::ENABLE
-    }
-}
-impl core::ops::Deref for CRCGEN_R {
-    type Target = crate::FieldReader<bool, CRCGEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CRCGEN` writer - Enables the clock for the CRCGEN."]
-pub struct CRCGEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CRCGEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CRCGEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(CRCGEN_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Crcgen::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(CRCGEN_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Crcgen::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CRCGEN` writer - Enables the clock for the CRCGEN."]
+pub type CrcgenW<'a, REG> = crate::BitWriter<'a, REG, Crcgen>;
+impl<'a, REG> CrcgenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Crcgen::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 21)) | ((value as u32 & 0x01) << 21);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Crcgen::Enable)
     }
 }
 #[doc = "Enables the clock for the Watchdog Timer.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WWDT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Wwdt {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<WWDT_A> for bool {
+impl From<Wwdt> for bool {
     #[inline(always)]
-    fn from(variant: WWDT_A) -> Self {
+    fn from(variant: Wwdt) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WWDT` reader - Enables the clock for the Watchdog Timer."]
-pub struct WWDT_R(crate::FieldReader<bool, WWDT_A>);
-impl WWDT_R {
+pub type WwdtR = crate::BitReader<Wwdt>;
+impl WwdtR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WWDT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WWDT_A {
+    pub const fn variant(&self) -> Wwdt {
         match self.bits {
-            false => WWDT_A::DISABLE,
-            true => WWDT_A::ENABLE,
+            false => Wwdt::Disable,
+            true => Wwdt::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == WWDT_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == WWDT_A::ENABLE
-    }
-}
-impl core::ops::Deref for WWDT_R {
-    type Target = crate::FieldReader<bool, WWDT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WWDT` writer - Enables the clock for the Watchdog Timer."]
-pub struct WWDT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WWDT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WWDT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(WWDT_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Wwdt::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(WWDT_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Wwdt::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WWDT` writer - Enables the clock for the Watchdog Timer."]
+pub type WwdtW<'a, REG> = crate::BitWriter<'a, REG, Wwdt>;
+impl<'a, REG> WwdtW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Wwdt::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 22)) | ((value as u32 & 0x01) << 22);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Wwdt::Enable)
     }
 }
 #[doc = "Enables the clock for the Real Time Clock (RTC).\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RTC_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rtc {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<RTC_A> for bool {
+impl From<Rtc> for bool {
     #[inline(always)]
-    fn from(variant: RTC_A) -> Self {
+    fn from(variant: Rtc) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RTC` reader - Enables the clock for the Real Time Clock (RTC)."]
-pub struct RTC_R(crate::FieldReader<bool, RTC_A>);
-impl RTC_R {
+pub type RtcR = crate::BitReader<Rtc>;
+impl RtcR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RTC_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RTC_A {
+    pub const fn variant(&self) -> Rtc {
         match self.bits {
-            false => RTC_A::DISABLE,
-            true => RTC_A::ENABLE,
+            false => Rtc::Disable,
+            true => Rtc::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == RTC_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == RTC_A::ENABLE
-    }
-}
-impl core::ops::Deref for RTC_R {
-    type Target = crate::FieldReader<bool, RTC_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RTC` writer - Enables the clock for the Real Time Clock (RTC)."]
-pub struct RTC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RTC_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RTC_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(RTC_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Rtc::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(RTC_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Rtc::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RTC` writer - Enables the clock for the Real Time Clock (RTC)."]
+pub type RtcW<'a, REG> = crate::BitWriter<'a, REG, Rtc>;
+impl<'a, REG> RtcW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Rtc::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | ((value as u32 & 0x01) << 23);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Rtc::Enable)
     }
 }
 #[doc = "Enables the clock for the Inter CPU communication Mailbox.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MAILBOX_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Mailbox {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<MAILBOX_A> for bool {
+impl From<Mailbox> for bool {
     #[inline(always)]
-    fn from(variant: MAILBOX_A) -> Self {
+    fn from(variant: Mailbox) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `MAILBOX` reader - Enables the clock for the Inter CPU communication Mailbox."]
-pub struct MAILBOX_R(crate::FieldReader<bool, MAILBOX_A>);
-impl MAILBOX_R {
+pub type MailboxR = crate::BitReader<Mailbox>;
+impl MailboxR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MAILBOX_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> MAILBOX_A {
+    pub const fn variant(&self) -> Mailbox {
         match self.bits {
-            false => MAILBOX_A::DISABLE,
-            true => MAILBOX_A::ENABLE,
+            false => Mailbox::Disable,
+            true => Mailbox::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == MAILBOX_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == MAILBOX_A::ENABLE
-    }
-}
-impl core::ops::Deref for MAILBOX_R {
-    type Target = crate::FieldReader<bool, MAILBOX_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MAILBOX` writer - Enables the clock for the Inter CPU communication Mailbox."]
-pub struct MAILBOX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MAILBOX_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MAILBOX_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(MAILBOX_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Mailbox::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(MAILBOX_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Mailbox::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `MAILBOX` writer - Enables the clock for the Inter CPU communication Mailbox."]
+pub type MailboxW<'a, REG> = crate::BitWriter<'a, REG, Mailbox>;
+impl<'a, REG> MailboxW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Mailbox::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 26)) | ((value as u32 & 0x01) << 26);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Mailbox::Enable)
     }
 }
 #[doc = "Enables the clock for the ADC.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ADC_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Adc {
     #[doc = "0: Disable Clock."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable Clock."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ADC_A> for bool {
+impl From<Adc> for bool {
     #[inline(always)]
-    fn from(variant: ADC_A) -> Self {
+    fn from(variant: Adc) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ADC` reader - Enables the clock for the ADC."]
-pub struct ADC_R(crate::FieldReader<bool, ADC_A>);
-impl ADC_R {
+pub type AdcR = crate::BitReader<Adc>;
+impl AdcR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ADC_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ADC_A {
+    pub const fn variant(&self) -> Adc {
         match self.bits {
-            false => ADC_A::DISABLE,
-            true => ADC_A::ENABLE,
+            false => Adc::Disable,
+            true => Adc::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ADC_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ADC_A::ENABLE
-    }
-}
-impl core::ops::Deref for ADC_R {
-    type Target = crate::FieldReader<bool, ADC_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ADC` writer - Enables the clock for the ADC."]
-pub struct ADC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADC_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ADC_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ADC_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Adc::Disable
     }
     #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ADC_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Adc::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ADC` writer - Enables the clock for the ADC."]
+pub type AdcW<'a, REG> = crate::BitWriter<'a, REG, Adc>;
+impl<'a, REG> AdcW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable Clock."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Adc::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable Clock."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 27)) | ((value as u32 & 0x01) << 27);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Adc::Enable)
     }
 }
 impl R {
     #[doc = "Bit 1 - Enables the clock for the ROM."]
     #[inline(always)]
-    pub fn rom(&self) -> ROM_R {
-        ROM_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn rom(&self) -> RomR {
+        RomR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 3 - Enables the clock for the SRAM Controller 1."]
     #[inline(always)]
-    pub fn sram_ctrl1(&self) -> SRAM_CTRL1_R {
-        SRAM_CTRL1_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn sram_ctrl1(&self) -> SramCtrl1R {
+        SramCtrl1R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Enables the clock for the SRAM Controller 2."]
     #[inline(always)]
-    pub fn sram_ctrl2(&self) -> SRAM_CTRL2_R {
-        SRAM_CTRL2_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn sram_ctrl2(&self) -> SramCtrl2R {
+        SramCtrl2R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Enables the clock for the SRAM Controller 3."]
     #[inline(always)]
-    pub fn sram_ctrl3(&self) -> SRAM_CTRL3_R {
-        SRAM_CTRL3_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn sram_ctrl3(&self) -> SramCtrl3R {
+        SramCtrl3R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Enables the clock for the SRAM Controller 4."]
     #[inline(always)]
-    pub fn sram_ctrl4(&self) -> SRAM_CTRL4_R {
-        SRAM_CTRL4_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn sram_ctrl4(&self) -> SramCtrl4R {
+        SramCtrl4R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Enables the clock for the Flash controller."]
     #[inline(always)]
-    pub fn flash(&self) -> FLASH_R {
-        FLASH_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn flash(&self) -> FlashR {
+        FlashR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Enables the clock for the FMC controller."]
     #[inline(always)]
-    pub fn fmc(&self) -> FMC_R {
-        FMC_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn fmc(&self) -> FmcR {
+        FmcR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 11 - Enables the clock for the Input Mux."]
     #[inline(always)]
-    pub fn mux(&self) -> MUX_R {
-        MUX_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn mux(&self) -> MuxR {
+        MuxR::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 13 - Enables the clock for the I/O controller."]
     #[inline(always)]
-    pub fn iocon(&self) -> IOCON_R {
-        IOCON_R::new(((self.bits >> 13) & 0x01) != 0)
+    pub fn iocon(&self) -> IoconR {
+        IoconR::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - Enables the clock for the GPIO0."]
     #[inline(always)]
-    pub fn gpio0(&self) -> GPIO0_R {
-        GPIO0_R::new(((self.bits >> 14) & 0x01) != 0)
+    pub fn gpio0(&self) -> Gpio0R {
+        Gpio0R::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - Enables the clock for the GPIO1."]
     #[inline(always)]
-    pub fn gpio1(&self) -> GPIO1_R {
-        GPIO1_R::new(((self.bits >> 15) & 0x01) != 0)
+    pub fn gpio1(&self) -> Gpio1R {
+        Gpio1R::new(((self.bits >> 15) & 1) != 0)
     }
     #[doc = "Bit 16 - Enables the clock for the GPIO2."]
     #[inline(always)]
-    pub fn gpio2(&self) -> GPIO2_R {
-        GPIO2_R::new(((self.bits >> 16) & 0x01) != 0)
+    pub fn gpio2(&self) -> Gpio2R {
+        Gpio2R::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - Enables the clock for the GPIO3."]
     #[inline(always)]
-    pub fn gpio3(&self) -> GPIO3_R {
-        GPIO3_R::new(((self.bits >> 17) & 0x01) != 0)
+    pub fn gpio3(&self) -> Gpio3R {
+        Gpio3R::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Enables the clock for the Pin interrupt (PINT)."]
     #[inline(always)]
-    pub fn pint(&self) -> PINT_R {
-        PINT_R::new(((self.bits >> 18) & 0x01) != 0)
+    pub fn pint(&self) -> PintR {
+        PintR::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bit 19 - Enables the clock for the Group interrupt (GINT)."]
     #[inline(always)]
-    pub fn gint(&self) -> GINT_R {
-        GINT_R::new(((self.bits >> 19) & 0x01) != 0)
+    pub fn gint(&self) -> GintR {
+        GintR::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - Enables the clock for the DMA0."]
     #[inline(always)]
-    pub fn dma0(&self) -> DMA0_R {
-        DMA0_R::new(((self.bits >> 20) & 0x01) != 0)
+    pub fn dma0(&self) -> Dma0R {
+        Dma0R::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - Enables the clock for the CRCGEN."]
     #[inline(always)]
-    pub fn crcgen(&self) -> CRCGEN_R {
-        CRCGEN_R::new(((self.bits >> 21) & 0x01) != 0)
+    pub fn crcgen(&self) -> CrcgenR {
+        CrcgenR::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bit 22 - Enables the clock for the Watchdog Timer."]
     #[inline(always)]
-    pub fn wwdt(&self) -> WWDT_R {
-        WWDT_R::new(((self.bits >> 22) & 0x01) != 0)
+    pub fn wwdt(&self) -> WwdtR {
+        WwdtR::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - Enables the clock for the Real Time Clock (RTC)."]
     #[inline(always)]
-    pub fn rtc(&self) -> RTC_R {
-        RTC_R::new(((self.bits >> 23) & 0x01) != 0)
+    pub fn rtc(&self) -> RtcR {
+        RtcR::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bit 26 - Enables the clock for the Inter CPU communication Mailbox."]
     #[inline(always)]
-    pub fn mailbox(&self) -> MAILBOX_R {
-        MAILBOX_R::new(((self.bits >> 26) & 0x01) != 0)
+    pub fn mailbox(&self) -> MailboxR {
+        MailboxR::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bit 27 - Enables the clock for the ADC."]
     #[inline(always)]
-    pub fn adc(&self) -> ADC_R {
-        ADC_R::new(((self.bits >> 27) & 0x01) != 0)
+    pub fn adc(&self) -> AdcR {
+        AdcR::new(((self.bits >> 27) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 1 - Enables the clock for the ROM."]
     #[inline(always)]
-    pub fn rom(&mut self) -> ROM_W {
-        ROM_W { w: self }
+    pub fn rom(&mut self) -> RomW<Ahbclkctrl0Spec> {
+        RomW::new(self, 1)
     }
     #[doc = "Bit 3 - Enables the clock for the SRAM Controller 1."]
     #[inline(always)]
-    pub fn sram_ctrl1(&mut self) -> SRAM_CTRL1_W {
-        SRAM_CTRL1_W { w: self }
+    pub fn sram_ctrl1(&mut self) -> SramCtrl1W<Ahbclkctrl0Spec> {
+        SramCtrl1W::new(self, 3)
     }
     #[doc = "Bit 4 - Enables the clock for the SRAM Controller 2."]
     #[inline(always)]
-    pub fn sram_ctrl2(&mut self) -> SRAM_CTRL2_W {
-        SRAM_CTRL2_W { w: self }
+    pub fn sram_ctrl2(&mut self) -> SramCtrl2W<Ahbclkctrl0Spec> {
+        SramCtrl2W::new(self, 4)
     }
     #[doc = "Bit 5 - Enables the clock for the SRAM Controller 3."]
     #[inline(always)]
-    pub fn sram_ctrl3(&mut self) -> SRAM_CTRL3_W {
-        SRAM_CTRL3_W { w: self }
+    pub fn sram_ctrl3(&mut self) -> SramCtrl3W<Ahbclkctrl0Spec> {
+        SramCtrl3W::new(self, 5)
     }
     #[doc = "Bit 6 - Enables the clock for the SRAM Controller 4."]
     #[inline(always)]
-    pub fn sram_ctrl4(&mut self) -> SRAM_CTRL4_W {
-        SRAM_CTRL4_W { w: self }
+    pub fn sram_ctrl4(&mut self) -> SramCtrl4W<Ahbclkctrl0Spec> {
+        SramCtrl4W::new(self, 6)
     }
     #[doc = "Bit 7 - Enables the clock for the Flash controller."]
     #[inline(always)]
-    pub fn flash(&mut self) -> FLASH_W {
-        FLASH_W { w: self }
+    pub fn flash(&mut self) -> FlashW<Ahbclkctrl0Spec> {
+        FlashW::new(self, 7)
     }
     #[doc = "Bit 8 - Enables the clock for the FMC controller."]
     #[inline(always)]
-    pub fn fmc(&mut self) -> FMC_W {
-        FMC_W { w: self }
+    pub fn fmc(&mut self) -> FmcW<Ahbclkctrl0Spec> {
+        FmcW::new(self, 8)
     }
     #[doc = "Bit 11 - Enables the clock for the Input Mux."]
     #[inline(always)]
-    pub fn mux(&mut self) -> MUX_W {
-        MUX_W { w: self }
+    pub fn mux(&mut self) -> MuxW<Ahbclkctrl0Spec> {
+        MuxW::new(self, 11)
     }
     #[doc = "Bit 13 - Enables the clock for the I/O controller."]
     #[inline(always)]
-    pub fn iocon(&mut self) -> IOCON_W {
-        IOCON_W { w: self }
+    pub fn iocon(&mut self) -> IoconW<Ahbclkctrl0Spec> {
+        IoconW::new(self, 13)
     }
     #[doc = "Bit 14 - Enables the clock for the GPIO0."]
     #[inline(always)]
-    pub fn gpio0(&mut self) -> GPIO0_W {
-        GPIO0_W { w: self }
+    pub fn gpio0(&mut self) -> Gpio0W<Ahbclkctrl0Spec> {
+        Gpio0W::new(self, 14)
     }
     #[doc = "Bit 15 - Enables the clock for the GPIO1."]
     #[inline(always)]
-    pub fn gpio1(&mut self) -> GPIO1_W {
-        GPIO1_W { w: self }
+    pub fn gpio1(&mut self) -> Gpio1W<Ahbclkctrl0Spec> {
+        Gpio1W::new(self, 15)
     }
     #[doc = "Bit 16 - Enables the clock for the GPIO2."]
     #[inline(always)]
-    pub fn gpio2(&mut self) -> GPIO2_W {
-        GPIO2_W { w: self }
+    pub fn gpio2(&mut self) -> Gpio2W<Ahbclkctrl0Spec> {
+        Gpio2W::new(self, 16)
     }
     #[doc = "Bit 17 - Enables the clock for the GPIO3."]
     #[inline(always)]
-    pub fn gpio3(&mut self) -> GPIO3_W {
-        GPIO3_W { w: self }
+    pub fn gpio3(&mut self) -> Gpio3W<Ahbclkctrl0Spec> {
+        Gpio3W::new(self, 17)
     }
     #[doc = "Bit 18 - Enables the clock for the Pin interrupt (PINT)."]
     #[inline(always)]
-    pub fn pint(&mut self) -> PINT_W {
-        PINT_W { w: self }
+    pub fn pint(&mut self) -> PintW<Ahbclkctrl0Spec> {
+        PintW::new(self, 18)
     }
     #[doc = "Bit 19 - Enables the clock for the Group interrupt (GINT)."]
     #[inline(always)]
-    pub fn gint(&mut self) -> GINT_W {
-        GINT_W { w: self }
+    pub fn gint(&mut self) -> GintW<Ahbclkctrl0Spec> {
+        GintW::new(self, 19)
     }
     #[doc = "Bit 20 - Enables the clock for the DMA0."]
     #[inline(always)]
-    pub fn dma0(&mut self) -> DMA0_W {
-        DMA0_W { w: self }
+    pub fn dma0(&mut self) -> Dma0W<Ahbclkctrl0Spec> {
+        Dma0W::new(self, 20)
     }
     #[doc = "Bit 21 - Enables the clock for the CRCGEN."]
     #[inline(always)]
-    pub fn crcgen(&mut self) -> CRCGEN_W {
-        CRCGEN_W { w: self }
+    pub fn crcgen(&mut self) -> CrcgenW<Ahbclkctrl0Spec> {
+        CrcgenW::new(self, 21)
     }
     #[doc = "Bit 22 - Enables the clock for the Watchdog Timer."]
     #[inline(always)]
-    pub fn wwdt(&mut self) -> WWDT_W {
-        WWDT_W { w: self }
+    pub fn wwdt(&mut self) -> WwdtW<Ahbclkctrl0Spec> {
+        WwdtW::new(self, 22)
     }
     #[doc = "Bit 23 - Enables the clock for the Real Time Clock (RTC)."]
     #[inline(always)]
-    pub fn rtc(&mut self) -> RTC_W {
-        RTC_W { w: self }
+    pub fn rtc(&mut self) -> RtcW<Ahbclkctrl0Spec> {
+        RtcW::new(self, 23)
     }
     #[doc = "Bit 26 - Enables the clock for the Inter CPU communication Mailbox."]
     #[inline(always)]
-    pub fn mailbox(&mut self) -> MAILBOX_W {
-        MAILBOX_W { w: self }
+    pub fn mailbox(&mut self) -> MailboxW<Ahbclkctrl0Spec> {
+        MailboxW::new(self, 26)
     }
     #[doc = "Bit 27 - Enables the clock for the ADC."]
     #[inline(always)]
-    pub fn adc(&mut self) -> ADC_W {
-        ADC_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn adc(&mut self) -> AdcW<Ahbclkctrl0Spec> {
+        AdcW::new(self, 27)
     }
 }
-#[doc = "AHB Clock control 0\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ahbclkctrl0](index.html) module"]
-pub struct AHBCLKCTRL0_SPEC;
-impl crate::RegisterSpec for AHBCLKCTRL0_SPEC {
+#[doc = "AHB Clock control 0\n\nYou can [`read`](crate::Reg::read) this register and get [`ahbclkctrl0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ahbclkctrl0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Ahbclkctrl0Spec;
+impl crate::RegisterSpec for Ahbclkctrl0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ahbclkctrl0::R](R) reader structure"]
-impl crate::Readable for AHBCLKCTRL0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ahbclkctrl0::W](W) writer structure"]
-impl crate::Writable for AHBCLKCTRL0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ahbclkctrl0::R`](R) reader structure"]
+impl crate::Readable for Ahbclkctrl0Spec {}
+#[doc = "`write(|w| ..)` method takes [`ahbclkctrl0::W`](W) writer structure"]
+impl crate::Writable for Ahbclkctrl0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets AHBCLKCTRL0 to value 0x0180"]
-impl crate::Resettable for AHBCLKCTRL0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0180
-    }
+impl crate::Resettable for Ahbclkctrl0Spec {
+    const RESET_VALUE: u32 = 0x0180;
 }

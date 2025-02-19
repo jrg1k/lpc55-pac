@@ -1,40 +1,60 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00..0x40 - no description available"]
-    pub channel: [CHANNEL; 4],
+    channel: [Channel; 4],
     _reserved1: [u8; 0xb0],
+    modcfg: Modcfg,
+    idle_ch: IdleCh,
+    irq_flag: IrqFlag,
+}
+impl RegisterBlock {
+    #[doc = "0x00..0x40 - no description available"]
+    #[inline(always)]
+    pub const fn channel(&self, n: usize) -> &Channel {
+        &self.channel[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x00..0x40 - no description available"]
+    #[inline(always)]
+    pub fn channel_iter(&self) -> impl Iterator<Item = &Channel> {
+        self.channel.iter()
+    }
     #[doc = "0xf0 - Module Configuration register. This register provides information about this particular MRT instance, and allows choosing an overall mode for the idle channel feature."]
-    pub modcfg: crate::Reg<modcfg::MODCFG_SPEC>,
+    #[inline(always)]
+    pub const fn modcfg(&self) -> &Modcfg {
+        &self.modcfg
+    }
     #[doc = "0xf4 - Idle channel register. This register returns the number of the first idle channel."]
-    pub idle_ch: crate::Reg<idle_ch::IDLE_CH_SPEC>,
+    #[inline(always)]
+    pub const fn idle_ch(&self) -> &IdleCh {
+        &self.idle_ch
+    }
     #[doc = "0xf8 - Global interrupt flag register"]
-    pub irq_flag: crate::Reg<irq_flag::IRQ_FLAG_SPEC>,
+    #[inline(always)]
+    pub const fn irq_flag(&self) -> &IrqFlag {
+        &self.irq_flag
+    }
 }
-#[doc = r"Register block"]
-#[repr(C)]
-pub struct CHANNEL {
-    #[doc = "0x00 - MRT Time interval value register. This value is loaded into the TIMER register."]
-    pub intval: crate::Reg<self::channel::intval::INTVAL_SPEC>,
-    #[doc = "0x04 - MRT Timer register. This register reads the value of the down-counter."]
-    pub timer: crate::Reg<self::channel::timer::TIMER_SPEC>,
-    #[doc = "0x08 - MRT Control register. This register controls the MRT modes."]
-    pub ctrl: crate::Reg<self::channel::ctrl::CTRL_SPEC>,
-    #[doc = "0x0c - MRT Status register."]
-    pub stat: crate::Reg<self::channel::stat::STAT_SPEC>,
-}
-#[doc = r"Register block"]
+#[doc = "no description available"]
+pub use self::channel::Channel;
+#[doc = r"Cluster"]
 #[doc = "no description available"]
 pub mod channel;
-#[doc = "MODCFG register accessor: an alias for `Reg<MODCFG_SPEC>`"]
-pub type MODCFG = crate::Reg<modcfg::MODCFG_SPEC>;
+#[doc = "MODCFG (rw) register accessor: Module Configuration register. This register provides information about this particular MRT instance, and allows choosing an overall mode for the idle channel feature.\n\nYou can [`read`](crate::Reg::read) this register and get [`modcfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`modcfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@modcfg`]
+module"]
+#[doc(alias = "MODCFG")]
+pub type Modcfg = crate::Reg<modcfg::ModcfgSpec>;
 #[doc = "Module Configuration register. This register provides information about this particular MRT instance, and allows choosing an overall mode for the idle channel feature."]
 pub mod modcfg;
-#[doc = "IDLE_CH register accessor: an alias for `Reg<IDLE_CH_SPEC>`"]
-pub type IDLE_CH = crate::Reg<idle_ch::IDLE_CH_SPEC>;
+#[doc = "IDLE_CH (r) register accessor: Idle channel register. This register returns the number of the first idle channel.\n\nYou can [`read`](crate::Reg::read) this register and get [`idle_ch::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@idle_ch`]
+module"]
+#[doc(alias = "IDLE_CH")]
+pub type IdleCh = crate::Reg<idle_ch::IdleChSpec>;
 #[doc = "Idle channel register. This register returns the number of the first idle channel."]
 pub mod idle_ch;
-#[doc = "IRQ_FLAG register accessor: an alias for `Reg<IRQ_FLAG_SPEC>`"]
-pub type IRQ_FLAG = crate::Reg<irq_flag::IRQ_FLAG_SPEC>;
+#[doc = "IRQ_FLAG (rw) register accessor: Global interrupt flag register\n\nYou can [`read`](crate::Reg::read) this register and get [`irq_flag::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`irq_flag::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@irq_flag`]
+module"]
+#[doc(alias = "IRQ_FLAG")]
+pub type IrqFlag = crate::Reg<irq_flag::IrqFlagSpec>;
 #[doc = "Global interrupt flag register"]
 pub mod irq_flag;

@@ -1,646 +1,439 @@
 #[doc = "Register `SDIOCLKCTRL` reader"]
-pub struct R(crate::R<SDIOCLKCTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SDIOCLKCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SDIOCLKCTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SDIOCLKCTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SdioclkctrlSpec>;
 #[doc = "Register `SDIOCLKCTRL` writer"]
-pub struct W(crate::W<SDIOCLKCTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SDIOCLKCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SDIOCLKCTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SDIOCLKCTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SdioclkctrlSpec>;
 #[doc = "Programmable delay value by which cclk_in_drv is phase-shifted with regard to cclk_in.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CCLK_DRV_PHASE_A {
+pub enum CclkDrvPhase {
     #[doc = "0: 0 degree shift."]
-    ENUM_0_DEG = 0,
+    Enum0Deg = 0,
     #[doc = "1: 90 degree shift."]
-    ENUM_90_DEG = 1,
+    Enum90Deg = 1,
     #[doc = "2: 180 degree shift."]
-    ENUM_180_DEG = 2,
+    Enum180Deg = 2,
     #[doc = "3: 270 degree shift."]
-    ENUM_270_DEG = 3,
+    Enum270Deg = 3,
 }
-impl From<CCLK_DRV_PHASE_A> for u8 {
+impl From<CclkDrvPhase> for u8 {
     #[inline(always)]
-    fn from(variant: CCLK_DRV_PHASE_A) -> Self {
+    fn from(variant: CclkDrvPhase) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for CclkDrvPhase {
+    type Ux = u8;
+}
+impl crate::IsEnum for CclkDrvPhase {}
 #[doc = "Field `CCLK_DRV_PHASE` reader - Programmable delay value by which cclk_in_drv is phase-shifted with regard to cclk_in."]
-pub struct CCLK_DRV_PHASE_R(crate::FieldReader<u8, CCLK_DRV_PHASE_A>);
-impl CCLK_DRV_PHASE_R {
+pub type CclkDrvPhaseR = crate::FieldReader<CclkDrvPhase>;
+impl CclkDrvPhaseR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CCLK_DRV_PHASE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CCLK_DRV_PHASE_A {
+    pub const fn variant(&self) -> CclkDrvPhase {
         match self.bits {
-            0 => CCLK_DRV_PHASE_A::ENUM_0_DEG,
-            1 => CCLK_DRV_PHASE_A::ENUM_90_DEG,
-            2 => CCLK_DRV_PHASE_A::ENUM_180_DEG,
-            3 => CCLK_DRV_PHASE_A::ENUM_270_DEG,
+            0 => CclkDrvPhase::Enum0Deg,
+            1 => CclkDrvPhase::Enum90Deg,
+            2 => CclkDrvPhase::Enum180Deg,
+            3 => CclkDrvPhase::Enum270Deg,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_0_DEG`"]
+    #[doc = "0 degree shift."]
     #[inline(always)]
     pub fn is_enum_0_deg(&self) -> bool {
-        **self == CCLK_DRV_PHASE_A::ENUM_0_DEG
+        *self == CclkDrvPhase::Enum0Deg
     }
-    #[doc = "Checks if the value of the field is `ENUM_90_DEG`"]
+    #[doc = "90 degree shift."]
     #[inline(always)]
     pub fn is_enum_90_deg(&self) -> bool {
-        **self == CCLK_DRV_PHASE_A::ENUM_90_DEG
+        *self == CclkDrvPhase::Enum90Deg
     }
-    #[doc = "Checks if the value of the field is `ENUM_180_DEG`"]
+    #[doc = "180 degree shift."]
     #[inline(always)]
     pub fn is_enum_180_deg(&self) -> bool {
-        **self == CCLK_DRV_PHASE_A::ENUM_180_DEG
+        *self == CclkDrvPhase::Enum180Deg
     }
-    #[doc = "Checks if the value of the field is `ENUM_270_DEG`"]
+    #[doc = "270 degree shift."]
     #[inline(always)]
     pub fn is_enum_270_deg(&self) -> bool {
-        **self == CCLK_DRV_PHASE_A::ENUM_270_DEG
-    }
-}
-impl core::ops::Deref for CCLK_DRV_PHASE_R {
-    type Target = crate::FieldReader<u8, CCLK_DRV_PHASE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == CclkDrvPhase::Enum270Deg
     }
 }
 #[doc = "Field `CCLK_DRV_PHASE` writer - Programmable delay value by which cclk_in_drv is phase-shifted with regard to cclk_in."]
-pub struct CCLK_DRV_PHASE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_DRV_PHASE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CCLK_DRV_PHASE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type CclkDrvPhaseW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, CclkDrvPhase, crate::Safe>;
+impl<'a, REG> CclkDrvPhaseW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "0 degree shift."]
     #[inline(always)]
-    pub fn enum_0_deg(self) -> &'a mut W {
-        self.variant(CCLK_DRV_PHASE_A::ENUM_0_DEG)
+    pub fn enum_0_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvPhase::Enum0Deg)
     }
     #[doc = "90 degree shift."]
     #[inline(always)]
-    pub fn enum_90_deg(self) -> &'a mut W {
-        self.variant(CCLK_DRV_PHASE_A::ENUM_90_DEG)
+    pub fn enum_90_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvPhase::Enum90Deg)
     }
     #[doc = "180 degree shift."]
     #[inline(always)]
-    pub fn enum_180_deg(self) -> &'a mut W {
-        self.variant(CCLK_DRV_PHASE_A::ENUM_180_DEG)
+    pub fn enum_180_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvPhase::Enum180Deg)
     }
     #[doc = "270 degree shift."]
     #[inline(always)]
-    pub fn enum_270_deg(self) -> &'a mut W {
-        self.variant(CCLK_DRV_PHASE_A::ENUM_270_DEG)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_270_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvPhase::Enum270Deg)
     }
 }
 #[doc = "Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CCLK_SAMPLE_PHASE_A {
+pub enum CclkSamplePhase {
     #[doc = "0: 0 degree shift."]
-    ENUM_0_DEG = 0,
+    Enum0Deg = 0,
     #[doc = "1: 90 degree shift."]
-    ENUM_90_DEG = 1,
+    Enum90Deg = 1,
     #[doc = "2: 180 degree shift."]
-    ENUM_180_DEG = 2,
+    Enum180Deg = 2,
     #[doc = "3: 270 degree shift."]
-    ENUM_270_DEG = 3,
+    Enum270Deg = 3,
 }
-impl From<CCLK_SAMPLE_PHASE_A> for u8 {
+impl From<CclkSamplePhase> for u8 {
     #[inline(always)]
-    fn from(variant: CCLK_SAMPLE_PHASE_A) -> Self {
+    fn from(variant: CclkSamplePhase) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for CclkSamplePhase {
+    type Ux = u8;
+}
+impl crate::IsEnum for CclkSamplePhase {}
 #[doc = "Field `CCLK_SAMPLE_PHASE` reader - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
-pub struct CCLK_SAMPLE_PHASE_R(crate::FieldReader<u8, CCLK_SAMPLE_PHASE_A>);
-impl CCLK_SAMPLE_PHASE_R {
+pub type CclkSamplePhaseR = crate::FieldReader<CclkSamplePhase>;
+impl CclkSamplePhaseR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CCLK_SAMPLE_PHASE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CCLK_SAMPLE_PHASE_A {
+    pub const fn variant(&self) -> CclkSamplePhase {
         match self.bits {
-            0 => CCLK_SAMPLE_PHASE_A::ENUM_0_DEG,
-            1 => CCLK_SAMPLE_PHASE_A::ENUM_90_DEG,
-            2 => CCLK_SAMPLE_PHASE_A::ENUM_180_DEG,
-            3 => CCLK_SAMPLE_PHASE_A::ENUM_270_DEG,
+            0 => CclkSamplePhase::Enum0Deg,
+            1 => CclkSamplePhase::Enum90Deg,
+            2 => CclkSamplePhase::Enum180Deg,
+            3 => CclkSamplePhase::Enum270Deg,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_0_DEG`"]
-    #[inline(always)]
-    pub fn is_enum_0_deg(&self) -> bool {
-        **self == CCLK_SAMPLE_PHASE_A::ENUM_0_DEG
-    }
-    #[doc = "Checks if the value of the field is `ENUM_90_DEG`"]
-    #[inline(always)]
-    pub fn is_enum_90_deg(&self) -> bool {
-        **self == CCLK_SAMPLE_PHASE_A::ENUM_90_DEG
-    }
-    #[doc = "Checks if the value of the field is `ENUM_180_DEG`"]
-    #[inline(always)]
-    pub fn is_enum_180_deg(&self) -> bool {
-        **self == CCLK_SAMPLE_PHASE_A::ENUM_180_DEG
-    }
-    #[doc = "Checks if the value of the field is `ENUM_270_DEG`"]
-    #[inline(always)]
-    pub fn is_enum_270_deg(&self) -> bool {
-        **self == CCLK_SAMPLE_PHASE_A::ENUM_270_DEG
-    }
-}
-impl core::ops::Deref for CCLK_SAMPLE_PHASE_R {
-    type Target = crate::FieldReader<u8, CCLK_SAMPLE_PHASE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CCLK_SAMPLE_PHASE` writer - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
-pub struct CCLK_SAMPLE_PHASE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_SAMPLE_PHASE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CCLK_SAMPLE_PHASE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "0 degree shift."]
     #[inline(always)]
-    pub fn enum_0_deg(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_PHASE_A::ENUM_0_DEG)
+    pub fn is_enum_0_deg(&self) -> bool {
+        *self == CclkSamplePhase::Enum0Deg
     }
     #[doc = "90 degree shift."]
     #[inline(always)]
-    pub fn enum_90_deg(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_PHASE_A::ENUM_90_DEG)
+    pub fn is_enum_90_deg(&self) -> bool {
+        *self == CclkSamplePhase::Enum90Deg
     }
     #[doc = "180 degree shift."]
     #[inline(always)]
-    pub fn enum_180_deg(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_PHASE_A::ENUM_180_DEG)
+    pub fn is_enum_180_deg(&self) -> bool {
+        *self == CclkSamplePhase::Enum180Deg
     }
     #[doc = "270 degree shift."]
     #[inline(always)]
-    pub fn enum_270_deg(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_PHASE_A::ENUM_270_DEG)
+    pub fn is_enum_270_deg(&self) -> bool {
+        *self == CclkSamplePhase::Enum270Deg
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `CCLK_SAMPLE_PHASE` writer - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
+pub type CclkSamplePhaseW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, CclkSamplePhase, crate::Safe>;
+impl<'a, REG> CclkSamplePhaseW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "0 degree shift."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 2)) | ((value as u32 & 0x03) << 2);
-        self.w
+    pub fn enum_0_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSamplePhase::Enum0Deg)
+    }
+    #[doc = "90 degree shift."]
+    #[inline(always)]
+    pub fn enum_90_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSamplePhase::Enum90Deg)
+    }
+    #[doc = "180 degree shift."]
+    #[inline(always)]
+    pub fn enum_180_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSamplePhase::Enum180Deg)
+    }
+    #[doc = "270 degree shift."]
+    #[inline(always)]
+    pub fn enum_270_deg(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSamplePhase::Enum270Deg)
     }
 }
 #[doc = "Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PHASE_ACTIVE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PhaseActive {
     #[doc = "0: Bypassed."]
-    BYPASSED = 0,
+    Bypassed = 0,
     #[doc = "1: Activates phase shift logic. When active, the clock divider is active and phase delays are enabled."]
-    PH_SHIFT = 1,
+    PhShift = 1,
 }
-impl From<PHASE_ACTIVE_A> for bool {
+impl From<PhaseActive> for bool {
     #[inline(always)]
-    fn from(variant: PHASE_ACTIVE_A) -> Self {
+    fn from(variant: PhaseActive) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PHASE_ACTIVE` reader - Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE."]
-pub struct PHASE_ACTIVE_R(crate::FieldReader<bool, PHASE_ACTIVE_A>);
-impl PHASE_ACTIVE_R {
+pub type PhaseActiveR = crate::BitReader<PhaseActive>;
+impl PhaseActiveR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PHASE_ACTIVE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PHASE_ACTIVE_A {
+    pub const fn variant(&self) -> PhaseActive {
         match self.bits {
-            false => PHASE_ACTIVE_A::BYPASSED,
-            true => PHASE_ACTIVE_A::PH_SHIFT,
+            false => PhaseActive::Bypassed,
+            true => PhaseActive::PhShift,
         }
-    }
-    #[doc = "Checks if the value of the field is `BYPASSED`"]
-    #[inline(always)]
-    pub fn is_bypassed(&self) -> bool {
-        **self == PHASE_ACTIVE_A::BYPASSED
-    }
-    #[doc = "Checks if the value of the field is `PH_SHIFT`"]
-    #[inline(always)]
-    pub fn is_ph_shift(&self) -> bool {
-        **self == PHASE_ACTIVE_A::PH_SHIFT
-    }
-}
-impl core::ops::Deref for PHASE_ACTIVE_R {
-    type Target = crate::FieldReader<bool, PHASE_ACTIVE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PHASE_ACTIVE` writer - Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE."]
-pub struct PHASE_ACTIVE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PHASE_ACTIVE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PHASE_ACTIVE_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bypassed."]
     #[inline(always)]
-    pub fn bypassed(self) -> &'a mut W {
-        self.variant(PHASE_ACTIVE_A::BYPASSED)
+    pub fn is_bypassed(&self) -> bool {
+        *self == PhaseActive::Bypassed
     }
     #[doc = "Activates phase shift logic. When active, the clock divider is active and phase delays are enabled."]
     #[inline(always)]
-    pub fn ph_shift(self) -> &'a mut W {
-        self.variant(PHASE_ACTIVE_A::PH_SHIFT)
+    pub fn is_ph_shift(&self) -> bool {
+        *self == PhaseActive::PhShift
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PHASE_ACTIVE` writer - Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE."]
+pub type PhaseActiveW<'a, REG> = crate::BitWriter<'a, REG, PhaseActive>;
+impl<'a, REG> PhaseActiveW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bypassed."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn bypassed(self) -> &'a mut crate::W<REG> {
+        self.variant(PhaseActive::Bypassed)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Activates phase shift logic. When active, the clock divider is active and phase delays are enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn ph_shift(self) -> &'a mut crate::W<REG> {
+        self.variant(PhaseActive::PhShift)
     }
 }
 #[doc = "Field `CCLK_DRV_DELAY` reader - Programmable delay value by which cclk_in_drv is delayed with regard to cclk_in."]
-pub struct CCLK_DRV_DELAY_R(crate::FieldReader<u8, u8>);
-impl CCLK_DRV_DELAY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CCLK_DRV_DELAY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CCLK_DRV_DELAY_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CclkDrvDelayR = crate::FieldReader;
 #[doc = "Field `CCLK_DRV_DELAY` writer - Programmable delay value by which cclk_in_drv is delayed with regard to cclk_in."]
-pub struct CCLK_DRV_DELAY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_DRV_DELAY_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 16)) | ((value as u32 & 0x1f) << 16);
-        self.w
-    }
-}
+pub type CclkDrvDelayW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Enables drive delay, as controlled by the CCLK_DRV_DELAY field.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CCLK_DRV_DELAY_ACTIVE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CclkDrvDelayActive {
     #[doc = "0: Disable drive delay."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enable drive delay."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<CCLK_DRV_DELAY_ACTIVE_A> for bool {
+impl From<CclkDrvDelayActive> for bool {
     #[inline(always)]
-    fn from(variant: CCLK_DRV_DELAY_ACTIVE_A) -> Self {
+    fn from(variant: CclkDrvDelayActive) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CCLK_DRV_DELAY_ACTIVE` reader - Enables drive delay, as controlled by the CCLK_DRV_DELAY field."]
-pub struct CCLK_DRV_DELAY_ACTIVE_R(crate::FieldReader<bool, CCLK_DRV_DELAY_ACTIVE_A>);
-impl CCLK_DRV_DELAY_ACTIVE_R {
+pub type CclkDrvDelayActiveR = crate::BitReader<CclkDrvDelayActive>;
+impl CclkDrvDelayActiveR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CCLK_DRV_DELAY_ACTIVE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CCLK_DRV_DELAY_ACTIVE_A {
+    pub const fn variant(&self) -> CclkDrvDelayActive {
         match self.bits {
-            false => CCLK_DRV_DELAY_ACTIVE_A::DISABLE,
-            true => CCLK_DRV_DELAY_ACTIVE_A::ENABLE,
+            false => CclkDrvDelayActive::Disable,
+            true => CclkDrvDelayActive::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == CCLK_DRV_DELAY_ACTIVE_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == CCLK_DRV_DELAY_ACTIVE_A::ENABLE
-    }
-}
-impl core::ops::Deref for CCLK_DRV_DELAY_ACTIVE_R {
-    type Target = crate::FieldReader<bool, CCLK_DRV_DELAY_ACTIVE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CCLK_DRV_DELAY_ACTIVE` writer - Enables drive delay, as controlled by the CCLK_DRV_DELAY field."]
-pub struct CCLK_DRV_DELAY_ACTIVE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_DRV_DELAY_ACTIVE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CCLK_DRV_DELAY_ACTIVE_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disable drive delay."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(CCLK_DRV_DELAY_ACTIVE_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == CclkDrvDelayActive::Disable
     }
     #[doc = "Enable drive delay."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(CCLK_DRV_DELAY_ACTIVE_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == CclkDrvDelayActive::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CCLK_DRV_DELAY_ACTIVE` writer - Enables drive delay, as controlled by the CCLK_DRV_DELAY field."]
+pub type CclkDrvDelayActiveW<'a, REG> = crate::BitWriter<'a, REG, CclkDrvDelayActive>;
+impl<'a, REG> CclkDrvDelayActiveW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disable drive delay."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvDelayActive::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enable drive delay."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | ((value as u32 & 0x01) << 23);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkDrvDelayActive::Enable)
     }
 }
 #[doc = "Field `CCLK_SAMPLE_DELAY` reader - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
-pub struct CCLK_SAMPLE_DELAY_R(crate::FieldReader<u8, u8>);
-impl CCLK_SAMPLE_DELAY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CCLK_SAMPLE_DELAY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CCLK_SAMPLE_DELAY_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CclkSampleDelayR = crate::FieldReader;
 #[doc = "Field `CCLK_SAMPLE_DELAY` writer - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
-pub struct CCLK_SAMPLE_DELAY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_SAMPLE_DELAY_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 24)) | ((value as u32 & 0x1f) << 24);
-        self.w
-    }
-}
+pub type CclkSampleDelayW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CCLK_SAMPLE_DELAY_ACTIVE_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CclkSampleDelayActive {
     #[doc = "0: Disables sample delay."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Enables sample delay."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<CCLK_SAMPLE_DELAY_ACTIVE_A> for bool {
+impl From<CclkSampleDelayActive> for bool {
     #[inline(always)]
-    fn from(variant: CCLK_SAMPLE_DELAY_ACTIVE_A) -> Self {
+    fn from(variant: CclkSampleDelayActive) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CCLK_SAMPLE_DELAY_ACTIVE` reader - Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field."]
-pub struct CCLK_SAMPLE_DELAY_ACTIVE_R(crate::FieldReader<bool, CCLK_SAMPLE_DELAY_ACTIVE_A>);
-impl CCLK_SAMPLE_DELAY_ACTIVE_R {
+pub type CclkSampleDelayActiveR = crate::BitReader<CclkSampleDelayActive>;
+impl CclkSampleDelayActiveR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CCLK_SAMPLE_DELAY_ACTIVE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CCLK_SAMPLE_DELAY_ACTIVE_A {
+    pub const fn variant(&self) -> CclkSampleDelayActive {
         match self.bits {
-            false => CCLK_SAMPLE_DELAY_ACTIVE_A::DISABLE,
-            true => CCLK_SAMPLE_DELAY_ACTIVE_A::ENABLE,
+            false => CclkSampleDelayActive::Disable,
+            true => CclkSampleDelayActive::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == CCLK_SAMPLE_DELAY_ACTIVE_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == CCLK_SAMPLE_DELAY_ACTIVE_A::ENABLE
-    }
-}
-impl core::ops::Deref for CCLK_SAMPLE_DELAY_ACTIVE_R {
-    type Target = crate::FieldReader<bool, CCLK_SAMPLE_DELAY_ACTIVE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CCLK_SAMPLE_DELAY_ACTIVE` writer - Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field."]
-pub struct CCLK_SAMPLE_DELAY_ACTIVE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCLK_SAMPLE_DELAY_ACTIVE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CCLK_SAMPLE_DELAY_ACTIVE_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Disables sample delay."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_DELAY_ACTIVE_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == CclkSampleDelayActive::Disable
     }
     #[doc = "Enables sample delay."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(CCLK_SAMPLE_DELAY_ACTIVE_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == CclkSampleDelayActive::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CCLK_SAMPLE_DELAY_ACTIVE` writer - Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field."]
+pub type CclkSampleDelayActiveW<'a, REG> =
+    crate::BitWriter<'a, REG, CclkSampleDelayActive>;
+impl<'a, REG> CclkSampleDelayActiveW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Disables sample delay."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSampleDelayActive::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Enables sample delay."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(CclkSampleDelayActive::Enable)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Programmable delay value by which cclk_in_drv is phase-shifted with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_drv_phase(&self) -> CCLK_DRV_PHASE_R {
-        CCLK_DRV_PHASE_R::new((self.bits & 0x03) as u8)
+    pub fn cclk_drv_phase(&self) -> CclkDrvPhaseR {
+        CclkDrvPhaseR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 2:3 - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_sample_phase(&self) -> CCLK_SAMPLE_PHASE_R {
-        CCLK_SAMPLE_PHASE_R::new(((self.bits >> 2) & 0x03) as u8)
+    pub fn cclk_sample_phase(&self) -> CclkSamplePhaseR {
+        CclkSamplePhaseR::new(((self.bits >> 2) & 3) as u8)
     }
     #[doc = "Bit 7 - Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE."]
     #[inline(always)]
-    pub fn phase_active(&self) -> PHASE_ACTIVE_R {
-        PHASE_ACTIVE_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn phase_active(&self) -> PhaseActiveR {
+        PhaseActiveR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bits 16:20 - Programmable delay value by which cclk_in_drv is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_drv_delay(&self) -> CCLK_DRV_DELAY_R {
-        CCLK_DRV_DELAY_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn cclk_drv_delay(&self) -> CclkDrvDelayR {
+        CclkDrvDelayR::new(((self.bits >> 16) & 0x1f) as u8)
     }
     #[doc = "Bit 23 - Enables drive delay, as controlled by the CCLK_DRV_DELAY field."]
     #[inline(always)]
-    pub fn cclk_drv_delay_active(&self) -> CCLK_DRV_DELAY_ACTIVE_R {
-        CCLK_DRV_DELAY_ACTIVE_R::new(((self.bits >> 23) & 0x01) != 0)
+    pub fn cclk_drv_delay_active(&self) -> CclkDrvDelayActiveR {
+        CclkDrvDelayActiveR::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bits 24:28 - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_sample_delay(&self) -> CCLK_SAMPLE_DELAY_R {
-        CCLK_SAMPLE_DELAY_R::new(((self.bits >> 24) & 0x1f) as u8)
+    pub fn cclk_sample_delay(&self) -> CclkSampleDelayR {
+        CclkSampleDelayR::new(((self.bits >> 24) & 0x1f) as u8)
     }
     #[doc = "Bit 31 - Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field."]
     #[inline(always)]
-    pub fn cclk_sample_delay_active(&self) -> CCLK_SAMPLE_DELAY_ACTIVE_R {
-        CCLK_SAMPLE_DELAY_ACTIVE_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn cclk_sample_delay_active(&self) -> CclkSampleDelayActiveR {
+        CclkSampleDelayActiveR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Programmable delay value by which cclk_in_drv is phase-shifted with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_drv_phase(&mut self) -> CCLK_DRV_PHASE_W {
-        CCLK_DRV_PHASE_W { w: self }
+    pub fn cclk_drv_phase(&mut self) -> CclkDrvPhaseW<SdioclkctrlSpec> {
+        CclkDrvPhaseW::new(self, 0)
     }
     #[doc = "Bits 2:3 - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_sample_phase(&mut self) -> CCLK_SAMPLE_PHASE_W {
-        CCLK_SAMPLE_PHASE_W { w: self }
+    pub fn cclk_sample_phase(&mut self) -> CclkSamplePhaseW<SdioclkctrlSpec> {
+        CclkSamplePhaseW::new(self, 2)
     }
     #[doc = "Bit 7 - Enables the delays CCLK_DRV_PHASE and CCLK_SAMPLE_PHASE."]
     #[inline(always)]
-    pub fn phase_active(&mut self) -> PHASE_ACTIVE_W {
-        PHASE_ACTIVE_W { w: self }
+    pub fn phase_active(&mut self) -> PhaseActiveW<SdioclkctrlSpec> {
+        PhaseActiveW::new(self, 7)
     }
     #[doc = "Bits 16:20 - Programmable delay value by which cclk_in_drv is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_drv_delay(&mut self) -> CCLK_DRV_DELAY_W {
-        CCLK_DRV_DELAY_W { w: self }
+    pub fn cclk_drv_delay(&mut self) -> CclkDrvDelayW<SdioclkctrlSpec> {
+        CclkDrvDelayW::new(self, 16)
     }
     #[doc = "Bit 23 - Enables drive delay, as controlled by the CCLK_DRV_DELAY field."]
     #[inline(always)]
-    pub fn cclk_drv_delay_active(&mut self) -> CCLK_DRV_DELAY_ACTIVE_W {
-        CCLK_DRV_DELAY_ACTIVE_W { w: self }
+    pub fn cclk_drv_delay_active(&mut self) -> CclkDrvDelayActiveW<SdioclkctrlSpec> {
+        CclkDrvDelayActiveW::new(self, 23)
     }
     #[doc = "Bits 24:28 - Programmable delay value by which cclk_in_sample is delayed with regard to cclk_in."]
     #[inline(always)]
-    pub fn cclk_sample_delay(&mut self) -> CCLK_SAMPLE_DELAY_W {
-        CCLK_SAMPLE_DELAY_W { w: self }
+    pub fn cclk_sample_delay(&mut self) -> CclkSampleDelayW<SdioclkctrlSpec> {
+        CclkSampleDelayW::new(self, 24)
     }
     #[doc = "Bit 31 - Enables sample delay, as controlled by the CCLK_SAMPLE_DELAY field."]
     #[inline(always)]
-    pub fn cclk_sample_delay_active(&mut self) -> CCLK_SAMPLE_DELAY_ACTIVE_W {
-        CCLK_SAMPLE_DELAY_ACTIVE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cclk_sample_delay_active(
+        &mut self,
+    ) -> CclkSampleDelayActiveW<SdioclkctrlSpec> {
+        CclkSampleDelayActiveW::new(self, 31)
     }
 }
-#[doc = "SDIO CCLKIN phase and delay control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sdioclkctrl](index.html) module"]
-pub struct SDIOCLKCTRL_SPEC;
-impl crate::RegisterSpec for SDIOCLKCTRL_SPEC {
+#[doc = "SDIO CCLKIN phase and delay control\n\nYou can [`read`](crate::Reg::read) this register and get [`sdioclkctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sdioclkctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SdioclkctrlSpec;
+impl crate::RegisterSpec for SdioclkctrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sdioclkctrl::R](R) reader structure"]
-impl crate::Readable for SDIOCLKCTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sdioclkctrl::W](W) writer structure"]
-impl crate::Writable for SDIOCLKCTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sdioclkctrl::R`](R) reader structure"]
+impl crate::Readable for SdioclkctrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`sdioclkctrl::W`](W) writer structure"]
+impl crate::Writable for SdioclkctrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SDIOCLKCTRL to value 0"]
-impl crate::Resettable for SDIOCLKCTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SdioclkctrlSpec {
+    const RESET_VALUE: u32 = 0;
 }

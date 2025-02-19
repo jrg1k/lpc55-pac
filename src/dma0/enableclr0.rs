@@ -1,62 +1,26 @@
 #[doc = "Register `ENABLECLR0` writer"]
-pub struct W(crate::W<ENABLECLR0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ENABLECLR0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ENABLECLR0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ENABLECLR0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Enableclr0Spec>;
 #[doc = "Field `CLR` writer - Writing ones to this register clears the corresponding bits in ENABLESET0. Bit n clears the channel enable bit n. The number of bits = number of DMA channels in this device. Other bits are reserved."]
-pub struct CLR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CLR_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type ClrW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl W {
     #[doc = "Bits 0:31 - Writing ones to this register clears the corresponding bits in ENABLESET0. Bit n clears the channel enable bit n. The number of bits = number of DMA channels in this device. Other bits are reserved."]
     #[inline(always)]
-    pub fn clr(&mut self) -> CLR_W {
-        CLR_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn clr(&mut self) -> ClrW<Enableclr0Spec> {
+        ClrW::new(self, 0)
     }
 }
-#[doc = "Channel Enable Clear for all DMA channels.\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [enableclr0](index.html) module"]
-pub struct ENABLECLR0_SPEC;
-impl crate::RegisterSpec for ENABLECLR0_SPEC {
+#[doc = "Channel Enable Clear for all DMA channels.\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`enableclr0::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Enableclr0Spec;
+impl crate::RegisterSpec for Enableclr0Spec {
     type Ux = u32;
 }
-#[doc = "`write(|w| ..)` method takes [enableclr0::W](W) writer structure"]
-impl crate::Writable for ENABLECLR0_SPEC {
-    type Writer = W;
+#[doc = "`write(|w| ..)` method takes [`enableclr0::W`](W) writer structure"]
+impl crate::Writable for Enableclr0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ENABLECLR0 to value 0"]
-impl crate::Resettable for ENABLECLR0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Enableclr0Spec {
+    const RESET_VALUE: u32 = 0;
 }

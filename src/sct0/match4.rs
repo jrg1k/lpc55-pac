@@ -1,140 +1,53 @@
 #[doc = "Register `MATCH4` reader"]
-pub struct R(crate::R<MATCH4_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MATCH4_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MATCH4_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MATCH4_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Match4Spec>;
 #[doc = "Register `MATCH4` writer"]
-pub struct W(crate::W<MATCH4_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MATCH4_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MATCH4_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MATCH4_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Match4Spec>;
 #[doc = "Field `MATCHn_L` reader - When UNIFY = 0, read or write the 16-bit value to be compared to the L counter. When UNIFY = 1, read or write the lower 16 bits of the 32-bit value to be compared to the unified counter."]
-pub struct MATCHN_L_R(crate::FieldReader<u16, u16>);
-impl MATCHN_L_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        MATCHN_L_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for MATCHN_L_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type MatchnLR = crate::FieldReader<u16>;
 #[doc = "Field `MATCHn_L` writer - When UNIFY = 0, read or write the 16-bit value to be compared to the L counter. When UNIFY = 1, read or write the lower 16 bits of the 32-bit value to be compared to the unified counter."]
-pub struct MATCHN_L_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MATCHN_L_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff) | (value as u32 & 0xffff);
-        self.w
-    }
-}
+pub type MatchnLW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 #[doc = "Field `MATCHn_H` reader - When UNIFY = 0, read or write the 16-bit value to be compared to the H counter. When UNIFY = 1, read or write the upper 16 bits of the 32-bit value to be compared to the unified counter."]
-pub struct MATCHN_H_R(crate::FieldReader<u16, u16>);
-impl MATCHN_H_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        MATCHN_H_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for MATCHN_H_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type MatchnHR = crate::FieldReader<u16>;
 #[doc = "Field `MATCHn_H` writer - When UNIFY = 0, read or write the 16-bit value to be compared to the H counter. When UNIFY = 1, read or write the upper 16 bits of the 32-bit value to be compared to the unified counter."]
-pub struct MATCHN_H_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MATCHN_H_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
-    }
-}
+pub type MatchnHW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 0:15 - When UNIFY = 0, read or write the 16-bit value to be compared to the L counter. When UNIFY = 1, read or write the lower 16 bits of the 32-bit value to be compared to the unified counter."]
     #[inline(always)]
-    pub fn matchn_l(&self) -> MATCHN_L_R {
-        MATCHN_L_R::new((self.bits & 0xffff) as u16)
+    pub fn matchn_l(&self) -> MatchnLR {
+        MatchnLR::new((self.bits & 0xffff) as u16)
     }
     #[doc = "Bits 16:31 - When UNIFY = 0, read or write the 16-bit value to be compared to the H counter. When UNIFY = 1, read or write the upper 16 bits of the 32-bit value to be compared to the unified counter."]
     #[inline(always)]
-    pub fn matchn_h(&self) -> MATCHN_H_R {
-        MATCHN_H_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn matchn_h(&self) -> MatchnHR {
+        MatchnHR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:15 - When UNIFY = 0, read or write the 16-bit value to be compared to the L counter. When UNIFY = 1, read or write the lower 16 bits of the 32-bit value to be compared to the unified counter."]
     #[inline(always)]
-    pub fn matchn_l(&mut self) -> MATCHN_L_W {
-        MATCHN_L_W { w: self }
+    pub fn matchn_l(&mut self) -> MatchnLW<Match4Spec> {
+        MatchnLW::new(self, 0)
     }
     #[doc = "Bits 16:31 - When UNIFY = 0, read or write the 16-bit value to be compared to the H counter. When UNIFY = 1, read or write the upper 16 bits of the 32-bit value to be compared to the unified counter."]
     #[inline(always)]
-    pub fn matchn_h(&mut self) -> MATCHN_H_W {
-        MATCHN_H_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn matchn_h(&mut self) -> MatchnHW<Match4Spec> {
+        MatchnHW::new(self, 16)
     }
 }
-#[doc = "SCT match value register of match channels\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [match4](index.html) module"]
-pub struct MATCH4_SPEC;
-impl crate::RegisterSpec for MATCH4_SPEC {
+#[doc = "SCT match value register of match channels\n\nYou can [`read`](crate::Reg::read) this register and get [`match4::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`match4::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Match4Spec;
+impl crate::RegisterSpec for Match4Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [match4::R](R) reader structure"]
-impl crate::Readable for MATCH4_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [match4::W](W) writer structure"]
-impl crate::Writable for MATCH4_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`match4::R`](R) reader structure"]
+impl crate::Readable for Match4Spec {}
+#[doc = "`write(|w| ..)` method takes [`match4::W`](W) writer structure"]
+impl crate::Writable for Match4Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MATCH4 to value 0"]
-impl crate::Resettable for MATCH4_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Match4Spec {
+    const RESET_VALUE: u32 = 0;
 }

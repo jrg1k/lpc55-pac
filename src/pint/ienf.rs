@@ -1,103 +1,39 @@
 #[doc = "Register `IENF` reader"]
-pub struct R(crate::R<IENF_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<IENF_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<IENF_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<IENF_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IenfSpec>;
 #[doc = "Register `IENF` writer"]
-pub struct W(crate::W<IENF_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<IENF_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<IENF_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<IENF_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IenfSpec>;
 #[doc = "Field `ENAF` reader - Enables the falling edge or configures the active level interrupt for each pin interrupt. Bit n configures the pin interrupt selected in PINTSELn. 0 = Disable falling edge interrupt or set active interrupt level LOW. 1 = Enable falling edge interrupt enabled or set active interrupt level HIGH."]
-pub struct ENAF_R(crate::FieldReader<u8, u8>);
-impl ENAF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ENAF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ENAF_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type EnafR = crate::FieldReader;
 #[doc = "Field `ENAF` writer - Enables the falling edge or configures the active level interrupt for each pin interrupt. Bit n configures the pin interrupt selected in PINTSELn. 0 = Disable falling edge interrupt or set active interrupt level LOW. 1 = Enable falling edge interrupt enabled or set active interrupt level HIGH."]
-pub struct ENAF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENAF_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type EnafW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Enables the falling edge or configures the active level interrupt for each pin interrupt. Bit n configures the pin interrupt selected in PINTSELn. 0 = Disable falling edge interrupt or set active interrupt level LOW. 1 = Enable falling edge interrupt enabled or set active interrupt level HIGH."]
     #[inline(always)]
-    pub fn enaf(&self) -> ENAF_R {
-        ENAF_R::new((self.bits & 0xff) as u8)
+    pub fn enaf(&self) -> EnafR {
+        EnafR::new((self.bits & 0xff) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Enables the falling edge or configures the active level interrupt for each pin interrupt. Bit n configures the pin interrupt selected in PINTSELn. 0 = Disable falling edge interrupt or set active interrupt level LOW. 1 = Enable falling edge interrupt enabled or set active interrupt level HIGH."]
     #[inline(always)]
-    pub fn enaf(&mut self) -> ENAF_W {
-        ENAF_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn enaf(&mut self) -> EnafW<IenfSpec> {
+        EnafW::new(self, 0)
     }
 }
-#[doc = "Pin interrupt active level or falling edge interrupt enable register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ienf](index.html) module"]
-pub struct IENF_SPEC;
-impl crate::RegisterSpec for IENF_SPEC {
+#[doc = "Pin interrupt active level or falling edge interrupt enable register\n\nYou can [`read`](crate::Reg::read) this register and get [`ienf::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ienf::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IenfSpec;
+impl crate::RegisterSpec for IenfSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ienf::R](R) reader structure"]
-impl crate::Readable for IENF_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ienf::W](W) writer structure"]
-impl crate::Writable for IENF_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ienf::R`](R) reader structure"]
+impl crate::Readable for IenfSpec {}
+#[doc = "`write(|w| ..)` method takes [`ienf::W`](W) writer structure"]
+impl crate::Writable for IenfSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IENF to value 0"]
-impl crate::Resettable for IENF_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for IenfSpec {
+    const RESET_VALUE: u32 = 0;
 }

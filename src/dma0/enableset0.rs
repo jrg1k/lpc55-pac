@@ -1,103 +1,39 @@
 #[doc = "Register `ENABLESET0` reader"]
-pub struct R(crate::R<ENABLESET0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ENABLESET0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ENABLESET0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ENABLESET0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Enableset0Spec>;
 #[doc = "Register `ENABLESET0` writer"]
-pub struct W(crate::W<ENABLESET0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ENABLESET0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ENABLESET0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ENABLESET0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Enableset0Spec>;
 #[doc = "Field `ENA` reader - Enable for DMA channels. Bit n enables or disables DMA channel n. The number of bits = number of DMA channels in this device. Other bits are reserved. 0 = disabled. 1 = enabled."]
-pub struct ENA_R(crate::FieldReader<u32, u32>);
-impl ENA_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        ENA_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ENA_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type EnaR = crate::FieldReader<u32>;
 #[doc = "Field `ENA` writer - Enable for DMA channels. Bit n enables or disables DMA channel n. The number of bits = number of DMA channels in this device. Other bits are reserved. 0 = disabled. 1 = enabled."]
-pub struct ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type EnaW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Enable for DMA channels. Bit n enables or disables DMA channel n. The number of bits = number of DMA channels in this device. Other bits are reserved. 0 = disabled. 1 = enabled."]
     #[inline(always)]
-    pub fn ena(&self) -> ENA_R {
-        ENA_R::new(self.bits as u32)
+    pub fn ena(&self) -> EnaR {
+        EnaR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Enable for DMA channels. Bit n enables or disables DMA channel n. The number of bits = number of DMA channels in this device. Other bits are reserved. 0 = disabled. 1 = enabled."]
     #[inline(always)]
-    pub fn ena(&mut self) -> ENA_W {
-        ENA_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn ena(&mut self) -> EnaW<Enableset0Spec> {
+        EnaW::new(self, 0)
     }
 }
-#[doc = "Channel Enable read and Set for all DMA channels.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [enableset0](index.html) module"]
-pub struct ENABLESET0_SPEC;
-impl crate::RegisterSpec for ENABLESET0_SPEC {
+#[doc = "Channel Enable read and Set for all DMA channels.\n\nYou can [`read`](crate::Reg::read) this register and get [`enableset0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`enableset0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Enableset0Spec;
+impl crate::RegisterSpec for Enableset0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [enableset0::R](R) reader structure"]
-impl crate::Readable for ENABLESET0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [enableset0::W](W) writer structure"]
-impl crate::Writable for ENABLESET0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`enableset0::R`](R) reader structure"]
+impl crate::Readable for Enableset0Spec {}
+#[doc = "`write(|w| ..)` method takes [`enableset0::W`](W) writer structure"]
+impl crate::Writable for Enableset0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ENABLESET0 to value 0"]
-impl crate::Resettable for ENABLESET0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Enableset0Spec {
+    const RESET_VALUE: u32 = 0;
 }

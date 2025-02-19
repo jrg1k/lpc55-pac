@@ -1,64 +1,27 @@
 #[doc = "Register `ADDRESS15` reader"]
-pub struct R(crate::R<ADDRESS15_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ADDRESS15_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ADDRESS15_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ADDRESS15_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Address15Spec>;
 #[doc = "Register `ADDRESS15` writer"]
-pub struct W(crate::W<ADDRESS15_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ADDRESS15_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+pub type W = crate::W<Address15Spec>;
+impl core::fmt::Debug for R {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        write!(f, "{}", self.bits())
     }
 }
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ADDRESS15_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ADDRESS15_SPEC>) -> Self {
-        W(writer)
-    }
-}
-impl W {
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
-    }
-}
-#[doc = "Replacement address 15\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [address15](index.html) module"]
-pub struct ADDRESS15_SPEC;
-impl crate::RegisterSpec for ADDRESS15_SPEC {
+impl W {}
+#[doc = "Replacement address 15\n\nYou can [`read`](crate::Reg::read) this register and get [`address15::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`address15::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Address15Spec;
+impl crate::RegisterSpec for Address15Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [address15::R](R) reader structure"]
-impl crate::Readable for ADDRESS15_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [address15::W](W) writer structure"]
-impl crate::Writable for ADDRESS15_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`address15::R`](R) reader structure"]
+impl crate::Readable for Address15Spec {}
+#[doc = "`write(|w| ..)` method takes [`address15::W`](W) writer structure"]
+impl crate::Writable for Address15Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ADDRESS15 to value 0"]
-impl crate::Resettable for ADDRESS15_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Address15Spec {
+    const RESET_VALUE: u32 = 0;
 }

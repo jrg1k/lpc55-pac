@@ -1,140 +1,232 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00 - ."]
-    pub boot_cfg: crate::Reg<boot_cfg::BOOT_CFG_SPEC>,
-    #[doc = "0x04 - ."]
-    pub spi_flash_cfg: crate::Reg<spi_flash_cfg::SPI_FLASH_CFG_SPEC>,
-    #[doc = "0x08 - ."]
-    pub usb_id: crate::Reg<usb_id::USB_ID_SPEC>,
-    #[doc = "0x0c - ."]
-    pub sdio_cfg: crate::Reg<sdio_cfg::SDIO_CFG_SPEC>,
-    #[doc = "0x10 - ."]
-    pub cc_socu_pin: crate::Reg<cc_socu_pin::CC_SOCU_PIN_SPEC>,
-    #[doc = "0x14 - ."]
-    pub cc_socu_dflt: crate::Reg<cc_socu_dflt::CC_SOCU_DFLT_SPEC>,
-    #[doc = "0x18 - ."]
-    pub vendor_usage: crate::Reg<vendor_usage::VENDOR_USAGE_SPEC>,
-    #[doc = "0x1c - ."]
-    pub secure_boot_cfg: crate::Reg<secure_boot_cfg::SECURE_BOOT_CFG_SPEC>,
-    #[doc = "0x20 - ."]
-    pub prince_base_addr: crate::Reg<prince_base_addr::PRINCE_BASE_ADDR_SPEC>,
-    #[doc = "0x24 - Region 0, sub-region enable"]
-    pub prince_sr_0: crate::Reg<prince_sr_0::PRINCE_SR_0_SPEC>,
-    #[doc = "0x28 - Region 1, sub-region enable"]
-    pub prince_sr_1: crate::Reg<prince_sr_1::PRINCE_SR_1_SPEC>,
-    #[doc = "0x2c - Region 2, sub-region enable"]
-    pub prince_sr_2: crate::Reg<prince_sr_2::PRINCE_SR_2_SPEC>,
-    #[doc = "0x30 - Xtal 32kHz capabank triming."]
-    pub xtal_32khz_capabank_trim:
-        crate::Reg<xtal_32khz_capabank_trim::XTAL_32KHZ_CAPABANK_TRIM_SPEC>,
-    #[doc = "0x34 - Xtal 16MHz capabank triming."]
-    pub xtal_16mhz_capabank_trim:
-        crate::Reg<xtal_16mhz_capabank_trim::XTAL_16MHZ_CAPABANK_TRIM_SPEC>,
+    boot_cfg: BootCfg,
+    spi_flash_cfg: SpiFlashCfg,
+    usb_id: UsbId,
+    sdio_cfg: SdioCfg,
+    cc_socu_pin: CcSocuPin,
+    cc_socu_dflt: CcSocuDflt,
+    vendor_usage: VendorUsage,
+    secure_boot_cfg: SecureBootCfg,
+    prince_base_addr: PrinceBaseAddr,
+    prince_sr_0: PrinceSr0,
+    prince_sr_1: PrinceSr1,
+    prince_sr_2: PrinceSr2,
+    xtal_32khz_capabank_trim: Xtal32khzCapabankTrim,
+    xtal_16mhz_capabank_trim: Xtal16mhzCapabankTrim,
     _reserved14: [u8; 0x18],
-    #[doc = "0x50..0x70 - ROTKH0 for Root of Trust Keys Table hash\\[255:224\\]
-ROTKH1 for Root of Trust Keys Table hash\\[223:192\\]
-ROTKH2 for Root of Trust Keys Table hash\\[191:160\\]
-ROTKH3 for Root of Trust Keys Table hash\\[159:128\\]
-ROTKH4 for Root of Trust Keys Table hash\\[127:96\\]
-ROTKH5 for Root of Trust Keys Table hash\\[95:64\\]
-ROTKH6 for Root of Trust Keys Table hash\\[63:32\\]
-ROTKH7 for Root of Trust Keys Table hash\\[31:0\\]"]
-    pub rotkh: [crate::Reg<rotkh::ROTKH_SPEC>; 8],
+    rotkh: [Rotkh; 8],
     _reserved15: [u8; 0x90],
-    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
-    pub customer_defined: [crate::Reg<customer_defined::CUSTOMER_DEFINED_SPEC>; 56],
-    #[doc = "0x1e0..0x200 - SHA256_DIGEST0 for DIGEST\\[31:0\\]
-SHA256_DIGEST1 for DIGEST\\[63:32\\]
-SHA256_DIGEST2 for DIGEST\\[95:64\\]
-SHA256_DIGEST3 for DIGEST\\[127:96\\]
-SHA256_DIGEST4 for DIGEST\\[159:128\\]
-SHA256_DIGEST5 for DIGEST\\[191:160\\]
-SHA256_DIGEST6 for DIGEST\\[223:192\\]
-SHA256_DIGEST7 for DIGEST\\[255:224\\]"]
-    pub sha256_digest: [crate::Reg<sha256_digest::SHA256_DIGEST_SPEC>; 8],
+    customer_defined: [CustomerDefined; 56],
+    sha256_digest: [Sha256Digest; 8],
 }
-#[doc = "BOOT_CFG register accessor: an alias for `Reg<BOOT_CFG_SPEC>`"]
-pub type BOOT_CFG = crate::Reg<boot_cfg::BOOT_CFG_SPEC>;
-#[doc = "."]
+impl RegisterBlock {
+    #[doc = "0x00 - no description available"]
+    #[inline(always)]
+    pub const fn boot_cfg(&self) -> &BootCfg {
+        &self.boot_cfg
+    }
+    #[doc = "0x04 - no description available"]
+    #[inline(always)]
+    pub const fn spi_flash_cfg(&self) -> &SpiFlashCfg {
+        &self.spi_flash_cfg
+    }
+    #[doc = "0x08 - no description available"]
+    #[inline(always)]
+    pub const fn usb_id(&self) -> &UsbId {
+        &self.usb_id
+    }
+    #[doc = "0x0c - no description available"]
+    #[inline(always)]
+    pub const fn sdio_cfg(&self) -> &SdioCfg {
+        &self.sdio_cfg
+    }
+    #[doc = "0x10 - no description available"]
+    #[inline(always)]
+    pub const fn cc_socu_pin(&self) -> &CcSocuPin {
+        &self.cc_socu_pin
+    }
+    #[doc = "0x14 - no description available"]
+    #[inline(always)]
+    pub const fn cc_socu_dflt(&self) -> &CcSocuDflt {
+        &self.cc_socu_dflt
+    }
+    #[doc = "0x18 - no description available"]
+    #[inline(always)]
+    pub const fn vendor_usage(&self) -> &VendorUsage {
+        &self.vendor_usage
+    }
+    #[doc = "0x1c - Secure boot configuration flags."]
+    #[inline(always)]
+    pub const fn secure_boot_cfg(&self) -> &SecureBootCfg {
+        &self.secure_boot_cfg
+    }
+    #[doc = "0x20 - no description available"]
+    #[inline(always)]
+    pub const fn prince_base_addr(&self) -> &PrinceBaseAddr {
+        &self.prince_base_addr
+    }
+    #[doc = "0x24 - Region 0, sub-region enable"]
+    #[inline(always)]
+    pub const fn prince_sr_0(&self) -> &PrinceSr0 {
+        &self.prince_sr_0
+    }
+    #[doc = "0x28 - Region 1, sub-region enable"]
+    #[inline(always)]
+    pub const fn prince_sr_1(&self) -> &PrinceSr1 {
+        &self.prince_sr_1
+    }
+    #[doc = "0x2c - Region 2, sub-region enable"]
+    #[inline(always)]
+    pub const fn prince_sr_2(&self) -> &PrinceSr2 {
+        &self.prince_sr_2
+    }
+    #[doc = "0x30 - Xtal 32kHz capabank triming."]
+    #[inline(always)]
+    pub const fn xtal_32khz_capabank_trim(&self) -> &Xtal32khzCapabankTrim {
+        &self.xtal_32khz_capabank_trim
+    }
+    #[doc = "0x34 - Xtal 16MHz capabank triming."]
+    #[inline(always)]
+    pub const fn xtal_16mhz_capabank_trim(&self) -> &Xtal16mhzCapabankTrim {
+        &self.xtal_16mhz_capabank_trim
+    }
+    #[doc = "0x50..0x70 - ROTKHindex for Root of Trust Keys Table hash\\[(((7 - index) * 32) + 31):((7 - index) * 32)\\]"]
+    #[inline(always)]
+    pub const fn rotkh(&self, n: usize) -> &Rotkh {
+        &self.rotkh[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x50..0x70 - ROTKHindex for Root of Trust Keys Table hash\\[(((7 - index) * 32) + 31):((7 - index) * 32)\\]"]
+    #[inline(always)]
+    pub fn rotkh_iter(&self) -> impl Iterator<Item = &Rotkh> {
+        self.rotkh.iter()
+    }
+    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
+    #[inline(always)]
+    pub const fn customer_defined(&self, n: usize) -> &CustomerDefined {
+        &self.customer_defined[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
+    #[inline(always)]
+    pub fn customer_defined_iter(&self) -> impl Iterator<Item = &CustomerDefined> {
+        self.customer_defined.iter()
+    }
+    #[doc = "0x1e0..0x200 - SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
+    #[inline(always)]
+    pub const fn sha256_digest(&self, n: usize) -> &Sha256Digest {
+        &self.sha256_digest[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x1e0..0x200 - SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
+    #[inline(always)]
+    pub fn sha256_digest_iter(&self) -> impl Iterator<Item = &Sha256Digest> {
+        self.sha256_digest.iter()
+    }
+}
+#[doc = "BOOT_CFG (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`boot_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`boot_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@boot_cfg`]
+module"]
+#[doc(alias = "BOOT_CFG")]
+pub type BootCfg = crate::Reg<boot_cfg::BootCfgSpec>;
+#[doc = "no description available"]
 pub mod boot_cfg;
-#[doc = "SPI_FLASH_CFG register accessor: an alias for `Reg<SPI_FLASH_CFG_SPEC>`"]
-pub type SPI_FLASH_CFG = crate::Reg<spi_flash_cfg::SPI_FLASH_CFG_SPEC>;
-#[doc = "."]
+#[doc = "SPI_FLASH_CFG (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`spi_flash_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`spi_flash_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@spi_flash_cfg`]
+module"]
+#[doc(alias = "SPI_FLASH_CFG")]
+pub type SpiFlashCfg = crate::Reg<spi_flash_cfg::SpiFlashCfgSpec>;
+#[doc = "no description available"]
 pub mod spi_flash_cfg;
-#[doc = "USB_ID register accessor: an alias for `Reg<USB_ID_SPEC>`"]
-pub type USB_ID = crate::Reg<usb_id::USB_ID_SPEC>;
-#[doc = "."]
+#[doc = "USB_ID (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`usb_id::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usb_id::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@usb_id`]
+module"]
+#[doc(alias = "USB_ID")]
+pub type UsbId = crate::Reg<usb_id::UsbIdSpec>;
+#[doc = "no description available"]
 pub mod usb_id;
-#[doc = "SDIO_CFG register accessor: an alias for `Reg<SDIO_CFG_SPEC>`"]
-pub type SDIO_CFG = crate::Reg<sdio_cfg::SDIO_CFG_SPEC>;
-#[doc = "."]
+#[doc = "SDIO_CFG (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`sdio_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sdio_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sdio_cfg`]
+module"]
+#[doc(alias = "SDIO_CFG")]
+pub type SdioCfg = crate::Reg<sdio_cfg::SdioCfgSpec>;
+#[doc = "no description available"]
 pub mod sdio_cfg;
-#[doc = "CC_SOCU_PIN register accessor: an alias for `Reg<CC_SOCU_PIN_SPEC>`"]
-pub type CC_SOCU_PIN = crate::Reg<cc_socu_pin::CC_SOCU_PIN_SPEC>;
-#[doc = "."]
+#[doc = "CC_SOCU_PIN (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`cc_socu_pin::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cc_socu_pin::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cc_socu_pin`]
+module"]
+#[doc(alias = "CC_SOCU_PIN")]
+pub type CcSocuPin = crate::Reg<cc_socu_pin::CcSocuPinSpec>;
+#[doc = "no description available"]
 pub mod cc_socu_pin;
-#[doc = "CC_SOCU_DFLT register accessor: an alias for `Reg<CC_SOCU_DFLT_SPEC>`"]
-pub type CC_SOCU_DFLT = crate::Reg<cc_socu_dflt::CC_SOCU_DFLT_SPEC>;
-#[doc = "."]
+#[doc = "CC_SOCU_DFLT (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`cc_socu_dflt::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cc_socu_dflt::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cc_socu_dflt`]
+module"]
+#[doc(alias = "CC_SOCU_DFLT")]
+pub type CcSocuDflt = crate::Reg<cc_socu_dflt::CcSocuDfltSpec>;
+#[doc = "no description available"]
 pub mod cc_socu_dflt;
-#[doc = "VENDOR_USAGE register accessor: an alias for `Reg<VENDOR_USAGE_SPEC>`"]
-pub type VENDOR_USAGE = crate::Reg<vendor_usage::VENDOR_USAGE_SPEC>;
-#[doc = "."]
+#[doc = "VENDOR_USAGE (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`vendor_usage::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`vendor_usage::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@vendor_usage`]
+module"]
+#[doc(alias = "VENDOR_USAGE")]
+pub type VendorUsage = crate::Reg<vendor_usage::VendorUsageSpec>;
+#[doc = "no description available"]
 pub mod vendor_usage;
-#[doc = "SECURE_BOOT_CFG register accessor: an alias for `Reg<SECURE_BOOT_CFG_SPEC>`"]
-pub type SECURE_BOOT_CFG = crate::Reg<secure_boot_cfg::SECURE_BOOT_CFG_SPEC>;
-#[doc = "."]
+#[doc = "SECURE_BOOT_CFG (rw) register accessor: Secure boot configuration flags.\n\nYou can [`read`](crate::Reg::read) this register and get [`secure_boot_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`secure_boot_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@secure_boot_cfg`]
+module"]
+#[doc(alias = "SECURE_BOOT_CFG")]
+pub type SecureBootCfg = crate::Reg<secure_boot_cfg::SecureBootCfgSpec>;
+#[doc = "Secure boot configuration flags."]
 pub mod secure_boot_cfg;
-#[doc = "PRINCE_BASE_ADDR register accessor: an alias for `Reg<PRINCE_BASE_ADDR_SPEC>`"]
-pub type PRINCE_BASE_ADDR = crate::Reg<prince_base_addr::PRINCE_BASE_ADDR_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_BASE_ADDR (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_base_addr::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_base_addr::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_base_addr`]
+module"]
+#[doc(alias = "PRINCE_BASE_ADDR")]
+pub type PrinceBaseAddr = crate::Reg<prince_base_addr::PrinceBaseAddrSpec>;
+#[doc = "no description available"]
 pub mod prince_base_addr;
-#[doc = "PRINCE_SR_0 register accessor: an alias for `Reg<PRINCE_SR_0_SPEC>`"]
-pub type PRINCE_SR_0 = crate::Reg<prince_sr_0::PRINCE_SR_0_SPEC>;
+#[doc = "PRINCE_SR_0 (rw) register accessor: Region 0, sub-region enable\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_sr_0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_sr_0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_sr_0`]
+module"]
+#[doc(alias = "PRINCE_SR_0")]
+pub type PrinceSr0 = crate::Reg<prince_sr_0::PrinceSr0Spec>;
 #[doc = "Region 0, sub-region enable"]
 pub mod prince_sr_0;
-#[doc = "PRINCE_SR_1 register accessor: an alias for `Reg<PRINCE_SR_1_SPEC>`"]
-pub type PRINCE_SR_1 = crate::Reg<prince_sr_1::PRINCE_SR_1_SPEC>;
+#[doc = "PRINCE_SR_1 (rw) register accessor: Region 1, sub-region enable\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_sr_1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_sr_1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_sr_1`]
+module"]
+#[doc(alias = "PRINCE_SR_1")]
+pub type PrinceSr1 = crate::Reg<prince_sr_1::PrinceSr1Spec>;
 #[doc = "Region 1, sub-region enable"]
 pub mod prince_sr_1;
-#[doc = "PRINCE_SR_2 register accessor: an alias for `Reg<PRINCE_SR_2_SPEC>`"]
-pub type PRINCE_SR_2 = crate::Reg<prince_sr_2::PRINCE_SR_2_SPEC>;
+#[doc = "PRINCE_SR_2 (rw) register accessor: Region 2, sub-region enable\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_sr_2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_sr_2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_sr_2`]
+module"]
+#[doc(alias = "PRINCE_SR_2")]
+pub type PrinceSr2 = crate::Reg<prince_sr_2::PrinceSr2Spec>;
 #[doc = "Region 2, sub-region enable"]
 pub mod prince_sr_2;
-#[doc = "XTAL_32KHZ_CAPABANK_TRIM register accessor: an alias for `Reg<XTAL_32KHZ_CAPABANK_TRIM_SPEC>`"]
-pub type XTAL_32KHZ_CAPABANK_TRIM =
-    crate::Reg<xtal_32khz_capabank_trim::XTAL_32KHZ_CAPABANK_TRIM_SPEC>;
+#[doc = "XTAL_32KHZ_CAPABANK_TRIM (rw) register accessor: Xtal 32kHz capabank triming.\n\nYou can [`read`](crate::Reg::read) this register and get [`xtal_32khz_capabank_trim::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`xtal_32khz_capabank_trim::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xtal_32khz_capabank_trim`]
+module"]
+#[doc(alias = "XTAL_32KHZ_CAPABANK_TRIM")]
+pub type Xtal32khzCapabankTrim =
+    crate::Reg<xtal_32khz_capabank_trim::Xtal32khzCapabankTrimSpec>;
 #[doc = "Xtal 32kHz capabank triming."]
 pub mod xtal_32khz_capabank_trim;
-#[doc = "XTAL_16MHZ_CAPABANK_TRIM register accessor: an alias for `Reg<XTAL_16MHZ_CAPABANK_TRIM_SPEC>`"]
-pub type XTAL_16MHZ_CAPABANK_TRIM =
-    crate::Reg<xtal_16mhz_capabank_trim::XTAL_16MHZ_CAPABANK_TRIM_SPEC>;
+#[doc = "XTAL_16MHZ_CAPABANK_TRIM (rw) register accessor: Xtal 16MHz capabank triming.\n\nYou can [`read`](crate::Reg::read) this register and get [`xtal_16mhz_capabank_trim::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`xtal_16mhz_capabank_trim::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@xtal_16mhz_capabank_trim`]
+module"]
+#[doc(alias = "XTAL_16MHZ_CAPABANK_TRIM")]
+pub type Xtal16mhzCapabankTrim =
+    crate::Reg<xtal_16mhz_capabank_trim::Xtal16mhzCapabankTrimSpec>;
 #[doc = "Xtal 16MHz capabank triming."]
 pub mod xtal_16mhz_capabank_trim;
-#[doc = "ROTKH register accessor: an alias for `Reg<ROTKH_SPEC>`"]
-pub type ROTKH = crate::Reg<rotkh::ROTKH_SPEC>;
-#[doc = "ROTKH0 for Root of Trust Keys Table hash\\[255:224\\]
-ROTKH1 for Root of Trust Keys Table hash\\[223:192\\]
-ROTKH2 for Root of Trust Keys Table hash\\[191:160\\]
-ROTKH3 for Root of Trust Keys Table hash\\[159:128\\]
-ROTKH4 for Root of Trust Keys Table hash\\[127:96\\]
-ROTKH5 for Root of Trust Keys Table hash\\[95:64\\]
-ROTKH6 for Root of Trust Keys Table hash\\[63:32\\]
-ROTKH7 for Root of Trust Keys Table hash\\[31:0\\]"]
+#[doc = "ROTKH (rw) register accessor: ROTKHindex for Root of Trust Keys Table hash\\[(((7 - index) * 32) + 31):((7 - index) * 32)\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`rotkh::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rotkh::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@rotkh`]
+module"]
+#[doc(alias = "ROTKH")]
+pub type Rotkh = crate::Reg<rotkh::RotkhSpec>;
+#[doc = "ROTKHindex for Root of Trust Keys Table hash\\[(((7 - index) * 32) + 31):((7 - index) * 32)\\]"]
 pub mod rotkh;
-#[doc = "CUSTOMER_DEFINED register accessor: an alias for `Reg<CUSTOMER_DEFINED_SPEC>`"]
-pub type CUSTOMER_DEFINED = crate::Reg<customer_defined::CUSTOMER_DEFINED_SPEC>;
+#[doc = "CUSTOMER_DEFINED (rw) register accessor: Customer Defined (Programable through ROM API)\n\nYou can [`read`](crate::Reg::read) this register and get [`customer_defined::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`customer_defined::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@customer_defined`]
+module"]
+#[doc(alias = "CUSTOMER_DEFINED")]
+pub type CustomerDefined = crate::Reg<customer_defined::CustomerDefinedSpec>;
 #[doc = "Customer Defined (Programable through ROM API)"]
 pub mod customer_defined;
-#[doc = "SHA256_DIGEST register accessor: an alias for `Reg<SHA256_DIGEST_SPEC>`"]
-pub type SHA256_DIGEST = crate::Reg<sha256_digest::SHA256_DIGEST_SPEC>;
-#[doc = "SHA256_DIGEST0 for DIGEST\\[31:0\\]
-SHA256_DIGEST1 for DIGEST\\[63:32\\]
-SHA256_DIGEST2 for DIGEST\\[95:64\\]
-SHA256_DIGEST3 for DIGEST\\[127:96\\]
-SHA256_DIGEST4 for DIGEST\\[159:128\\]
-SHA256_DIGEST5 for DIGEST\\[191:160\\]
-SHA256_DIGEST6 for DIGEST\\[223:192\\]
-SHA256_DIGEST7 for DIGEST\\[255:224\\]"]
+#[doc = "SHA256_DIGEST (rw) register accessor: SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`sha256_digest::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sha256_digest::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sha256_digest`]
+module"]
+#[doc(alias = "SHA256_DIGEST")]
+pub type Sha256Digest = crate::Reg<sha256_digest::Sha256DigestSpec>;
+#[doc = "SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
 pub mod sha256_digest;

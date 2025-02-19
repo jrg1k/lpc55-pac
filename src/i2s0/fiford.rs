@@ -1,53 +1,22 @@
 #[doc = "Register `FIFORD` reader"]
-pub struct R(crate::R<FIFORD_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<FIFORD_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<FIFORD_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<FIFORD_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<FifordSpec>;
 #[doc = "Field `RXDATA` reader - Received data from the FIFO. The number of bits used depends on configuration details."]
-pub struct RXDATA_R(crate::FieldReader<u32, u32>);
-impl RXDATA_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        RXDATA_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for RXDATA_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type RxdataR = crate::FieldReader<u32>;
 impl R {
     #[doc = "Bits 0:31 - Received data from the FIFO. The number of bits used depends on configuration details."]
     #[inline(always)]
-    pub fn rxdata(&self) -> RXDATA_R {
-        RXDATA_R::new(self.bits as u32)
+    pub fn rxdata(&self) -> RxdataR {
+        RxdataR::new(self.bits)
     }
 }
-#[doc = "FIFO read data.\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fiford](index.html) module"]
-pub struct FIFORD_SPEC;
-impl crate::RegisterSpec for FIFORD_SPEC {
+#[doc = "FIFO read data.\n\nYou can [`read`](crate::Reg::read) this register and get [`fiford::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct FifordSpec;
+impl crate::RegisterSpec for FifordSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [fiford::R](R) reader structure"]
-impl crate::Readable for FIFORD_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`fiford::R`](R) reader structure"]
+impl crate::Readable for FifordSpec {}
 #[doc = "`reset()` method sets FIFORD to value 0"]
-impl crate::Resettable for FIFORD_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for FifordSpec {
+    const RESET_VALUE: u32 = 0;
 }

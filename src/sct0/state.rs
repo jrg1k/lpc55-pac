@@ -1,140 +1,53 @@
 #[doc = "Register `STATE` reader"]
-pub struct R(crate::R<STATE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<STATE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<STATE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<STATE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<StateSpec>;
 #[doc = "Register `STATE` writer"]
-pub struct W(crate::W<STATE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<STATE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<STATE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<STATE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<StateSpec>;
 #[doc = "Field `STATE_L` reader - State variable."]
-pub struct STATE_L_R(crate::FieldReader<u8, u8>);
-impl STATE_L_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        STATE_L_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for STATE_L_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type StateLR = crate::FieldReader;
 #[doc = "Field `STATE_L` writer - State variable."]
-pub struct STATE_L_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STATE_L_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x1f) | (value as u32 & 0x1f);
-        self.w
-    }
-}
+pub type StateLW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `STATE_H` reader - State variable."]
-pub struct STATE_H_R(crate::FieldReader<u8, u8>);
-impl STATE_H_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        STATE_H_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for STATE_H_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type StateHR = crate::FieldReader;
 #[doc = "Field `STATE_H` writer - State variable."]
-pub struct STATE_H_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> STATE_H_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 16)) | ((value as u32 & 0x1f) << 16);
-        self.w
-    }
-}
+pub type StateHW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:4 - State variable."]
     #[inline(always)]
-    pub fn state_l(&self) -> STATE_L_R {
-        STATE_L_R::new((self.bits & 0x1f) as u8)
+    pub fn state_l(&self) -> StateLR {
+        StateLR::new((self.bits & 0x1f) as u8)
     }
     #[doc = "Bits 16:20 - State variable."]
     #[inline(always)]
-    pub fn state_h(&self) -> STATE_H_R {
-        STATE_H_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn state_h(&self) -> StateHR {
+        StateHR::new(((self.bits >> 16) & 0x1f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:4 - State variable."]
     #[inline(always)]
-    pub fn state_l(&mut self) -> STATE_L_W {
-        STATE_L_W { w: self }
+    pub fn state_l(&mut self) -> StateLW<StateSpec> {
+        StateLW::new(self, 0)
     }
     #[doc = "Bits 16:20 - State variable."]
     #[inline(always)]
-    pub fn state_h(&mut self) -> STATE_H_W {
-        STATE_H_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn state_h(&mut self) -> StateHW<StateSpec> {
+        StateHW::new(self, 16)
     }
 }
-#[doc = "SCT state register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [state](index.html) module"]
-pub struct STATE_SPEC;
-impl crate::RegisterSpec for STATE_SPEC {
+#[doc = "SCT state register\n\nYou can [`read`](crate::Reg::read) this register and get [`state::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`state::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct StateSpec;
+impl crate::RegisterSpec for StateSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [state::R](R) reader structure"]
-impl crate::Readable for STATE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [state::W](W) writer structure"]
-impl crate::Writable for STATE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`state::R`](R) reader structure"]
+impl crate::Readable for StateSpec {}
+#[doc = "`write(|w| ..)` method takes [`state::W`](W) writer structure"]
+impl crate::Writable for StateSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets STATE to value 0"]
-impl crate::Resettable for STATE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for StateSpec {
+    const RESET_VALUE: u32 = 0;
 }

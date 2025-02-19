@@ -1,150 +1,53 @@
 #[doc = "Register `PLL1NDEC` reader"]
-pub struct R(crate::R<PLL1NDEC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PLL1NDEC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PLL1NDEC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PLL1NDEC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Pll1ndecSpec>;
 #[doc = "Register `PLL1NDEC` writer"]
-pub struct W(crate::W<PLL1NDEC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PLL1NDEC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PLL1NDEC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PLL1NDEC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Pll1ndecSpec>;
 #[doc = "Field `NDIV` reader - pre-divider divider ratio (N-divider)."]
-pub struct NDIV_R(crate::FieldReader<u8, u8>);
-impl NDIV_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        NDIV_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NDIV_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NdivR = crate::FieldReader;
 #[doc = "Field `NDIV` writer - pre-divider divider ratio (N-divider)."]
-pub struct NDIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NDIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type NdivW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `NREQ` reader - pre-divider ratio change request."]
-pub struct NREQ_R(crate::FieldReader<bool, bool>);
-impl NREQ_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NREQ_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NREQ_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NreqR = crate::BitReader;
 #[doc = "Field `NREQ` writer - pre-divider ratio change request."]
-pub struct NREQ_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NREQ_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type NreqW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:7 - pre-divider divider ratio (N-divider)."]
     #[inline(always)]
-    pub fn ndiv(&self) -> NDIV_R {
-        NDIV_R::new((self.bits & 0xff) as u8)
+    pub fn ndiv(&self) -> NdivR {
+        NdivR::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bit 8 - pre-divider ratio change request."]
     #[inline(always)]
-    pub fn nreq(&self) -> NREQ_R {
-        NREQ_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn nreq(&self) -> NreqR {
+        NreqR::new(((self.bits >> 8) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - pre-divider divider ratio (N-divider)."]
     #[inline(always)]
-    pub fn ndiv(&mut self) -> NDIV_W {
-        NDIV_W { w: self }
+    pub fn ndiv(&mut self) -> NdivW<Pll1ndecSpec> {
+        NdivW::new(self, 0)
     }
     #[doc = "Bit 8 - pre-divider ratio change request."]
     #[inline(always)]
-    pub fn nreq(&mut self) -> NREQ_W {
-        NREQ_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn nreq(&mut self) -> NreqW<Pll1ndecSpec> {
+        NreqW::new(self, 8)
     }
 }
-#[doc = "PLL1 550m N divider\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pll1ndec](index.html) module"]
-pub struct PLL1NDEC_SPEC;
-impl crate::RegisterSpec for PLL1NDEC_SPEC {
+#[doc = "PLL1 550m N divider\n\nYou can [`read`](crate::Reg::read) this register and get [`pll1ndec::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pll1ndec::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Pll1ndecSpec;
+impl crate::RegisterSpec for Pll1ndecSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pll1ndec::R](R) reader structure"]
-impl crate::Readable for PLL1NDEC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pll1ndec::W](W) writer structure"]
-impl crate::Writable for PLL1NDEC_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pll1ndec::R`](R) reader structure"]
+impl crate::Readable for Pll1ndecSpec {}
+#[doc = "`write(|w| ..)` method takes [`pll1ndec::W`](W) writer structure"]
+impl crate::Writable for Pll1ndecSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PLL1NDEC to value 0"]
-impl crate::Resettable for PLL1NDEC_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Pll1ndecSpec {
+    const RESET_VALUE: u32 = 0;
 }

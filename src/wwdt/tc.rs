@@ -1,103 +1,39 @@
 #[doc = "Register `TC` reader"]
-pub struct R(crate::R<TC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TcSpec>;
 #[doc = "Register `TC` writer"]
-pub struct W(crate::W<TC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TcSpec>;
 #[doc = "Field `COUNT` reader - Watchdog time-out value."]
-pub struct COUNT_R(crate::FieldReader<u32, u32>);
-impl COUNT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        COUNT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for COUNT_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CountR = crate::FieldReader<u32>;
 #[doc = "Field `COUNT` writer - Watchdog time-out value."]
-pub struct COUNT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> COUNT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x00ff_ffff) | (value as u32 & 0x00ff_ffff);
-        self.w
-    }
-}
+pub type CountW<'a, REG> = crate::FieldWriter<'a, REG, 24, u32>;
 impl R {
     #[doc = "Bits 0:23 - Watchdog time-out value."]
     #[inline(always)]
-    pub fn count(&self) -> COUNT_R {
-        COUNT_R::new((self.bits & 0x00ff_ffff) as u32)
+    pub fn count(&self) -> CountR {
+        CountR::new(self.bits & 0x00ff_ffff)
     }
 }
 impl W {
     #[doc = "Bits 0:23 - Watchdog time-out value."]
     #[inline(always)]
-    pub fn count(&mut self) -> COUNT_W {
-        COUNT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn count(&mut self) -> CountW<TcSpec> {
+        CountW::new(self, 0)
     }
 }
-#[doc = "Watchdog timer constant register. This 24-bit register determines the time-out value.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tc](index.html) module"]
-pub struct TC_SPEC;
-impl crate::RegisterSpec for TC_SPEC {
+#[doc = "Watchdog timer constant register. This 24-bit register determines the time-out value.\n\nYou can [`read`](crate::Reg::read) this register and get [`tc::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tc::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TcSpec;
+impl crate::RegisterSpec for TcSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [tc::R](R) reader structure"]
-impl crate::Readable for TC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [tc::W](W) writer structure"]
-impl crate::Writable for TC_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`tc::R`](R) reader structure"]
+impl crate::Readable for TcSpec {}
+#[doc = "`write(|w| ..)` method takes [`tc::W`](W) writer structure"]
+impl crate::Writable for TcSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TC to value 0xff"]
-impl crate::Resettable for TC_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0xff
-    }
+impl crate::Resettable for TcSpec {
+    const RESET_VALUE: u32 = 0xff;
 }

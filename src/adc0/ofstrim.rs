@@ -1,140 +1,53 @@
 #[doc = "Register `OFSTRIM` reader"]
-pub struct R(crate::R<OFSTRIM_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<OFSTRIM_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<OFSTRIM_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<OFSTRIM_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<OfstrimSpec>;
 #[doc = "Register `OFSTRIM` writer"]
-pub struct W(crate::W<OFSTRIM_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<OFSTRIM_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<OFSTRIM_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<OFSTRIM_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<OfstrimSpec>;
 #[doc = "Field `OFSTRIM_A` reader - Trim for offset"]
-pub struct OFSTRIM_A_R(crate::FieldReader<u8, u8>);
-impl OFSTRIM_A_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        OFSTRIM_A_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OFSTRIM_A_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OfstrimAR = crate::FieldReader;
 #[doc = "Field `OFSTRIM_A` writer - Trim for offset"]
-pub struct OFSTRIM_A_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OFSTRIM_A_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x1f) | (value as u32 & 0x1f);
-        self.w
-    }
-}
+pub type OfstrimAW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Field `OFSTRIM_B` reader - Trim for offset"]
-pub struct OFSTRIM_B_R(crate::FieldReader<u8, u8>);
-impl OFSTRIM_B_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        OFSTRIM_B_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OFSTRIM_B_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OfstrimBR = crate::FieldReader;
 #[doc = "Field `OFSTRIM_B` writer - Trim for offset"]
-pub struct OFSTRIM_B_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OFSTRIM_B_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 16)) | ((value as u32 & 0x1f) << 16);
-        self.w
-    }
-}
+pub type OfstrimBW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:4 - Trim for offset"]
     #[inline(always)]
-    pub fn ofstrim_a(&self) -> OFSTRIM_A_R {
-        OFSTRIM_A_R::new((self.bits & 0x1f) as u8)
+    pub fn ofstrim_a(&self) -> OfstrimAR {
+        OfstrimAR::new((self.bits & 0x1f) as u8)
     }
     #[doc = "Bits 16:20 - Trim for offset"]
     #[inline(always)]
-    pub fn ofstrim_b(&self) -> OFSTRIM_B_R {
-        OFSTRIM_B_R::new(((self.bits >> 16) & 0x1f) as u8)
+    pub fn ofstrim_b(&self) -> OfstrimBR {
+        OfstrimBR::new(((self.bits >> 16) & 0x1f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:4 - Trim for offset"]
     #[inline(always)]
-    pub fn ofstrim_a(&mut self) -> OFSTRIM_A_W {
-        OFSTRIM_A_W { w: self }
+    pub fn ofstrim_a(&mut self) -> OfstrimAW<OfstrimSpec> {
+        OfstrimAW::new(self, 0)
     }
     #[doc = "Bits 16:20 - Trim for offset"]
     #[inline(always)]
-    pub fn ofstrim_b(&mut self) -> OFSTRIM_B_W {
-        OFSTRIM_B_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn ofstrim_b(&mut self) -> OfstrimBW<OfstrimSpec> {
+        OfstrimBW::new(self, 16)
     }
 }
-#[doc = "ADC Offset Trim Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ofstrim](index.html) module"]
-pub struct OFSTRIM_SPEC;
-impl crate::RegisterSpec for OFSTRIM_SPEC {
+#[doc = "ADC Offset Trim Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ofstrim::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ofstrim::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct OfstrimSpec;
+impl crate::RegisterSpec for OfstrimSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ofstrim::R](R) reader structure"]
-impl crate::Readable for OFSTRIM_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ofstrim::W](W) writer structure"]
-impl crate::Writable for OFSTRIM_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ofstrim::R`](R) reader structure"]
+impl crate::Readable for OfstrimSpec {}
+#[doc = "`write(|w| ..)` method takes [`ofstrim::W`](W) writer structure"]
+impl crate::Writable for OfstrimSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OFSTRIM to value 0"]
-impl crate::Resettable for OFSTRIM_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for OfstrimSpec {
+    const RESET_VALUE: u32 = 0;
 }

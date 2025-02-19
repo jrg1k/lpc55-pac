@@ -1,630 +1,403 @@
 #[doc = "Register `TST` reader"]
-pub struct R(crate::R<TST_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TST_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TST_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TST_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TstSpec>;
 #[doc = "Register `TST` writer"]
-pub struct W(crate::W<TST_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TST_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TST_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TST_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TstSpec>;
 #[doc = "Calibration Sample Time Long\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CST_LONG_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CstLong {
     #[doc = "0: Normal sample time. Minimum sample time of 3 ADCK cycles."]
-    CST_LONG_0 = 0,
+    CstLong0 = 0,
     #[doc = "1: Increased sample time. 67 ADCK cycles total sample time."]
-    CST_LONG_1 = 1,
+    CstLong1 = 1,
 }
-impl From<CST_LONG_A> for bool {
+impl From<CstLong> for bool {
     #[inline(always)]
-    fn from(variant: CST_LONG_A) -> Self {
+    fn from(variant: CstLong) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CST_LONG` reader - Calibration Sample Time Long"]
-pub struct CST_LONG_R(crate::FieldReader<bool, CST_LONG_A>);
-impl CST_LONG_R {
+pub type CstLongR = crate::BitReader<CstLong>;
+impl CstLongR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CST_LONG_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CST_LONG_A {
+    pub const fn variant(&self) -> CstLong {
         match self.bits {
-            false => CST_LONG_A::CST_LONG_0,
-            true => CST_LONG_A::CST_LONG_1,
+            false => CstLong::CstLong0,
+            true => CstLong::CstLong1,
         }
-    }
-    #[doc = "Checks if the value of the field is `CST_LONG_0`"]
-    #[inline(always)]
-    pub fn is_cst_long_0(&self) -> bool {
-        **self == CST_LONG_A::CST_LONG_0
-    }
-    #[doc = "Checks if the value of the field is `CST_LONG_1`"]
-    #[inline(always)]
-    pub fn is_cst_long_1(&self) -> bool {
-        **self == CST_LONG_A::CST_LONG_1
-    }
-}
-impl core::ops::Deref for CST_LONG_R {
-    type Target = crate::FieldReader<bool, CST_LONG_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CST_LONG` writer - Calibration Sample Time Long"]
-pub struct CST_LONG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CST_LONG_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CST_LONG_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal sample time. Minimum sample time of 3 ADCK cycles."]
     #[inline(always)]
-    pub fn cst_long_0(self) -> &'a mut W {
-        self.variant(CST_LONG_A::CST_LONG_0)
+    pub fn is_cst_long_0(&self) -> bool {
+        *self == CstLong::CstLong0
     }
     #[doc = "Increased sample time. 67 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn cst_long_1(self) -> &'a mut W {
-        self.variant(CST_LONG_A::CST_LONG_1)
+    pub fn is_cst_long_1(&self) -> bool {
+        *self == CstLong::CstLong1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CST_LONG` writer - Calibration Sample Time Long"]
+pub type CstLongW<'a, REG> = crate::BitWriter<'a, REG, CstLong>;
+impl<'a, REG> CstLongW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal sample time. Minimum sample time of 3 ADCK cycles."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn cst_long_0(self) -> &'a mut crate::W<REG> {
+        self.variant(CstLong::CstLong0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Increased sample time. 67 ADCK cycles total sample time."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn cst_long_1(self) -> &'a mut crate::W<REG> {
+        self.variant(CstLong::CstLong1)
     }
 }
 #[doc = "Force M-side positive offset\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFFM_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Foffm {
     #[doc = "0: Normal operation. No forced offset."]
-    FOFFM_0 = 0,
+    Foffm0 = 0,
     #[doc = "1: Test configuration. Forced positive offset on MDAC."]
-    FOFFM_1 = 1,
+    Foffm1 = 1,
 }
-impl From<FOFFM_A> for bool {
+impl From<Foffm> for bool {
     #[inline(always)]
-    fn from(variant: FOFFM_A) -> Self {
+    fn from(variant: Foffm) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFFM` reader - Force M-side positive offset"]
-pub struct FOFFM_R(crate::FieldReader<bool, FOFFM_A>);
-impl FOFFM_R {
+pub type FoffmR = crate::BitReader<Foffm>;
+impl FoffmR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFFM_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFFM_A {
+    pub const fn variant(&self) -> Foffm {
         match self.bits {
-            false => FOFFM_A::FOFFM_0,
-            true => FOFFM_A::FOFFM_1,
+            false => Foffm::Foffm0,
+            true => Foffm::Foffm1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFFM_0`"]
-    #[inline(always)]
-    pub fn is_foffm_0(&self) -> bool {
-        **self == FOFFM_A::FOFFM_0
-    }
-    #[doc = "Checks if the value of the field is `FOFFM_1`"]
-    #[inline(always)]
-    pub fn is_foffm_1(&self) -> bool {
-        **self == FOFFM_A::FOFFM_1
-    }
-}
-impl core::ops::Deref for FOFFM_R {
-    type Target = crate::FieldReader<bool, FOFFM_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFFM` writer - Force M-side positive offset"]
-pub struct FOFFM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFFM_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFFM_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn foffm_0(self) -> &'a mut W {
-        self.variant(FOFFM_A::FOFFM_0)
+    pub fn is_foffm_0(&self) -> bool {
+        *self == Foffm::Foffm0
     }
     #[doc = "Test configuration. Forced positive offset on MDAC."]
     #[inline(always)]
-    pub fn foffm_1(self) -> &'a mut W {
-        self.variant(FOFFM_A::FOFFM_1)
+    pub fn is_foffm_1(&self) -> bool {
+        *self == Foffm::Foffm1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFFM` writer - Force M-side positive offset"]
+pub type FoffmW<'a, REG> = crate::BitWriter<'a, REG, Foffm>;
+impl<'a, REG> FoffmW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn foffm_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffm::Foffm0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Test configuration. Forced positive offset on MDAC."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn foffm_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffm::Foffm1)
     }
 }
 #[doc = "Force P-side positive offset\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFFP_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Foffp {
     #[doc = "0: Normal operation. No forced offset."]
-    FOFFP_0 = 0,
+    Foffp0 = 0,
     #[doc = "1: Test configuration. Forced positive offset on PDAC."]
-    FOFFP_1 = 1,
+    Foffp1 = 1,
 }
-impl From<FOFFP_A> for bool {
+impl From<Foffp> for bool {
     #[inline(always)]
-    fn from(variant: FOFFP_A) -> Self {
+    fn from(variant: Foffp) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFFP` reader - Force P-side positive offset"]
-pub struct FOFFP_R(crate::FieldReader<bool, FOFFP_A>);
-impl FOFFP_R {
+pub type FoffpR = crate::BitReader<Foffp>;
+impl FoffpR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFFP_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFFP_A {
+    pub const fn variant(&self) -> Foffp {
         match self.bits {
-            false => FOFFP_A::FOFFP_0,
-            true => FOFFP_A::FOFFP_1,
+            false => Foffp::Foffp0,
+            true => Foffp::Foffp1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFFP_0`"]
-    #[inline(always)]
-    pub fn is_foffp_0(&self) -> bool {
-        **self == FOFFP_A::FOFFP_0
-    }
-    #[doc = "Checks if the value of the field is `FOFFP_1`"]
-    #[inline(always)]
-    pub fn is_foffp_1(&self) -> bool {
-        **self == FOFFP_A::FOFFP_1
-    }
-}
-impl core::ops::Deref for FOFFP_R {
-    type Target = crate::FieldReader<bool, FOFFP_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFFP` writer - Force P-side positive offset"]
-pub struct FOFFP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFFP_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFFP_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn foffp_0(self) -> &'a mut W {
-        self.variant(FOFFP_A::FOFFP_0)
+    pub fn is_foffp_0(&self) -> bool {
+        *self == Foffp::Foffp0
     }
     #[doc = "Test configuration. Forced positive offset on PDAC."]
     #[inline(always)]
-    pub fn foffp_1(self) -> &'a mut W {
-        self.variant(FOFFP_A::FOFFP_1)
+    pub fn is_foffp_1(&self) -> bool {
+        *self == Foffp::Foffp1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFFP` writer - Force P-side positive offset"]
+pub type FoffpW<'a, REG> = crate::BitWriter<'a, REG, Foffp>;
+impl<'a, REG> FoffpW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn foffp_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffp::Foffp0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Test configuration. Forced positive offset on PDAC."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn foffp_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffp::Foffp1)
     }
 }
 #[doc = "Force M-side negative offset\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFFM2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Foffm2 {
     #[doc = "0: Normal operation. No forced offset."]
-    FOFFM2_0 = 0,
+    Foffm2_0 = 0,
     #[doc = "1: Test configuration. Forced negative offset on MDAC."]
-    FOFFM2_1 = 1,
+    Foffm2_1 = 1,
 }
-impl From<FOFFM2_A> for bool {
+impl From<Foffm2> for bool {
     #[inline(always)]
-    fn from(variant: FOFFM2_A) -> Self {
+    fn from(variant: Foffm2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFFM2` reader - Force M-side negative offset"]
-pub struct FOFFM2_R(crate::FieldReader<bool, FOFFM2_A>);
-impl FOFFM2_R {
+pub type Foffm2R = crate::BitReader<Foffm2>;
+impl Foffm2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFFM2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFFM2_A {
+    pub const fn variant(&self) -> Foffm2 {
         match self.bits {
-            false => FOFFM2_A::FOFFM2_0,
-            true => FOFFM2_A::FOFFM2_1,
+            false => Foffm2::Foffm2_0,
+            true => Foffm2::Foffm2_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFFM2_0`"]
-    #[inline(always)]
-    pub fn is_foffm2_0(&self) -> bool {
-        **self == FOFFM2_A::FOFFM2_0
-    }
-    #[doc = "Checks if the value of the field is `FOFFM2_1`"]
-    #[inline(always)]
-    pub fn is_foffm2_1(&self) -> bool {
-        **self == FOFFM2_A::FOFFM2_1
-    }
-}
-impl core::ops::Deref for FOFFM2_R {
-    type Target = crate::FieldReader<bool, FOFFM2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFFM2` writer - Force M-side negative offset"]
-pub struct FOFFM2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFFM2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFFM2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn foffm2_0(self) -> &'a mut W {
-        self.variant(FOFFM2_A::FOFFM2_0)
+    pub fn is_foffm2_0(&self) -> bool {
+        *self == Foffm2::Foffm2_0
     }
     #[doc = "Test configuration. Forced negative offset on MDAC."]
     #[inline(always)]
-    pub fn foffm2_1(self) -> &'a mut W {
-        self.variant(FOFFM2_A::FOFFM2_1)
+    pub fn is_foffm2_1(&self) -> bool {
+        *self == Foffm2::Foffm2_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFFM2` writer - Force M-side negative offset"]
+pub type Foffm2W<'a, REG> = crate::BitWriter<'a, REG, Foffm2>;
+impl<'a, REG> Foffm2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn foffm2_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffm2::Foffm2_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Test configuration. Forced negative offset on MDAC."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
+    pub fn foffm2_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffm2::Foffm2_1)
     }
 }
 #[doc = "Force P-side negative offset\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FOFFP2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Foffp2 {
     #[doc = "0: Normal operation. No forced offset."]
-    FOFFP2_0 = 0,
+    Foffp2_0 = 0,
     #[doc = "1: Test configuration. Forced negative offset on PDAC."]
-    FOFFP2_1 = 1,
+    Foffp2_1 = 1,
 }
-impl From<FOFFP2_A> for bool {
+impl From<Foffp2> for bool {
     #[inline(always)]
-    fn from(variant: FOFFP2_A) -> Self {
+    fn from(variant: Foffp2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FOFFP2` reader - Force P-side negative offset"]
-pub struct FOFFP2_R(crate::FieldReader<bool, FOFFP2_A>);
-impl FOFFP2_R {
+pub type Foffp2R = crate::BitReader<Foffp2>;
+impl Foffp2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FOFFP2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FOFFP2_A {
+    pub const fn variant(&self) -> Foffp2 {
         match self.bits {
-            false => FOFFP2_A::FOFFP2_0,
-            true => FOFFP2_A::FOFFP2_1,
+            false => Foffp2::Foffp2_0,
+            true => Foffp2::Foffp2_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `FOFFP2_0`"]
-    #[inline(always)]
-    pub fn is_foffp2_0(&self) -> bool {
-        **self == FOFFP2_A::FOFFP2_0
-    }
-    #[doc = "Checks if the value of the field is `FOFFP2_1`"]
-    #[inline(always)]
-    pub fn is_foffp2_1(&self) -> bool {
-        **self == FOFFP2_A::FOFFP2_1
-    }
-}
-impl core::ops::Deref for FOFFP2_R {
-    type Target = crate::FieldReader<bool, FOFFP2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FOFFP2` writer - Force P-side negative offset"]
-pub struct FOFFP2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FOFFP2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FOFFP2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn foffp2_0(self) -> &'a mut W {
-        self.variant(FOFFP2_A::FOFFP2_0)
+    pub fn is_foffp2_0(&self) -> bool {
+        *self == Foffp2::Foffp2_0
     }
     #[doc = "Test configuration. Forced negative offset on PDAC."]
     #[inline(always)]
-    pub fn foffp2_1(self) -> &'a mut W {
-        self.variant(FOFFP2_A::FOFFP2_1)
+    pub fn is_foffp2_1(&self) -> bool {
+        *self == Foffp2::Foffp2_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FOFFP2` writer - Force P-side negative offset"]
+pub type Foffp2W<'a, REG> = crate::BitWriter<'a, REG, Foffp2>;
+impl<'a, REG> Foffp2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation. No forced offset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn foffp2_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffp2::Foffp2_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Test configuration. Forced negative offset on PDAC."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn foffp2_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Foffp2::Foffp2_1)
     }
 }
 #[doc = "Enable test configuration\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TESTEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Testen {
     #[doc = "0: Normal operation. Test configuration not enabled."]
-    TESTEN_0 = 0,
+    Testen0 = 0,
     #[doc = "1: Hardware BIST Test in progress."]
-    TESTEN_1 = 1,
+    Testen1 = 1,
 }
-impl From<TESTEN_A> for bool {
+impl From<Testen> for bool {
     #[inline(always)]
-    fn from(variant: TESTEN_A) -> Self {
+    fn from(variant: Testen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TESTEN` reader - Enable test configuration"]
-pub struct TESTEN_R(crate::FieldReader<bool, TESTEN_A>);
-impl TESTEN_R {
+pub type TestenR = crate::BitReader<Testen>;
+impl TestenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TESTEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TESTEN_A {
+    pub const fn variant(&self) -> Testen {
         match self.bits {
-            false => TESTEN_A::TESTEN_0,
-            true => TESTEN_A::TESTEN_1,
+            false => Testen::Testen0,
+            true => Testen::Testen1,
         }
-    }
-    #[doc = "Checks if the value of the field is `TESTEN_0`"]
-    #[inline(always)]
-    pub fn is_testen_0(&self) -> bool {
-        **self == TESTEN_A::TESTEN_0
-    }
-    #[doc = "Checks if the value of the field is `TESTEN_1`"]
-    #[inline(always)]
-    pub fn is_testen_1(&self) -> bool {
-        **self == TESTEN_A::TESTEN_1
-    }
-}
-impl core::ops::Deref for TESTEN_R {
-    type Target = crate::FieldReader<bool, TESTEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TESTEN` writer - Enable test configuration"]
-pub struct TESTEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TESTEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TESTEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation. Test configuration not enabled."]
     #[inline(always)]
-    pub fn testen_0(self) -> &'a mut W {
-        self.variant(TESTEN_A::TESTEN_0)
+    pub fn is_testen_0(&self) -> bool {
+        *self == Testen::Testen0
     }
     #[doc = "Hardware BIST Test in progress."]
     #[inline(always)]
-    pub fn testen_1(self) -> &'a mut W {
-        self.variant(TESTEN_A::TESTEN_1)
+    pub fn is_testen_1(&self) -> bool {
+        *self == Testen::Testen1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TESTEN` writer - Enable test configuration"]
+pub type TestenW<'a, REG> = crate::BitWriter<'a, REG, Testen>;
+impl<'a, REG> TestenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation. Test configuration not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn testen_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Testen::Testen0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Hardware BIST Test in progress."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | ((value as u32 & 0x01) << 23);
-        self.w
+    pub fn testen_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Testen::Testen1)
     }
 }
 impl R {
     #[doc = "Bit 0 - Calibration Sample Time Long"]
     #[inline(always)]
-    pub fn cst_long(&self) -> CST_LONG_R {
-        CST_LONG_R::new((self.bits & 0x01) != 0)
+    pub fn cst_long(&self) -> CstLongR {
+        CstLongR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 8 - Force M-side positive offset"]
     #[inline(always)]
-    pub fn foffm(&self) -> FOFFM_R {
-        FOFFM_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn foffm(&self) -> FoffmR {
+        FoffmR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Force P-side positive offset"]
     #[inline(always)]
-    pub fn foffp(&self) -> FOFFP_R {
-        FOFFP_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn foffp(&self) -> FoffpR {
+        FoffpR::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Force M-side negative offset"]
     #[inline(always)]
-    pub fn foffm2(&self) -> FOFFM2_R {
-        FOFFM2_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn foffm2(&self) -> Foffm2R {
+        Foffm2R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Force P-side negative offset"]
     #[inline(always)]
-    pub fn foffp2(&self) -> FOFFP2_R {
-        FOFFP2_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn foffp2(&self) -> Foffp2R {
+        Foffp2R::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 23 - Enable test configuration"]
     #[inline(always)]
-    pub fn testen(&self) -> TESTEN_R {
-        TESTEN_R::new(((self.bits >> 23) & 0x01) != 0)
+    pub fn testen(&self) -> TestenR {
+        TestenR::new(((self.bits >> 23) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Calibration Sample Time Long"]
     #[inline(always)]
-    pub fn cst_long(&mut self) -> CST_LONG_W {
-        CST_LONG_W { w: self }
+    pub fn cst_long(&mut self) -> CstLongW<TstSpec> {
+        CstLongW::new(self, 0)
     }
     #[doc = "Bit 8 - Force M-side positive offset"]
     #[inline(always)]
-    pub fn foffm(&mut self) -> FOFFM_W {
-        FOFFM_W { w: self }
+    pub fn foffm(&mut self) -> FoffmW<TstSpec> {
+        FoffmW::new(self, 8)
     }
     #[doc = "Bit 9 - Force P-side positive offset"]
     #[inline(always)]
-    pub fn foffp(&mut self) -> FOFFP_W {
-        FOFFP_W { w: self }
+    pub fn foffp(&mut self) -> FoffpW<TstSpec> {
+        FoffpW::new(self, 9)
     }
     #[doc = "Bit 10 - Force M-side negative offset"]
     #[inline(always)]
-    pub fn foffm2(&mut self) -> FOFFM2_W {
-        FOFFM2_W { w: self }
+    pub fn foffm2(&mut self) -> Foffm2W<TstSpec> {
+        Foffm2W::new(self, 10)
     }
     #[doc = "Bit 11 - Force P-side negative offset"]
     #[inline(always)]
-    pub fn foffp2(&mut self) -> FOFFP2_W {
-        FOFFP2_W { w: self }
+    pub fn foffp2(&mut self) -> Foffp2W<TstSpec> {
+        Foffp2W::new(self, 11)
     }
     #[doc = "Bit 23 - Enable test configuration"]
     #[inline(always)]
-    pub fn testen(&mut self) -> TESTEN_W {
-        TESTEN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn testen(&mut self) -> TestenW<TstSpec> {
+        TestenW::new(self, 23)
     }
 }
-#[doc = "ADC Test Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tst](index.html) module"]
-pub struct TST_SPEC;
-impl crate::RegisterSpec for TST_SPEC {
+#[doc = "ADC Test Register\n\nYou can [`read`](crate::Reg::read) this register and get [`tst::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tst::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TstSpec;
+impl crate::RegisterSpec for TstSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [tst::R](R) reader structure"]
-impl crate::Readable for TST_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [tst::W](W) writer structure"]
-impl crate::Writable for TST_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`tst::R`](R) reader structure"]
+impl crate::Readable for TstSpec {}
+#[doc = "`write(|w| ..)` method takes [`tst::W`](W) writer structure"]
+impl crate::Writable for TstSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TST to value 0"]
-impl crate::Resettable for TST_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for TstSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,104 +1,40 @@
 #[doc = "Register `TIMER2CAPTSEL[%s]` reader"]
-pub struct R(crate::R<TIMER2CAPTSEL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TIMER2CAPTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TIMER2CAPTSEL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TIMER2CAPTSEL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Timer2captselSpec>;
 #[doc = "Register `TIMER2CAPTSEL[%s]` writer"]
-pub struct W(crate::W<TIMER2CAPTSEL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TIMER2CAPTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TIMER2CAPTSEL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TIMER2CAPTSEL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Timer2captselSpec>;
 #[doc = "Field `CAPTSEL` reader - Input number to TIMER%s capture inputs 0 to 4"]
-pub struct CAPTSEL_R(crate::FieldReader<u8, u8>);
-impl CAPTSEL_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CAPTSEL_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CAPTSEL_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CaptselR = crate::FieldReader;
 #[doc = "Field `CAPTSEL` writer - Input number to TIMER%s capture inputs 0 to 4"]
-pub struct CAPTSEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAPTSEL_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x1f) | (value as u32 & 0x1f);
-        self.w
-    }
-}
+pub type CaptselW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 impl R {
     #[doc = "Bits 0:4 - Input number to TIMER%s capture inputs 0 to 4"]
     #[inline(always)]
-    pub fn captsel(&self) -> CAPTSEL_R {
-        CAPTSEL_R::new((self.bits & 0x1f) as u8)
+    pub fn captsel(&self) -> CaptselR {
+        CaptselR::new((self.bits & 0x1f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:4 - Input number to TIMER%s capture inputs 0 to 4"]
     #[inline(always)]
-    pub fn captsel(&mut self) -> CAPTSEL_W {
-        CAPTSEL_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn captsel(&mut self) -> CaptselW<Timer2captselSpec> {
+        CaptselW::new(self, 0)
     }
 }
-#[doc = "Capture select registers for TIMER2 inputs\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [timer2captsel](index.html) module"]
-pub struct TIMER2CAPTSEL_SPEC;
-impl crate::RegisterSpec for TIMER2CAPTSEL_SPEC {
+#[doc = "Capture select registers for TIMER2 inputs\n\nYou can [`read`](crate::Reg::read) this register and get [`timer2captsel::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`timer2captsel::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Timer2captselSpec;
+impl crate::RegisterSpec for Timer2captselSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [timer2captsel::R](R) reader structure"]
-impl crate::Readable for TIMER2CAPTSEL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [timer2captsel::W](W) writer structure"]
-impl crate::Writable for TIMER2CAPTSEL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`timer2captsel::R`](R) reader structure"]
+impl crate::Readable for Timer2captselSpec {}
+#[doc = "`write(|w| ..)` method takes [`timer2captsel::W`](W) writer structure"]
+impl crate::Writable for Timer2captselSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TIMER2CAPTSEL[%s]
 to value 0x1f"]
-impl crate::Resettable for TIMER2CAPTSEL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x1f
-    }
+impl crate::Resettable for Timer2captselSpec {
+    const RESET_VALUE: u32 = 0x1f;
 }

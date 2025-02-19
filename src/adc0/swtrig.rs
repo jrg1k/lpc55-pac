@@ -1,1570 +1,1033 @@
 #[doc = "Register `SWTRIG` reader"]
-pub struct R(crate::R<SWTRIG_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SWTRIG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SWTRIG_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SWTRIG_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SwtrigSpec>;
 #[doc = "Register `SWTRIG` writer"]
-pub struct W(crate::W<SWTRIG_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SWTRIG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SWTRIG_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SWTRIG_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SwtrigSpec>;
 #[doc = "Software trigger 0 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt0 {
     #[doc = "0: No trigger 0 event generated."]
-    SWT0_0 = 0,
+    Swt0_0 = 0,
     #[doc = "1: Trigger 0 event generated."]
-    SWT0_1 = 1,
+    Swt0_1 = 1,
 }
-impl From<SWT0_A> for bool {
+impl From<Swt0> for bool {
     #[inline(always)]
-    fn from(variant: SWT0_A) -> Self {
+    fn from(variant: Swt0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT0` reader - Software trigger 0 event"]
-pub struct SWT0_R(crate::FieldReader<bool, SWT0_A>);
-impl SWT0_R {
+pub type Swt0R = crate::BitReader<Swt0>;
+impl Swt0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT0_A {
+    pub const fn variant(&self) -> Swt0 {
         match self.bits {
-            false => SWT0_A::SWT0_0,
-            true => SWT0_A::SWT0_1,
+            false => Swt0::Swt0_0,
+            true => Swt0::Swt0_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT0_0`"]
-    #[inline(always)]
-    pub fn is_swt0_0(&self) -> bool {
-        **self == SWT0_A::SWT0_0
-    }
-    #[doc = "Checks if the value of the field is `SWT0_1`"]
-    #[inline(always)]
-    pub fn is_swt0_1(&self) -> bool {
-        **self == SWT0_A::SWT0_1
-    }
-}
-impl core::ops::Deref for SWT0_R {
-    type Target = crate::FieldReader<bool, SWT0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT0` writer - Software trigger 0 event"]
-pub struct SWT0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 0 event generated."]
     #[inline(always)]
-    pub fn swt0_0(self) -> &'a mut W {
-        self.variant(SWT0_A::SWT0_0)
+    pub fn is_swt0_0(&self) -> bool {
+        *self == Swt0::Swt0_0
     }
     #[doc = "Trigger 0 event generated."]
     #[inline(always)]
-    pub fn swt0_1(self) -> &'a mut W {
-        self.variant(SWT0_A::SWT0_1)
+    pub fn is_swt0_1(&self) -> bool {
+        *self == Swt0::Swt0_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT0` writer - Software trigger 0 event"]
+pub type Swt0W<'a, REG> = crate::BitWriter<'a, REG, Swt0>;
+impl<'a, REG> Swt0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 0 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt0_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt0::Swt0_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 0 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn swt0_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt0::Swt0_1)
     }
 }
 #[doc = "Software trigger 1 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt1 {
     #[doc = "0: No trigger 1 event generated."]
-    SWT1_0 = 0,
+    Swt1_0 = 0,
     #[doc = "1: Trigger 1 event generated."]
-    SWT1_1 = 1,
+    Swt1_1 = 1,
 }
-impl From<SWT1_A> for bool {
+impl From<Swt1> for bool {
     #[inline(always)]
-    fn from(variant: SWT1_A) -> Self {
+    fn from(variant: Swt1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT1` reader - Software trigger 1 event"]
-pub struct SWT1_R(crate::FieldReader<bool, SWT1_A>);
-impl SWT1_R {
+pub type Swt1R = crate::BitReader<Swt1>;
+impl Swt1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT1_A {
+    pub const fn variant(&self) -> Swt1 {
         match self.bits {
-            false => SWT1_A::SWT1_0,
-            true => SWT1_A::SWT1_1,
+            false => Swt1::Swt1_0,
+            true => Swt1::Swt1_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT1_0`"]
-    #[inline(always)]
-    pub fn is_swt1_0(&self) -> bool {
-        **self == SWT1_A::SWT1_0
-    }
-    #[doc = "Checks if the value of the field is `SWT1_1`"]
-    #[inline(always)]
-    pub fn is_swt1_1(&self) -> bool {
-        **self == SWT1_A::SWT1_1
-    }
-}
-impl core::ops::Deref for SWT1_R {
-    type Target = crate::FieldReader<bool, SWT1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT1` writer - Software trigger 1 event"]
-pub struct SWT1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 1 event generated."]
     #[inline(always)]
-    pub fn swt1_0(self) -> &'a mut W {
-        self.variant(SWT1_A::SWT1_0)
+    pub fn is_swt1_0(&self) -> bool {
+        *self == Swt1::Swt1_0
     }
     #[doc = "Trigger 1 event generated."]
     #[inline(always)]
-    pub fn swt1_1(self) -> &'a mut W {
-        self.variant(SWT1_A::SWT1_1)
+    pub fn is_swt1_1(&self) -> bool {
+        *self == Swt1::Swt1_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT1` writer - Software trigger 1 event"]
+pub type Swt1W<'a, REG> = crate::BitWriter<'a, REG, Swt1>;
+impl<'a, REG> Swt1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 1 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt1_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt1::Swt1_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 1 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn swt1_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt1::Swt1_1)
     }
 }
 #[doc = "Software trigger 2 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt2 {
     #[doc = "0: No trigger 2 event generated."]
-    SWT2_0 = 0,
+    Swt2_0 = 0,
     #[doc = "1: Trigger 2 event generated."]
-    SWT2_1 = 1,
+    Swt2_1 = 1,
 }
-impl From<SWT2_A> for bool {
+impl From<Swt2> for bool {
     #[inline(always)]
-    fn from(variant: SWT2_A) -> Self {
+    fn from(variant: Swt2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT2` reader - Software trigger 2 event"]
-pub struct SWT2_R(crate::FieldReader<bool, SWT2_A>);
-impl SWT2_R {
+pub type Swt2R = crate::BitReader<Swt2>;
+impl Swt2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT2_A {
+    pub const fn variant(&self) -> Swt2 {
         match self.bits {
-            false => SWT2_A::SWT2_0,
-            true => SWT2_A::SWT2_1,
+            false => Swt2::Swt2_0,
+            true => Swt2::Swt2_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT2_0`"]
-    #[inline(always)]
-    pub fn is_swt2_0(&self) -> bool {
-        **self == SWT2_A::SWT2_0
-    }
-    #[doc = "Checks if the value of the field is `SWT2_1`"]
-    #[inline(always)]
-    pub fn is_swt2_1(&self) -> bool {
-        **self == SWT2_A::SWT2_1
-    }
-}
-impl core::ops::Deref for SWT2_R {
-    type Target = crate::FieldReader<bool, SWT2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT2` writer - Software trigger 2 event"]
-pub struct SWT2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 2 event generated."]
     #[inline(always)]
-    pub fn swt2_0(self) -> &'a mut W {
-        self.variant(SWT2_A::SWT2_0)
+    pub fn is_swt2_0(&self) -> bool {
+        *self == Swt2::Swt2_0
     }
     #[doc = "Trigger 2 event generated."]
     #[inline(always)]
-    pub fn swt2_1(self) -> &'a mut W {
-        self.variant(SWT2_A::SWT2_1)
+    pub fn is_swt2_1(&self) -> bool {
+        *self == Swt2::Swt2_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT2` writer - Software trigger 2 event"]
+pub type Swt2W<'a, REG> = crate::BitWriter<'a, REG, Swt2>;
+impl<'a, REG> Swt2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 2 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt2_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt2::Swt2_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 2 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn swt2_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt2::Swt2_1)
     }
 }
 #[doc = "Software trigger 3 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt3 {
     #[doc = "0: No trigger 3 event generated."]
-    SWT3_0 = 0,
+    Swt3_0 = 0,
     #[doc = "1: Trigger 3 event generated."]
-    SWT3_1 = 1,
+    Swt3_1 = 1,
 }
-impl From<SWT3_A> for bool {
+impl From<Swt3> for bool {
     #[inline(always)]
-    fn from(variant: SWT3_A) -> Self {
+    fn from(variant: Swt3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT3` reader - Software trigger 3 event"]
-pub struct SWT3_R(crate::FieldReader<bool, SWT3_A>);
-impl SWT3_R {
+pub type Swt3R = crate::BitReader<Swt3>;
+impl Swt3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT3_A {
+    pub const fn variant(&self) -> Swt3 {
         match self.bits {
-            false => SWT3_A::SWT3_0,
-            true => SWT3_A::SWT3_1,
+            false => Swt3::Swt3_0,
+            true => Swt3::Swt3_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT3_0`"]
-    #[inline(always)]
-    pub fn is_swt3_0(&self) -> bool {
-        **self == SWT3_A::SWT3_0
-    }
-    #[doc = "Checks if the value of the field is `SWT3_1`"]
-    #[inline(always)]
-    pub fn is_swt3_1(&self) -> bool {
-        **self == SWT3_A::SWT3_1
-    }
-}
-impl core::ops::Deref for SWT3_R {
-    type Target = crate::FieldReader<bool, SWT3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT3` writer - Software trigger 3 event"]
-pub struct SWT3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 3 event generated."]
     #[inline(always)]
-    pub fn swt3_0(self) -> &'a mut W {
-        self.variant(SWT3_A::SWT3_0)
+    pub fn is_swt3_0(&self) -> bool {
+        *self == Swt3::Swt3_0
     }
     #[doc = "Trigger 3 event generated."]
     #[inline(always)]
-    pub fn swt3_1(self) -> &'a mut W {
-        self.variant(SWT3_A::SWT3_1)
+    pub fn is_swt3_1(&self) -> bool {
+        *self == Swt3::Swt3_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT3` writer - Software trigger 3 event"]
+pub type Swt3W<'a, REG> = crate::BitWriter<'a, REG, Swt3>;
+impl<'a, REG> Swt3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 3 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt3_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt3::Swt3_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 3 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn swt3_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt3::Swt3_1)
     }
 }
 #[doc = "Software trigger 4 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT4_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt4 {
     #[doc = "0: No trigger 4 event generated."]
-    SWT4_0 = 0,
+    Swt4_0 = 0,
     #[doc = "1: Trigger 4 event generated."]
-    SWT4_1 = 1,
+    Swt4_1 = 1,
 }
-impl From<SWT4_A> for bool {
+impl From<Swt4> for bool {
     #[inline(always)]
-    fn from(variant: SWT4_A) -> Self {
+    fn from(variant: Swt4) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT4` reader - Software trigger 4 event"]
-pub struct SWT4_R(crate::FieldReader<bool, SWT4_A>);
-impl SWT4_R {
+pub type Swt4R = crate::BitReader<Swt4>;
+impl Swt4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT4_A {
+    pub const fn variant(&self) -> Swt4 {
         match self.bits {
-            false => SWT4_A::SWT4_0,
-            true => SWT4_A::SWT4_1,
+            false => Swt4::Swt4_0,
+            true => Swt4::Swt4_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT4_0`"]
-    #[inline(always)]
-    pub fn is_swt4_0(&self) -> bool {
-        **self == SWT4_A::SWT4_0
-    }
-    #[doc = "Checks if the value of the field is `SWT4_1`"]
-    #[inline(always)]
-    pub fn is_swt4_1(&self) -> bool {
-        **self == SWT4_A::SWT4_1
-    }
-}
-impl core::ops::Deref for SWT4_R {
-    type Target = crate::FieldReader<bool, SWT4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT4` writer - Software trigger 4 event"]
-pub struct SWT4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT4_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 4 event generated."]
     #[inline(always)]
-    pub fn swt4_0(self) -> &'a mut W {
-        self.variant(SWT4_A::SWT4_0)
+    pub fn is_swt4_0(&self) -> bool {
+        *self == Swt4::Swt4_0
     }
     #[doc = "Trigger 4 event generated."]
     #[inline(always)]
-    pub fn swt4_1(self) -> &'a mut W {
-        self.variant(SWT4_A::SWT4_1)
+    pub fn is_swt4_1(&self) -> bool {
+        *self == Swt4::Swt4_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT4` writer - Software trigger 4 event"]
+pub type Swt4W<'a, REG> = crate::BitWriter<'a, REG, Swt4>;
+impl<'a, REG> Swt4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 4 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt4_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt4::Swt4_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 4 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn swt4_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt4::Swt4_1)
     }
 }
 #[doc = "Software trigger 5 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT5_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt5 {
     #[doc = "0: No trigger 5 event generated."]
-    SWT5_0 = 0,
+    Swt5_0 = 0,
     #[doc = "1: Trigger 5 event generated."]
-    SWT5_1 = 1,
+    Swt5_1 = 1,
 }
-impl From<SWT5_A> for bool {
+impl From<Swt5> for bool {
     #[inline(always)]
-    fn from(variant: SWT5_A) -> Self {
+    fn from(variant: Swt5) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT5` reader - Software trigger 5 event"]
-pub struct SWT5_R(crate::FieldReader<bool, SWT5_A>);
-impl SWT5_R {
+pub type Swt5R = crate::BitReader<Swt5>;
+impl Swt5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT5_A {
+    pub const fn variant(&self) -> Swt5 {
         match self.bits {
-            false => SWT5_A::SWT5_0,
-            true => SWT5_A::SWT5_1,
+            false => Swt5::Swt5_0,
+            true => Swt5::Swt5_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT5_0`"]
-    #[inline(always)]
-    pub fn is_swt5_0(&self) -> bool {
-        **self == SWT5_A::SWT5_0
-    }
-    #[doc = "Checks if the value of the field is `SWT5_1`"]
-    #[inline(always)]
-    pub fn is_swt5_1(&self) -> bool {
-        **self == SWT5_A::SWT5_1
-    }
-}
-impl core::ops::Deref for SWT5_R {
-    type Target = crate::FieldReader<bool, SWT5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT5` writer - Software trigger 5 event"]
-pub struct SWT5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT5_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 5 event generated."]
     #[inline(always)]
-    pub fn swt5_0(self) -> &'a mut W {
-        self.variant(SWT5_A::SWT5_0)
+    pub fn is_swt5_0(&self) -> bool {
+        *self == Swt5::Swt5_0
     }
     #[doc = "Trigger 5 event generated."]
     #[inline(always)]
-    pub fn swt5_1(self) -> &'a mut W {
-        self.variant(SWT5_A::SWT5_1)
+    pub fn is_swt5_1(&self) -> bool {
+        *self == Swt5::Swt5_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT5` writer - Software trigger 5 event"]
+pub type Swt5W<'a, REG> = crate::BitWriter<'a, REG, Swt5>;
+impl<'a, REG> Swt5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 5 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt5_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt5::Swt5_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 5 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn swt5_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt5::Swt5_1)
     }
 }
 #[doc = "Software trigger 6 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT6_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt6 {
     #[doc = "0: No trigger 6 event generated."]
-    SWT6_0 = 0,
+    Swt6_0 = 0,
     #[doc = "1: Trigger 6 event generated."]
-    SWT6_1 = 1,
+    Swt6_1 = 1,
 }
-impl From<SWT6_A> for bool {
+impl From<Swt6> for bool {
     #[inline(always)]
-    fn from(variant: SWT6_A) -> Self {
+    fn from(variant: Swt6) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT6` reader - Software trigger 6 event"]
-pub struct SWT6_R(crate::FieldReader<bool, SWT6_A>);
-impl SWT6_R {
+pub type Swt6R = crate::BitReader<Swt6>;
+impl Swt6R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT6_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT6_A {
+    pub const fn variant(&self) -> Swt6 {
         match self.bits {
-            false => SWT6_A::SWT6_0,
-            true => SWT6_A::SWT6_1,
+            false => Swt6::Swt6_0,
+            true => Swt6::Swt6_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT6_0`"]
-    #[inline(always)]
-    pub fn is_swt6_0(&self) -> bool {
-        **self == SWT6_A::SWT6_0
-    }
-    #[doc = "Checks if the value of the field is `SWT6_1`"]
-    #[inline(always)]
-    pub fn is_swt6_1(&self) -> bool {
-        **self == SWT6_A::SWT6_1
-    }
-}
-impl core::ops::Deref for SWT6_R {
-    type Target = crate::FieldReader<bool, SWT6_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT6` writer - Software trigger 6 event"]
-pub struct SWT6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT6_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT6_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 6 event generated."]
     #[inline(always)]
-    pub fn swt6_0(self) -> &'a mut W {
-        self.variant(SWT6_A::SWT6_0)
+    pub fn is_swt6_0(&self) -> bool {
+        *self == Swt6::Swt6_0
     }
     #[doc = "Trigger 6 event generated."]
     #[inline(always)]
-    pub fn swt6_1(self) -> &'a mut W {
-        self.variant(SWT6_A::SWT6_1)
+    pub fn is_swt6_1(&self) -> bool {
+        *self == Swt6::Swt6_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT6` writer - Software trigger 6 event"]
+pub type Swt6W<'a, REG> = crate::BitWriter<'a, REG, Swt6>;
+impl<'a, REG> Swt6W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 6 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt6_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt6::Swt6_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 6 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn swt6_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt6::Swt6_1)
     }
 }
 #[doc = "Software trigger 7 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT7_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt7 {
     #[doc = "0: No trigger 7 event generated."]
-    SWT7_0 = 0,
+    Swt7_0 = 0,
     #[doc = "1: Trigger 7 event generated."]
-    SWT7_1 = 1,
+    Swt7_1 = 1,
 }
-impl From<SWT7_A> for bool {
+impl From<Swt7> for bool {
     #[inline(always)]
-    fn from(variant: SWT7_A) -> Self {
+    fn from(variant: Swt7) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT7` reader - Software trigger 7 event"]
-pub struct SWT7_R(crate::FieldReader<bool, SWT7_A>);
-impl SWT7_R {
+pub type Swt7R = crate::BitReader<Swt7>;
+impl Swt7R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT7_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT7_A {
+    pub const fn variant(&self) -> Swt7 {
         match self.bits {
-            false => SWT7_A::SWT7_0,
-            true => SWT7_A::SWT7_1,
+            false => Swt7::Swt7_0,
+            true => Swt7::Swt7_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT7_0`"]
-    #[inline(always)]
-    pub fn is_swt7_0(&self) -> bool {
-        **self == SWT7_A::SWT7_0
-    }
-    #[doc = "Checks if the value of the field is `SWT7_1`"]
-    #[inline(always)]
-    pub fn is_swt7_1(&self) -> bool {
-        **self == SWT7_A::SWT7_1
-    }
-}
-impl core::ops::Deref for SWT7_R {
-    type Target = crate::FieldReader<bool, SWT7_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT7` writer - Software trigger 7 event"]
-pub struct SWT7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT7_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT7_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 7 event generated."]
     #[inline(always)]
-    pub fn swt7_0(self) -> &'a mut W {
-        self.variant(SWT7_A::SWT7_0)
+    pub fn is_swt7_0(&self) -> bool {
+        *self == Swt7::Swt7_0
     }
     #[doc = "Trigger 7 event generated."]
     #[inline(always)]
-    pub fn swt7_1(self) -> &'a mut W {
-        self.variant(SWT7_A::SWT7_1)
+    pub fn is_swt7_1(&self) -> bool {
+        *self == Swt7::Swt7_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT7` writer - Software trigger 7 event"]
+pub type Swt7W<'a, REG> = crate::BitWriter<'a, REG, Swt7>;
+impl<'a, REG> Swt7W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 7 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt7_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt7::Swt7_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 7 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn swt7_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt7::Swt7_1)
     }
 }
 #[doc = "Software trigger 8 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT8_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt8 {
     #[doc = "0: No trigger 8 event generated."]
-    SWT8_0 = 0,
+    Swt8_0 = 0,
     #[doc = "1: Trigger 8 event generated."]
-    SWT8_1 = 1,
+    Swt8_1 = 1,
 }
-impl From<SWT8_A> for bool {
+impl From<Swt8> for bool {
     #[inline(always)]
-    fn from(variant: SWT8_A) -> Self {
+    fn from(variant: Swt8) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT8` reader - Software trigger 8 event"]
-pub struct SWT8_R(crate::FieldReader<bool, SWT8_A>);
-impl SWT8_R {
+pub type Swt8R = crate::BitReader<Swt8>;
+impl Swt8R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT8_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT8_A {
+    pub const fn variant(&self) -> Swt8 {
         match self.bits {
-            false => SWT8_A::SWT8_0,
-            true => SWT8_A::SWT8_1,
+            false => Swt8::Swt8_0,
+            true => Swt8::Swt8_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT8_0`"]
-    #[inline(always)]
-    pub fn is_swt8_0(&self) -> bool {
-        **self == SWT8_A::SWT8_0
-    }
-    #[doc = "Checks if the value of the field is `SWT8_1`"]
-    #[inline(always)]
-    pub fn is_swt8_1(&self) -> bool {
-        **self == SWT8_A::SWT8_1
-    }
-}
-impl core::ops::Deref for SWT8_R {
-    type Target = crate::FieldReader<bool, SWT8_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT8` writer - Software trigger 8 event"]
-pub struct SWT8_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT8_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT8_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 8 event generated."]
     #[inline(always)]
-    pub fn swt8_0(self) -> &'a mut W {
-        self.variant(SWT8_A::SWT8_0)
+    pub fn is_swt8_0(&self) -> bool {
+        *self == Swt8::Swt8_0
     }
     #[doc = "Trigger 8 event generated."]
     #[inline(always)]
-    pub fn swt8_1(self) -> &'a mut W {
-        self.variant(SWT8_A::SWT8_1)
+    pub fn is_swt8_1(&self) -> bool {
+        *self == Swt8::Swt8_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT8` writer - Software trigger 8 event"]
+pub type Swt8W<'a, REG> = crate::BitWriter<'a, REG, Swt8>;
+impl<'a, REG> Swt8W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 8 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt8_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt8::Swt8_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 8 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn swt8_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt8::Swt8_1)
     }
 }
 #[doc = "Software trigger 9 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT9_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt9 {
     #[doc = "0: No trigger 9 event generated."]
-    SWT9_0 = 0,
+    Swt9_0 = 0,
     #[doc = "1: Trigger 9 event generated."]
-    SWT9_1 = 1,
+    Swt9_1 = 1,
 }
-impl From<SWT9_A> for bool {
+impl From<Swt9> for bool {
     #[inline(always)]
-    fn from(variant: SWT9_A) -> Self {
+    fn from(variant: Swt9) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT9` reader - Software trigger 9 event"]
-pub struct SWT9_R(crate::FieldReader<bool, SWT9_A>);
-impl SWT9_R {
+pub type Swt9R = crate::BitReader<Swt9>;
+impl Swt9R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT9_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT9_A {
+    pub const fn variant(&self) -> Swt9 {
         match self.bits {
-            false => SWT9_A::SWT9_0,
-            true => SWT9_A::SWT9_1,
+            false => Swt9::Swt9_0,
+            true => Swt9::Swt9_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT9_0`"]
-    #[inline(always)]
-    pub fn is_swt9_0(&self) -> bool {
-        **self == SWT9_A::SWT9_0
-    }
-    #[doc = "Checks if the value of the field is `SWT9_1`"]
-    #[inline(always)]
-    pub fn is_swt9_1(&self) -> bool {
-        **self == SWT9_A::SWT9_1
-    }
-}
-impl core::ops::Deref for SWT9_R {
-    type Target = crate::FieldReader<bool, SWT9_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT9` writer - Software trigger 9 event"]
-pub struct SWT9_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT9_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT9_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 9 event generated."]
     #[inline(always)]
-    pub fn swt9_0(self) -> &'a mut W {
-        self.variant(SWT9_A::SWT9_0)
+    pub fn is_swt9_0(&self) -> bool {
+        *self == Swt9::Swt9_0
     }
     #[doc = "Trigger 9 event generated."]
     #[inline(always)]
-    pub fn swt9_1(self) -> &'a mut W {
-        self.variant(SWT9_A::SWT9_1)
+    pub fn is_swt9_1(&self) -> bool {
+        *self == Swt9::Swt9_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT9` writer - Software trigger 9 event"]
+pub type Swt9W<'a, REG> = crate::BitWriter<'a, REG, Swt9>;
+impl<'a, REG> Swt9W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 9 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt9_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt9::Swt9_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 9 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn swt9_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt9::Swt9_1)
     }
 }
 #[doc = "Software trigger 10 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT10_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt10 {
     #[doc = "0: No trigger 10 event generated."]
-    SWT10_0 = 0,
+    Swt10_0 = 0,
     #[doc = "1: Trigger 10 event generated."]
-    SWT10_1 = 1,
+    Swt10_1 = 1,
 }
-impl From<SWT10_A> for bool {
+impl From<Swt10> for bool {
     #[inline(always)]
-    fn from(variant: SWT10_A) -> Self {
+    fn from(variant: Swt10) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT10` reader - Software trigger 10 event"]
-pub struct SWT10_R(crate::FieldReader<bool, SWT10_A>);
-impl SWT10_R {
+pub type Swt10R = crate::BitReader<Swt10>;
+impl Swt10R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT10_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT10_A {
+    pub const fn variant(&self) -> Swt10 {
         match self.bits {
-            false => SWT10_A::SWT10_0,
-            true => SWT10_A::SWT10_1,
+            false => Swt10::Swt10_0,
+            true => Swt10::Swt10_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT10_0`"]
-    #[inline(always)]
-    pub fn is_swt10_0(&self) -> bool {
-        **self == SWT10_A::SWT10_0
-    }
-    #[doc = "Checks if the value of the field is `SWT10_1`"]
-    #[inline(always)]
-    pub fn is_swt10_1(&self) -> bool {
-        **self == SWT10_A::SWT10_1
-    }
-}
-impl core::ops::Deref for SWT10_R {
-    type Target = crate::FieldReader<bool, SWT10_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT10` writer - Software trigger 10 event"]
-pub struct SWT10_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT10_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT10_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 10 event generated."]
     #[inline(always)]
-    pub fn swt10_0(self) -> &'a mut W {
-        self.variant(SWT10_A::SWT10_0)
+    pub fn is_swt10_0(&self) -> bool {
+        *self == Swt10::Swt10_0
     }
     #[doc = "Trigger 10 event generated."]
     #[inline(always)]
-    pub fn swt10_1(self) -> &'a mut W {
-        self.variant(SWT10_A::SWT10_1)
+    pub fn is_swt10_1(&self) -> bool {
+        *self == Swt10::Swt10_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT10` writer - Software trigger 10 event"]
+pub type Swt10W<'a, REG> = crate::BitWriter<'a, REG, Swt10>;
+impl<'a, REG> Swt10W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 10 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt10_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt10::Swt10_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 10 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
+    pub fn swt10_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt10::Swt10_1)
     }
 }
 #[doc = "Software trigger 11 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT11_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt11 {
     #[doc = "0: No trigger 11 event generated."]
-    SWT11_0 = 0,
+    Swt11_0 = 0,
     #[doc = "1: Trigger 11 event generated."]
-    SWT11_1 = 1,
+    Swt11_1 = 1,
 }
-impl From<SWT11_A> for bool {
+impl From<Swt11> for bool {
     #[inline(always)]
-    fn from(variant: SWT11_A) -> Self {
+    fn from(variant: Swt11) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT11` reader - Software trigger 11 event"]
-pub struct SWT11_R(crate::FieldReader<bool, SWT11_A>);
-impl SWT11_R {
+pub type Swt11R = crate::BitReader<Swt11>;
+impl Swt11R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT11_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT11_A {
+    pub const fn variant(&self) -> Swt11 {
         match self.bits {
-            false => SWT11_A::SWT11_0,
-            true => SWT11_A::SWT11_1,
+            false => Swt11::Swt11_0,
+            true => Swt11::Swt11_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT11_0`"]
-    #[inline(always)]
-    pub fn is_swt11_0(&self) -> bool {
-        **self == SWT11_A::SWT11_0
-    }
-    #[doc = "Checks if the value of the field is `SWT11_1`"]
-    #[inline(always)]
-    pub fn is_swt11_1(&self) -> bool {
-        **self == SWT11_A::SWT11_1
-    }
-}
-impl core::ops::Deref for SWT11_R {
-    type Target = crate::FieldReader<bool, SWT11_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT11` writer - Software trigger 11 event"]
-pub struct SWT11_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT11_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT11_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 11 event generated."]
     #[inline(always)]
-    pub fn swt11_0(self) -> &'a mut W {
-        self.variant(SWT11_A::SWT11_0)
+    pub fn is_swt11_0(&self) -> bool {
+        *self == Swt11::Swt11_0
     }
     #[doc = "Trigger 11 event generated."]
     #[inline(always)]
-    pub fn swt11_1(self) -> &'a mut W {
-        self.variant(SWT11_A::SWT11_1)
+    pub fn is_swt11_1(&self) -> bool {
+        *self == Swt11::Swt11_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT11` writer - Software trigger 11 event"]
+pub type Swt11W<'a, REG> = crate::BitWriter<'a, REG, Swt11>;
+impl<'a, REG> Swt11W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 11 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt11_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt11::Swt11_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 11 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn swt11_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt11::Swt11_1)
     }
 }
 #[doc = "Software trigger 12 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT12_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt12 {
     #[doc = "0: No trigger 12 event generated."]
-    SWT12_0 = 0,
+    Swt12_0 = 0,
     #[doc = "1: Trigger 12 event generated."]
-    SWT12_1 = 1,
+    Swt12_1 = 1,
 }
-impl From<SWT12_A> for bool {
+impl From<Swt12> for bool {
     #[inline(always)]
-    fn from(variant: SWT12_A) -> Self {
+    fn from(variant: Swt12) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT12` reader - Software trigger 12 event"]
-pub struct SWT12_R(crate::FieldReader<bool, SWT12_A>);
-impl SWT12_R {
+pub type Swt12R = crate::BitReader<Swt12>;
+impl Swt12R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT12_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT12_A {
+    pub const fn variant(&self) -> Swt12 {
         match self.bits {
-            false => SWT12_A::SWT12_0,
-            true => SWT12_A::SWT12_1,
+            false => Swt12::Swt12_0,
+            true => Swt12::Swt12_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT12_0`"]
-    #[inline(always)]
-    pub fn is_swt12_0(&self) -> bool {
-        **self == SWT12_A::SWT12_0
-    }
-    #[doc = "Checks if the value of the field is `SWT12_1`"]
-    #[inline(always)]
-    pub fn is_swt12_1(&self) -> bool {
-        **self == SWT12_A::SWT12_1
-    }
-}
-impl core::ops::Deref for SWT12_R {
-    type Target = crate::FieldReader<bool, SWT12_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT12` writer - Software trigger 12 event"]
-pub struct SWT12_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT12_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT12_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 12 event generated."]
     #[inline(always)]
-    pub fn swt12_0(self) -> &'a mut W {
-        self.variant(SWT12_A::SWT12_0)
+    pub fn is_swt12_0(&self) -> bool {
+        *self == Swt12::Swt12_0
     }
     #[doc = "Trigger 12 event generated."]
     #[inline(always)]
-    pub fn swt12_1(self) -> &'a mut W {
-        self.variant(SWT12_A::SWT12_1)
+    pub fn is_swt12_1(&self) -> bool {
+        *self == Swt12::Swt12_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT12` writer - Software trigger 12 event"]
+pub type Swt12W<'a, REG> = crate::BitWriter<'a, REG, Swt12>;
+impl<'a, REG> Swt12W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 12 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt12_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt12::Swt12_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 12 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | ((value as u32 & 0x01) << 12);
-        self.w
+    pub fn swt12_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt12::Swt12_1)
     }
 }
 #[doc = "Software trigger 13 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT13_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt13 {
     #[doc = "0: No trigger 13 event generated."]
-    SWT13_0 = 0,
+    Swt13_0 = 0,
     #[doc = "1: Trigger 13 event generated."]
-    SWT13_1 = 1,
+    Swt13_1 = 1,
 }
-impl From<SWT13_A> for bool {
+impl From<Swt13> for bool {
     #[inline(always)]
-    fn from(variant: SWT13_A) -> Self {
+    fn from(variant: Swt13) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT13` reader - Software trigger 13 event"]
-pub struct SWT13_R(crate::FieldReader<bool, SWT13_A>);
-impl SWT13_R {
+pub type Swt13R = crate::BitReader<Swt13>;
+impl Swt13R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT13_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT13_A {
+    pub const fn variant(&self) -> Swt13 {
         match self.bits {
-            false => SWT13_A::SWT13_0,
-            true => SWT13_A::SWT13_1,
+            false => Swt13::Swt13_0,
+            true => Swt13::Swt13_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT13_0`"]
-    #[inline(always)]
-    pub fn is_swt13_0(&self) -> bool {
-        **self == SWT13_A::SWT13_0
-    }
-    #[doc = "Checks if the value of the field is `SWT13_1`"]
-    #[inline(always)]
-    pub fn is_swt13_1(&self) -> bool {
-        **self == SWT13_A::SWT13_1
-    }
-}
-impl core::ops::Deref for SWT13_R {
-    type Target = crate::FieldReader<bool, SWT13_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT13` writer - Software trigger 13 event"]
-pub struct SWT13_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT13_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT13_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 13 event generated."]
     #[inline(always)]
-    pub fn swt13_0(self) -> &'a mut W {
-        self.variant(SWT13_A::SWT13_0)
+    pub fn is_swt13_0(&self) -> bool {
+        *self == Swt13::Swt13_0
     }
     #[doc = "Trigger 13 event generated."]
     #[inline(always)]
-    pub fn swt13_1(self) -> &'a mut W {
-        self.variant(SWT13_A::SWT13_1)
+    pub fn is_swt13_1(&self) -> bool {
+        *self == Swt13::Swt13_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT13` writer - Software trigger 13 event"]
+pub type Swt13W<'a, REG> = crate::BitWriter<'a, REG, Swt13>;
+impl<'a, REG> Swt13W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 13 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt13_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt13::Swt13_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 13 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | ((value as u32 & 0x01) << 13);
-        self.w
+    pub fn swt13_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt13::Swt13_1)
     }
 }
 #[doc = "Software trigger 14 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT14_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt14 {
     #[doc = "0: No trigger 14 event generated."]
-    SWT14_0 = 0,
+    Swt14_0 = 0,
     #[doc = "1: Trigger 14 event generated."]
-    SWT14_1 = 1,
+    Swt14_1 = 1,
 }
-impl From<SWT14_A> for bool {
+impl From<Swt14> for bool {
     #[inline(always)]
-    fn from(variant: SWT14_A) -> Self {
+    fn from(variant: Swt14) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT14` reader - Software trigger 14 event"]
-pub struct SWT14_R(crate::FieldReader<bool, SWT14_A>);
-impl SWT14_R {
+pub type Swt14R = crate::BitReader<Swt14>;
+impl Swt14R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT14_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT14_A {
+    pub const fn variant(&self) -> Swt14 {
         match self.bits {
-            false => SWT14_A::SWT14_0,
-            true => SWT14_A::SWT14_1,
+            false => Swt14::Swt14_0,
+            true => Swt14::Swt14_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT14_0`"]
-    #[inline(always)]
-    pub fn is_swt14_0(&self) -> bool {
-        **self == SWT14_A::SWT14_0
-    }
-    #[doc = "Checks if the value of the field is `SWT14_1`"]
-    #[inline(always)]
-    pub fn is_swt14_1(&self) -> bool {
-        **self == SWT14_A::SWT14_1
-    }
-}
-impl core::ops::Deref for SWT14_R {
-    type Target = crate::FieldReader<bool, SWT14_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT14` writer - Software trigger 14 event"]
-pub struct SWT14_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT14_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT14_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 14 event generated."]
     #[inline(always)]
-    pub fn swt14_0(self) -> &'a mut W {
-        self.variant(SWT14_A::SWT14_0)
+    pub fn is_swt14_0(&self) -> bool {
+        *self == Swt14::Swt14_0
     }
     #[doc = "Trigger 14 event generated."]
     #[inline(always)]
-    pub fn swt14_1(self) -> &'a mut W {
-        self.variant(SWT14_A::SWT14_1)
+    pub fn is_swt14_1(&self) -> bool {
+        *self == Swt14::Swt14_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT14` writer - Software trigger 14 event"]
+pub type Swt14W<'a, REG> = crate::BitWriter<'a, REG, Swt14>;
+impl<'a, REG> Swt14W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 14 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt14_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt14::Swt14_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 14 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u32 & 0x01) << 14);
-        self.w
+    pub fn swt14_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt14::Swt14_1)
     }
 }
 #[doc = "Software trigger 15 event\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SWT15_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Swt15 {
     #[doc = "0: No trigger 15 event generated."]
-    SWT15_0 = 0,
+    Swt15_0 = 0,
     #[doc = "1: Trigger 15 event generated."]
-    SWT15_1 = 1,
+    Swt15_1 = 1,
 }
-impl From<SWT15_A> for bool {
+impl From<Swt15> for bool {
     #[inline(always)]
-    fn from(variant: SWT15_A) -> Self {
+    fn from(variant: Swt15) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SWT15` reader - Software trigger 15 event"]
-pub struct SWT15_R(crate::FieldReader<bool, SWT15_A>);
-impl SWT15_R {
+pub type Swt15R = crate::BitReader<Swt15>;
+impl Swt15R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SWT15_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SWT15_A {
+    pub const fn variant(&self) -> Swt15 {
         match self.bits {
-            false => SWT15_A::SWT15_0,
-            true => SWT15_A::SWT15_1,
+            false => Swt15::Swt15_0,
+            true => Swt15::Swt15_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `SWT15_0`"]
-    #[inline(always)]
-    pub fn is_swt15_0(&self) -> bool {
-        **self == SWT15_A::SWT15_0
-    }
-    #[doc = "Checks if the value of the field is `SWT15_1`"]
-    #[inline(always)]
-    pub fn is_swt15_1(&self) -> bool {
-        **self == SWT15_A::SWT15_1
-    }
-}
-impl core::ops::Deref for SWT15_R {
-    type Target = crate::FieldReader<bool, SWT15_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SWT15` writer - Software trigger 15 event"]
-pub struct SWT15_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SWT15_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWT15_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No trigger 15 event generated."]
     #[inline(always)]
-    pub fn swt15_0(self) -> &'a mut W {
-        self.variant(SWT15_A::SWT15_0)
+    pub fn is_swt15_0(&self) -> bool {
+        *self == Swt15::Swt15_0
     }
     #[doc = "Trigger 15 event generated."]
     #[inline(always)]
-    pub fn swt15_1(self) -> &'a mut W {
-        self.variant(SWT15_A::SWT15_1)
+    pub fn is_swt15_1(&self) -> bool {
+        *self == Swt15::Swt15_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SWT15` writer - Software trigger 15 event"]
+pub type Swt15W<'a, REG> = crate::BitWriter<'a, REG, Swt15>;
+impl<'a, REG> Swt15W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No trigger 15 event generated."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn swt15_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt15::Swt15_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Trigger 15 event generated."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
-        self.w
+    pub fn swt15_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Swt15::Swt15_1)
     }
 }
 impl R {
     #[doc = "Bit 0 - Software trigger 0 event"]
     #[inline(always)]
-    pub fn swt0(&self) -> SWT0_R {
-        SWT0_R::new((self.bits & 0x01) != 0)
+    pub fn swt0(&self) -> Swt0R {
+        Swt0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Software trigger 1 event"]
     #[inline(always)]
-    pub fn swt1(&self) -> SWT1_R {
-        SWT1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn swt1(&self) -> Swt1R {
+        Swt1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Software trigger 2 event"]
     #[inline(always)]
-    pub fn swt2(&self) -> SWT2_R {
-        SWT2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn swt2(&self) -> Swt2R {
+        Swt2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Software trigger 3 event"]
     #[inline(always)]
-    pub fn swt3(&self) -> SWT3_R {
-        SWT3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn swt3(&self) -> Swt3R {
+        Swt3R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Software trigger 4 event"]
     #[inline(always)]
-    pub fn swt4(&self) -> SWT4_R {
-        SWT4_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn swt4(&self) -> Swt4R {
+        Swt4R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Software trigger 5 event"]
     #[inline(always)]
-    pub fn swt5(&self) -> SWT5_R {
-        SWT5_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn swt5(&self) -> Swt5R {
+        Swt5R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Software trigger 6 event"]
     #[inline(always)]
-    pub fn swt6(&self) -> SWT6_R {
-        SWT6_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn swt6(&self) -> Swt6R {
+        Swt6R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Software trigger 7 event"]
     #[inline(always)]
-    pub fn swt7(&self) -> SWT7_R {
-        SWT7_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn swt7(&self) -> Swt7R {
+        Swt7R::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Software trigger 8 event"]
     #[inline(always)]
-    pub fn swt8(&self) -> SWT8_R {
-        SWT8_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn swt8(&self) -> Swt8R {
+        Swt8R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Software trigger 9 event"]
     #[inline(always)]
-    pub fn swt9(&self) -> SWT9_R {
-        SWT9_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn swt9(&self) -> Swt9R {
+        Swt9R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bit 10 - Software trigger 10 event"]
     #[inline(always)]
-    pub fn swt10(&self) -> SWT10_R {
-        SWT10_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn swt10(&self) -> Swt10R {
+        Swt10R::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Software trigger 11 event"]
     #[inline(always)]
-    pub fn swt11(&self) -> SWT11_R {
-        SWT11_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn swt11(&self) -> Swt11R {
+        Swt11R::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 12 - Software trigger 12 event"]
     #[inline(always)]
-    pub fn swt12(&self) -> SWT12_R {
-        SWT12_R::new(((self.bits >> 12) & 0x01) != 0)
+    pub fn swt12(&self) -> Swt12R {
+        Swt12R::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Software trigger 13 event"]
     #[inline(always)]
-    pub fn swt13(&self) -> SWT13_R {
-        SWT13_R::new(((self.bits >> 13) & 0x01) != 0)
+    pub fn swt13(&self) -> Swt13R {
+        Swt13R::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - Software trigger 14 event"]
     #[inline(always)]
-    pub fn swt14(&self) -> SWT14_R {
-        SWT14_R::new(((self.bits >> 14) & 0x01) != 0)
+    pub fn swt14(&self) -> Swt14R {
+        Swt14R::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - Software trigger 15 event"]
     #[inline(always)]
-    pub fn swt15(&self) -> SWT15_R {
-        SWT15_R::new(((self.bits >> 15) & 0x01) != 0)
+    pub fn swt15(&self) -> Swt15R {
+        Swt15R::new(((self.bits >> 15) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Software trigger 0 event"]
     #[inline(always)]
-    pub fn swt0(&mut self) -> SWT0_W {
-        SWT0_W { w: self }
+    pub fn swt0(&mut self) -> Swt0W<SwtrigSpec> {
+        Swt0W::new(self, 0)
     }
     #[doc = "Bit 1 - Software trigger 1 event"]
     #[inline(always)]
-    pub fn swt1(&mut self) -> SWT1_W {
-        SWT1_W { w: self }
+    pub fn swt1(&mut self) -> Swt1W<SwtrigSpec> {
+        Swt1W::new(self, 1)
     }
     #[doc = "Bit 2 - Software trigger 2 event"]
     #[inline(always)]
-    pub fn swt2(&mut self) -> SWT2_W {
-        SWT2_W { w: self }
+    pub fn swt2(&mut self) -> Swt2W<SwtrigSpec> {
+        Swt2W::new(self, 2)
     }
     #[doc = "Bit 3 - Software trigger 3 event"]
     #[inline(always)]
-    pub fn swt3(&mut self) -> SWT3_W {
-        SWT3_W { w: self }
+    pub fn swt3(&mut self) -> Swt3W<SwtrigSpec> {
+        Swt3W::new(self, 3)
     }
     #[doc = "Bit 4 - Software trigger 4 event"]
     #[inline(always)]
-    pub fn swt4(&mut self) -> SWT4_W {
-        SWT4_W { w: self }
+    pub fn swt4(&mut self) -> Swt4W<SwtrigSpec> {
+        Swt4W::new(self, 4)
     }
     #[doc = "Bit 5 - Software trigger 5 event"]
     #[inline(always)]
-    pub fn swt5(&mut self) -> SWT5_W {
-        SWT5_W { w: self }
+    pub fn swt5(&mut self) -> Swt5W<SwtrigSpec> {
+        Swt5W::new(self, 5)
     }
     #[doc = "Bit 6 - Software trigger 6 event"]
     #[inline(always)]
-    pub fn swt6(&mut self) -> SWT6_W {
-        SWT6_W { w: self }
+    pub fn swt6(&mut self) -> Swt6W<SwtrigSpec> {
+        Swt6W::new(self, 6)
     }
     #[doc = "Bit 7 - Software trigger 7 event"]
     #[inline(always)]
-    pub fn swt7(&mut self) -> SWT7_W {
-        SWT7_W { w: self }
+    pub fn swt7(&mut self) -> Swt7W<SwtrigSpec> {
+        Swt7W::new(self, 7)
     }
     #[doc = "Bit 8 - Software trigger 8 event"]
     #[inline(always)]
-    pub fn swt8(&mut self) -> SWT8_W {
-        SWT8_W { w: self }
+    pub fn swt8(&mut self) -> Swt8W<SwtrigSpec> {
+        Swt8W::new(self, 8)
     }
     #[doc = "Bit 9 - Software trigger 9 event"]
     #[inline(always)]
-    pub fn swt9(&mut self) -> SWT9_W {
-        SWT9_W { w: self }
+    pub fn swt9(&mut self) -> Swt9W<SwtrigSpec> {
+        Swt9W::new(self, 9)
     }
     #[doc = "Bit 10 - Software trigger 10 event"]
     #[inline(always)]
-    pub fn swt10(&mut self) -> SWT10_W {
-        SWT10_W { w: self }
+    pub fn swt10(&mut self) -> Swt10W<SwtrigSpec> {
+        Swt10W::new(self, 10)
     }
     #[doc = "Bit 11 - Software trigger 11 event"]
     #[inline(always)]
-    pub fn swt11(&mut self) -> SWT11_W {
-        SWT11_W { w: self }
+    pub fn swt11(&mut self) -> Swt11W<SwtrigSpec> {
+        Swt11W::new(self, 11)
     }
     #[doc = "Bit 12 - Software trigger 12 event"]
     #[inline(always)]
-    pub fn swt12(&mut self) -> SWT12_W {
-        SWT12_W { w: self }
+    pub fn swt12(&mut self) -> Swt12W<SwtrigSpec> {
+        Swt12W::new(self, 12)
     }
     #[doc = "Bit 13 - Software trigger 13 event"]
     #[inline(always)]
-    pub fn swt13(&mut self) -> SWT13_W {
-        SWT13_W { w: self }
+    pub fn swt13(&mut self) -> Swt13W<SwtrigSpec> {
+        Swt13W::new(self, 13)
     }
     #[doc = "Bit 14 - Software trigger 14 event"]
     #[inline(always)]
-    pub fn swt14(&mut self) -> SWT14_W {
-        SWT14_W { w: self }
+    pub fn swt14(&mut self) -> Swt14W<SwtrigSpec> {
+        Swt14W::new(self, 14)
     }
     #[doc = "Bit 15 - Software trigger 15 event"]
     #[inline(always)]
-    pub fn swt15(&mut self) -> SWT15_W {
-        SWT15_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn swt15(&mut self) -> Swt15W<SwtrigSpec> {
+        Swt15W::new(self, 15)
     }
 }
-#[doc = "Software Trigger Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [swtrig](index.html) module"]
-pub struct SWTRIG_SPEC;
-impl crate::RegisterSpec for SWTRIG_SPEC {
+#[doc = "Software Trigger Register\n\nYou can [`read`](crate::Reg::read) this register and get [`swtrig::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`swtrig::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SwtrigSpec;
+impl crate::RegisterSpec for SwtrigSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [swtrig::R](R) reader structure"]
-impl crate::Readable for SWTRIG_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [swtrig::W](W) writer structure"]
-impl crate::Writable for SWTRIG_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`swtrig::R`](R) reader structure"]
+impl crate::Readable for SwtrigSpec {}
+#[doc = "`write(|w| ..)` method takes [`swtrig::W`](W) writer structure"]
+impl crate::Writable for SwtrigSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SWTRIG to value 0"]
-impl crate::Resettable for SWTRIG_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SwtrigSpec {
+    const RESET_VALUE: u32 = 0;
 }

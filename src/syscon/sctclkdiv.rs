@@ -1,305 +1,179 @@
 #[doc = "Register `SCTCLKDIV` reader"]
-pub struct R(crate::R<SCTCLKDIV_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SCTCLKDIV_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SCTCLKDIV_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SCTCLKDIV_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SctclkdivSpec>;
 #[doc = "Register `SCTCLKDIV` writer"]
-pub struct W(crate::W<SCTCLKDIV_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SCTCLKDIV_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SCTCLKDIV_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SCTCLKDIV_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SctclkdivSpec>;
 #[doc = "Field `DIV` reader - Clock divider value."]
-pub struct DIV_R(crate::FieldReader<u8, u8>);
-impl DIV_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        DIV_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DIV_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DivR = crate::FieldReader;
 #[doc = "Field `DIV` writer - Clock divider value."]
-pub struct DIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type DivW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Resets the divider counter.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RESET_AW {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Reset {
     #[doc = "0: Divider is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Divider is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<RESET_AW> for bool {
+impl From<Reset> for bool {
     #[inline(always)]
-    fn from(variant: RESET_AW) -> Self {
+    fn from(variant: Reset) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RESET` writer - Resets the divider counter."]
-pub struct RESET_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RESET_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RESET_AW) -> &'a mut W {
-        self.bit(variant.into())
-    }
+pub type ResetW<'a, REG> = crate::BitWriter<'a, REG, Reset>;
+impl<'a, REG> ResetW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
     #[doc = "Divider is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(RESET_AW::RELEASED)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Reset::Released)
     }
     #[doc = "Divider is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(RESET_AW::ASSERTED)
-    }
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 29)) | ((value as u32 & 0x01) << 29);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Reset::Asserted)
     }
 }
 #[doc = "Halts the divider counter.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum HALT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Halt {
     #[doc = "0: Divider clock is running."]
-    RUN = 0,
+    Run = 0,
     #[doc = "1: Divider clock is stoped."]
-    HALT = 1,
+    Halt = 1,
 }
-impl From<HALT_A> for bool {
+impl From<Halt> for bool {
     #[inline(always)]
-    fn from(variant: HALT_A) -> Self {
+    fn from(variant: Halt) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `HALT` reader - Halts the divider counter."]
-pub struct HALT_R(crate::FieldReader<bool, HALT_A>);
-impl HALT_R {
+pub type HaltR = crate::BitReader<Halt>;
+impl HaltR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        HALT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> HALT_A {
+    pub const fn variant(&self) -> Halt {
         match self.bits {
-            false => HALT_A::RUN,
-            true => HALT_A::HALT,
+            false => Halt::Run,
+            true => Halt::Halt,
         }
-    }
-    #[doc = "Checks if the value of the field is `RUN`"]
-    #[inline(always)]
-    pub fn is_run(&self) -> bool {
-        **self == HALT_A::RUN
-    }
-    #[doc = "Checks if the value of the field is `HALT`"]
-    #[inline(always)]
-    pub fn is_halt(&self) -> bool {
-        **self == HALT_A::HALT
-    }
-}
-impl core::ops::Deref for HALT_R {
-    type Target = crate::FieldReader<bool, HALT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `HALT` writer - Halts the divider counter."]
-pub struct HALT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HALT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: HALT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Divider clock is running."]
     #[inline(always)]
-    pub fn run(self) -> &'a mut W {
-        self.variant(HALT_A::RUN)
+    pub fn is_run(&self) -> bool {
+        *self == Halt::Run
     }
     #[doc = "Divider clock is stoped."]
     #[inline(always)]
-    pub fn halt(self) -> &'a mut W {
-        self.variant(HALT_A::HALT)
+    pub fn is_halt(&self) -> bool {
+        *self == Halt::Halt
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `HALT` writer - Halts the divider counter."]
+pub type HaltW<'a, REG> = crate::BitWriter<'a, REG, Halt>;
+impl<'a, REG> HaltW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Divider clock is running."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn run(self) -> &'a mut crate::W<REG> {
+        self.variant(Halt::Run)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Divider clock is stoped."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 30)) | ((value as u32 & 0x01) << 30);
-        self.w
+    pub fn halt(self) -> &'a mut crate::W<REG> {
+        self.variant(Halt::Halt)
     }
 }
 #[doc = "Divider status flag.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum REQFLAG_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Reqflag {
     #[doc = "0: Divider clock is stable."]
-    STABLE = 0,
+    Stable = 0,
     #[doc = "1: Clock frequency is not stable."]
-    ONGOING = 1,
+    Ongoing = 1,
 }
-impl From<REQFLAG_A> for bool {
+impl From<Reqflag> for bool {
     #[inline(always)]
-    fn from(variant: REQFLAG_A) -> Self {
+    fn from(variant: Reqflag) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `REQFLAG` reader - Divider status flag."]
-pub struct REQFLAG_R(crate::FieldReader<bool, REQFLAG_A>);
-impl REQFLAG_R {
+pub type ReqflagR = crate::BitReader<Reqflag>;
+impl ReqflagR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        REQFLAG_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> REQFLAG_A {
+    pub const fn variant(&self) -> Reqflag {
         match self.bits {
-            false => REQFLAG_A::STABLE,
-            true => REQFLAG_A::ONGOING,
+            false => Reqflag::Stable,
+            true => Reqflag::Ongoing,
         }
     }
-    #[doc = "Checks if the value of the field is `STABLE`"]
+    #[doc = "Divider clock is stable."]
     #[inline(always)]
     pub fn is_stable(&self) -> bool {
-        **self == REQFLAG_A::STABLE
+        *self == Reqflag::Stable
     }
-    #[doc = "Checks if the value of the field is `ONGOING`"]
+    #[doc = "Clock frequency is not stable."]
     #[inline(always)]
     pub fn is_ongoing(&self) -> bool {
-        **self == REQFLAG_A::ONGOING
-    }
-}
-impl core::ops::Deref for REQFLAG_R {
-    type Target = crate::FieldReader<bool, REQFLAG_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Reqflag::Ongoing
     }
 }
 impl R {
     #[doc = "Bits 0:7 - Clock divider value."]
     #[inline(always)]
-    pub fn div(&self) -> DIV_R {
-        DIV_R::new((self.bits & 0xff) as u8)
+    pub fn div(&self) -> DivR {
+        DivR::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bit 30 - Halts the divider counter."]
     #[inline(always)]
-    pub fn halt(&self) -> HALT_R {
-        HALT_R::new(((self.bits >> 30) & 0x01) != 0)
+    pub fn halt(&self) -> HaltR {
+        HaltR::new(((self.bits >> 30) & 1) != 0)
     }
     #[doc = "Bit 31 - Divider status flag."]
     #[inline(always)]
-    pub fn reqflag(&self) -> REQFLAG_R {
-        REQFLAG_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn reqflag(&self) -> ReqflagR {
+        ReqflagR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Clock divider value."]
     #[inline(always)]
-    pub fn div(&mut self) -> DIV_W {
-        DIV_W { w: self }
+    pub fn div(&mut self) -> DivW<SctclkdivSpec> {
+        DivW::new(self, 0)
     }
     #[doc = "Bit 29 - Resets the divider counter."]
     #[inline(always)]
-    pub fn reset(&mut self) -> RESET_W {
-        RESET_W { w: self }
+    pub fn reset(&mut self) -> ResetW<SctclkdivSpec> {
+        ResetW::new(self, 29)
     }
     #[doc = "Bit 30 - Halts the divider counter."]
     #[inline(always)]
-    pub fn halt(&mut self) -> HALT_W {
-        HALT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn halt(&mut self) -> HaltW<SctclkdivSpec> {
+        HaltW::new(self, 30)
     }
 }
-#[doc = "SCT/PWM clock divider\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sctclkdiv](index.html) module"]
-pub struct SCTCLKDIV_SPEC;
-impl crate::RegisterSpec for SCTCLKDIV_SPEC {
+#[doc = "SCT/PWM clock divider\n\nYou can [`read`](crate::Reg::read) this register and get [`sctclkdiv::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sctclkdiv::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SctclkdivSpec;
+impl crate::RegisterSpec for SctclkdivSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sctclkdiv::R](R) reader structure"]
-impl crate::Readable for SCTCLKDIV_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sctclkdiv::W](W) writer structure"]
-impl crate::Writable for SCTCLKDIV_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sctclkdiv::R`](R) reader structure"]
+impl crate::Readable for SctclkdivSpec {}
+#[doc = "`write(|w| ..)` method takes [`sctclkdiv::W`](W) writer structure"]
+impl crate::Writable for SctclkdivSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SCTCLKDIV to value 0x4000_0000"]
-impl crate::Resettable for SCTCLKDIV_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x4000_0000
-    }
+impl crate::Resettable for SctclkdivSpec {
+    const RESET_VALUE: u32 = 0x4000_0000;
 }

@@ -1,339 +1,190 @@
 #[doc = "Register `KEYENABLE` reader"]
-pub struct R(crate::R<KEYENABLE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<KEYENABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<KEYENABLE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<KEYENABLE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<KeyenableSpec>;
 #[doc = "Register `KEYENABLE` writer"]
-pub struct W(crate::W<KEYENABLE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<KEYENABLE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<KEYENABLE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<KEYENABLE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<KeyenableSpec>;
 #[doc = "Field `KEY0` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY0 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY0 register.\""]
-pub struct KEY0_R(crate::FieldReader<u8, u8>);
-impl KEY0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        KEY0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for KEY0_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Key0R = crate::FieldReader;
 #[doc = "Field `KEY0` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY0 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY0 register.\""]
-pub struct KEY0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY0_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
-    }
-}
-#[doc = "Field `KEY1` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
-pub struct KEY1_R(crate::FieldReader<u8, u8>);
-impl KEY1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        KEY1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for KEY1_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `KEY1` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
-pub struct KEY1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY1_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 2)) | ((value as u32 & 0x03) << 2);
-        self.w
-    }
-}
-#[doc = "Field `KEY2` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
-pub struct KEY2_R(crate::FieldReader<u8, u8>);
-impl KEY2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        KEY2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for KEY2_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `KEY2` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
-pub struct KEY2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY2_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 4)) | ((value as u32 & 0x03) << 4);
-        self.w
-    }
-}
-#[doc = "Field `KEY3` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
-pub struct KEY3_R(crate::FieldReader<u8, u8>);
-impl KEY3_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        KEY3_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for KEY3_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `KEY3` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
-pub struct KEY3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY3_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 6)) | ((value as u32 & 0x03) << 6);
-        self.w
-    }
-}
+pub type Key0W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Key destination for PUF key.\n\nValue on reset: 85"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum KEY_A {
-    #[doc = "86: Send key to AES engine."]
-    AES = 86,
-    #[doc = "89: Send key to PRINCE engine for memory layout 0."]
-    PRINCE0 = 89,
-    #[doc = "101: Send key to PRINCE engine for memory layout 1."]
-    PRINCE1 = 101,
-    #[doc = "149: Send key to PRINCE engine for memory layout 2."]
-    PRINCE2 = 149,
+pub enum Key {
     #[doc = "85: Do not send key to any hardware engine."]
-    NONE = 85,
+    None = 85,
+    #[doc = "86: Send key to AES engine."]
+    Aes = 86,
+    #[doc = "89: Send key to PRINCE engine for memory layout 0."]
+    Prince0 = 89,
+    #[doc = "101: Send key to PRINCE engine for memory layout 1."]
+    Prince1 = 101,
+    #[doc = "149: Send key to PRINCE engine for memory layout 2."]
+    Prince2 = 149,
 }
-impl From<KEY_A> for u8 {
+impl From<Key> for u8 {
     #[inline(always)]
-    fn from(variant: KEY_A) -> Self {
+    fn from(variant: Key) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Key {
+    type Ux = u8;
+}
+impl crate::IsEnum for Key {}
 #[doc = "Field `KEY` reader - Key destination for PUF key."]
-pub struct KEY_R(crate::FieldReader<u8, KEY_A>);
-impl KEY_R {
+pub type KeyR = crate::FieldReader<Key>;
+impl KeyR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        KEY_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<KEY_A> {
+    pub const fn variant(&self) -> Option<Key> {
         match self.bits {
-            86 => Some(KEY_A::AES),
-            89 => Some(KEY_A::PRINCE0),
-            101 => Some(KEY_A::PRINCE1),
-            149 => Some(KEY_A::PRINCE2),
-            85 => Some(KEY_A::NONE),
+            85 => Some(Key::None),
+            86 => Some(Key::Aes),
+            89 => Some(Key::Prince0),
+            101 => Some(Key::Prince1),
+            149 => Some(Key::Prince2),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `AES`"]
-    #[inline(always)]
-    pub fn is_aes(&self) -> bool {
-        **self == KEY_A::AES
-    }
-    #[doc = "Checks if the value of the field is `PRINCE0`"]
-    #[inline(always)]
-    pub fn is_prince0(&self) -> bool {
-        **self == KEY_A::PRINCE0
-    }
-    #[doc = "Checks if the value of the field is `PRINCE1`"]
-    #[inline(always)]
-    pub fn is_prince1(&self) -> bool {
-        **self == KEY_A::PRINCE1
-    }
-    #[doc = "Checks if the value of the field is `PRINCE2`"]
-    #[inline(always)]
-    pub fn is_prince2(&self) -> bool {
-        **self == KEY_A::PRINCE2
-    }
-    #[doc = "Checks if the value of the field is `NONE`"]
+    #[doc = "Do not send key to any hardware engine."]
     #[inline(always)]
     pub fn is_none(&self) -> bool {
-        **self == KEY_A::NONE
-    }
-}
-impl core::ops::Deref for KEY_R {
-    type Target = crate::FieldReader<u8, KEY_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `KEY` writer - Key destination for PUF key."]
-pub struct KEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> KEY_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: KEY_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
+        *self == Key::None
     }
     #[doc = "Send key to AES engine."]
     #[inline(always)]
-    pub fn aes(self) -> &'a mut W {
-        self.variant(KEY_A::AES)
+    pub fn is_aes(&self) -> bool {
+        *self == Key::Aes
     }
     #[doc = "Send key to PRINCE engine for memory layout 0."]
     #[inline(always)]
-    pub fn prince0(self) -> &'a mut W {
-        self.variant(KEY_A::PRINCE0)
+    pub fn is_prince0(&self) -> bool {
+        *self == Key::Prince0
     }
     #[doc = "Send key to PRINCE engine for memory layout 1."]
     #[inline(always)]
-    pub fn prince1(self) -> &'a mut W {
-        self.variant(KEY_A::PRINCE1)
+    pub fn is_prince1(&self) -> bool {
+        *self == Key::Prince1
     }
     #[doc = "Send key to PRINCE engine for memory layout 2."]
     #[inline(always)]
-    pub fn prince2(self) -> &'a mut W {
-        self.variant(KEY_A::PRINCE2)
-    }
-    #[doc = "Do not send key to any hardware engine."]
-    #[inline(always)]
-    pub fn none(self) -> &'a mut W {
-        self.variant(KEY_A::NONE)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
+    pub fn is_prince2(&self) -> bool {
+        *self == Key::Prince2
     }
 }
+#[doc = "Field `KEY` writer - Key destination for PUF key."]
+pub type KeyW<'a, REG> = crate::FieldWriter<'a, REG, 8, Key>;
+impl<'a, REG> KeyW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Do not send key to any hardware engine."]
+    #[inline(always)]
+    pub fn none(self) -> &'a mut crate::W<REG> {
+        self.variant(Key::None)
+    }
+    #[doc = "Send key to AES engine."]
+    #[inline(always)]
+    pub fn aes(self) -> &'a mut crate::W<REG> {
+        self.variant(Key::Aes)
+    }
+    #[doc = "Send key to PRINCE engine for memory layout 0."]
+    #[inline(always)]
+    pub fn prince0(self) -> &'a mut crate::W<REG> {
+        self.variant(Key::Prince0)
+    }
+    #[doc = "Send key to PRINCE engine for memory layout 1."]
+    #[inline(always)]
+    pub fn prince1(self) -> &'a mut crate::W<REG> {
+        self.variant(Key::Prince1)
+    }
+    #[doc = "Send key to PRINCE engine for memory layout 2."]
+    #[inline(always)]
+    pub fn prince2(self) -> &'a mut crate::W<REG> {
+        self.variant(Key::Prince2)
+    }
+}
+#[doc = "Field `KEY1` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
+pub type Key1R = crate::FieldReader;
+#[doc = "Field `KEY1` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
+pub type Key1W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+#[doc = "Field `KEY2` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
+pub type Key2R = crate::FieldReader;
+#[doc = "Field `KEY2` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
+pub type Key2W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+#[doc = "Field `KEY3` reader - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
+pub type Key3R = crate::FieldReader;
+#[doc = "Field `KEY3` writer - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
+pub type Key3W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bits 0:1 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY0 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY0 register.\""]
     #[inline(always)]
-    pub fn key0(&self) -> KEY0_R {
-        KEY0_R::new((self.bits & 0x03) as u8)
-    }
-    #[doc = "Bits 2:3 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
-    #[inline(always)]
-    pub fn key1(&self) -> KEY1_R {
-        KEY1_R::new(((self.bits >> 2) & 0x03) as u8)
-    }
-    #[doc = "Bits 4:5 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
-    #[inline(always)]
-    pub fn key2(&self) -> KEY2_R {
-        KEY2_R::new(((self.bits >> 4) & 0x03) as u8)
-    }
-    #[doc = "Bits 6:7 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
-    #[inline(always)]
-    pub fn key3(&self) -> KEY3_R {
-        KEY3_R::new(((self.bits >> 6) & 0x03) as u8)
+    pub fn key0(&self) -> Key0R {
+        Key0R::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 0:7 - Key destination for PUF key."]
     #[inline(always)]
-    pub fn key(&self) -> KEY_R {
-        KEY_R::new((self.bits & 0xff) as u8)
+    pub fn key(&self) -> KeyR {
+        KeyR::new((self.bits & 0xff) as u8)
+    }
+    #[doc = "Bits 2:3 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
+    #[inline(always)]
+    pub fn key1(&self) -> Key1R {
+        Key1R::new(((self.bits >> 2) & 3) as u8)
+    }
+    #[doc = "Bits 4:5 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
+    #[inline(always)]
+    pub fn key2(&self) -> Key2R {
+        Key2R::new(((self.bits >> 4) & 3) as u8)
+    }
+    #[doc = "Bits 6:7 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
+    #[inline(always)]
+    pub fn key3(&self) -> Key3R {
+        Key3R::new(((self.bits >> 6) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY0 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY0 register.\""]
     #[inline(always)]
-    pub fn key0(&mut self) -> KEY0_W {
-        KEY0_W { w: self }
-    }
-    #[doc = "Bits 2:3 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
-    #[inline(always)]
-    pub fn key1(&mut self) -> KEY1_W {
-        KEY1_W { w: self }
-    }
-    #[doc = "Bits 4:5 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
-    #[inline(always)]
-    pub fn key2(&mut self) -> KEY2_W {
-        KEY2_W { w: self }
-    }
-    #[doc = "Bits 6:7 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
-    #[inline(always)]
-    pub fn key3(&mut self) -> KEY3_W {
-        KEY3_W { w: self }
+    pub fn key0(&mut self) -> Key0W<KeyenableSpec> {
+        Key0W::new(self, 0)
     }
     #[doc = "Bits 0:7 - Key destination for PUF key."]
     #[inline(always)]
-    pub fn key(&mut self) -> KEY_W {
-        KEY_W { w: self }
+    pub fn key(&mut self) -> KeyW<KeyenableSpec> {
+        KeyW::new(self, 0)
     }
-    #[doc = "Writes raw bits to the register."]
+    #[doc = "Bits 2:3 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY1 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY1 register.\""]
     #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn key1(&mut self) -> Key1W<KeyenableSpec> {
+        Key1W::new(self, 2)
+    }
+    #[doc = "Bits 4:5 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY2 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY2 register.\""]
+    #[inline(always)]
+    pub fn key2(&mut self) -> Key2W<KeyenableSpec> {
+        Key2W::new(self, 4)
+    }
+    #[doc = "Bits 6:7 - \"10: Data coming out from PUF Index 0 interface are shifted in KEY3 register. 00, 01, 11 : Data coming out from PUF Index 0 interface are NOT shifted in KEY3 register.\""]
+    #[inline(always)]
+    pub fn key3(&mut self) -> Key3W<KeyenableSpec> {
+        Key3W::new(self, 6)
     }
 }
-#[doc = "no description available\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [keyenable](index.html) module"]
-pub struct KEYENABLE_SPEC;
-impl crate::RegisterSpec for KEYENABLE_SPEC {
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`keyenable::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`keyenable::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct KeyenableSpec;
+impl crate::RegisterSpec for KeyenableSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [keyenable::R](R) reader structure"]
-impl crate::Readable for KEYENABLE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [keyenable::W](W) writer structure"]
-impl crate::Writable for KEYENABLE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`keyenable::R`](R) reader structure"]
+impl crate::Readable for KeyenableSpec {}
+#[doc = "`write(|w| ..)` method takes [`keyenable::W`](W) writer structure"]
+impl crate::Writable for KeyenableSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets KEYENABLE to value 0x55"]
-impl crate::Resettable for KEYENABLE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x55
-    }
+impl crate::Resettable for KeyenableSpec {
+    const RESET_VALUE: u32 = 0x55;
 }

@@ -1,888 +1,614 @@
 #[doc = "Register `CTRL` reader"]
-pub struct R(crate::R<CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CtrlSpec>;
 #[doc = "Register `CTRL` writer"]
-pub struct W(crate::W<CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CtrlSpec>;
 #[doc = "ADC Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ADCEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Adcen {
     #[doc = "0: ADC is disabled."]
-    ADCEN_0 = 0,
+    Adcen0 = 0,
     #[doc = "1: ADC is enabled."]
-    ADCEN_1 = 1,
+    Adcen1 = 1,
 }
-impl From<ADCEN_A> for bool {
+impl From<Adcen> for bool {
     #[inline(always)]
-    fn from(variant: ADCEN_A) -> Self {
+    fn from(variant: Adcen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ADCEN` reader - ADC Enable"]
-pub struct ADCEN_R(crate::FieldReader<bool, ADCEN_A>);
-impl ADCEN_R {
+pub type AdcenR = crate::BitReader<Adcen>;
+impl AdcenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ADCEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ADCEN_A {
+    pub const fn variant(&self) -> Adcen {
         match self.bits {
-            false => ADCEN_A::ADCEN_0,
-            true => ADCEN_A::ADCEN_1,
+            false => Adcen::Adcen0,
+            true => Adcen::Adcen1,
         }
-    }
-    #[doc = "Checks if the value of the field is `ADCEN_0`"]
-    #[inline(always)]
-    pub fn is_adcen_0(&self) -> bool {
-        **self == ADCEN_A::ADCEN_0
-    }
-    #[doc = "Checks if the value of the field is `ADCEN_1`"]
-    #[inline(always)]
-    pub fn is_adcen_1(&self) -> bool {
-        **self == ADCEN_A::ADCEN_1
-    }
-}
-impl core::ops::Deref for ADCEN_R {
-    type Target = crate::FieldReader<bool, ADCEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ADCEN` writer - ADC Enable"]
-pub struct ADCEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADCEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ADCEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "ADC is disabled."]
     #[inline(always)]
-    pub fn adcen_0(self) -> &'a mut W {
-        self.variant(ADCEN_A::ADCEN_0)
+    pub fn is_adcen_0(&self) -> bool {
+        *self == Adcen::Adcen0
     }
     #[doc = "ADC is enabled."]
     #[inline(always)]
-    pub fn adcen_1(self) -> &'a mut W {
-        self.variant(ADCEN_A::ADCEN_1)
+    pub fn is_adcen_1(&self) -> bool {
+        *self == Adcen::Adcen1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ADCEN` writer - ADC Enable"]
+pub type AdcenW<'a, REG> = crate::BitWriter<'a, REG, Adcen>;
+impl<'a, REG> AdcenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "ADC is disabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn adcen_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Adcen::Adcen0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "ADC is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn adcen_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Adcen::Adcen1)
     }
 }
 #[doc = "Software Reset\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rst {
     #[doc = "0: ADC logic is not reset."]
-    RST_0 = 0,
+    Rst0 = 0,
     #[doc = "1: ADC logic is reset."]
-    RST_1 = 1,
+    Rst1 = 1,
 }
-impl From<RST_A> for bool {
+impl From<Rst> for bool {
     #[inline(always)]
-    fn from(variant: RST_A) -> Self {
+    fn from(variant: Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RST` reader - Software Reset"]
-pub struct RST_R(crate::FieldReader<bool, RST_A>);
-impl RST_R {
+pub type RstR = crate::BitReader<Rst>;
+impl RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RST_A {
+    pub const fn variant(&self) -> Rst {
         match self.bits {
-            false => RST_A::RST_0,
-            true => RST_A::RST_1,
+            false => Rst::Rst0,
+            true => Rst::Rst1,
         }
-    }
-    #[doc = "Checks if the value of the field is `RST_0`"]
-    #[inline(always)]
-    pub fn is_rst_0(&self) -> bool {
-        **self == RST_A::RST_0
-    }
-    #[doc = "Checks if the value of the field is `RST_1`"]
-    #[inline(always)]
-    pub fn is_rst_1(&self) -> bool {
-        **self == RST_A::RST_1
-    }
-}
-impl core::ops::Deref for RST_R {
-    type Target = crate::FieldReader<bool, RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RST` writer - Software Reset"]
-pub struct RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "ADC logic is not reset."]
     #[inline(always)]
-    pub fn rst_0(self) -> &'a mut W {
-        self.variant(RST_A::RST_0)
+    pub fn is_rst_0(&self) -> bool {
+        *self == Rst::Rst0
     }
     #[doc = "ADC logic is reset."]
     #[inline(always)]
-    pub fn rst_1(self) -> &'a mut W {
-        self.variant(RST_A::RST_1)
+    pub fn is_rst_1(&self) -> bool {
+        *self == Rst::Rst1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RST` writer - Software Reset"]
+pub type RstW<'a, REG> = crate::BitWriter<'a, REG, Rst>;
+impl<'a, REG> RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "ADC logic is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn rst_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rst::Rst0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "ADC logic is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn rst_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rst::Rst1)
     }
 }
 #[doc = "Doze Enable\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DOZEN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Dozen {
     #[doc = "0: ADC is enabled in Doze mode."]
-    DOZEN_0 = 0,
+    Dozen0 = 0,
     #[doc = "1: ADC is disabled in Doze mode."]
-    DOZEN_1 = 1,
+    Dozen1 = 1,
 }
-impl From<DOZEN_A> for bool {
+impl From<Dozen> for bool {
     #[inline(always)]
-    fn from(variant: DOZEN_A) -> Self {
+    fn from(variant: Dozen) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `DOZEN` reader - Doze Enable"]
-pub struct DOZEN_R(crate::FieldReader<bool, DOZEN_A>);
-impl DOZEN_R {
+pub type DozenR = crate::BitReader<Dozen>;
+impl DozenR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DOZEN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DOZEN_A {
+    pub const fn variant(&self) -> Dozen {
         match self.bits {
-            false => DOZEN_A::DOZEN_0,
-            true => DOZEN_A::DOZEN_1,
+            false => Dozen::Dozen0,
+            true => Dozen::Dozen1,
         }
-    }
-    #[doc = "Checks if the value of the field is `DOZEN_0`"]
-    #[inline(always)]
-    pub fn is_dozen_0(&self) -> bool {
-        **self == DOZEN_A::DOZEN_0
-    }
-    #[doc = "Checks if the value of the field is `DOZEN_1`"]
-    #[inline(always)]
-    pub fn is_dozen_1(&self) -> bool {
-        **self == DOZEN_A::DOZEN_1
-    }
-}
-impl core::ops::Deref for DOZEN_R {
-    type Target = crate::FieldReader<bool, DOZEN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DOZEN` writer - Doze Enable"]
-pub struct DOZEN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DOZEN_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DOZEN_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "ADC is enabled in Doze mode."]
     #[inline(always)]
-    pub fn dozen_0(self) -> &'a mut W {
-        self.variant(DOZEN_A::DOZEN_0)
+    pub fn is_dozen_0(&self) -> bool {
+        *self == Dozen::Dozen0
     }
     #[doc = "ADC is disabled in Doze mode."]
     #[inline(always)]
-    pub fn dozen_1(self) -> &'a mut W {
-        self.variant(DOZEN_A::DOZEN_1)
+    pub fn is_dozen_1(&self) -> bool {
+        *self == Dozen::Dozen1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `DOZEN` writer - Doze Enable"]
+pub type DozenW<'a, REG> = crate::BitWriter<'a, REG, Dozen>;
+impl<'a, REG> DozenW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "ADC is enabled in Doze mode."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn dozen_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Dozen::Dozen0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "ADC is disabled in Doze mode."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn dozen_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Dozen::Dozen1)
     }
 }
 #[doc = "Auto-Calibration Request\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CAL_REQ_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CalReq {
     #[doc = "0: No request for auto-calibration has been made."]
-    CAL_REQ_0 = 0,
+    CalReq0 = 0,
     #[doc = "1: A request for auto-calibration has been made"]
-    CAL_REQ_1 = 1,
+    CalReq1 = 1,
 }
-impl From<CAL_REQ_A> for bool {
+impl From<CalReq> for bool {
     #[inline(always)]
-    fn from(variant: CAL_REQ_A) -> Self {
+    fn from(variant: CalReq) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CAL_REQ` reader - Auto-Calibration Request"]
-pub struct CAL_REQ_R(crate::FieldReader<bool, CAL_REQ_A>);
-impl CAL_REQ_R {
+pub type CalReqR = crate::BitReader<CalReq>;
+impl CalReqR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CAL_REQ_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CAL_REQ_A {
+    pub const fn variant(&self) -> CalReq {
         match self.bits {
-            false => CAL_REQ_A::CAL_REQ_0,
-            true => CAL_REQ_A::CAL_REQ_1,
+            false => CalReq::CalReq0,
+            true => CalReq::CalReq1,
         }
-    }
-    #[doc = "Checks if the value of the field is `CAL_REQ_0`"]
-    #[inline(always)]
-    pub fn is_cal_req_0(&self) -> bool {
-        **self == CAL_REQ_A::CAL_REQ_0
-    }
-    #[doc = "Checks if the value of the field is `CAL_REQ_1`"]
-    #[inline(always)]
-    pub fn is_cal_req_1(&self) -> bool {
-        **self == CAL_REQ_A::CAL_REQ_1
-    }
-}
-impl core::ops::Deref for CAL_REQ_R {
-    type Target = crate::FieldReader<bool, CAL_REQ_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CAL_REQ` writer - Auto-Calibration Request"]
-pub struct CAL_REQ_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAL_REQ_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CAL_REQ_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No request for auto-calibration has been made."]
     #[inline(always)]
-    pub fn cal_req_0(self) -> &'a mut W {
-        self.variant(CAL_REQ_A::CAL_REQ_0)
+    pub fn is_cal_req_0(&self) -> bool {
+        *self == CalReq::CalReq0
     }
     #[doc = "A request for auto-calibration has been made"]
     #[inline(always)]
-    pub fn cal_req_1(self) -> &'a mut W {
-        self.variant(CAL_REQ_A::CAL_REQ_1)
+    pub fn is_cal_req_1(&self) -> bool {
+        *self == CalReq::CalReq1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CAL_REQ` writer - Auto-Calibration Request"]
+pub type CalReqW<'a, REG> = crate::BitWriter<'a, REG, CalReq>;
+impl<'a, REG> CalReqW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No request for auto-calibration has been made."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn cal_req_0(self) -> &'a mut crate::W<REG> {
+        self.variant(CalReq::CalReq0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "A request for auto-calibration has been made"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn cal_req_1(self) -> &'a mut crate::W<REG> {
+        self.variant(CalReq::CalReq1)
     }
 }
 #[doc = "Configure for offset calibration function\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CALOFS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Calofs {
     #[doc = "0: Calibration function disabled"]
-    CALOFS_0 = 0,
+    Calofs0 = 0,
     #[doc = "1: Request for offset calibration function"]
-    CALOFS_1 = 1,
+    Calofs1 = 1,
 }
-impl From<CALOFS_A> for bool {
+impl From<Calofs> for bool {
     #[inline(always)]
-    fn from(variant: CALOFS_A) -> Self {
+    fn from(variant: Calofs) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CALOFS` reader - Configure for offset calibration function"]
-pub struct CALOFS_R(crate::FieldReader<bool, CALOFS_A>);
-impl CALOFS_R {
+pub type CalofsR = crate::BitReader<Calofs>;
+impl CalofsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CALOFS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CALOFS_A {
+    pub const fn variant(&self) -> Calofs {
         match self.bits {
-            false => CALOFS_A::CALOFS_0,
-            true => CALOFS_A::CALOFS_1,
+            false => Calofs::Calofs0,
+            true => Calofs::Calofs1,
         }
-    }
-    #[doc = "Checks if the value of the field is `CALOFS_0`"]
-    #[inline(always)]
-    pub fn is_calofs_0(&self) -> bool {
-        **self == CALOFS_A::CALOFS_0
-    }
-    #[doc = "Checks if the value of the field is `CALOFS_1`"]
-    #[inline(always)]
-    pub fn is_calofs_1(&self) -> bool {
-        **self == CALOFS_A::CALOFS_1
-    }
-}
-impl core::ops::Deref for CALOFS_R {
-    type Target = crate::FieldReader<bool, CALOFS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CALOFS` writer - Configure for offset calibration function"]
-pub struct CALOFS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CALOFS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CALOFS_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Calibration function disabled"]
     #[inline(always)]
-    pub fn calofs_0(self) -> &'a mut W {
-        self.variant(CALOFS_A::CALOFS_0)
+    pub fn is_calofs_0(&self) -> bool {
+        *self == Calofs::Calofs0
     }
     #[doc = "Request for offset calibration function"]
     #[inline(always)]
-    pub fn calofs_1(self) -> &'a mut W {
-        self.variant(CALOFS_A::CALOFS_1)
+    pub fn is_calofs_1(&self) -> bool {
+        *self == Calofs::Calofs1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CALOFS` writer - Configure for offset calibration function"]
+pub type CalofsW<'a, REG> = crate::BitWriter<'a, REG, Calofs>;
+impl<'a, REG> CalofsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Calibration function disabled"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn calofs_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Calofs::Calofs0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Request for offset calibration function"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn calofs_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Calofs::Calofs1)
     }
 }
 #[doc = "Reset FIFO 0\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RSTFIFO0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rstfifo0 {
     #[doc = "0: No effect."]
-    RSTFIFO0_0 = 0,
+    Rstfifo0_0 = 0,
     #[doc = "1: FIFO 0 is reset."]
-    RSTFIFO0_1 = 1,
+    Rstfifo0_1 = 1,
 }
-impl From<RSTFIFO0_A> for bool {
+impl From<Rstfifo0> for bool {
     #[inline(always)]
-    fn from(variant: RSTFIFO0_A) -> Self {
+    fn from(variant: Rstfifo0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RSTFIFO0` reader - Reset FIFO 0"]
-pub struct RSTFIFO0_R(crate::FieldReader<bool, RSTFIFO0_A>);
-impl RSTFIFO0_R {
+pub type Rstfifo0R = crate::BitReader<Rstfifo0>;
+impl Rstfifo0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RSTFIFO0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RSTFIFO0_A {
+    pub const fn variant(&self) -> Rstfifo0 {
         match self.bits {
-            false => RSTFIFO0_A::RSTFIFO0_0,
-            true => RSTFIFO0_A::RSTFIFO0_1,
+            false => Rstfifo0::Rstfifo0_0,
+            true => Rstfifo0::Rstfifo0_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `RSTFIFO0_0`"]
-    #[inline(always)]
-    pub fn is_rstfifo0_0(&self) -> bool {
-        **self == RSTFIFO0_A::RSTFIFO0_0
-    }
-    #[doc = "Checks if the value of the field is `RSTFIFO0_1`"]
-    #[inline(always)]
-    pub fn is_rstfifo0_1(&self) -> bool {
-        **self == RSTFIFO0_A::RSTFIFO0_1
-    }
-}
-impl core::ops::Deref for RSTFIFO0_R {
-    type Target = crate::FieldReader<bool, RSTFIFO0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RSTFIFO0` writer - Reset FIFO 0"]
-pub struct RSTFIFO0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RSTFIFO0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RSTFIFO0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect."]
     #[inline(always)]
-    pub fn rstfifo0_0(self) -> &'a mut W {
-        self.variant(RSTFIFO0_A::RSTFIFO0_0)
+    pub fn is_rstfifo0_0(&self) -> bool {
+        *self == Rstfifo0::Rstfifo0_0
     }
     #[doc = "FIFO 0 is reset."]
     #[inline(always)]
-    pub fn rstfifo0_1(self) -> &'a mut W {
-        self.variant(RSTFIFO0_A::RSTFIFO0_1)
+    pub fn is_rstfifo0_1(&self) -> bool {
+        *self == Rstfifo0::Rstfifo0_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RSTFIFO0` writer - Reset FIFO 0"]
+pub type Rstfifo0W<'a, REG> = crate::BitWriter<'a, REG, Rstfifo0>;
+impl<'a, REG> Rstfifo0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn rstfifo0_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rstfifo0::Rstfifo0_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "FIFO 0 is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn rstfifo0_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rstfifo0::Rstfifo0_1)
     }
 }
 #[doc = "Reset FIFO 1\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RSTFIFO1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rstfifo1 {
     #[doc = "0: No effect."]
-    RSTFIFO1_0 = 0,
+    Rstfifo1_0 = 0,
     #[doc = "1: FIFO 1 is reset."]
-    RSTFIFO1_1 = 1,
+    Rstfifo1_1 = 1,
 }
-impl From<RSTFIFO1_A> for bool {
+impl From<Rstfifo1> for bool {
     #[inline(always)]
-    fn from(variant: RSTFIFO1_A) -> Self {
+    fn from(variant: Rstfifo1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RSTFIFO1` reader - Reset FIFO 1"]
-pub struct RSTFIFO1_R(crate::FieldReader<bool, RSTFIFO1_A>);
-impl RSTFIFO1_R {
+pub type Rstfifo1R = crate::BitReader<Rstfifo1>;
+impl Rstfifo1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RSTFIFO1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RSTFIFO1_A {
+    pub const fn variant(&self) -> Rstfifo1 {
         match self.bits {
-            false => RSTFIFO1_A::RSTFIFO1_0,
-            true => RSTFIFO1_A::RSTFIFO1_1,
+            false => Rstfifo1::Rstfifo1_0,
+            true => Rstfifo1::Rstfifo1_1,
         }
-    }
-    #[doc = "Checks if the value of the field is `RSTFIFO1_0`"]
-    #[inline(always)]
-    pub fn is_rstfifo1_0(&self) -> bool {
-        **self == RSTFIFO1_A::RSTFIFO1_0
-    }
-    #[doc = "Checks if the value of the field is `RSTFIFO1_1`"]
-    #[inline(always)]
-    pub fn is_rstfifo1_1(&self) -> bool {
-        **self == RSTFIFO1_A::RSTFIFO1_1
-    }
-}
-impl core::ops::Deref for RSTFIFO1_R {
-    type Target = crate::FieldReader<bool, RSTFIFO1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RSTFIFO1` writer - Reset FIFO 1"]
-pub struct RSTFIFO1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RSTFIFO1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RSTFIFO1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect."]
     #[inline(always)]
-    pub fn rstfifo1_0(self) -> &'a mut W {
-        self.variant(RSTFIFO1_A::RSTFIFO1_0)
+    pub fn is_rstfifo1_0(&self) -> bool {
+        *self == Rstfifo1::Rstfifo1_0
     }
     #[doc = "FIFO 1 is reset."]
     #[inline(always)]
-    pub fn rstfifo1_1(self) -> &'a mut W {
-        self.variant(RSTFIFO1_A::RSTFIFO1_1)
+    pub fn is_rstfifo1_1(&self) -> bool {
+        *self == Rstfifo1::Rstfifo1_1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RSTFIFO1` writer - Reset FIFO 1"]
+pub type Rstfifo1W<'a, REG> = crate::BitWriter<'a, REG, Rstfifo1>;
+impl<'a, REG> Rstfifo1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn rstfifo1_0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rstfifo1::Rstfifo1_0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "FIFO 1 is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn rstfifo1_1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rstfifo1::Rstfifo1_1)
     }
 }
 #[doc = "Auto-Calibration Averages\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CAL_AVGS_A {
+pub enum CalAvgs {
     #[doc = "0: Single conversion."]
-    CAL_AVGS_0 = 0,
+    CalAvgs0 = 0,
     #[doc = "1: 2 conversions averaged."]
-    CAL_AVGS_1 = 1,
+    CalAvgs1 = 1,
     #[doc = "2: 4 conversions averaged."]
-    CAL_AVGS_2 = 2,
+    CalAvgs2 = 2,
     #[doc = "3: 8 conversions averaged."]
-    CAL_AVGS_3 = 3,
+    CalAvgs3 = 3,
     #[doc = "4: 16 conversions averaged."]
-    CAL_AVGS_4 = 4,
+    CalAvgs4 = 4,
     #[doc = "5: 32 conversions averaged."]
-    CAL_AVGS_5 = 5,
+    CalAvgs5 = 5,
     #[doc = "6: 64 conversions averaged."]
-    CAL_AVGS_6 = 6,
+    CalAvgs6 = 6,
     #[doc = "7: 128 conversions averaged."]
-    CAL_AVGS_7 = 7,
+    CalAvgs7 = 7,
 }
-impl From<CAL_AVGS_A> for u8 {
+impl From<CalAvgs> for u8 {
     #[inline(always)]
-    fn from(variant: CAL_AVGS_A) -> Self {
+    fn from(variant: CalAvgs) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for CalAvgs {
+    type Ux = u8;
+}
+impl crate::IsEnum for CalAvgs {}
 #[doc = "Field `CAL_AVGS` reader - Auto-Calibration Averages"]
-pub struct CAL_AVGS_R(crate::FieldReader<u8, CAL_AVGS_A>);
-impl CAL_AVGS_R {
+pub type CalAvgsR = crate::FieldReader<CalAvgs>;
+impl CalAvgsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CAL_AVGS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CAL_AVGS_A {
+    pub const fn variant(&self) -> CalAvgs {
         match self.bits {
-            0 => CAL_AVGS_A::CAL_AVGS_0,
-            1 => CAL_AVGS_A::CAL_AVGS_1,
-            2 => CAL_AVGS_A::CAL_AVGS_2,
-            3 => CAL_AVGS_A::CAL_AVGS_3,
-            4 => CAL_AVGS_A::CAL_AVGS_4,
-            5 => CAL_AVGS_A::CAL_AVGS_5,
-            6 => CAL_AVGS_A::CAL_AVGS_6,
-            7 => CAL_AVGS_A::CAL_AVGS_7,
+            0 => CalAvgs::CalAvgs0,
+            1 => CalAvgs::CalAvgs1,
+            2 => CalAvgs::CalAvgs2,
+            3 => CalAvgs::CalAvgs3,
+            4 => CalAvgs::CalAvgs4,
+            5 => CalAvgs::CalAvgs5,
+            6 => CalAvgs::CalAvgs6,
+            7 => CalAvgs::CalAvgs7,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_0`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_0(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_0
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_1`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_1(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_1
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_2`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_2(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_2
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_3`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_3(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_3
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_4`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_4(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_4
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_5`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_5(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_5
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_6`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_6(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_6
-    }
-    #[doc = "Checks if the value of the field is `CAL_AVGS_7`"]
-    #[inline(always)]
-    pub fn is_cal_avgs_7(&self) -> bool {
-        **self == CAL_AVGS_A::CAL_AVGS_7
-    }
-}
-impl core::ops::Deref for CAL_AVGS_R {
-    type Target = crate::FieldReader<u8, CAL_AVGS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CAL_AVGS` writer - Auto-Calibration Averages"]
-pub struct CAL_AVGS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CAL_AVGS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CAL_AVGS_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Single conversion."]
     #[inline(always)]
-    pub fn cal_avgs_0(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_0)
+    pub fn is_cal_avgs_0(&self) -> bool {
+        *self == CalAvgs::CalAvgs0
     }
     #[doc = "2 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_1(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_1)
+    pub fn is_cal_avgs_1(&self) -> bool {
+        *self == CalAvgs::CalAvgs1
     }
     #[doc = "4 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_2(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_2)
+    pub fn is_cal_avgs_2(&self) -> bool {
+        *self == CalAvgs::CalAvgs2
     }
     #[doc = "8 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_3(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_3)
+    pub fn is_cal_avgs_3(&self) -> bool {
+        *self == CalAvgs::CalAvgs3
     }
     #[doc = "16 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_4(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_4)
+    pub fn is_cal_avgs_4(&self) -> bool {
+        *self == CalAvgs::CalAvgs4
     }
     #[doc = "32 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_5(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_5)
+    pub fn is_cal_avgs_5(&self) -> bool {
+        *self == CalAvgs::CalAvgs5
     }
     #[doc = "64 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_6(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_6)
+    pub fn is_cal_avgs_6(&self) -> bool {
+        *self == CalAvgs::CalAvgs6
     }
     #[doc = "128 conversions averaged."]
     #[inline(always)]
-    pub fn cal_avgs_7(self) -> &'a mut W {
-        self.variant(CAL_AVGS_A::CAL_AVGS_7)
+    pub fn is_cal_avgs_7(&self) -> bool {
+        *self == CalAvgs::CalAvgs7
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `CAL_AVGS` writer - Auto-Calibration Averages"]
+pub type CalAvgsW<'a, REG> = crate::FieldWriter<'a, REG, 3, CalAvgs, crate::Safe>;
+impl<'a, REG> CalAvgsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Single conversion."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 16)) | ((value as u32 & 0x07) << 16);
-        self.w
+    pub fn cal_avgs_0(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs0)
+    }
+    #[doc = "2 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_1(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs1)
+    }
+    #[doc = "4 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_2(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs2)
+    }
+    #[doc = "8 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_3(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs3)
+    }
+    #[doc = "16 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_4(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs4)
+    }
+    #[doc = "32 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_5(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs5)
+    }
+    #[doc = "64 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_6(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs6)
+    }
+    #[doc = "128 conversions averaged."]
+    #[inline(always)]
+    pub fn cal_avgs_7(self) -> &'a mut crate::W<REG> {
+        self.variant(CalAvgs::CalAvgs7)
     }
 }
 impl R {
     #[doc = "Bit 0 - ADC Enable"]
     #[inline(always)]
-    pub fn adcen(&self) -> ADCEN_R {
-        ADCEN_R::new((self.bits & 0x01) != 0)
+    pub fn adcen(&self) -> AdcenR {
+        AdcenR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Software Reset"]
     #[inline(always)]
-    pub fn rst(&self) -> RST_R {
-        RST_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn rst(&self) -> RstR {
+        RstR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Doze Enable"]
     #[inline(always)]
-    pub fn dozen(&self) -> DOZEN_R {
-        DOZEN_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn dozen(&self) -> DozenR {
+        DozenR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Auto-Calibration Request"]
     #[inline(always)]
-    pub fn cal_req(&self) -> CAL_REQ_R {
-        CAL_REQ_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn cal_req(&self) -> CalReqR {
+        CalReqR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Configure for offset calibration function"]
     #[inline(always)]
-    pub fn calofs(&self) -> CALOFS_R {
-        CALOFS_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn calofs(&self) -> CalofsR {
+        CalofsR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 8 - Reset FIFO 0"]
     #[inline(always)]
-    pub fn rstfifo0(&self) -> RSTFIFO0_R {
-        RSTFIFO0_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn rstfifo0(&self) -> Rstfifo0R {
+        Rstfifo0R::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Reset FIFO 1"]
     #[inline(always)]
-    pub fn rstfifo1(&self) -> RSTFIFO1_R {
-        RSTFIFO1_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn rstfifo1(&self) -> Rstfifo1R {
+        Rstfifo1R::new(((self.bits >> 9) & 1) != 0)
     }
     #[doc = "Bits 16:18 - Auto-Calibration Averages"]
     #[inline(always)]
-    pub fn cal_avgs(&self) -> CAL_AVGS_R {
-        CAL_AVGS_R::new(((self.bits >> 16) & 0x07) as u8)
+    pub fn cal_avgs(&self) -> CalAvgsR {
+        CalAvgsR::new(((self.bits >> 16) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - ADC Enable"]
     #[inline(always)]
-    pub fn adcen(&mut self) -> ADCEN_W {
-        ADCEN_W { w: self }
+    pub fn adcen(&mut self) -> AdcenW<CtrlSpec> {
+        AdcenW::new(self, 0)
     }
     #[doc = "Bit 1 - Software Reset"]
     #[inline(always)]
-    pub fn rst(&mut self) -> RST_W {
-        RST_W { w: self }
+    pub fn rst(&mut self) -> RstW<CtrlSpec> {
+        RstW::new(self, 1)
     }
     #[doc = "Bit 2 - Doze Enable"]
     #[inline(always)]
-    pub fn dozen(&mut self) -> DOZEN_W {
-        DOZEN_W { w: self }
+    pub fn dozen(&mut self) -> DozenW<CtrlSpec> {
+        DozenW::new(self, 2)
     }
     #[doc = "Bit 3 - Auto-Calibration Request"]
     #[inline(always)]
-    pub fn cal_req(&mut self) -> CAL_REQ_W {
-        CAL_REQ_W { w: self }
+    pub fn cal_req(&mut self) -> CalReqW<CtrlSpec> {
+        CalReqW::new(self, 3)
     }
     #[doc = "Bit 4 - Configure for offset calibration function"]
     #[inline(always)]
-    pub fn calofs(&mut self) -> CALOFS_W {
-        CALOFS_W { w: self }
+    pub fn calofs(&mut self) -> CalofsW<CtrlSpec> {
+        CalofsW::new(self, 4)
     }
     #[doc = "Bit 8 - Reset FIFO 0"]
     #[inline(always)]
-    pub fn rstfifo0(&mut self) -> RSTFIFO0_W {
-        RSTFIFO0_W { w: self }
+    pub fn rstfifo0(&mut self) -> Rstfifo0W<CtrlSpec> {
+        Rstfifo0W::new(self, 8)
     }
     #[doc = "Bit 9 - Reset FIFO 1"]
     #[inline(always)]
-    pub fn rstfifo1(&mut self) -> RSTFIFO1_W {
-        RSTFIFO1_W { w: self }
+    pub fn rstfifo1(&mut self) -> Rstfifo1W<CtrlSpec> {
+        Rstfifo1W::new(self, 9)
     }
     #[doc = "Bits 16:18 - Auto-Calibration Averages"]
     #[inline(always)]
-    pub fn cal_avgs(&mut self) -> CAL_AVGS_W {
-        CAL_AVGS_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cal_avgs(&mut self) -> CalAvgsW<CtrlSpec> {
+        CalAvgsW::new(self, 16)
     }
 }
-#[doc = "ADC Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctrl](index.html) module"]
-pub struct CTRL_SPEC;
-impl crate::RegisterSpec for CTRL_SPEC {
+#[doc = "ADC Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CtrlSpec;
+impl crate::RegisterSpec for CtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ctrl::R](R) reader structure"]
-impl crate::Readable for CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ctrl::W](W) writer structure"]
-impl crate::Writable for CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ctrl::R`](R) reader structure"]
+impl crate::Readable for CtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
+impl crate::Writable for CtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
-impl crate::Resettable for CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CtrlSpec {
+    const RESET_VALUE: u32 = 0;
 }

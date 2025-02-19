@@ -1,735 +1,718 @@
 #[doc = "Register `COMP` reader"]
-pub struct R(crate::R<COMP_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<COMP_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<COMP_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<COMP_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CompSpec>;
 #[doc = "Register `COMP` writer"]
-pub struct W(crate::W<COMP_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<COMP_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<COMP_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<COMP_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CompSpec>;
 #[doc = "Hysteris when hyst = '1'.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum HYST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Hyst {
     #[doc = "0: Hysteresis is disable."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: Hysteresis is enable."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<HYST_A> for bool {
+impl From<Hyst> for bool {
     #[inline(always)]
-    fn from(variant: HYST_A) -> Self {
+    fn from(variant: Hyst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `HYST` reader - Hysteris when hyst = '1'."]
-pub struct HYST_R(crate::FieldReader<bool, HYST_A>);
-impl HYST_R {
+pub type HystR = crate::BitReader<Hyst>;
+impl HystR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        HYST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> HYST_A {
+    pub const fn variant(&self) -> Hyst {
         match self.bits {
-            false => HYST_A::DISABLE,
-            true => HYST_A::ENABLE,
+            false => Hyst::Disable,
+            true => Hyst::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == HYST_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == HYST_A::ENABLE
-    }
-}
-impl core::ops::Deref for HYST_R {
-    type Target = crate::FieldReader<bool, HYST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `HYST` writer - Hysteris when hyst = '1'."]
-pub struct HYST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HYST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: HYST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Hysteresis is disable."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(HYST_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Hyst::Disable
     }
     #[doc = "Hysteresis is enable."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(HYST_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Hyst::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `HYST` writer - Hysteris when hyst = '1'."]
+pub type HystW<'a, REG> = crate::BitWriter<'a, REG, Hyst>;
+impl<'a, REG> HystW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Hysteresis is disable."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Hyst::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Hysteresis is enable."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Hyst::Enable)
     }
 }
 #[doc = "Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder).\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VREFINPUT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Vrefinput {
     #[doc = "0: Select internal VREF."]
-    INTERNALREF = 0,
+    Internalref = 0,
     #[doc = "1: Select VDDA."]
-    VDDA = 1,
+    Vdda = 1,
 }
-impl From<VREFINPUT_A> for bool {
+impl From<Vrefinput> for bool {
     #[inline(always)]
-    fn from(variant: VREFINPUT_A) -> Self {
+    fn from(variant: Vrefinput) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VREFINPUT` reader - Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder)."]
-pub struct VREFINPUT_R(crate::FieldReader<bool, VREFINPUT_A>);
-impl VREFINPUT_R {
+pub type VrefinputR = crate::BitReader<Vrefinput>;
+impl VrefinputR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VREFINPUT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VREFINPUT_A {
+    pub const fn variant(&self) -> Vrefinput {
         match self.bits {
-            false => VREFINPUT_A::INTERNALREF,
-            true => VREFINPUT_A::VDDA,
+            false => Vrefinput::Internalref,
+            true => Vrefinput::Vdda,
         }
-    }
-    #[doc = "Checks if the value of the field is `INTERNALREF`"]
-    #[inline(always)]
-    pub fn is_internalref(&self) -> bool {
-        **self == VREFINPUT_A::INTERNALREF
-    }
-    #[doc = "Checks if the value of the field is `VDDA`"]
-    #[inline(always)]
-    pub fn is_vdda(&self) -> bool {
-        **self == VREFINPUT_A::VDDA
-    }
-}
-impl core::ops::Deref for VREFINPUT_R {
-    type Target = crate::FieldReader<bool, VREFINPUT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `VREFINPUT` writer - Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder)."]
-pub struct VREFINPUT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VREFINPUT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: VREFINPUT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Select internal VREF."]
     #[inline(always)]
-    pub fn internalref(self) -> &'a mut W {
-        self.variant(VREFINPUT_A::INTERNALREF)
+    pub fn is_internalref(&self) -> bool {
+        *self == Vrefinput::Internalref
     }
     #[doc = "Select VDDA."]
     #[inline(always)]
-    pub fn vdda(self) -> &'a mut W {
-        self.variant(VREFINPUT_A::VDDA)
+    pub fn is_vdda(&self) -> bool {
+        *self == Vrefinput::Vdda
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `VREFINPUT` writer - Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder)."]
+pub type VrefinputW<'a, REG> = crate::BitWriter<'a, REG, Vrefinput>;
+impl<'a, REG> VrefinputW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Select internal VREF."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn internalref(self) -> &'a mut crate::W<REG> {
+        self.variant(Vrefinput::Internalref)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Select VDDA."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn vdda(self) -> &'a mut crate::W<REG> {
+        self.variant(Vrefinput::Vdda)
     }
 }
 #[doc = "Low power mode.\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOWPOWER_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Lowpower {
     #[doc = "0: High speed mode."]
-    HIGHSPEED = 0,
+    Highspeed = 0,
     #[doc = "1: Low power mode (Low speed)."]
-    LOWSPEED = 1,
+    Lowspeed = 1,
 }
-impl From<LOWPOWER_A> for bool {
+impl From<Lowpower> for bool {
     #[inline(always)]
-    fn from(variant: LOWPOWER_A) -> Self {
+    fn from(variant: Lowpower) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `LOWPOWER` reader - Low power mode."]
-pub struct LOWPOWER_R(crate::FieldReader<bool, LOWPOWER_A>);
-impl LOWPOWER_R {
+pub type LowpowerR = crate::BitReader<Lowpower>;
+impl LowpowerR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        LOWPOWER_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> LOWPOWER_A {
+    pub const fn variant(&self) -> Lowpower {
         match self.bits {
-            false => LOWPOWER_A::HIGHSPEED,
-            true => LOWPOWER_A::LOWSPEED,
+            false => Lowpower::Highspeed,
+            true => Lowpower::Lowspeed,
         }
-    }
-    #[doc = "Checks if the value of the field is `HIGHSPEED`"]
-    #[inline(always)]
-    pub fn is_highspeed(&self) -> bool {
-        **self == LOWPOWER_A::HIGHSPEED
-    }
-    #[doc = "Checks if the value of the field is `LOWSPEED`"]
-    #[inline(always)]
-    pub fn is_lowspeed(&self) -> bool {
-        **self == LOWPOWER_A::LOWSPEED
-    }
-}
-impl core::ops::Deref for LOWPOWER_R {
-    type Target = crate::FieldReader<bool, LOWPOWER_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `LOWPOWER` writer - Low power mode."]
-pub struct LOWPOWER_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> LOWPOWER_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: LOWPOWER_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "High speed mode."]
     #[inline(always)]
-    pub fn highspeed(self) -> &'a mut W {
-        self.variant(LOWPOWER_A::HIGHSPEED)
+    pub fn is_highspeed(&self) -> bool {
+        *self == Lowpower::Highspeed
     }
     #[doc = "Low power mode (Low speed)."]
     #[inline(always)]
-    pub fn lowspeed(self) -> &'a mut W {
-        self.variant(LOWPOWER_A::LOWSPEED)
+    pub fn is_lowspeed(&self) -> bool {
+        *self == Lowpower::Lowspeed
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `LOWPOWER` writer - Low power mode."]
+pub type LowpowerW<'a, REG> = crate::BitWriter<'a, REG, Lowpower>;
+impl<'a, REG> LowpowerW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "High speed mode."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn highspeed(self) -> &'a mut crate::W<REG> {
+        self.variant(Lowpower::Highspeed)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Low power mode (Low speed)."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn lowspeed(self) -> &'a mut crate::W<REG> {
+        self.variant(Lowpower::Lowspeed)
     }
 }
 #[doc = "Control word for P multiplexer:.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PMUX_A {
+pub enum Pmux {
     #[doc = "0: VREF (See fiedl VREFINPUT)."]
-    VREF = 0,
+    Vref = 0,
     #[doc = "1: Pin P0_0."]
-    CMP0_A = 1,
+    Cmp0A = 1,
     #[doc = "2: Pin P0_9."]
-    CMP0_B = 2,
+    Cmp0B = 2,
     #[doc = "3: Pin P0_18."]
-    CMP0_C = 3,
+    Cmp0C = 3,
     #[doc = "4: Pin P1_14."]
-    CMP0_D = 4,
+    Cmp0D = 4,
     #[doc = "5: Pin P2_23."]
-    CMP0_E = 5,
+    Cmp0E = 5,
 }
-impl From<PMUX_A> for u8 {
+impl From<Pmux> for u8 {
     #[inline(always)]
-    fn from(variant: PMUX_A) -> Self {
+    fn from(variant: Pmux) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Pmux {
+    type Ux = u8;
+}
+impl crate::IsEnum for Pmux {}
 #[doc = "Field `PMUX` reader - Control word for P multiplexer:."]
-pub struct PMUX_R(crate::FieldReader<u8, PMUX_A>);
-impl PMUX_R {
+pub type PmuxR = crate::FieldReader<Pmux>;
+impl PmuxR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PMUX_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<PMUX_A> {
+    pub const fn variant(&self) -> Option<Pmux> {
         match self.bits {
-            0 => Some(PMUX_A::VREF),
-            1 => Some(PMUX_A::CMP0_A),
-            2 => Some(PMUX_A::CMP0_B),
-            3 => Some(PMUX_A::CMP0_C),
-            4 => Some(PMUX_A::CMP0_D),
-            5 => Some(PMUX_A::CMP0_E),
+            0 => Some(Pmux::Vref),
+            1 => Some(Pmux::Cmp0A),
+            2 => Some(Pmux::Cmp0B),
+            3 => Some(Pmux::Cmp0C),
+            4 => Some(Pmux::Cmp0D),
+            5 => Some(Pmux::Cmp0E),
             _ => None,
         }
-    }
-    #[doc = "Checks if the value of the field is `VREF`"]
-    #[inline(always)]
-    pub fn is_vref(&self) -> bool {
-        **self == PMUX_A::VREF
-    }
-    #[doc = "Checks if the value of the field is `CMP0_A`"]
-    #[inline(always)]
-    pub fn is_cmp0_a(&self) -> bool {
-        **self == PMUX_A::CMP0_A
-    }
-    #[doc = "Checks if the value of the field is `CMP0_B`"]
-    #[inline(always)]
-    pub fn is_cmp0_b(&self) -> bool {
-        **self == PMUX_A::CMP0_B
-    }
-    #[doc = "Checks if the value of the field is `CMP0_C`"]
-    #[inline(always)]
-    pub fn is_cmp0_c(&self) -> bool {
-        **self == PMUX_A::CMP0_C
-    }
-    #[doc = "Checks if the value of the field is `CMP0_D`"]
-    #[inline(always)]
-    pub fn is_cmp0_d(&self) -> bool {
-        **self == PMUX_A::CMP0_D
-    }
-    #[doc = "Checks if the value of the field is `CMP0_E`"]
-    #[inline(always)]
-    pub fn is_cmp0_e(&self) -> bool {
-        **self == PMUX_A::CMP0_E
-    }
-}
-impl core::ops::Deref for PMUX_R {
-    type Target = crate::FieldReader<u8, PMUX_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PMUX` writer - Control word for P multiplexer:."]
-pub struct PMUX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PMUX_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PMUX_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
     }
     #[doc = "VREF (See fiedl VREFINPUT)."]
     #[inline(always)]
-    pub fn vref(self) -> &'a mut W {
-        self.variant(PMUX_A::VREF)
+    pub fn is_vref(&self) -> bool {
+        *self == Pmux::Vref
     }
     #[doc = "Pin P0_0."]
     #[inline(always)]
-    pub fn cmp0_a(self) -> &'a mut W {
-        self.variant(PMUX_A::CMP0_A)
+    pub fn is_cmp0_a(&self) -> bool {
+        *self == Pmux::Cmp0A
     }
     #[doc = "Pin P0_9."]
     #[inline(always)]
-    pub fn cmp0_b(self) -> &'a mut W {
-        self.variant(PMUX_A::CMP0_B)
+    pub fn is_cmp0_b(&self) -> bool {
+        *self == Pmux::Cmp0B
     }
     #[doc = "Pin P0_18."]
     #[inline(always)]
-    pub fn cmp0_c(self) -> &'a mut W {
-        self.variant(PMUX_A::CMP0_C)
+    pub fn is_cmp0_c(&self) -> bool {
+        *self == Pmux::Cmp0C
     }
     #[doc = "Pin P1_14."]
     #[inline(always)]
-    pub fn cmp0_d(self) -> &'a mut W {
-        self.variant(PMUX_A::CMP0_D)
+    pub fn is_cmp0_d(&self) -> bool {
+        *self == Pmux::Cmp0D
     }
     #[doc = "Pin P2_23."]
     #[inline(always)]
-    pub fn cmp0_e(self) -> &'a mut W {
-        self.variant(PMUX_A::CMP0_E)
+    pub fn is_cmp0_e(&self) -> bool {
+        *self == Pmux::Cmp0E
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `PMUX` writer - Control word for P multiplexer:."]
+pub type PmuxW<'a, REG> = crate::FieldWriter<'a, REG, 3, Pmux>;
+impl<'a, REG> PmuxW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "VREF (See fiedl VREFINPUT)."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 4)) | ((value as u32 & 0x07) << 4);
-        self.w
+    pub fn vref(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Vref)
+    }
+    #[doc = "Pin P0_0."]
+    #[inline(always)]
+    pub fn cmp0_a(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Cmp0A)
+    }
+    #[doc = "Pin P0_9."]
+    #[inline(always)]
+    pub fn cmp0_b(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Cmp0B)
+    }
+    #[doc = "Pin P0_18."]
+    #[inline(always)]
+    pub fn cmp0_c(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Cmp0C)
+    }
+    #[doc = "Pin P1_14."]
+    #[inline(always)]
+    pub fn cmp0_d(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Cmp0D)
+    }
+    #[doc = "Pin P2_23."]
+    #[inline(always)]
+    pub fn cmp0_e(self) -> &'a mut crate::W<REG> {
+        self.variant(Pmux::Cmp0E)
     }
 }
 #[doc = "Control word for N multiplexer:.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum NMUX_A {
+pub enum Nmux {
     #[doc = "0: VREF (See field VREFINPUT)."]
-    VREF = 0,
+    Vref = 0,
     #[doc = "1: Pin P0_0."]
-    CMP0_A = 1,
+    Cmp0A = 1,
     #[doc = "2: Pin P0_9."]
-    CMP0_B = 2,
+    Cmp0B = 2,
     #[doc = "3: Pin P0_18."]
-    CMP0_C = 3,
+    Cmp0C = 3,
     #[doc = "4: Pin P1_14."]
-    CMP0_D = 4,
+    Cmp0D = 4,
     #[doc = "5: Pin P2_23."]
-    CMP0_E = 5,
+    Cmp0E = 5,
 }
-impl From<NMUX_A> for u8 {
+impl From<Nmux> for u8 {
     #[inline(always)]
-    fn from(variant: NMUX_A) -> Self {
+    fn from(variant: Nmux) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Nmux {
+    type Ux = u8;
+}
+impl crate::IsEnum for Nmux {}
 #[doc = "Field `NMUX` reader - Control word for N multiplexer:."]
-pub struct NMUX_R(crate::FieldReader<u8, NMUX_A>);
-impl NMUX_R {
+pub type NmuxR = crate::FieldReader<Nmux>;
+impl NmuxR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        NMUX_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<NMUX_A> {
+    pub const fn variant(&self) -> Option<Nmux> {
         match self.bits {
-            0 => Some(NMUX_A::VREF),
-            1 => Some(NMUX_A::CMP0_A),
-            2 => Some(NMUX_A::CMP0_B),
-            3 => Some(NMUX_A::CMP0_C),
-            4 => Some(NMUX_A::CMP0_D),
-            5 => Some(NMUX_A::CMP0_E),
+            0 => Some(Nmux::Vref),
+            1 => Some(Nmux::Cmp0A),
+            2 => Some(Nmux::Cmp0B),
+            3 => Some(Nmux::Cmp0C),
+            4 => Some(Nmux::Cmp0D),
+            5 => Some(Nmux::Cmp0E),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `VREF`"]
-    #[inline(always)]
-    pub fn is_vref(&self) -> bool {
-        **self == NMUX_A::VREF
-    }
-    #[doc = "Checks if the value of the field is `CMP0_A`"]
-    #[inline(always)]
-    pub fn is_cmp0_a(&self) -> bool {
-        **self == NMUX_A::CMP0_A
-    }
-    #[doc = "Checks if the value of the field is `CMP0_B`"]
-    #[inline(always)]
-    pub fn is_cmp0_b(&self) -> bool {
-        **self == NMUX_A::CMP0_B
-    }
-    #[doc = "Checks if the value of the field is `CMP0_C`"]
-    #[inline(always)]
-    pub fn is_cmp0_c(&self) -> bool {
-        **self == NMUX_A::CMP0_C
-    }
-    #[doc = "Checks if the value of the field is `CMP0_D`"]
-    #[inline(always)]
-    pub fn is_cmp0_d(&self) -> bool {
-        **self == NMUX_A::CMP0_D
-    }
-    #[doc = "Checks if the value of the field is `CMP0_E`"]
-    #[inline(always)]
-    pub fn is_cmp0_e(&self) -> bool {
-        **self == NMUX_A::CMP0_E
-    }
-}
-impl core::ops::Deref for NMUX_R {
-    type Target = crate::FieldReader<u8, NMUX_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `NMUX` writer - Control word for N multiplexer:."]
-pub struct NMUX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NMUX_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: NMUX_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "VREF (See field VREFINPUT)."]
     #[inline(always)]
-    pub fn vref(self) -> &'a mut W {
-        self.variant(NMUX_A::VREF)
+    pub fn is_vref(&self) -> bool {
+        *self == Nmux::Vref
     }
     #[doc = "Pin P0_0."]
     #[inline(always)]
-    pub fn cmp0_a(self) -> &'a mut W {
-        self.variant(NMUX_A::CMP0_A)
+    pub fn is_cmp0_a(&self) -> bool {
+        *self == Nmux::Cmp0A
     }
     #[doc = "Pin P0_9."]
     #[inline(always)]
-    pub fn cmp0_b(self) -> &'a mut W {
-        self.variant(NMUX_A::CMP0_B)
+    pub fn is_cmp0_b(&self) -> bool {
+        *self == Nmux::Cmp0B
     }
     #[doc = "Pin P0_18."]
     #[inline(always)]
-    pub fn cmp0_c(self) -> &'a mut W {
-        self.variant(NMUX_A::CMP0_C)
+    pub fn is_cmp0_c(&self) -> bool {
+        *self == Nmux::Cmp0C
     }
     #[doc = "Pin P1_14."]
     #[inline(always)]
-    pub fn cmp0_d(self) -> &'a mut W {
-        self.variant(NMUX_A::CMP0_D)
+    pub fn is_cmp0_d(&self) -> bool {
+        *self == Nmux::Cmp0D
     }
     #[doc = "Pin P2_23."]
     #[inline(always)]
-    pub fn cmp0_e(self) -> &'a mut W {
-        self.variant(NMUX_A::CMP0_E)
+    pub fn is_cmp0_e(&self) -> bool {
+        *self == Nmux::Cmp0E
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `NMUX` writer - Control word for N multiplexer:."]
+pub type NmuxW<'a, REG> = crate::FieldWriter<'a, REG, 3, Nmux>;
+impl<'a, REG> NmuxW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "VREF (See field VREFINPUT)."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 7)) | ((value as u32 & 0x07) << 7);
-        self.w
+    pub fn vref(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Vref)
+    }
+    #[doc = "Pin P0_0."]
+    #[inline(always)]
+    pub fn cmp0_a(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Cmp0A)
+    }
+    #[doc = "Pin P0_9."]
+    #[inline(always)]
+    pub fn cmp0_b(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Cmp0B)
+    }
+    #[doc = "Pin P0_18."]
+    #[inline(always)]
+    pub fn cmp0_c(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Cmp0C)
+    }
+    #[doc = "Pin P1_14."]
+    #[inline(always)]
+    pub fn cmp0_d(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Cmp0D)
+    }
+    #[doc = "Pin P2_23."]
+    #[inline(always)]
+    pub fn cmp0_e(self) -> &'a mut crate::W<REG> {
+        self.variant(Nmux::Cmp0E)
     }
 }
 #[doc = "Field `VREF` reader - Control reference voltage step, per steps of (VREFINPUT/31)."]
-pub struct VREF_R(crate::FieldReader<u8, u8>);
-impl VREF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        VREF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for VREF_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type VrefR = crate::FieldReader;
 #[doc = "Field `VREF` writer - Control reference voltage step, per steps of (VREFINPUT/31)."]
-pub struct VREF_W<'a> {
-    w: &'a mut W,
+pub type VrefW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
+#[doc = "Control the filtering of the Analog Comparator output.\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum FiltercgfSamplemode {
+    #[doc = "0: Bypass mode."]
+    Bypass = 0,
+    #[doc = "1: Filter 1 clock period."]
+    Filter1clk = 1,
+    #[doc = "2: Filter 2 clock period."]
+    Filter2clk = 2,
+    #[doc = "3: Filter 3 clock period."]
+    Filter3clk = 3,
 }
-impl<'a> VREF_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<FiltercgfSamplemode> for u8 {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 10)) | ((value as u32 & 0x1f) << 10);
-        self.w
+    fn from(variant: FiltercgfSamplemode) -> Self {
+        variant as _
     }
 }
-#[doc = "Field `FILTERCGF_SAMPLEMODE` reader - Filter Sample mode."]
-pub struct FILTERCGF_SAMPLEMODE_R(crate::FieldReader<u8, u8>);
-impl FILTERCGF_SAMPLEMODE_R {
+impl crate::FieldSpec for FiltercgfSamplemode {
+    type Ux = u8;
+}
+impl crate::IsEnum for FiltercgfSamplemode {}
+#[doc = "Field `FILTERCGF_SAMPLEMODE` reader - Control the filtering of the Analog Comparator output."]
+pub type FiltercgfSamplemodeR = crate::FieldReader<FiltercgfSamplemode>;
+impl FiltercgfSamplemodeR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        FILTERCGF_SAMPLEMODE_R(crate::FieldReader::new(bits))
+    pub const fn variant(&self) -> FiltercgfSamplemode {
+        match self.bits {
+            0 => FiltercgfSamplemode::Bypass,
+            1 => FiltercgfSamplemode::Filter1clk,
+            2 => FiltercgfSamplemode::Filter2clk,
+            3 => FiltercgfSamplemode::Filter3clk,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Bypass mode."]
+    #[inline(always)]
+    pub fn is_bypass(&self) -> bool {
+        *self == FiltercgfSamplemode::Bypass
+    }
+    #[doc = "Filter 1 clock period."]
+    #[inline(always)]
+    pub fn is_filter1clk(&self) -> bool {
+        *self == FiltercgfSamplemode::Filter1clk
+    }
+    #[doc = "Filter 2 clock period."]
+    #[inline(always)]
+    pub fn is_filter2clk(&self) -> bool {
+        *self == FiltercgfSamplemode::Filter2clk
+    }
+    #[doc = "Filter 3 clock period."]
+    #[inline(always)]
+    pub fn is_filter3clk(&self) -> bool {
+        *self == FiltercgfSamplemode::Filter3clk
     }
 }
-impl core::ops::Deref for FILTERCGF_SAMPLEMODE_R {
-    type Target = crate::FieldReader<u8, u8>;
+#[doc = "Field `FILTERCGF_SAMPLEMODE` writer - Control the filtering of the Analog Comparator output."]
+pub type FiltercgfSamplemodeW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, FiltercgfSamplemode, crate::Safe>;
+impl<'a, REG> FiltercgfSamplemodeW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Bypass mode."]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub fn bypass(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfSamplemode::Bypass)
+    }
+    #[doc = "Filter 1 clock period."]
+    #[inline(always)]
+    pub fn filter1clk(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfSamplemode::Filter1clk)
+    }
+    #[doc = "Filter 2 clock period."]
+    #[inline(always)]
+    pub fn filter2clk(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfSamplemode::Filter2clk)
+    }
+    #[doc = "Filter 3 clock period."]
+    #[inline(always)]
+    pub fn filter3clk(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfSamplemode::Filter3clk)
     }
 }
-#[doc = "Field `FILTERCGF_SAMPLEMODE` writer - Filter Sample mode."]
-pub struct FILTERCGF_SAMPLEMODE_W<'a> {
-    w: &'a mut W,
+#[doc = "Filter Clock divider.\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum FiltercgfClkdiv {
+    #[doc = "0: Filter clock period duration equals 1 Analog Comparator clock period."]
+    Filter1clkPeriod = 0,
+    #[doc = "1: Filter clock period duration equals 2 Analog Comparator clock period."]
+    Filter2clkPeriod = 1,
+    #[doc = "2: Filter clock period duration equals 4 Analog Comparator clock period."]
+    Filter4clkPeriod = 2,
+    #[doc = "3: Filter clock period duration equals 8 Analog Comparator clock period."]
+    Filter8clkPeriod = 3,
+    #[doc = "4: Filter clock period duration equals 16 Analog Comparator clock period."]
+    Filter16clkPeriod = 4,
+    #[doc = "5: Filter clock period duration equals 32 Analog Comparator clock period."]
+    Filter32clkPeriod = 5,
+    #[doc = "6: Filter clock period duration equals 64 Analog Comparator clock period."]
+    Filter64clkPeriod = 6,
+    #[doc = "7: Filter clock period duration equals 128 Analog Comparator clock period."]
+    Filter128clkPeriod = 7,
 }
-impl<'a> FILTERCGF_SAMPLEMODE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+impl From<FiltercgfClkdiv> for u8 {
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | ((value as u32 & 0x03) << 16);
-        self.w
+    fn from(variant: FiltercgfClkdiv) -> Self {
+        variant as _
     }
 }
-#[doc = "Field `FILTERCGF_CLKDIV` reader - Filter Clock div ."]
-pub struct FILTERCGF_CLKDIV_R(crate::FieldReader<u8, u8>);
-impl FILTERCGF_CLKDIV_R {
+impl crate::FieldSpec for FiltercgfClkdiv {
+    type Ux = u8;
+}
+impl crate::IsEnum for FiltercgfClkdiv {}
+#[doc = "Field `FILTERCGF_CLKDIV` reader - Filter Clock divider."]
+pub type FiltercgfClkdivR = crate::FieldReader<FiltercgfClkdiv>;
+impl FiltercgfClkdivR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        FILTERCGF_CLKDIV_R(crate::FieldReader::new(bits))
+    pub const fn variant(&self) -> FiltercgfClkdiv {
+        match self.bits {
+            0 => FiltercgfClkdiv::Filter1clkPeriod,
+            1 => FiltercgfClkdiv::Filter2clkPeriod,
+            2 => FiltercgfClkdiv::Filter4clkPeriod,
+            3 => FiltercgfClkdiv::Filter8clkPeriod,
+            4 => FiltercgfClkdiv::Filter16clkPeriod,
+            5 => FiltercgfClkdiv::Filter32clkPeriod,
+            6 => FiltercgfClkdiv::Filter64clkPeriod,
+            7 => FiltercgfClkdiv::Filter128clkPeriod,
+            _ => unreachable!(),
+        }
+    }
+    #[doc = "Filter clock period duration equals 1 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_1clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter1clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 2 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_2clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter2clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 4 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_4clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter4clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 8 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_8clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter8clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 16 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_16clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter16clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 32 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_32clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter32clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 64 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_64clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter64clkPeriod
+    }
+    #[doc = "Filter clock period duration equals 128 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn is_filter_128clk_period(&self) -> bool {
+        *self == FiltercgfClkdiv::Filter128clkPeriod
     }
 }
-impl core::ops::Deref for FILTERCGF_CLKDIV_R {
-    type Target = crate::FieldReader<u8, u8>;
+#[doc = "Field `FILTERCGF_CLKDIV` writer - Filter Clock divider."]
+pub type FiltercgfClkdivW<'a, REG> =
+    crate::FieldWriter<'a, REG, 3, FiltercgfClkdiv, crate::Safe>;
+impl<'a, REG> FiltercgfClkdivW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Filter clock period duration equals 1 Analog Comparator clock period."]
     #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+    pub fn filter_1clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter1clkPeriod)
     }
-}
-#[doc = "Field `FILTERCGF_CLKDIV` writer - Filter Clock div ."]
-pub struct FILTERCGF_CLKDIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FILTERCGF_CLKDIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
+    #[doc = "Filter clock period duration equals 2 Analog Comparator clock period."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 18)) | ((value as u32 & 0x07) << 18);
-        self.w
+    pub fn filter_2clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter2clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 4 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_4clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter4clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 8 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_8clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter8clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 16 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_16clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter16clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 32 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_32clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter32clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 64 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_64clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter64clkPeriod)
+    }
+    #[doc = "Filter clock period duration equals 128 Analog Comparator clock period."]
+    #[inline(always)]
+    pub fn filter_128clk_period(self) -> &'a mut crate::W<REG> {
+        self.variant(FiltercgfClkdiv::Filter128clkPeriod)
     }
 }
 impl R {
     #[doc = "Bit 1 - Hysteris when hyst = '1'."]
     #[inline(always)]
-    pub fn hyst(&self) -> HYST_R {
-        HYST_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn hyst(&self) -> HystR {
+        HystR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder)."]
     #[inline(always)]
-    pub fn vrefinput(&self) -> VREFINPUT_R {
-        VREFINPUT_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn vrefinput(&self) -> VrefinputR {
+        VrefinputR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Low power mode."]
     #[inline(always)]
-    pub fn lowpower(&self) -> LOWPOWER_R {
-        LOWPOWER_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn lowpower(&self) -> LowpowerR {
+        LowpowerR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bits 4:6 - Control word for P multiplexer:."]
     #[inline(always)]
-    pub fn pmux(&self) -> PMUX_R {
-        PMUX_R::new(((self.bits >> 4) & 0x07) as u8)
+    pub fn pmux(&self) -> PmuxR {
+        PmuxR::new(((self.bits >> 4) & 7) as u8)
     }
     #[doc = "Bits 7:9 - Control word for N multiplexer:."]
     #[inline(always)]
-    pub fn nmux(&self) -> NMUX_R {
-        NMUX_R::new(((self.bits >> 7) & 0x07) as u8)
+    pub fn nmux(&self) -> NmuxR {
+        NmuxR::new(((self.bits >> 7) & 7) as u8)
     }
     #[doc = "Bits 10:14 - Control reference voltage step, per steps of (VREFINPUT/31)."]
     #[inline(always)]
-    pub fn vref(&self) -> VREF_R {
-        VREF_R::new(((self.bits >> 10) & 0x1f) as u8)
+    pub fn vref(&self) -> VrefR {
+        VrefR::new(((self.bits >> 10) & 0x1f) as u8)
     }
-    #[doc = "Bits 16:17 - Filter Sample mode."]
+    #[doc = "Bits 16:17 - Control the filtering of the Analog Comparator output."]
     #[inline(always)]
-    pub fn filtercgf_samplemode(&self) -> FILTERCGF_SAMPLEMODE_R {
-        FILTERCGF_SAMPLEMODE_R::new(((self.bits >> 16) & 0x03) as u8)
+    pub fn filtercgf_samplemode(&self) -> FiltercgfSamplemodeR {
+        FiltercgfSamplemodeR::new(((self.bits >> 16) & 3) as u8)
     }
-    #[doc = "Bits 18:20 - Filter Clock div ."]
+    #[doc = "Bits 18:20 - Filter Clock divider."]
     #[inline(always)]
-    pub fn filtercgf_clkdiv(&self) -> FILTERCGF_CLKDIV_R {
-        FILTERCGF_CLKDIV_R::new(((self.bits >> 18) & 0x07) as u8)
+    pub fn filtercgf_clkdiv(&self) -> FiltercgfClkdivR {
+        FiltercgfClkdivR::new(((self.bits >> 18) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bit 1 - Hysteris when hyst = '1'."]
     #[inline(always)]
-    pub fn hyst(&mut self) -> HYST_W {
-        HYST_W { w: self }
+    pub fn hyst(&mut self) -> HystW<CompSpec> {
+        HystW::new(self, 1)
     }
     #[doc = "Bit 2 - Dedicated control bit to select between internal VREF and VDDA (for the resistive ladder)."]
     #[inline(always)]
-    pub fn vrefinput(&mut self) -> VREFINPUT_W {
-        VREFINPUT_W { w: self }
+    pub fn vrefinput(&mut self) -> VrefinputW<CompSpec> {
+        VrefinputW::new(self, 2)
     }
     #[doc = "Bit 3 - Low power mode."]
     #[inline(always)]
-    pub fn lowpower(&mut self) -> LOWPOWER_W {
-        LOWPOWER_W { w: self }
+    pub fn lowpower(&mut self) -> LowpowerW<CompSpec> {
+        LowpowerW::new(self, 3)
     }
     #[doc = "Bits 4:6 - Control word for P multiplexer:."]
     #[inline(always)]
-    pub fn pmux(&mut self) -> PMUX_W {
-        PMUX_W { w: self }
+    pub fn pmux(&mut self) -> PmuxW<CompSpec> {
+        PmuxW::new(self, 4)
     }
     #[doc = "Bits 7:9 - Control word for N multiplexer:."]
     #[inline(always)]
-    pub fn nmux(&mut self) -> NMUX_W {
-        NMUX_W { w: self }
+    pub fn nmux(&mut self) -> NmuxW<CompSpec> {
+        NmuxW::new(self, 7)
     }
     #[doc = "Bits 10:14 - Control reference voltage step, per steps of (VREFINPUT/31)."]
     #[inline(always)]
-    pub fn vref(&mut self) -> VREF_W {
-        VREF_W { w: self }
+    pub fn vref(&mut self) -> VrefW<CompSpec> {
+        VrefW::new(self, 10)
     }
-    #[doc = "Bits 16:17 - Filter Sample mode."]
+    #[doc = "Bits 16:17 - Control the filtering of the Analog Comparator output."]
     #[inline(always)]
-    pub fn filtercgf_samplemode(&mut self) -> FILTERCGF_SAMPLEMODE_W {
-        FILTERCGF_SAMPLEMODE_W { w: self }
+    pub fn filtercgf_samplemode(&mut self) -> FiltercgfSamplemodeW<CompSpec> {
+        FiltercgfSamplemodeW::new(self, 16)
     }
-    #[doc = "Bits 18:20 - Filter Clock div ."]
+    #[doc = "Bits 18:20 - Filter Clock divider."]
     #[inline(always)]
-    pub fn filtercgf_clkdiv(&mut self) -> FILTERCGF_CLKDIV_W {
-        FILTERCGF_CLKDIV_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn filtercgf_clkdiv(&mut self) -> FiltercgfClkdivW<CompSpec> {
+        FiltercgfClkdivW::new(self, 18)
     }
 }
-#[doc = "Analog Comparator control register \\[Reset by: PoR, Pin Reset, Brown Out Detectors Reset, Deep Power Down Reset, Software Reset\\]\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [comp](index.html) module"]
-pub struct COMP_SPEC;
-impl crate::RegisterSpec for COMP_SPEC {
+#[doc = "Analog Comparator control register \\[Reset by: PoR, Pin Reset, Brown Out Detectors Reset, Deep Power Down Reset, Software Reset\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`comp::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`comp::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CompSpec;
+impl crate::RegisterSpec for CompSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [comp::R](R) reader structure"]
-impl crate::Readable for COMP_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [comp::W](W) writer structure"]
-impl crate::Writable for COMP_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`comp::R`](R) reader structure"]
+impl crate::Readable for CompSpec {}
+#[doc = "`write(|w| ..)` method takes [`comp::W`](W) writer structure"]
+impl crate::Writable for CompSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets COMP to value 0x0a"]
-impl crate::Resettable for COMP_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0a
-    }
+impl crate::Resettable for CompSpec {
+    const RESET_VALUE: u32 = 0x0a;
 }

@@ -1,103 +1,39 @@
 #[doc = "Register `VENDOR_USAGE` reader"]
-pub struct R(crate::R<VENDOR_USAGE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<VENDOR_USAGE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<VENDOR_USAGE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<VENDOR_USAGE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<VendorUsageSpec>;
 #[doc = "Register `VENDOR_USAGE` writer"]
-pub struct W(crate::W<VENDOR_USAGE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<VENDOR_USAGE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<VENDOR_USAGE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<VENDOR_USAGE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<VendorUsageSpec>;
 #[doc = "Field `VENDOR_USAGE` reader - Upper 16 bits of vendor usage field defined in DAP. Lower 16-bits come from customer field area."]
-pub struct VENDOR_USAGE_R(crate::FieldReader<u16, u16>);
-impl VENDOR_USAGE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        VENDOR_USAGE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for VENDOR_USAGE_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type VendorUsageR = crate::FieldReader<u16>;
 #[doc = "Field `VENDOR_USAGE` writer - Upper 16 bits of vendor usage field defined in DAP. Lower 16-bits come from customer field area."]
-pub struct VENDOR_USAGE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> VENDOR_USAGE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
-    }
-}
+pub type VendorUsageW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 16:31 - Upper 16 bits of vendor usage field defined in DAP. Lower 16-bits come from customer field area."]
     #[inline(always)]
-    pub fn vendor_usage(&self) -> VENDOR_USAGE_R {
-        VENDOR_USAGE_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn vendor_usage(&self) -> VendorUsageR {
+        VendorUsageR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 16:31 - Upper 16 bits of vendor usage field defined in DAP. Lower 16-bits come from customer field area."]
     #[inline(always)]
-    pub fn vendor_usage(&mut self) -> VENDOR_USAGE_W {
-        VENDOR_USAGE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn vendor_usage(&mut self) -> VendorUsageW<VendorUsageSpec> {
+        VendorUsageW::new(self, 16)
     }
 }
-#[doc = ".\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [vendor_usage](index.html) module"]
-pub struct VENDOR_USAGE_SPEC;
-impl crate::RegisterSpec for VENDOR_USAGE_SPEC {
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`vendor_usage::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`vendor_usage::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct VendorUsageSpec;
+impl crate::RegisterSpec for VendorUsageSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [vendor_usage::R](R) reader structure"]
-impl crate::Readable for VENDOR_USAGE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [vendor_usage::W](W) writer structure"]
-impl crate::Writable for VENDOR_USAGE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`vendor_usage::R`](R) reader structure"]
+impl crate::Readable for VendorUsageSpec {}
+#[doc = "`write(|w| ..)` method takes [`vendor_usage::W`](W) writer structure"]
+impl crate::Writable for VendorUsageSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets VENDOR_USAGE to value 0"]
-impl crate::Resettable for VENDOR_USAGE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for VendorUsageSpec {
+    const RESET_VALUE: u32 = 0;
 }

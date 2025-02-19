@@ -1,140 +1,53 @@
 #[doc = "Register `USB_ID` reader"]
-pub struct R(crate::R<USB_ID_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<USB_ID_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<USB_ID_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<USB_ID_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<UsbIdSpec>;
 #[doc = "Register `USB_ID` writer"]
-pub struct W(crate::W<USB_ID_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<USB_ID_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<USB_ID_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<USB_ID_SPEC>) -> Self {
-        W(writer)
-    }
-}
-#[doc = "Field `USB_VENDOR_ID` reader - ."]
-pub struct USB_VENDOR_ID_R(crate::FieldReader<u16, u16>);
-impl USB_VENDOR_ID_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        USB_VENDOR_ID_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for USB_VENDOR_ID_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `USB_VENDOR_ID` writer - ."]
-pub struct USB_VENDOR_ID_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_VENDOR_ID_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff) | (value as u32 & 0xffff);
-        self.w
-    }
-}
-#[doc = "Field `USB_PRODUCT_ID` reader - ."]
-pub struct USB_PRODUCT_ID_R(crate::FieldReader<u16, u16>);
-impl USB_PRODUCT_ID_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        USB_PRODUCT_ID_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for USB_PRODUCT_ID_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `USB_PRODUCT_ID` writer - ."]
-pub struct USB_PRODUCT_ID_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_PRODUCT_ID_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
-    }
-}
+pub type W = crate::W<UsbIdSpec>;
+#[doc = "Field `USB_VENDOR_ID` reader - no description available"]
+pub type UsbVendorIdR = crate::FieldReader<u16>;
+#[doc = "Field `USB_VENDOR_ID` writer - no description available"]
+pub type UsbVendorIdW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
+#[doc = "Field `USB_PRODUCT_ID` reader - no description available"]
+pub type UsbProductIdR = crate::FieldReader<u16>;
+#[doc = "Field `USB_PRODUCT_ID` writer - no description available"]
+pub type UsbProductIdW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
-    #[doc = "Bits 0:15 - ."]
+    #[doc = "Bits 0:15 - no description available"]
     #[inline(always)]
-    pub fn usb_vendor_id(&self) -> USB_VENDOR_ID_R {
-        USB_VENDOR_ID_R::new((self.bits & 0xffff) as u16)
+    pub fn usb_vendor_id(&self) -> UsbVendorIdR {
+        UsbVendorIdR::new((self.bits & 0xffff) as u16)
     }
-    #[doc = "Bits 16:31 - ."]
+    #[doc = "Bits 16:31 - no description available"]
     #[inline(always)]
-    pub fn usb_product_id(&self) -> USB_PRODUCT_ID_R {
-        USB_PRODUCT_ID_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn usb_product_id(&self) -> UsbProductIdR {
+        UsbProductIdR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
-    #[doc = "Bits 0:15 - ."]
+    #[doc = "Bits 0:15 - no description available"]
     #[inline(always)]
-    pub fn usb_vendor_id(&mut self) -> USB_VENDOR_ID_W {
-        USB_VENDOR_ID_W { w: self }
+    pub fn usb_vendor_id(&mut self) -> UsbVendorIdW<UsbIdSpec> {
+        UsbVendorIdW::new(self, 0)
     }
-    #[doc = "Bits 16:31 - ."]
+    #[doc = "Bits 16:31 - no description available"]
     #[inline(always)]
-    pub fn usb_product_id(&mut self) -> USB_PRODUCT_ID_W {
-        USB_PRODUCT_ID_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn usb_product_id(&mut self) -> UsbProductIdW<UsbIdSpec> {
+        UsbProductIdW::new(self, 16)
     }
 }
-#[doc = ".\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [usb_id](index.html) module"]
-pub struct USB_ID_SPEC;
-impl crate::RegisterSpec for USB_ID_SPEC {
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`usb_id::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usb_id::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UsbIdSpec;
+impl crate::RegisterSpec for UsbIdSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [usb_id::R](R) reader structure"]
-impl crate::Readable for USB_ID_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [usb_id::W](W) writer structure"]
-impl crate::Writable for USB_ID_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`usb_id::R`](R) reader structure"]
+impl crate::Readable for UsbIdSpec {}
+#[doc = "`write(|w| ..)` method takes [`usb_id::W`](W) writer structure"]
+impl crate::Writable for UsbIdSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets USB_ID to value 0"]
-impl crate::Resettable for USB_ID_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for UsbIdSpec {
+    const RESET_VALUE: u32 = 0;
 }

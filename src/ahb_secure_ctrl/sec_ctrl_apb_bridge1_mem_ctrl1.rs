@@ -1,626 +1,509 @@
 #[doc = "Register `SEC_CTRL_APB_BRIDGE1_MEM_CTRL1` reader"]
-pub struct R(crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecCtrlApbBridge1MemCtrl1Spec>;
 #[doc = "Register `SEC_CTRL_APB_BRIDGE1_MEM_CTRL1` writer"]
-pub struct W(crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecCtrlApbBridge1MemCtrl1Spec>;
 #[doc = "Standard counter/Timer 2\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CTIMER2_RULE_A {
+pub enum Ctimer2Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<CTIMER2_RULE_A> for u8 {
+impl From<Ctimer2Rule> for u8 {
     #[inline(always)]
-    fn from(variant: CTIMER2_RULE_A) -> Self {
+    fn from(variant: Ctimer2Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Ctimer2Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for Ctimer2Rule {}
 #[doc = "Field `CTIMER2_RULE` reader - Standard counter/Timer 2"]
-pub struct CTIMER2_RULE_R(crate::FieldReader<u8, CTIMER2_RULE_A>);
-impl CTIMER2_RULE_R {
+pub type Ctimer2RuleR = crate::FieldReader<Ctimer2Rule>;
+impl Ctimer2RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CTIMER2_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CTIMER2_RULE_A {
+    pub const fn variant(&self) -> Ctimer2Rule {
         match self.bits {
-            0 => CTIMER2_RULE_A::ENUM_NS_NP,
-            1 => CTIMER2_RULE_A::ENUM_NS_P,
-            2 => CTIMER2_RULE_A::ENUM_S_NP,
-            3 => CTIMER2_RULE_A::ENUM_S_P,
+            0 => Ctimer2Rule::EnumNsNp,
+            1 => Ctimer2Rule::EnumNsP,
+            2 => Ctimer2Rule::EnumSNp,
+            3 => Ctimer2Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == CTIMER2_RULE_A::ENUM_NS_NP
+        *self == Ctimer2Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == CTIMER2_RULE_A::ENUM_NS_P
+        *self == Ctimer2Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == CTIMER2_RULE_A::ENUM_S_NP
+        *self == Ctimer2Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == CTIMER2_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for CTIMER2_RULE_R {
-    type Target = crate::FieldReader<u8, CTIMER2_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Ctimer2Rule::EnumSP
     }
 }
 #[doc = "Field `CTIMER2_RULE` writer - Standard counter/Timer 2"]
-pub struct CTIMER2_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CTIMER2_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CTIMER2_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Ctimer2RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Ctimer2Rule, crate::Safe>;
+impl<'a, REG> Ctimer2RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(CTIMER2_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer2Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(CTIMER2_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer2Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(CTIMER2_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer2Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(CTIMER2_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer2Rule::EnumSP)
     }
 }
 #[doc = "Standard counter/Timer 3\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CTIMER3_RULE_A {
+pub enum Ctimer3Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<CTIMER3_RULE_A> for u8 {
+impl From<Ctimer3Rule> for u8 {
     #[inline(always)]
-    fn from(variant: CTIMER3_RULE_A) -> Self {
+    fn from(variant: Ctimer3Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Ctimer3Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for Ctimer3Rule {}
 #[doc = "Field `CTIMER3_RULE` reader - Standard counter/Timer 3"]
-pub struct CTIMER3_RULE_R(crate::FieldReader<u8, CTIMER3_RULE_A>);
-impl CTIMER3_RULE_R {
+pub type Ctimer3RuleR = crate::FieldReader<Ctimer3Rule>;
+impl Ctimer3RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CTIMER3_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CTIMER3_RULE_A {
+    pub const fn variant(&self) -> Ctimer3Rule {
         match self.bits {
-            0 => CTIMER3_RULE_A::ENUM_NS_NP,
-            1 => CTIMER3_RULE_A::ENUM_NS_P,
-            2 => CTIMER3_RULE_A::ENUM_S_NP,
-            3 => CTIMER3_RULE_A::ENUM_S_P,
+            0 => Ctimer3Rule::EnumNsNp,
+            1 => Ctimer3Rule::EnumNsP,
+            2 => Ctimer3Rule::EnumSNp,
+            3 => Ctimer3Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == CTIMER3_RULE_A::ENUM_NS_NP
+        *self == Ctimer3Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == CTIMER3_RULE_A::ENUM_NS_P
+        *self == Ctimer3Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == CTIMER3_RULE_A::ENUM_S_NP
+        *self == Ctimer3Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == CTIMER3_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for CTIMER3_RULE_R {
-    type Target = crate::FieldReader<u8, CTIMER3_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Ctimer3Rule::EnumSP
     }
 }
 #[doc = "Field `CTIMER3_RULE` writer - Standard counter/Timer 3"]
-pub struct CTIMER3_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CTIMER3_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CTIMER3_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Ctimer3RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Ctimer3Rule, crate::Safe>;
+impl<'a, REG> Ctimer3RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(CTIMER3_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer3Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(CTIMER3_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer3Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(CTIMER3_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer3Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(CTIMER3_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 4)) | ((value as u32 & 0x03) << 4);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer3Rule::EnumSP)
     }
 }
 #[doc = "Standard counter/Timer 4\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CTIMER4_RULE_A {
+pub enum Ctimer4Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<CTIMER4_RULE_A> for u8 {
+impl From<Ctimer4Rule> for u8 {
     #[inline(always)]
-    fn from(variant: CTIMER4_RULE_A) -> Self {
+    fn from(variant: Ctimer4Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Ctimer4Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for Ctimer4Rule {}
 #[doc = "Field `CTIMER4_RULE` reader - Standard counter/Timer 4"]
-pub struct CTIMER4_RULE_R(crate::FieldReader<u8, CTIMER4_RULE_A>);
-impl CTIMER4_RULE_R {
+pub type Ctimer4RuleR = crate::FieldReader<Ctimer4Rule>;
+impl Ctimer4RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CTIMER4_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CTIMER4_RULE_A {
+    pub const fn variant(&self) -> Ctimer4Rule {
         match self.bits {
-            0 => CTIMER4_RULE_A::ENUM_NS_NP,
-            1 => CTIMER4_RULE_A::ENUM_NS_P,
-            2 => CTIMER4_RULE_A::ENUM_S_NP,
-            3 => CTIMER4_RULE_A::ENUM_S_P,
+            0 => Ctimer4Rule::EnumNsNp,
+            1 => Ctimer4Rule::EnumNsP,
+            2 => Ctimer4Rule::EnumSNp,
+            3 => Ctimer4Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == CTIMER4_RULE_A::ENUM_NS_NP
+        *self == Ctimer4Rule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == CTIMER4_RULE_A::ENUM_NS_P
+        *self == Ctimer4Rule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == CTIMER4_RULE_A::ENUM_S_NP
+        *self == Ctimer4Rule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == CTIMER4_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for CTIMER4_RULE_R {
-    type Target = crate::FieldReader<u8, CTIMER4_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Ctimer4Rule::EnumSP
     }
 }
 #[doc = "Field `CTIMER4_RULE` writer - Standard counter/Timer 4"]
-pub struct CTIMER4_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CTIMER4_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CTIMER4_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Ctimer4RuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, Ctimer4Rule, crate::Safe>;
+impl<'a, REG> Ctimer4RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(CTIMER4_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer4Rule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(CTIMER4_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer4Rule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(CTIMER4_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer4Rule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(CTIMER4_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 8)) | ((value as u32 & 0x03) << 8);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Ctimer4Rule::EnumSP)
     }
 }
 #[doc = "Real Time Counter\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum RTC_RULE_A {
+pub enum RtcRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<RTC_RULE_A> for u8 {
+impl From<RtcRule> for u8 {
     #[inline(always)]
-    fn from(variant: RTC_RULE_A) -> Self {
+    fn from(variant: RtcRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for RtcRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for RtcRule {}
 #[doc = "Field `RTC_RULE` reader - Real Time Counter"]
-pub struct RTC_RULE_R(crate::FieldReader<u8, RTC_RULE_A>);
-impl RTC_RULE_R {
+pub type RtcRuleR = crate::FieldReader<RtcRule>;
+impl RtcRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        RTC_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RTC_RULE_A {
+    pub const fn variant(&self) -> RtcRule {
         match self.bits {
-            0 => RTC_RULE_A::ENUM_NS_NP,
-            1 => RTC_RULE_A::ENUM_NS_P,
-            2 => RTC_RULE_A::ENUM_S_NP,
-            3 => RTC_RULE_A::ENUM_S_P,
+            0 => RtcRule::EnumNsNp,
+            1 => RtcRule::EnumNsP,
+            2 => RtcRule::EnumSNp,
+            3 => RtcRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == RTC_RULE_A::ENUM_NS_NP
+        *self == RtcRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == RTC_RULE_A::ENUM_NS_P
+        *self == RtcRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == RTC_RULE_A::ENUM_S_NP
+        *self == RtcRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == RTC_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for RTC_RULE_R {
-    type Target = crate::FieldReader<u8, RTC_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == RtcRule::EnumSP
     }
 }
 #[doc = "Field `RTC_RULE` writer - Real Time Counter"]
-pub struct RTC_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RTC_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RTC_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type RtcRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, RtcRule, crate::Safe>;
+impl<'a, REG> RtcRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(RTC_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(RTC_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(RTC_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(RTC_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | ((value as u32 & 0x03) << 16);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRule::EnumSP)
     }
 }
 #[doc = "OS Event Timer\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum OSEVENT_RULE_A {
+pub enum OseventRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<OSEVENT_RULE_A> for u8 {
+impl From<OseventRule> for u8 {
     #[inline(always)]
-    fn from(variant: OSEVENT_RULE_A) -> Self {
+    fn from(variant: OseventRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for OseventRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for OseventRule {}
 #[doc = "Field `OSEVENT_RULE` reader - OS Event Timer"]
-pub struct OSEVENT_RULE_R(crate::FieldReader<u8, OSEVENT_RULE_A>);
-impl OSEVENT_RULE_R {
+pub type OseventRuleR = crate::FieldReader<OseventRule>;
+impl OseventRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        OSEVENT_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> OSEVENT_RULE_A {
+    pub const fn variant(&self) -> OseventRule {
         match self.bits {
-            0 => OSEVENT_RULE_A::ENUM_NS_NP,
-            1 => OSEVENT_RULE_A::ENUM_NS_P,
-            2 => OSEVENT_RULE_A::ENUM_S_NP,
-            3 => OSEVENT_RULE_A::ENUM_S_P,
+            0 => OseventRule::EnumNsNp,
+            1 => OseventRule::EnumNsP,
+            2 => OseventRule::EnumSNp,
+            3 => OseventRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
-    #[inline(always)]
-    pub fn is_enum_ns_np(&self) -> bool {
-        **self == OSEVENT_RULE_A::ENUM_NS_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
-    #[inline(always)]
-    pub fn is_enum_ns_p(&self) -> bool {
-        **self == OSEVENT_RULE_A::ENUM_NS_P
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
-    #[inline(always)]
-    pub fn is_enum_s_np(&self) -> bool {
-        **self == OSEVENT_RULE_A::ENUM_S_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
-    #[inline(always)]
-    pub fn is_enum_s_p(&self) -> bool {
-        **self == OSEVENT_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for OSEVENT_RULE_R {
-    type Target = crate::FieldReader<u8, OSEVENT_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `OSEVENT_RULE` writer - OS Event Timer"]
-pub struct OSEVENT_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OSEVENT_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: OSEVENT_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(OSEVENT_RULE_A::ENUM_NS_NP)
+    pub fn is_enum_ns_np(&self) -> bool {
+        *self == OseventRule::EnumNsNp
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(OSEVENT_RULE_A::ENUM_NS_P)
+    pub fn is_enum_ns_p(&self) -> bool {
+        *self == OseventRule::EnumNsP
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(OSEVENT_RULE_A::ENUM_S_NP)
+    pub fn is_enum_s_np(&self) -> bool {
+        *self == OseventRule::EnumSNp
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(OSEVENT_RULE_A::ENUM_S_P)
+    pub fn is_enum_s_p(&self) -> bool {
+        *self == OseventRule::EnumSP
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `OSEVENT_RULE` writer - OS Event Timer"]
+pub type OseventRuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, OseventRule, crate::Safe>;
+impl<'a, REG> OseventRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
-        self.w
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(OseventRule::EnumNsNp)
+    }
+    #[doc = "Non-secure and Privilege access allowed."]
+    #[inline(always)]
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(OseventRule::EnumNsP)
+    }
+    #[doc = "Secure and Non-priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(OseventRule::EnumSNp)
+    }
+    #[doc = "Secure and Priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(OseventRule::EnumSP)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Standard counter/Timer 2"]
     #[inline(always)]
-    pub fn ctimer2_rule(&self) -> CTIMER2_RULE_R {
-        CTIMER2_RULE_R::new((self.bits & 0x03) as u8)
+    pub fn ctimer2_rule(&self) -> Ctimer2RuleR {
+        Ctimer2RuleR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 4:5 - Standard counter/Timer 3"]
     #[inline(always)]
-    pub fn ctimer3_rule(&self) -> CTIMER3_RULE_R {
-        CTIMER3_RULE_R::new(((self.bits >> 4) & 0x03) as u8)
+    pub fn ctimer3_rule(&self) -> Ctimer3RuleR {
+        Ctimer3RuleR::new(((self.bits >> 4) & 3) as u8)
     }
     #[doc = "Bits 8:9 - Standard counter/Timer 4"]
     #[inline(always)]
-    pub fn ctimer4_rule(&self) -> CTIMER4_RULE_R {
-        CTIMER4_RULE_R::new(((self.bits >> 8) & 0x03) as u8)
+    pub fn ctimer4_rule(&self) -> Ctimer4RuleR {
+        Ctimer4RuleR::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 16:17 - Real Time Counter"]
     #[inline(always)]
-    pub fn rtc_rule(&self) -> RTC_RULE_R {
-        RTC_RULE_R::new(((self.bits >> 16) & 0x03) as u8)
+    pub fn rtc_rule(&self) -> RtcRuleR {
+        RtcRuleR::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bits 20:21 - OS Event Timer"]
     #[inline(always)]
-    pub fn osevent_rule(&self) -> OSEVENT_RULE_R {
-        OSEVENT_RULE_R::new(((self.bits >> 20) & 0x03) as u8)
+    pub fn osevent_rule(&self) -> OseventRuleR {
+        OseventRuleR::new(((self.bits >> 20) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Standard counter/Timer 2"]
     #[inline(always)]
-    pub fn ctimer2_rule(&mut self) -> CTIMER2_RULE_W {
-        CTIMER2_RULE_W { w: self }
+    pub fn ctimer2_rule(&mut self) -> Ctimer2RuleW<SecCtrlApbBridge1MemCtrl1Spec> {
+        Ctimer2RuleW::new(self, 0)
     }
     #[doc = "Bits 4:5 - Standard counter/Timer 3"]
     #[inline(always)]
-    pub fn ctimer3_rule(&mut self) -> CTIMER3_RULE_W {
-        CTIMER3_RULE_W { w: self }
+    pub fn ctimer3_rule(&mut self) -> Ctimer3RuleW<SecCtrlApbBridge1MemCtrl1Spec> {
+        Ctimer3RuleW::new(self, 4)
     }
     #[doc = "Bits 8:9 - Standard counter/Timer 4"]
     #[inline(always)]
-    pub fn ctimer4_rule(&mut self) -> CTIMER4_RULE_W {
-        CTIMER4_RULE_W { w: self }
+    pub fn ctimer4_rule(&mut self) -> Ctimer4RuleW<SecCtrlApbBridge1MemCtrl1Spec> {
+        Ctimer4RuleW::new(self, 8)
     }
     #[doc = "Bits 16:17 - Real Time Counter"]
     #[inline(always)]
-    pub fn rtc_rule(&mut self) -> RTC_RULE_W {
-        RTC_RULE_W { w: self }
+    pub fn rtc_rule(&mut self) -> RtcRuleW<SecCtrlApbBridge1MemCtrl1Spec> {
+        RtcRuleW::new(self, 16)
     }
     #[doc = "Bits 20:21 - OS Event Timer"]
     #[inline(always)]
-    pub fn osevent_rule(&mut self) -> OSEVENT_RULE_W {
-        OSEVENT_RULE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn osevent_rule(&mut self) -> OseventRuleW<SecCtrlApbBridge1MemCtrl1Spec> {
+        OseventRuleW::new(self, 20)
     }
 }
-#[doc = "Security access rules for APB Bridge 1 peripherals. Each APB bridge sector is 4 Kbytes. There are 32 APB Bridge 1 sectors in total.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_ctrl_apb_bridge1_mem_ctrl1](index.html) module"]
-pub struct SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC;
-impl crate::RegisterSpec for SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC {
+#[doc = "Security access rules for APB Bridge 1 peripherals. Each APB bridge sector is 4 Kbytes. There are 32 APB Bridge 1 sectors in total.\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_ctrl_apb_bridge1_mem_ctrl1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_ctrl_apb_bridge1_mem_ctrl1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecCtrlApbBridge1MemCtrl1Spec;
+impl crate::RegisterSpec for SecCtrlApbBridge1MemCtrl1Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_ctrl_apb_bridge1_mem_ctrl1::R](R) reader structure"]
-impl crate::Readable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_ctrl_apb_bridge1_mem_ctrl1::W](W) writer structure"]
-impl crate::Writable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_ctrl_apb_bridge1_mem_ctrl1::R`](R) reader structure"]
+impl crate::Readable for SecCtrlApbBridge1MemCtrl1Spec {}
+#[doc = "`write(|w| ..)` method takes [`sec_ctrl_apb_bridge1_mem_ctrl1::W`](W) writer structure"]
+impl crate::Writable for SecCtrlApbBridge1MemCtrl1Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_CTRL_APB_BRIDGE1_MEM_CTRL1 to value 0"]
-impl crate::Resettable for SEC_CTRL_APB_BRIDGE1_MEM_CTRL1_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecCtrlApbBridge1MemCtrl1Spec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,85 +1,56 @@
 #[doc = "Register `XO32M_STATUS` reader"]
-pub struct R(crate::R<XO32M_STATUS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<XO32M_STATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<XO32M_STATUS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<XO32M_STATUS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Xo32mStatusSpec>;
 #[doc = "Indicates XO out frequency statibilty.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum XO_READY_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum XoReady {
     #[doc = "0: XO output frequency is not yet stable."]
-    NOT_STABLE = 0,
+    NotStable = 0,
     #[doc = "1: XO output frequency is stable."]
-    STABLE = 1,
+    Stable = 1,
 }
-impl From<XO_READY_A> for bool {
+impl From<XoReady> for bool {
     #[inline(always)]
-    fn from(variant: XO_READY_A) -> Self {
+    fn from(variant: XoReady) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `XO_READY` reader - Indicates XO out frequency statibilty."]
-pub struct XO_READY_R(crate::FieldReader<bool, XO_READY_A>);
-impl XO_READY_R {
+pub type XoReadyR = crate::BitReader<XoReady>;
+impl XoReadyR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        XO_READY_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> XO_READY_A {
+    pub const fn variant(&self) -> XoReady {
         match self.bits {
-            false => XO_READY_A::NOT_STABLE,
-            true => XO_READY_A::STABLE,
+            false => XoReady::NotStable,
+            true => XoReady::Stable,
         }
     }
-    #[doc = "Checks if the value of the field is `NOT_STABLE`"]
+    #[doc = "XO output frequency is not yet stable."]
     #[inline(always)]
     pub fn is_not_stable(&self) -> bool {
-        **self == XO_READY_A::NOT_STABLE
+        *self == XoReady::NotStable
     }
-    #[doc = "Checks if the value of the field is `STABLE`"]
+    #[doc = "XO output frequency is stable."]
     #[inline(always)]
     pub fn is_stable(&self) -> bool {
-        **self == XO_READY_A::STABLE
-    }
-}
-impl core::ops::Deref for XO_READY_R {
-    type Target = crate::FieldReader<bool, XO_READY_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == XoReady::Stable
     }
 }
 impl R {
     #[doc = "Bit 0 - Indicates XO out frequency statibilty."]
     #[inline(always)]
-    pub fn xo_ready(&self) -> XO_READY_R {
-        XO_READY_R::new((self.bits & 0x01) != 0)
+    pub fn xo_ready(&self) -> XoReadyR {
+        XoReadyR::new((self.bits & 1) != 0)
     }
 }
-#[doc = "High speed Crystal Oscillator Status register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [xo32m_status](index.html) module"]
-pub struct XO32M_STATUS_SPEC;
-impl crate::RegisterSpec for XO32M_STATUS_SPEC {
+#[doc = "High speed Crystal Oscillator Status register\n\nYou can [`read`](crate::Reg::read) this register and get [`xo32m_status::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Xo32mStatusSpec;
+impl crate::RegisterSpec for Xo32mStatusSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [xo32m_status::R](R) reader structure"]
-impl crate::Readable for XO32M_STATUS_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`xo32m_status::R`](R) reader structure"]
+impl crate::Readable for Xo32mStatusSpec {}
 #[doc = "`reset()` method sets XO32M_STATUS to value 0"]
-impl crate::Resettable for XO32M_STATUS_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Xo32mStatusSpec {
+    const RESET_VALUE: u32 = 0;
 }

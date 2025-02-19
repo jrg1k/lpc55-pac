@@ -1,2040 +1,1348 @@
 #[doc = "Register `PRESETCTRL0` reader"]
-pub struct R(crate::R<PRESETCTRL0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PRESETCTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PRESETCTRL0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PRESETCTRL0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Presetctrl0Spec>;
 #[doc = "Register `PRESETCTRL0` writer"]
-pub struct W(crate::W<PRESETCTRL0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PRESETCTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PRESETCTRL0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PRESETCTRL0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Presetctrl0Spec>;
 #[doc = "ROM reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ROM_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum RomRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<ROM_RST_A> for bool {
+impl From<RomRst> for bool {
     #[inline(always)]
-    fn from(variant: ROM_RST_A) -> Self {
+    fn from(variant: RomRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ROM_RST` reader - ROM reset control."]
-pub struct ROM_RST_R(crate::FieldReader<bool, ROM_RST_A>);
-impl ROM_RST_R {
+pub type RomRstR = crate::BitReader<RomRst>;
+impl RomRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ROM_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ROM_RST_A {
+    pub const fn variant(&self) -> RomRst {
         match self.bits {
-            false => ROM_RST_A::RELEASED,
-            true => ROM_RST_A::ASSERTED,
+            false => RomRst::Released,
+            true => RomRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == ROM_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == ROM_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for ROM_RST_R {
-    type Target = crate::FieldReader<bool, ROM_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ROM_RST` writer - ROM reset control."]
-pub struct ROM_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ROM_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ROM_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(ROM_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == RomRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(ROM_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == RomRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ROM_RST` writer - ROM reset control."]
+pub type RomRstW<'a, REG> = crate::BitWriter<'a, REG, RomRst>;
+impl<'a, REG> RomRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(RomRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(RomRst::Asserted)
     }
 }
 #[doc = "SRAM Controller 1 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL1_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl1Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<SRAM_CTRL1_RST_A> for bool {
+impl From<SramCtrl1Rst> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL1_RST_A) -> Self {
+    fn from(variant: SramCtrl1Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL1_RST` reader - SRAM Controller 1 reset control."]
-pub struct SRAM_CTRL1_RST_R(crate::FieldReader<bool, SRAM_CTRL1_RST_A>);
-impl SRAM_CTRL1_RST_R {
+pub type SramCtrl1RstR = crate::BitReader<SramCtrl1Rst>;
+impl SramCtrl1RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL1_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL1_RST_A {
+    pub const fn variant(&self) -> SramCtrl1Rst {
         match self.bits {
-            false => SRAM_CTRL1_RST_A::RELEASED,
-            true => SRAM_CTRL1_RST_A::ASSERTED,
+            false => SramCtrl1Rst::Released,
+            true => SramCtrl1Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == SRAM_CTRL1_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == SRAM_CTRL1_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for SRAM_CTRL1_RST_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL1_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL1_RST` writer - SRAM Controller 1 reset control."]
-pub struct SRAM_CTRL1_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL1_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL1_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(SRAM_CTRL1_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == SramCtrl1Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(SRAM_CTRL1_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == SramCtrl1Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL1_RST` writer - SRAM Controller 1 reset control."]
+pub type SramCtrl1RstW<'a, REG> = crate::BitWriter<'a, REG, SramCtrl1Rst>;
+impl<'a, REG> SramCtrl1RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl1Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl1Rst::Asserted)
     }
 }
 #[doc = "SRAM Controller 2 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL2_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl2Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<SRAM_CTRL2_RST_A> for bool {
+impl From<SramCtrl2Rst> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL2_RST_A) -> Self {
+    fn from(variant: SramCtrl2Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL2_RST` reader - SRAM Controller 2 reset control."]
-pub struct SRAM_CTRL2_RST_R(crate::FieldReader<bool, SRAM_CTRL2_RST_A>);
-impl SRAM_CTRL2_RST_R {
+pub type SramCtrl2RstR = crate::BitReader<SramCtrl2Rst>;
+impl SramCtrl2RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL2_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL2_RST_A {
+    pub const fn variant(&self) -> SramCtrl2Rst {
         match self.bits {
-            false => SRAM_CTRL2_RST_A::RELEASED,
-            true => SRAM_CTRL2_RST_A::ASSERTED,
+            false => SramCtrl2Rst::Released,
+            true => SramCtrl2Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == SRAM_CTRL2_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == SRAM_CTRL2_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for SRAM_CTRL2_RST_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL2_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL2_RST` writer - SRAM Controller 2 reset control."]
-pub struct SRAM_CTRL2_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL2_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL2_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(SRAM_CTRL2_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == SramCtrl2Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(SRAM_CTRL2_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == SramCtrl2Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL2_RST` writer - SRAM Controller 2 reset control."]
+pub type SramCtrl2RstW<'a, REG> = crate::BitWriter<'a, REG, SramCtrl2Rst>;
+impl<'a, REG> SramCtrl2RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl2Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl2Rst::Asserted)
     }
 }
 #[doc = "SRAM Controller 3 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL3_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl3Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<SRAM_CTRL3_RST_A> for bool {
+impl From<SramCtrl3Rst> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL3_RST_A) -> Self {
+    fn from(variant: SramCtrl3Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL3_RST` reader - SRAM Controller 3 reset control."]
-pub struct SRAM_CTRL3_RST_R(crate::FieldReader<bool, SRAM_CTRL3_RST_A>);
-impl SRAM_CTRL3_RST_R {
+pub type SramCtrl3RstR = crate::BitReader<SramCtrl3Rst>;
+impl SramCtrl3RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL3_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL3_RST_A {
+    pub const fn variant(&self) -> SramCtrl3Rst {
         match self.bits {
-            false => SRAM_CTRL3_RST_A::RELEASED,
-            true => SRAM_CTRL3_RST_A::ASSERTED,
+            false => SramCtrl3Rst::Released,
+            true => SramCtrl3Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == SRAM_CTRL3_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == SRAM_CTRL3_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for SRAM_CTRL3_RST_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL3_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL3_RST` writer - SRAM Controller 3 reset control."]
-pub struct SRAM_CTRL3_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL3_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL3_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(SRAM_CTRL3_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == SramCtrl3Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(SRAM_CTRL3_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == SramCtrl3Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL3_RST` writer - SRAM Controller 3 reset control."]
+pub type SramCtrl3RstW<'a, REG> = crate::BitWriter<'a, REG, SramCtrl3Rst>;
+impl<'a, REG> SramCtrl3RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl3Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl3Rst::Asserted)
     }
 }
 #[doc = "SRAM Controller 4 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SRAM_CTRL4_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SramCtrl4Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<SRAM_CTRL4_RST_A> for bool {
+impl From<SramCtrl4Rst> for bool {
     #[inline(always)]
-    fn from(variant: SRAM_CTRL4_RST_A) -> Self {
+    fn from(variant: SramCtrl4Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `SRAM_CTRL4_RST` reader - SRAM Controller 4 reset control."]
-pub struct SRAM_CTRL4_RST_R(crate::FieldReader<bool, SRAM_CTRL4_RST_A>);
-impl SRAM_CTRL4_RST_R {
+pub type SramCtrl4RstR = crate::BitReader<SramCtrl4Rst>;
+impl SramCtrl4RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SRAM_CTRL4_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SRAM_CTRL4_RST_A {
+    pub const fn variant(&self) -> SramCtrl4Rst {
         match self.bits {
-            false => SRAM_CTRL4_RST_A::RELEASED,
-            true => SRAM_CTRL4_RST_A::ASSERTED,
+            false => SramCtrl4Rst::Released,
+            true => SramCtrl4Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == SRAM_CTRL4_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == SRAM_CTRL4_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for SRAM_CTRL4_RST_R {
-    type Target = crate::FieldReader<bool, SRAM_CTRL4_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SRAM_CTRL4_RST` writer - SRAM Controller 4 reset control."]
-pub struct SRAM_CTRL4_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SRAM_CTRL4_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SRAM_CTRL4_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(SRAM_CTRL4_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == SramCtrl4Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(SRAM_CTRL4_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == SramCtrl4Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `SRAM_CTRL4_RST` writer - SRAM Controller 4 reset control."]
+pub type SramCtrl4RstW<'a, REG> = crate::BitWriter<'a, REG, SramCtrl4Rst>;
+impl<'a, REG> SramCtrl4RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl4Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(SramCtrl4Rst::Asserted)
     }
 }
 #[doc = "Flash controller reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FLASH_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FlashRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<FLASH_RST_A> for bool {
+impl From<FlashRst> for bool {
     #[inline(always)]
-    fn from(variant: FLASH_RST_A) -> Self {
+    fn from(variant: FlashRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FLASH_RST` reader - Flash controller reset control."]
-pub struct FLASH_RST_R(crate::FieldReader<bool, FLASH_RST_A>);
-impl FLASH_RST_R {
+pub type FlashRstR = crate::BitReader<FlashRst>;
+impl FlashRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FLASH_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FLASH_RST_A {
+    pub const fn variant(&self) -> FlashRst {
         match self.bits {
-            false => FLASH_RST_A::RELEASED,
-            true => FLASH_RST_A::ASSERTED,
+            false => FlashRst::Released,
+            true => FlashRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == FLASH_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == FLASH_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for FLASH_RST_R {
-    type Target = crate::FieldReader<bool, FLASH_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FLASH_RST` writer - Flash controller reset control."]
-pub struct FLASH_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FLASH_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FLASH_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(FLASH_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == FlashRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(FLASH_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == FlashRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FLASH_RST` writer - Flash controller reset control."]
+pub type FlashRstW<'a, REG> = crate::BitWriter<'a, REG, FlashRst>;
+impl<'a, REG> FlashRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(FlashRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(FlashRst::Asserted)
     }
 }
 #[doc = "FMC controller reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FMC_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FmcRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<FMC_RST_A> for bool {
+impl From<FmcRst> for bool {
     #[inline(always)]
-    fn from(variant: FMC_RST_A) -> Self {
+    fn from(variant: FmcRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FMC_RST` reader - FMC controller reset control."]
-pub struct FMC_RST_R(crate::FieldReader<bool, FMC_RST_A>);
-impl FMC_RST_R {
+pub type FmcRstR = crate::BitReader<FmcRst>;
+impl FmcRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FMC_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FMC_RST_A {
+    pub const fn variant(&self) -> FmcRst {
         match self.bits {
-            false => FMC_RST_A::RELEASED,
-            true => FMC_RST_A::ASSERTED,
+            false => FmcRst::Released,
+            true => FmcRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == FMC_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == FMC_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for FMC_RST_R {
-    type Target = crate::FieldReader<bool, FMC_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FMC_RST` writer - FMC controller reset control."]
-pub struct FMC_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FMC_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FMC_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(FMC_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == FmcRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(FMC_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == FmcRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FMC_RST` writer - FMC controller reset control."]
+pub type FmcRstW<'a, REG> = crate::BitWriter<'a, REG, FmcRst>;
+impl<'a, REG> FmcRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(FmcRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(FmcRst::Asserted)
     }
 }
 #[doc = "Input Mux reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MUX_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum MuxRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<MUX_RST_A> for bool {
+impl From<MuxRst> for bool {
     #[inline(always)]
-    fn from(variant: MUX_RST_A) -> Self {
+    fn from(variant: MuxRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `MUX_RST` reader - Input Mux reset control."]
-pub struct MUX_RST_R(crate::FieldReader<bool, MUX_RST_A>);
-impl MUX_RST_R {
+pub type MuxRstR = crate::BitReader<MuxRst>;
+impl MuxRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MUX_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> MUX_RST_A {
+    pub const fn variant(&self) -> MuxRst {
         match self.bits {
-            false => MUX_RST_A::RELEASED,
-            true => MUX_RST_A::ASSERTED,
+            false => MuxRst::Released,
+            true => MuxRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == MUX_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == MUX_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for MUX_RST_R {
-    type Target = crate::FieldReader<bool, MUX_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MUX_RST` writer - Input Mux reset control."]
-pub struct MUX_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MUX_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MUX_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(MUX_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == MuxRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(MUX_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == MuxRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `MUX_RST` writer - Input Mux reset control."]
+pub type MuxRstW<'a, REG> = crate::BitWriter<'a, REG, MuxRst>;
+impl<'a, REG> MuxRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(MuxRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(MuxRst::Asserted)
     }
 }
 #[doc = "I/O controller reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IOCON_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum IoconRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<IOCON_RST_A> for bool {
+impl From<IoconRst> for bool {
     #[inline(always)]
-    fn from(variant: IOCON_RST_A) -> Self {
+    fn from(variant: IoconRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `IOCON_RST` reader - I/O controller reset control."]
-pub struct IOCON_RST_R(crate::FieldReader<bool, IOCON_RST_A>);
-impl IOCON_RST_R {
+pub type IoconRstR = crate::BitReader<IoconRst>;
+impl IoconRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        IOCON_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> IOCON_RST_A {
+    pub const fn variant(&self) -> IoconRst {
         match self.bits {
-            false => IOCON_RST_A::RELEASED,
-            true => IOCON_RST_A::ASSERTED,
+            false => IoconRst::Released,
+            true => IoconRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == IOCON_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == IOCON_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for IOCON_RST_R {
-    type Target = crate::FieldReader<bool, IOCON_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `IOCON_RST` writer - I/O controller reset control."]
-pub struct IOCON_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> IOCON_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: IOCON_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(IOCON_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == IoconRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(IOCON_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == IoconRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `IOCON_RST` writer - I/O controller reset control."]
+pub type IoconRstW<'a, REG> = crate::BitWriter<'a, REG, IoconRst>;
+impl<'a, REG> IoconRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(IoconRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 13)) | ((value as u32 & 0x01) << 13);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(IoconRst::Asserted)
     }
 }
 #[doc = "GPIO0 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO0_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio0Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<GPIO0_RST_A> for bool {
+impl From<Gpio0Rst> for bool {
     #[inline(always)]
-    fn from(variant: GPIO0_RST_A) -> Self {
+    fn from(variant: Gpio0Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO0_RST` reader - GPIO0 reset control."]
-pub struct GPIO0_RST_R(crate::FieldReader<bool, GPIO0_RST_A>);
-impl GPIO0_RST_R {
+pub type Gpio0RstR = crate::BitReader<Gpio0Rst>;
+impl Gpio0RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO0_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO0_RST_A {
+    pub const fn variant(&self) -> Gpio0Rst {
         match self.bits {
-            false => GPIO0_RST_A::RELEASED,
-            true => GPIO0_RST_A::ASSERTED,
+            false => Gpio0Rst::Released,
+            true => Gpio0Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == GPIO0_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == GPIO0_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for GPIO0_RST_R {
-    type Target = crate::FieldReader<bool, GPIO0_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO0_RST` writer - GPIO0 reset control."]
-pub struct GPIO0_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO0_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO0_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(GPIO0_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Gpio0Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(GPIO0_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Gpio0Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO0_RST` writer - GPIO0 reset control."]
+pub type Gpio0RstW<'a, REG> = crate::BitWriter<'a, REG, Gpio0Rst>;
+impl<'a, REG> Gpio0RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio0Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u32 & 0x01) << 14);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio0Rst::Asserted)
     }
 }
 #[doc = "GPIO1 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO1_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio1Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<GPIO1_RST_A> for bool {
+impl From<Gpio1Rst> for bool {
     #[inline(always)]
-    fn from(variant: GPIO1_RST_A) -> Self {
+    fn from(variant: Gpio1Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO1_RST` reader - GPIO1 reset control."]
-pub struct GPIO1_RST_R(crate::FieldReader<bool, GPIO1_RST_A>);
-impl GPIO1_RST_R {
+pub type Gpio1RstR = crate::BitReader<Gpio1Rst>;
+impl Gpio1RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO1_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO1_RST_A {
+    pub const fn variant(&self) -> Gpio1Rst {
         match self.bits {
-            false => GPIO1_RST_A::RELEASED,
-            true => GPIO1_RST_A::ASSERTED,
+            false => Gpio1Rst::Released,
+            true => Gpio1Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == GPIO1_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == GPIO1_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for GPIO1_RST_R {
-    type Target = crate::FieldReader<bool, GPIO1_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO1_RST` writer - GPIO1 reset control."]
-pub struct GPIO1_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO1_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO1_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(GPIO1_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Gpio1Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(GPIO1_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Gpio1Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO1_RST` writer - GPIO1 reset control."]
+pub type Gpio1RstW<'a, REG> = crate::BitWriter<'a, REG, Gpio1Rst>;
+impl<'a, REG> Gpio1RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio1Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio1Rst::Asserted)
     }
 }
 #[doc = "GPIO2 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO2_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio2Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<GPIO2_RST_A> for bool {
+impl From<Gpio2Rst> for bool {
     #[inline(always)]
-    fn from(variant: GPIO2_RST_A) -> Self {
+    fn from(variant: Gpio2Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO2_RST` reader - GPIO2 reset control."]
-pub struct GPIO2_RST_R(crate::FieldReader<bool, GPIO2_RST_A>);
-impl GPIO2_RST_R {
+pub type Gpio2RstR = crate::BitReader<Gpio2Rst>;
+impl Gpio2RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO2_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO2_RST_A {
+    pub const fn variant(&self) -> Gpio2Rst {
         match self.bits {
-            false => GPIO2_RST_A::RELEASED,
-            true => GPIO2_RST_A::ASSERTED,
+            false => Gpio2Rst::Released,
+            true => Gpio2Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == GPIO2_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == GPIO2_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for GPIO2_RST_R {
-    type Target = crate::FieldReader<bool, GPIO2_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO2_RST` writer - GPIO2 reset control."]
-pub struct GPIO2_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO2_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO2_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(GPIO2_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Gpio2Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(GPIO2_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Gpio2Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO2_RST` writer - GPIO2 reset control."]
+pub type Gpio2RstW<'a, REG> = crate::BitWriter<'a, REG, Gpio2Rst>;
+impl<'a, REG> Gpio2RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio2Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 16)) | ((value as u32 & 0x01) << 16);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio2Rst::Asserted)
     }
 }
 #[doc = "GPIO3 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GPIO3_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gpio3Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<GPIO3_RST_A> for bool {
+impl From<Gpio3Rst> for bool {
     #[inline(always)]
-    fn from(variant: GPIO3_RST_A) -> Self {
+    fn from(variant: Gpio3Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GPIO3_RST` reader - GPIO3 reset control."]
-pub struct GPIO3_RST_R(crate::FieldReader<bool, GPIO3_RST_A>);
-impl GPIO3_RST_R {
+pub type Gpio3RstR = crate::BitReader<Gpio3Rst>;
+impl Gpio3RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GPIO3_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GPIO3_RST_A {
+    pub const fn variant(&self) -> Gpio3Rst {
         match self.bits {
-            false => GPIO3_RST_A::RELEASED,
-            true => GPIO3_RST_A::ASSERTED,
+            false => Gpio3Rst::Released,
+            true => Gpio3Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == GPIO3_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == GPIO3_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for GPIO3_RST_R {
-    type Target = crate::FieldReader<bool, GPIO3_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GPIO3_RST` writer - GPIO3 reset control."]
-pub struct GPIO3_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GPIO3_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GPIO3_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(GPIO3_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Gpio3Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(GPIO3_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Gpio3Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GPIO3_RST` writer - GPIO3 reset control."]
+pub type Gpio3RstW<'a, REG> = crate::BitWriter<'a, REG, Gpio3Rst>;
+impl<'a, REG> Gpio3RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio3Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 17)) | ((value as u32 & 0x01) << 17);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Gpio3Rst::Asserted)
     }
 }
 #[doc = "Pin interrupt (PINT) reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PINT_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PintRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<PINT_RST_A> for bool {
+impl From<PintRst> for bool {
     #[inline(always)]
-    fn from(variant: PINT_RST_A) -> Self {
+    fn from(variant: PintRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PINT_RST` reader - Pin interrupt (PINT) reset control."]
-pub struct PINT_RST_R(crate::FieldReader<bool, PINT_RST_A>);
-impl PINT_RST_R {
+pub type PintRstR = crate::BitReader<PintRst>;
+impl PintRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PINT_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PINT_RST_A {
+    pub const fn variant(&self) -> PintRst {
         match self.bits {
-            false => PINT_RST_A::RELEASED,
-            true => PINT_RST_A::ASSERTED,
+            false => PintRst::Released,
+            true => PintRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == PINT_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == PINT_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for PINT_RST_R {
-    type Target = crate::FieldReader<bool, PINT_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PINT_RST` writer - Pin interrupt (PINT) reset control."]
-pub struct PINT_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PINT_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PINT_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(PINT_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == PintRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(PINT_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == PintRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PINT_RST` writer - Pin interrupt (PINT) reset control."]
+pub type PintRstW<'a, REG> = crate::BitWriter<'a, REG, PintRst>;
+impl<'a, REG> PintRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(PintRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 18)) | ((value as u32 & 0x01) << 18);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(PintRst::Asserted)
     }
 }
 #[doc = "Group interrupt (GINT) reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GINT_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum GintRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<GINT_RST_A> for bool {
+impl From<GintRst> for bool {
     #[inline(always)]
-    fn from(variant: GINT_RST_A) -> Self {
+    fn from(variant: GintRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GINT_RST` reader - Group interrupt (GINT) reset control."]
-pub struct GINT_RST_R(crate::FieldReader<bool, GINT_RST_A>);
-impl GINT_RST_R {
+pub type GintRstR = crate::BitReader<GintRst>;
+impl GintRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GINT_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GINT_RST_A {
+    pub const fn variant(&self) -> GintRst {
         match self.bits {
-            false => GINT_RST_A::RELEASED,
-            true => GINT_RST_A::ASSERTED,
+            false => GintRst::Released,
+            true => GintRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == GINT_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == GINT_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for GINT_RST_R {
-    type Target = crate::FieldReader<bool, GINT_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GINT_RST` writer - Group interrupt (GINT) reset control."]
-pub struct GINT_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GINT_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GINT_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(GINT_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == GintRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(GINT_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == GintRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GINT_RST` writer - Group interrupt (GINT) reset control."]
+pub type GintRstW<'a, REG> = crate::BitWriter<'a, REG, GintRst>;
+impl<'a, REG> GintRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(GintRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 19)) | ((value as u32 & 0x01) << 19);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(GintRst::Asserted)
     }
 }
 #[doc = "DMA0 reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DMA0_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Dma0Rst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<DMA0_RST_A> for bool {
+impl From<Dma0Rst> for bool {
     #[inline(always)]
-    fn from(variant: DMA0_RST_A) -> Self {
+    fn from(variant: Dma0Rst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `DMA0_RST` reader - DMA0 reset control."]
-pub struct DMA0_RST_R(crate::FieldReader<bool, DMA0_RST_A>);
-impl DMA0_RST_R {
+pub type Dma0RstR = crate::BitReader<Dma0Rst>;
+impl Dma0RstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DMA0_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DMA0_RST_A {
+    pub const fn variant(&self) -> Dma0Rst {
         match self.bits {
-            false => DMA0_RST_A::RELEASED,
-            true => DMA0_RST_A::ASSERTED,
+            false => Dma0Rst::Released,
+            true => Dma0Rst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == DMA0_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == DMA0_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for DMA0_RST_R {
-    type Target = crate::FieldReader<bool, DMA0_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DMA0_RST` writer - DMA0 reset control."]
-pub struct DMA0_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DMA0_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DMA0_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(DMA0_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == Dma0Rst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(DMA0_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == Dma0Rst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `DMA0_RST` writer - DMA0 reset control."]
+pub type Dma0RstW<'a, REG> = crate::BitWriter<'a, REG, Dma0Rst>;
+impl<'a, REG> Dma0RstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma0Rst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 20)) | ((value as u32 & 0x01) << 20);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma0Rst::Asserted)
     }
 }
 #[doc = "CRCGEN reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CRCGEN_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CrcgenRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<CRCGEN_RST_A> for bool {
+impl From<CrcgenRst> for bool {
     #[inline(always)]
-    fn from(variant: CRCGEN_RST_A) -> Self {
+    fn from(variant: CrcgenRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CRCGEN_RST` reader - CRCGEN reset control."]
-pub struct CRCGEN_RST_R(crate::FieldReader<bool, CRCGEN_RST_A>);
-impl CRCGEN_RST_R {
+pub type CrcgenRstR = crate::BitReader<CrcgenRst>;
+impl CrcgenRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CRCGEN_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CRCGEN_RST_A {
+    pub const fn variant(&self) -> CrcgenRst {
         match self.bits {
-            false => CRCGEN_RST_A::RELEASED,
-            true => CRCGEN_RST_A::ASSERTED,
+            false => CrcgenRst::Released,
+            true => CrcgenRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == CRCGEN_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == CRCGEN_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for CRCGEN_RST_R {
-    type Target = crate::FieldReader<bool, CRCGEN_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CRCGEN_RST` writer - CRCGEN reset control."]
-pub struct CRCGEN_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CRCGEN_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CRCGEN_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(CRCGEN_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == CrcgenRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(CRCGEN_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == CrcgenRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CRCGEN_RST` writer - CRCGEN reset control."]
+pub type CrcgenRstW<'a, REG> = crate::BitWriter<'a, REG, CrcgenRst>;
+impl<'a, REG> CrcgenRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(CrcgenRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 21)) | ((value as u32 & 0x01) << 21);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(CrcgenRst::Asserted)
     }
 }
 #[doc = "Watchdog Timer reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WWDT_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum WwdtRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<WWDT_RST_A> for bool {
+impl From<WwdtRst> for bool {
     #[inline(always)]
-    fn from(variant: WWDT_RST_A) -> Self {
+    fn from(variant: WwdtRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `WWDT_RST` reader - Watchdog Timer reset control."]
-pub struct WWDT_RST_R(crate::FieldReader<bool, WWDT_RST_A>);
-impl WWDT_RST_R {
+pub type WwdtRstR = crate::BitReader<WwdtRst>;
+impl WwdtRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WWDT_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> WWDT_RST_A {
+    pub const fn variant(&self) -> WwdtRst {
         match self.bits {
-            false => WWDT_RST_A::RELEASED,
-            true => WWDT_RST_A::ASSERTED,
+            false => WwdtRst::Released,
+            true => WwdtRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == WWDT_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == WWDT_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for WWDT_RST_R {
-    type Target = crate::FieldReader<bool, WWDT_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `WWDT_RST` writer - Watchdog Timer reset control."]
-pub struct WWDT_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WWDT_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: WWDT_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(WWDT_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == WwdtRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(WWDT_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == WwdtRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `WWDT_RST` writer - Watchdog Timer reset control."]
+pub type WwdtRstW<'a, REG> = crate::BitWriter<'a, REG, WwdtRst>;
+impl<'a, REG> WwdtRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(WwdtRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 22)) | ((value as u32 & 0x01) << 22);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(WwdtRst::Asserted)
     }
 }
 #[doc = "Real Time Clock (RTC) reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RTC_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum RtcRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<RTC_RST_A> for bool {
+impl From<RtcRst> for bool {
     #[inline(always)]
-    fn from(variant: RTC_RST_A) -> Self {
+    fn from(variant: RtcRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RTC_RST` reader - Real Time Clock (RTC) reset control."]
-pub struct RTC_RST_R(crate::FieldReader<bool, RTC_RST_A>);
-impl RTC_RST_R {
+pub type RtcRstR = crate::BitReader<RtcRst>;
+impl RtcRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RTC_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RTC_RST_A {
+    pub const fn variant(&self) -> RtcRst {
         match self.bits {
-            false => RTC_RST_A::RELEASED,
-            true => RTC_RST_A::ASSERTED,
+            false => RtcRst::Released,
+            true => RtcRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == RTC_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == RTC_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for RTC_RST_R {
-    type Target = crate::FieldReader<bool, RTC_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RTC_RST` writer - Real Time Clock (RTC) reset control."]
-pub struct RTC_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RTC_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RTC_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(RTC_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == RtcRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(RTC_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == RtcRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RTC_RST` writer - Real Time Clock (RTC) reset control."]
+pub type RtcRstW<'a, REG> = crate::BitWriter<'a, REG, RtcRst>;
+impl<'a, REG> RtcRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 23)) | ((value as u32 & 0x01) << 23);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(RtcRst::Asserted)
     }
 }
 #[doc = "Inter CPU communication Mailbox reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MAILBOX_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum MailboxRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<MAILBOX_RST_A> for bool {
+impl From<MailboxRst> for bool {
     #[inline(always)]
-    fn from(variant: MAILBOX_RST_A) -> Self {
+    fn from(variant: MailboxRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `MAILBOX_RST` reader - Inter CPU communication Mailbox reset control."]
-pub struct MAILBOX_RST_R(crate::FieldReader<bool, MAILBOX_RST_A>);
-impl MAILBOX_RST_R {
+pub type MailboxRstR = crate::BitReader<MailboxRst>;
+impl MailboxRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MAILBOX_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> MAILBOX_RST_A {
+    pub const fn variant(&self) -> MailboxRst {
         match self.bits {
-            false => MAILBOX_RST_A::RELEASED,
-            true => MAILBOX_RST_A::ASSERTED,
+            false => MailboxRst::Released,
+            true => MailboxRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == MAILBOX_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == MAILBOX_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for MAILBOX_RST_R {
-    type Target = crate::FieldReader<bool, MAILBOX_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MAILBOX_RST` writer - Inter CPU communication Mailbox reset control."]
-pub struct MAILBOX_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MAILBOX_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MAILBOX_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(MAILBOX_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == MailboxRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(MAILBOX_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == MailboxRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `MAILBOX_RST` writer - Inter CPU communication Mailbox reset control."]
+pub type MailboxRstW<'a, REG> = crate::BitWriter<'a, REG, MailboxRst>;
+impl<'a, REG> MailboxRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(MailboxRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 26)) | ((value as u32 & 0x01) << 26);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(MailboxRst::Asserted)
     }
 }
 #[doc = "ADC reset control.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ADC_RST_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum AdcRst {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1: Bloc is reset."]
-    ASSERTED = 1,
+    Asserted = 1,
 }
-impl From<ADC_RST_A> for bool {
+impl From<AdcRst> for bool {
     #[inline(always)]
-    fn from(variant: ADC_RST_A) -> Self {
+    fn from(variant: AdcRst) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ADC_RST` reader - ADC reset control."]
-pub struct ADC_RST_R(crate::FieldReader<bool, ADC_RST_A>);
-impl ADC_RST_R {
+pub type AdcRstR = crate::BitReader<AdcRst>;
+impl AdcRstR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ADC_RST_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ADC_RST_A {
+    pub const fn variant(&self) -> AdcRst {
         match self.bits {
-            false => ADC_RST_A::RELEASED,
-            true => ADC_RST_A::ASSERTED,
+            false => AdcRst::Released,
+            true => AdcRst::Asserted,
         }
-    }
-    #[doc = "Checks if the value of the field is `RELEASED`"]
-    #[inline(always)]
-    pub fn is_released(&self) -> bool {
-        **self == ADC_RST_A::RELEASED
-    }
-    #[doc = "Checks if the value of the field is `ASSERTED`"]
-    #[inline(always)]
-    pub fn is_asserted(&self) -> bool {
-        **self == ADC_RST_A::ASSERTED
-    }
-}
-impl core::ops::Deref for ADC_RST_R {
-    type Target = crate::FieldReader<bool, ADC_RST_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ADC_RST` writer - ADC reset control."]
-pub struct ADC_RST_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADC_RST_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ADC_RST_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(ADC_RST_A::RELEASED)
+    pub fn is_released(&self) -> bool {
+        *self == AdcRst::Released
     }
     #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(ADC_RST_A::ASSERTED)
+    pub fn is_asserted(&self) -> bool {
+        *self == AdcRst::Asserted
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ADC_RST` writer - ADC reset control."]
+pub type AdcRstW<'a, REG> = crate::BitWriter<'a, REG, AdcRst>;
+impl<'a, REG> AdcRstW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRst::Released)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bloc is reset."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 27)) | ((value as u32 & 0x01) << 27);
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRst::Asserted)
     }
 }
 impl R {
     #[doc = "Bit 1 - ROM reset control."]
     #[inline(always)]
-    pub fn rom_rst(&self) -> ROM_RST_R {
-        ROM_RST_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn rom_rst(&self) -> RomRstR {
+        RomRstR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 3 - SRAM Controller 1 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl1_rst(&self) -> SRAM_CTRL1_RST_R {
-        SRAM_CTRL1_RST_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn sram_ctrl1_rst(&self) -> SramCtrl1RstR {
+        SramCtrl1RstR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - SRAM Controller 2 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl2_rst(&self) -> SRAM_CTRL2_RST_R {
-        SRAM_CTRL2_RST_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn sram_ctrl2_rst(&self) -> SramCtrl2RstR {
+        SramCtrl2RstR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - SRAM Controller 3 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl3_rst(&self) -> SRAM_CTRL3_RST_R {
-        SRAM_CTRL3_RST_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn sram_ctrl3_rst(&self) -> SramCtrl3RstR {
+        SramCtrl3RstR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - SRAM Controller 4 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl4_rst(&self) -> SRAM_CTRL4_RST_R {
-        SRAM_CTRL4_RST_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn sram_ctrl4_rst(&self) -> SramCtrl4RstR {
+        SramCtrl4RstR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Flash controller reset control."]
     #[inline(always)]
-    pub fn flash_rst(&self) -> FLASH_RST_R {
-        FLASH_RST_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn flash_rst(&self) -> FlashRstR {
+        FlashRstR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - FMC controller reset control."]
     #[inline(always)]
-    pub fn fmc_rst(&self) -> FMC_RST_R {
-        FMC_RST_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn fmc_rst(&self) -> FmcRstR {
+        FmcRstR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 11 - Input Mux reset control."]
     #[inline(always)]
-    pub fn mux_rst(&self) -> MUX_RST_R {
-        MUX_RST_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn mux_rst(&self) -> MuxRstR {
+        MuxRstR::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 13 - I/O controller reset control."]
     #[inline(always)]
-    pub fn iocon_rst(&self) -> IOCON_RST_R {
-        IOCON_RST_R::new(((self.bits >> 13) & 0x01) != 0)
+    pub fn iocon_rst(&self) -> IoconRstR {
+        IoconRstR::new(((self.bits >> 13) & 1) != 0)
     }
     #[doc = "Bit 14 - GPIO0 reset control."]
     #[inline(always)]
-    pub fn gpio0_rst(&self) -> GPIO0_RST_R {
-        GPIO0_RST_R::new(((self.bits >> 14) & 0x01) != 0)
+    pub fn gpio0_rst(&self) -> Gpio0RstR {
+        Gpio0RstR::new(((self.bits >> 14) & 1) != 0)
     }
     #[doc = "Bit 15 - GPIO1 reset control."]
     #[inline(always)]
-    pub fn gpio1_rst(&self) -> GPIO1_RST_R {
-        GPIO1_RST_R::new(((self.bits >> 15) & 0x01) != 0)
+    pub fn gpio1_rst(&self) -> Gpio1RstR {
+        Gpio1RstR::new(((self.bits >> 15) & 1) != 0)
     }
     #[doc = "Bit 16 - GPIO2 reset control."]
     #[inline(always)]
-    pub fn gpio2_rst(&self) -> GPIO2_RST_R {
-        GPIO2_RST_R::new(((self.bits >> 16) & 0x01) != 0)
+    pub fn gpio2_rst(&self) -> Gpio2RstR {
+        Gpio2RstR::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bit 17 - GPIO3 reset control."]
     #[inline(always)]
-    pub fn gpio3_rst(&self) -> GPIO3_RST_R {
-        GPIO3_RST_R::new(((self.bits >> 17) & 0x01) != 0)
+    pub fn gpio3_rst(&self) -> Gpio3RstR {
+        Gpio3RstR::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Pin interrupt (PINT) reset control."]
     #[inline(always)]
-    pub fn pint_rst(&self) -> PINT_RST_R {
-        PINT_RST_R::new(((self.bits >> 18) & 0x01) != 0)
+    pub fn pint_rst(&self) -> PintRstR {
+        PintRstR::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bit 19 - Group interrupt (GINT) reset control."]
     #[inline(always)]
-    pub fn gint_rst(&self) -> GINT_RST_R {
-        GINT_RST_R::new(((self.bits >> 19) & 0x01) != 0)
+    pub fn gint_rst(&self) -> GintRstR {
+        GintRstR::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - DMA0 reset control."]
     #[inline(always)]
-    pub fn dma0_rst(&self) -> DMA0_RST_R {
-        DMA0_RST_R::new(((self.bits >> 20) & 0x01) != 0)
+    pub fn dma0_rst(&self) -> Dma0RstR {
+        Dma0RstR::new(((self.bits >> 20) & 1) != 0)
     }
     #[doc = "Bit 21 - CRCGEN reset control."]
     #[inline(always)]
-    pub fn crcgen_rst(&self) -> CRCGEN_RST_R {
-        CRCGEN_RST_R::new(((self.bits >> 21) & 0x01) != 0)
+    pub fn crcgen_rst(&self) -> CrcgenRstR {
+        CrcgenRstR::new(((self.bits >> 21) & 1) != 0)
     }
     #[doc = "Bit 22 - Watchdog Timer reset control."]
     #[inline(always)]
-    pub fn wwdt_rst(&self) -> WWDT_RST_R {
-        WWDT_RST_R::new(((self.bits >> 22) & 0x01) != 0)
+    pub fn wwdt_rst(&self) -> WwdtRstR {
+        WwdtRstR::new(((self.bits >> 22) & 1) != 0)
     }
     #[doc = "Bit 23 - Real Time Clock (RTC) reset control."]
     #[inline(always)]
-    pub fn rtc_rst(&self) -> RTC_RST_R {
-        RTC_RST_R::new(((self.bits >> 23) & 0x01) != 0)
+    pub fn rtc_rst(&self) -> RtcRstR {
+        RtcRstR::new(((self.bits >> 23) & 1) != 0)
     }
     #[doc = "Bit 26 - Inter CPU communication Mailbox reset control."]
     #[inline(always)]
-    pub fn mailbox_rst(&self) -> MAILBOX_RST_R {
-        MAILBOX_RST_R::new(((self.bits >> 26) & 0x01) != 0)
+    pub fn mailbox_rst(&self) -> MailboxRstR {
+        MailboxRstR::new(((self.bits >> 26) & 1) != 0)
     }
     #[doc = "Bit 27 - ADC reset control."]
     #[inline(always)]
-    pub fn adc_rst(&self) -> ADC_RST_R {
-        ADC_RST_R::new(((self.bits >> 27) & 0x01) != 0)
+    pub fn adc_rst(&self) -> AdcRstR {
+        AdcRstR::new(((self.bits >> 27) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 1 - ROM reset control."]
     #[inline(always)]
-    pub fn rom_rst(&mut self) -> ROM_RST_W {
-        ROM_RST_W { w: self }
+    pub fn rom_rst(&mut self) -> RomRstW<Presetctrl0Spec> {
+        RomRstW::new(self, 1)
     }
     #[doc = "Bit 3 - SRAM Controller 1 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl1_rst(&mut self) -> SRAM_CTRL1_RST_W {
-        SRAM_CTRL1_RST_W { w: self }
+    pub fn sram_ctrl1_rst(&mut self) -> SramCtrl1RstW<Presetctrl0Spec> {
+        SramCtrl1RstW::new(self, 3)
     }
     #[doc = "Bit 4 - SRAM Controller 2 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl2_rst(&mut self) -> SRAM_CTRL2_RST_W {
-        SRAM_CTRL2_RST_W { w: self }
+    pub fn sram_ctrl2_rst(&mut self) -> SramCtrl2RstW<Presetctrl0Spec> {
+        SramCtrl2RstW::new(self, 4)
     }
     #[doc = "Bit 5 - SRAM Controller 3 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl3_rst(&mut self) -> SRAM_CTRL3_RST_W {
-        SRAM_CTRL3_RST_W { w: self }
+    pub fn sram_ctrl3_rst(&mut self) -> SramCtrl3RstW<Presetctrl0Spec> {
+        SramCtrl3RstW::new(self, 5)
     }
     #[doc = "Bit 6 - SRAM Controller 4 reset control."]
     #[inline(always)]
-    pub fn sram_ctrl4_rst(&mut self) -> SRAM_CTRL4_RST_W {
-        SRAM_CTRL4_RST_W { w: self }
+    pub fn sram_ctrl4_rst(&mut self) -> SramCtrl4RstW<Presetctrl0Spec> {
+        SramCtrl4RstW::new(self, 6)
     }
     #[doc = "Bit 7 - Flash controller reset control."]
     #[inline(always)]
-    pub fn flash_rst(&mut self) -> FLASH_RST_W {
-        FLASH_RST_W { w: self }
+    pub fn flash_rst(&mut self) -> FlashRstW<Presetctrl0Spec> {
+        FlashRstW::new(self, 7)
     }
     #[doc = "Bit 8 - FMC controller reset control."]
     #[inline(always)]
-    pub fn fmc_rst(&mut self) -> FMC_RST_W {
-        FMC_RST_W { w: self }
+    pub fn fmc_rst(&mut self) -> FmcRstW<Presetctrl0Spec> {
+        FmcRstW::new(self, 8)
     }
     #[doc = "Bit 11 - Input Mux reset control."]
     #[inline(always)]
-    pub fn mux_rst(&mut self) -> MUX_RST_W {
-        MUX_RST_W { w: self }
+    pub fn mux_rst(&mut self) -> MuxRstW<Presetctrl0Spec> {
+        MuxRstW::new(self, 11)
     }
     #[doc = "Bit 13 - I/O controller reset control."]
     #[inline(always)]
-    pub fn iocon_rst(&mut self) -> IOCON_RST_W {
-        IOCON_RST_W { w: self }
+    pub fn iocon_rst(&mut self) -> IoconRstW<Presetctrl0Spec> {
+        IoconRstW::new(self, 13)
     }
     #[doc = "Bit 14 - GPIO0 reset control."]
     #[inline(always)]
-    pub fn gpio0_rst(&mut self) -> GPIO0_RST_W {
-        GPIO0_RST_W { w: self }
+    pub fn gpio0_rst(&mut self) -> Gpio0RstW<Presetctrl0Spec> {
+        Gpio0RstW::new(self, 14)
     }
     #[doc = "Bit 15 - GPIO1 reset control."]
     #[inline(always)]
-    pub fn gpio1_rst(&mut self) -> GPIO1_RST_W {
-        GPIO1_RST_W { w: self }
+    pub fn gpio1_rst(&mut self) -> Gpio1RstW<Presetctrl0Spec> {
+        Gpio1RstW::new(self, 15)
     }
     #[doc = "Bit 16 - GPIO2 reset control."]
     #[inline(always)]
-    pub fn gpio2_rst(&mut self) -> GPIO2_RST_W {
-        GPIO2_RST_W { w: self }
+    pub fn gpio2_rst(&mut self) -> Gpio2RstW<Presetctrl0Spec> {
+        Gpio2RstW::new(self, 16)
     }
     #[doc = "Bit 17 - GPIO3 reset control."]
     #[inline(always)]
-    pub fn gpio3_rst(&mut self) -> GPIO3_RST_W {
-        GPIO3_RST_W { w: self }
+    pub fn gpio3_rst(&mut self) -> Gpio3RstW<Presetctrl0Spec> {
+        Gpio3RstW::new(self, 17)
     }
     #[doc = "Bit 18 - Pin interrupt (PINT) reset control."]
     #[inline(always)]
-    pub fn pint_rst(&mut self) -> PINT_RST_W {
-        PINT_RST_W { w: self }
+    pub fn pint_rst(&mut self) -> PintRstW<Presetctrl0Spec> {
+        PintRstW::new(self, 18)
     }
     #[doc = "Bit 19 - Group interrupt (GINT) reset control."]
     #[inline(always)]
-    pub fn gint_rst(&mut self) -> GINT_RST_W {
-        GINT_RST_W { w: self }
+    pub fn gint_rst(&mut self) -> GintRstW<Presetctrl0Spec> {
+        GintRstW::new(self, 19)
     }
     #[doc = "Bit 20 - DMA0 reset control."]
     #[inline(always)]
-    pub fn dma0_rst(&mut self) -> DMA0_RST_W {
-        DMA0_RST_W { w: self }
+    pub fn dma0_rst(&mut self) -> Dma0RstW<Presetctrl0Spec> {
+        Dma0RstW::new(self, 20)
     }
     #[doc = "Bit 21 - CRCGEN reset control."]
     #[inline(always)]
-    pub fn crcgen_rst(&mut self) -> CRCGEN_RST_W {
-        CRCGEN_RST_W { w: self }
+    pub fn crcgen_rst(&mut self) -> CrcgenRstW<Presetctrl0Spec> {
+        CrcgenRstW::new(self, 21)
     }
     #[doc = "Bit 22 - Watchdog Timer reset control."]
     #[inline(always)]
-    pub fn wwdt_rst(&mut self) -> WWDT_RST_W {
-        WWDT_RST_W { w: self }
+    pub fn wwdt_rst(&mut self) -> WwdtRstW<Presetctrl0Spec> {
+        WwdtRstW::new(self, 22)
     }
     #[doc = "Bit 23 - Real Time Clock (RTC) reset control."]
     #[inline(always)]
-    pub fn rtc_rst(&mut self) -> RTC_RST_W {
-        RTC_RST_W { w: self }
+    pub fn rtc_rst(&mut self) -> RtcRstW<Presetctrl0Spec> {
+        RtcRstW::new(self, 23)
     }
     #[doc = "Bit 26 - Inter CPU communication Mailbox reset control."]
     #[inline(always)]
-    pub fn mailbox_rst(&mut self) -> MAILBOX_RST_W {
-        MAILBOX_RST_W { w: self }
+    pub fn mailbox_rst(&mut self) -> MailboxRstW<Presetctrl0Spec> {
+        MailboxRstW::new(self, 26)
     }
     #[doc = "Bit 27 - ADC reset control."]
     #[inline(always)]
-    pub fn adc_rst(&mut self) -> ADC_RST_W {
-        ADC_RST_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn adc_rst(&mut self) -> AdcRstW<Presetctrl0Spec> {
+        AdcRstW::new(self, 27)
     }
 }
-#[doc = "Peripheral reset control 0\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [presetctrl0](index.html) module"]
-pub struct PRESETCTRL0_SPEC;
-impl crate::RegisterSpec for PRESETCTRL0_SPEC {
+#[doc = "Peripheral reset control 0\n\nYou can [`read`](crate::Reg::read) this register and get [`presetctrl0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`presetctrl0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Presetctrl0Spec;
+impl crate::RegisterSpec for Presetctrl0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [presetctrl0::R](R) reader structure"]
-impl crate::Readable for PRESETCTRL0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [presetctrl0::W](W) writer structure"]
-impl crate::Writable for PRESETCTRL0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`presetctrl0::R`](R) reader structure"]
+impl crate::Readable for Presetctrl0Spec {}
+#[doc = "`write(|w| ..)` method takes [`presetctrl0::W`](W) writer structure"]
+impl crate::Writable for Presetctrl0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRESETCTRL0 to value 0"]
-impl crate::Resettable for PRESETCTRL0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Presetctrl0Spec {
+    const RESET_VALUE: u32 = 0;
 }

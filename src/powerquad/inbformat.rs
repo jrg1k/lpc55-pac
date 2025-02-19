@@ -1,177 +1,67 @@
 #[doc = "Register `INBFORMAT` reader"]
-pub struct R(crate::R<INBFORMAT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<INBFORMAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<INBFORMAT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<INBFORMAT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<InbformatSpec>;
 #[doc = "Register `INBFORMAT` writer"]
-pub struct W(crate::W<INBFORMAT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<INBFORMAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<INBFORMAT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<INBFORMAT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<InbformatSpec>;
 #[doc = "Field `inb_formatint` reader - Input B Internal format (00: q15; 01:q31; 10:float)"]
-pub struct INB_FORMATINT_R(crate::FieldReader<u8, u8>);
-impl INB_FORMATINT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INB_FORMATINT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INB_FORMATINT_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type InbFormatintR = crate::FieldReader;
 #[doc = "Field `inb_formatint` writer - Input B Internal format (00: q15; 01:q31; 10:float)"]
-pub struct INB_FORMATINT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INB_FORMATINT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
-    }
-}
+pub type InbFormatintW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `inb_formatext` reader - Input B External format (00: q15; 01:q31; 10:float)"]
-pub struct INB_FORMATEXT_R(crate::FieldReader<u8, u8>);
-impl INB_FORMATEXT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INB_FORMATEXT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INB_FORMATEXT_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type InbFormatextR = crate::FieldReader;
 #[doc = "Field `inb_formatext` writer - Input B External format (00: q15; 01:q31; 10:float)"]
-pub struct INB_FORMATEXT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INB_FORMATEXT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 4)) | ((value as u32 & 0x03) << 4);
-        self.w
-    }
-}
+pub type InbFormatextW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `inb_scaler` reader - Input B Scaler value (for scaled 'q31' formats)"]
-pub struct INB_SCALER_R(crate::FieldReader<u8, u8>);
-impl INB_SCALER_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INB_SCALER_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INB_SCALER_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type InbScalerR = crate::FieldReader;
 #[doc = "Field `inb_scaler` writer - Input B Scaler value (for scaled 'q31' formats)"]
-pub struct INB_SCALER_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INB_SCALER_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 8)) | ((value as u32 & 0xff) << 8);
-        self.w
-    }
-}
+pub type InbScalerW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:1 - Input B Internal format (00: q15; 01:q31; 10:float)"]
     #[inline(always)]
-    pub fn inb_formatint(&self) -> INB_FORMATINT_R {
-        INB_FORMATINT_R::new((self.bits & 0x03) as u8)
+    pub fn inb_formatint(&self) -> InbFormatintR {
+        InbFormatintR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 4:5 - Input B External format (00: q15; 01:q31; 10:float)"]
     #[inline(always)]
-    pub fn inb_formatext(&self) -> INB_FORMATEXT_R {
-        INB_FORMATEXT_R::new(((self.bits >> 4) & 0x03) as u8)
+    pub fn inb_formatext(&self) -> InbFormatextR {
+        InbFormatextR::new(((self.bits >> 4) & 3) as u8)
     }
     #[doc = "Bits 8:15 - Input B Scaler value (for scaled 'q31' formats)"]
     #[inline(always)]
-    pub fn inb_scaler(&self) -> INB_SCALER_R {
-        INB_SCALER_R::new(((self.bits >> 8) & 0xff) as u8)
+    pub fn inb_scaler(&self) -> InbScalerR {
+        InbScalerR::new(((self.bits >> 8) & 0xff) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Input B Internal format (00: q15; 01:q31; 10:float)"]
     #[inline(always)]
-    pub fn inb_formatint(&mut self) -> INB_FORMATINT_W {
-        INB_FORMATINT_W { w: self }
+    pub fn inb_formatint(&mut self) -> InbFormatintW<InbformatSpec> {
+        InbFormatintW::new(self, 0)
     }
     #[doc = "Bits 4:5 - Input B External format (00: q15; 01:q31; 10:float)"]
     #[inline(always)]
-    pub fn inb_formatext(&mut self) -> INB_FORMATEXT_W {
-        INB_FORMATEXT_W { w: self }
+    pub fn inb_formatext(&mut self) -> InbFormatextW<InbformatSpec> {
+        InbFormatextW::new(self, 4)
     }
     #[doc = "Bits 8:15 - Input B Scaler value (for scaled 'q31' formats)"]
     #[inline(always)]
-    pub fn inb_scaler(&mut self) -> INB_SCALER_W {
-        INB_SCALER_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn inb_scaler(&mut self) -> InbScalerW<InbformatSpec> {
+        InbScalerW::new(self, 8)
     }
 }
-#[doc = "Input B format\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [inbformat](index.html) module"]
-pub struct INBFORMAT_SPEC;
-impl crate::RegisterSpec for INBFORMAT_SPEC {
+#[doc = "Input B format\n\nYou can [`read`](crate::Reg::read) this register and get [`inbformat::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`inbformat::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct InbformatSpec;
+impl crate::RegisterSpec for InbformatSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [inbformat::R](R) reader structure"]
-impl crate::Readable for INBFORMAT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [inbformat::W](W) writer structure"]
-impl crate::Writable for INBFORMAT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`inbformat::R`](R) reader structure"]
+impl crate::Readable for InbformatSpec {}
+#[doc = "`write(|w| ..)` method takes [`inbformat::W`](W) writer structure"]
+impl crate::Writable for InbformatSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets INBFORMAT to value 0"]
-impl crate::Resettable for INBFORMAT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for InbformatSpec {
+    const RESET_VALUE: u32 = 0;
 }

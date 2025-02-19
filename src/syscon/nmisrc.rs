@@ -1,234 +1,81 @@
 #[doc = "Register `NMISRC` reader"]
-pub struct R(crate::R<NMISRC_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<NMISRC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<NMISRC_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<NMISRC_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<NmisrcSpec>;
 #[doc = "Register `NMISRC` writer"]
-pub struct W(crate::W<NMISRC_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<NMISRC_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<NMISRC_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<NMISRC_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<NmisrcSpec>;
 #[doc = "Field `IRQCPU0` reader - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU0, if enabled by NMIENCPU0."]
-pub struct IRQCPU0_R(crate::FieldReader<u8, u8>);
-impl IRQCPU0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        IRQCPU0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for IRQCPU0_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Irqcpu0R = crate::FieldReader;
 #[doc = "Field `IRQCPU0` writer - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU0, if enabled by NMIENCPU0."]
-pub struct IRQCPU0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> IRQCPU0_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x3f) | (value as u32 & 0x3f);
-        self.w
-    }
-}
+pub type Irqcpu0W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `IRQCPU1` reader - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU1, if enabled by NMIENCPU1."]
-pub struct IRQCPU1_R(crate::FieldReader<u8, u8>);
-impl IRQCPU1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        IRQCPU1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for IRQCPU1_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Irqcpu1R = crate::FieldReader;
 #[doc = "Field `IRQCPU1` writer - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU1, if enabled by NMIENCPU1."]
-pub struct IRQCPU1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> IRQCPU1_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x3f << 8)) | ((value as u32 & 0x3f) << 8);
-        self.w
-    }
-}
+pub type Irqcpu1W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 #[doc = "Field `NMIENCPU1` reader - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU1."]
-pub struct NMIENCPU1_R(crate::FieldReader<bool, bool>);
-impl NMIENCPU1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NMIENCPU1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NMIENCPU1_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Nmiencpu1R = crate::BitReader;
 #[doc = "Field `NMIENCPU1` writer - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU1."]
-pub struct NMIENCPU1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NMIENCPU1_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 30)) | ((value as u32 & 0x01) << 30);
-        self.w
-    }
-}
+pub type Nmiencpu1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NMIENCPU0` reader - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU0."]
-pub struct NMIENCPU0_R(crate::FieldReader<bool, bool>);
-impl NMIENCPU0_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NMIENCPU0_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NMIENCPU0_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Nmiencpu0R = crate::BitReader;
 #[doc = "Field `NMIENCPU0` writer - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU0."]
-pub struct NMIENCPU0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NMIENCPU0_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
-        self.w
-    }
-}
+pub type Nmiencpu0W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bits 0:5 - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU0, if enabled by NMIENCPU0."]
     #[inline(always)]
-    pub fn irqcpu0(&self) -> IRQCPU0_R {
-        IRQCPU0_R::new((self.bits & 0x3f) as u8)
+    pub fn irqcpu0(&self) -> Irqcpu0R {
+        Irqcpu0R::new((self.bits & 0x3f) as u8)
     }
     #[doc = "Bits 8:13 - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU1, if enabled by NMIENCPU1."]
     #[inline(always)]
-    pub fn irqcpu1(&self) -> IRQCPU1_R {
-        IRQCPU1_R::new(((self.bits >> 8) & 0x3f) as u8)
+    pub fn irqcpu1(&self) -> Irqcpu1R {
+        Irqcpu1R::new(((self.bits >> 8) & 0x3f) as u8)
     }
     #[doc = "Bit 30 - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU1."]
     #[inline(always)]
-    pub fn nmiencpu1(&self) -> NMIENCPU1_R {
-        NMIENCPU1_R::new(((self.bits >> 30) & 0x01) != 0)
+    pub fn nmiencpu1(&self) -> Nmiencpu1R {
+        Nmiencpu1R::new(((self.bits >> 30) & 1) != 0)
     }
     #[doc = "Bit 31 - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU0."]
     #[inline(always)]
-    pub fn nmiencpu0(&self) -> NMIENCPU0_R {
-        NMIENCPU0_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn nmiencpu0(&self) -> Nmiencpu0R {
+        Nmiencpu0R::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU0, if enabled by NMIENCPU0."]
     #[inline(always)]
-    pub fn irqcpu0(&mut self) -> IRQCPU0_W {
-        IRQCPU0_W { w: self }
+    pub fn irqcpu0(&mut self) -> Irqcpu0W<NmisrcSpec> {
+        Irqcpu0W::new(self, 0)
     }
     #[doc = "Bits 8:13 - The IRQ number of the interrupt that acts as the Non-Maskable Interrupt (NMI) for the CPU1, if enabled by NMIENCPU1."]
     #[inline(always)]
-    pub fn irqcpu1(&mut self) -> IRQCPU1_W {
-        IRQCPU1_W { w: self }
+    pub fn irqcpu1(&mut self) -> Irqcpu1W<NmisrcSpec> {
+        Irqcpu1W::new(self, 8)
     }
     #[doc = "Bit 30 - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU1."]
     #[inline(always)]
-    pub fn nmiencpu1(&mut self) -> NMIENCPU1_W {
-        NMIENCPU1_W { w: self }
+    pub fn nmiencpu1(&mut self) -> Nmiencpu1W<NmisrcSpec> {
+        Nmiencpu1W::new(self, 30)
     }
     #[doc = "Bit 31 - Write a 1 to this bit to enable the Non-Maskable Interrupt (NMI) source selected by IRQCPU0."]
     #[inline(always)]
-    pub fn nmiencpu0(&mut self) -> NMIENCPU0_W {
-        NMIENCPU0_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn nmiencpu0(&mut self) -> Nmiencpu0W<NmisrcSpec> {
+        Nmiencpu0W::new(self, 31)
     }
 }
-#[doc = "NMI Source Select\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [nmisrc](index.html) module"]
-pub struct NMISRC_SPEC;
-impl crate::RegisterSpec for NMISRC_SPEC {
+#[doc = "NMI Source Select\n\nYou can [`read`](crate::Reg::read) this register and get [`nmisrc::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`nmisrc::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct NmisrcSpec;
+impl crate::RegisterSpec for NmisrcSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [nmisrc::R](R) reader structure"]
-impl crate::Readable for NMISRC_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [nmisrc::W](W) writer structure"]
-impl crate::Writable for NMISRC_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`nmisrc::R`](R) reader structure"]
+impl crate::Readable for NmisrcSpec {}
+#[doc = "`write(|w| ..)` method takes [`nmisrc::W`](W) writer structure"]
+impl crate::Writable for NmisrcSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets NMISRC to value 0"]
-impl crate::Resettable for NMISRC_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for NmisrcSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,160 +1,88 @@
 #[doc = "Register `UPDATELCKOUT` reader"]
-pub struct R(crate::R<UPDATELCKOUT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<UPDATELCKOUT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<UPDATELCKOUT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<UPDATELCKOUT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<UpdatelckoutSpec>;
 #[doc = "Register `UPDATELCKOUT` writer"]
-pub struct W(crate::W<UPDATELCKOUT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<UPDATELCKOUT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<UPDATELCKOUT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<UPDATELCKOUT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<UpdatelckoutSpec>;
 #[doc = "All Registers\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum UPDATELCKOUT_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Updatelckout {
     #[doc = "0: Normal Mode. Can be written to."]
-    NORMAL_MODE = 0,
+    NormalMode = 0,
     #[doc = "1: Protected Mode. Cannot be written to."]
-    PROTECTED_MODE = 1,
+    ProtectedMode = 1,
 }
-impl From<UPDATELCKOUT_A> for bool {
+impl From<Updatelckout> for bool {
     #[inline(always)]
-    fn from(variant: UPDATELCKOUT_A) -> Self {
+    fn from(variant: Updatelckout) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `UPDATELCKOUT` reader - All Registers"]
-pub struct UPDATELCKOUT_R(crate::FieldReader<bool, UPDATELCKOUT_A>);
-impl UPDATELCKOUT_R {
+pub type UpdatelckoutR = crate::BitReader<Updatelckout>;
+impl UpdatelckoutR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        UPDATELCKOUT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> UPDATELCKOUT_A {
+    pub const fn variant(&self) -> Updatelckout {
         match self.bits {
-            false => UPDATELCKOUT_A::NORMAL_MODE,
-            true => UPDATELCKOUT_A::PROTECTED_MODE,
+            false => Updatelckout::NormalMode,
+            true => Updatelckout::ProtectedMode,
         }
-    }
-    #[doc = "Checks if the value of the field is `NORMAL_MODE`"]
-    #[inline(always)]
-    pub fn is_normal_mode(&self) -> bool {
-        **self == UPDATELCKOUT_A::NORMAL_MODE
-    }
-    #[doc = "Checks if the value of the field is `PROTECTED_MODE`"]
-    #[inline(always)]
-    pub fn is_protected_mode(&self) -> bool {
-        **self == UPDATELCKOUT_A::PROTECTED_MODE
-    }
-}
-impl core::ops::Deref for UPDATELCKOUT_R {
-    type Target = crate::FieldReader<bool, UPDATELCKOUT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `UPDATELCKOUT` writer - All Registers"]
-pub struct UPDATELCKOUT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UPDATELCKOUT_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: UPDATELCKOUT_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal Mode. Can be written to."]
     #[inline(always)]
-    pub fn normal_mode(self) -> &'a mut W {
-        self.variant(UPDATELCKOUT_A::NORMAL_MODE)
+    pub fn is_normal_mode(&self) -> bool {
+        *self == Updatelckout::NormalMode
     }
     #[doc = "Protected Mode. Cannot be written to."]
     #[inline(always)]
-    pub fn protected_mode(self) -> &'a mut W {
-        self.variant(UPDATELCKOUT_A::PROTECTED_MODE)
+    pub fn is_protected_mode(&self) -> bool {
+        *self == Updatelckout::ProtectedMode
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `UPDATELCKOUT` writer - All Registers"]
+pub type UpdatelckoutW<'a, REG> = crate::BitWriter<'a, REG, Updatelckout>;
+impl<'a, REG> UpdatelckoutW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal Mode. Can be written to."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn normal_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Updatelckout::NormalMode)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Protected Mode. Cannot be written to."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn protected_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Updatelckout::ProtectedMode)
     }
 }
 impl R {
     #[doc = "Bit 0 - All Registers"]
     #[inline(always)]
-    pub fn updatelckout(&self) -> UPDATELCKOUT_R {
-        UPDATELCKOUT_R::new((self.bits & 0x01) != 0)
+    pub fn updatelckout(&self) -> UpdatelckoutR {
+        UpdatelckoutR::new((self.bits & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - All Registers"]
     #[inline(always)]
-    pub fn updatelckout(&mut self) -> UPDATELCKOUT_W {
-        UPDATELCKOUT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn updatelckout(&mut self) -> UpdatelckoutW<UpdatelckoutSpec> {
+        UpdatelckoutW::new(self, 0)
     }
 }
-#[doc = "update lock out control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [updatelckout](index.html) module"]
-pub struct UPDATELCKOUT_SPEC;
-impl crate::RegisterSpec for UPDATELCKOUT_SPEC {
+#[doc = "update lock out control\n\nYou can [`read`](crate::Reg::read) this register and get [`updatelckout::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`updatelckout::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UpdatelckoutSpec;
+impl crate::RegisterSpec for UpdatelckoutSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [updatelckout::R](R) reader structure"]
-impl crate::Readable for UPDATELCKOUT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [updatelckout::W](W) writer structure"]
-impl crate::Writable for UPDATELCKOUT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`updatelckout::R`](R) reader structure"]
+impl crate::Readable for UpdatelckoutSpec {}
+#[doc = "`write(|w| ..)` method takes [`updatelckout::W`](W) writer structure"]
+impl crate::Writable for UpdatelckoutSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets UPDATELCKOUT to value 0"]
-impl crate::Resettable for UPDATELCKOUT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for UpdatelckoutSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,1650 +1,1353 @@
 #[doc = "Register `OUTPUTDIRCTRL` reader"]
-pub struct R(crate::R<OUTPUTDIRCTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<OUTPUTDIRCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<OUTPUTDIRCTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<OUTPUTDIRCTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<OutputdirctrlSpec>;
 #[doc = "Register `OUTPUTDIRCTRL` writer"]
-pub struct W(crate::W<OUTPUTDIRCTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<OUTPUTDIRCTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<OUTPUTDIRCTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<OUTPUTDIRCTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<OutputdirctrlSpec>;
 #[doc = "Set/clear operation on output 0. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR0_A {
+pub enum Setclr0 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR0_A> for u8 {
+impl From<Setclr0> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR0_A) -> Self {
+    fn from(variant: Setclr0) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr0 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr0 {}
 #[doc = "Field `SETCLR0` reader - Set/clear operation on output 0. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR0_R(crate::FieldReader<u8, SETCLR0_A>);
-impl SETCLR0_R {
+pub type Setclr0R = crate::FieldReader<Setclr0>;
+impl Setclr0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR0_A> {
+    pub const fn variant(&self) -> Option<Setclr0> {
         match self.bits {
-            0 => Some(SETCLR0_A::INDEPENDENT),
-            1 => Some(SETCLR0_A::L_REVERSED),
-            2 => Some(SETCLR0_A::H_REVERSED),
+            0 => Some(Setclr0::Independent),
+            1 => Some(Setclr0::LReversed),
+            2 => Some(Setclr0::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR0_A::INDEPENDENT
+        *self == Setclr0::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR0_A::L_REVERSED
+        *self == Setclr0::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR0_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR0_R {
-    type Target = crate::FieldReader<u8, SETCLR0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr0::HReversed
     }
 }
 #[doc = "Field `SETCLR0` writer - Set/clear operation on output 0. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR0_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr0W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr0>;
+impl<'a, REG> Setclr0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR0_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr0::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR0_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr0::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR0_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr0::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 1. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR1_A {
+pub enum Setclr1 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR1_A> for u8 {
+impl From<Setclr1> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR1_A) -> Self {
+    fn from(variant: Setclr1) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr1 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr1 {}
 #[doc = "Field `SETCLR1` reader - Set/clear operation on output 1. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR1_R(crate::FieldReader<u8, SETCLR1_A>);
-impl SETCLR1_R {
+pub type Setclr1R = crate::FieldReader<Setclr1>;
+impl Setclr1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR1_A> {
+    pub const fn variant(&self) -> Option<Setclr1> {
         match self.bits {
-            0 => Some(SETCLR1_A::INDEPENDENT),
-            1 => Some(SETCLR1_A::L_REVERSED),
-            2 => Some(SETCLR1_A::H_REVERSED),
+            0 => Some(Setclr1::Independent),
+            1 => Some(Setclr1::LReversed),
+            2 => Some(Setclr1::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR1_A::INDEPENDENT
+        *self == Setclr1::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR1_A::L_REVERSED
+        *self == Setclr1::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR1_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR1_R {
-    type Target = crate::FieldReader<u8, SETCLR1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr1::HReversed
     }
 }
 #[doc = "Field `SETCLR1` writer - Set/clear operation on output 1. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR1_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr1W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr1>;
+impl<'a, REG> Setclr1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR1_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr1::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR1_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr1::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR1_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 2)) | ((value as u32 & 0x03) << 2);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr1::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 2. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR2_A {
+pub enum Setclr2 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR2_A> for u8 {
+impl From<Setclr2> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR2_A) -> Self {
+    fn from(variant: Setclr2) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr2 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr2 {}
 #[doc = "Field `SETCLR2` reader - Set/clear operation on output 2. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR2_R(crate::FieldReader<u8, SETCLR2_A>);
-impl SETCLR2_R {
+pub type Setclr2R = crate::FieldReader<Setclr2>;
+impl Setclr2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR2_A> {
+    pub const fn variant(&self) -> Option<Setclr2> {
         match self.bits {
-            0 => Some(SETCLR2_A::INDEPENDENT),
-            1 => Some(SETCLR2_A::L_REVERSED),
-            2 => Some(SETCLR2_A::H_REVERSED),
+            0 => Some(Setclr2::Independent),
+            1 => Some(Setclr2::LReversed),
+            2 => Some(Setclr2::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR2_A::INDEPENDENT
+        *self == Setclr2::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR2_A::L_REVERSED
+        *self == Setclr2::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR2_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR2_R {
-    type Target = crate::FieldReader<u8, SETCLR2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr2::HReversed
     }
 }
 #[doc = "Field `SETCLR2` writer - Set/clear operation on output 2. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR2_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr2W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr2>;
+impl<'a, REG> Setclr2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR2_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr2::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR2_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr2::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR2_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 4)) | ((value as u32 & 0x03) << 4);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr2::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 3. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR3_A {
+pub enum Setclr3 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR3_A> for u8 {
+impl From<Setclr3> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR3_A) -> Self {
+    fn from(variant: Setclr3) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr3 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr3 {}
 #[doc = "Field `SETCLR3` reader - Set/clear operation on output 3. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR3_R(crate::FieldReader<u8, SETCLR3_A>);
-impl SETCLR3_R {
+pub type Setclr3R = crate::FieldReader<Setclr3>;
+impl Setclr3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR3_A> {
+    pub const fn variant(&self) -> Option<Setclr3> {
         match self.bits {
-            0 => Some(SETCLR3_A::INDEPENDENT),
-            1 => Some(SETCLR3_A::L_REVERSED),
-            2 => Some(SETCLR3_A::H_REVERSED),
+            0 => Some(Setclr3::Independent),
+            1 => Some(Setclr3::LReversed),
+            2 => Some(Setclr3::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR3_A::INDEPENDENT
+        *self == Setclr3::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR3_A::L_REVERSED
+        *self == Setclr3::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR3_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR3_R {
-    type Target = crate::FieldReader<u8, SETCLR3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr3::HReversed
     }
 }
 #[doc = "Field `SETCLR3` writer - Set/clear operation on output 3. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR3_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr3W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr3>;
+impl<'a, REG> Setclr3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR3_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr3::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR3_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr3::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR3_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 6)) | ((value as u32 & 0x03) << 6);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr3::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 4. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR4_A {
+pub enum Setclr4 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR4_A> for u8 {
+impl From<Setclr4> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR4_A) -> Self {
+    fn from(variant: Setclr4) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr4 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr4 {}
 #[doc = "Field `SETCLR4` reader - Set/clear operation on output 4. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR4_R(crate::FieldReader<u8, SETCLR4_A>);
-impl SETCLR4_R {
+pub type Setclr4R = crate::FieldReader<Setclr4>;
+impl Setclr4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR4_A> {
+    pub const fn variant(&self) -> Option<Setclr4> {
         match self.bits {
-            0 => Some(SETCLR4_A::INDEPENDENT),
-            1 => Some(SETCLR4_A::L_REVERSED),
-            2 => Some(SETCLR4_A::H_REVERSED),
+            0 => Some(Setclr4::Independent),
+            1 => Some(Setclr4::LReversed),
+            2 => Some(Setclr4::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR4_A::INDEPENDENT
+        *self == Setclr4::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR4_A::L_REVERSED
+        *self == Setclr4::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR4_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR4_R {
-    type Target = crate::FieldReader<u8, SETCLR4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr4::HReversed
     }
 }
 #[doc = "Field `SETCLR4` writer - Set/clear operation on output 4. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR4_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr4W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr4>;
+impl<'a, REG> Setclr4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR4_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr4::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR4_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr4::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR4_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 8)) | ((value as u32 & 0x03) << 8);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr4::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 5. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR5_A {
+pub enum Setclr5 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR5_A> for u8 {
+impl From<Setclr5> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR5_A) -> Self {
+    fn from(variant: Setclr5) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr5 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr5 {}
 #[doc = "Field `SETCLR5` reader - Set/clear operation on output 5. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR5_R(crate::FieldReader<u8, SETCLR5_A>);
-impl SETCLR5_R {
+pub type Setclr5R = crate::FieldReader<Setclr5>;
+impl Setclr5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR5_A> {
+    pub const fn variant(&self) -> Option<Setclr5> {
         match self.bits {
-            0 => Some(SETCLR5_A::INDEPENDENT),
-            1 => Some(SETCLR5_A::L_REVERSED),
-            2 => Some(SETCLR5_A::H_REVERSED),
+            0 => Some(Setclr5::Independent),
+            1 => Some(Setclr5::LReversed),
+            2 => Some(Setclr5::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR5_A::INDEPENDENT
+        *self == Setclr5::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR5_A::L_REVERSED
+        *self == Setclr5::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR5_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR5_R {
-    type Target = crate::FieldReader<u8, SETCLR5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr5::HReversed
     }
 }
 #[doc = "Field `SETCLR5` writer - Set/clear operation on output 5. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR5_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr5W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr5>;
+impl<'a, REG> Setclr5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR5_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr5::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR5_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr5::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR5_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 10)) | ((value as u32 & 0x03) << 10);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr5::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 6. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR6_A {
+pub enum Setclr6 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR6_A> for u8 {
+impl From<Setclr6> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR6_A) -> Self {
+    fn from(variant: Setclr6) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr6 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr6 {}
 #[doc = "Field `SETCLR6` reader - Set/clear operation on output 6. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR6_R(crate::FieldReader<u8, SETCLR6_A>);
-impl SETCLR6_R {
+pub type Setclr6R = crate::FieldReader<Setclr6>;
+impl Setclr6R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR6_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR6_A> {
+    pub const fn variant(&self) -> Option<Setclr6> {
         match self.bits {
-            0 => Some(SETCLR6_A::INDEPENDENT),
-            1 => Some(SETCLR6_A::L_REVERSED),
-            2 => Some(SETCLR6_A::H_REVERSED),
+            0 => Some(Setclr6::Independent),
+            1 => Some(Setclr6::LReversed),
+            2 => Some(Setclr6::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR6_A::INDEPENDENT
+        *self == Setclr6::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR6_A::L_REVERSED
+        *self == Setclr6::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR6_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR6_R {
-    type Target = crate::FieldReader<u8, SETCLR6_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr6::HReversed
     }
 }
 #[doc = "Field `SETCLR6` writer - Set/clear operation on output 6. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR6_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR6_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr6W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr6>;
+impl<'a, REG> Setclr6W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR6_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr6::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR6_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr6::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR6_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 12)) | ((value as u32 & 0x03) << 12);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr6::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 7. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR7_A {
+pub enum Setclr7 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR7_A> for u8 {
+impl From<Setclr7> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR7_A) -> Self {
+    fn from(variant: Setclr7) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr7 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr7 {}
 #[doc = "Field `SETCLR7` reader - Set/clear operation on output 7. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR7_R(crate::FieldReader<u8, SETCLR7_A>);
-impl SETCLR7_R {
+pub type Setclr7R = crate::FieldReader<Setclr7>;
+impl Setclr7R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR7_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR7_A> {
+    pub const fn variant(&self) -> Option<Setclr7> {
         match self.bits {
-            0 => Some(SETCLR7_A::INDEPENDENT),
-            1 => Some(SETCLR7_A::L_REVERSED),
-            2 => Some(SETCLR7_A::H_REVERSED),
+            0 => Some(Setclr7::Independent),
+            1 => Some(Setclr7::LReversed),
+            2 => Some(Setclr7::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR7_A::INDEPENDENT
+        *self == Setclr7::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR7_A::L_REVERSED
+        *self == Setclr7::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR7_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR7_R {
-    type Target = crate::FieldReader<u8, SETCLR7_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr7::HReversed
     }
 }
 #[doc = "Field `SETCLR7` writer - Set/clear operation on output 7. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR7_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR7_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr7W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr7>;
+impl<'a, REG> Setclr7W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR7_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr7::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR7_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr7::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR7_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 14)) | ((value as u32 & 0x03) << 14);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr7::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 8. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR8_A {
+pub enum Setclr8 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR8_A> for u8 {
+impl From<Setclr8> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR8_A) -> Self {
+    fn from(variant: Setclr8) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr8 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr8 {}
 #[doc = "Field `SETCLR8` reader - Set/clear operation on output 8. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR8_R(crate::FieldReader<u8, SETCLR8_A>);
-impl SETCLR8_R {
+pub type Setclr8R = crate::FieldReader<Setclr8>;
+impl Setclr8R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR8_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR8_A> {
+    pub const fn variant(&self) -> Option<Setclr8> {
         match self.bits {
-            0 => Some(SETCLR8_A::INDEPENDENT),
-            1 => Some(SETCLR8_A::L_REVERSED),
-            2 => Some(SETCLR8_A::H_REVERSED),
+            0 => Some(Setclr8::Independent),
+            1 => Some(Setclr8::LReversed),
+            2 => Some(Setclr8::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR8_A::INDEPENDENT
+        *self == Setclr8::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR8_A::L_REVERSED
+        *self == Setclr8::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR8_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR8_R {
-    type Target = crate::FieldReader<u8, SETCLR8_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr8::HReversed
     }
 }
 #[doc = "Field `SETCLR8` writer - Set/clear operation on output 8. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR8_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR8_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR8_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr8W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr8>;
+impl<'a, REG> Setclr8W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR8_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr8::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR8_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr8::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR8_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | ((value as u32 & 0x03) << 16);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr8::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 9. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR9_A {
+pub enum Setclr9 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR9_A> for u8 {
+impl From<Setclr9> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR9_A) -> Self {
+    fn from(variant: Setclr9) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr9 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr9 {}
 #[doc = "Field `SETCLR9` reader - Set/clear operation on output 9. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR9_R(crate::FieldReader<u8, SETCLR9_A>);
-impl SETCLR9_R {
+pub type Setclr9R = crate::FieldReader<Setclr9>;
+impl Setclr9R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR9_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR9_A> {
+    pub const fn variant(&self) -> Option<Setclr9> {
         match self.bits {
-            0 => Some(SETCLR9_A::INDEPENDENT),
-            1 => Some(SETCLR9_A::L_REVERSED),
-            2 => Some(SETCLR9_A::H_REVERSED),
+            0 => Some(Setclr9::Independent),
+            1 => Some(Setclr9::LReversed),
+            2 => Some(Setclr9::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR9_A::INDEPENDENT
+        *self == Setclr9::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR9_A::L_REVERSED
+        *self == Setclr9::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR9_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR9_R {
-    type Target = crate::FieldReader<u8, SETCLR9_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr9::HReversed
     }
 }
 #[doc = "Field `SETCLR9` writer - Set/clear operation on output 9. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR9_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR9_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR9_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr9W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr9>;
+impl<'a, REG> Setclr9W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR9_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr9::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR9_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr9::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR9_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 18)) | ((value as u32 & 0x03) << 18);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr9::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 10. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR10_A {
+pub enum Setclr10 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR10_A> for u8 {
+impl From<Setclr10> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR10_A) -> Self {
+    fn from(variant: Setclr10) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr10 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr10 {}
 #[doc = "Field `SETCLR10` reader - Set/clear operation on output 10. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR10_R(crate::FieldReader<u8, SETCLR10_A>);
-impl SETCLR10_R {
+pub type Setclr10R = crate::FieldReader<Setclr10>;
+impl Setclr10R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR10_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR10_A> {
+    pub const fn variant(&self) -> Option<Setclr10> {
         match self.bits {
-            0 => Some(SETCLR10_A::INDEPENDENT),
-            1 => Some(SETCLR10_A::L_REVERSED),
-            2 => Some(SETCLR10_A::H_REVERSED),
+            0 => Some(Setclr10::Independent),
+            1 => Some(Setclr10::LReversed),
+            2 => Some(Setclr10::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR10_A::INDEPENDENT
+        *self == Setclr10::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR10_A::L_REVERSED
+        *self == Setclr10::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR10_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR10_R {
-    type Target = crate::FieldReader<u8, SETCLR10_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr10::HReversed
     }
 }
 #[doc = "Field `SETCLR10` writer - Set/clear operation on output 10. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR10_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR10_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR10_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr10W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr10>;
+impl<'a, REG> Setclr10W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR10_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr10::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR10_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr10::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR10_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr10::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 11. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR11_A {
+pub enum Setclr11 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR11_A> for u8 {
+impl From<Setclr11> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR11_A) -> Self {
+    fn from(variant: Setclr11) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr11 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr11 {}
 #[doc = "Field `SETCLR11` reader - Set/clear operation on output 11. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR11_R(crate::FieldReader<u8, SETCLR11_A>);
-impl SETCLR11_R {
+pub type Setclr11R = crate::FieldReader<Setclr11>;
+impl Setclr11R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR11_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR11_A> {
+    pub const fn variant(&self) -> Option<Setclr11> {
         match self.bits {
-            0 => Some(SETCLR11_A::INDEPENDENT),
-            1 => Some(SETCLR11_A::L_REVERSED),
-            2 => Some(SETCLR11_A::H_REVERSED),
+            0 => Some(Setclr11::Independent),
+            1 => Some(Setclr11::LReversed),
+            2 => Some(Setclr11::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR11_A::INDEPENDENT
+        *self == Setclr11::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR11_A::L_REVERSED
+        *self == Setclr11::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR11_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR11_R {
-    type Target = crate::FieldReader<u8, SETCLR11_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr11::HReversed
     }
 }
 #[doc = "Field `SETCLR11` writer - Set/clear operation on output 11. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR11_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR11_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR11_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr11W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr11>;
+impl<'a, REG> Setclr11W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR11_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr11::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR11_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr11::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR11_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 22)) | ((value as u32 & 0x03) << 22);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr11::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 12. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR12_A {
+pub enum Setclr12 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR12_A> for u8 {
+impl From<Setclr12> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR12_A) -> Self {
+    fn from(variant: Setclr12) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr12 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr12 {}
 #[doc = "Field `SETCLR12` reader - Set/clear operation on output 12. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR12_R(crate::FieldReader<u8, SETCLR12_A>);
-impl SETCLR12_R {
+pub type Setclr12R = crate::FieldReader<Setclr12>;
+impl Setclr12R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR12_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR12_A> {
+    pub const fn variant(&self) -> Option<Setclr12> {
         match self.bits {
-            0 => Some(SETCLR12_A::INDEPENDENT),
-            1 => Some(SETCLR12_A::L_REVERSED),
-            2 => Some(SETCLR12_A::H_REVERSED),
+            0 => Some(Setclr12::Independent),
+            1 => Some(Setclr12::LReversed),
+            2 => Some(Setclr12::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR12_A::INDEPENDENT
+        *self == Setclr12::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR12_A::L_REVERSED
+        *self == Setclr12::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR12_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR12_R {
-    type Target = crate::FieldReader<u8, SETCLR12_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr12::HReversed
     }
 }
 #[doc = "Field `SETCLR12` writer - Set/clear operation on output 12. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR12_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR12_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR12_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr12W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr12>;
+impl<'a, REG> Setclr12W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR12_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr12::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR12_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr12::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR12_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 24)) | ((value as u32 & 0x03) << 24);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr12::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 13. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR13_A {
+pub enum Setclr13 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR13_A> for u8 {
+impl From<Setclr13> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR13_A) -> Self {
+    fn from(variant: Setclr13) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr13 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr13 {}
 #[doc = "Field `SETCLR13` reader - Set/clear operation on output 13. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR13_R(crate::FieldReader<u8, SETCLR13_A>);
-impl SETCLR13_R {
+pub type Setclr13R = crate::FieldReader<Setclr13>;
+impl Setclr13R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR13_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR13_A> {
+    pub const fn variant(&self) -> Option<Setclr13> {
         match self.bits {
-            0 => Some(SETCLR13_A::INDEPENDENT),
-            1 => Some(SETCLR13_A::L_REVERSED),
-            2 => Some(SETCLR13_A::H_REVERSED),
+            0 => Some(Setclr13::Independent),
+            1 => Some(Setclr13::LReversed),
+            2 => Some(Setclr13::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR13_A::INDEPENDENT
+        *self == Setclr13::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR13_A::L_REVERSED
+        *self == Setclr13::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR13_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR13_R {
-    type Target = crate::FieldReader<u8, SETCLR13_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr13::HReversed
     }
 }
 #[doc = "Field `SETCLR13` writer - Set/clear operation on output 13. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR13_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR13_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR13_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr13W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr13>;
+impl<'a, REG> Setclr13W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR13_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr13::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR13_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr13::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR13_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 26)) | ((value as u32 & 0x03) << 26);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr13::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 14. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR14_A {
+pub enum Setclr14 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR14_A> for u8 {
+impl From<Setclr14> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR14_A) -> Self {
+    fn from(variant: Setclr14) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr14 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr14 {}
 #[doc = "Field `SETCLR14` reader - Set/clear operation on output 14. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR14_R(crate::FieldReader<u8, SETCLR14_A>);
-impl SETCLR14_R {
+pub type Setclr14R = crate::FieldReader<Setclr14>;
+impl Setclr14R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR14_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR14_A> {
+    pub const fn variant(&self) -> Option<Setclr14> {
         match self.bits {
-            0 => Some(SETCLR14_A::INDEPENDENT),
-            1 => Some(SETCLR14_A::L_REVERSED),
-            2 => Some(SETCLR14_A::H_REVERSED),
+            0 => Some(Setclr14::Independent),
+            1 => Some(Setclr14::LReversed),
+            2 => Some(Setclr14::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
     pub fn is_independent(&self) -> bool {
-        **self == SETCLR14_A::INDEPENDENT
+        *self == Setclr14::Independent
     }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
     pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR14_A::L_REVERSED
+        *self == Setclr14::LReversed
     }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
     pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR14_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR14_R {
-    type Target = crate::FieldReader<u8, SETCLR14_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Setclr14::HReversed
     }
 }
 #[doc = "Field `SETCLR14` writer - Set/clear operation on output 14. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR14_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR14_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR14_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+pub type Setclr14W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr14>;
+impl<'a, REG> Setclr14W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR14_A::INDEPENDENT)
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr14::Independent)
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR14_A::L_REVERSED)
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr14::LReversed)
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR14_A::H_REVERSED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 28)) | ((value as u32 & 0x03) << 28);
-        self.w
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr14::HReversed)
     }
 }
 #[doc = "Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SETCLR15_A {
+pub enum Setclr15 {
     #[doc = "0: Set and clear do not depend on the direction of any counter."]
-    INDEPENDENT = 0,
+    Independent = 0,
     #[doc = "1: Set and clear are reversed when counter L or the unified counter is counting down."]
-    L_REVERSED = 1,
+    LReversed = 1,
     #[doc = "2: Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
-    H_REVERSED = 2,
+    HReversed = 2,
 }
-impl From<SETCLR15_A> for u8 {
+impl From<Setclr15> for u8 {
     #[inline(always)]
-    fn from(variant: SETCLR15_A) -> Self {
+    fn from(variant: Setclr15) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Setclr15 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Setclr15 {}
 #[doc = "Field `SETCLR15` reader - Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR15_R(crate::FieldReader<u8, SETCLR15_A>);
-impl SETCLR15_R {
+pub type Setclr15R = crate::FieldReader<Setclr15>;
+impl Setclr15R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SETCLR15_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<SETCLR15_A> {
+    pub const fn variant(&self) -> Option<Setclr15> {
         match self.bits {
-            0 => Some(SETCLR15_A::INDEPENDENT),
-            1 => Some(SETCLR15_A::L_REVERSED),
-            2 => Some(SETCLR15_A::H_REVERSED),
+            0 => Some(Setclr15::Independent),
+            1 => Some(Setclr15::LReversed),
+            2 => Some(Setclr15::HReversed),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `INDEPENDENT`"]
-    #[inline(always)]
-    pub fn is_independent(&self) -> bool {
-        **self == SETCLR15_A::INDEPENDENT
-    }
-    #[doc = "Checks if the value of the field is `L_REVERSED`"]
-    #[inline(always)]
-    pub fn is_l_reversed(&self) -> bool {
-        **self == SETCLR15_A::L_REVERSED
-    }
-    #[doc = "Checks if the value of the field is `H_REVERSED`"]
-    #[inline(always)]
-    pub fn is_h_reversed(&self) -> bool {
-        **self == SETCLR15_A::H_REVERSED
-    }
-}
-impl core::ops::Deref for SETCLR15_R {
-    type Target = crate::FieldReader<u8, SETCLR15_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SETCLR15` writer - Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value."]
-pub struct SETCLR15_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETCLR15_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SETCLR15_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub fn independent(self) -> &'a mut W {
-        self.variant(SETCLR15_A::INDEPENDENT)
+    pub fn is_independent(&self) -> bool {
+        *self == Setclr15::Independent
     }
     #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
     #[inline(always)]
-    pub fn l_reversed(self) -> &'a mut W {
-        self.variant(SETCLR15_A::L_REVERSED)
+    pub fn is_l_reversed(&self) -> bool {
+        *self == Setclr15::LReversed
     }
     #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
     #[inline(always)]
-    pub fn h_reversed(self) -> &'a mut W {
-        self.variant(SETCLR15_A::H_REVERSED)
+    pub fn is_h_reversed(&self) -> bool {
+        *self == Setclr15::HReversed
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `SETCLR15` writer - Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value."]
+pub type Setclr15W<'a, REG> = crate::FieldWriter<'a, REG, 2, Setclr15>;
+impl<'a, REG> Setclr15W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Set and clear do not depend on the direction of any counter."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 30)) | ((value as u32 & 0x03) << 30);
-        self.w
+    pub fn independent(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr15::Independent)
+    }
+    #[doc = "Set and clear are reversed when counter L or the unified counter is counting down."]
+    #[inline(always)]
+    pub fn l_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr15::LReversed)
+    }
+    #[doc = "Set and clear are reversed when counter H is counting down. Do not use if UNIFY = 1."]
+    #[inline(always)]
+    pub fn h_reversed(self) -> &'a mut crate::W<REG> {
+        self.variant(Setclr15::HReversed)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - Set/clear operation on output 0. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr0(&self) -> SETCLR0_R {
-        SETCLR0_R::new((self.bits & 0x03) as u8)
+    pub fn setclr0(&self) -> Setclr0R {
+        Setclr0R::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 2:3 - Set/clear operation on output 1. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr1(&self) -> SETCLR1_R {
-        SETCLR1_R::new(((self.bits >> 2) & 0x03) as u8)
+    pub fn setclr1(&self) -> Setclr1R {
+        Setclr1R::new(((self.bits >> 2) & 3) as u8)
     }
     #[doc = "Bits 4:5 - Set/clear operation on output 2. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr2(&self) -> SETCLR2_R {
-        SETCLR2_R::new(((self.bits >> 4) & 0x03) as u8)
+    pub fn setclr2(&self) -> Setclr2R {
+        Setclr2R::new(((self.bits >> 4) & 3) as u8)
     }
     #[doc = "Bits 6:7 - Set/clear operation on output 3. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr3(&self) -> SETCLR3_R {
-        SETCLR3_R::new(((self.bits >> 6) & 0x03) as u8)
+    pub fn setclr3(&self) -> Setclr3R {
+        Setclr3R::new(((self.bits >> 6) & 3) as u8)
     }
     #[doc = "Bits 8:9 - Set/clear operation on output 4. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr4(&self) -> SETCLR4_R {
-        SETCLR4_R::new(((self.bits >> 8) & 0x03) as u8)
+    pub fn setclr4(&self) -> Setclr4R {
+        Setclr4R::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 10:11 - Set/clear operation on output 5. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr5(&self) -> SETCLR5_R {
-        SETCLR5_R::new(((self.bits >> 10) & 0x03) as u8)
+    pub fn setclr5(&self) -> Setclr5R {
+        Setclr5R::new(((self.bits >> 10) & 3) as u8)
     }
     #[doc = "Bits 12:13 - Set/clear operation on output 6. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr6(&self) -> SETCLR6_R {
-        SETCLR6_R::new(((self.bits >> 12) & 0x03) as u8)
+    pub fn setclr6(&self) -> Setclr6R {
+        Setclr6R::new(((self.bits >> 12) & 3) as u8)
     }
     #[doc = "Bits 14:15 - Set/clear operation on output 7. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr7(&self) -> SETCLR7_R {
-        SETCLR7_R::new(((self.bits >> 14) & 0x03) as u8)
+    pub fn setclr7(&self) -> Setclr7R {
+        Setclr7R::new(((self.bits >> 14) & 3) as u8)
     }
     #[doc = "Bits 16:17 - Set/clear operation on output 8. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr8(&self) -> SETCLR8_R {
-        SETCLR8_R::new(((self.bits >> 16) & 0x03) as u8)
+    pub fn setclr8(&self) -> Setclr8R {
+        Setclr8R::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bits 18:19 - Set/clear operation on output 9. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr9(&self) -> SETCLR9_R {
-        SETCLR9_R::new(((self.bits >> 18) & 0x03) as u8)
+    pub fn setclr9(&self) -> Setclr9R {
+        Setclr9R::new(((self.bits >> 18) & 3) as u8)
     }
     #[doc = "Bits 20:21 - Set/clear operation on output 10. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr10(&self) -> SETCLR10_R {
-        SETCLR10_R::new(((self.bits >> 20) & 0x03) as u8)
+    pub fn setclr10(&self) -> Setclr10R {
+        Setclr10R::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bits 22:23 - Set/clear operation on output 11. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr11(&self) -> SETCLR11_R {
-        SETCLR11_R::new(((self.bits >> 22) & 0x03) as u8)
+    pub fn setclr11(&self) -> Setclr11R {
+        Setclr11R::new(((self.bits >> 22) & 3) as u8)
     }
     #[doc = "Bits 24:25 - Set/clear operation on output 12. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr12(&self) -> SETCLR12_R {
-        SETCLR12_R::new(((self.bits >> 24) & 0x03) as u8)
+    pub fn setclr12(&self) -> Setclr12R {
+        Setclr12R::new(((self.bits >> 24) & 3) as u8)
     }
     #[doc = "Bits 26:27 - Set/clear operation on output 13. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr13(&self) -> SETCLR13_R {
-        SETCLR13_R::new(((self.bits >> 26) & 0x03) as u8)
+    pub fn setclr13(&self) -> Setclr13R {
+        Setclr13R::new(((self.bits >> 26) & 3) as u8)
     }
     #[doc = "Bits 28:29 - Set/clear operation on output 14. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr14(&self) -> SETCLR14_R {
-        SETCLR14_R::new(((self.bits >> 28) & 0x03) as u8)
+    pub fn setclr14(&self) -> Setclr14R {
+        Setclr14R::new(((self.bits >> 28) & 3) as u8)
     }
     #[doc = "Bits 30:31 - Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr15(&self) -> SETCLR15_R {
-        SETCLR15_R::new(((self.bits >> 30) & 0x03) as u8)
+    pub fn setclr15(&self) -> Setclr15R {
+        Setclr15R::new(((self.bits >> 30) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Set/clear operation on output 0. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr0(&mut self) -> SETCLR0_W {
-        SETCLR0_W { w: self }
+    pub fn setclr0(&mut self) -> Setclr0W<OutputdirctrlSpec> {
+        Setclr0W::new(self, 0)
     }
     #[doc = "Bits 2:3 - Set/clear operation on output 1. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr1(&mut self) -> SETCLR1_W {
-        SETCLR1_W { w: self }
+    pub fn setclr1(&mut self) -> Setclr1W<OutputdirctrlSpec> {
+        Setclr1W::new(self, 2)
     }
     #[doc = "Bits 4:5 - Set/clear operation on output 2. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr2(&mut self) -> SETCLR2_W {
-        SETCLR2_W { w: self }
+    pub fn setclr2(&mut self) -> Setclr2W<OutputdirctrlSpec> {
+        Setclr2W::new(self, 4)
     }
     #[doc = "Bits 6:7 - Set/clear operation on output 3. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr3(&mut self) -> SETCLR3_W {
-        SETCLR3_W { w: self }
+    pub fn setclr3(&mut self) -> Setclr3W<OutputdirctrlSpec> {
+        Setclr3W::new(self, 6)
     }
     #[doc = "Bits 8:9 - Set/clear operation on output 4. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr4(&mut self) -> SETCLR4_W {
-        SETCLR4_W { w: self }
+    pub fn setclr4(&mut self) -> Setclr4W<OutputdirctrlSpec> {
+        Setclr4W::new(self, 8)
     }
     #[doc = "Bits 10:11 - Set/clear operation on output 5. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr5(&mut self) -> SETCLR5_W {
-        SETCLR5_W { w: self }
+    pub fn setclr5(&mut self) -> Setclr5W<OutputdirctrlSpec> {
+        Setclr5W::new(self, 10)
     }
     #[doc = "Bits 12:13 - Set/clear operation on output 6. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr6(&mut self) -> SETCLR6_W {
-        SETCLR6_W { w: self }
+    pub fn setclr6(&mut self) -> Setclr6W<OutputdirctrlSpec> {
+        Setclr6W::new(self, 12)
     }
     #[doc = "Bits 14:15 - Set/clear operation on output 7. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr7(&mut self) -> SETCLR7_W {
-        SETCLR7_W { w: self }
+    pub fn setclr7(&mut self) -> Setclr7W<OutputdirctrlSpec> {
+        Setclr7W::new(self, 14)
     }
     #[doc = "Bits 16:17 - Set/clear operation on output 8. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr8(&mut self) -> SETCLR8_W {
-        SETCLR8_W { w: self }
+    pub fn setclr8(&mut self) -> Setclr8W<OutputdirctrlSpec> {
+        Setclr8W::new(self, 16)
     }
     #[doc = "Bits 18:19 - Set/clear operation on output 9. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr9(&mut self) -> SETCLR9_W {
-        SETCLR9_W { w: self }
+    pub fn setclr9(&mut self) -> Setclr9W<OutputdirctrlSpec> {
+        Setclr9W::new(self, 18)
     }
     #[doc = "Bits 20:21 - Set/clear operation on output 10. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr10(&mut self) -> SETCLR10_W {
-        SETCLR10_W { w: self }
+    pub fn setclr10(&mut self) -> Setclr10W<OutputdirctrlSpec> {
+        Setclr10W::new(self, 20)
     }
     #[doc = "Bits 22:23 - Set/clear operation on output 11. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr11(&mut self) -> SETCLR11_W {
-        SETCLR11_W { w: self }
+    pub fn setclr11(&mut self) -> Setclr11W<OutputdirctrlSpec> {
+        Setclr11W::new(self, 22)
     }
     #[doc = "Bits 24:25 - Set/clear operation on output 12. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr12(&mut self) -> SETCLR12_W {
-        SETCLR12_W { w: self }
+    pub fn setclr12(&mut self) -> Setclr12W<OutputdirctrlSpec> {
+        Setclr12W::new(self, 24)
     }
     #[doc = "Bits 26:27 - Set/clear operation on output 13. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr13(&mut self) -> SETCLR13_W {
-        SETCLR13_W { w: self }
+    pub fn setclr13(&mut self) -> Setclr13W<OutputdirctrlSpec> {
+        Setclr13W::new(self, 26)
     }
     #[doc = "Bits 28:29 - Set/clear operation on output 14. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr14(&mut self) -> SETCLR14_W {
-        SETCLR14_W { w: self }
+    pub fn setclr14(&mut self) -> Setclr14W<OutputdirctrlSpec> {
+        Setclr14W::new(self, 28)
     }
     #[doc = "Bits 30:31 - Set/clear operation on output 15. Value 0x3 is reserved. Do not program this value."]
     #[inline(always)]
-    pub fn setclr15(&mut self) -> SETCLR15_W {
-        SETCLR15_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn setclr15(&mut self) -> Setclr15W<OutputdirctrlSpec> {
+        Setclr15W::new(self, 30)
     }
 }
-#[doc = "SCT output counter direction control register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [outputdirctrl](index.html) module"]
-pub struct OUTPUTDIRCTRL_SPEC;
-impl crate::RegisterSpec for OUTPUTDIRCTRL_SPEC {
+#[doc = "SCT output counter direction control register\n\nYou can [`read`](crate::Reg::read) this register and get [`outputdirctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`outputdirctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct OutputdirctrlSpec;
+impl crate::RegisterSpec for OutputdirctrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [outputdirctrl::R](R) reader structure"]
-impl crate::Readable for OUTPUTDIRCTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [outputdirctrl::W](W) writer structure"]
-impl crate::Writable for OUTPUTDIRCTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`outputdirctrl::R`](R) reader structure"]
+impl crate::Readable for OutputdirctrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`outputdirctrl::W`](W) writer structure"]
+impl crate::Writable for OutputdirctrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OUTPUTDIRCTRL to value 0"]
-impl crate::Resettable for OUTPUTDIRCTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for OutputdirctrlSpec {
+    const RESET_VALUE: u32 = 0;
 }

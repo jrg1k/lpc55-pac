@@ -1,103 +1,39 @@
 #[doc = "Register `PLDMND` reader"]
-pub struct R(crate::R<PLDMND_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PLDMND_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PLDMND_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PLDMND_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PldmndSpec>;
 #[doc = "Register `PLDMND` writer"]
-pub struct W(crate::W<PLDMND_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PLDMND_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PLDMND_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PLDMND_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PldmndSpec>;
 #[doc = "Field `PD` reader - Poll Demand."]
-pub struct PD_R(crate::FieldReader<u32, u32>);
-impl PD_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        PD_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PD_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PdR = crate::FieldReader<u32>;
 #[doc = "Field `PD` writer - Poll Demand."]
-pub struct PD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type PdW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Poll Demand."]
     #[inline(always)]
-    pub fn pd(&self) -> PD_R {
-        PD_R::new(self.bits as u32)
+    pub fn pd(&self) -> PdR {
+        PdR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Poll Demand."]
     #[inline(always)]
-    pub fn pd(&mut self) -> PD_W {
-        PD_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn pd(&mut self) -> PdW<PldmndSpec> {
+        PdW::new(self, 0)
     }
 }
-#[doc = "Poll Demand register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pldmnd](index.html) module"]
-pub struct PLDMND_SPEC;
-impl crate::RegisterSpec for PLDMND_SPEC {
+#[doc = "Poll Demand register\n\nYou can [`read`](crate::Reg::read) this register and get [`pldmnd::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pldmnd::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PldmndSpec;
+impl crate::RegisterSpec for PldmndSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pldmnd::R](R) reader structure"]
-impl crate::Readable for PLDMND_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pldmnd::W](W) writer structure"]
-impl crate::Writable for PLDMND_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pldmnd::R`](R) reader structure"]
+impl crate::Readable for PldmndSpec {}
+#[doc = "`write(|w| ..)` method takes [`pldmnd::W`](W) writer structure"]
+impl crate::Writable for PldmndSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PLDMND to value 0"]
-impl crate::Resettable for PLDMND_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PldmndSpec {
+    const RESET_VALUE: u32 = 0;
 }

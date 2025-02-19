@@ -1,104 +1,40 @@
 #[doc = "Register `CUSTOMER_DEFINED[%s]` reader"]
-pub struct R(crate::R<CUSTOMER_DEFINED_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CUSTOMER_DEFINED_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CUSTOMER_DEFINED_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CUSTOMER_DEFINED_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CustomerDefinedSpec>;
 #[doc = "Register `CUSTOMER_DEFINED[%s]` writer"]
-pub struct W(crate::W<CUSTOMER_DEFINED_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CUSTOMER_DEFINED_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CUSTOMER_DEFINED_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CUSTOMER_DEFINED_SPEC>) -> Self {
-        W(writer)
-    }
-}
-#[doc = "Field `FIELD` reader - ."]
-pub struct FIELD_R(crate::FieldReader<u32, u32>);
-impl FIELD_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        FIELD_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FIELD_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FIELD` writer - ."]
-pub struct FIELD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FIELD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type W = crate::W<CustomerDefinedSpec>;
+#[doc = "Field `FIELD` reader - no description available"]
+pub type FieldR = crate::FieldReader<u32>;
+#[doc = "Field `FIELD` writer - no description available"]
+pub type FieldW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31 - ."]
+    #[doc = "Bits 0:31 - no description available"]
     #[inline(always)]
-    pub fn field(&self) -> FIELD_R {
-        FIELD_R::new(self.bits as u32)
+    pub fn field(&self) -> FieldR {
+        FieldR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - ."]
+    #[doc = "Bits 0:31 - no description available"]
     #[inline(always)]
-    pub fn field(&mut self) -> FIELD_W {
-        FIELD_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn field(&mut self) -> FieldW<CustomerDefinedSpec> {
+        FieldW::new(self, 0)
     }
 }
-#[doc = "Customer Defined (Programable through ROM API)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [customer_defined](index.html) module"]
-pub struct CUSTOMER_DEFINED_SPEC;
-impl crate::RegisterSpec for CUSTOMER_DEFINED_SPEC {
+#[doc = "Customer Defined (Programable through ROM API)\n\nYou can [`read`](crate::Reg::read) this register and get [`customer_defined::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`customer_defined::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CustomerDefinedSpec;
+impl crate::RegisterSpec for CustomerDefinedSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [customer_defined::R](R) reader structure"]
-impl crate::Readable for CUSTOMER_DEFINED_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [customer_defined::W](W) writer structure"]
-impl crate::Writable for CUSTOMER_DEFINED_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`customer_defined::R`](R) reader structure"]
+impl crate::Readable for CustomerDefinedSpec {}
+#[doc = "`write(|w| ..)` method takes [`customer_defined::W`](W) writer structure"]
+impl crate::Writable for CustomerDefinedSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CUSTOMER_DEFINED[%s]
 to value 0"]
-impl crate::Resettable for CUSTOMER_DEFINED_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CustomerDefinedSpec {
+    const RESET_VALUE: u32 = 0;
 }

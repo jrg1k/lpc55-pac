@@ -1,85 +1,183 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00 - Control register to enable and operate Hash and Crypto"]
-    pub ctrl: crate::Reg<ctrl::CTRL_SPEC>,
-    #[doc = "0x04 - Indicates status of Hash peripheral."]
-    pub status: crate::Reg<status::STATUS_SPEC>,
-    #[doc = "0x08 - Write 1 to enable interrupts; reads back with which are set."]
-    pub intenset: crate::Reg<intenset::INTENSET_SPEC>,
-    #[doc = "0x0c - Write 1 to clear interrupts."]
-    pub intenclr: crate::Reg<intenclr::INTENCLR_SPEC>,
-    #[doc = "0x10 - Setup Master to access memory (if available)"]
-    pub memctrl: crate::Reg<memctrl::MEMCTRL_SPEC>,
-    #[doc = "0x14 - Address to start memory access from (if available)."]
-    pub memaddr: crate::Reg<memaddr::MEMADDR_SPEC>,
+    ctrl: Ctrl,
+    status: Status,
+    intenset: Intenset,
+    intenclr: Intenclr,
+    memctrl: Memctrl,
+    memaddr: Memaddr,
     _reserved6: [u8; 0x08],
-    #[doc = "0x20 - Input of 16 words at a time to load up buffer."]
-    pub indata: crate::Reg<indata::INDATA_SPEC>,
-    #[doc = "0x24..0x40 - no description available"]
-    pub alias: [crate::Reg<alias::ALIAS_SPEC>; 7],
-    #[doc = "0x40..0x60 - no description available"]
-    pub digest0: [crate::Reg<digest0::DIGEST0_SPEC>; 8],
+    indata: Indata,
+    alias: [Alias; 7],
+    digest0: [Digest0; 8],
     _reserved9: [u8; 0x20],
-    #[doc = "0x80 - Crypto settings for AES and Salsa and ChaCha"]
-    pub cryptcfg: crate::Reg<cryptcfg::CRYPTCFG_SPEC>,
-    #[doc = "0x84 - Returns the configuration of this block in this chip - indicates what services are available."]
-    pub config: crate::Reg<config::CONFIG_SPEC>,
+    cryptcfg: Cryptcfg,
+    config: Config,
     _reserved11: [u8; 0x04],
-    #[doc = "0x8c - Lock register allows locking to the current security level or unlocking by the lock holding level."]
-    pub lock: crate::Reg<lock::LOCK_SPEC>,
-    #[doc = "0x90..0xa0 - no description available"]
-    pub mask: [crate::Reg<mask::MASK_SPEC>; 4],
+    lock: Lock,
+    mask: [Mask; 4],
 }
-#[doc = "CTRL register accessor: an alias for `Reg<CTRL_SPEC>`"]
-pub type CTRL = crate::Reg<ctrl::CTRL_SPEC>;
+impl RegisterBlock {
+    #[doc = "0x00 - Control register to enable and operate Hash and Crypto"]
+    #[inline(always)]
+    pub const fn ctrl(&self) -> &Ctrl {
+        &self.ctrl
+    }
+    #[doc = "0x04 - Indicates status of Hash peripheral."]
+    #[inline(always)]
+    pub const fn status(&self) -> &Status {
+        &self.status
+    }
+    #[doc = "0x08 - Write 1 to enable interrupts; reads back with which are set."]
+    #[inline(always)]
+    pub const fn intenset(&self) -> &Intenset {
+        &self.intenset
+    }
+    #[doc = "0x0c - Write 1 to clear interrupts."]
+    #[inline(always)]
+    pub const fn intenclr(&self) -> &Intenclr {
+        &self.intenclr
+    }
+    #[doc = "0x10 - Setup Master to access memory (if available)"]
+    #[inline(always)]
+    pub const fn memctrl(&self) -> &Memctrl {
+        &self.memctrl
+    }
+    #[doc = "0x14 - Address to start memory access from (if available)."]
+    #[inline(always)]
+    pub const fn memaddr(&self) -> &Memaddr {
+        &self.memaddr
+    }
+    #[doc = "0x20 - Input of 16 words at a time to load up buffer."]
+    #[inline(always)]
+    pub const fn indata(&self) -> &Indata {
+        &self.indata
+    }
+    #[doc = "0x24..0x40 - no description available"]
+    #[inline(always)]
+    pub const fn alias(&self, n: usize) -> &Alias {
+        &self.alias[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x24..0x40 - no description available"]
+    #[inline(always)]
+    pub fn alias_iter(&self) -> impl Iterator<Item = &Alias> {
+        self.alias.iter()
+    }
+    #[doc = "0x40..0x60 - no description available"]
+    #[inline(always)]
+    pub const fn digest0(&self, n: usize) -> &Digest0 {
+        &self.digest0[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x40..0x60 - no description available"]
+    #[inline(always)]
+    pub fn digest0_iter(&self) -> impl Iterator<Item = &Digest0> {
+        self.digest0.iter()
+    }
+    #[doc = "0x80 - Crypto settings for AES and Salsa and ChaCha"]
+    #[inline(always)]
+    pub const fn cryptcfg(&self) -> &Cryptcfg {
+        &self.cryptcfg
+    }
+    #[doc = "0x84 - Returns the configuration of this block in this chip - indicates what services are available."]
+    #[inline(always)]
+    pub const fn config(&self) -> &Config {
+        &self.config
+    }
+    #[doc = "0x8c - Lock register allows locking to the current security level or unlocking by the lock holding level."]
+    #[inline(always)]
+    pub const fn lock(&self) -> &Lock {
+        &self.lock
+    }
+    #[doc = "0x90..0xa0 - no description available"]
+    #[inline(always)]
+    pub const fn mask(&self, n: usize) -> &Mask {
+        &self.mask[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x90..0xa0 - no description available"]
+    #[inline(always)]
+    pub fn mask_iter(&self) -> impl Iterator<Item = &Mask> {
+        self.mask.iter()
+    }
+}
+#[doc = "CTRL (rw) register accessor: Control register to enable and operate Hash and Crypto\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`]
+module"]
+#[doc(alias = "CTRL")]
+pub type Ctrl = crate::Reg<ctrl::CtrlSpec>;
 #[doc = "Control register to enable and operate Hash and Crypto"]
 pub mod ctrl;
-#[doc = "STATUS register accessor: an alias for `Reg<STATUS_SPEC>`"]
-pub type STATUS = crate::Reg<status::STATUS_SPEC>;
+#[doc = "STATUS (rw) register accessor: Indicates status of Hash peripheral.\n\nYou can [`read`](crate::Reg::read) this register and get [`status::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`status::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@status`]
+module"]
+#[doc(alias = "STATUS")]
+pub type Status = crate::Reg<status::StatusSpec>;
 #[doc = "Indicates status of Hash peripheral."]
 pub mod status;
-#[doc = "INTENSET register accessor: an alias for `Reg<INTENSET_SPEC>`"]
-pub type INTENSET = crate::Reg<intenset::INTENSET_SPEC>;
+#[doc = "INTENSET (rw) register accessor: Write 1 to enable interrupts; reads back with which are set.\n\nYou can [`read`](crate::Reg::read) this register and get [`intenset::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`intenset::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@intenset`]
+module"]
+#[doc(alias = "INTENSET")]
+pub type Intenset = crate::Reg<intenset::IntensetSpec>;
 #[doc = "Write 1 to enable interrupts; reads back with which are set."]
 pub mod intenset;
-#[doc = "INTENCLR register accessor: an alias for `Reg<INTENCLR_SPEC>`"]
-pub type INTENCLR = crate::Reg<intenclr::INTENCLR_SPEC>;
+#[doc = "INTENCLR (rw) register accessor: Write 1 to clear interrupts.\n\nYou can [`read`](crate::Reg::read) this register and get [`intenclr::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`intenclr::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@intenclr`]
+module"]
+#[doc(alias = "INTENCLR")]
+pub type Intenclr = crate::Reg<intenclr::IntenclrSpec>;
 #[doc = "Write 1 to clear interrupts."]
 pub mod intenclr;
-#[doc = "MEMCTRL register accessor: an alias for `Reg<MEMCTRL_SPEC>`"]
-pub type MEMCTRL = crate::Reg<memctrl::MEMCTRL_SPEC>;
+#[doc = "MEMCTRL (rw) register accessor: Setup Master to access memory (if available)\n\nYou can [`read`](crate::Reg::read) this register and get [`memctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`memctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@memctrl`]
+module"]
+#[doc(alias = "MEMCTRL")]
+pub type Memctrl = crate::Reg<memctrl::MemctrlSpec>;
 #[doc = "Setup Master to access memory (if available)"]
 pub mod memctrl;
-#[doc = "MEMADDR register accessor: an alias for `Reg<MEMADDR_SPEC>`"]
-pub type MEMADDR = crate::Reg<memaddr::MEMADDR_SPEC>;
+#[doc = "MEMADDR (rw) register accessor: Address to start memory access from (if available).\n\nYou can [`read`](crate::Reg::read) this register and get [`memaddr::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`memaddr::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@memaddr`]
+module"]
+#[doc(alias = "MEMADDR")]
+pub type Memaddr = crate::Reg<memaddr::MemaddrSpec>;
 #[doc = "Address to start memory access from (if available)."]
 pub mod memaddr;
-#[doc = "INDATA register accessor: an alias for `Reg<INDATA_SPEC>`"]
-pub type INDATA = crate::Reg<indata::INDATA_SPEC>;
+#[doc = "INDATA (w) register accessor: Input of 16 words at a time to load up buffer.\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`indata::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@indata`]
+module"]
+#[doc(alias = "INDATA")]
+pub type Indata = crate::Reg<indata::IndataSpec>;
 #[doc = "Input of 16 words at a time to load up buffer."]
 pub mod indata;
-#[doc = "ALIAS register accessor: an alias for `Reg<ALIAS_SPEC>`"]
-pub type ALIAS = crate::Reg<alias::ALIAS_SPEC>;
+#[doc = "ALIAS (w) register accessor: no description available\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`alias::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@alias`]
+module"]
+#[doc(alias = "ALIAS")]
+pub type Alias = crate::Reg<alias::AliasSpec>;
 #[doc = "no description available"]
 pub mod alias;
-#[doc = "DIGEST0 register accessor: an alias for `Reg<DIGEST0_SPEC>`"]
-pub type DIGEST0 = crate::Reg<digest0::DIGEST0_SPEC>;
+#[doc = "DIGEST0 (r) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`digest0::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@digest0`]
+module"]
+#[doc(alias = "DIGEST0")]
+pub type Digest0 = crate::Reg<digest0::Digest0Spec>;
 #[doc = "no description available"]
 pub mod digest0;
-#[doc = "CRYPTCFG register accessor: an alias for `Reg<CRYPTCFG_SPEC>`"]
-pub type CRYPTCFG = crate::Reg<cryptcfg::CRYPTCFG_SPEC>;
+#[doc = "CRYPTCFG (rw) register accessor: Crypto settings for AES and Salsa and ChaCha\n\nYou can [`read`](crate::Reg::read) this register and get [`cryptcfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cryptcfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cryptcfg`]
+module"]
+#[doc(alias = "CRYPTCFG")]
+pub type Cryptcfg = crate::Reg<cryptcfg::CryptcfgSpec>;
 #[doc = "Crypto settings for AES and Salsa and ChaCha"]
 pub mod cryptcfg;
-#[doc = "CONFIG register accessor: an alias for `Reg<CONFIG_SPEC>`"]
-pub type CONFIG = crate::Reg<config::CONFIG_SPEC>;
+#[doc = "CONFIG (rw) register accessor: Returns the configuration of this block in this chip - indicates what services are available.\n\nYou can [`read`](crate::Reg::read) this register and get [`config::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`config::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@config`]
+module"]
+#[doc(alias = "CONFIG")]
+pub type Config = crate::Reg<config::ConfigSpec>;
 #[doc = "Returns the configuration of this block in this chip - indicates what services are available."]
 pub mod config;
-#[doc = "LOCK register accessor: an alias for `Reg<LOCK_SPEC>`"]
-pub type LOCK = crate::Reg<lock::LOCK_SPEC>;
+#[doc = "LOCK (rw) register accessor: Lock register allows locking to the current security level or unlocking by the lock holding level.\n\nYou can [`read`](crate::Reg::read) this register and get [`lock::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lock::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lock`]
+module"]
+#[doc(alias = "LOCK")]
+pub type Lock = crate::Reg<lock::LockSpec>;
 #[doc = "Lock register allows locking to the current security level or unlocking by the lock holding level."]
 pub mod lock;
-#[doc = "MASK register accessor: an alias for `Reg<MASK_SPEC>`"]
-pub type MASK = crate::Reg<mask::MASK_SPEC>;
+#[doc = "MASK (w) register accessor: no description available\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`mask::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@mask`]
+module"]
+#[doc(alias = "MASK")]
+pub type Mask = crate::Reg<mask::MaskSpec>;
 #[doc = "no description available"]
 pub mod mask;

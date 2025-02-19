@@ -1,714 +1,228 @@
 #[doc = "Register `PORTSC1` reader"]
-pub struct R(crate::R<PORTSC1_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PORTSC1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PORTSC1_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PORTSC1_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Portsc1Spec>;
 #[doc = "Register `PORTSC1` writer"]
-pub struct W(crate::W<PORTSC1_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PORTSC1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PORTSC1_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PORTSC1_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Portsc1Spec>;
 #[doc = "Field `CCS` reader - Current Connect Status: Logic 1 indicates a device is present on the port."]
-pub struct CCS_R(crate::FieldReader<bool, bool>);
-impl CCS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CCS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CCS_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CcsR = crate::BitReader;
 #[doc = "Field `CCS` writer - Current Connect Status: Logic 1 indicates a device is present on the port."]
-pub struct CCS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CCS_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type CcsW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CSC` reader - Connect Status Change: Logic 1 means that the value of CCS has changed."]
-pub struct CSC_R(crate::FieldReader<bool, bool>);
-impl CSC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CSC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CSC_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CscR = crate::BitReader;
 #[doc = "Field `CSC` writer - Connect Status Change: Logic 1 means that the value of CCS has changed."]
-pub struct CSC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CSC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type CscW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PED` reader - Port Enabled/Disabled."]
-pub struct PED_R(crate::FieldReader<bool, bool>);
-impl PED_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PED_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PED_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PedR = crate::BitReader;
 #[doc = "Field `PED` writer - Port Enabled/Disabled."]
-pub struct PED_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PED_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type PedW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PEDC` reader - Port Enabled/Disabled Change: Logic 1 means that the value of PED has changed."]
-pub struct PEDC_R(crate::FieldReader<bool, bool>);
-impl PEDC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PEDC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PEDC_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PedcR = crate::BitReader;
 #[doc = "Field `PEDC` writer - Port Enabled/Disabled Change: Logic 1 means that the value of PED has changed."]
-pub struct PEDC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PEDC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type PedcW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OCA` reader - Over-current active: Logic 1 means that this port has an over-current condition."]
-pub struct OCA_R(crate::FieldReader<bool, bool>);
-impl OCA_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        OCA_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OCA_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OcaR = crate::BitReader;
 #[doc = "Field `OCA` writer - Over-current active: Logic 1 means that this port has an over-current condition."]
-pub struct OCA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OCA_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type OcaW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OCC` reader - Over-current change: Logic 1 means that the value of OCA has changed."]
-pub struct OCC_R(crate::FieldReader<bool, bool>);
-impl OCC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        OCC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OCC_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OccR = crate::BitReader;
 #[doc = "Field `OCC` writer - Over-current change: Logic 1 means that the value of OCA has changed."]
-pub struct OCC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OCC_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
-    }
-}
+pub type OccW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FPR` reader - Force Port Resume: Logic 1 means resume (K-state) detected or driven on the port."]
-pub struct FPR_R(crate::FieldReader<bool, bool>);
-impl FPR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FPR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FPR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FprR = crate::BitReader;
 #[doc = "Field `FPR` writer - Force Port Resume: Logic 1 means resume (K-state) detected or driven on the port."]
-pub struct FPR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FPR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
-    }
-}
+pub type FprW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SUSP` reader - Suspend: Logic 1 means port is in the suspend state."]
-pub struct SUSP_R(crate::FieldReader<bool, bool>);
-impl SUSP_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SUSP_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SUSP_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SuspR = crate::BitReader;
 #[doc = "Field `SUSP` writer - Suspend: Logic 1 means port is in the suspend state."]
-pub struct SUSP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SUSP_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
-    }
-}
+pub type SuspW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PR` reader - Port Reset: Logic 1 means the port is in the reset state."]
-pub struct PR_R(crate::FieldReader<bool, bool>);
-impl PR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PrR = crate::BitReader;
 #[doc = "Field `PR` writer - Port Reset: Logic 1 means the port is in the reset state."]
-pub struct PR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type PrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LS` reader - Line Status: This field reflects the current logical levels of the DP (bit 11) and DM (bit 10) signal lines."]
-pub struct LS_R(crate::FieldReader<u8, u8>);
-impl LS_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LS_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for LS_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type LsR = crate::FieldReader;
 #[doc = "Field `PP` reader - Port Power: The function of this bit depends on the value of the Port Power Control (PPC) bit in the HCSPARAMS register."]
-pub struct PP_R(crate::FieldReader<bool, bool>);
-impl PP_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PP_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PP_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PpR = crate::BitReader;
 #[doc = "Field `PP` writer - Port Power: The function of this bit depends on the value of the Port Power Control (PPC) bit in the HCSPARAMS register."]
-pub struct PP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PP_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | ((value as u32 & 0x01) << 12);
-        self.w
-    }
-}
+pub type PpW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `PIC` reader - Port Indicator Control : Writing to this field has no effect if the P_INDICATOR bit in the HCSPARAMS register is logic 0."]
-pub struct PIC_R(crate::FieldReader<u8, u8>);
-impl PIC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PIC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PIC_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PicR = crate::FieldReader;
 #[doc = "Field `PIC` writer - Port Indicator Control : Writing to this field has no effect if the P_INDICATOR bit in the HCSPARAMS register is logic 0."]
-pub struct PIC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PIC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 14)) | ((value as u32 & 0x03) << 14);
-        self.w
-    }
-}
+pub type PicW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `PTC` reader - Port Test Control: A non-zero value indicates that the port is operating in the test mode as indicated by the value."]
-pub struct PTC_R(crate::FieldReader<u8, u8>);
-impl PTC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PTC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PTC_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PtcR = crate::FieldReader;
 #[doc = "Field `PTC` writer - Port Test Control: A non-zero value indicates that the port is operating in the test mode as indicated by the value."]
-pub struct PTC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PTC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 16)) | ((value as u32 & 0x0f) << 16);
-        self.w
-    }
-}
+pub type PtcW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `PSPD` reader - Port Speed: 00b: Low-speed 01b: Full-speed 10b: High-speed 11b: Reserved."]
-pub struct PSPD_R(crate::FieldReader<u8, u8>);
-impl PSPD_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PSPD_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for PSPD_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type PspdR = crate::FieldReader;
 #[doc = "Field `PSPD` writer - Port Speed: 00b: Low-speed 01b: Full-speed 10b: High-speed 11b: Reserved."]
-pub struct PSPD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PSPD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
-        self.w
-    }
-}
+pub type PspdW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `WOO` reader - Wake on overcurrent enable: Writing this bit to a one enables the port to be sensitive to overcurrent conditions as wake-up events."]
-pub struct WOO_R(crate::FieldReader<bool, bool>);
-impl WOO_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        WOO_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for WOO_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type WooR = crate::BitReader;
 #[doc = "Field `WOO` writer - Wake on overcurrent enable: Writing this bit to a one enables the port to be sensitive to overcurrent conditions as wake-up events."]
-pub struct WOO_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> WOO_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 22)) | ((value as u32 & 0x01) << 22);
-        self.w
-    }
-}
+pub type WooW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Current Connect Status: Logic 1 indicates a device is present on the port."]
     #[inline(always)]
-    pub fn ccs(&self) -> CCS_R {
-        CCS_R::new((self.bits & 0x01) != 0)
+    pub fn ccs(&self) -> CcsR {
+        CcsR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Connect Status Change: Logic 1 means that the value of CCS has changed."]
     #[inline(always)]
-    pub fn csc(&self) -> CSC_R {
-        CSC_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn csc(&self) -> CscR {
+        CscR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Port Enabled/Disabled."]
     #[inline(always)]
-    pub fn ped(&self) -> PED_R {
-        PED_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn ped(&self) -> PedR {
+        PedR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Port Enabled/Disabled Change: Logic 1 means that the value of PED has changed."]
     #[inline(always)]
-    pub fn pedc(&self) -> PEDC_R {
-        PEDC_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn pedc(&self) -> PedcR {
+        PedcR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Over-current active: Logic 1 means that this port has an over-current condition."]
     #[inline(always)]
-    pub fn oca(&self) -> OCA_R {
-        OCA_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn oca(&self) -> OcaR {
+        OcaR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Over-current change: Logic 1 means that the value of OCA has changed."]
     #[inline(always)]
-    pub fn occ(&self) -> OCC_R {
-        OCC_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn occ(&self) -> OccR {
+        OccR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Force Port Resume: Logic 1 means resume (K-state) detected or driven on the port."]
     #[inline(always)]
-    pub fn fpr(&self) -> FPR_R {
-        FPR_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn fpr(&self) -> FprR {
+        FprR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Suspend: Logic 1 means port is in the suspend state."]
     #[inline(always)]
-    pub fn susp(&self) -> SUSP_R {
-        SUSP_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn susp(&self) -> SuspR {
+        SuspR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Port Reset: Logic 1 means the port is in the reset state."]
     #[inline(always)]
-    pub fn pr(&self) -> PR_R {
-        PR_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn pr(&self) -> PrR {
+        PrR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bits 10:11 - Line Status: This field reflects the current logical levels of the DP (bit 11) and DM (bit 10) signal lines."]
     #[inline(always)]
-    pub fn ls(&self) -> LS_R {
-        LS_R::new(((self.bits >> 10) & 0x03) as u8)
+    pub fn ls(&self) -> LsR {
+        LsR::new(((self.bits >> 10) & 3) as u8)
     }
     #[doc = "Bit 12 - Port Power: The function of this bit depends on the value of the Port Power Control (PPC) bit in the HCSPARAMS register."]
     #[inline(always)]
-    pub fn pp(&self) -> PP_R {
-        PP_R::new(((self.bits >> 12) & 0x01) != 0)
+    pub fn pp(&self) -> PpR {
+        PpR::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bits 14:15 - Port Indicator Control : Writing to this field has no effect if the P_INDICATOR bit in the HCSPARAMS register is logic 0."]
     #[inline(always)]
-    pub fn pic(&self) -> PIC_R {
-        PIC_R::new(((self.bits >> 14) & 0x03) as u8)
+    pub fn pic(&self) -> PicR {
+        PicR::new(((self.bits >> 14) & 3) as u8)
     }
     #[doc = "Bits 16:19 - Port Test Control: A non-zero value indicates that the port is operating in the test mode as indicated by the value."]
     #[inline(always)]
-    pub fn ptc(&self) -> PTC_R {
-        PTC_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn ptc(&self) -> PtcR {
+        PtcR::new(((self.bits >> 16) & 0x0f) as u8)
     }
     #[doc = "Bits 20:21 - Port Speed: 00b: Low-speed 01b: Full-speed 10b: High-speed 11b: Reserved."]
     #[inline(always)]
-    pub fn pspd(&self) -> PSPD_R {
-        PSPD_R::new(((self.bits >> 20) & 0x03) as u8)
+    pub fn pspd(&self) -> PspdR {
+        PspdR::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bit 22 - Wake on overcurrent enable: Writing this bit to a one enables the port to be sensitive to overcurrent conditions as wake-up events."]
     #[inline(always)]
-    pub fn woo(&self) -> WOO_R {
-        WOO_R::new(((self.bits >> 22) & 0x01) != 0)
+    pub fn woo(&self) -> WooR {
+        WooR::new(((self.bits >> 22) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Current Connect Status: Logic 1 indicates a device is present on the port."]
     #[inline(always)]
-    pub fn ccs(&mut self) -> CCS_W {
-        CCS_W { w: self }
+    pub fn ccs(&mut self) -> CcsW<Portsc1Spec> {
+        CcsW::new(self, 0)
     }
     #[doc = "Bit 1 - Connect Status Change: Logic 1 means that the value of CCS has changed."]
     #[inline(always)]
-    pub fn csc(&mut self) -> CSC_W {
-        CSC_W { w: self }
+    pub fn csc(&mut self) -> CscW<Portsc1Spec> {
+        CscW::new(self, 1)
     }
     #[doc = "Bit 2 - Port Enabled/Disabled."]
     #[inline(always)]
-    pub fn ped(&mut self) -> PED_W {
-        PED_W { w: self }
+    pub fn ped(&mut self) -> PedW<Portsc1Spec> {
+        PedW::new(self, 2)
     }
     #[doc = "Bit 3 - Port Enabled/Disabled Change: Logic 1 means that the value of PED has changed."]
     #[inline(always)]
-    pub fn pedc(&mut self) -> PEDC_W {
-        PEDC_W { w: self }
+    pub fn pedc(&mut self) -> PedcW<Portsc1Spec> {
+        PedcW::new(self, 3)
     }
     #[doc = "Bit 4 - Over-current active: Logic 1 means that this port has an over-current condition."]
     #[inline(always)]
-    pub fn oca(&mut self) -> OCA_W {
-        OCA_W { w: self }
+    pub fn oca(&mut self) -> OcaW<Portsc1Spec> {
+        OcaW::new(self, 4)
     }
     #[doc = "Bit 5 - Over-current change: Logic 1 means that the value of OCA has changed."]
     #[inline(always)]
-    pub fn occ(&mut self) -> OCC_W {
-        OCC_W { w: self }
+    pub fn occ(&mut self) -> OccW<Portsc1Spec> {
+        OccW::new(self, 5)
     }
     #[doc = "Bit 6 - Force Port Resume: Logic 1 means resume (K-state) detected or driven on the port."]
     #[inline(always)]
-    pub fn fpr(&mut self) -> FPR_W {
-        FPR_W { w: self }
+    pub fn fpr(&mut self) -> FprW<Portsc1Spec> {
+        FprW::new(self, 6)
     }
     #[doc = "Bit 7 - Suspend: Logic 1 means port is in the suspend state."]
     #[inline(always)]
-    pub fn susp(&mut self) -> SUSP_W {
-        SUSP_W { w: self }
+    pub fn susp(&mut self) -> SuspW<Portsc1Spec> {
+        SuspW::new(self, 7)
     }
     #[doc = "Bit 8 - Port Reset: Logic 1 means the port is in the reset state."]
     #[inline(always)]
-    pub fn pr(&mut self) -> PR_W {
-        PR_W { w: self }
+    pub fn pr(&mut self) -> PrW<Portsc1Spec> {
+        PrW::new(self, 8)
     }
     #[doc = "Bit 12 - Port Power: The function of this bit depends on the value of the Port Power Control (PPC) bit in the HCSPARAMS register."]
     #[inline(always)]
-    pub fn pp(&mut self) -> PP_W {
-        PP_W { w: self }
+    pub fn pp(&mut self) -> PpW<Portsc1Spec> {
+        PpW::new(self, 12)
     }
     #[doc = "Bits 14:15 - Port Indicator Control : Writing to this field has no effect if the P_INDICATOR bit in the HCSPARAMS register is logic 0."]
     #[inline(always)]
-    pub fn pic(&mut self) -> PIC_W {
-        PIC_W { w: self }
+    pub fn pic(&mut self) -> PicW<Portsc1Spec> {
+        PicW::new(self, 14)
     }
     #[doc = "Bits 16:19 - Port Test Control: A non-zero value indicates that the port is operating in the test mode as indicated by the value."]
     #[inline(always)]
-    pub fn ptc(&mut self) -> PTC_W {
-        PTC_W { w: self }
+    pub fn ptc(&mut self) -> PtcW<Portsc1Spec> {
+        PtcW::new(self, 16)
     }
     #[doc = "Bits 20:21 - Port Speed: 00b: Low-speed 01b: Full-speed 10b: High-speed 11b: Reserved."]
     #[inline(always)]
-    pub fn pspd(&mut self) -> PSPD_W {
-        PSPD_W { w: self }
+    pub fn pspd(&mut self) -> PspdW<Portsc1Spec> {
+        PspdW::new(self, 20)
     }
     #[doc = "Bit 22 - Wake on overcurrent enable: Writing this bit to a one enables the port to be sensitive to overcurrent conditions as wake-up events."]
     #[inline(always)]
-    pub fn woo(&mut self) -> WOO_W {
-        WOO_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn woo(&mut self) -> WooW<Portsc1Spec> {
+        WooW::new(self, 22)
     }
 }
-#[doc = "Port Status and Control register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [portsc1](index.html) module"]
-pub struct PORTSC1_SPEC;
-impl crate::RegisterSpec for PORTSC1_SPEC {
+#[doc = "Port Status and Control register\n\nYou can [`read`](crate::Reg::read) this register and get [`portsc1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`portsc1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Portsc1Spec;
+impl crate::RegisterSpec for Portsc1Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [portsc1::R](R) reader structure"]
-impl crate::Readable for PORTSC1_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [portsc1::W](W) writer structure"]
-impl crate::Writable for PORTSC1_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`portsc1::R`](R) reader structure"]
+impl crate::Readable for Portsc1Spec {}
+#[doc = "`write(|w| ..)` method takes [`portsc1::W`](W) writer structure"]
+impl crate::Writable for Portsc1Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PORTSC1 to value 0"]
-impl crate::Resettable for PORTSC1_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Portsc1Spec {
+    const RESET_VALUE: u32 = 0;
 }

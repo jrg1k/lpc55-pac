@@ -1,724 +1,466 @@
 #[doc = "Register `PWD_CLR` reader"]
-pub struct R(crate::R<PWD_CLR_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PWD_CLR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PWD_CLR_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PWD_CLR_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PwdClrSpec>;
 #[doc = "Register `PWD_CLR` writer"]
-pub struct W(crate::W<PWD_CLR_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PWD_CLR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PWD_CLR_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PWD_CLR_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PwdClrSpec>;
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TXPWDFS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Txpwdfs {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB full-speed drivers. This turns off the current starvation sources and puts the"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<TXPWDFS_A> for bool {
+impl From<Txpwdfs> for bool {
     #[inline(always)]
-    fn from(variant: TXPWDFS_A) -> Self {
+    fn from(variant: Txpwdfs) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TXPWDFS` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDFS_R(crate::FieldReader<bool, TXPWDFS_A>);
-impl TXPWDFS_R {
+pub type TxpwdfsR = crate::BitReader<Txpwdfs>;
+impl TxpwdfsR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TXPWDFS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TXPWDFS_A {
+    pub const fn variant(&self) -> Txpwdfs {
         match self.bits {
-            false => TXPWDFS_A::VALUE0,
-            true => TXPWDFS_A::VALUE1,
+            false => Txpwdfs::Value0,
+            true => Txpwdfs::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == TXPWDFS_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == TXPWDFS_A::VALUE1
-    }
-}
-impl core::ops::Deref for TXPWDFS_R {
-    type Target = crate::FieldReader<bool, TXPWDFS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TXPWDFS` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDFS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXPWDFS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TXPWDFS_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(TXPWDFS_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Txpwdfs::Value0
     }
     #[doc = "Power-down the USB full-speed drivers. This turns off the current starvation sources and puts the"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(TXPWDFS_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Txpwdfs::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TXPWDFS` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type TxpwdfsW<'a, REG> = crate::BitWriter<'a, REG, Txpwdfs>;
+impl<'a, REG> TxpwdfsW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdfs::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB full-speed drivers. This turns off the current starvation sources and puts the"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdfs::Value1)
     }
 }
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TXPWDIBIAS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Txpwdibias {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB PHY current bias block for the transmitter. This bit should be set only when the"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<TXPWDIBIAS_A> for bool {
+impl From<Txpwdibias> for bool {
     #[inline(always)]
-    fn from(variant: TXPWDIBIAS_A) -> Self {
+    fn from(variant: Txpwdibias) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TXPWDIBIAS` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDIBIAS_R(crate::FieldReader<bool, TXPWDIBIAS_A>);
-impl TXPWDIBIAS_R {
+pub type TxpwdibiasR = crate::BitReader<Txpwdibias>;
+impl TxpwdibiasR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TXPWDIBIAS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TXPWDIBIAS_A {
+    pub const fn variant(&self) -> Txpwdibias {
         match self.bits {
-            false => TXPWDIBIAS_A::VALUE0,
-            true => TXPWDIBIAS_A::VALUE1,
+            false => Txpwdibias::Value0,
+            true => Txpwdibias::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == TXPWDIBIAS_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == TXPWDIBIAS_A::VALUE1
-    }
-}
-impl core::ops::Deref for TXPWDIBIAS_R {
-    type Target = crate::FieldReader<bool, TXPWDIBIAS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TXPWDIBIAS` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDIBIAS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXPWDIBIAS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TXPWDIBIAS_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(TXPWDIBIAS_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Txpwdibias::Value0
     }
     #[doc = "Power-down the USB PHY current bias block for the transmitter. This bit should be set only when the"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(TXPWDIBIAS_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Txpwdibias::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TXPWDIBIAS` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type TxpwdibiasW<'a, REG> = crate::BitWriter<'a, REG, Txpwdibias>;
+impl<'a, REG> TxpwdibiasW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdibias::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB PHY current bias block for the transmitter. This bit should be set only when the"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdibias::Value1)
     }
 }
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TXPWDV2I_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Txpwdv2i {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB PHY transmit V-to-I converter and the current mirror"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<TXPWDV2I_A> for bool {
+impl From<Txpwdv2i> for bool {
     #[inline(always)]
-    fn from(variant: TXPWDV2I_A) -> Self {
+    fn from(variant: Txpwdv2i) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TXPWDV2I` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDV2I_R(crate::FieldReader<bool, TXPWDV2I_A>);
-impl TXPWDV2I_R {
+pub type Txpwdv2iR = crate::BitReader<Txpwdv2i>;
+impl Txpwdv2iR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TXPWDV2I_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TXPWDV2I_A {
+    pub const fn variant(&self) -> Txpwdv2i {
         match self.bits {
-            false => TXPWDV2I_A::VALUE0,
-            true => TXPWDV2I_A::VALUE1,
+            false => Txpwdv2i::Value0,
+            true => Txpwdv2i::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == TXPWDV2I_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == TXPWDV2I_A::VALUE1
-    }
-}
-impl core::ops::Deref for TXPWDV2I_R {
-    type Target = crate::FieldReader<bool, TXPWDV2I_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TXPWDV2I` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct TXPWDV2I_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXPWDV2I_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TXPWDV2I_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(TXPWDV2I_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Txpwdv2i::Value0
     }
     #[doc = "Power-down the USB PHY transmit V-to-I converter and the current mirror"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(TXPWDV2I_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Txpwdv2i::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TXPWDV2I` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type Txpwdv2iW<'a, REG> = crate::BitWriter<'a, REG, Txpwdv2i>;
+impl<'a, REG> Txpwdv2iW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdv2i::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB PHY transmit V-to-I converter and the current mirror"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 12)) | ((value as u32 & 0x01) << 12);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Txpwdv2i::Value1)
     }
 }
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXPWDENV_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxpwdenv {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB high-speed receiver envelope detector (squelch signal)"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<RXPWDENV_A> for bool {
+impl From<Rxpwdenv> for bool {
     #[inline(always)]
-    fn from(variant: RXPWDENV_A) -> Self {
+    fn from(variant: Rxpwdenv) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXPWDENV` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDENV_R(crate::FieldReader<bool, RXPWDENV_A>);
-impl RXPWDENV_R {
+pub type RxpwdenvR = crate::BitReader<Rxpwdenv>;
+impl RxpwdenvR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXPWDENV_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXPWDENV_A {
+    pub const fn variant(&self) -> Rxpwdenv {
         match self.bits {
-            false => RXPWDENV_A::VALUE0,
-            true => RXPWDENV_A::VALUE1,
+            false => Rxpwdenv::Value0,
+            true => Rxpwdenv::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == RXPWDENV_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == RXPWDENV_A::VALUE1
-    }
-}
-impl core::ops::Deref for RXPWDENV_R {
-    type Target = crate::FieldReader<bool, RXPWDENV_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXPWDENV` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDENV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXPWDENV_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXPWDENV_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(RXPWDENV_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Rxpwdenv::Value0
     }
     #[doc = "Power-down the USB high-speed receiver envelope detector (squelch signal)"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(RXPWDENV_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Rxpwdenv::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXPWDENV` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type RxpwdenvW<'a, REG> = crate::BitWriter<'a, REG, Rxpwdenv>;
+impl<'a, REG> RxpwdenvW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwdenv::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB high-speed receiver envelope detector (squelch signal)"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 17)) | ((value as u32 & 0x01) << 17);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwdenv::Value1)
     }
 }
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXPWD1PT1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxpwd1pt1 {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB full-speed differential receiver."]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<RXPWD1PT1_A> for bool {
+impl From<Rxpwd1pt1> for bool {
     #[inline(always)]
-    fn from(variant: RXPWD1PT1_A) -> Self {
+    fn from(variant: Rxpwd1pt1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXPWD1PT1` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWD1PT1_R(crate::FieldReader<bool, RXPWD1PT1_A>);
-impl RXPWD1PT1_R {
+pub type Rxpwd1pt1R = crate::BitReader<Rxpwd1pt1>;
+impl Rxpwd1pt1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXPWD1PT1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXPWD1PT1_A {
+    pub const fn variant(&self) -> Rxpwd1pt1 {
         match self.bits {
-            false => RXPWD1PT1_A::VALUE0,
-            true => RXPWD1PT1_A::VALUE1,
+            false => Rxpwd1pt1::Value0,
+            true => Rxpwd1pt1::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == RXPWD1PT1_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == RXPWD1PT1_A::VALUE1
-    }
-}
-impl core::ops::Deref for RXPWD1PT1_R {
-    type Target = crate::FieldReader<bool, RXPWD1PT1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXPWD1PT1` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWD1PT1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXPWD1PT1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXPWD1PT1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(RXPWD1PT1_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Rxpwd1pt1::Value0
     }
     #[doc = "Power-down the USB full-speed differential receiver."]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(RXPWD1PT1_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Rxpwd1pt1::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXPWD1PT1` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type Rxpwd1pt1W<'a, REG> = crate::BitWriter<'a, REG, Rxpwd1pt1>;
+impl<'a, REG> Rxpwd1pt1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwd1pt1::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB full-speed differential receiver."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 18)) | ((value as u32 & 0x01) << 18);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwd1pt1::Value1)
     }
 }
 #[doc = "Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXPWDDIFF_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxpwddiff {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the USB high-speed differential receive"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<RXPWDDIFF_A> for bool {
+impl From<Rxpwddiff> for bool {
     #[inline(always)]
-    fn from(variant: RXPWDDIFF_A) -> Self {
+    fn from(variant: Rxpwddiff) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXPWDDIFF` reader - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDDIFF_R(crate::FieldReader<bool, RXPWDDIFF_A>);
-impl RXPWDDIFF_R {
+pub type RxpwddiffR = crate::BitReader<Rxpwddiff>;
+impl RxpwddiffR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXPWDDIFF_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXPWDDIFF_A {
+    pub const fn variant(&self) -> Rxpwddiff {
         match self.bits {
-            false => RXPWDDIFF_A::VALUE0,
-            true => RXPWDDIFF_A::VALUE1,
+            false => Rxpwddiff::Value0,
+            true => Rxpwddiff::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == RXPWDDIFF_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == RXPWDDIFF_A::VALUE1
-    }
-}
-impl core::ops::Deref for RXPWDDIFF_R {
-    type Target = crate::FieldReader<bool, RXPWDDIFF_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXPWDDIFF` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDDIFF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXPWDDIFF_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXPWDDIFF_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(RXPWDDIFF_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Rxpwddiff::Value0
     }
     #[doc = "Power-down the USB high-speed differential receive"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(RXPWDDIFF_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Rxpwddiff::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXPWDDIFF` writer - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type RxpwddiffW<'a, REG> = crate::BitWriter<'a, REG, Rxpwddiff>;
+impl<'a, REG> RxpwddiffW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwddiff::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the USB high-speed differential receive"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 19)) | ((value as u32 & 0x01) << 19);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwddiff::Value1)
     }
 }
 #[doc = "This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled\n\nValue on reset: 1"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXPWDRX_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxpwdrx {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Power-down the entire USB PHY receiver block except for the full-speed differential receiver"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<RXPWDRX_A> for bool {
+impl From<Rxpwdrx> for bool {
     #[inline(always)]
-    fn from(variant: RXPWDRX_A) -> Self {
+    fn from(variant: Rxpwdrx) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXPWDRX` reader - This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDRX_R(crate::FieldReader<bool, RXPWDRX_A>);
-impl RXPWDRX_R {
+pub type RxpwdrxR = crate::BitReader<Rxpwdrx>;
+impl RxpwdrxR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXPWDRX_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXPWDRX_A {
+    pub const fn variant(&self) -> Rxpwdrx {
         match self.bits {
-            false => RXPWDRX_A::VALUE0,
-            true => RXPWDRX_A::VALUE1,
+            false => Rxpwdrx::Value0,
+            true => Rxpwdrx::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == RXPWDRX_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == RXPWDRX_A::VALUE1
-    }
-}
-impl core::ops::Deref for RXPWDRX_R {
-    type Target = crate::FieldReader<bool, RXPWDRX_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXPWDRX` writer - This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
-pub struct RXPWDRX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXPWDRX_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXPWDRX_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(RXPWDRX_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Rxpwdrx::Value0
     }
     #[doc = "Power-down the entire USB PHY receiver block except for the full-speed differential receiver"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(RXPWDRX_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Rxpwdrx::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXPWDRX` writer - This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
+pub type RxpwdrxW<'a, REG> = crate::BitWriter<'a, REG, Rxpwdrx>;
+impl<'a, REG> RxpwdrxW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwdrx::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Power-down the entire USB PHY receiver block except for the full-speed differential receiver"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 20)) | ((value as u32 & 0x01) << 20);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxpwdrx::Value1)
     }
 }
 impl R {
     #[doc = "Bit 10 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdfs(&self) -> TXPWDFS_R {
-        TXPWDFS_R::new(((self.bits >> 10) & 0x01) != 0)
+    pub fn txpwdfs(&self) -> TxpwdfsR {
+        TxpwdfsR::new(((self.bits >> 10) & 1) != 0)
     }
     #[doc = "Bit 11 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdibias(&self) -> TXPWDIBIAS_R {
-        TXPWDIBIAS_R::new(((self.bits >> 11) & 0x01) != 0)
+    pub fn txpwdibias(&self) -> TxpwdibiasR {
+        TxpwdibiasR::new(((self.bits >> 11) & 1) != 0)
     }
     #[doc = "Bit 12 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdv2i(&self) -> TXPWDV2I_R {
-        TXPWDV2I_R::new(((self.bits >> 12) & 0x01) != 0)
+    pub fn txpwdv2i(&self) -> Txpwdv2iR {
+        Txpwdv2iR::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 17 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwdenv(&self) -> RXPWDENV_R {
-        RXPWDENV_R::new(((self.bits >> 17) & 0x01) != 0)
+    pub fn rxpwdenv(&self) -> RxpwdenvR {
+        RxpwdenvR::new(((self.bits >> 17) & 1) != 0)
     }
     #[doc = "Bit 18 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwd1pt1(&self) -> RXPWD1PT1_R {
-        RXPWD1PT1_R::new(((self.bits >> 18) & 0x01) != 0)
+    pub fn rxpwd1pt1(&self) -> Rxpwd1pt1R {
+        Rxpwd1pt1R::new(((self.bits >> 18) & 1) != 0)
     }
     #[doc = "Bit 19 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwddiff(&self) -> RXPWDDIFF_R {
-        RXPWDDIFF_R::new(((self.bits >> 19) & 0x01) != 0)
+    pub fn rxpwddiff(&self) -> RxpwddiffR {
+        RxpwddiffR::new(((self.bits >> 19) & 1) != 0)
     }
     #[doc = "Bit 20 - This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwdrx(&self) -> RXPWDRX_R {
-        RXPWDRX_R::new(((self.bits >> 20) & 0x01) != 0)
+    pub fn rxpwdrx(&self) -> RxpwdrxR {
+        RxpwdrxR::new(((self.bits >> 20) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 10 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdfs(&mut self) -> TXPWDFS_W {
-        TXPWDFS_W { w: self }
+    pub fn txpwdfs(&mut self) -> TxpwdfsW<PwdClrSpec> {
+        TxpwdfsW::new(self, 10)
     }
     #[doc = "Bit 11 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdibias(&mut self) -> TXPWDIBIAS_W {
-        TXPWDIBIAS_W { w: self }
+    pub fn txpwdibias(&mut self) -> TxpwdibiasW<PwdClrSpec> {
+        TxpwdibiasW::new(self, 11)
     }
     #[doc = "Bit 12 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn txpwdv2i(&mut self) -> TXPWDV2I_W {
-        TXPWDV2I_W { w: self }
+    pub fn txpwdv2i(&mut self) -> Txpwdv2iW<PwdClrSpec> {
+        Txpwdv2iW::new(self, 12)
     }
     #[doc = "Bit 17 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwdenv(&mut self) -> RXPWDENV_W {
-        RXPWDENV_W { w: self }
+    pub fn rxpwdenv(&mut self) -> RxpwdenvW<PwdClrSpec> {
+        RxpwdenvW::new(self, 17)
     }
     #[doc = "Bit 18 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwd1pt1(&mut self) -> RXPWD1PT1_W {
-        RXPWD1PT1_W { w: self }
+    pub fn rxpwd1pt1(&mut self) -> Rxpwd1pt1W<PwdClrSpec> {
+        Rxpwd1pt1W::new(self, 18)
     }
     #[doc = "Bit 19 - Note that this bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwddiff(&mut self) -> RXPWDDIFF_W {
-        RXPWDDIFF_W { w: self }
+    pub fn rxpwddiff(&mut self) -> RxpwddiffW<PwdClrSpec> {
+        RxpwddiffW::new(self, 19)
     }
     #[doc = "Bit 20 - This bit will be auto cleared if there is USB wakeup event while ENAUTOCLR_PHY_PWD bit of CTRL is enabled"]
     #[inline(always)]
-    pub fn rxpwdrx(&mut self) -> RXPWDRX_W {
-        RXPWDRX_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn rxpwdrx(&mut self) -> RxpwdrxW<PwdClrSpec> {
+        RxpwdrxW::new(self, 20)
     }
 }
-#[doc = "USB PHY Power-Down Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pwd_clr](index.html) module"]
-pub struct PWD_CLR_SPEC;
-impl crate::RegisterSpec for PWD_CLR_SPEC {
+#[doc = "USB PHY Power-Down Register\n\nYou can [`read`](crate::Reg::read) this register and get [`pwd_clr::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pwd_clr::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PwdClrSpec;
+impl crate::RegisterSpec for PwdClrSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pwd_clr::R](R) reader structure"]
-impl crate::Readable for PWD_CLR_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pwd_clr::W](W) writer structure"]
-impl crate::Writable for PWD_CLR_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pwd_clr::R`](R) reader structure"]
+impl crate::Readable for PwdClrSpec {}
+#[doc = "`write(|w| ..)` method takes [`pwd_clr::W`](W) writer structure"]
+impl crate::Writable for PwdClrSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PWD_CLR to value 0x001e_1c00"]
-impl crate::Resettable for PWD_CLR_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x001e_1c00
-    }
+impl crate::Resettable for PwdClrSpec {
+    const RESET_VALUE: u32 = 0x001e_1c00;
 }

@@ -1,338 +1,179 @@
 #[doc = "Register `CTRL0` reader"]
-pub struct R(crate::R<CTRL0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CTRL0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CTRL0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Ctrl0Spec>;
 #[doc = "Register `CTRL0` writer"]
-pub struct W(crate::W<CTRL0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CTRL0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CTRL0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CTRL0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Ctrl0Spec>;
 #[doc = "Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ABBPAIR_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Abbpair {
     #[doc = "0: Bank-pair 0 (1st)"]
-    PAIR0 = 0,
+    Pair0 = 0,
     #[doc = "1: Bank-pair 1 (2nd)"]
-    PAIR1 = 1,
+    Pair1 = 1,
 }
-impl From<ABBPAIR_A> for bool {
+impl From<Abbpair> for bool {
     #[inline(always)]
-    fn from(variant: ABBPAIR_A) -> Self {
+    fn from(variant: Abbpair) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ABBPAIR` reader - Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up"]
-pub struct ABBPAIR_R(crate::FieldReader<bool, ABBPAIR_A>);
-impl ABBPAIR_R {
+pub type AbbpairR = crate::BitReader<Abbpair>;
+impl AbbpairR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ABBPAIR_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ABBPAIR_A {
+    pub const fn variant(&self) -> Abbpair {
         match self.bits {
-            false => ABBPAIR_A::PAIR0,
-            true => ABBPAIR_A::PAIR1,
+            false => Abbpair::Pair0,
+            true => Abbpair::Pair1,
         }
-    }
-    #[doc = "Checks if the value of the field is `PAIR0`"]
-    #[inline(always)]
-    pub fn is_pair0(&self) -> bool {
-        **self == ABBPAIR_A::PAIR0
-    }
-    #[doc = "Checks if the value of the field is `PAIR1`"]
-    #[inline(always)]
-    pub fn is_pair1(&self) -> bool {
-        **self == ABBPAIR_A::PAIR1
-    }
-}
-impl core::ops::Deref for ABBPAIR_R {
-    type Target = crate::FieldReader<bool, ABBPAIR_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ABBPAIR` writer - Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up"]
-pub struct ABBPAIR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ABBPAIR_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ABBPAIR_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bank-pair 0 (1st)"]
     #[inline(always)]
-    pub fn pair0(self) -> &'a mut W {
-        self.variant(ABBPAIR_A::PAIR0)
+    pub fn is_pair0(&self) -> bool {
+        *self == Abbpair::Pair0
     }
     #[doc = "Bank-pair 1 (2nd)"]
     #[inline(always)]
-    pub fn pair1(self) -> &'a mut W {
-        self.variant(ABBPAIR_A::PAIR1)
+    pub fn is_pair1(&self) -> bool {
+        *self == Abbpair::Pair1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ABBPAIR` writer - Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up"]
+pub type AbbpairW<'a, REG> = crate::BitWriter<'a, REG, Abbpair>;
+impl<'a, REG> AbbpairW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bank-pair 0 (1st)"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn pair0(self) -> &'a mut crate::W<REG> {
+        self.variant(Abbpair::Pair0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bank-pair 1 (2nd)"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn pair1(self) -> &'a mut crate::W<REG> {
+        self.variant(Abbpair::Pair1)
     }
 }
 #[doc = "Field `ABOFF` reader - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
-pub struct ABOFF_R(crate::FieldReader<bool, bool>);
-impl ABOFF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ABOFF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ABOFF_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AboffR = crate::FieldReader<u16>;
 #[doc = "Field `ABOFF` writer - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
-pub struct ABOFF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ABOFF_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type AboffW<'a, REG> = crate::FieldWriter<'a, REG, 11, u16>;
 #[doc = "Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CDBPAIR_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Cdbpair {
     #[doc = "0: Bank-pair 0 (1st)"]
-    PAIR0 = 0,
+    Pair0 = 0,
     #[doc = "1: Bank-pair 1 (2nd)"]
-    PAIR1 = 1,
+    Pair1 = 1,
 }
-impl From<CDBPAIR_A> for bool {
+impl From<Cdbpair> for bool {
     #[inline(always)]
-    fn from(variant: CDBPAIR_A) -> Self {
+    fn from(variant: Cdbpair) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CDBPAIR` reader - Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up"]
-pub struct CDBPAIR_R(crate::FieldReader<bool, CDBPAIR_A>);
-impl CDBPAIR_R {
+pub type CdbpairR = crate::BitReader<Cdbpair>;
+impl CdbpairR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CDBPAIR_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CDBPAIR_A {
+    pub const fn variant(&self) -> Cdbpair {
         match self.bits {
-            false => CDBPAIR_A::PAIR0,
-            true => CDBPAIR_A::PAIR1,
+            false => Cdbpair::Pair0,
+            true => Cdbpair::Pair1,
         }
-    }
-    #[doc = "Checks if the value of the field is `PAIR0`"]
-    #[inline(always)]
-    pub fn is_pair0(&self) -> bool {
-        **self == CDBPAIR_A::PAIR0
-    }
-    #[doc = "Checks if the value of the field is `PAIR1`"]
-    #[inline(always)]
-    pub fn is_pair1(&self) -> bool {
-        **self == CDBPAIR_A::PAIR1
-    }
-}
-impl core::ops::Deref for CDBPAIR_R {
-    type Target = crate::FieldReader<bool, CDBPAIR_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CDBPAIR` writer - Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up"]
-pub struct CDBPAIR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CDBPAIR_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CDBPAIR_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Bank-pair 0 (1st)"]
     #[inline(always)]
-    pub fn pair0(self) -> &'a mut W {
-        self.variant(CDBPAIR_A::PAIR0)
+    pub fn is_pair0(&self) -> bool {
+        *self == Cdbpair::Pair0
     }
     #[doc = "Bank-pair 1 (2nd)"]
     #[inline(always)]
-    pub fn pair1(self) -> &'a mut W {
-        self.variant(CDBPAIR_A::PAIR1)
+    pub fn is_pair1(&self) -> bool {
+        *self == Cdbpair::Pair1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CDBPAIR` writer - Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up"]
+pub type CdbpairW<'a, REG> = crate::BitWriter<'a, REG, Cdbpair>;
+impl<'a, REG> CdbpairW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Bank-pair 0 (1st)"]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn pair0(self) -> &'a mut crate::W<REG> {
+        self.variant(Cdbpair::Pair0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Bank-pair 1 (2nd)"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 16)) | ((value as u32 & 0x01) << 16);
-        self.w
+    pub fn pair1(self) -> &'a mut crate::W<REG> {
+        self.variant(Cdbpair::Pair1)
     }
 }
 #[doc = "Field `CDOFF` reader - Word or DWord Offset of CD, with D at \\[2\\]=0 and C at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the AB values"]
-pub struct CDOFF_R(crate::FieldReader<u16, u16>);
-impl CDOFF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        CDOFF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CDOFF_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CdoffR = crate::FieldReader<u16>;
 #[doc = "Field `CDOFF` writer - Word or DWord Offset of CD, with D at \\[2\\]=0 and C at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the AB values"]
-pub struct CDOFF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CDOFF_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07ff << 18)) | ((value as u32 & 0x07ff) << 18);
-        self.w
-    }
-}
+pub type CdoffW<'a, REG> = crate::FieldWriter<'a, REG, 11, u16>;
 impl R {
     #[doc = "Bit 0 - Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up"]
     #[inline(always)]
-    pub fn abbpair(&self) -> ABBPAIR_R {
-        ABBPAIR_R::new((self.bits & 0x01) != 0)
+    pub fn abbpair(&self) -> AbbpairR {
+        AbbpairR::new((self.bits & 1) != 0)
     }
-    #[doc = "Bit 2 - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
+    #[doc = "Bits 2:12 - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
     #[inline(always)]
-    pub fn aboff(&self) -> ABOFF_R {
-        ABOFF_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn aboff(&self) -> AboffR {
+        AboffR::new(((self.bits >> 2) & 0x07ff) as u16)
     }
     #[doc = "Bit 16 - Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up"]
     #[inline(always)]
-    pub fn cdbpair(&self) -> CDBPAIR_R {
-        CDBPAIR_R::new(((self.bits >> 16) & 0x01) != 0)
+    pub fn cdbpair(&self) -> CdbpairR {
+        CdbpairR::new(((self.bits >> 16) & 1) != 0)
     }
     #[doc = "Bits 18:28 - Word or DWord Offset of CD, with D at \\[2\\]=0 and C at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the AB values"]
     #[inline(always)]
-    pub fn cdoff(&self) -> CDOFF_R {
-        CDOFF_R::new(((self.bits >> 18) & 0x07ff) as u16)
+    pub fn cdoff(&self) -> CdoffR {
+        CdoffR::new(((self.bits >> 18) & 0x07ff) as u16)
     }
 }
 impl W {
     #[doc = "Bit 0 - Which bank-pair the offset ABOFF is within. This must be 0 if only 2-up"]
     #[inline(always)]
-    pub fn abbpair(&mut self) -> ABBPAIR_W {
-        ABBPAIR_W { w: self }
+    pub fn abbpair(&mut self) -> AbbpairW<Ctrl0Spec> {
+        AbbpairW::new(self, 0)
     }
-    #[doc = "Bit 2 - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
+    #[doc = "Bits 2:12 - Word or DWord Offset of AB values, with B at \\[2\\]=0 and A at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the CD values if 4-up"]
     #[inline(always)]
-    pub fn aboff(&mut self) -> ABOFF_W {
-        ABOFF_W { w: self }
+    pub fn aboff(&mut self) -> AboffW<Ctrl0Spec> {
+        AboffW::new(self, 2)
     }
     #[doc = "Bit 16 - Which bank-pair the offset CDOFF is within. This must be 0 if only 2-up"]
     #[inline(always)]
-    pub fn cdbpair(&mut self) -> CDBPAIR_W {
-        CDBPAIR_W { w: self }
+    pub fn cdbpair(&mut self) -> CdbpairW<Ctrl0Spec> {
+        CdbpairW::new(self, 16)
     }
     #[doc = "Bits 18:28 - Word or DWord Offset of CD, with D at \\[2\\]=0 and C at \\[2\\]=1 as far as the code sees (normally will be an interleaved bank so only sequential to AHB). Word offset only allowed if 32 bit operation. Ideally not in the same RAM as the AB values"]
     #[inline(always)]
-    pub fn cdoff(&mut self) -> CDOFF_W {
-        CDOFF_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cdoff(&mut self) -> CdoffW<Ctrl0Spec> {
+        CdoffW::new(self, 18)
     }
 }
-#[doc = "Contains the offsets of AB and CD in the RAM.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctrl0](index.html) module"]
-pub struct CTRL0_SPEC;
-impl crate::RegisterSpec for CTRL0_SPEC {
+#[doc = "Contains the offsets of AB and CD in the RAM.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Ctrl0Spec;
+impl crate::RegisterSpec for Ctrl0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ctrl0::R](R) reader structure"]
-impl crate::Readable for CTRL0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ctrl0::W](W) writer structure"]
-impl crate::Writable for CTRL0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ctrl0::R`](R) reader structure"]
+impl crate::Readable for Ctrl0Spec {}
+#[doc = "`write(|w| ..)` method takes [`ctrl0::W`](W) writer structure"]
+impl crate::Writable for Ctrl0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL0 to value 0"]
-impl crate::Resettable for CTRL0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Ctrl0Spec {
+    const RESET_VALUE: u32 = 0;
 }

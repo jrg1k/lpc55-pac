@@ -1,179 +1,115 @@
 #[doc = "Register `PARAM` reader"]
-pub struct R(crate::R<PARAM_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PARAM_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PARAM_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PARAM_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ParamSpec>;
 #[doc = "Field `TRIG_NUM` reader - Trigger Number"]
-pub struct TRIG_NUM_R(crate::FieldReader<u8, u8>);
-impl TRIG_NUM_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        TRIG_NUM_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for TRIG_NUM_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type TrigNumR = crate::FieldReader;
 #[doc = "Result FIFO Depth\n\nValue on reset: 16"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum FIFOSIZE_A {
+pub enum Fifosize {
     #[doc = "1: Result FIFO depth = 1 dataword."]
-    FIFOSIZE_1 = 1,
+    Fifosize1 = 1,
     #[doc = "4: Result FIFO depth = 4 datawords."]
-    FIFOSIZE_4 = 4,
+    Fifosize4 = 4,
     #[doc = "8: Result FIFO depth = 8 datawords."]
-    FIFOSIZE_8 = 8,
+    Fifosize8 = 8,
     #[doc = "16: Result FIFO depth = 16 datawords."]
-    FIFOSIZE_16 = 16,
+    Fifosize16 = 16,
     #[doc = "32: Result FIFO depth = 32 datawords."]
-    FIFOSIZE_32 = 32,
+    Fifosize32 = 32,
     #[doc = "64: Result FIFO depth = 64 datawords."]
-    FIFOSIZE_64 = 64,
+    Fifosize64 = 64,
 }
-impl From<FIFOSIZE_A> for u8 {
+impl From<Fifosize> for u8 {
     #[inline(always)]
-    fn from(variant: FIFOSIZE_A) -> Self {
+    fn from(variant: Fifosize) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Fifosize {
+    type Ux = u8;
+}
+impl crate::IsEnum for Fifosize {}
 #[doc = "Field `FIFOSIZE` reader - Result FIFO Depth"]
-pub struct FIFOSIZE_R(crate::FieldReader<u8, FIFOSIZE_A>);
-impl FIFOSIZE_R {
+pub type FifosizeR = crate::FieldReader<Fifosize>;
+impl FifosizeR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        FIFOSIZE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<FIFOSIZE_A> {
+    pub const fn variant(&self) -> Option<Fifosize> {
         match self.bits {
-            1 => Some(FIFOSIZE_A::FIFOSIZE_1),
-            4 => Some(FIFOSIZE_A::FIFOSIZE_4),
-            8 => Some(FIFOSIZE_A::FIFOSIZE_8),
-            16 => Some(FIFOSIZE_A::FIFOSIZE_16),
-            32 => Some(FIFOSIZE_A::FIFOSIZE_32),
-            64 => Some(FIFOSIZE_A::FIFOSIZE_64),
+            1 => Some(Fifosize::Fifosize1),
+            4 => Some(Fifosize::Fifosize4),
+            8 => Some(Fifosize::Fifosize8),
+            16 => Some(Fifosize::Fifosize16),
+            32 => Some(Fifosize::Fifosize32),
+            64 => Some(Fifosize::Fifosize64),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_1`"]
+    #[doc = "Result FIFO depth = 1 dataword."]
     #[inline(always)]
     pub fn is_fifosize_1(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_1
+        *self == Fifosize::Fifosize1
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_4`"]
+    #[doc = "Result FIFO depth = 4 datawords."]
     #[inline(always)]
     pub fn is_fifosize_4(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_4
+        *self == Fifosize::Fifosize4
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_8`"]
+    #[doc = "Result FIFO depth = 8 datawords."]
     #[inline(always)]
     pub fn is_fifosize_8(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_8
+        *self == Fifosize::Fifosize8
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_16`"]
+    #[doc = "Result FIFO depth = 16 datawords."]
     #[inline(always)]
     pub fn is_fifosize_16(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_16
+        *self == Fifosize::Fifosize16
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_32`"]
+    #[doc = "Result FIFO depth = 32 datawords."]
     #[inline(always)]
     pub fn is_fifosize_32(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_32
+        *self == Fifosize::Fifosize32
     }
-    #[doc = "Checks if the value of the field is `FIFOSIZE_64`"]
+    #[doc = "Result FIFO depth = 64 datawords."]
     #[inline(always)]
     pub fn is_fifosize_64(&self) -> bool {
-        **self == FIFOSIZE_A::FIFOSIZE_64
-    }
-}
-impl core::ops::Deref for FIFOSIZE_R {
-    type Target = crate::FieldReader<u8, FIFOSIZE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Fifosize::Fifosize64
     }
 }
 #[doc = "Field `CV_NUM` reader - Compare Value Number"]
-pub struct CV_NUM_R(crate::FieldReader<u8, u8>);
-impl CV_NUM_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CV_NUM_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CV_NUM_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CvNumR = crate::FieldReader;
 #[doc = "Field `CMD_NUM` reader - Command Buffer Number"]
-pub struct CMD_NUM_R(crate::FieldReader<u8, u8>);
-impl CMD_NUM_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CMD_NUM_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CMD_NUM_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type CmdNumR = crate::FieldReader;
 impl R {
     #[doc = "Bits 0:7 - Trigger Number"]
     #[inline(always)]
-    pub fn trig_num(&self) -> TRIG_NUM_R {
-        TRIG_NUM_R::new((self.bits & 0xff) as u8)
+    pub fn trig_num(&self) -> TrigNumR {
+        TrigNumR::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bits 8:15 - Result FIFO Depth"]
     #[inline(always)]
-    pub fn fifosize(&self) -> FIFOSIZE_R {
-        FIFOSIZE_R::new(((self.bits >> 8) & 0xff) as u8)
+    pub fn fifosize(&self) -> FifosizeR {
+        FifosizeR::new(((self.bits >> 8) & 0xff) as u8)
     }
     #[doc = "Bits 16:23 - Compare Value Number"]
     #[inline(always)]
-    pub fn cv_num(&self) -> CV_NUM_R {
-        CV_NUM_R::new(((self.bits >> 16) & 0xff) as u8)
+    pub fn cv_num(&self) -> CvNumR {
+        CvNumR::new(((self.bits >> 16) & 0xff) as u8)
     }
     #[doc = "Bits 24:31 - Command Buffer Number"]
     #[inline(always)]
-    pub fn cmd_num(&self) -> CMD_NUM_R {
-        CMD_NUM_R::new(((self.bits >> 24) & 0xff) as u8)
+    pub fn cmd_num(&self) -> CmdNumR {
+        CmdNumR::new(((self.bits >> 24) & 0xff) as u8)
     }
 }
-#[doc = "Parameter Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [param](index.html) module"]
-pub struct PARAM_SPEC;
-impl crate::RegisterSpec for PARAM_SPEC {
+#[doc = "Parameter Register\n\nYou can [`read`](crate::Reg::read) this register and get [`param::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ParamSpec;
+impl crate::RegisterSpec for ParamSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [param::R](R) reader structure"]
-impl crate::Readable for PARAM_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`param::R`](R) reader structure"]
+impl crate::Readable for ParamSpec {}
 #[doc = "`reset()` method sets PARAM to value 0x0f04_1010"]
-impl crate::Resettable for PARAM_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0f04_1010
-    }
+impl crate::Resettable for ParamSpec {
+    const RESET_VALUE: u32 = 0x0f04_1010;
 }

@@ -1,117 +1,90 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00..0x14 - no description available"]
-    pub lut0: LUT,
-    _reserved1: [u8; 0x0c],
-    #[doc = "0x20..0x34 - no description available"]
-    pub lut1: LUT,
-    _reserved2: [u8; 0x0c],
-    #[doc = "0x40..0x54 - no description available"]
-    pub lut2: LUT,
-    _reserved3: [u8; 0x0c],
-    #[doc = "0x60..0x74 - no description available"]
-    pub lut3: LUT,
-    _reserved4: [u8; 0x0c],
-    #[doc = "0x80..0x94 - no description available"]
-    pub lut4: LUT,
-    _reserved5: [u8; 0x0c],
-    #[doc = "0xa0..0xb4 - no description available"]
-    pub lut5: LUT,
-    _reserved6: [u8; 0x0c],
-    #[doc = "0xc0..0xd4 - no description available"]
-    pub lut6: LUT,
-    _reserved7: [u8; 0x0c],
-    #[doc = "0xe0..0xf4 - no description available"]
-    pub lut7: LUT,
-    _reserved8: [u8; 0x0c],
-    #[doc = "0x100..0x114 - no description available"]
-    pub lut8: LUT,
-    _reserved9: [u8; 0x0c],
-    #[doc = "0x120..0x134 - no description available"]
-    pub lut9: LUT,
-    _reserved10: [u8; 0x0c],
-    #[doc = "0x140..0x154 - no description available"]
-    pub lut10: LUT,
-    _reserved11: [u8; 0x0c],
-    #[doc = "0x160..0x174 - no description available"]
-    pub lut11: LUT,
-    _reserved12: [u8; 0x0c],
-    #[doc = "0x180..0x194 - no description available"]
-    pub lut12: LUT,
-    _reserved13: [u8; 0x0c],
-    #[doc = "0x1a0..0x1b4 - no description available"]
-    pub lut13: LUT,
-    _reserved14: [u8; 0x0c],
-    #[doc = "0x1c0..0x1d4 - no description available"]
-    pub lut14: LUT,
-    _reserved15: [u8; 0x0c],
-    #[doc = "0x1e0..0x1f4 - no description available"]
-    pub lut15: LUT,
-    _reserved16: [u8; 0x0c],
-    #[doc = "0x200..0x214 - no description available"]
-    pub lut16: LUT,
-    _reserved17: [u8; 0x0c],
-    #[doc = "0x220..0x234 - no description available"]
-    pub lut17: LUT,
-    _reserved18: [u8; 0x0c],
-    #[doc = "0x240..0x254 - no description available"]
-    pub lut18: LUT,
-    _reserved19: [u8; 0x0c],
-    #[doc = "0x260..0x274 - no description available"]
-    pub lut19: LUT,
-    _reserved20: [u8; 0x0c],
-    #[doc = "0x280..0x294 - no description available"]
-    pub lut20: LUT,
-    _reserved21: [u8; 0x0c],
-    #[doc = "0x2a0..0x2b4 - no description available"]
-    pub lut21: LUT,
-    _reserved22: [u8; 0x0c],
-    #[doc = "0x2c0..0x2d4 - no description available"]
-    pub lut22: LUT,
-    _reserved23: [u8; 0x0c],
-    #[doc = "0x2e0..0x2f4 - no description available"]
-    pub lut23: LUT,
-    _reserved24: [u8; 0x0c],
-    #[doc = "0x300..0x314 - no description available"]
-    pub lut24: LUT,
-    _reserved25: [u8; 0x0c],
-    #[doc = "0x320..0x334 - no description available"]
-    pub lut25: LUT,
-    _reserved26: [u8; 0x04cc],
+    lut: (),
+    _reserved1: [u8; 0x0800],
+    lut_truth: [LutTruth; 26],
+    _reserved2: [u8; 0x98],
+    outputs: Outputs,
+    wakeint_ctrl: WakeintCtrl,
+    _reserved4: [u8; 0x02f8],
+    output_mux: [OutputMux; 8],
+}
+impl RegisterBlock {
+    #[doc = "0x00..0x208 - no description available"]
+    #[inline(always)]
+    pub const fn lut(&self, n: usize) -> &Lut {
+        #[allow(clippy::no_effect)]
+        [(); 26][n];
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(32 * n).cast() }
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x00..0x208 - no description available"]
+    #[inline(always)]
+    pub fn lut_iter(&self) -> impl Iterator<Item = &Lut> {
+        (0..26).map(move |n| unsafe {
+            &*core::ptr::from_ref(self).cast::<u8>().add(32 * n).cast()
+        })
+    }
     #[doc = "0x800..0x868 - Specifies the Truth Table contents for LUTLUTn"]
-    pub lut_truth: [crate::Reg<lut_truth::LUT_TRUTH_SPEC>; 26],
-    _reserved27: [u8; 0x98],
+    #[inline(always)]
+    pub const fn lut_truth(&self, n: usize) -> &LutTruth {
+        &self.lut_truth[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x800..0x868 - Specifies the Truth Table contents for LUTLUTn"]
+    #[inline(always)]
+    pub fn lut_truth_iter(&self) -> impl Iterator<Item = &LutTruth> {
+        self.lut_truth.iter()
+    }
     #[doc = "0x900 - Provides the current state of the 8 designated PLU Outputs."]
-    pub outputs: crate::Reg<outputs::OUTPUTS_SPEC>,
+    #[inline(always)]
+    pub const fn outputs(&self) -> &Outputs {
+        &self.outputs
+    }
     #[doc = "0x904 - Wakeup interrupt control for PLU"]
-    pub wakeint_ctrl: crate::Reg<wakeint_ctrl::WAKEINT_CTRL_SPEC>,
-    _reserved29: [u8; 0x02f8],
+    #[inline(always)]
+    pub const fn wakeint_ctrl(&self) -> &WakeintCtrl {
+        &self.wakeint_ctrl
+    }
     #[doc = "0xc00..0xc20 - Selects the source to be connected to PLU Output OUTPUT_n"]
-    pub output_mux: [crate::Reg<output_mux::OUTPUT_MUX_SPEC>; 8],
+    #[inline(always)]
+    pub const fn output_mux(&self, n: usize) -> &OutputMux {
+        &self.output_mux[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0xc00..0xc20 - Selects the source to be connected to PLU Output OUTPUT_n"]
+    #[inline(always)]
+    pub fn output_mux_iter(&self) -> impl Iterator<Item = &OutputMux> {
+        self.output_mux.iter()
+    }
 }
-#[doc = r"Register block"]
-#[repr(C)]
-pub struct LUT {
-    #[doc = "0x00..0x14 - LUTn input x MUX"]
-    pub lut_inp_mux: [crate::Reg<self::lut::lut_inp_mux::LUT_INP_MUX_SPEC>; 5],
-}
-#[doc = r"Register block"]
+#[doc = "no description available"]
+pub use self::lut::Lut;
+#[doc = r"Cluster"]
 #[doc = "no description available"]
 pub mod lut;
-#[doc = "LUT_TRUTH register accessor: an alias for `Reg<LUT_TRUTH_SPEC>`"]
-pub type LUT_TRUTH = crate::Reg<lut_truth::LUT_TRUTH_SPEC>;
+#[doc = "LUT_TRUTH (rw) register accessor: Specifies the Truth Table contents for LUTLUTn\n\nYou can [`read`](crate::Reg::read) this register and get [`lut_truth::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`lut_truth::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@lut_truth`]
+module"]
+#[doc(alias = "LUT_TRUTH")]
+pub type LutTruth = crate::Reg<lut_truth::LutTruthSpec>;
 #[doc = "Specifies the Truth Table contents for LUTLUTn"]
 pub mod lut_truth;
-#[doc = "OUTPUTS register accessor: an alias for `Reg<OUTPUTS_SPEC>`"]
-pub type OUTPUTS = crate::Reg<outputs::OUTPUTS_SPEC>;
+#[doc = "OUTPUTS (rw) register accessor: Provides the current state of the 8 designated PLU Outputs.\n\nYou can [`read`](crate::Reg::read) this register and get [`outputs::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`outputs::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@outputs`]
+module"]
+#[doc(alias = "OUTPUTS")]
+pub type Outputs = crate::Reg<outputs::OutputsSpec>;
 #[doc = "Provides the current state of the 8 designated PLU Outputs."]
 pub mod outputs;
-#[doc = "WAKEINT_CTRL register accessor: an alias for `Reg<WAKEINT_CTRL_SPEC>`"]
-pub type WAKEINT_CTRL = crate::Reg<wakeint_ctrl::WAKEINT_CTRL_SPEC>;
+#[doc = "WAKEINT_CTRL (rw) register accessor: Wakeup interrupt control for PLU\n\nYou can [`read`](crate::Reg::read) this register and get [`wakeint_ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wakeint_ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@wakeint_ctrl`]
+module"]
+#[doc(alias = "WAKEINT_CTRL")]
+pub type WakeintCtrl = crate::Reg<wakeint_ctrl::WakeintCtrlSpec>;
 #[doc = "Wakeup interrupt control for PLU"]
 pub mod wakeint_ctrl;
-#[doc = "OUTPUT_MUX register accessor: an alias for `Reg<OUTPUT_MUX_SPEC>`"]
-pub type OUTPUT_MUX = crate::Reg<output_mux::OUTPUT_MUX_SPEC>;
+#[doc = "OUTPUT_MUX (rw) register accessor: Selects the source to be connected to PLU Output OUTPUT_n\n\nYou can [`read`](crate::Reg::read) this register and get [`output_mux::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`output_mux::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@output_mux`]
+module"]
+#[doc(alias = "OUTPUT_MUX")]
+pub type OutputMux = crate::Reg<output_mux::OutputMuxSpec>;
 #[doc = "Selects the source to be connected to PLU Output OUTPUT_n"]
 pub mod output_mux;

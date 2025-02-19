@@ -1,442 +1,277 @@
 #[doc = "Register `FIFOINTENSET` reader"]
-pub struct R(crate::R<FIFOINTENSET_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<FIFOINTENSET_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<FIFOINTENSET_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<FIFOINTENSET_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<FifointensetSpec>;
 #[doc = "Register `FIFOINTENSET` writer"]
-pub struct W(crate::W<FIFOINTENSET_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<FIFOINTENSET_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<FIFOINTENSET_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<FIFOINTENSET_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<FifointensetSpec>;
 #[doc = "Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TXERR_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Txerr {
     #[doc = "0: No interrupt will be generated for a transmit error."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: An interrupt will be generated when a transmit error occurs."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<TXERR_A> for bool {
+impl From<Txerr> for bool {
     #[inline(always)]
-    fn from(variant: TXERR_A) -> Self {
+    fn from(variant: Txerr) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TXERR` reader - Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register."]
-pub struct TXERR_R(crate::FieldReader<bool, TXERR_A>);
-impl TXERR_R {
+pub type TxerrR = crate::BitReader<Txerr>;
+impl TxerrR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TXERR_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TXERR_A {
+    pub const fn variant(&self) -> Txerr {
         match self.bits {
-            false => TXERR_A::DISABLED,
-            true => TXERR_A::ENABLED,
+            false => Txerr::Disabled,
+            true => Txerr::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == TXERR_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == TXERR_A::ENABLED
-    }
-}
-impl core::ops::Deref for TXERR_R {
-    type Target = crate::FieldReader<bool, TXERR_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TXERR` writer - Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register."]
-pub struct TXERR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXERR_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TXERR_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No interrupt will be generated for a transmit error."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(TXERR_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Txerr::Disabled
     }
     #[doc = "An interrupt will be generated when a transmit error occurs."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(TXERR_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Txerr::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TXERR` writer - Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register."]
+pub type TxerrW<'a, REG> = crate::BitWriter<'a, REG, Txerr>;
+impl<'a, REG> TxerrW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No interrupt will be generated for a transmit error."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Txerr::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "An interrupt will be generated when a transmit error occurs."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Txerr::Enabled)
     }
 }
 #[doc = "Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXERR_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxerr {
     #[doc = "0: No interrupt will be generated for a receive error."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: An interrupt will be generated when a receive error occurs."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<RXERR_A> for bool {
+impl From<Rxerr> for bool {
     #[inline(always)]
-    fn from(variant: RXERR_A) -> Self {
+    fn from(variant: Rxerr) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXERR` reader - Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register."]
-pub struct RXERR_R(crate::FieldReader<bool, RXERR_A>);
-impl RXERR_R {
+pub type RxerrR = crate::BitReader<Rxerr>;
+impl RxerrR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXERR_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXERR_A {
+    pub const fn variant(&self) -> Rxerr {
         match self.bits {
-            false => RXERR_A::DISABLED,
-            true => RXERR_A::ENABLED,
+            false => Rxerr::Disabled,
+            true => Rxerr::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == RXERR_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == RXERR_A::ENABLED
-    }
-}
-impl core::ops::Deref for RXERR_R {
-    type Target = crate::FieldReader<bool, RXERR_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXERR` writer - Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register."]
-pub struct RXERR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXERR_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXERR_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No interrupt will be generated for a receive error."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(RXERR_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Rxerr::Disabled
     }
     #[doc = "An interrupt will be generated when a receive error occurs."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(RXERR_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Rxerr::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXERR` writer - Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register."]
+pub type RxerrW<'a, REG> = crate::BitWriter<'a, REG, Rxerr>;
+impl<'a, REG> RxerrW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No interrupt will be generated for a receive error."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxerr::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "An interrupt will be generated when a receive error occurs."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxerr::Enabled)
     }
 }
 #[doc = "Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TXLVL_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Txlvl {
     #[doc = "0: No interrupt will be generated based on the TX FIFO level."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: If TXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the TX FIFO level decreases to the level specified by TXLVL in the FIFOTRIG register."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<TXLVL_A> for bool {
+impl From<Txlvl> for bool {
     #[inline(always)]
-    fn from(variant: TXLVL_A) -> Self {
+    fn from(variant: Txlvl) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `TXLVL` reader - Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
-pub struct TXLVL_R(crate::FieldReader<bool, TXLVL_A>);
-impl TXLVL_R {
+pub type TxlvlR = crate::BitReader<Txlvl>;
+impl TxlvlR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        TXLVL_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> TXLVL_A {
+    pub const fn variant(&self) -> Txlvl {
         match self.bits {
-            false => TXLVL_A::DISABLED,
-            true => TXLVL_A::ENABLED,
+            false => Txlvl::Disabled,
+            true => Txlvl::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == TXLVL_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == TXLVL_A::ENABLED
-    }
-}
-impl core::ops::Deref for TXLVL_R {
-    type Target = crate::FieldReader<bool, TXLVL_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TXLVL` writer - Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
-pub struct TXLVL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TXLVL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TXLVL_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No interrupt will be generated based on the TX FIFO level."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(TXLVL_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Txlvl::Disabled
     }
     #[doc = "If TXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the TX FIFO level decreases to the level specified by TXLVL in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(TXLVL_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Txlvl::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `TXLVL` writer - Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
+pub type TxlvlW<'a, REG> = crate::BitWriter<'a, REG, Txlvl>;
+impl<'a, REG> TxlvlW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No interrupt will be generated based on the TX FIFO level."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Txlvl::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "If TXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the TX FIFO level decreases to the level specified by TXLVL in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Txlvl::Enabled)
     }
 }
 #[doc = "Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXLVL_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxlvl {
     #[doc = "0: No interrupt will be generated based on the RX FIFO level."]
-    DISABLED = 0,
+    Disabled = 0,
     #[doc = "1: If RXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the when the RX FIFO level increases to the level specified by RXLVL in the FIFOTRIG register."]
-    ENABLED = 1,
+    Enabled = 1,
 }
-impl From<RXLVL_A> for bool {
+impl From<Rxlvl> for bool {
     #[inline(always)]
-    fn from(variant: RXLVL_A) -> Self {
+    fn from(variant: Rxlvl) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXLVL` reader - Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
-pub struct RXLVL_R(crate::FieldReader<bool, RXLVL_A>);
-impl RXLVL_R {
+pub type RxlvlR = crate::BitReader<Rxlvl>;
+impl RxlvlR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXLVL_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXLVL_A {
+    pub const fn variant(&self) -> Rxlvl {
         match self.bits {
-            false => RXLVL_A::DISABLED,
-            true => RXLVL_A::ENABLED,
+            false => Rxlvl::Disabled,
+            true => Rxlvl::Enabled,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline(always)]
-    pub fn is_disabled(&self) -> bool {
-        **self == RXLVL_A::DISABLED
-    }
-    #[doc = "Checks if the value of the field is `ENABLED`"]
-    #[inline(always)]
-    pub fn is_enabled(&self) -> bool {
-        **self == RXLVL_A::ENABLED
-    }
-}
-impl core::ops::Deref for RXLVL_R {
-    type Target = crate::FieldReader<bool, RXLVL_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXLVL` writer - Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
-pub struct RXLVL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXLVL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXLVL_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No interrupt will be generated based on the RX FIFO level."]
     #[inline(always)]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(RXLVL_A::DISABLED)
+    pub fn is_disabled(&self) -> bool {
+        *self == Rxlvl::Disabled
     }
     #[doc = "If RXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the when the RX FIFO level increases to the level specified by RXLVL in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn enabled(self) -> &'a mut W {
-        self.variant(RXLVL_A::ENABLED)
+    pub fn is_enabled(&self) -> bool {
+        *self == Rxlvl::Enabled
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXLVL` writer - Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
+pub type RxlvlW<'a, REG> = crate::BitWriter<'a, REG, Rxlvl>;
+impl<'a, REG> RxlvlW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No interrupt will be generated based on the RX FIFO level."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxlvl::Disabled)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "If RXLVLENA in the FIFOTRIG register = 1, an interrupt will be generated when the when the RX FIFO level increases to the level specified by RXLVL in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn enabled(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxlvl::Enabled)
     }
 }
 impl R {
     #[doc = "Bit 0 - Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register."]
     #[inline(always)]
-    pub fn txerr(&self) -> TXERR_R {
-        TXERR_R::new((self.bits & 0x01) != 0)
+    pub fn txerr(&self) -> TxerrR {
+        TxerrR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register."]
     #[inline(always)]
-    pub fn rxerr(&self) -> RXERR_R {
-        RXERR_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn rxerr(&self) -> RxerrR {
+        RxerrR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn txlvl(&self) -> TXLVL_R {
-        TXLVL_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn txlvl(&self) -> TxlvlR {
+        TxlvlR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn rxlvl(&self) -> RXLVL_R {
-        RXLVL_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn rxlvl(&self) -> RxlvlR {
+        RxlvlR::new(((self.bits >> 3) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Determines whether an interrupt occurs when a transmit error occurs, based on the TXERR flag in the FIFOSTAT register."]
     #[inline(always)]
-    pub fn txerr(&mut self) -> TXERR_W {
-        TXERR_W { w: self }
+    pub fn txerr(&mut self) -> TxerrW<FifointensetSpec> {
+        TxerrW::new(self, 0)
     }
     #[doc = "Bit 1 - Determines whether an interrupt occurs when a receive error occurs, based on the RXERR flag in the FIFOSTAT register."]
     #[inline(always)]
-    pub fn rxerr(&mut self) -> RXERR_W {
-        RXERR_W { w: self }
+    pub fn rxerr(&mut self) -> RxerrW<FifointensetSpec> {
+        RxerrW::new(self, 1)
     }
     #[doc = "Bit 2 - Determines whether an interrupt occurs when a the transmit FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn txlvl(&mut self) -> TXLVL_W {
-        TXLVL_W { w: self }
+    pub fn txlvl(&mut self) -> TxlvlW<FifointensetSpec> {
+        TxlvlW::new(self, 2)
     }
     #[doc = "Bit 3 - Determines whether an interrupt occurs when a the receive FIFO reaches the level specified by the TXLVL field in the FIFOTRIG register."]
     #[inline(always)]
-    pub fn rxlvl(&mut self) -> RXLVL_W {
-        RXLVL_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn rxlvl(&mut self) -> RxlvlW<FifointensetSpec> {
+        RxlvlW::new(self, 3)
     }
 }
-#[doc = "FIFO interrupt enable set (enable) and read register.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [fifointenset](index.html) module"]
-pub struct FIFOINTENSET_SPEC;
-impl crate::RegisterSpec for FIFOINTENSET_SPEC {
+#[doc = "FIFO interrupt enable set (enable) and read register.\n\nYou can [`read`](crate::Reg::read) this register and get [`fifointenset::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fifointenset::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct FifointensetSpec;
+impl crate::RegisterSpec for FifointensetSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [fifointenset::R](R) reader structure"]
-impl crate::Readable for FIFOINTENSET_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [fifointenset::W](W) writer structure"]
-impl crate::Writable for FIFOINTENSET_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`fifointenset::R`](R) reader structure"]
+impl crate::Readable for FifointensetSpec {}
+#[doc = "`write(|w| ..)` method takes [`fifointenset::W`](W) writer structure"]
+impl crate::Writable for FifointensetSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets FIFOINTENSET to value 0"]
-impl crate::Resettable for FIFOINTENSET_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for FifointensetSpec {
+    const RESET_VALUE: u32 = 0;
 }

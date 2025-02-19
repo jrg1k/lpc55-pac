@@ -1,62 +1,26 @@
 #[doc = "Register `WR_DATA` writer"]
-pub struct W(crate::W<WR_DATA_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<WR_DATA_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<WR_DATA_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<WR_DATA_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<WrDataSpec>;
 #[doc = "Field `CRC_WR_DATA` writer - Data written to this register will be taken to perform CRC calculation with selected bit order and 1's complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions."]
-pub struct CRC_WR_DATA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CRC_WR_DATA_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type CrcWrDataW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl W {
     #[doc = "Bits 0:31 - Data written to this register will be taken to perform CRC calculation with selected bit order and 1's complement pre-process. Any write size 8, 16 or 32-bit are allowed and accept back-to-back transactions."]
     #[inline(always)]
-    pub fn crc_wr_data(&mut self) -> CRC_WR_DATA_W {
-        CRC_WR_DATA_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn crc_wr_data(&mut self) -> CrcWrDataW<WrDataSpec> {
+        CrcWrDataW::new(self, 0)
     }
 }
-#[doc = "CRC data register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [wr_data](index.html) module"]
-pub struct WR_DATA_SPEC;
-impl crate::RegisterSpec for WR_DATA_SPEC {
+#[doc = "CRC data register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wr_data::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct WrDataSpec;
+impl crate::RegisterSpec for WrDataSpec {
     type Ux = u32;
 }
-#[doc = "`write(|w| ..)` method takes [wr_data::W](W) writer structure"]
-impl crate::Writable for WR_DATA_SPEC {
-    type Writer = W;
+#[doc = "`write(|w| ..)` method takes [`wr_data::W`](W) writer structure"]
+impl crate::Writable for WrDataSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets WR_DATA to value 0"]
-impl crate::Resettable for WR_DATA_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for WrDataSpec {
+    const RESET_VALUE: u32 = 0;
 }

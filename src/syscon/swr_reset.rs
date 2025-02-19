@@ -1,92 +1,61 @@
 #[doc = "Register `SWR_RESET` writer"]
-pub struct W(crate::W<SWR_RESET_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SWR_RESET_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SWR_RESET_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SWR_RESET_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SwrResetSpec>;
 #[doc = "Write 0x5A00_0001 to generate a software_reset.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u32)]
-pub enum SWR_RESET_AW {
+pub enum SwrReset {
     #[doc = "0: Bloc is not reset."]
-    RELEASED = 0,
+    Released = 0,
     #[doc = "1509949441: Generate a software reset."]
-    ASSERTED = 1509949441,
+    Asserted = 1509949441,
 }
-impl From<SWR_RESET_AW> for u32 {
+impl From<SwrReset> for u32 {
     #[inline(always)]
-    fn from(variant: SWR_RESET_AW) -> Self {
+    fn from(variant: SwrReset) -> Self {
         variant as _
     }
 }
-#[doc = "Field `SWR_RESET` writer - Write 0x5A00_0001 to generate a software_reset."]
-pub struct SWR_RESET_W<'a> {
-    w: &'a mut W,
+impl crate::FieldSpec for SwrReset {
+    type Ux = u32;
 }
-impl<'a> SWR_RESET_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SWR_RESET_AW) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
+impl crate::IsEnum for SwrReset {}
+#[doc = "Field `SWR_RESET` writer - Write 0x5A00_0001 to generate a software_reset."]
+pub type SwrResetW<'a, REG> = crate::FieldWriter<'a, REG, 32, SwrReset>;
+impl<'a, REG> SwrResetW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u32>,
+{
     #[doc = "Bloc is not reset."]
     #[inline(always)]
-    pub fn released(self) -> &'a mut W {
-        self.variant(SWR_RESET_AW::RELEASED)
+    pub fn released(self) -> &'a mut crate::W<REG> {
+        self.variant(SwrReset::Released)
     }
     #[doc = "Generate a software reset."]
     #[inline(always)]
-    pub fn asserted(self) -> &'a mut W {
-        self.variant(SWR_RESET_AW::ASSERTED)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
+    pub fn asserted(self) -> &'a mut crate::W<REG> {
+        self.variant(SwrReset::Asserted)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Write 0x5A00_0001 to generate a software_reset."]
     #[inline(always)]
-    pub fn swr_reset(&mut self) -> SWR_RESET_W {
-        SWR_RESET_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn swr_reset(&mut self) -> SwrResetW<SwrResetSpec> {
+        SwrResetW::new(self, 0)
     }
 }
-#[doc = "generate a software_reset\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [swr_reset](index.html) module"]
-pub struct SWR_RESET_SPEC;
-impl crate::RegisterSpec for SWR_RESET_SPEC {
+#[doc = "generate a software_reset\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`swr_reset::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SwrResetSpec;
+impl crate::RegisterSpec for SwrResetSpec {
     type Ux = u32;
 }
-#[doc = "`write(|w| ..)` method takes [swr_reset::W](W) writer structure"]
-impl crate::Writable for SWR_RESET_SPEC {
-    type Writer = W;
+#[doc = "`write(|w| ..)` method takes [`swr_reset::W`](W) writer structure"]
+impl crate::Writable for SwrResetSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SWR_RESET to value 0"]
-impl crate::Resettable for SWR_RESET_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SwrResetSpec {
+    const RESET_VALUE: u32 = 0;
 }

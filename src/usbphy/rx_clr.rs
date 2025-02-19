@@ -1,384 +1,280 @@
 #[doc = "Register `RX_CLR` reader"]
-pub struct R(crate::R<RX_CLR_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RX_CLR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RX_CLR_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RX_CLR_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<RxClrSpec>;
 #[doc = "Register `RX_CLR` writer"]
-pub struct W(crate::W<RX_CLR_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<RX_CLR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<RX_CLR_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<RX_CLR_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<RxClrSpec>;
 #[doc = "The ENVADJ field adjusts the trip point for the envelope detector\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum ENVADJ_A {
+pub enum Envadj {
     #[doc = "0: Trip-Level Voltage is 0.1000 V"]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Trip-Level Voltage is 0.1125 V"]
-    VALUE1 = 1,
+    Value1 = 1,
     #[doc = "2: Trip-Level Voltage is 0.1250 V"]
-    VALUE2 = 2,
+    Value2 = 2,
     #[doc = "3: Trip-Level Voltage is 0.0875 V"]
-    VALUE3 = 3,
+    Value3 = 3,
 }
-impl From<ENVADJ_A> for u8 {
+impl From<Envadj> for u8 {
     #[inline(always)]
-    fn from(variant: ENVADJ_A) -> Self {
+    fn from(variant: Envadj) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Envadj {
+    type Ux = u8;
+}
+impl crate::IsEnum for Envadj {}
 #[doc = "Field `ENVADJ` reader - The ENVADJ field adjusts the trip point for the envelope detector"]
-pub struct ENVADJ_R(crate::FieldReader<u8, ENVADJ_A>);
-impl ENVADJ_R {
+pub type EnvadjR = crate::FieldReader<Envadj>;
+impl EnvadjR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ENVADJ_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<ENVADJ_A> {
+    pub const fn variant(&self) -> Option<Envadj> {
         match self.bits {
-            0 => Some(ENVADJ_A::VALUE0),
-            1 => Some(ENVADJ_A::VALUE1),
-            2 => Some(ENVADJ_A::VALUE2),
-            3 => Some(ENVADJ_A::VALUE3),
+            0 => Some(Envadj::Value0),
+            1 => Some(Envadj::Value1),
+            2 => Some(Envadj::Value2),
+            3 => Some(Envadj::Value3),
             _ => None,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == ENVADJ_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == ENVADJ_A::VALUE1
-    }
-    #[doc = "Checks if the value of the field is `VALUE2`"]
-    #[inline(always)]
-    pub fn is_value2(&self) -> bool {
-        **self == ENVADJ_A::VALUE2
-    }
-    #[doc = "Checks if the value of the field is `VALUE3`"]
-    #[inline(always)]
-    pub fn is_value3(&self) -> bool {
-        **self == ENVADJ_A::VALUE3
-    }
-}
-impl core::ops::Deref for ENVADJ_R {
-    type Target = crate::FieldReader<u8, ENVADJ_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ENVADJ` writer - The ENVADJ field adjusts the trip point for the envelope detector"]
-pub struct ENVADJ_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENVADJ_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ENVADJ_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
     }
     #[doc = "Trip-Level Voltage is 0.1000 V"]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(ENVADJ_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Envadj::Value0
     }
     #[doc = "Trip-Level Voltage is 0.1125 V"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(ENVADJ_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Envadj::Value1
     }
     #[doc = "Trip-Level Voltage is 0.1250 V"]
     #[inline(always)]
-    pub fn value2(self) -> &'a mut W {
-        self.variant(ENVADJ_A::VALUE2)
+    pub fn is_value2(&self) -> bool {
+        *self == Envadj::Value2
     }
     #[doc = "Trip-Level Voltage is 0.0875 V"]
     #[inline(always)]
-    pub fn value3(self) -> &'a mut W {
-        self.variant(ENVADJ_A::VALUE3)
+    pub fn is_value3(&self) -> bool {
+        *self == Envadj::Value3
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `ENVADJ` writer - The ENVADJ field adjusts the trip point for the envelope detector"]
+pub type EnvadjW<'a, REG> = crate::FieldWriter<'a, REG, 3, Envadj>;
+impl<'a, REG> EnvadjW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Trip-Level Voltage is 0.1000 V"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x07) | (value as u32 & 0x07);
-        self.w
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Envadj::Value0)
+    }
+    #[doc = "Trip-Level Voltage is 0.1125 V"]
+    #[inline(always)]
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Envadj::Value1)
+    }
+    #[doc = "Trip-Level Voltage is 0.1250 V"]
+    #[inline(always)]
+    pub fn value2(self) -> &'a mut crate::W<REG> {
+        self.variant(Envadj::Value2)
+    }
+    #[doc = "Trip-Level Voltage is 0.0875 V"]
+    #[inline(always)]
+    pub fn value3(self) -> &'a mut crate::W<REG> {
+        self.variant(Envadj::Value3)
     }
 }
 #[doc = "The DISCONADJ field adjusts the trip point for the disconnect detector.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DISCONADJ_A {
+pub enum Disconadj {
     #[doc = "0: Trip-Level Voltage is 0.56875 V"]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Trip-Level Voltage is 0.55000 V"]
-    VALUE1 = 1,
+    Value1 = 1,
     #[doc = "2: Trip-Level Voltage is 0.58125 V"]
-    VALUE2 = 2,
+    Value2 = 2,
     #[doc = "3: Trip-Level Voltage is 0.60000 V"]
-    VALUE3 = 3,
+    Value3 = 3,
 }
-impl From<DISCONADJ_A> for u8 {
+impl From<Disconadj> for u8 {
     #[inline(always)]
-    fn from(variant: DISCONADJ_A) -> Self {
+    fn from(variant: Disconadj) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Disconadj {
+    type Ux = u8;
+}
+impl crate::IsEnum for Disconadj {}
 #[doc = "Field `DISCONADJ` reader - The DISCONADJ field adjusts the trip point for the disconnect detector."]
-pub struct DISCONADJ_R(crate::FieldReader<u8, DISCONADJ_A>);
-impl DISCONADJ_R {
+pub type DisconadjR = crate::FieldReader<Disconadj>;
+impl DisconadjR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        DISCONADJ_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<DISCONADJ_A> {
+    pub const fn variant(&self) -> Option<Disconadj> {
         match self.bits {
-            0 => Some(DISCONADJ_A::VALUE0),
-            1 => Some(DISCONADJ_A::VALUE1),
-            2 => Some(DISCONADJ_A::VALUE2),
-            3 => Some(DISCONADJ_A::VALUE3),
+            0 => Some(Disconadj::Value0),
+            1 => Some(Disconadj::Value1),
+            2 => Some(Disconadj::Value2),
+            3 => Some(Disconadj::Value3),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == DISCONADJ_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == DISCONADJ_A::VALUE1
-    }
-    #[doc = "Checks if the value of the field is `VALUE2`"]
-    #[inline(always)]
-    pub fn is_value2(&self) -> bool {
-        **self == DISCONADJ_A::VALUE2
-    }
-    #[doc = "Checks if the value of the field is `VALUE3`"]
-    #[inline(always)]
-    pub fn is_value3(&self) -> bool {
-        **self == DISCONADJ_A::VALUE3
-    }
-}
-impl core::ops::Deref for DISCONADJ_R {
-    type Target = crate::FieldReader<u8, DISCONADJ_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DISCONADJ` writer - The DISCONADJ field adjusts the trip point for the disconnect detector."]
-pub struct DISCONADJ_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DISCONADJ_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DISCONADJ_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "Trip-Level Voltage is 0.56875 V"]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(DISCONADJ_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Disconadj::Value0
     }
     #[doc = "Trip-Level Voltage is 0.55000 V"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(DISCONADJ_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Disconadj::Value1
     }
     #[doc = "Trip-Level Voltage is 0.58125 V"]
     #[inline(always)]
-    pub fn value2(self) -> &'a mut W {
-        self.variant(DISCONADJ_A::VALUE2)
+    pub fn is_value2(&self) -> bool {
+        *self == Disconadj::Value2
     }
     #[doc = "Trip-Level Voltage is 0.60000 V"]
     #[inline(always)]
-    pub fn value3(self) -> &'a mut W {
-        self.variant(DISCONADJ_A::VALUE3)
+    pub fn is_value3(&self) -> bool {
+        *self == Disconadj::Value3
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `DISCONADJ` writer - The DISCONADJ field adjusts the trip point for the disconnect detector."]
+pub type DisconadjW<'a, REG> = crate::FieldWriter<'a, REG, 3, Disconadj>;
+impl<'a, REG> DisconadjW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Trip-Level Voltage is 0.56875 V"]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 4)) | ((value as u32 & 0x07) << 4);
-        self.w
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Disconadj::Value0)
+    }
+    #[doc = "Trip-Level Voltage is 0.55000 V"]
+    #[inline(always)]
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Disconadj::Value1)
+    }
+    #[doc = "Trip-Level Voltage is 0.58125 V"]
+    #[inline(always)]
+    pub fn value2(self) -> &'a mut crate::W<REG> {
+        self.variant(Disconadj::Value2)
+    }
+    #[doc = "Trip-Level Voltage is 0.60000 V"]
+    #[inline(always)]
+    pub fn value3(self) -> &'a mut crate::W<REG> {
+        self.variant(Disconadj::Value3)
     }
 }
 #[doc = "This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum RXDBYPASS_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Rxdbypass {
     #[doc = "0: Normal operation."]
-    VALUE0 = 0,
+    Value0 = 0,
     #[doc = "1: Use the output of the USB_DP single-ended receiver in place of the full-speed differential receiver"]
-    VALUE1 = 1,
+    Value1 = 1,
 }
-impl From<RXDBYPASS_A> for bool {
+impl From<Rxdbypass> for bool {
     #[inline(always)]
-    fn from(variant: RXDBYPASS_A) -> Self {
+    fn from(variant: Rxdbypass) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `RXDBYPASS` reader - This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver"]
-pub struct RXDBYPASS_R(crate::FieldReader<bool, RXDBYPASS_A>);
-impl RXDBYPASS_R {
+pub type RxdbypassR = crate::BitReader<Rxdbypass>;
+impl RxdbypassR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        RXDBYPASS_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> RXDBYPASS_A {
+    pub const fn variant(&self) -> Rxdbypass {
         match self.bits {
-            false => RXDBYPASS_A::VALUE0,
-            true => RXDBYPASS_A::VALUE1,
+            false => Rxdbypass::Value0,
+            true => Rxdbypass::Value1,
         }
-    }
-    #[doc = "Checks if the value of the field is `VALUE0`"]
-    #[inline(always)]
-    pub fn is_value0(&self) -> bool {
-        **self == RXDBYPASS_A::VALUE0
-    }
-    #[doc = "Checks if the value of the field is `VALUE1`"]
-    #[inline(always)]
-    pub fn is_value1(&self) -> bool {
-        **self == RXDBYPASS_A::VALUE1
-    }
-}
-impl core::ops::Deref for RXDBYPASS_R {
-    type Target = crate::FieldReader<bool, RXDBYPASS_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `RXDBYPASS` writer - This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver"]
-pub struct RXDBYPASS_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> RXDBYPASS_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: RXDBYPASS_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn value0(self) -> &'a mut W {
-        self.variant(RXDBYPASS_A::VALUE0)
+    pub fn is_value0(&self) -> bool {
+        *self == Rxdbypass::Value0
     }
     #[doc = "Use the output of the USB_DP single-ended receiver in place of the full-speed differential receiver"]
     #[inline(always)]
-    pub fn value1(self) -> &'a mut W {
-        self.variant(RXDBYPASS_A::VALUE1)
+    pub fn is_value1(&self) -> bool {
+        *self == Rxdbypass::Value1
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `RXDBYPASS` writer - This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver"]
+pub type RxdbypassW<'a, REG> = crate::BitWriter<'a, REG, Rxdbypass>;
+impl<'a, REG> RxdbypassW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Normal operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn value0(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxdbypass::Value0)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Use the output of the USB_DP single-ended receiver in place of the full-speed differential receiver"]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 22)) | ((value as u32 & 0x01) << 22);
-        self.w
+    pub fn value1(self) -> &'a mut crate::W<REG> {
+        self.variant(Rxdbypass::Value1)
     }
 }
 impl R {
     #[doc = "Bits 0:2 - The ENVADJ field adjusts the trip point for the envelope detector"]
     #[inline(always)]
-    pub fn envadj(&self) -> ENVADJ_R {
-        ENVADJ_R::new((self.bits & 0x07) as u8)
+    pub fn envadj(&self) -> EnvadjR {
+        EnvadjR::new((self.bits & 7) as u8)
     }
     #[doc = "Bits 4:6 - The DISCONADJ field adjusts the trip point for the disconnect detector."]
     #[inline(always)]
-    pub fn disconadj(&self) -> DISCONADJ_R {
-        DISCONADJ_R::new(((self.bits >> 4) & 0x07) as u8)
+    pub fn disconadj(&self) -> DisconadjR {
+        DisconadjR::new(((self.bits >> 4) & 7) as u8)
     }
     #[doc = "Bit 22 - This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver"]
     #[inline(always)]
-    pub fn rxdbypass(&self) -> RXDBYPASS_R {
-        RXDBYPASS_R::new(((self.bits >> 22) & 0x01) != 0)
+    pub fn rxdbypass(&self) -> RxdbypassR {
+        RxdbypassR::new(((self.bits >> 22) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - The ENVADJ field adjusts the trip point for the envelope detector"]
     #[inline(always)]
-    pub fn envadj(&mut self) -> ENVADJ_W {
-        ENVADJ_W { w: self }
+    pub fn envadj(&mut self) -> EnvadjW<RxClrSpec> {
+        EnvadjW::new(self, 0)
     }
     #[doc = "Bits 4:6 - The DISCONADJ field adjusts the trip point for the disconnect detector."]
     #[inline(always)]
-    pub fn disconadj(&mut self) -> DISCONADJ_W {
-        DISCONADJ_W { w: self }
+    pub fn disconadj(&mut self) -> DisconadjW<RxClrSpec> {
+        DisconadjW::new(self, 4)
     }
     #[doc = "Bit 22 - This test mode is intended for lab use only, replace FS differential receiver with DP single ended receiver"]
     #[inline(always)]
-    pub fn rxdbypass(&mut self) -> RXDBYPASS_W {
-        RXDBYPASS_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn rxdbypass(&mut self) -> RxdbypassW<RxClrSpec> {
+        RxdbypassW::new(self, 22)
     }
 }
-#[doc = "USB PHY Receiver Control Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [rx_clr](index.html) module"]
-pub struct RX_CLR_SPEC;
-impl crate::RegisterSpec for RX_CLR_SPEC {
+#[doc = "USB PHY Receiver Control Register\n\nYou can [`read`](crate::Reg::read) this register and get [`rx_clr::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rx_clr::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct RxClrSpec;
+impl crate::RegisterSpec for RxClrSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [rx_clr::R](R) reader structure"]
-impl crate::Readable for RX_CLR_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [rx_clr::W](W) writer structure"]
-impl crate::Writable for RX_CLR_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`rx_clr::R`](R) reader structure"]
+impl crate::Readable for RxClrSpec {}
+#[doc = "`write(|w| ..)` method takes [`rx_clr::W`](W) writer structure"]
+impl crate::Writable for RxClrSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets RX_CLR to value 0"]
-impl crate::Resettable for RX_CLR_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for RxClrSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,160 +1,53 @@
 #[doc = "Register `USBHS_PHY_CTRL` reader"]
-pub struct R(crate::R<USBHS_PHY_CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<USBHS_PHY_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<USBHS_PHY_CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<USBHS_PHY_CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<UsbhsPhyCtrlSpec>;
 #[doc = "Register `USBHS_PHY_CTRL` writer"]
-pub struct W(crate::W<USBHS_PHY_CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<USBHS_PHY_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<USBHS_PHY_CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<USBHS_PHY_CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<UsbhsPhyCtrlSpec>;
 #[doc = "Field `usb_vbusvalid_ext` reader - Override value for Vbus if using external detectors."]
-pub struct USB_VBUSVALID_EXT_R(crate::FieldReader<bool, bool>);
-impl USB_VBUSVALID_EXT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        USB_VBUSVALID_EXT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for USB_VBUSVALID_EXT_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type UsbVbusvalidExtR = crate::BitReader;
 #[doc = "Field `usb_vbusvalid_ext` writer - Override value for Vbus if using external detectors."]
-pub struct USB_VBUSVALID_EXT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_VBUSVALID_EXT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type UsbVbusvalidExtW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `usb_id_ext` reader - Override value for ID if using external detectors."]
-pub struct USB_ID_EXT_R(crate::FieldReader<bool, bool>);
-impl USB_ID_EXT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        USB_ID_EXT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for USB_ID_EXT_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type UsbIdExtR = crate::BitReader;
 #[doc = "Field `usb_id_ext` writer - Override value for ID if using external detectors."]
-pub struct USB_ID_EXT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_ID_EXT_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type UsbIdExtW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Override value for Vbus if using external detectors."]
     #[inline(always)]
-    pub fn usb_vbusvalid_ext(&self) -> USB_VBUSVALID_EXT_R {
-        USB_VBUSVALID_EXT_R::new((self.bits & 0x01) != 0)
+    pub fn usb_vbusvalid_ext(&self) -> UsbVbusvalidExtR {
+        UsbVbusvalidExtR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Override value for ID if using external detectors."]
     #[inline(always)]
-    pub fn usb_id_ext(&self) -> USB_ID_EXT_R {
-        USB_ID_EXT_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn usb_id_ext(&self) -> UsbIdExtR {
+        UsbIdExtR::new(((self.bits >> 1) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Override value for Vbus if using external detectors."]
     #[inline(always)]
-    pub fn usb_vbusvalid_ext(&mut self) -> USB_VBUSVALID_EXT_W {
-        USB_VBUSVALID_EXT_W { w: self }
+    pub fn usb_vbusvalid_ext(&mut self) -> UsbVbusvalidExtW<UsbhsPhyCtrlSpec> {
+        UsbVbusvalidExtW::new(self, 0)
     }
     #[doc = "Bit 1 - Override value for ID if using external detectors."]
     #[inline(always)]
-    pub fn usb_id_ext(&mut self) -> USB_ID_EXT_W {
-        USB_ID_EXT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn usb_id_ext(&mut self) -> UsbIdExtW<UsbhsPhyCtrlSpec> {
+        UsbIdExtW::new(self, 1)
     }
 }
-#[doc = "USB High Speed Phy Control\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [usbhs_phy_ctrl](index.html) module"]
-pub struct USBHS_PHY_CTRL_SPEC;
-impl crate::RegisterSpec for USBHS_PHY_CTRL_SPEC {
+#[doc = "USB High Speed Phy Control\n\nYou can [`read`](crate::Reg::read) this register and get [`usbhs_phy_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`usbhs_phy_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct UsbhsPhyCtrlSpec;
+impl crate::RegisterSpec for UsbhsPhyCtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [usbhs_phy_ctrl::R](R) reader structure"]
-impl crate::Readable for USBHS_PHY_CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [usbhs_phy_ctrl::W](W) writer structure"]
-impl crate::Writable for USBHS_PHY_CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`usbhs_phy_ctrl::R`](R) reader structure"]
+impl crate::Readable for UsbhsPhyCtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`usbhs_phy_ctrl::W`](W) writer structure"]
+impl crate::Writable for UsbhsPhyCtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets USBHS_PHY_CTRL to value 0x08"]
-impl crate::Resettable for USBHS_PHY_CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x08
-    }
+impl crate::Resettable for UsbhsPhyCtrlSpec {
+    const RESET_VALUE: u32 = 0x08;
 }

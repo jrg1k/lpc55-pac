@@ -1,301 +1,95 @@
 #[doc = "Register `ERRSTAT` reader"]
-pub struct R(crate::R<ERRSTAT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ERRSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ERRSTAT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ERRSTAT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ErrstatSpec>;
 #[doc = "Register `ERRSTAT` writer"]
-pub struct W(crate::W<ERRSTAT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ERRSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ERRSTAT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ERRSTAT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<ErrstatSpec>;
 #[doc = "Field `OVERFLOW` reader - overflow"]
-pub struct OVERFLOW_R(crate::FieldReader<bool, bool>);
-impl OVERFLOW_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        OVERFLOW_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OVERFLOW_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OverflowR = crate::BitReader;
 #[doc = "Field `OVERFLOW` writer - overflow"]
-pub struct OVERFLOW_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OVERFLOW_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type OverflowW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `NAN` reader - nan"]
-pub struct NAN_R(crate::FieldReader<bool, bool>);
-impl NAN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        NAN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NAN_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NanR = crate::BitReader;
 #[doc = "Field `NAN` writer - nan"]
-pub struct NAN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NAN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type NanW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `FIXEDOVERFLOW` reader - fixed_pt_overflow"]
-pub struct FIXEDOVERFLOW_R(crate::FieldReader<bool, bool>);
-impl FIXEDOVERFLOW_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FIXEDOVERFLOW_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FIXEDOVERFLOW_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type FixedoverflowR = crate::BitReader;
 #[doc = "Field `FIXEDOVERFLOW` writer - fixed_pt_overflow"]
-pub struct FIXEDOVERFLOW_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FIXEDOVERFLOW_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type FixedoverflowW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `UNDERFLOW` reader - underflow"]
-pub struct UNDERFLOW_R(crate::FieldReader<bool, bool>);
-impl UNDERFLOW_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        UNDERFLOW_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for UNDERFLOW_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type UnderflowR = crate::BitReader;
 #[doc = "Field `UNDERFLOW` writer - underflow"]
-pub struct UNDERFLOW_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> UNDERFLOW_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type UnderflowW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BUSERROR` reader - bus_error"]
-pub struct BUSERROR_R(crate::FieldReader<bool, bool>);
-impl BUSERROR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        BUSERROR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for BUSERROR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type BuserrorR = crate::BitReader;
 #[doc = "Field `BUSERROR` writer - bus_error"]
-pub struct BUSERROR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BUSERROR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type BuserrorW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - overflow"]
     #[inline(always)]
-    pub fn overflow(&self) -> OVERFLOW_R {
-        OVERFLOW_R::new((self.bits & 0x01) != 0)
+    pub fn overflow(&self) -> OverflowR {
+        OverflowR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - nan"]
     #[inline(always)]
-    pub fn nan(&self) -> NAN_R {
-        NAN_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn nan(&self) -> NanR {
+        NanR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - fixed_pt_overflow"]
     #[inline(always)]
-    pub fn fixedoverflow(&self) -> FIXEDOVERFLOW_R {
-        FIXEDOVERFLOW_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn fixedoverflow(&self) -> FixedoverflowR {
+        FixedoverflowR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - underflow"]
     #[inline(always)]
-    pub fn underflow(&self) -> UNDERFLOW_R {
-        UNDERFLOW_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn underflow(&self) -> UnderflowR {
+        UnderflowR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - bus_error"]
     #[inline(always)]
-    pub fn buserror(&self) -> BUSERROR_R {
-        BUSERROR_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn buserror(&self) -> BuserrorR {
+        BuserrorR::new(((self.bits >> 4) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - overflow"]
     #[inline(always)]
-    pub fn overflow(&mut self) -> OVERFLOW_W {
-        OVERFLOW_W { w: self }
+    pub fn overflow(&mut self) -> OverflowW<ErrstatSpec> {
+        OverflowW::new(self, 0)
     }
     #[doc = "Bit 1 - nan"]
     #[inline(always)]
-    pub fn nan(&mut self) -> NAN_W {
-        NAN_W { w: self }
+    pub fn nan(&mut self) -> NanW<ErrstatSpec> {
+        NanW::new(self, 1)
     }
     #[doc = "Bit 2 - fixed_pt_overflow"]
     #[inline(always)]
-    pub fn fixedoverflow(&mut self) -> FIXEDOVERFLOW_W {
-        FIXEDOVERFLOW_W { w: self }
+    pub fn fixedoverflow(&mut self) -> FixedoverflowW<ErrstatSpec> {
+        FixedoverflowW::new(self, 2)
     }
     #[doc = "Bit 3 - underflow"]
     #[inline(always)]
-    pub fn underflow(&mut self) -> UNDERFLOW_W {
-        UNDERFLOW_W { w: self }
+    pub fn underflow(&mut self) -> UnderflowW<ErrstatSpec> {
+        UnderflowW::new(self, 3)
     }
     #[doc = "Bit 4 - bus_error"]
     #[inline(always)]
-    pub fn buserror(&mut self) -> BUSERROR_W {
-        BUSERROR_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn buserror(&mut self) -> BuserrorW<ErrstatSpec> {
+        BuserrorW::new(self, 4)
     }
 }
-#[doc = "Read/Write register where error statuses are captured (sticky)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [errstat](index.html) module"]
-pub struct ERRSTAT_SPEC;
-impl crate::RegisterSpec for ERRSTAT_SPEC {
+#[doc = "Read/Write register where error statuses are captured (sticky)\n\nYou can [`read`](crate::Reg::read) this register and get [`errstat::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`errstat::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ErrstatSpec;
+impl crate::RegisterSpec for ErrstatSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [errstat::R](R) reader structure"]
-impl crate::Readable for ERRSTAT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [errstat::W](W) writer structure"]
-impl crate::Writable for ERRSTAT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`errstat::R`](R) reader structure"]
+impl crate::Readable for ErrstatSpec {}
+#[doc = "`write(|w| ..)` method takes [`errstat::W`](W) writer structure"]
+impl crate::Writable for ErrstatSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ERRSTAT to value 0"]
-impl crate::Resettable for ERRSTAT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for ErrstatSpec {
+    const RESET_VALUE: u32 = 0;
 }

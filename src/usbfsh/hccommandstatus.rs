@@ -1,291 +1,95 @@
 #[doc = "Register `HCCOMMANDSTATUS` reader"]
-pub struct R(crate::R<HCCOMMANDSTATUS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<HCCOMMANDSTATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<HCCOMMANDSTATUS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<HCCOMMANDSTATUS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<HccommandstatusSpec>;
 #[doc = "Register `HCCOMMANDSTATUS` writer"]
-pub struct W(crate::W<HCCOMMANDSTATUS_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<HCCOMMANDSTATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<HCCOMMANDSTATUS_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<HCCOMMANDSTATUS_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<HccommandstatusSpec>;
 #[doc = "Field `HCR` reader - HostControllerReset This bit is set by HCD to initiate a software reset of HC."]
-pub struct HCR_R(crate::FieldReader<bool, bool>);
-impl HCR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        HCR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for HCR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type HcrR = crate::BitReader;
 #[doc = "Field `HCR` writer - HostControllerReset This bit is set by HCD to initiate a software reset of HC."]
-pub struct HCR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HCR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type HcrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `CLF` reader - ControlListFilled This bit is used to indicate whether there are any TDs on the Control list."]
-pub struct CLF_R(crate::FieldReader<bool, bool>);
-impl CLF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CLF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for CLF_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type ClfR = crate::BitReader;
 #[doc = "Field `CLF` writer - ControlListFilled This bit is used to indicate whether there are any TDs on the Control list."]
-pub struct CLF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CLF_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type ClfW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `BLF` reader - BulkListFilled This bit is used to indicate whether there are any TDs on the Bulk list."]
-pub struct BLF_R(crate::FieldReader<bool, bool>);
-impl BLF_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        BLF_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for BLF_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type BlfR = crate::BitReader;
 #[doc = "Field `BLF` writer - BulkListFilled This bit is used to indicate whether there are any TDs on the Bulk list."]
-pub struct BLF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BLF_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type BlfW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `OCR` reader - OwnershipChangeRequest This bit is set by an OS HCD to request a change of control of the HC."]
-pub struct OCR_R(crate::FieldReader<bool, bool>);
-impl OCR_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        OCR_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OCR_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OcrR = crate::BitReader;
 #[doc = "Field `OCR` writer - OwnershipChangeRequest This bit is set by an OS HCD to request a change of control of the HC."]
-pub struct OCR_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OCR_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type OcrW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SOC` reader - SchedulingOverrunCount These bits are incremented on each scheduling overrun error."]
-pub struct SOC_R(crate::FieldReader<u8, u8>);
-impl SOC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SOC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SOC_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SocR = crate::FieldReader;
 #[doc = "Field `SOC` writer - SchedulingOverrunCount These bits are incremented on each scheduling overrun error."]
-pub struct SOC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SOC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 6)) | ((value as u32 & 0x03) << 6);
-        self.w
-    }
-}
+pub type SocW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 impl R {
     #[doc = "Bit 0 - HostControllerReset This bit is set by HCD to initiate a software reset of HC."]
     #[inline(always)]
-    pub fn hcr(&self) -> HCR_R {
-        HCR_R::new((self.bits & 0x01) != 0)
+    pub fn hcr(&self) -> HcrR {
+        HcrR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - ControlListFilled This bit is used to indicate whether there are any TDs on the Control list."]
     #[inline(always)]
-    pub fn clf(&self) -> CLF_R {
-        CLF_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn clf(&self) -> ClfR {
+        ClfR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - BulkListFilled This bit is used to indicate whether there are any TDs on the Bulk list."]
     #[inline(always)]
-    pub fn blf(&self) -> BLF_R {
-        BLF_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn blf(&self) -> BlfR {
+        BlfR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - OwnershipChangeRequest This bit is set by an OS HCD to request a change of control of the HC."]
     #[inline(always)]
-    pub fn ocr(&self) -> OCR_R {
-        OCR_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn ocr(&self) -> OcrR {
+        OcrR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bits 6:7 - SchedulingOverrunCount These bits are incremented on each scheduling overrun error."]
     #[inline(always)]
-    pub fn soc(&self) -> SOC_R {
-        SOC_R::new(((self.bits >> 6) & 0x03) as u8)
+    pub fn soc(&self) -> SocR {
+        SocR::new(((self.bits >> 6) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - HostControllerReset This bit is set by HCD to initiate a software reset of HC."]
     #[inline(always)]
-    pub fn hcr(&mut self) -> HCR_W {
-        HCR_W { w: self }
+    pub fn hcr(&mut self) -> HcrW<HccommandstatusSpec> {
+        HcrW::new(self, 0)
     }
     #[doc = "Bit 1 - ControlListFilled This bit is used to indicate whether there are any TDs on the Control list."]
     #[inline(always)]
-    pub fn clf(&mut self) -> CLF_W {
-        CLF_W { w: self }
+    pub fn clf(&mut self) -> ClfW<HccommandstatusSpec> {
+        ClfW::new(self, 1)
     }
     #[doc = "Bit 2 - BulkListFilled This bit is used to indicate whether there are any TDs on the Bulk list."]
     #[inline(always)]
-    pub fn blf(&mut self) -> BLF_W {
-        BLF_W { w: self }
+    pub fn blf(&mut self) -> BlfW<HccommandstatusSpec> {
+        BlfW::new(self, 2)
     }
     #[doc = "Bit 3 - OwnershipChangeRequest This bit is set by an OS HCD to request a change of control of the HC."]
     #[inline(always)]
-    pub fn ocr(&mut self) -> OCR_W {
-        OCR_W { w: self }
+    pub fn ocr(&mut self) -> OcrW<HccommandstatusSpec> {
+        OcrW::new(self, 3)
     }
     #[doc = "Bits 6:7 - SchedulingOverrunCount These bits are incremented on each scheduling overrun error."]
     #[inline(always)]
-    pub fn soc(&mut self) -> SOC_W {
-        SOC_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn soc(&mut self) -> SocW<HccommandstatusSpec> {
+        SocW::new(self, 6)
     }
 }
-#[doc = "This register is used to receive the commands from the Host Controller Driver (HCD)\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [hccommandstatus](index.html) module"]
-pub struct HCCOMMANDSTATUS_SPEC;
-impl crate::RegisterSpec for HCCOMMANDSTATUS_SPEC {
+#[doc = "This register is used to receive the commands from the Host Controller Driver (HCD)\n\nYou can [`read`](crate::Reg::read) this register and get [`hccommandstatus::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hccommandstatus::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct HccommandstatusSpec;
+impl crate::RegisterSpec for HccommandstatusSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [hccommandstatus::R](R) reader structure"]
-impl crate::Readable for HCCOMMANDSTATUS_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [hccommandstatus::W](W) writer structure"]
-impl crate::Writable for HCCOMMANDSTATUS_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`hccommandstatus::R`](R) reader structure"]
+impl crate::Readable for HccommandstatusSpec {}
+#[doc = "`write(|w| ..)` method takes [`hccommandstatus::W`](W) writer structure"]
+impl crate::Writable for HccommandstatusSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HCCOMMANDSTATUS to value 0"]
-impl crate::Resettable for HCCOMMANDSTATUS_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for HccommandstatusSpec {
+    const RESET_VALUE: u32 = 0;
 }

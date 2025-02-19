@@ -1,62 +1,26 @@
 #[doc = "Register `CIENF` writer"]
-pub struct W(crate::W<CIENF_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CIENF_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CIENF_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CIENF_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CienfSpec>;
 #[doc = "Field `CENAF` writer - Ones written to this address clears bits in the IENF, thus disabling interrupts. Bit n clears bit n in the IENF register. 0 = No operation. 1 = LOW-active interrupt selected or falling edge interrupt disabled."]
-pub struct CENAF_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CENAF_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type CenafW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl W {
     #[doc = "Bits 0:7 - Ones written to this address clears bits in the IENF, thus disabling interrupts. Bit n clears bit n in the IENF register. 0 = No operation. 1 = LOW-active interrupt selected or falling edge interrupt disabled."]
     #[inline(always)]
-    pub fn cenaf(&mut self) -> CENAF_W {
-        CENAF_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cenaf(&mut self) -> CenafW<CienfSpec> {
+        CenafW::new(self, 0)
     }
 }
-#[doc = "Pin interrupt active level or falling edge interrupt clear register\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [cienf](index.html) module"]
-pub struct CIENF_SPEC;
-impl crate::RegisterSpec for CIENF_SPEC {
+#[doc = "Pin interrupt active level or falling edge interrupt clear register\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cienf::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CienfSpec;
+impl crate::RegisterSpec for CienfSpec {
     type Ux = u32;
 }
-#[doc = "`write(|w| ..)` method takes [cienf::W](W) writer structure"]
-impl crate::Writable for CIENF_SPEC {
-    type Writer = W;
+#[doc = "`write(|w| ..)` method takes [`cienf::W`](W) writer structure"]
+impl crate::Writable for CienfSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CIENF to value 0"]
-impl crate::Resettable for CIENF_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CienfSpec {
+    const RESET_VALUE: u32 = 0;
 }

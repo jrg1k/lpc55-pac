@@ -1,234 +1,116 @@
 #[doc = "Register `MODCFG` reader"]
-pub struct R(crate::R<MODCFG_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MODCFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MODCFG_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MODCFG_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ModcfgSpec>;
 #[doc = "Register `MODCFG` writer"]
-pub struct W(crate::W<MODCFG_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MODCFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MODCFG_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MODCFG_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<ModcfgSpec>;
 #[doc = "Field `NOC` reader - Identifies the number of channels in this MRT.(4 channels on this device.)"]
-pub struct NOC_R(crate::FieldReader<u8, u8>);
-impl NOC_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        NOC_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NOC_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NocR = crate::FieldReader;
 #[doc = "Field `NOC` writer - Identifies the number of channels in this MRT.(4 channels on this device.)"]
-pub struct NOC_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NOC_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x0f) | (value as u32 & 0x0f);
-        self.w
-    }
-}
+pub type NocW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `NOB` reader - Identifies the number of timer bits in this MRT. (24 bits wide on this device.)"]
-pub struct NOB_R(crate::FieldReader<u8, u8>);
-impl NOB_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        NOB_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for NOB_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type NobR = crate::FieldReader;
 #[doc = "Field `NOB` writer - Identifies the number of timer bits in this MRT. (24 bits wide on this device.)"]
-pub struct NOB_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> NOB_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x1f << 4)) | ((value as u32 & 0x1f) << 4);
-        self.w
-    }
-}
+pub type NobW<'a, REG> = crate::FieldWriter<'a, REG, 5>;
 #[doc = "Selects the operating mode for the INUSE flags and the IDLE_CH register.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MULTITASK_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Multitask {
     #[doc = "0: Hardware status mode. In this mode, the INUSE(n) flags for all channels are reset."]
-    HARDWARE_STATUS_MODE = 0,
+    HardwareStatusMode = 0,
     #[doc = "1: Multi-task mode."]
-    MULTI_TASK_MODE = 1,
+    MultiTaskMode = 1,
 }
-impl From<MULTITASK_A> for bool {
+impl From<Multitask> for bool {
     #[inline(always)]
-    fn from(variant: MULTITASK_A) -> Self {
+    fn from(variant: Multitask) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `MULTITASK` reader - Selects the operating mode for the INUSE flags and the IDLE_CH register."]
-pub struct MULTITASK_R(crate::FieldReader<bool, MULTITASK_A>);
-impl MULTITASK_R {
+pub type MultitaskR = crate::BitReader<Multitask>;
+impl MultitaskR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        MULTITASK_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> MULTITASK_A {
+    pub const fn variant(&self) -> Multitask {
         match self.bits {
-            false => MULTITASK_A::HARDWARE_STATUS_MODE,
-            true => MULTITASK_A::MULTI_TASK_MODE,
+            false => Multitask::HardwareStatusMode,
+            true => Multitask::MultiTaskMode,
         }
-    }
-    #[doc = "Checks if the value of the field is `HARDWARE_STATUS_MODE`"]
-    #[inline(always)]
-    pub fn is_hardware_status_mode(&self) -> bool {
-        **self == MULTITASK_A::HARDWARE_STATUS_MODE
-    }
-    #[doc = "Checks if the value of the field is `MULTI_TASK_MODE`"]
-    #[inline(always)]
-    pub fn is_multi_task_mode(&self) -> bool {
-        **self == MULTITASK_A::MULTI_TASK_MODE
-    }
-}
-impl core::ops::Deref for MULTITASK_R {
-    type Target = crate::FieldReader<bool, MULTITASK_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `MULTITASK` writer - Selects the operating mode for the INUSE flags and the IDLE_CH register."]
-pub struct MULTITASK_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MULTITASK_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: MULTITASK_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "Hardware status mode. In this mode, the INUSE(n) flags for all channels are reset."]
     #[inline(always)]
-    pub fn hardware_status_mode(self) -> &'a mut W {
-        self.variant(MULTITASK_A::HARDWARE_STATUS_MODE)
+    pub fn is_hardware_status_mode(&self) -> bool {
+        *self == Multitask::HardwareStatusMode
     }
     #[doc = "Multi-task mode."]
     #[inline(always)]
-    pub fn multi_task_mode(self) -> &'a mut W {
-        self.variant(MULTITASK_A::MULTI_TASK_MODE)
+    pub fn is_multi_task_mode(&self) -> bool {
+        *self == Multitask::MultiTaskMode
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `MULTITASK` writer - Selects the operating mode for the INUSE flags and the IDLE_CH register."]
+pub type MultitaskW<'a, REG> = crate::BitWriter<'a, REG, Multitask>;
+impl<'a, REG> MultitaskW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "Hardware status mode. In this mode, the INUSE(n) flags for all channels are reset."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn hardware_status_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Multitask::HardwareStatusMode)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Multi-task mode."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 31)) | ((value as u32 & 0x01) << 31);
-        self.w
+    pub fn multi_task_mode(self) -> &'a mut crate::W<REG> {
+        self.variant(Multitask::MultiTaskMode)
     }
 }
 impl R {
     #[doc = "Bits 0:3 - Identifies the number of channels in this MRT.(4 channels on this device.)"]
     #[inline(always)]
-    pub fn noc(&self) -> NOC_R {
-        NOC_R::new((self.bits & 0x0f) as u8)
+    pub fn noc(&self) -> NocR {
+        NocR::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:8 - Identifies the number of timer bits in this MRT. (24 bits wide on this device.)"]
     #[inline(always)]
-    pub fn nob(&self) -> NOB_R {
-        NOB_R::new(((self.bits >> 4) & 0x1f) as u8)
+    pub fn nob(&self) -> NobR {
+        NobR::new(((self.bits >> 4) & 0x1f) as u8)
     }
     #[doc = "Bit 31 - Selects the operating mode for the INUSE flags and the IDLE_CH register."]
     #[inline(always)]
-    pub fn multitask(&self) -> MULTITASK_R {
-        MULTITASK_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn multitask(&self) -> MultitaskR {
+        MultitaskR::new(((self.bits >> 31) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Identifies the number of channels in this MRT.(4 channels on this device.)"]
     #[inline(always)]
-    pub fn noc(&mut self) -> NOC_W {
-        NOC_W { w: self }
+    pub fn noc(&mut self) -> NocW<ModcfgSpec> {
+        NocW::new(self, 0)
     }
     #[doc = "Bits 4:8 - Identifies the number of timer bits in this MRT. (24 bits wide on this device.)"]
     #[inline(always)]
-    pub fn nob(&mut self) -> NOB_W {
-        NOB_W { w: self }
+    pub fn nob(&mut self) -> NobW<ModcfgSpec> {
+        NobW::new(self, 4)
     }
     #[doc = "Bit 31 - Selects the operating mode for the INUSE flags and the IDLE_CH register."]
     #[inline(always)]
-    pub fn multitask(&mut self) -> MULTITASK_W {
-        MULTITASK_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn multitask(&mut self) -> MultitaskW<ModcfgSpec> {
+        MultitaskW::new(self, 31)
     }
 }
-#[doc = "Module Configuration register. This register provides information about this particular MRT instance, and allows choosing an overall mode for the idle channel feature.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [modcfg](index.html) module"]
-pub struct MODCFG_SPEC;
-impl crate::RegisterSpec for MODCFG_SPEC {
+#[doc = "Module Configuration register. This register provides information about this particular MRT instance, and allows choosing an overall mode for the idle channel feature.\n\nYou can [`read`](crate::Reg::read) this register and get [`modcfg::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`modcfg::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ModcfgSpec;
+impl crate::RegisterSpec for ModcfgSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [modcfg::R](R) reader structure"]
-impl crate::Readable for MODCFG_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [modcfg::W](W) writer structure"]
-impl crate::Writable for MODCFG_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`modcfg::R`](R) reader structure"]
+impl crate::Readable for ModcfgSpec {}
+#[doc = "`write(|w| ..)` method takes [`modcfg::W`](W) writer structure"]
+impl crate::Writable for ModcfgSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MODCFG to value 0x0173"]
-impl crate::Resettable for MODCFG_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0173
-    }
+impl crate::Resettable for ModcfgSpec {
+    const RESET_VALUE: u32 = 0x0173;
 }

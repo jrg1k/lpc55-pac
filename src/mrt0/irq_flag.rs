@@ -1,301 +1,130 @@
 #[doc = "Register `IRQ_FLAG` reader"]
-pub struct R(crate::R<IRQ_FLAG_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<IRQ_FLAG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<IRQ_FLAG_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<IRQ_FLAG_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<IrqFlagSpec>;
 #[doc = "Register `IRQ_FLAG` writer"]
-pub struct W(crate::W<IRQ_FLAG_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<IRQ_FLAG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<IRQ_FLAG_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<IRQ_FLAG_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<IrqFlagSpec>;
 #[doc = "Monitors the interrupt flag of TIMER0.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum GFLAG0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Gflag0 {
     #[doc = "0: No pending interrupt. Writing a zero is equivalent to no operation."]
-    NO_PENDING_INTERRUPT = 0,
+    NoPendingInterrupt = 0,
     #[doc = "1: Pending interrupt. The interrupt is pending because TIMER0 has reached the end of the time interval. If the INTEN bit in the CONTROL0 register is also set to 1, the interrupt for timer channel 0 and the global interrupt are raised. Writing a 1 to this bit clears the interrupt request."]
-    PENDING_INTERRUPT = 1,
+    PendingInterrupt = 1,
 }
-impl From<GFLAG0_A> for bool {
+impl From<Gflag0> for bool {
     #[inline(always)]
-    fn from(variant: GFLAG0_A) -> Self {
+    fn from(variant: Gflag0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `GFLAG0` reader - Monitors the interrupt flag of TIMER0."]
-pub struct GFLAG0_R(crate::FieldReader<bool, GFLAG0_A>);
-impl GFLAG0_R {
+pub type Gflag0R = crate::BitReader<Gflag0>;
+impl Gflag0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GFLAG0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> GFLAG0_A {
+    pub const fn variant(&self) -> Gflag0 {
         match self.bits {
-            false => GFLAG0_A::NO_PENDING_INTERRUPT,
-            true => GFLAG0_A::PENDING_INTERRUPT,
+            false => Gflag0::NoPendingInterrupt,
+            true => Gflag0::PendingInterrupt,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_PENDING_INTERRUPT`"]
-    #[inline(always)]
-    pub fn is_no_pending_interrupt(&self) -> bool {
-        **self == GFLAG0_A::NO_PENDING_INTERRUPT
-    }
-    #[doc = "Checks if the value of the field is `PENDING_INTERRUPT`"]
-    #[inline(always)]
-    pub fn is_pending_interrupt(&self) -> bool {
-        **self == GFLAG0_A::PENDING_INTERRUPT
-    }
-}
-impl core::ops::Deref for GFLAG0_R {
-    type Target = crate::FieldReader<bool, GFLAG0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `GFLAG0` writer - Monitors the interrupt flag of TIMER0."]
-pub struct GFLAG0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GFLAG0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: GFLAG0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No pending interrupt. Writing a zero is equivalent to no operation."]
     #[inline(always)]
-    pub fn no_pending_interrupt(self) -> &'a mut W {
-        self.variant(GFLAG0_A::NO_PENDING_INTERRUPT)
+    pub fn is_no_pending_interrupt(&self) -> bool {
+        *self == Gflag0::NoPendingInterrupt
     }
     #[doc = "Pending interrupt. The interrupt is pending because TIMER0 has reached the end of the time interval. If the INTEN bit in the CONTROL0 register is also set to 1, the interrupt for timer channel 0 and the global interrupt are raised. Writing a 1 to this bit clears the interrupt request."]
     #[inline(always)]
-    pub fn pending_interrupt(self) -> &'a mut W {
-        self.variant(GFLAG0_A::PENDING_INTERRUPT)
+    pub fn is_pending_interrupt(&self) -> bool {
+        *self == Gflag0::PendingInterrupt
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `GFLAG0` writer - Monitors the interrupt flag of TIMER0."]
+pub type Gflag0W<'a, REG> = crate::BitWriter<'a, REG, Gflag0>;
+impl<'a, REG> Gflag0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No pending interrupt. Writing a zero is equivalent to no operation."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_pending_interrupt(self) -> &'a mut crate::W<REG> {
+        self.variant(Gflag0::NoPendingInterrupt)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "Pending interrupt. The interrupt is pending because TIMER0 has reached the end of the time interval. If the INTEN bit in the CONTROL0 register is also set to 1, the interrupt for timer channel 0 and the global interrupt are raised. Writing a 1 to this bit clears the interrupt request."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn pending_interrupt(self) -> &'a mut crate::W<REG> {
+        self.variant(Gflag0::PendingInterrupt)
     }
 }
 #[doc = "Field `GFLAG1` reader - Monitors the interrupt flag of TIMER1. See description of channel 0."]
-pub struct GFLAG1_R(crate::FieldReader<bool, bool>);
-impl GFLAG1_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GFLAG1_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for GFLAG1_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Gflag1R = crate::BitReader;
 #[doc = "Field `GFLAG1` writer - Monitors the interrupt flag of TIMER1. See description of channel 0."]
-pub struct GFLAG1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GFLAG1_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type Gflag1W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GFLAG2` reader - Monitors the interrupt flag of TIMER2. See description of channel 0."]
-pub struct GFLAG2_R(crate::FieldReader<bool, bool>);
-impl GFLAG2_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GFLAG2_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for GFLAG2_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Gflag2R = crate::BitReader;
 #[doc = "Field `GFLAG2` writer - Monitors the interrupt flag of TIMER2. See description of channel 0."]
-pub struct GFLAG2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GFLAG2_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type Gflag2W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GFLAG3` reader - Monitors the interrupt flag of TIMER3. See description of channel 0."]
-pub struct GFLAG3_R(crate::FieldReader<bool, bool>);
-impl GFLAG3_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GFLAG3_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for GFLAG3_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type Gflag3R = crate::BitReader;
 #[doc = "Field `GFLAG3` writer - Monitors the interrupt flag of TIMER3. See description of channel 0."]
-pub struct GFLAG3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GFLAG3_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type Gflag3W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Monitors the interrupt flag of TIMER0."]
     #[inline(always)]
-    pub fn gflag0(&self) -> GFLAG0_R {
-        GFLAG0_R::new((self.bits & 0x01) != 0)
+    pub fn gflag0(&self) -> Gflag0R {
+        Gflag0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Monitors the interrupt flag of TIMER1. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag1(&self) -> GFLAG1_R {
-        GFLAG1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn gflag1(&self) -> Gflag1R {
+        Gflag1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Monitors the interrupt flag of TIMER2. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag2(&self) -> GFLAG2_R {
-        GFLAG2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn gflag2(&self) -> Gflag2R {
+        Gflag2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Monitors the interrupt flag of TIMER3. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag3(&self) -> GFLAG3_R {
-        GFLAG3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn gflag3(&self) -> Gflag3R {
+        Gflag3R::new(((self.bits >> 3) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Monitors the interrupt flag of TIMER0."]
     #[inline(always)]
-    pub fn gflag0(&mut self) -> GFLAG0_W {
-        GFLAG0_W { w: self }
+    pub fn gflag0(&mut self) -> Gflag0W<IrqFlagSpec> {
+        Gflag0W::new(self, 0)
     }
     #[doc = "Bit 1 - Monitors the interrupt flag of TIMER1. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag1(&mut self) -> GFLAG1_W {
-        GFLAG1_W { w: self }
+    pub fn gflag1(&mut self) -> Gflag1W<IrqFlagSpec> {
+        Gflag1W::new(self, 1)
     }
     #[doc = "Bit 2 - Monitors the interrupt flag of TIMER2. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag2(&mut self) -> GFLAG2_W {
-        GFLAG2_W { w: self }
+    pub fn gflag2(&mut self) -> Gflag2W<IrqFlagSpec> {
+        Gflag2W::new(self, 2)
     }
     #[doc = "Bit 3 - Monitors the interrupt flag of TIMER3. See description of channel 0."]
     #[inline(always)]
-    pub fn gflag3(&mut self) -> GFLAG3_W {
-        GFLAG3_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn gflag3(&mut self) -> Gflag3W<IrqFlagSpec> {
+        Gflag3W::new(self, 3)
     }
 }
-#[doc = "Global interrupt flag register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [irq_flag](index.html) module"]
-pub struct IRQ_FLAG_SPEC;
-impl crate::RegisterSpec for IRQ_FLAG_SPEC {
+#[doc = "Global interrupt flag register\n\nYou can [`read`](crate::Reg::read) this register and get [`irq_flag::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`irq_flag::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct IrqFlagSpec;
+impl crate::RegisterSpec for IrqFlagSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [irq_flag::R](R) reader structure"]
-impl crate::Readable for IRQ_FLAG_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [irq_flag::W](W) writer structure"]
-impl crate::Writable for IRQ_FLAG_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`irq_flag::R`](R) reader structure"]
+impl crate::Readable for IrqFlagSpec {}
+#[doc = "`write(|w| ..)` method takes [`irq_flag::W`](W) writer structure"]
+impl crate::Writable for IrqFlagSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets IRQ_FLAG to value 0"]
-impl crate::Resettable for IRQ_FLAG_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for IrqFlagSpec {
+    const RESET_VALUE: u32 = 0;
 }

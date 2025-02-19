@@ -1,230 +1,173 @@
 #[doc = "Register `CLKOUTSEL` reader"]
-pub struct R(crate::R<CLKOUTSEL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CLKOUTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CLKOUTSEL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CLKOUTSEL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ClkoutselSpec>;
 #[doc = "Register `CLKOUTSEL` writer"]
-pub struct W(crate::W<CLKOUTSEL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CLKOUTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CLKOUTSEL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CLKOUTSEL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<ClkoutselSpec>;
 #[doc = "CLKOUT clock source select.\n\nValue on reset: 7"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum SEL_A {
+pub enum Sel {
     #[doc = "0: Main clock."]
-    ENUM_0X0 = 0,
+    Enum0x0 = 0,
     #[doc = "1: PLL0 clock."]
-    ENUM_0X1 = 1,
+    Enum0x1 = 1,
     #[doc = "2: CLKIN clock."]
-    ENUM_0X2 = 2,
+    Enum0x2 = 2,
     #[doc = "3: FRO 96 MHz clock."]
-    ENUM_0X3 = 3,
+    Enum0x3 = 3,
     #[doc = "4: FRO 1MHz clock."]
-    ENUM_0X4 = 4,
+    Enum0x4 = 4,
     #[doc = "5: PLL1 clock."]
-    ENUM_0X5 = 5,
+    Enum0x5 = 5,
     #[doc = "6: Oscillator 32kHz clock."]
-    ENUM_0X6 = 6,
+    Enum0x6 = 6,
     #[doc = "7: No clock."]
-    ENUM_0X7 = 7,
+    Enum0x7 = 7,
 }
-impl From<SEL_A> for u8 {
+impl From<Sel> for u8 {
     #[inline(always)]
-    fn from(variant: SEL_A) -> Self {
+    fn from(variant: Sel) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Sel {
+    type Ux = u8;
+}
+impl crate::IsEnum for Sel {}
 #[doc = "Field `SEL` reader - CLKOUT clock source select."]
-pub struct SEL_R(crate::FieldReader<u8, SEL_A>);
-impl SEL_R {
+pub type SelR = crate::FieldReader<Sel>;
+impl SelR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SEL_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> SEL_A {
+    pub const fn variant(&self) -> Sel {
         match self.bits {
-            0 => SEL_A::ENUM_0X0,
-            1 => SEL_A::ENUM_0X1,
-            2 => SEL_A::ENUM_0X2,
-            3 => SEL_A::ENUM_0X3,
-            4 => SEL_A::ENUM_0X4,
-            5 => SEL_A::ENUM_0X5,
-            6 => SEL_A::ENUM_0X6,
-            7 => SEL_A::ENUM_0X7,
+            0 => Sel::Enum0x0,
+            1 => Sel::Enum0x1,
+            2 => Sel::Enum0x2,
+            3 => Sel::Enum0x3,
+            4 => Sel::Enum0x4,
+            5 => Sel::Enum0x5,
+            6 => Sel::Enum0x6,
+            7 => Sel::Enum0x7,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_0X0`"]
-    #[inline(always)]
-    pub fn is_enum_0x0(&self) -> bool {
-        **self == SEL_A::ENUM_0X0
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X1`"]
-    #[inline(always)]
-    pub fn is_enum_0x1(&self) -> bool {
-        **self == SEL_A::ENUM_0X1
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X2`"]
-    #[inline(always)]
-    pub fn is_enum_0x2(&self) -> bool {
-        **self == SEL_A::ENUM_0X2
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X3`"]
-    #[inline(always)]
-    pub fn is_enum_0x3(&self) -> bool {
-        **self == SEL_A::ENUM_0X3
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X4`"]
-    #[inline(always)]
-    pub fn is_enum_0x4(&self) -> bool {
-        **self == SEL_A::ENUM_0X4
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X5`"]
-    #[inline(always)]
-    pub fn is_enum_0x5(&self) -> bool {
-        **self == SEL_A::ENUM_0X5
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X6`"]
-    #[inline(always)]
-    pub fn is_enum_0x6(&self) -> bool {
-        **self == SEL_A::ENUM_0X6
-    }
-    #[doc = "Checks if the value of the field is `ENUM_0X7`"]
-    #[inline(always)]
-    pub fn is_enum_0x7(&self) -> bool {
-        **self == SEL_A::ENUM_0X7
-    }
-}
-impl core::ops::Deref for SEL_R {
-    type Target = crate::FieldReader<u8, SEL_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `SEL` writer - CLKOUT clock source select."]
-pub struct SEL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SEL_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: SEL_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Main clock."]
     #[inline(always)]
-    pub fn enum_0x0(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X0)
+    pub fn is_enum_0x0(&self) -> bool {
+        *self == Sel::Enum0x0
     }
     #[doc = "PLL0 clock."]
     #[inline(always)]
-    pub fn enum_0x1(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X1)
+    pub fn is_enum_0x1(&self) -> bool {
+        *self == Sel::Enum0x1
     }
     #[doc = "CLKIN clock."]
     #[inline(always)]
-    pub fn enum_0x2(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X2)
+    pub fn is_enum_0x2(&self) -> bool {
+        *self == Sel::Enum0x2
     }
     #[doc = "FRO 96 MHz clock."]
     #[inline(always)]
-    pub fn enum_0x3(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X3)
+    pub fn is_enum_0x3(&self) -> bool {
+        *self == Sel::Enum0x3
     }
     #[doc = "FRO 1MHz clock."]
     #[inline(always)]
-    pub fn enum_0x4(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X4)
+    pub fn is_enum_0x4(&self) -> bool {
+        *self == Sel::Enum0x4
     }
     #[doc = "PLL1 clock."]
     #[inline(always)]
-    pub fn enum_0x5(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X5)
+    pub fn is_enum_0x5(&self) -> bool {
+        *self == Sel::Enum0x5
     }
     #[doc = "Oscillator 32kHz clock."]
     #[inline(always)]
-    pub fn enum_0x6(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X6)
+    pub fn is_enum_0x6(&self) -> bool {
+        *self == Sel::Enum0x6
     }
     #[doc = "No clock."]
     #[inline(always)]
-    pub fn enum_0x7(self) -> &'a mut W {
-        self.variant(SEL_A::ENUM_0X7)
+    pub fn is_enum_0x7(&self) -> bool {
+        *self == Sel::Enum0x7
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `SEL` writer - CLKOUT clock source select."]
+pub type SelW<'a, REG> = crate::FieldWriter<'a, REG, 3, Sel, crate::Safe>;
+impl<'a, REG> SelW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Main clock."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x07) | (value as u32 & 0x07);
-        self.w
+    pub fn enum_0x0(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x0)
+    }
+    #[doc = "PLL0 clock."]
+    #[inline(always)]
+    pub fn enum_0x1(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x1)
+    }
+    #[doc = "CLKIN clock."]
+    #[inline(always)]
+    pub fn enum_0x2(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x2)
+    }
+    #[doc = "FRO 96 MHz clock."]
+    #[inline(always)]
+    pub fn enum_0x3(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x3)
+    }
+    #[doc = "FRO 1MHz clock."]
+    #[inline(always)]
+    pub fn enum_0x4(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x4)
+    }
+    #[doc = "PLL1 clock."]
+    #[inline(always)]
+    pub fn enum_0x5(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x5)
+    }
+    #[doc = "Oscillator 32kHz clock."]
+    #[inline(always)]
+    pub fn enum_0x6(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x6)
+    }
+    #[doc = "No clock."]
+    #[inline(always)]
+    pub fn enum_0x7(self) -> &'a mut crate::W<REG> {
+        self.variant(Sel::Enum0x7)
     }
 }
 impl R {
     #[doc = "Bits 0:2 - CLKOUT clock source select."]
     #[inline(always)]
-    pub fn sel(&self) -> SEL_R {
-        SEL_R::new((self.bits & 0x07) as u8)
+    pub fn sel(&self) -> SelR {
+        SelR::new((self.bits & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - CLKOUT clock source select."]
     #[inline(always)]
-    pub fn sel(&mut self) -> SEL_W {
-        SEL_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn sel(&mut self) -> SelW<ClkoutselSpec> {
+        SelW::new(self, 0)
     }
 }
-#[doc = "CLKOUT clock source select\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [clkoutsel](index.html) module"]
-pub struct CLKOUTSEL_SPEC;
-impl crate::RegisterSpec for CLKOUTSEL_SPEC {
+#[doc = "CLKOUT clock source select\n\nYou can [`read`](crate::Reg::read) this register and get [`clkoutsel::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`clkoutsel::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ClkoutselSpec;
+impl crate::RegisterSpec for ClkoutselSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [clkoutsel::R](R) reader structure"]
-impl crate::Readable for CLKOUTSEL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [clkoutsel::W](W) writer structure"]
-impl crate::Writable for CLKOUTSEL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`clkoutsel::R`](R) reader structure"]
+impl crate::Readable for ClkoutselSpec {}
+#[doc = "`write(|w| ..)` method takes [`clkoutsel::W`](W) writer structure"]
+impl crate::Writable for ClkoutselSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CLKOUTSEL to value 0x07"]
-impl crate::Resettable for CLKOUTSEL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x07
-    }
+impl crate::Resettable for ClkoutselSpec {
+    const RESET_VALUE: u32 = 0x07;
 }

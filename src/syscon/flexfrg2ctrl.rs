@@ -1,140 +1,53 @@
 #[doc = "Register `FLEXFRG2CTRL` reader"]
-pub struct R(crate::R<FLEXFRG2CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<FLEXFRG2CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<FLEXFRG2CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<FLEXFRG2CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Flexfrg2ctrlSpec>;
 #[doc = "Register `FLEXFRG2CTRL` writer"]
-pub struct W(crate::W<FLEXFRG2CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<FLEXFRG2CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<FLEXFRG2CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<FLEXFRG2CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Flexfrg2ctrlSpec>;
 #[doc = "Field `DIV` reader - Denominator of the fractional rate divider."]
-pub struct DIV_R(crate::FieldReader<u8, u8>);
-impl DIV_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        DIV_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DIV_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DivR = crate::FieldReader;
 #[doc = "Field `DIV` writer - Denominator of the fractional rate divider."]
-pub struct DIV_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIV_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
-        self.w
-    }
-}
+pub type DivW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 #[doc = "Field `MULT` reader - Numerator of the fractional rate divider."]
-pub struct MULT_R(crate::FieldReader<u8, u8>);
-impl MULT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        MULT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for MULT_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type MultR = crate::FieldReader;
 #[doc = "Field `MULT` writer - Numerator of the fractional rate divider."]
-pub struct MULT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> MULT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xff << 8)) | ((value as u32 & 0xff) << 8);
-        self.w
-    }
-}
+pub type MultW<'a, REG> = crate::FieldWriter<'a, REG, 8>;
 impl R {
     #[doc = "Bits 0:7 - Denominator of the fractional rate divider."]
     #[inline(always)]
-    pub fn div(&self) -> DIV_R {
-        DIV_R::new((self.bits & 0xff) as u8)
+    pub fn div(&self) -> DivR {
+        DivR::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bits 8:15 - Numerator of the fractional rate divider."]
     #[inline(always)]
-    pub fn mult(&self) -> MULT_R {
-        MULT_R::new(((self.bits >> 8) & 0xff) as u8)
+    pub fn mult(&self) -> MultR {
+        MultR::new(((self.bits >> 8) & 0xff) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Denominator of the fractional rate divider."]
     #[inline(always)]
-    pub fn div(&mut self) -> DIV_W {
-        DIV_W { w: self }
+    pub fn div(&mut self) -> DivW<Flexfrg2ctrlSpec> {
+        DivW::new(self, 0)
     }
     #[doc = "Bits 8:15 - Numerator of the fractional rate divider."]
     #[inline(always)]
-    pub fn mult(&mut self) -> MULT_W {
-        MULT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn mult(&mut self) -> MultW<Flexfrg2ctrlSpec> {
+        MultW::new(self, 8)
     }
 }
-#[doc = "Fractional rate divider for flexcomm 2\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [flexfrg2ctrl](index.html) module"]
-pub struct FLEXFRG2CTRL_SPEC;
-impl crate::RegisterSpec for FLEXFRG2CTRL_SPEC {
+#[doc = "Fractional rate divider for flexcomm 2\n\nYou can [`read`](crate::Reg::read) this register and get [`flexfrg2ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`flexfrg2ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Flexfrg2ctrlSpec;
+impl crate::RegisterSpec for Flexfrg2ctrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [flexfrg2ctrl::R](R) reader structure"]
-impl crate::Readable for FLEXFRG2CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [flexfrg2ctrl::W](W) writer structure"]
-impl crate::Writable for FLEXFRG2CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`flexfrg2ctrl::R`](R) reader structure"]
+impl crate::Readable for Flexfrg2ctrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`flexfrg2ctrl::W`](W) writer structure"]
+impl crate::Writable for Flexfrg2ctrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets FLEXFRG2CTRL to value 0xff"]
-impl crate::Resettable for FLEXFRG2CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0xff
-    }
+impl crate::Resettable for Flexfrg2ctrlSpec {
+    const RESET_VALUE: u32 = 0xff;
 }

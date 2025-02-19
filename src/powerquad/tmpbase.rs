@@ -1,103 +1,39 @@
 #[doc = "Register `TMPBASE` reader"]
-pub struct R(crate::R<TMPBASE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TMPBASE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TMPBASE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TMPBASE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TmpbaseSpec>;
 #[doc = "Register `TMPBASE` writer"]
-pub struct W(crate::W<TMPBASE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TMPBASE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TMPBASE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TMPBASE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TmpbaseSpec>;
 #[doc = "Field `tmpbase` reader - Base address register for the temporary region"]
-pub struct TMPBASE_R(crate::FieldReader<u32, u32>);
-impl TMPBASE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        TMPBASE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for TMPBASE_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type TmpbaseR = crate::FieldReader<u32>;
 #[doc = "Field `tmpbase` writer - Base address register for the temporary region"]
-pub struct TMPBASE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TMPBASE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type TmpbaseW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Base address register for the temporary region"]
     #[inline(always)]
-    pub fn tmpbase(&self) -> TMPBASE_R {
-        TMPBASE_R::new(self.bits as u32)
+    pub fn tmpbase(&self) -> TmpbaseR {
+        TmpbaseR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Base address register for the temporary region"]
     #[inline(always)]
-    pub fn tmpbase(&mut self) -> TMPBASE_W {
-        TMPBASE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn tmpbase(&mut self) -> TmpbaseW<TmpbaseSpec> {
+        TmpbaseW::new(self, 0)
     }
 }
-#[doc = "Base address register for temp region\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tmpbase](index.html) module"]
-pub struct TMPBASE_SPEC;
-impl crate::RegisterSpec for TMPBASE_SPEC {
+#[doc = "Base address register for temp region\n\nYou can [`read`](crate::Reg::read) this register and get [`tmpbase::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tmpbase::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TmpbaseSpec;
+impl crate::RegisterSpec for TmpbaseSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [tmpbase::R](R) reader structure"]
-impl crate::Readable for TMPBASE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [tmpbase::W](W) writer structure"]
-impl crate::Writable for TMPBASE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`tmpbase::R`](R) reader structure"]
+impl crate::Readable for TmpbaseSpec {}
+#[doc = "`write(|w| ..)` method takes [`tmpbase::W`](W) writer structure"]
+impl crate::Writable for TmpbaseSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets TMPBASE to value 0"]
-impl crate::Resettable for TMPBASE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for TmpbaseSpec {
+    const RESET_VALUE: u32 = 0;
 }

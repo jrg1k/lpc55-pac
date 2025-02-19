@@ -1,103 +1,39 @@
 #[doc = "Register `ATLPTDS` reader"]
-pub struct R(crate::R<ATLPTDS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ATLPTDS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ATLPTDS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ATLPTDS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<AtlptdsSpec>;
 #[doc = "Register `ATLPTDS` writer"]
-pub struct W(crate::W<ATLPTDS_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<ATLPTDS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<ATLPTDS_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<ATLPTDS_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<AtlptdsSpec>;
 #[doc = "Field `ATL_SKIP` reader - When a bit in the PTD Skip Map is set to logic 1, the corresponding PTD will be skipped, independent of the V bit setting."]
-pub struct ATL_SKIP_R(crate::FieldReader<u32, u32>);
-impl ATL_SKIP_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        ATL_SKIP_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ATL_SKIP_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type AtlSkipR = crate::FieldReader<u32>;
 #[doc = "Field `ATL_SKIP` writer - When a bit in the PTD Skip Map is set to logic 1, the corresponding PTD will be skipped, independent of the V bit setting."]
-pub struct ATL_SKIP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ATL_SKIP_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type AtlSkipW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - When a bit in the PTD Skip Map is set to logic 1, the corresponding PTD will be skipped, independent of the V bit setting."]
     #[inline(always)]
-    pub fn atl_skip(&self) -> ATL_SKIP_R {
-        ATL_SKIP_R::new(self.bits as u32)
+    pub fn atl_skip(&self) -> AtlSkipR {
+        AtlSkipR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - When a bit in the PTD Skip Map is set to logic 1, the corresponding PTD will be skipped, independent of the V bit setting."]
     #[inline(always)]
-    pub fn atl_skip(&mut self) -> ATL_SKIP_W {
-        ATL_SKIP_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn atl_skip(&mut self) -> AtlSkipW<AtlptdsSpec> {
+        AtlSkipW::new(self, 0)
     }
 }
-#[doc = "Skip map for each ATL PTD\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [atlptds](index.html) module"]
-pub struct ATLPTDS_SPEC;
-impl crate::RegisterSpec for ATLPTDS_SPEC {
+#[doc = "Skip map for each ATL PTD\n\nYou can [`read`](crate::Reg::read) this register and get [`atlptds::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`atlptds::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct AtlptdsSpec;
+impl crate::RegisterSpec for AtlptdsSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [atlptds::R](R) reader structure"]
-impl crate::Readable for ATLPTDS_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [atlptds::W](W) writer structure"]
-impl crate::Writable for ATLPTDS_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`atlptds::R`](R) reader structure"]
+impl crate::Readable for AtlptdsSpec {}
+#[doc = "`write(|w| ..)` method takes [`atlptds::W`](W) writer structure"]
+impl crate::Writable for AtlptdsSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets ATLPTDS to value 0"]
-impl crate::Resettable for ATLPTDS_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for AtlptdsSpec {
+    const RESET_VALUE: u32 = 0;
 }

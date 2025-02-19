@@ -1,103 +1,39 @@
 #[doc = "Register `OUTPUT` reader"]
-pub struct R(crate::R<OUTPUT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<OUTPUT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<OUTPUT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<OUTPUT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<OutputSpec>;
 #[doc = "Register `OUTPUT` writer"]
-pub struct W(crate::W<OUTPUT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<OUTPUT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<OUTPUT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<OUTPUT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<OutputSpec>;
 #[doc = "Field `OUT` reader - Writing a 1 to bit n forces the corresponding output HIGH. Writing a 0 forces the corresponding output LOW (output 0 = bit 0, output 1 = bit 1, etc.). The number of bits = number of outputs in this SCT."]
-pub struct OUT_R(crate::FieldReader<u16, u16>);
-impl OUT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        OUT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for OUT_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type OutR = crate::FieldReader<u16>;
 #[doc = "Field `OUT` writer - Writing a 1 to bit n forces the corresponding output HIGH. Writing a 0 forces the corresponding output LOW (output 0 = bit 0, output 1 = bit 1, etc.). The number of bits = number of outputs in this SCT."]
-pub struct OUT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> OUT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff) | (value as u32 & 0xffff);
-        self.w
-    }
-}
+pub type OutW<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
 impl R {
     #[doc = "Bits 0:15 - Writing a 1 to bit n forces the corresponding output HIGH. Writing a 0 forces the corresponding output LOW (output 0 = bit 0, output 1 = bit 1, etc.). The number of bits = number of outputs in this SCT."]
     #[inline(always)]
-    pub fn out(&self) -> OUT_R {
-        OUT_R::new((self.bits & 0xffff) as u16)
+    pub fn out(&self) -> OutR {
+        OutR::new((self.bits & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:15 - Writing a 1 to bit n forces the corresponding output HIGH. Writing a 0 forces the corresponding output LOW (output 0 = bit 0, output 1 = bit 1, etc.). The number of bits = number of outputs in this SCT."]
     #[inline(always)]
-    pub fn out(&mut self) -> OUT_W {
-        OUT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn out(&mut self) -> OutW<OutputSpec> {
+        OutW::new(self, 0)
     }
 }
-#[doc = "SCT output register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [output](index.html) module"]
-pub struct OUTPUT_SPEC;
-impl crate::RegisterSpec for OUTPUT_SPEC {
+#[doc = "SCT output register\n\nYou can [`read`](crate::Reg::read) this register and get [`output::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`output::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct OutputSpec;
+impl crate::RegisterSpec for OutputSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [output::R](R) reader structure"]
-impl crate::Readable for OUTPUT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [output::W](W) writer structure"]
-impl crate::Writable for OUTPUT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`output::R`](R) reader structure"]
+impl crate::Readable for OutputSpec {}
+#[doc = "`write(|w| ..)` method takes [`output::W`](W) writer structure"]
+impl crate::Writable for OutputSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets OUTPUT to value 0"]
-impl crate::Resettable for OUTPUT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for OutputSpec {
+    const RESET_VALUE: u32 = 0;
 }

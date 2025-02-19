@@ -1,103 +1,39 @@
 #[doc = "Register `BYTCNT` reader"]
-pub struct R(crate::R<BYTCNT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<BYTCNT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<BYTCNT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<BYTCNT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<BytcntSpec>;
 #[doc = "Register `BYTCNT` writer"]
-pub struct W(crate::W<BYTCNT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<BYTCNT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<BYTCNT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<BYTCNT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<BytcntSpec>;
 #[doc = "Field `BYTE_COUNT` reader - Number of bytes to be transferred; should be integer multiple of Block Size for block transfers."]
-pub struct BYTE_COUNT_R(crate::FieldReader<u32, u32>);
-impl BYTE_COUNT_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        BYTE_COUNT_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for BYTE_COUNT_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type ByteCountR = crate::FieldReader<u32>;
 #[doc = "Field `BYTE_COUNT` writer - Number of bytes to be transferred; should be integer multiple of Block Size for block transfers."]
-pub struct BYTE_COUNT_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> BYTE_COUNT_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type ByteCountW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Number of bytes to be transferred; should be integer multiple of Block Size for block transfers."]
     #[inline(always)]
-    pub fn byte_count(&self) -> BYTE_COUNT_R {
-        BYTE_COUNT_R::new(self.bits as u32)
+    pub fn byte_count(&self) -> ByteCountR {
+        ByteCountR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Number of bytes to be transferred; should be integer multiple of Block Size for block transfers."]
     #[inline(always)]
-    pub fn byte_count(&mut self) -> BYTE_COUNT_W {
-        BYTE_COUNT_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn byte_count(&mut self) -> ByteCountW<BytcntSpec> {
+        ByteCountW::new(self, 0)
     }
 }
-#[doc = "Byte Count register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [bytcnt](index.html) module"]
-pub struct BYTCNT_SPEC;
-impl crate::RegisterSpec for BYTCNT_SPEC {
+#[doc = "Byte Count register\n\nYou can [`read`](crate::Reg::read) this register and get [`bytcnt::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`bytcnt::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct BytcntSpec;
+impl crate::RegisterSpec for BytcntSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [bytcnt::R](R) reader structure"]
-impl crate::Readable for BYTCNT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [bytcnt::W](W) writer structure"]
-impl crate::Writable for BYTCNT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`bytcnt::R`](R) reader structure"]
+impl crate::Readable for BytcntSpec {}
+#[doc = "`write(|w| ..)` method takes [`bytcnt::W`](W) writer structure"]
+impl crate::Writable for BytcntSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets BYTCNT to value 0x0200"]
-impl crate::Resettable for BYTCNT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x0200
-    }
+impl crate::Resettable for BytcntSpec {
+    const RESET_VALUE: u32 = 0x0200;
 }

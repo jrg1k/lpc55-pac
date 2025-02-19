@@ -1,137 +1,97 @@
 #[doc = "Register `ANALOG_CTRL_STATUS` reader"]
-pub struct R(crate::R<ANALOG_CTRL_STATUS_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<ANALOG_CTRL_STATUS_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<ANALOG_CTRL_STATUS_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<ANALOG_CTRL_STATUS_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<AnalogCtrlStatusSpec>;
 #[doc = "Flash Power Down status.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FLASH_PWRDWN_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FlashPwrdwn {
     #[doc = "0: Flash is not in power down mode."]
-    PWRUP = 0,
+    Pwrup = 0,
     #[doc = "1: Flash is in power down mode."]
-    PWRDWN = 1,
+    Pwrdwn = 1,
 }
-impl From<FLASH_PWRDWN_A> for bool {
+impl From<FlashPwrdwn> for bool {
     #[inline(always)]
-    fn from(variant: FLASH_PWRDWN_A) -> Self {
+    fn from(variant: FlashPwrdwn) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FLASH_PWRDWN` reader - Flash Power Down status."]
-pub struct FLASH_PWRDWN_R(crate::FieldReader<bool, FLASH_PWRDWN_A>);
-impl FLASH_PWRDWN_R {
+pub type FlashPwrdwnR = crate::BitReader<FlashPwrdwn>;
+impl FlashPwrdwnR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FLASH_PWRDWN_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FLASH_PWRDWN_A {
+    pub const fn variant(&self) -> FlashPwrdwn {
         match self.bits {
-            false => FLASH_PWRDWN_A::PWRUP,
-            true => FLASH_PWRDWN_A::PWRDWN,
+            false => FlashPwrdwn::Pwrup,
+            true => FlashPwrdwn::Pwrdwn,
         }
     }
-    #[doc = "Checks if the value of the field is `PWRUP`"]
+    #[doc = "Flash is not in power down mode."]
     #[inline(always)]
     pub fn is_pwrup(&self) -> bool {
-        **self == FLASH_PWRDWN_A::PWRUP
+        *self == FlashPwrdwn::Pwrup
     }
-    #[doc = "Checks if the value of the field is `PWRDWN`"]
+    #[doc = "Flash is in power down mode."]
     #[inline(always)]
     pub fn is_pwrdwn(&self) -> bool {
-        **self == FLASH_PWRDWN_A::PWRDWN
-    }
-}
-impl core::ops::Deref for FLASH_PWRDWN_R {
-    type Target = crate::FieldReader<bool, FLASH_PWRDWN_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == FlashPwrdwn::Pwrdwn
     }
 }
 #[doc = "Flash initialization error status.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FLASH_INIT_ERROR_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FlashInitError {
     #[doc = "0: No error."]
-    NOERROR = 0,
+    Noerror = 0,
     #[doc = "1: At least one error occured during flash initialization.."]
-    ERROR = 1,
+    Error = 1,
 }
-impl From<FLASH_INIT_ERROR_A> for bool {
+impl From<FlashInitError> for bool {
     #[inline(always)]
-    fn from(variant: FLASH_INIT_ERROR_A) -> Self {
+    fn from(variant: FlashInitError) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FLASH_INIT_ERROR` reader - Flash initialization error status."]
-pub struct FLASH_INIT_ERROR_R(crate::FieldReader<bool, FLASH_INIT_ERROR_A>);
-impl FLASH_INIT_ERROR_R {
+pub type FlashInitErrorR = crate::BitReader<FlashInitError>;
+impl FlashInitErrorR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FLASH_INIT_ERROR_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FLASH_INIT_ERROR_A {
+    pub const fn variant(&self) -> FlashInitError {
         match self.bits {
-            false => FLASH_INIT_ERROR_A::NOERROR,
-            true => FLASH_INIT_ERROR_A::ERROR,
+            false => FlashInitError::Noerror,
+            true => FlashInitError::Error,
         }
     }
-    #[doc = "Checks if the value of the field is `NOERROR`"]
+    #[doc = "No error."]
     #[inline(always)]
     pub fn is_noerror(&self) -> bool {
-        **self == FLASH_INIT_ERROR_A::NOERROR
+        *self == FlashInitError::Noerror
     }
-    #[doc = "Checks if the value of the field is `ERROR`"]
+    #[doc = "At least one error occured during flash initialization.."]
     #[inline(always)]
     pub fn is_error(&self) -> bool {
-        **self == FLASH_INIT_ERROR_A::ERROR
-    }
-}
-impl core::ops::Deref for FLASH_INIT_ERROR_R {
-    type Target = crate::FieldReader<bool, FLASH_INIT_ERROR_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == FlashInitError::Error
     }
 }
 impl R {
     #[doc = "Bit 12 - Flash Power Down status."]
     #[inline(always)]
-    pub fn flash_pwrdwn(&self) -> FLASH_PWRDWN_R {
-        FLASH_PWRDWN_R::new(((self.bits >> 12) & 0x01) != 0)
+    pub fn flash_pwrdwn(&self) -> FlashPwrdwnR {
+        FlashPwrdwnR::new(((self.bits >> 12) & 1) != 0)
     }
     #[doc = "Bit 13 - Flash initialization error status."]
     #[inline(always)]
-    pub fn flash_init_error(&self) -> FLASH_INIT_ERROR_R {
-        FLASH_INIT_ERROR_R::new(((self.bits >> 13) & 0x01) != 0)
+    pub fn flash_init_error(&self) -> FlashInitErrorR {
+        FlashInitErrorR::new(((self.bits >> 13) & 1) != 0)
     }
 }
-#[doc = "Analog Macroblock Identity registers, Flash Status registers\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [analog_ctrl_status](index.html) module"]
-pub struct ANALOG_CTRL_STATUS_SPEC;
-impl crate::RegisterSpec for ANALOG_CTRL_STATUS_SPEC {
+#[doc = "Analog Macroblock Identity registers, Flash Status registers\n\nYou can [`read`](crate::Reg::read) this register and get [`analog_ctrl_status::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct AnalogCtrlStatusSpec;
+impl crate::RegisterSpec for AnalogCtrlStatusSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [analog_ctrl_status::R](R) reader structure"]
-impl crate::Readable for ANALOG_CTRL_STATUS_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`analog_ctrl_status::R`](R) reader structure"]
+impl crate::Readable for AnalogCtrlStatusSpec {}
 #[doc = "`reset()` method sets ANALOG_CTRL_STATUS to value 0x5000_0000"]
-impl crate::Resettable for ANALOG_CTRL_STATUS_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x5000_0000
-    }
+impl crate::Resettable for AnalogCtrlStatusSpec {
+    const RESET_VALUE: u32 = 0x5000_0000;
 }

@@ -1,62 +1,26 @@
 #[doc = "Register `DIRCLR0` writer"]
-pub struct W(crate::W<DIRCLR0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<DIRCLR0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<DIRCLR0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<DIRCLR0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Dirclr0Spec>;
 #[doc = "Field `DIRCLRP` writer - Clear direction bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = No operation. 1 = Clear direction bit."]
-pub struct DIRCLRP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DIRCLRP_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type DirclrpW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl W {
     #[doc = "Bits 0:31 - Clear direction bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = No operation. 1 = Clear direction bit."]
     #[inline(always)]
-    pub fn dirclrp(&mut self) -> DIRCLRP_W {
-        DIRCLRP_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn dirclrp(&mut self) -> DirclrpW<Dirclr0Spec> {
+        DirclrpW::new(self, 0)
     }
 }
-#[doc = "Clear pin direction bits for port\n\nThis register you can [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [dirclr0](index.html) module"]
-pub struct DIRCLR0_SPEC;
-impl crate::RegisterSpec for DIRCLR0_SPEC {
+#[doc = "Clear pin direction bits for port\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dirclr0::W`](W). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Dirclr0Spec;
+impl crate::RegisterSpec for Dirclr0Spec {
     type Ux = u32;
 }
-#[doc = "`write(|w| ..)` method takes [dirclr0::W](W) writer structure"]
-impl crate::Writable for DIRCLR0_SPEC {
-    type Writer = W;
+#[doc = "`write(|w| ..)` method takes [`dirclr0::W`](W) writer structure"]
+impl crate::Writable for Dirclr0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets DIRCLR0 to value 0"]
-impl crate::Resettable for DIRCLR0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Dirclr0Spec {
+    const RESET_VALUE: u32 = 0;
 }

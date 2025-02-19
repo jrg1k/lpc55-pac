@@ -1,912 +1,592 @@
 #[doc = "Register `CLOCK_CTRL` reader"]
-pub struct R(crate::R<CLOCK_CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CLOCK_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CLOCK_CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CLOCK_CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ClockCtrlSpec>;
 #[doc = "Register `CLOCK_CTRL` writer"]
-pub struct W(crate::W<CLOCK_CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CLOCK_CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CLOCK_CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CLOCK_CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<ClockCtrlSpec>;
 #[doc = "Enable XTAL32MHz clock for Frequency Measure module.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum XTAL32MHZ_FREQM_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Xtal32mhzFreqmEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<XTAL32MHZ_FREQM_ENA_A> for bool {
+impl From<Xtal32mhzFreqmEna> for bool {
     #[inline(always)]
-    fn from(variant: XTAL32MHZ_FREQM_ENA_A) -> Self {
+    fn from(variant: Xtal32mhzFreqmEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `XTAL32MHZ_FREQM_ENA` reader - Enable XTAL32MHz clock for Frequency Measure module."]
-pub struct XTAL32MHZ_FREQM_ENA_R(crate::FieldReader<bool, XTAL32MHZ_FREQM_ENA_A>);
-impl XTAL32MHZ_FREQM_ENA_R {
+pub type Xtal32mhzFreqmEnaR = crate::BitReader<Xtal32mhzFreqmEna>;
+impl Xtal32mhzFreqmEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        XTAL32MHZ_FREQM_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> XTAL32MHZ_FREQM_ENA_A {
+    pub const fn variant(&self) -> Xtal32mhzFreqmEna {
         match self.bits {
-            false => XTAL32MHZ_FREQM_ENA_A::DISABLE,
-            true => XTAL32MHZ_FREQM_ENA_A::ENABLE,
+            false => Xtal32mhzFreqmEna::Disable,
+            true => Xtal32mhzFreqmEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == XTAL32MHZ_FREQM_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == XTAL32MHZ_FREQM_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for XTAL32MHZ_FREQM_ENA_R {
-    type Target = crate::FieldReader<bool, XTAL32MHZ_FREQM_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `XTAL32MHZ_FREQM_ENA` writer - Enable XTAL32MHz clock for Frequency Measure module."]
-pub struct XTAL32MHZ_FREQM_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> XTAL32MHZ_FREQM_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: XTAL32MHZ_FREQM_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(XTAL32MHZ_FREQM_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Xtal32mhzFreqmEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(XTAL32MHZ_FREQM_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Xtal32mhzFreqmEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `XTAL32MHZ_FREQM_ENA` writer - Enable XTAL32MHz clock for Frequency Measure module."]
+pub type Xtal32mhzFreqmEnaW<'a, REG> = crate::BitWriter<'a, REG, Xtal32mhzFreqmEna>;
+impl<'a, REG> Xtal32mhzFreqmEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Xtal32mhzFreqmEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Xtal32mhzFreqmEna::Enable)
     }
 }
 #[doc = "Enable FRO 1MHz clock for Frequency Measure module and for UTICK.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FRO1MHZ_UTICK_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fro1mhzUtickEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FRO1MHZ_UTICK_ENA_A> for bool {
+impl From<Fro1mhzUtickEna> for bool {
     #[inline(always)]
-    fn from(variant: FRO1MHZ_UTICK_ENA_A) -> Self {
+    fn from(variant: Fro1mhzUtickEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FRO1MHZ_UTICK_ENA` reader - Enable FRO 1MHz clock for Frequency Measure module and for UTICK."]
-pub struct FRO1MHZ_UTICK_ENA_R(crate::FieldReader<bool, FRO1MHZ_UTICK_ENA_A>);
-impl FRO1MHZ_UTICK_ENA_R {
+pub type Fro1mhzUtickEnaR = crate::BitReader<Fro1mhzUtickEna>;
+impl Fro1mhzUtickEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FRO1MHZ_UTICK_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FRO1MHZ_UTICK_ENA_A {
+    pub const fn variant(&self) -> Fro1mhzUtickEna {
         match self.bits {
-            false => FRO1MHZ_UTICK_ENA_A::DISABLE,
-            true => FRO1MHZ_UTICK_ENA_A::ENABLE,
+            false => Fro1mhzUtickEna::Disable,
+            true => Fro1mhzUtickEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FRO1MHZ_UTICK_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FRO1MHZ_UTICK_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for FRO1MHZ_UTICK_ENA_R {
-    type Target = crate::FieldReader<bool, FRO1MHZ_UTICK_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FRO1MHZ_UTICK_ENA` writer - Enable FRO 1MHz clock for Frequency Measure module and for UTICK."]
-pub struct FRO1MHZ_UTICK_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FRO1MHZ_UTICK_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FRO1MHZ_UTICK_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FRO1MHZ_UTICK_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Fro1mhzUtickEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FRO1MHZ_UTICK_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Fro1mhzUtickEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FRO1MHZ_UTICK_ENA` writer - Enable FRO 1MHz clock for Frequency Measure module and for UTICK."]
+pub type Fro1mhzUtickEnaW<'a, REG> = crate::BitWriter<'a, REG, Fro1mhzUtickEna>;
+impl<'a, REG> Fro1mhzUtickEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro1mhzUtickEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro1mhzUtickEna::Enable)
     }
 }
 #[doc = "Enable FRO 12MHz clock for Frequency Measure module.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FRO12MHZ_FREQM_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fro12mhzFreqmEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FRO12MHZ_FREQM_ENA_A> for bool {
+impl From<Fro12mhzFreqmEna> for bool {
     #[inline(always)]
-    fn from(variant: FRO12MHZ_FREQM_ENA_A) -> Self {
+    fn from(variant: Fro12mhzFreqmEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FRO12MHZ_FREQM_ENA` reader - Enable FRO 12MHz clock for Frequency Measure module."]
-pub struct FRO12MHZ_FREQM_ENA_R(crate::FieldReader<bool, FRO12MHZ_FREQM_ENA_A>);
-impl FRO12MHZ_FREQM_ENA_R {
+pub type Fro12mhzFreqmEnaR = crate::BitReader<Fro12mhzFreqmEna>;
+impl Fro12mhzFreqmEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FRO12MHZ_FREQM_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FRO12MHZ_FREQM_ENA_A {
+    pub const fn variant(&self) -> Fro12mhzFreqmEna {
         match self.bits {
-            false => FRO12MHZ_FREQM_ENA_A::DISABLE,
-            true => FRO12MHZ_FREQM_ENA_A::ENABLE,
+            false => Fro12mhzFreqmEna::Disable,
+            true => Fro12mhzFreqmEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FRO12MHZ_FREQM_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FRO12MHZ_FREQM_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for FRO12MHZ_FREQM_ENA_R {
-    type Target = crate::FieldReader<bool, FRO12MHZ_FREQM_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FRO12MHZ_FREQM_ENA` writer - Enable FRO 12MHz clock for Frequency Measure module."]
-pub struct FRO12MHZ_FREQM_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FRO12MHZ_FREQM_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FRO12MHZ_FREQM_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FRO12MHZ_FREQM_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Fro12mhzFreqmEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FRO12MHZ_FREQM_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Fro12mhzFreqmEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FRO12MHZ_FREQM_ENA` writer - Enable FRO 12MHz clock for Frequency Measure module."]
+pub type Fro12mhzFreqmEnaW<'a, REG> = crate::BitWriter<'a, REG, Fro12mhzFreqmEna>;
+impl<'a, REG> Fro12mhzFreqmEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro12mhzFreqmEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro12mhzFreqmEna::Enable)
     }
 }
 #[doc = "Enable FRO 96MHz clock for Frequency Measure module.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FRO_HF_FREQM_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum FroHfFreqmEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FRO_HF_FREQM_ENA_A> for bool {
+impl From<FroHfFreqmEna> for bool {
     #[inline(always)]
-    fn from(variant: FRO_HF_FREQM_ENA_A) -> Self {
+    fn from(variant: FroHfFreqmEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FRO_HF_FREQM_ENA` reader - Enable FRO 96MHz clock for Frequency Measure module."]
-pub struct FRO_HF_FREQM_ENA_R(crate::FieldReader<bool, FRO_HF_FREQM_ENA_A>);
-impl FRO_HF_FREQM_ENA_R {
+pub type FroHfFreqmEnaR = crate::BitReader<FroHfFreqmEna>;
+impl FroHfFreqmEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FRO_HF_FREQM_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FRO_HF_FREQM_ENA_A {
+    pub const fn variant(&self) -> FroHfFreqmEna {
         match self.bits {
-            false => FRO_HF_FREQM_ENA_A::DISABLE,
-            true => FRO_HF_FREQM_ENA_A::ENABLE,
+            false => FroHfFreqmEna::Disable,
+            true => FroHfFreqmEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FRO_HF_FREQM_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FRO_HF_FREQM_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for FRO_HF_FREQM_ENA_R {
-    type Target = crate::FieldReader<bool, FRO_HF_FREQM_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FRO_HF_FREQM_ENA` writer - Enable FRO 96MHz clock for Frequency Measure module."]
-pub struct FRO_HF_FREQM_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FRO_HF_FREQM_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FRO_HF_FREQM_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FRO_HF_FREQM_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == FroHfFreqmEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FRO_HF_FREQM_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == FroHfFreqmEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FRO_HF_FREQM_ENA` writer - Enable FRO 96MHz clock for Frequency Measure module."]
+pub type FroHfFreqmEnaW<'a, REG> = crate::BitWriter<'a, REG, FroHfFreqmEna>;
+impl<'a, REG> FroHfFreqmEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(FroHfFreqmEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(FroHfFreqmEna::Enable)
     }
 }
 #[doc = "Enable clock_in clock for clock module.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum CLKIN_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ClkinEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<CLKIN_ENA_A> for bool {
+impl From<ClkinEna> for bool {
     #[inline(always)]
-    fn from(variant: CLKIN_ENA_A) -> Self {
+    fn from(variant: ClkinEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `CLKIN_ENA` reader - Enable clock_in clock for clock module."]
-pub struct CLKIN_ENA_R(crate::FieldReader<bool, CLKIN_ENA_A>);
-impl CLKIN_ENA_R {
+pub type ClkinEnaR = crate::BitReader<ClkinEna>;
+impl ClkinEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        CLKIN_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CLKIN_ENA_A {
+    pub const fn variant(&self) -> ClkinEna {
         match self.bits {
-            false => CLKIN_ENA_A::DISABLE,
-            true => CLKIN_ENA_A::ENABLE,
+            false => ClkinEna::Disable,
+            true => ClkinEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == CLKIN_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == CLKIN_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for CLKIN_ENA_R {
-    type Target = crate::FieldReader<bool, CLKIN_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CLKIN_ENA` writer - Enable clock_in clock for clock module."]
-pub struct CLKIN_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CLKIN_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CLKIN_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(CLKIN_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == ClkinEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(CLKIN_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == ClkinEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `CLKIN_ENA` writer - Enable clock_in clock for clock module."]
+pub type ClkinEnaW<'a, REG> = crate::BitWriter<'a, REG, ClkinEna>;
+impl<'a, REG> ClkinEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(ClkinEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(ClkinEna::Enable)
     }
 }
 #[doc = "Enable FRO 1MHz clock for clock muxing in clock gen.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum FRO1MHZ_CLK_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Fro1mhzClkEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<FRO1MHZ_CLK_ENA_A> for bool {
+impl From<Fro1mhzClkEna> for bool {
     #[inline(always)]
-    fn from(variant: FRO1MHZ_CLK_ENA_A) -> Self {
+    fn from(variant: Fro1mhzClkEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `FRO1MHZ_CLK_ENA` reader - Enable FRO 1MHz clock for clock muxing in clock gen."]
-pub struct FRO1MHZ_CLK_ENA_R(crate::FieldReader<bool, FRO1MHZ_CLK_ENA_A>);
-impl FRO1MHZ_CLK_ENA_R {
+pub type Fro1mhzClkEnaR = crate::BitReader<Fro1mhzClkEna>;
+impl Fro1mhzClkEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        FRO1MHZ_CLK_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> FRO1MHZ_CLK_ENA_A {
+    pub const fn variant(&self) -> Fro1mhzClkEna {
         match self.bits {
-            false => FRO1MHZ_CLK_ENA_A::DISABLE,
-            true => FRO1MHZ_CLK_ENA_A::ENABLE,
+            false => Fro1mhzClkEna::Disable,
+            true => Fro1mhzClkEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == FRO1MHZ_CLK_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == FRO1MHZ_CLK_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for FRO1MHZ_CLK_ENA_R {
-    type Target = crate::FieldReader<bool, FRO1MHZ_CLK_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FRO1MHZ_CLK_ENA` writer - Enable FRO 1MHz clock for clock muxing in clock gen."]
-pub struct FRO1MHZ_CLK_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FRO1MHZ_CLK_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: FRO1MHZ_CLK_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(FRO1MHZ_CLK_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == Fro1mhzClkEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(FRO1MHZ_CLK_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == Fro1mhzClkEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `FRO1MHZ_CLK_ENA` writer - Enable FRO 1MHz clock for clock muxing in clock gen."]
+pub type Fro1mhzClkEnaW<'a, REG> = crate::BitWriter<'a, REG, Fro1mhzClkEna>;
+impl<'a, REG> Fro1mhzClkEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro1mhzClkEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(Fro1mhzClkEna::Enable)
     }
 }
 #[doc = "Enable FRO 12MHz clock for analog control of the FRO 192MHz.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ANA_FRO12M_CLK_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum AnaFro12mClkEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<ANA_FRO12M_CLK_ENA_A> for bool {
+impl From<AnaFro12mClkEna> for bool {
     #[inline(always)]
-    fn from(variant: ANA_FRO12M_CLK_ENA_A) -> Self {
+    fn from(variant: AnaFro12mClkEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `ANA_FRO12M_CLK_ENA` reader - Enable FRO 12MHz clock for analog control of the FRO 192MHz."]
-pub struct ANA_FRO12M_CLK_ENA_R(crate::FieldReader<bool, ANA_FRO12M_CLK_ENA_A>);
-impl ANA_FRO12M_CLK_ENA_R {
+pub type AnaFro12mClkEnaR = crate::BitReader<AnaFro12mClkEna>;
+impl AnaFro12mClkEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ANA_FRO12M_CLK_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ANA_FRO12M_CLK_ENA_A {
+    pub const fn variant(&self) -> AnaFro12mClkEna {
         match self.bits {
-            false => ANA_FRO12M_CLK_ENA_A::DISABLE,
-            true => ANA_FRO12M_CLK_ENA_A::ENABLE,
+            false => AnaFro12mClkEna::Disable,
+            true => AnaFro12mClkEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == ANA_FRO12M_CLK_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == ANA_FRO12M_CLK_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for ANA_FRO12M_CLK_ENA_R {
-    type Target = crate::FieldReader<bool, ANA_FRO12M_CLK_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `ANA_FRO12M_CLK_ENA` writer - Enable FRO 12MHz clock for analog control of the FRO 192MHz."]
-pub struct ANA_FRO12M_CLK_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ANA_FRO12M_CLK_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ANA_FRO12M_CLK_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(ANA_FRO12M_CLK_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == AnaFro12mClkEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(ANA_FRO12M_CLK_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == AnaFro12mClkEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `ANA_FRO12M_CLK_ENA` writer - Enable FRO 12MHz clock for analog control of the FRO 192MHz."]
+pub type AnaFro12mClkEnaW<'a, REG> = crate::BitWriter<'a, REG, AnaFro12mClkEna>;
+impl<'a, REG> AnaFro12mClkEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(AnaFro12mClkEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(AnaFro12mClkEna::Enable)
     }
 }
 #[doc = "Enable clock for cristal oscilator calibration.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum XO_CAL_CLK_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum XoCalClkEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<XO_CAL_CLK_ENA_A> for bool {
+impl From<XoCalClkEna> for bool {
     #[inline(always)]
-    fn from(variant: XO_CAL_CLK_ENA_A) -> Self {
+    fn from(variant: XoCalClkEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `XO_CAL_CLK_ENA` reader - Enable clock for cristal oscilator calibration."]
-pub struct XO_CAL_CLK_ENA_R(crate::FieldReader<bool, XO_CAL_CLK_ENA_A>);
-impl XO_CAL_CLK_ENA_R {
+pub type XoCalClkEnaR = crate::BitReader<XoCalClkEna>;
+impl XoCalClkEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        XO_CAL_CLK_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> XO_CAL_CLK_ENA_A {
+    pub const fn variant(&self) -> XoCalClkEna {
         match self.bits {
-            false => XO_CAL_CLK_ENA_A::DISABLE,
-            true => XO_CAL_CLK_ENA_A::ENABLE,
+            false => XoCalClkEna::Disable,
+            true => XoCalClkEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == XO_CAL_CLK_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == XO_CAL_CLK_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for XO_CAL_CLK_ENA_R {
-    type Target = crate::FieldReader<bool, XO_CAL_CLK_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `XO_CAL_CLK_ENA` writer - Enable clock for cristal oscilator calibration."]
-pub struct XO_CAL_CLK_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> XO_CAL_CLK_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: XO_CAL_CLK_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(XO_CAL_CLK_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == XoCalClkEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(XO_CAL_CLK_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == XoCalClkEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `XO_CAL_CLK_ENA` writer - Enable clock for cristal oscilator calibration."]
+pub type XoCalClkEnaW<'a, REG> = crate::BitWriter<'a, REG, XoCalClkEna>;
+impl<'a, REG> XoCalClkEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(XoCalClkEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(XoCalClkEna::Enable)
     }
 }
 #[doc = "Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PLU_DEGLITCH_CLK_ENA_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PluDeglitchClkEna {
     #[doc = "0: The clock is not enabled."]
-    DISABLE = 0,
+    Disable = 0,
     #[doc = "1: The clock is enabled."]
-    ENABLE = 1,
+    Enable = 1,
 }
-impl From<PLU_DEGLITCH_CLK_ENA_A> for bool {
+impl From<PluDeglitchClkEna> for bool {
     #[inline(always)]
-    fn from(variant: PLU_DEGLITCH_CLK_ENA_A) -> Self {
+    fn from(variant: PluDeglitchClkEna) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PLU_DEGLITCH_CLK_ENA` reader - Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching."]
-pub struct PLU_DEGLITCH_CLK_ENA_R(crate::FieldReader<bool, PLU_DEGLITCH_CLK_ENA_A>);
-impl PLU_DEGLITCH_CLK_ENA_R {
+pub type PluDeglitchClkEnaR = crate::BitReader<PluDeglitchClkEna>;
+impl PluDeglitchClkEnaR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PLU_DEGLITCH_CLK_ENA_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PLU_DEGLITCH_CLK_ENA_A {
+    pub const fn variant(&self) -> PluDeglitchClkEna {
         match self.bits {
-            false => PLU_DEGLITCH_CLK_ENA_A::DISABLE,
-            true => PLU_DEGLITCH_CLK_ENA_A::ENABLE,
+            false => PluDeglitchClkEna::Disable,
+            true => PluDeglitchClkEna::Enable,
         }
-    }
-    #[doc = "Checks if the value of the field is `DISABLE`"]
-    #[inline(always)]
-    pub fn is_disable(&self) -> bool {
-        **self == PLU_DEGLITCH_CLK_ENA_A::DISABLE
-    }
-    #[doc = "Checks if the value of the field is `ENABLE`"]
-    #[inline(always)]
-    pub fn is_enable(&self) -> bool {
-        **self == PLU_DEGLITCH_CLK_ENA_A::ENABLE
-    }
-}
-impl core::ops::Deref for PLU_DEGLITCH_CLK_ENA_R {
-    type Target = crate::FieldReader<bool, PLU_DEGLITCH_CLK_ENA_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PLU_DEGLITCH_CLK_ENA` writer - Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching."]
-pub struct PLU_DEGLITCH_CLK_ENA_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PLU_DEGLITCH_CLK_ENA_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PLU_DEGLITCH_CLK_ENA_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn disable(self) -> &'a mut W {
-        self.variant(PLU_DEGLITCH_CLK_ENA_A::DISABLE)
+    pub fn is_disable(&self) -> bool {
+        *self == PluDeglitchClkEna::Disable
     }
     #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn enable(self) -> &'a mut W {
-        self.variant(PLU_DEGLITCH_CLK_ENA_A::ENABLE)
+    pub fn is_enable(&self) -> bool {
+        *self == PluDeglitchClkEna::Enable
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PLU_DEGLITCH_CLK_ENA` writer - Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching."]
+pub type PluDeglitchClkEnaW<'a, REG> = crate::BitWriter<'a, REG, PluDeglitchClkEna>;
+impl<'a, REG> PluDeglitchClkEnaW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "The clock is not enabled."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn disable(self) -> &'a mut crate::W<REG> {
+        self.variant(PluDeglitchClkEna::Disable)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "The clock is enabled."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
-        self.w
+    pub fn enable(self) -> &'a mut crate::W<REG> {
+        self.variant(PluDeglitchClkEna::Enable)
     }
 }
 impl R {
     #[doc = "Bit 1 - Enable XTAL32MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn xtal32mhz_freqm_ena(&self) -> XTAL32MHZ_FREQM_ENA_R {
-        XTAL32MHZ_FREQM_ENA_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn xtal32mhz_freqm_ena(&self) -> Xtal32mhzFreqmEnaR {
+        Xtal32mhzFreqmEnaR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Enable FRO 1MHz clock for Frequency Measure module and for UTICK."]
     #[inline(always)]
-    pub fn fro1mhz_utick_ena(&self) -> FRO1MHZ_UTICK_ENA_R {
-        FRO1MHZ_UTICK_ENA_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn fro1mhz_utick_ena(&self) -> Fro1mhzUtickEnaR {
+        Fro1mhzUtickEnaR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Enable FRO 12MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn fro12mhz_freqm_ena(&self) -> FRO12MHZ_FREQM_ENA_R {
-        FRO12MHZ_FREQM_ENA_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn fro12mhz_freqm_ena(&self) -> Fro12mhzFreqmEnaR {
+        Fro12mhzFreqmEnaR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Enable FRO 96MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn fro_hf_freqm_ena(&self) -> FRO_HF_FREQM_ENA_R {
-        FRO_HF_FREQM_ENA_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn fro_hf_freqm_ena(&self) -> FroHfFreqmEnaR {
+        FroHfFreqmEnaR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Enable clock_in clock for clock module."]
     #[inline(always)]
-    pub fn clkin_ena(&self) -> CLKIN_ENA_R {
-        CLKIN_ENA_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn clkin_ena(&self) -> ClkinEnaR {
+        ClkinEnaR::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Enable FRO 1MHz clock for clock muxing in clock gen."]
     #[inline(always)]
-    pub fn fro1mhz_clk_ena(&self) -> FRO1MHZ_CLK_ENA_R {
-        FRO1MHZ_CLK_ENA_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn fro1mhz_clk_ena(&self) -> Fro1mhzClkEnaR {
+        Fro1mhzClkEnaR::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bit 7 - Enable FRO 12MHz clock for analog control of the FRO 192MHz."]
     #[inline(always)]
-    pub fn ana_fro12m_clk_ena(&self) -> ANA_FRO12M_CLK_ENA_R {
-        ANA_FRO12M_CLK_ENA_R::new(((self.bits >> 7) & 0x01) != 0)
+    pub fn ana_fro12m_clk_ena(&self) -> AnaFro12mClkEnaR {
+        AnaFro12mClkEnaR::new(((self.bits >> 7) & 1) != 0)
     }
     #[doc = "Bit 8 - Enable clock for cristal oscilator calibration."]
     #[inline(always)]
-    pub fn xo_cal_clk_ena(&self) -> XO_CAL_CLK_ENA_R {
-        XO_CAL_CLK_ENA_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn xo_cal_clk_ena(&self) -> XoCalClkEnaR {
+        XoCalClkEnaR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 9 - Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching."]
     #[inline(always)]
-    pub fn plu_deglitch_clk_ena(&self) -> PLU_DEGLITCH_CLK_ENA_R {
-        PLU_DEGLITCH_CLK_ENA_R::new(((self.bits >> 9) & 0x01) != 0)
+    pub fn plu_deglitch_clk_ena(&self) -> PluDeglitchClkEnaR {
+        PluDeglitchClkEnaR::new(((self.bits >> 9) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 1 - Enable XTAL32MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn xtal32mhz_freqm_ena(&mut self) -> XTAL32MHZ_FREQM_ENA_W {
-        XTAL32MHZ_FREQM_ENA_W { w: self }
+    pub fn xtal32mhz_freqm_ena(&mut self) -> Xtal32mhzFreqmEnaW<ClockCtrlSpec> {
+        Xtal32mhzFreqmEnaW::new(self, 1)
     }
     #[doc = "Bit 2 - Enable FRO 1MHz clock for Frequency Measure module and for UTICK."]
     #[inline(always)]
-    pub fn fro1mhz_utick_ena(&mut self) -> FRO1MHZ_UTICK_ENA_W {
-        FRO1MHZ_UTICK_ENA_W { w: self }
+    pub fn fro1mhz_utick_ena(&mut self) -> Fro1mhzUtickEnaW<ClockCtrlSpec> {
+        Fro1mhzUtickEnaW::new(self, 2)
     }
     #[doc = "Bit 3 - Enable FRO 12MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn fro12mhz_freqm_ena(&mut self) -> FRO12MHZ_FREQM_ENA_W {
-        FRO12MHZ_FREQM_ENA_W { w: self }
+    pub fn fro12mhz_freqm_ena(&mut self) -> Fro12mhzFreqmEnaW<ClockCtrlSpec> {
+        Fro12mhzFreqmEnaW::new(self, 3)
     }
     #[doc = "Bit 4 - Enable FRO 96MHz clock for Frequency Measure module."]
     #[inline(always)]
-    pub fn fro_hf_freqm_ena(&mut self) -> FRO_HF_FREQM_ENA_W {
-        FRO_HF_FREQM_ENA_W { w: self }
+    pub fn fro_hf_freqm_ena(&mut self) -> FroHfFreqmEnaW<ClockCtrlSpec> {
+        FroHfFreqmEnaW::new(self, 4)
     }
     #[doc = "Bit 5 - Enable clock_in clock for clock module."]
     #[inline(always)]
-    pub fn clkin_ena(&mut self) -> CLKIN_ENA_W {
-        CLKIN_ENA_W { w: self }
+    pub fn clkin_ena(&mut self) -> ClkinEnaW<ClockCtrlSpec> {
+        ClkinEnaW::new(self, 5)
     }
     #[doc = "Bit 6 - Enable FRO 1MHz clock for clock muxing in clock gen."]
     #[inline(always)]
-    pub fn fro1mhz_clk_ena(&mut self) -> FRO1MHZ_CLK_ENA_W {
-        FRO1MHZ_CLK_ENA_W { w: self }
+    pub fn fro1mhz_clk_ena(&mut self) -> Fro1mhzClkEnaW<ClockCtrlSpec> {
+        Fro1mhzClkEnaW::new(self, 6)
     }
     #[doc = "Bit 7 - Enable FRO 12MHz clock for analog control of the FRO 192MHz."]
     #[inline(always)]
-    pub fn ana_fro12m_clk_ena(&mut self) -> ANA_FRO12M_CLK_ENA_W {
-        ANA_FRO12M_CLK_ENA_W { w: self }
+    pub fn ana_fro12m_clk_ena(&mut self) -> AnaFro12mClkEnaW<ClockCtrlSpec> {
+        AnaFro12mClkEnaW::new(self, 7)
     }
     #[doc = "Bit 8 - Enable clock for cristal oscilator calibration."]
     #[inline(always)]
-    pub fn xo_cal_clk_ena(&mut self) -> XO_CAL_CLK_ENA_W {
-        XO_CAL_CLK_ENA_W { w: self }
+    pub fn xo_cal_clk_ena(&mut self) -> XoCalClkEnaW<ClockCtrlSpec> {
+        XoCalClkEnaW::new(self, 8)
     }
     #[doc = "Bit 9 - Enable clocks FRO_1MHz and FRO_12MHz for PLU deglitching."]
     #[inline(always)]
-    pub fn plu_deglitch_clk_ena(&mut self) -> PLU_DEGLITCH_CLK_ENA_W {
-        PLU_DEGLITCH_CLK_ENA_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn plu_deglitch_clk_ena(&mut self) -> PluDeglitchClkEnaW<ClockCtrlSpec> {
+        PluDeglitchClkEnaW::new(self, 9)
     }
 }
-#[doc = "Various system clock controls : Flash clock (48 MHz) control, clocks to Frequency Measures\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [clock_ctrl](index.html) module"]
-pub struct CLOCK_CTRL_SPEC;
-impl crate::RegisterSpec for CLOCK_CTRL_SPEC {
+#[doc = "Various system clock controls : Flash clock (48 MHz) control, clocks to Frequency Measures\n\nYou can [`read`](crate::Reg::read) this register and get [`clock_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`clock_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ClockCtrlSpec;
+impl crate::RegisterSpec for ClockCtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [clock_ctrl::R](R) reader structure"]
-impl crate::Readable for CLOCK_CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [clock_ctrl::W](W) writer structure"]
-impl crate::Writable for CLOCK_CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`clock_ctrl::R`](R) reader structure"]
+impl crate::Readable for ClockCtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`clock_ctrl::W`](W) writer structure"]
+impl crate::Writable for ClockCtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CLOCK_CTRL to value 0x01"]
-impl crate::Resettable for CLOCK_CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x01
-    }
+impl crate::Resettable for ClockCtrlSpec {
+    const RESET_VALUE: u32 = 0x01;
 }

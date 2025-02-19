@@ -1,29 +1,18 @@
-#[doc = r"Register block"]
 #[repr(C)]
+#[doc = "Register block"]
 pub struct RegisterBlock {
-    #[doc = "0x00 - ."]
-    pub header: crate::Reg<header::HEADER_SPEC>,
-    #[doc = "0x04 - ."]
-    pub version: crate::Reg<version::VERSION_SPEC>,
-    #[doc = "0x08 - Secure firmware version (Monotonic counter)"]
-    pub s_fw_version: crate::Reg<s_fw_version::S_FW_VERSION_SPEC>,
-    #[doc = "0x0c - Non-Secure firmware version (Monotonic counter)"]
-    pub ns_fw_version: crate::Reg<ns_fw_version::NS_FW_VERSION_SPEC>,
-    #[doc = "0x10 - Image key revocation ID (Monotonic counter)"]
-    pub image_key_revoke: crate::Reg<image_key_revoke::IMAGE_KEY_REVOKE_SPEC>,
+    header: Header,
+    version: Version,
+    s_fw_version: SFwVersion,
+    ns_fw_version: NsFwVersion,
+    image_key_revoke: ImageKeyRevoke,
     _reserved5: [u8; 0x04],
-    #[doc = "0x18 - ."]
-    pub rotkh_revoke: crate::Reg<rotkh_revoke::ROTKH_REVOKE_SPEC>,
-    #[doc = "0x1c - ."]
-    pub vendor_usage: crate::Reg<vendor_usage::VENDOR_USAGE_SPEC>,
-    #[doc = "0x20 - With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
-    pub dcfg_cc_socu_pin: crate::Reg<dcfg_cc_socu_pin::DCFG_CC_SOCU_PIN_SPEC>,
-    #[doc = "0x24 - With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
-    pub dcfg_cc_socu_dflt: crate::Reg<dcfg_cc_socu_dflt::DCFG_CC_SOCU_DFLT_SPEC>,
-    #[doc = "0x28 - Enable FA mode. SET_FA_MODE Command should write 0xC33CA55A to this word to indicate boot ROM to enter FA mode."]
-    pub enable_fa_mode: crate::Reg<enable_fa_mode::ENABLE_FA_MODE_SPEC>,
-    #[doc = "0x2c - CMPA Page programming on going. This field shall be set to 0x5CC55AA5 in the active CFPA page each time CMPA page programming is going on. It shall always be set to 0x00000000 in the CFPA scratch area."]
-    pub cmpa_prog_in_progress: crate::Reg<cmpa_prog_in_progress::CMPA_PROG_IN_PROGRESS_SPEC>,
+    rotkh_revoke: RotkhRevoke,
+    vendor_usage: VendorUsage,
+    dcfg_cc_socu_pin: DcfgCcSocuPin,
+    dcfg_cc_socu_dflt: DcfgCcSocuDflt,
+    enable_fa_mode: EnableFaMode,
+    cmpa_prog_in_progress: CmpaProgInProgress,
     _reserved_11_prince_region0_iv: [u8; 0x04],
     _reserved_12_prince_region0_iv: [u8; 0x04],
     _reserved_13_prince_region0_iv: [u8; 0x04],
@@ -67,1336 +56,1171 @@ pub struct RegisterBlock {
     _reserved_51_prince_region2_iv: [u8; 0x04],
     _reserved_52_prince_region2_iv: [u8; 0x04],
     _reserved53: [u8; 0x28],
-    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
-    pub customer_defined: [crate::Reg<customer_defined::CUSTOMER_DEFINED_SPEC>; 56],
-    #[doc = "0x1e0..0x200 - SHA256_DIGEST0 for DIGEST\\[31:0\\]
-SHA256_DIGEST1 for DIGEST\\[63:32\\]
-SHA256_DIGEST2 for DIGEST\\[95:64\\]
-SHA256_DIGEST3 for DIGEST\\[127:96\\]
-SHA256_DIGEST4 for DIGEST\\[159:128\\]
-SHA256_DIGEST5 for DIGEST\\[191:160\\]
-SHA256_DIGEST6 for DIGEST\\[223:192\\]
-SHA256_DIGEST7 for DIGEST\\[255:224\\]"]
-    pub sha256_digest: [crate::Reg<sha256_digest::SHA256_DIGEST_SPEC>; 8],
+    customer_defined: [CustomerDefined; 56],
+    sha256_digest: [Sha256Digest; 8],
 }
 impl RegisterBlock {
-    #[doc = "0x30 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_header0(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_header0::PRINCE_REGION0_IV_HEADER0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(48usize)
-                as *const crate::Reg<prince_region0_iv_header0::PRINCE_REGION0_IV_HEADER0_SPEC>)
-        }
-    }
-    #[doc = "0x30 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code0(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code0::PRINCE_REGION0_IV_CODE0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(48usize)
-                as *const crate::Reg<prince_region0_iv_code0::PRINCE_REGION0_IV_CODE0_SPEC>)
-        }
-    }
-    #[doc = "0x34 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_header1(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_header1::PRINCE_REGION0_IV_HEADER1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(52usize)
-                as *const crate::Reg<prince_region0_iv_header1::PRINCE_REGION0_IV_HEADER1_SPEC>)
-        }
-    }
-    #[doc = "0x34 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code1(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code1::PRINCE_REGION0_IV_CODE1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(52usize)
-                as *const crate::Reg<prince_region0_iv_code1::PRINCE_REGION0_IV_CODE1_SPEC>)
-        }
-    }
-    #[doc = "0x38 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code2(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code2::PRINCE_REGION0_IV_CODE2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(56usize)
-                as *const crate::Reg<prince_region0_iv_code2::PRINCE_REGION0_IV_CODE2_SPEC>)
-        }
-    }
-    #[doc = "0x38 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body0(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body0::PRINCE_REGION0_IV_BODY0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(56usize)
-                as *const crate::Reg<prince_region0_iv_body0::PRINCE_REGION0_IV_BODY0_SPEC>)
-        }
-    }
-    #[doc = "0x3c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code3(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code3::PRINCE_REGION0_IV_CODE3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(60usize)
-                as *const crate::Reg<prince_region0_iv_code3::PRINCE_REGION0_IV_CODE3_SPEC>)
-        }
-    }
-    #[doc = "0x3c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body1(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body1::PRINCE_REGION0_IV_BODY1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(60usize)
-                as *const crate::Reg<prince_region0_iv_body1::PRINCE_REGION0_IV_BODY1_SPEC>)
-        }
-    }
-    #[doc = "0x40 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code4(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code4::PRINCE_REGION0_IV_CODE4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(64usize)
-                as *const crate::Reg<prince_region0_iv_code4::PRINCE_REGION0_IV_CODE4_SPEC>)
-        }
-    }
-    #[doc = "0x40 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body2(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body2::PRINCE_REGION0_IV_BODY2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(64usize)
-                as *const crate::Reg<prince_region0_iv_body2::PRINCE_REGION0_IV_BODY2_SPEC>)
-        }
-    }
-    #[doc = "0x44 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code5(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code5::PRINCE_REGION0_IV_CODE5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(68usize)
-                as *const crate::Reg<prince_region0_iv_code5::PRINCE_REGION0_IV_CODE5_SPEC>)
-        }
-    }
-    #[doc = "0x44 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body3(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body3::PRINCE_REGION0_IV_BODY3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(68usize)
-                as *const crate::Reg<prince_region0_iv_body3::PRINCE_REGION0_IV_BODY3_SPEC>)
-        }
-    }
-    #[doc = "0x48 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code6(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code6::PRINCE_REGION0_IV_CODE6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(72usize)
-                as *const crate::Reg<prince_region0_iv_code6::PRINCE_REGION0_IV_CODE6_SPEC>)
-        }
-    }
-    #[doc = "0x48 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body4(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body4::PRINCE_REGION0_IV_BODY4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(72usize)
-                as *const crate::Reg<prince_region0_iv_body4::PRINCE_REGION0_IV_BODY4_SPEC>)
-        }
-    }
-    #[doc = "0x4c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code7(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code7::PRINCE_REGION0_IV_CODE7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(76usize)
-                as *const crate::Reg<prince_region0_iv_code7::PRINCE_REGION0_IV_CODE7_SPEC>)
-        }
-    }
-    #[doc = "0x4c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body5(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body5::PRINCE_REGION0_IV_BODY5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(76usize)
-                as *const crate::Reg<prince_region0_iv_body5::PRINCE_REGION0_IV_BODY5_SPEC>)
-        }
-    }
-    #[doc = "0x50 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code8(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code8::PRINCE_REGION0_IV_CODE8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(80usize)
-                as *const crate::Reg<prince_region0_iv_code8::PRINCE_REGION0_IV_CODE8_SPEC>)
-        }
-    }
-    #[doc = "0x50 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body6(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body6::PRINCE_REGION0_IV_BODY6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(80usize)
-                as *const crate::Reg<prince_region0_iv_body6::PRINCE_REGION0_IV_BODY6_SPEC>)
-        }
-    }
-    #[doc = "0x54 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code9(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code9::PRINCE_REGION0_IV_CODE9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(84usize)
-                as *const crate::Reg<prince_region0_iv_code9::PRINCE_REGION0_IV_CODE9_SPEC>)
-        }
-    }
-    #[doc = "0x54 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body7(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body7::PRINCE_REGION0_IV_BODY7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(84usize)
-                as *const crate::Reg<prince_region0_iv_body7::PRINCE_REGION0_IV_BODY7_SPEC>)
-        }
-    }
-    #[doc = "0x58 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code10(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code10::PRINCE_REGION0_IV_CODE10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(88usize)
-                as *const crate::Reg<prince_region0_iv_code10::PRINCE_REGION0_IV_CODE10_SPEC>)
-        }
-    }
-    #[doc = "0x58 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body8(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body8::PRINCE_REGION0_IV_BODY8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(88usize)
-                as *const crate::Reg<prince_region0_iv_body8::PRINCE_REGION0_IV_BODY8_SPEC>)
-        }
-    }
-    #[doc = "0x5c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code11(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code11::PRINCE_REGION0_IV_CODE11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(92usize)
-                as *const crate::Reg<prince_region0_iv_code11::PRINCE_REGION0_IV_CODE11_SPEC>)
-        }
-    }
-    #[doc = "0x5c - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body9(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body9::PRINCE_REGION0_IV_BODY9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(92usize)
-                as *const crate::Reg<prince_region0_iv_body9::PRINCE_REGION0_IV_BODY9_SPEC>)
-        }
-    }
-    #[doc = "0x60 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code12(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code12::PRINCE_REGION0_IV_CODE12_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(96usize)
-                as *const crate::Reg<prince_region0_iv_code12::PRINCE_REGION0_IV_CODE12_SPEC>)
-        }
-    }
-    #[doc = "0x60 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body10(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body10::PRINCE_REGION0_IV_BODY10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(96usize)
-                as *const crate::Reg<prince_region0_iv_body10::PRINCE_REGION0_IV_BODY10_SPEC>)
-        }
-    }
-    #[doc = "0x64 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_code13(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_code13::PRINCE_REGION0_IV_CODE13_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(100usize)
-                as *const crate::Reg<prince_region0_iv_code13::PRINCE_REGION0_IV_CODE13_SPEC>)
-        }
-    }
-    #[doc = "0x64 - ."]
-    #[inline(always)]
-    pub fn prince_region0_iv_body11(
-        &self,
-    ) -> &crate::Reg<prince_region0_iv_body11::PRINCE_REGION0_IV_BODY11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(100usize)
-                as *const crate::Reg<prince_region0_iv_body11::PRINCE_REGION0_IV_BODY11_SPEC>)
-        }
-    }
-    #[doc = "0x68 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_header0(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_header0::PRINCE_REGION1_IV_HEADER0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(104usize)
-                as *const crate::Reg<prince_region1_iv_header0::PRINCE_REGION1_IV_HEADER0_SPEC>)
-        }
-    }
-    #[doc = "0x68 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code0(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code0::PRINCE_REGION1_IV_CODE0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(104usize)
-                as *const crate::Reg<prince_region1_iv_code0::PRINCE_REGION1_IV_CODE0_SPEC>)
-        }
-    }
-    #[doc = "0x6c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_header1(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_header1::PRINCE_REGION1_IV_HEADER1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(108usize)
-                as *const crate::Reg<prince_region1_iv_header1::PRINCE_REGION1_IV_HEADER1_SPEC>)
-        }
-    }
-    #[doc = "0x6c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code1(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code1::PRINCE_REGION1_IV_CODE1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(108usize)
-                as *const crate::Reg<prince_region1_iv_code1::PRINCE_REGION1_IV_CODE1_SPEC>)
-        }
-    }
-    #[doc = "0x70 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code2(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code2::PRINCE_REGION1_IV_CODE2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(112usize)
-                as *const crate::Reg<prince_region1_iv_code2::PRINCE_REGION1_IV_CODE2_SPEC>)
-        }
-    }
-    #[doc = "0x70 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body0(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body0::PRINCE_REGION1_IV_BODY0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(112usize)
-                as *const crate::Reg<prince_region1_iv_body0::PRINCE_REGION1_IV_BODY0_SPEC>)
-        }
-    }
-    #[doc = "0x74 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code3(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code3::PRINCE_REGION1_IV_CODE3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(116usize)
-                as *const crate::Reg<prince_region1_iv_code3::PRINCE_REGION1_IV_CODE3_SPEC>)
-        }
-    }
-    #[doc = "0x74 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body1(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body1::PRINCE_REGION1_IV_BODY1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(116usize)
-                as *const crate::Reg<prince_region1_iv_body1::PRINCE_REGION1_IV_BODY1_SPEC>)
-        }
-    }
-    #[doc = "0x78 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code4(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code4::PRINCE_REGION1_IV_CODE4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(120usize)
-                as *const crate::Reg<prince_region1_iv_code4::PRINCE_REGION1_IV_CODE4_SPEC>)
-        }
-    }
-    #[doc = "0x78 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body2(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body2::PRINCE_REGION1_IV_BODY2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(120usize)
-                as *const crate::Reg<prince_region1_iv_body2::PRINCE_REGION1_IV_BODY2_SPEC>)
-        }
-    }
-    #[doc = "0x7c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code5(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code5::PRINCE_REGION1_IV_CODE5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(124usize)
-                as *const crate::Reg<prince_region1_iv_code5::PRINCE_REGION1_IV_CODE5_SPEC>)
-        }
-    }
-    #[doc = "0x7c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body3(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body3::PRINCE_REGION1_IV_BODY3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(124usize)
-                as *const crate::Reg<prince_region1_iv_body3::PRINCE_REGION1_IV_BODY3_SPEC>)
-        }
-    }
-    #[doc = "0x80 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code6(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code6::PRINCE_REGION1_IV_CODE6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(128usize)
-                as *const crate::Reg<prince_region1_iv_code6::PRINCE_REGION1_IV_CODE6_SPEC>)
-        }
-    }
-    #[doc = "0x80 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body4(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body4::PRINCE_REGION1_IV_BODY4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(128usize)
-                as *const crate::Reg<prince_region1_iv_body4::PRINCE_REGION1_IV_BODY4_SPEC>)
-        }
-    }
-    #[doc = "0x84 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code7(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code7::PRINCE_REGION1_IV_CODE7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(132usize)
-                as *const crate::Reg<prince_region1_iv_code7::PRINCE_REGION1_IV_CODE7_SPEC>)
-        }
-    }
-    #[doc = "0x84 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body5(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body5::PRINCE_REGION1_IV_BODY5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(132usize)
-                as *const crate::Reg<prince_region1_iv_body5::PRINCE_REGION1_IV_BODY5_SPEC>)
-        }
-    }
-    #[doc = "0x88 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code8(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code8::PRINCE_REGION1_IV_CODE8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(136usize)
-                as *const crate::Reg<prince_region1_iv_code8::PRINCE_REGION1_IV_CODE8_SPEC>)
-        }
-    }
-    #[doc = "0x88 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body6(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body6::PRINCE_REGION1_IV_BODY6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(136usize)
-                as *const crate::Reg<prince_region1_iv_body6::PRINCE_REGION1_IV_BODY6_SPEC>)
-        }
-    }
-    #[doc = "0x8c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code9(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code9::PRINCE_REGION1_IV_CODE9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(140usize)
-                as *const crate::Reg<prince_region1_iv_code9::PRINCE_REGION1_IV_CODE9_SPEC>)
-        }
-    }
-    #[doc = "0x8c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body7(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body7::PRINCE_REGION1_IV_BODY7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(140usize)
-                as *const crate::Reg<prince_region1_iv_body7::PRINCE_REGION1_IV_BODY7_SPEC>)
-        }
-    }
-    #[doc = "0x90 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code10(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code10::PRINCE_REGION1_IV_CODE10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(144usize)
-                as *const crate::Reg<prince_region1_iv_code10::PRINCE_REGION1_IV_CODE10_SPEC>)
-        }
-    }
-    #[doc = "0x90 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body8(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body8::PRINCE_REGION1_IV_BODY8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(144usize)
-                as *const crate::Reg<prince_region1_iv_body8::PRINCE_REGION1_IV_BODY8_SPEC>)
-        }
-    }
-    #[doc = "0x94 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code11(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code11::PRINCE_REGION1_IV_CODE11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(148usize)
-                as *const crate::Reg<prince_region1_iv_code11::PRINCE_REGION1_IV_CODE11_SPEC>)
-        }
-    }
-    #[doc = "0x94 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body9(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body9::PRINCE_REGION1_IV_BODY9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(148usize)
-                as *const crate::Reg<prince_region1_iv_body9::PRINCE_REGION1_IV_BODY9_SPEC>)
-        }
-    }
-    #[doc = "0x98 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code12(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code12::PRINCE_REGION1_IV_CODE12_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(152usize)
-                as *const crate::Reg<prince_region1_iv_code12::PRINCE_REGION1_IV_CODE12_SPEC>)
-        }
-    }
-    #[doc = "0x98 - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body10(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body10::PRINCE_REGION1_IV_BODY10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(152usize)
-                as *const crate::Reg<prince_region1_iv_body10::PRINCE_REGION1_IV_BODY10_SPEC>)
-        }
-    }
-    #[doc = "0x9c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_code13(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_code13::PRINCE_REGION1_IV_CODE13_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(156usize)
-                as *const crate::Reg<prince_region1_iv_code13::PRINCE_REGION1_IV_CODE13_SPEC>)
-        }
-    }
-    #[doc = "0x9c - ."]
-    #[inline(always)]
-    pub fn prince_region1_iv_body11(
-        &self,
-    ) -> &crate::Reg<prince_region1_iv_body11::PRINCE_REGION1_IV_BODY11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(156usize)
-                as *const crate::Reg<prince_region1_iv_body11::PRINCE_REGION1_IV_BODY11_SPEC>)
-        }
-    }
-    #[doc = "0xa0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_header0(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_header0::PRINCE_REGION2_IV_HEADER0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(160usize)
-                as *const crate::Reg<prince_region2_iv_header0::PRINCE_REGION2_IV_HEADER0_SPEC>)
-        }
-    }
-    #[doc = "0xa0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code0(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code0::PRINCE_REGION2_IV_CODE0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(160usize)
-                as *const crate::Reg<prince_region2_iv_code0::PRINCE_REGION2_IV_CODE0_SPEC>)
-        }
-    }
-    #[doc = "0xa4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_header1(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_header1::PRINCE_REGION2_IV_HEADER1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(164usize)
-                as *const crate::Reg<prince_region2_iv_header1::PRINCE_REGION2_IV_HEADER1_SPEC>)
-        }
-    }
-    #[doc = "0xa4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code1(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code1::PRINCE_REGION2_IV_CODE1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(164usize)
-                as *const crate::Reg<prince_region2_iv_code1::PRINCE_REGION2_IV_CODE1_SPEC>)
-        }
-    }
-    #[doc = "0xa8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code2(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code2::PRINCE_REGION2_IV_CODE2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(168usize)
-                as *const crate::Reg<prince_region2_iv_code2::PRINCE_REGION2_IV_CODE2_SPEC>)
-        }
-    }
-    #[doc = "0xa8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body0(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body0::PRINCE_REGION2_IV_BODY0_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(168usize)
-                as *const crate::Reg<prince_region2_iv_body0::PRINCE_REGION2_IV_BODY0_SPEC>)
-        }
-    }
-    #[doc = "0xac - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code3(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code3::PRINCE_REGION2_IV_CODE3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(172usize)
-                as *const crate::Reg<prince_region2_iv_code3::PRINCE_REGION2_IV_CODE3_SPEC>)
-        }
-    }
-    #[doc = "0xac - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body1(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body1::PRINCE_REGION2_IV_BODY1_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(172usize)
-                as *const crate::Reg<prince_region2_iv_body1::PRINCE_REGION2_IV_BODY1_SPEC>)
-        }
-    }
-    #[doc = "0xb0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code4(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code4::PRINCE_REGION2_IV_CODE4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(176usize)
-                as *const crate::Reg<prince_region2_iv_code4::PRINCE_REGION2_IV_CODE4_SPEC>)
-        }
-    }
-    #[doc = "0xb0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body2(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body2::PRINCE_REGION2_IV_BODY2_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(176usize)
-                as *const crate::Reg<prince_region2_iv_body2::PRINCE_REGION2_IV_BODY2_SPEC>)
-        }
-    }
-    #[doc = "0xb4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code5(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code5::PRINCE_REGION2_IV_CODE5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(180usize)
-                as *const crate::Reg<prince_region2_iv_code5::PRINCE_REGION2_IV_CODE5_SPEC>)
-        }
-    }
-    #[doc = "0xb4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body3(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body3::PRINCE_REGION2_IV_BODY3_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(180usize)
-                as *const crate::Reg<prince_region2_iv_body3::PRINCE_REGION2_IV_BODY3_SPEC>)
-        }
-    }
-    #[doc = "0xb8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code6(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code6::PRINCE_REGION2_IV_CODE6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(184usize)
-                as *const crate::Reg<prince_region2_iv_code6::PRINCE_REGION2_IV_CODE6_SPEC>)
-        }
-    }
-    #[doc = "0xb8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body4(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body4::PRINCE_REGION2_IV_BODY4_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(184usize)
-                as *const crate::Reg<prince_region2_iv_body4::PRINCE_REGION2_IV_BODY4_SPEC>)
-        }
-    }
-    #[doc = "0xbc - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code7(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code7::PRINCE_REGION2_IV_CODE7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(188usize)
-                as *const crate::Reg<prince_region2_iv_code7::PRINCE_REGION2_IV_CODE7_SPEC>)
-        }
-    }
-    #[doc = "0xbc - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body5(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body5::PRINCE_REGION2_IV_BODY5_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(188usize)
-                as *const crate::Reg<prince_region2_iv_body5::PRINCE_REGION2_IV_BODY5_SPEC>)
-        }
-    }
-    #[doc = "0xc0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code8(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code8::PRINCE_REGION2_IV_CODE8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(192usize)
-                as *const crate::Reg<prince_region2_iv_code8::PRINCE_REGION2_IV_CODE8_SPEC>)
-        }
-    }
-    #[doc = "0xc0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body6(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body6::PRINCE_REGION2_IV_BODY6_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(192usize)
-                as *const crate::Reg<prince_region2_iv_body6::PRINCE_REGION2_IV_BODY6_SPEC>)
-        }
-    }
-    #[doc = "0xc4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code9(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code9::PRINCE_REGION2_IV_CODE9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(196usize)
-                as *const crate::Reg<prince_region2_iv_code9::PRINCE_REGION2_IV_CODE9_SPEC>)
-        }
-    }
-    #[doc = "0xc4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body7(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body7::PRINCE_REGION2_IV_BODY7_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(196usize)
-                as *const crate::Reg<prince_region2_iv_body7::PRINCE_REGION2_IV_BODY7_SPEC>)
-        }
-    }
-    #[doc = "0xc8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code10(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code10::PRINCE_REGION2_IV_CODE10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(200usize)
-                as *const crate::Reg<prince_region2_iv_code10::PRINCE_REGION2_IV_CODE10_SPEC>)
-        }
-    }
-    #[doc = "0xc8 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body8(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body8::PRINCE_REGION2_IV_BODY8_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(200usize)
-                as *const crate::Reg<prince_region2_iv_body8::PRINCE_REGION2_IV_BODY8_SPEC>)
-        }
-    }
-    #[doc = "0xcc - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code11(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code11::PRINCE_REGION2_IV_CODE11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(204usize)
-                as *const crate::Reg<prince_region2_iv_code11::PRINCE_REGION2_IV_CODE11_SPEC>)
-        }
-    }
-    #[doc = "0xcc - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body9(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body9::PRINCE_REGION2_IV_BODY9_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(204usize)
-                as *const crate::Reg<prince_region2_iv_body9::PRINCE_REGION2_IV_BODY9_SPEC>)
-        }
-    }
-    #[doc = "0xd0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code12(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code12::PRINCE_REGION2_IV_CODE12_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(208usize)
-                as *const crate::Reg<prince_region2_iv_code12::PRINCE_REGION2_IV_CODE12_SPEC>)
-        }
-    }
-    #[doc = "0xd0 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body10(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body10::PRINCE_REGION2_IV_BODY10_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(208usize)
-                as *const crate::Reg<prince_region2_iv_body10::PRINCE_REGION2_IV_BODY10_SPEC>)
-        }
-    }
-    #[doc = "0xd4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_code13(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_code13::PRINCE_REGION2_IV_CODE13_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(212usize)
-                as *const crate::Reg<prince_region2_iv_code13::PRINCE_REGION2_IV_CODE13_SPEC>)
-        }
-    }
-    #[doc = "0xd4 - ."]
-    #[inline(always)]
-    pub fn prince_region2_iv_body11(
-        &self,
-    ) -> &crate::Reg<prince_region2_iv_body11::PRINCE_REGION2_IV_BODY11_SPEC> {
-        unsafe {
-            &*(((self as *const Self) as *const u8).add(212usize)
-                as *const crate::Reg<prince_region2_iv_body11::PRINCE_REGION2_IV_BODY11_SPEC>)
-        }
+    #[doc = "0x00 - no description available"]
+    #[inline(always)]
+    pub const fn header(&self) -> &Header {
+        &self.header
+    }
+    #[doc = "0x04 - no description available"]
+    #[inline(always)]
+    pub const fn version(&self) -> &Version {
+        &self.version
+    }
+    #[doc = "0x08 - Secure firmware version (Monotonic counter)"]
+    #[inline(always)]
+    pub const fn s_fw_version(&self) -> &SFwVersion {
+        &self.s_fw_version
+    }
+    #[doc = "0x0c - Non-Secure firmware version (Monotonic counter)"]
+    #[inline(always)]
+    pub const fn ns_fw_version(&self) -> &NsFwVersion {
+        &self.ns_fw_version
+    }
+    #[doc = "0x10 - Image key revocation ID (Monotonic counter)"]
+    #[inline(always)]
+    pub const fn image_key_revoke(&self) -> &ImageKeyRevoke {
+        &self.image_key_revoke
+    }
+    #[doc = "0x18 - no description available"]
+    #[inline(always)]
+    pub const fn rotkh_revoke(&self) -> &RotkhRevoke {
+        &self.rotkh_revoke
+    }
+    #[doc = "0x1c - no description available"]
+    #[inline(always)]
+    pub const fn vendor_usage(&self) -> &VendorUsage {
+        &self.vendor_usage
+    }
+    #[doc = "0x20 - With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
+    #[inline(always)]
+    pub const fn dcfg_cc_socu_pin(&self) -> &DcfgCcSocuPin {
+        &self.dcfg_cc_socu_pin
+    }
+    #[doc = "0x24 - With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
+    #[inline(always)]
+    pub const fn dcfg_cc_socu_dflt(&self) -> &DcfgCcSocuDflt {
+        &self.dcfg_cc_socu_dflt
+    }
+    #[doc = "0x28 - Enable FA mode. SET_FA_MODE Command should write 0xC33CA55A to this word to indicate boot ROM to enter FA mode."]
+    #[inline(always)]
+    pub const fn enable_fa_mode(&self) -> &EnableFaMode {
+        &self.enable_fa_mode
+    }
+    #[doc = "0x2c - CMPA Page programming on going. This field shall be set to 0x5CC55AA5 in the active CFPA page each time CMPA page programming is going on. It shall always be set to 0x00000000 in the CFPA scratch area."]
+    #[inline(always)]
+    pub const fn cmpa_prog_in_progress(&self) -> &CmpaProgInProgress {
+        &self.cmpa_prog_in_progress
+    }
+    #[doc = "0x30 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_header0(&self) -> &PrinceRegion0IvHeader0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(48).cast() }
+    }
+    #[doc = "0x30 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code0(&self) -> &PrinceRegion0IvCode0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(48).cast() }
+    }
+    #[doc = "0x34 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_header1(&self) -> &PrinceRegion0IvHeader1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(52).cast() }
+    }
+    #[doc = "0x34 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code1(&self) -> &PrinceRegion0IvCode1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(52).cast() }
+    }
+    #[doc = "0x38 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code2(&self) -> &PrinceRegion0IvCode2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(56).cast() }
+    }
+    #[doc = "0x38 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body0(&self) -> &PrinceRegion0IvBody0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(56).cast() }
+    }
+    #[doc = "0x3c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code3(&self) -> &PrinceRegion0IvCode3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(60).cast() }
+    }
+    #[doc = "0x3c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body1(&self) -> &PrinceRegion0IvBody1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(60).cast() }
+    }
+    #[doc = "0x40 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code4(&self) -> &PrinceRegion0IvCode4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(64).cast() }
+    }
+    #[doc = "0x40 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body2(&self) -> &PrinceRegion0IvBody2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(64).cast() }
+    }
+    #[doc = "0x44 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code5(&self) -> &PrinceRegion0IvCode5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(68).cast() }
+    }
+    #[doc = "0x44 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body3(&self) -> &PrinceRegion0IvBody3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(68).cast() }
+    }
+    #[doc = "0x48 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code6(&self) -> &PrinceRegion0IvCode6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(72).cast() }
+    }
+    #[doc = "0x48 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body4(&self) -> &PrinceRegion0IvBody4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(72).cast() }
+    }
+    #[doc = "0x4c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code7(&self) -> &PrinceRegion0IvCode7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(76).cast() }
+    }
+    #[doc = "0x4c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body5(&self) -> &PrinceRegion0IvBody5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(76).cast() }
+    }
+    #[doc = "0x50 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code8(&self) -> &PrinceRegion0IvCode8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(80).cast() }
+    }
+    #[doc = "0x50 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body6(&self) -> &PrinceRegion0IvBody6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(80).cast() }
+    }
+    #[doc = "0x54 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code9(&self) -> &PrinceRegion0IvCode9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(84).cast() }
+    }
+    #[doc = "0x54 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body7(&self) -> &PrinceRegion0IvBody7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(84).cast() }
+    }
+    #[doc = "0x58 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code10(&self) -> &PrinceRegion0IvCode10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(88).cast() }
+    }
+    #[doc = "0x58 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body8(&self) -> &PrinceRegion0IvBody8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(88).cast() }
+    }
+    #[doc = "0x5c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code11(&self) -> &PrinceRegion0IvCode11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(92).cast() }
+    }
+    #[doc = "0x5c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body9(&self) -> &PrinceRegion0IvBody9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(92).cast() }
+    }
+    #[doc = "0x60 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code12(&self) -> &PrinceRegion0IvCode12 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(96).cast() }
+    }
+    #[doc = "0x60 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body10(&self) -> &PrinceRegion0IvBody10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(96).cast() }
+    }
+    #[doc = "0x64 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_code13(&self) -> &PrinceRegion0IvCode13 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(100).cast() }
+    }
+    #[doc = "0x64 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region0_iv_body11(&self) -> &PrinceRegion0IvBody11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(100).cast() }
+    }
+    #[doc = "0x68 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_header0(&self) -> &PrinceRegion1IvHeader0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(104).cast() }
+    }
+    #[doc = "0x68 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code0(&self) -> &PrinceRegion1IvCode0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(104).cast() }
+    }
+    #[doc = "0x6c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_header1(&self) -> &PrinceRegion1IvHeader1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(108).cast() }
+    }
+    #[doc = "0x6c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code1(&self) -> &PrinceRegion1IvCode1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(108).cast() }
+    }
+    #[doc = "0x70 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code2(&self) -> &PrinceRegion1IvCode2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(112).cast() }
+    }
+    #[doc = "0x70 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body0(&self) -> &PrinceRegion1IvBody0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(112).cast() }
+    }
+    #[doc = "0x74 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code3(&self) -> &PrinceRegion1IvCode3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(116).cast() }
+    }
+    #[doc = "0x74 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body1(&self) -> &PrinceRegion1IvBody1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(116).cast() }
+    }
+    #[doc = "0x78 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code4(&self) -> &PrinceRegion1IvCode4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(120).cast() }
+    }
+    #[doc = "0x78 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body2(&self) -> &PrinceRegion1IvBody2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(120).cast() }
+    }
+    #[doc = "0x7c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code5(&self) -> &PrinceRegion1IvCode5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(124).cast() }
+    }
+    #[doc = "0x7c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body3(&self) -> &PrinceRegion1IvBody3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(124).cast() }
+    }
+    #[doc = "0x80 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code6(&self) -> &PrinceRegion1IvCode6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(128).cast() }
+    }
+    #[doc = "0x80 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body4(&self) -> &PrinceRegion1IvBody4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(128).cast() }
+    }
+    #[doc = "0x84 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code7(&self) -> &PrinceRegion1IvCode7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(132).cast() }
+    }
+    #[doc = "0x84 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body5(&self) -> &PrinceRegion1IvBody5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(132).cast() }
+    }
+    #[doc = "0x88 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code8(&self) -> &PrinceRegion1IvCode8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(136).cast() }
+    }
+    #[doc = "0x88 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body6(&self) -> &PrinceRegion1IvBody6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(136).cast() }
+    }
+    #[doc = "0x8c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code9(&self) -> &PrinceRegion1IvCode9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(140).cast() }
+    }
+    #[doc = "0x8c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body7(&self) -> &PrinceRegion1IvBody7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(140).cast() }
+    }
+    #[doc = "0x90 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code10(&self) -> &PrinceRegion1IvCode10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(144).cast() }
+    }
+    #[doc = "0x90 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body8(&self) -> &PrinceRegion1IvBody8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(144).cast() }
+    }
+    #[doc = "0x94 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code11(&self) -> &PrinceRegion1IvCode11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(148).cast() }
+    }
+    #[doc = "0x94 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body9(&self) -> &PrinceRegion1IvBody9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(148).cast() }
+    }
+    #[doc = "0x98 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code12(&self) -> &PrinceRegion1IvCode12 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(152).cast() }
+    }
+    #[doc = "0x98 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body10(&self) -> &PrinceRegion1IvBody10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(152).cast() }
+    }
+    #[doc = "0x9c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_code13(&self) -> &PrinceRegion1IvCode13 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(156).cast() }
+    }
+    #[doc = "0x9c - no description available"]
+    #[inline(always)]
+    pub const fn prince_region1_iv_body11(&self) -> &PrinceRegion1IvBody11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(156).cast() }
+    }
+    #[doc = "0xa0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_header0(&self) -> &PrinceRegion2IvHeader0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(160).cast() }
+    }
+    #[doc = "0xa0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code0(&self) -> &PrinceRegion2IvCode0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(160).cast() }
+    }
+    #[doc = "0xa4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_header1(&self) -> &PrinceRegion2IvHeader1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(164).cast() }
+    }
+    #[doc = "0xa4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code1(&self) -> &PrinceRegion2IvCode1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(164).cast() }
+    }
+    #[doc = "0xa8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code2(&self) -> &PrinceRegion2IvCode2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(168).cast() }
+    }
+    #[doc = "0xa8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body0(&self) -> &PrinceRegion2IvBody0 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(168).cast() }
+    }
+    #[doc = "0xac - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code3(&self) -> &PrinceRegion2IvCode3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(172).cast() }
+    }
+    #[doc = "0xac - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body1(&self) -> &PrinceRegion2IvBody1 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(172).cast() }
+    }
+    #[doc = "0xb0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code4(&self) -> &PrinceRegion2IvCode4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(176).cast() }
+    }
+    #[doc = "0xb0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body2(&self) -> &PrinceRegion2IvBody2 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(176).cast() }
+    }
+    #[doc = "0xb4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code5(&self) -> &PrinceRegion2IvCode5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(180).cast() }
+    }
+    #[doc = "0xb4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body3(&self) -> &PrinceRegion2IvBody3 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(180).cast() }
+    }
+    #[doc = "0xb8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code6(&self) -> &PrinceRegion2IvCode6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(184).cast() }
+    }
+    #[doc = "0xb8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body4(&self) -> &PrinceRegion2IvBody4 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(184).cast() }
+    }
+    #[doc = "0xbc - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code7(&self) -> &PrinceRegion2IvCode7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(188).cast() }
+    }
+    #[doc = "0xbc - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body5(&self) -> &PrinceRegion2IvBody5 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(188).cast() }
+    }
+    #[doc = "0xc0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code8(&self) -> &PrinceRegion2IvCode8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(192).cast() }
+    }
+    #[doc = "0xc0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body6(&self) -> &PrinceRegion2IvBody6 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(192).cast() }
+    }
+    #[doc = "0xc4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code9(&self) -> &PrinceRegion2IvCode9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(196).cast() }
+    }
+    #[doc = "0xc4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body7(&self) -> &PrinceRegion2IvBody7 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(196).cast() }
+    }
+    #[doc = "0xc8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code10(&self) -> &PrinceRegion2IvCode10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(200).cast() }
+    }
+    #[doc = "0xc8 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body8(&self) -> &PrinceRegion2IvBody8 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(200).cast() }
+    }
+    #[doc = "0xcc - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code11(&self) -> &PrinceRegion2IvCode11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(204).cast() }
+    }
+    #[doc = "0xcc - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body9(&self) -> &PrinceRegion2IvBody9 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(204).cast() }
+    }
+    #[doc = "0xd0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code12(&self) -> &PrinceRegion2IvCode12 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(208).cast() }
+    }
+    #[doc = "0xd0 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body10(&self) -> &PrinceRegion2IvBody10 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(208).cast() }
+    }
+    #[doc = "0xd4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_code13(&self) -> &PrinceRegion2IvCode13 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(212).cast() }
+    }
+    #[doc = "0xd4 - no description available"]
+    #[inline(always)]
+    pub const fn prince_region2_iv_body11(&self) -> &PrinceRegion2IvBody11 {
+        unsafe { &*core::ptr::from_ref(self).cast::<u8>().add(212).cast() }
+    }
+    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
+    #[inline(always)]
+    pub const fn customer_defined(&self, n: usize) -> &CustomerDefined {
+        &self.customer_defined[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x100..0x1e0 - Customer Defined (Programable through ROM API)"]
+    #[inline(always)]
+    pub fn customer_defined_iter(&self) -> impl Iterator<Item = &CustomerDefined> {
+        self.customer_defined.iter()
+    }
+    #[doc = "0x1e0..0x200 - SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
+    #[inline(always)]
+    pub const fn sha256_digest(&self, n: usize) -> &Sha256Digest {
+        &self.sha256_digest[n]
+    }
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x1e0..0x200 - SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
+    #[inline(always)]
+    pub fn sha256_digest_iter(&self) -> impl Iterator<Item = &Sha256Digest> {
+        self.sha256_digest.iter()
     }
 }
-#[doc = "HEADER register accessor: an alias for `Reg<HEADER_SPEC>`"]
-pub type HEADER = crate::Reg<header::HEADER_SPEC>;
-#[doc = "."]
+#[doc = "HEADER (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`header::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`header::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@header`]
+module"]
+#[doc(alias = "HEADER")]
+pub type Header = crate::Reg<header::HeaderSpec>;
+#[doc = "no description available"]
 pub mod header;
-#[doc = "VERSION register accessor: an alias for `Reg<VERSION_SPEC>`"]
-pub type VERSION = crate::Reg<version::VERSION_SPEC>;
-#[doc = "."]
+#[doc = "VERSION (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`version::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`version::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@version`]
+module"]
+#[doc(alias = "VERSION")]
+pub type Version = crate::Reg<version::VersionSpec>;
+#[doc = "no description available"]
 pub mod version;
-#[doc = "S_FW_Version register accessor: an alias for `Reg<S_FW_VERSION_SPEC>`"]
-pub type S_FW_VERSION = crate::Reg<s_fw_version::S_FW_VERSION_SPEC>;
+#[doc = "S_FW_Version (rw) register accessor: Secure firmware version (Monotonic counter)\n\nYou can [`read`](crate::Reg::read) this register and get [`s_fw_version::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`s_fw_version::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@s_fw_version`]
+module"]
+#[doc(alias = "S_FW_Version")]
+pub type SFwVersion = crate::Reg<s_fw_version::SFwVersionSpec>;
 #[doc = "Secure firmware version (Monotonic counter)"]
 pub mod s_fw_version;
-#[doc = "NS_FW_Version register accessor: an alias for `Reg<NS_FW_VERSION_SPEC>`"]
-pub type NS_FW_VERSION = crate::Reg<ns_fw_version::NS_FW_VERSION_SPEC>;
+#[doc = "NS_FW_Version (rw) register accessor: Non-Secure firmware version (Monotonic counter)\n\nYou can [`read`](crate::Reg::read) this register and get [`ns_fw_version::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ns_fw_version::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ns_fw_version`]
+module"]
+#[doc(alias = "NS_FW_Version")]
+pub type NsFwVersion = crate::Reg<ns_fw_version::NsFwVersionSpec>;
 #[doc = "Non-Secure firmware version (Monotonic counter)"]
 pub mod ns_fw_version;
-#[doc = "IMAGE_KEY_REVOKE register accessor: an alias for `Reg<IMAGE_KEY_REVOKE_SPEC>`"]
-pub type IMAGE_KEY_REVOKE = crate::Reg<image_key_revoke::IMAGE_KEY_REVOKE_SPEC>;
+#[doc = "IMAGE_KEY_REVOKE (rw) register accessor: Image key revocation ID (Monotonic counter)\n\nYou can [`read`](crate::Reg::read) this register and get [`image_key_revoke::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`image_key_revoke::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@image_key_revoke`]
+module"]
+#[doc(alias = "IMAGE_KEY_REVOKE")]
+pub type ImageKeyRevoke = crate::Reg<image_key_revoke::ImageKeyRevokeSpec>;
 #[doc = "Image key revocation ID (Monotonic counter)"]
 pub mod image_key_revoke;
-#[doc = "ROTKH_REVOKE register accessor: an alias for `Reg<ROTKH_REVOKE_SPEC>`"]
-pub type ROTKH_REVOKE = crate::Reg<rotkh_revoke::ROTKH_REVOKE_SPEC>;
-#[doc = "."]
+#[doc = "ROTKH_REVOKE (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`rotkh_revoke::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rotkh_revoke::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@rotkh_revoke`]
+module"]
+#[doc(alias = "ROTKH_REVOKE")]
+pub type RotkhRevoke = crate::Reg<rotkh_revoke::RotkhRevokeSpec>;
+#[doc = "no description available"]
 pub mod rotkh_revoke;
-#[doc = "VENDOR_USAGE register accessor: an alias for `Reg<VENDOR_USAGE_SPEC>`"]
-pub type VENDOR_USAGE = crate::Reg<vendor_usage::VENDOR_USAGE_SPEC>;
-#[doc = "."]
+#[doc = "VENDOR_USAGE (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`vendor_usage::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`vendor_usage::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@vendor_usage`]
+module"]
+#[doc(alias = "VENDOR_USAGE")]
+pub type VendorUsage = crate::Reg<vendor_usage::VendorUsageSpec>;
+#[doc = "no description available"]
 pub mod vendor_usage;
-#[doc = "DCFG_CC_SOCU_PIN register accessor: an alias for `Reg<DCFG_CC_SOCU_PIN_SPEC>`"]
-pub type DCFG_CC_SOCU_PIN = crate::Reg<dcfg_cc_socu_pin::DCFG_CC_SOCU_PIN_SPEC>;
+#[doc = "DCFG_CC_SOCU_PIN (rw) register accessor: With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access.\n\nYou can [`read`](crate::Reg::read) this register and get [`dcfg_cc_socu_pin::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dcfg_cc_socu_pin::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dcfg_cc_socu_pin`]
+module"]
+#[doc(alias = "DCFG_CC_SOCU_PIN")]
+pub type DcfgCcSocuPin = crate::Reg<dcfg_cc_socu_pin::DcfgCcSocuPinSpec>;
 #[doc = "With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
 pub mod dcfg_cc_socu_pin;
-#[doc = "DCFG_CC_SOCU_DFLT register accessor: an alias for `Reg<DCFG_CC_SOCU_DFLT_SPEC>`"]
-pub type DCFG_CC_SOCU_DFLT = crate::Reg<dcfg_cc_socu_dflt::DCFG_CC_SOCU_DFLT_SPEC>;
+#[doc = "DCFG_CC_SOCU_DFLT (rw) register accessor: With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access.\n\nYou can [`read`](crate::Reg::read) this register and get [`dcfg_cc_socu_dflt::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`dcfg_cc_socu_dflt::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@dcfg_cc_socu_dflt`]
+module"]
+#[doc(alias = "DCFG_CC_SOCU_DFLT")]
+pub type DcfgCcSocuDflt = crate::Reg<dcfg_cc_socu_dflt::DcfgCcSocuDfltSpec>;
 #[doc = "With TZ-M, the part can be sold by level 1 customers (secure code developer) to level-2 customers who develops non-secure code only. - In this scenario, or easy of development, Level-I customer releases the part to always allow non-secure debug. - To allow level-2 customers to further seal the part DCFG_CC_SOCU_NS is used. - ROM will use this word to further restrict the debug access."]
 pub mod dcfg_cc_socu_dflt;
-#[doc = "ENABLE_FA_MODE register accessor: an alias for `Reg<ENABLE_FA_MODE_SPEC>`"]
-pub type ENABLE_FA_MODE = crate::Reg<enable_fa_mode::ENABLE_FA_MODE_SPEC>;
+#[doc = "ENABLE_FA_MODE (rw) register accessor: Enable FA mode. SET_FA_MODE Command should write 0xC33CA55A to this word to indicate boot ROM to enter FA mode.\n\nYou can [`read`](crate::Reg::read) this register and get [`enable_fa_mode::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`enable_fa_mode::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@enable_fa_mode`]
+module"]
+#[doc(alias = "ENABLE_FA_MODE")]
+pub type EnableFaMode = crate::Reg<enable_fa_mode::EnableFaModeSpec>;
 #[doc = "Enable FA mode. SET_FA_MODE Command should write 0xC33CA55A to this word to indicate boot ROM to enter FA mode."]
 pub mod enable_fa_mode;
-#[doc = "CMPA_PROG_IN_PROGRESS register accessor: an alias for `Reg<CMPA_PROG_IN_PROGRESS_SPEC>`"]
-pub type CMPA_PROG_IN_PROGRESS = crate::Reg<cmpa_prog_in_progress::CMPA_PROG_IN_PROGRESS_SPEC>;
+#[doc = "CMPA_PROG_IN_PROGRESS (rw) register accessor: CMPA Page programming on going. This field shall be set to 0x5CC55AA5 in the active CFPA page each time CMPA page programming is going on. It shall always be set to 0x00000000 in the CFPA scratch area.\n\nYou can [`read`](crate::Reg::read) this register and get [`cmpa_prog_in_progress::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cmpa_prog_in_progress::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cmpa_prog_in_progress`]
+module"]
+#[doc(alias = "CMPA_PROG_IN_PROGRESS")]
+pub type CmpaProgInProgress = crate::Reg<cmpa_prog_in_progress::CmpaProgInProgressSpec>;
 #[doc = "CMPA Page programming on going. This field shall be set to 0x5CC55AA5 in the active CFPA page each time CMPA page programming is going on. It shall always be set to 0x00000000 in the CFPA scratch area."]
 pub mod cmpa_prog_in_progress;
-#[doc = "PRINCE_REGION0_IV_CODE0 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE0_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE0 =
-    crate::Reg<prince_region0_iv_code0::PRINCE_REGION0_IV_CODE0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code0`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE0")]
+pub type PrinceRegion0IvCode0 =
+    crate::Reg<prince_region0_iv_code0::PrinceRegion0IvCode0Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code0;
-#[doc = "PRINCE_REGION0_IV_HEADER0 register accessor: an alias for `Reg<PRINCE_REGION0_IV_HEADER0_SPEC>`"]
-pub type PRINCE_REGION0_IV_HEADER0 =
-    crate::Reg<prince_region0_iv_header0::PRINCE_REGION0_IV_HEADER0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_HEADER0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_header0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_header0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_header0`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_HEADER0")]
+pub type PrinceRegion0IvHeader0 =
+    crate::Reg<prince_region0_iv_header0::PrinceRegion0IvHeader0Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_header0;
-#[doc = "PRINCE_REGION0_IV_CODE1 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE1_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE1 =
-    crate::Reg<prince_region0_iv_code1::PRINCE_REGION0_IV_CODE1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code1`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE1")]
+pub type PrinceRegion0IvCode1 =
+    crate::Reg<prince_region0_iv_code1::PrinceRegion0IvCode1Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code1;
-#[doc = "PRINCE_REGION0_IV_HEADER1 register accessor: an alias for `Reg<PRINCE_REGION0_IV_HEADER1_SPEC>`"]
-pub type PRINCE_REGION0_IV_HEADER1 =
-    crate::Reg<prince_region0_iv_header1::PRINCE_REGION0_IV_HEADER1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_HEADER1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_header1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_header1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_header1`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_HEADER1")]
+pub type PrinceRegion0IvHeader1 =
+    crate::Reg<prince_region0_iv_header1::PrinceRegion0IvHeader1Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_header1;
-#[doc = "PRINCE_REGION0_IV_BODY0 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY0_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY0 =
-    crate::Reg<prince_region0_iv_body0::PRINCE_REGION0_IV_BODY0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body0`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY0")]
+pub type PrinceRegion0IvBody0 =
+    crate::Reg<prince_region0_iv_body0::PrinceRegion0IvBody0Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body0;
-#[doc = "PRINCE_REGION0_IV_CODE2 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE2_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE2 =
-    crate::Reg<prince_region0_iv_code2::PRINCE_REGION0_IV_CODE2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code2`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE2")]
+pub type PrinceRegion0IvCode2 =
+    crate::Reg<prince_region0_iv_code2::PrinceRegion0IvCode2Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code2;
-#[doc = "PRINCE_REGION0_IV_BODY1 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY1_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY1 =
-    crate::Reg<prince_region0_iv_body1::PRINCE_REGION0_IV_BODY1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body1`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY1")]
+pub type PrinceRegion0IvBody1 =
+    crate::Reg<prince_region0_iv_body1::PrinceRegion0IvBody1Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body1;
-#[doc = "PRINCE_REGION0_IV_CODE3 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE3_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE3 =
-    crate::Reg<prince_region0_iv_code3::PRINCE_REGION0_IV_CODE3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code3`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE3")]
+pub type PrinceRegion0IvCode3 =
+    crate::Reg<prince_region0_iv_code3::PrinceRegion0IvCode3Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code3;
-#[doc = "PRINCE_REGION0_IV_BODY2 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY2_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY2 =
-    crate::Reg<prince_region0_iv_body2::PRINCE_REGION0_IV_BODY2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body2`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY2")]
+pub type PrinceRegion0IvBody2 =
+    crate::Reg<prince_region0_iv_body2::PrinceRegion0IvBody2Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body2;
-#[doc = "PRINCE_REGION0_IV_CODE4 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE4_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE4 =
-    crate::Reg<prince_region0_iv_code4::PRINCE_REGION0_IV_CODE4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code4`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE4")]
+pub type PrinceRegion0IvCode4 =
+    crate::Reg<prince_region0_iv_code4::PrinceRegion0IvCode4Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code4;
-#[doc = "PRINCE_REGION0_IV_BODY3 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY3_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY3 =
-    crate::Reg<prince_region0_iv_body3::PRINCE_REGION0_IV_BODY3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body3`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY3")]
+pub type PrinceRegion0IvBody3 =
+    crate::Reg<prince_region0_iv_body3::PrinceRegion0IvBody3Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body3;
-#[doc = "PRINCE_REGION0_IV_CODE5 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE5_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE5 =
-    crate::Reg<prince_region0_iv_code5::PRINCE_REGION0_IV_CODE5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code5`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE5")]
+pub type PrinceRegion0IvCode5 =
+    crate::Reg<prince_region0_iv_code5::PrinceRegion0IvCode5Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code5;
-#[doc = "PRINCE_REGION0_IV_BODY4 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY4_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY4 =
-    crate::Reg<prince_region0_iv_body4::PRINCE_REGION0_IV_BODY4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body4`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY4")]
+pub type PrinceRegion0IvBody4 =
+    crate::Reg<prince_region0_iv_body4::PrinceRegion0IvBody4Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body4;
-#[doc = "PRINCE_REGION0_IV_CODE6 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE6_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE6 =
-    crate::Reg<prince_region0_iv_code6::PRINCE_REGION0_IV_CODE6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code6`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE6")]
+pub type PrinceRegion0IvCode6 =
+    crate::Reg<prince_region0_iv_code6::PrinceRegion0IvCode6Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code6;
-#[doc = "PRINCE_REGION0_IV_BODY5 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY5_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY5 =
-    crate::Reg<prince_region0_iv_body5::PRINCE_REGION0_IV_BODY5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body5`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY5")]
+pub type PrinceRegion0IvBody5 =
+    crate::Reg<prince_region0_iv_body5::PrinceRegion0IvBody5Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body5;
-#[doc = "PRINCE_REGION0_IV_CODE7 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE7_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE7 =
-    crate::Reg<prince_region0_iv_code7::PRINCE_REGION0_IV_CODE7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code7`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE7")]
+pub type PrinceRegion0IvCode7 =
+    crate::Reg<prince_region0_iv_code7::PrinceRegion0IvCode7Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code7;
-#[doc = "PRINCE_REGION0_IV_BODY6 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY6_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY6 =
-    crate::Reg<prince_region0_iv_body6::PRINCE_REGION0_IV_BODY6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body6`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY6")]
+pub type PrinceRegion0IvBody6 =
+    crate::Reg<prince_region0_iv_body6::PrinceRegion0IvBody6Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body6;
-#[doc = "PRINCE_REGION0_IV_CODE8 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE8_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE8 =
-    crate::Reg<prince_region0_iv_code8::PRINCE_REGION0_IV_CODE8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code8`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE8")]
+pub type PrinceRegion0IvCode8 =
+    crate::Reg<prince_region0_iv_code8::PrinceRegion0IvCode8Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code8;
-#[doc = "PRINCE_REGION0_IV_BODY7 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY7_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY7 =
-    crate::Reg<prince_region0_iv_body7::PRINCE_REGION0_IV_BODY7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body7`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY7")]
+pub type PrinceRegion0IvBody7 =
+    crate::Reg<prince_region0_iv_body7::PrinceRegion0IvBody7Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body7;
-#[doc = "PRINCE_REGION0_IV_CODE9 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE9_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE9 =
-    crate::Reg<prince_region0_iv_code9::PRINCE_REGION0_IV_CODE9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code9`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE9")]
+pub type PrinceRegion0IvCode9 =
+    crate::Reg<prince_region0_iv_code9::PrinceRegion0IvCode9Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code9;
-#[doc = "PRINCE_REGION0_IV_BODY8 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY8_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY8 =
-    crate::Reg<prince_region0_iv_body8::PRINCE_REGION0_IV_BODY8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body8`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY8")]
+pub type PrinceRegion0IvBody8 =
+    crate::Reg<prince_region0_iv_body8::PrinceRegion0IvBody8Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body8;
-#[doc = "PRINCE_REGION0_IV_CODE10 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE10_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE10 =
-    crate::Reg<prince_region0_iv_code10::PRINCE_REGION0_IV_CODE10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code10`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE10")]
+pub type PrinceRegion0IvCode10 =
+    crate::Reg<prince_region0_iv_code10::PrinceRegion0IvCode10Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code10;
-#[doc = "PRINCE_REGION0_IV_BODY9 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY9_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY9 =
-    crate::Reg<prince_region0_iv_body9::PRINCE_REGION0_IV_BODY9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body9`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY9")]
+pub type PrinceRegion0IvBody9 =
+    crate::Reg<prince_region0_iv_body9::PrinceRegion0IvBody9Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body9;
-#[doc = "PRINCE_REGION0_IV_CODE11 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE11_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE11 =
-    crate::Reg<prince_region0_iv_code11::PRINCE_REGION0_IV_CODE11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code11`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE11")]
+pub type PrinceRegion0IvCode11 =
+    crate::Reg<prince_region0_iv_code11::PrinceRegion0IvCode11Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code11;
-#[doc = "PRINCE_REGION0_IV_BODY10 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY10_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY10 =
-    crate::Reg<prince_region0_iv_body10::PRINCE_REGION0_IV_BODY10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body10`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY10")]
+pub type PrinceRegion0IvBody10 =
+    crate::Reg<prince_region0_iv_body10::PrinceRegion0IvBody10Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body10;
-#[doc = "PRINCE_REGION0_IV_CODE12 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE12_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE12 =
-    crate::Reg<prince_region0_iv_code12::PRINCE_REGION0_IV_CODE12_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE12 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code12::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code12::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code12`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE12")]
+pub type PrinceRegion0IvCode12 =
+    crate::Reg<prince_region0_iv_code12::PrinceRegion0IvCode12Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code12;
-#[doc = "PRINCE_REGION0_IV_BODY11 register accessor: an alias for `Reg<PRINCE_REGION0_IV_BODY11_SPEC>`"]
-pub type PRINCE_REGION0_IV_BODY11 =
-    crate::Reg<prince_region0_iv_body11::PRINCE_REGION0_IV_BODY11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_BODY11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_body11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_body11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_body11`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_BODY11")]
+pub type PrinceRegion0IvBody11 =
+    crate::Reg<prince_region0_iv_body11::PrinceRegion0IvBody11Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_body11;
-#[doc = "PRINCE_REGION0_IV_CODE13 register accessor: an alias for `Reg<PRINCE_REGION0_IV_CODE13_SPEC>`"]
-pub type PRINCE_REGION0_IV_CODE13 =
-    crate::Reg<prince_region0_iv_code13::PRINCE_REGION0_IV_CODE13_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION0_IV_CODE13 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region0_iv_code13::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region0_iv_code13::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region0_iv_code13`]
+module"]
+#[doc(alias = "PRINCE_REGION0_IV_CODE13")]
+pub type PrinceRegion0IvCode13 =
+    crate::Reg<prince_region0_iv_code13::PrinceRegion0IvCode13Spec>;
+#[doc = "no description available"]
 pub mod prince_region0_iv_code13;
-#[doc = "PRINCE_REGION1_IV_CODE0 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE0_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE0 =
-    crate::Reg<prince_region1_iv_code0::PRINCE_REGION1_IV_CODE0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code0`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE0")]
+pub type PrinceRegion1IvCode0 =
+    crate::Reg<prince_region1_iv_code0::PrinceRegion1IvCode0Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code0;
-#[doc = "PRINCE_REGION1_IV_HEADER0 register accessor: an alias for `Reg<PRINCE_REGION1_IV_HEADER0_SPEC>`"]
-pub type PRINCE_REGION1_IV_HEADER0 =
-    crate::Reg<prince_region1_iv_header0::PRINCE_REGION1_IV_HEADER0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_HEADER0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_header0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_header0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_header0`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_HEADER0")]
+pub type PrinceRegion1IvHeader0 =
+    crate::Reg<prince_region1_iv_header0::PrinceRegion1IvHeader0Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_header0;
-#[doc = "PRINCE_REGION1_IV_CODE1 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE1_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE1 =
-    crate::Reg<prince_region1_iv_code1::PRINCE_REGION1_IV_CODE1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code1`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE1")]
+pub type PrinceRegion1IvCode1 =
+    crate::Reg<prince_region1_iv_code1::PrinceRegion1IvCode1Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code1;
-#[doc = "PRINCE_REGION1_IV_HEADER1 register accessor: an alias for `Reg<PRINCE_REGION1_IV_HEADER1_SPEC>`"]
-pub type PRINCE_REGION1_IV_HEADER1 =
-    crate::Reg<prince_region1_iv_header1::PRINCE_REGION1_IV_HEADER1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_HEADER1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_header1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_header1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_header1`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_HEADER1")]
+pub type PrinceRegion1IvHeader1 =
+    crate::Reg<prince_region1_iv_header1::PrinceRegion1IvHeader1Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_header1;
-#[doc = "PRINCE_REGION1_IV_BODY0 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY0_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY0 =
-    crate::Reg<prince_region1_iv_body0::PRINCE_REGION1_IV_BODY0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body0`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY0")]
+pub type PrinceRegion1IvBody0 =
+    crate::Reg<prince_region1_iv_body0::PrinceRegion1IvBody0Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body0;
-#[doc = "PRINCE_REGION1_IV_CODE2 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE2_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE2 =
-    crate::Reg<prince_region1_iv_code2::PRINCE_REGION1_IV_CODE2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code2`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE2")]
+pub type PrinceRegion1IvCode2 =
+    crate::Reg<prince_region1_iv_code2::PrinceRegion1IvCode2Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code2;
-#[doc = "PRINCE_REGION1_IV_BODY1 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY1_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY1 =
-    crate::Reg<prince_region1_iv_body1::PRINCE_REGION1_IV_BODY1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body1`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY1")]
+pub type PrinceRegion1IvBody1 =
+    crate::Reg<prince_region1_iv_body1::PrinceRegion1IvBody1Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body1;
-#[doc = "PRINCE_REGION1_IV_CODE3 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE3_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE3 =
-    crate::Reg<prince_region1_iv_code3::PRINCE_REGION1_IV_CODE3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code3`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE3")]
+pub type PrinceRegion1IvCode3 =
+    crate::Reg<prince_region1_iv_code3::PrinceRegion1IvCode3Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code3;
-#[doc = "PRINCE_REGION1_IV_BODY2 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY2_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY2 =
-    crate::Reg<prince_region1_iv_body2::PRINCE_REGION1_IV_BODY2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body2`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY2")]
+pub type PrinceRegion1IvBody2 =
+    crate::Reg<prince_region1_iv_body2::PrinceRegion1IvBody2Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body2;
-#[doc = "PRINCE_REGION1_IV_CODE4 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE4_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE4 =
-    crate::Reg<prince_region1_iv_code4::PRINCE_REGION1_IV_CODE4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code4`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE4")]
+pub type PrinceRegion1IvCode4 =
+    crate::Reg<prince_region1_iv_code4::PrinceRegion1IvCode4Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code4;
-#[doc = "PRINCE_REGION1_IV_BODY3 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY3_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY3 =
-    crate::Reg<prince_region1_iv_body3::PRINCE_REGION1_IV_BODY3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body3`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY3")]
+pub type PrinceRegion1IvBody3 =
+    crate::Reg<prince_region1_iv_body3::PrinceRegion1IvBody3Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body3;
-#[doc = "PRINCE_REGION1_IV_CODE5 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE5_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE5 =
-    crate::Reg<prince_region1_iv_code5::PRINCE_REGION1_IV_CODE5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code5`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE5")]
+pub type PrinceRegion1IvCode5 =
+    crate::Reg<prince_region1_iv_code5::PrinceRegion1IvCode5Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code5;
-#[doc = "PRINCE_REGION1_IV_BODY4 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY4_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY4 =
-    crate::Reg<prince_region1_iv_body4::PRINCE_REGION1_IV_BODY4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body4`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY4")]
+pub type PrinceRegion1IvBody4 =
+    crate::Reg<prince_region1_iv_body4::PrinceRegion1IvBody4Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body4;
-#[doc = "PRINCE_REGION1_IV_CODE6 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE6_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE6 =
-    crate::Reg<prince_region1_iv_code6::PRINCE_REGION1_IV_CODE6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code6`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE6")]
+pub type PrinceRegion1IvCode6 =
+    crate::Reg<prince_region1_iv_code6::PrinceRegion1IvCode6Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code6;
-#[doc = "PRINCE_REGION1_IV_BODY5 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY5_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY5 =
-    crate::Reg<prince_region1_iv_body5::PRINCE_REGION1_IV_BODY5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body5`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY5")]
+pub type PrinceRegion1IvBody5 =
+    crate::Reg<prince_region1_iv_body5::PrinceRegion1IvBody5Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body5;
-#[doc = "PRINCE_REGION1_IV_CODE7 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE7_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE7 =
-    crate::Reg<prince_region1_iv_code7::PRINCE_REGION1_IV_CODE7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code7`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE7")]
+pub type PrinceRegion1IvCode7 =
+    crate::Reg<prince_region1_iv_code7::PrinceRegion1IvCode7Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code7;
-#[doc = "PRINCE_REGION1_IV_BODY6 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY6_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY6 =
-    crate::Reg<prince_region1_iv_body6::PRINCE_REGION1_IV_BODY6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body6`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY6")]
+pub type PrinceRegion1IvBody6 =
+    crate::Reg<prince_region1_iv_body6::PrinceRegion1IvBody6Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body6;
-#[doc = "PRINCE_REGION1_IV_CODE8 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE8_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE8 =
-    crate::Reg<prince_region1_iv_code8::PRINCE_REGION1_IV_CODE8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code8`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE8")]
+pub type PrinceRegion1IvCode8 =
+    crate::Reg<prince_region1_iv_code8::PrinceRegion1IvCode8Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code8;
-#[doc = "PRINCE_REGION1_IV_BODY7 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY7_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY7 =
-    crate::Reg<prince_region1_iv_body7::PRINCE_REGION1_IV_BODY7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body7`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY7")]
+pub type PrinceRegion1IvBody7 =
+    crate::Reg<prince_region1_iv_body7::PrinceRegion1IvBody7Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body7;
-#[doc = "PRINCE_REGION1_IV_CODE9 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE9_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE9 =
-    crate::Reg<prince_region1_iv_code9::PRINCE_REGION1_IV_CODE9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code9`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE9")]
+pub type PrinceRegion1IvCode9 =
+    crate::Reg<prince_region1_iv_code9::PrinceRegion1IvCode9Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code9;
-#[doc = "PRINCE_REGION1_IV_BODY8 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY8_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY8 =
-    crate::Reg<prince_region1_iv_body8::PRINCE_REGION1_IV_BODY8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body8`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY8")]
+pub type PrinceRegion1IvBody8 =
+    crate::Reg<prince_region1_iv_body8::PrinceRegion1IvBody8Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body8;
-#[doc = "PRINCE_REGION1_IV_CODE10 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE10_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE10 =
-    crate::Reg<prince_region1_iv_code10::PRINCE_REGION1_IV_CODE10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code10`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE10")]
+pub type PrinceRegion1IvCode10 =
+    crate::Reg<prince_region1_iv_code10::PrinceRegion1IvCode10Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code10;
-#[doc = "PRINCE_REGION1_IV_BODY9 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY9_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY9 =
-    crate::Reg<prince_region1_iv_body9::PRINCE_REGION1_IV_BODY9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body9`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY9")]
+pub type PrinceRegion1IvBody9 =
+    crate::Reg<prince_region1_iv_body9::PrinceRegion1IvBody9Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body9;
-#[doc = "PRINCE_REGION1_IV_CODE11 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE11_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE11 =
-    crate::Reg<prince_region1_iv_code11::PRINCE_REGION1_IV_CODE11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code11`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE11")]
+pub type PrinceRegion1IvCode11 =
+    crate::Reg<prince_region1_iv_code11::PrinceRegion1IvCode11Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code11;
-#[doc = "PRINCE_REGION1_IV_BODY10 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY10_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY10 =
-    crate::Reg<prince_region1_iv_body10::PRINCE_REGION1_IV_BODY10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body10`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY10")]
+pub type PrinceRegion1IvBody10 =
+    crate::Reg<prince_region1_iv_body10::PrinceRegion1IvBody10Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body10;
-#[doc = "PRINCE_REGION1_IV_CODE12 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE12_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE12 =
-    crate::Reg<prince_region1_iv_code12::PRINCE_REGION1_IV_CODE12_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE12 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code12::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code12::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code12`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE12")]
+pub type PrinceRegion1IvCode12 =
+    crate::Reg<prince_region1_iv_code12::PrinceRegion1IvCode12Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code12;
-#[doc = "PRINCE_REGION1_IV_BODY11 register accessor: an alias for `Reg<PRINCE_REGION1_IV_BODY11_SPEC>`"]
-pub type PRINCE_REGION1_IV_BODY11 =
-    crate::Reg<prince_region1_iv_body11::PRINCE_REGION1_IV_BODY11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_BODY11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_body11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_body11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_body11`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_BODY11")]
+pub type PrinceRegion1IvBody11 =
+    crate::Reg<prince_region1_iv_body11::PrinceRegion1IvBody11Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_body11;
-#[doc = "PRINCE_REGION1_IV_CODE13 register accessor: an alias for `Reg<PRINCE_REGION1_IV_CODE13_SPEC>`"]
-pub type PRINCE_REGION1_IV_CODE13 =
-    crate::Reg<prince_region1_iv_code13::PRINCE_REGION1_IV_CODE13_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION1_IV_CODE13 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region1_iv_code13::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region1_iv_code13::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region1_iv_code13`]
+module"]
+#[doc(alias = "PRINCE_REGION1_IV_CODE13")]
+pub type PrinceRegion1IvCode13 =
+    crate::Reg<prince_region1_iv_code13::PrinceRegion1IvCode13Spec>;
+#[doc = "no description available"]
 pub mod prince_region1_iv_code13;
-#[doc = "PRINCE_REGION2_IV_CODE0 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE0_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE0 =
-    crate::Reg<prince_region2_iv_code0::PRINCE_REGION2_IV_CODE0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code0`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE0")]
+pub type PrinceRegion2IvCode0 =
+    crate::Reg<prince_region2_iv_code0::PrinceRegion2IvCode0Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code0;
-#[doc = "PRINCE_REGION2_IV_HEADER0 register accessor: an alias for `Reg<PRINCE_REGION2_IV_HEADER0_SPEC>`"]
-pub type PRINCE_REGION2_IV_HEADER0 =
-    crate::Reg<prince_region2_iv_header0::PRINCE_REGION2_IV_HEADER0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_HEADER0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_header0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_header0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_header0`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_HEADER0")]
+pub type PrinceRegion2IvHeader0 =
+    crate::Reg<prince_region2_iv_header0::PrinceRegion2IvHeader0Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_header0;
-#[doc = "PRINCE_REGION2_IV_CODE1 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE1_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE1 =
-    crate::Reg<prince_region2_iv_code1::PRINCE_REGION2_IV_CODE1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code1`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE1")]
+pub type PrinceRegion2IvCode1 =
+    crate::Reg<prince_region2_iv_code1::PrinceRegion2IvCode1Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code1;
-#[doc = "PRINCE_REGION2_IV_HEADER1 register accessor: an alias for `Reg<PRINCE_REGION2_IV_HEADER1_SPEC>`"]
-pub type PRINCE_REGION2_IV_HEADER1 =
-    crate::Reg<prince_region2_iv_header1::PRINCE_REGION2_IV_HEADER1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_HEADER1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_header1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_header1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_header1`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_HEADER1")]
+pub type PrinceRegion2IvHeader1 =
+    crate::Reg<prince_region2_iv_header1::PrinceRegion2IvHeader1Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_header1;
-#[doc = "PRINCE_REGION2_IV_BODY0 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY0_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY0 =
-    crate::Reg<prince_region2_iv_body0::PRINCE_REGION2_IV_BODY0_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY0 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body0`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY0")]
+pub type PrinceRegion2IvBody0 =
+    crate::Reg<prince_region2_iv_body0::PrinceRegion2IvBody0Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body0;
-#[doc = "PRINCE_REGION2_IV_CODE2 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE2_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE2 =
-    crate::Reg<prince_region2_iv_code2::PRINCE_REGION2_IV_CODE2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code2`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE2")]
+pub type PrinceRegion2IvCode2 =
+    crate::Reg<prince_region2_iv_code2::PrinceRegion2IvCode2Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code2;
-#[doc = "PRINCE_REGION2_IV_BODY1 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY1_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY1 =
-    crate::Reg<prince_region2_iv_body1::PRINCE_REGION2_IV_BODY1_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY1 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body1`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY1")]
+pub type PrinceRegion2IvBody1 =
+    crate::Reg<prince_region2_iv_body1::PrinceRegion2IvBody1Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body1;
-#[doc = "PRINCE_REGION2_IV_CODE3 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE3_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE3 =
-    crate::Reg<prince_region2_iv_code3::PRINCE_REGION2_IV_CODE3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code3`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE3")]
+pub type PrinceRegion2IvCode3 =
+    crate::Reg<prince_region2_iv_code3::PrinceRegion2IvCode3Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code3;
-#[doc = "PRINCE_REGION2_IV_BODY2 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY2_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY2 =
-    crate::Reg<prince_region2_iv_body2::PRINCE_REGION2_IV_BODY2_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY2 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body2`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY2")]
+pub type PrinceRegion2IvBody2 =
+    crate::Reg<prince_region2_iv_body2::PrinceRegion2IvBody2Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body2;
-#[doc = "PRINCE_REGION2_IV_CODE4 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE4_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE4 =
-    crate::Reg<prince_region2_iv_code4::PRINCE_REGION2_IV_CODE4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code4`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE4")]
+pub type PrinceRegion2IvCode4 =
+    crate::Reg<prince_region2_iv_code4::PrinceRegion2IvCode4Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code4;
-#[doc = "PRINCE_REGION2_IV_BODY3 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY3_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY3 =
-    crate::Reg<prince_region2_iv_body3::PRINCE_REGION2_IV_BODY3_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY3 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body3`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY3")]
+pub type PrinceRegion2IvBody3 =
+    crate::Reg<prince_region2_iv_body3::PrinceRegion2IvBody3Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body3;
-#[doc = "PRINCE_REGION2_IV_CODE5 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE5_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE5 =
-    crate::Reg<prince_region2_iv_code5::PRINCE_REGION2_IV_CODE5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code5`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE5")]
+pub type PrinceRegion2IvCode5 =
+    crate::Reg<prince_region2_iv_code5::PrinceRegion2IvCode5Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code5;
-#[doc = "PRINCE_REGION2_IV_BODY4 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY4_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY4 =
-    crate::Reg<prince_region2_iv_body4::PRINCE_REGION2_IV_BODY4_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY4 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body4::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body4::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body4`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY4")]
+pub type PrinceRegion2IvBody4 =
+    crate::Reg<prince_region2_iv_body4::PrinceRegion2IvBody4Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body4;
-#[doc = "PRINCE_REGION2_IV_CODE6 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE6_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE6 =
-    crate::Reg<prince_region2_iv_code6::PRINCE_REGION2_IV_CODE6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code6`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE6")]
+pub type PrinceRegion2IvCode6 =
+    crate::Reg<prince_region2_iv_code6::PrinceRegion2IvCode6Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code6;
-#[doc = "PRINCE_REGION2_IV_BODY5 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY5_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY5 =
-    crate::Reg<prince_region2_iv_body5::PRINCE_REGION2_IV_BODY5_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY5 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body5::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body5::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body5`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY5")]
+pub type PrinceRegion2IvBody5 =
+    crate::Reg<prince_region2_iv_body5::PrinceRegion2IvBody5Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body5;
-#[doc = "PRINCE_REGION2_IV_CODE7 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE7_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE7 =
-    crate::Reg<prince_region2_iv_code7::PRINCE_REGION2_IV_CODE7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code7`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE7")]
+pub type PrinceRegion2IvCode7 =
+    crate::Reg<prince_region2_iv_code7::PrinceRegion2IvCode7Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code7;
-#[doc = "PRINCE_REGION2_IV_BODY6 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY6_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY6 =
-    crate::Reg<prince_region2_iv_body6::PRINCE_REGION2_IV_BODY6_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY6 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body6::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body6::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body6`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY6")]
+pub type PrinceRegion2IvBody6 =
+    crate::Reg<prince_region2_iv_body6::PrinceRegion2IvBody6Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body6;
-#[doc = "PRINCE_REGION2_IV_CODE8 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE8_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE8 =
-    crate::Reg<prince_region2_iv_code8::PRINCE_REGION2_IV_CODE8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code8`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE8")]
+pub type PrinceRegion2IvCode8 =
+    crate::Reg<prince_region2_iv_code8::PrinceRegion2IvCode8Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code8;
-#[doc = "PRINCE_REGION2_IV_BODY7 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY7_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY7 =
-    crate::Reg<prince_region2_iv_body7::PRINCE_REGION2_IV_BODY7_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY7 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body7::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body7::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body7`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY7")]
+pub type PrinceRegion2IvBody7 =
+    crate::Reg<prince_region2_iv_body7::PrinceRegion2IvBody7Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body7;
-#[doc = "PRINCE_REGION2_IV_CODE9 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE9_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE9 =
-    crate::Reg<prince_region2_iv_code9::PRINCE_REGION2_IV_CODE9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code9`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE9")]
+pub type PrinceRegion2IvCode9 =
+    crate::Reg<prince_region2_iv_code9::PrinceRegion2IvCode9Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code9;
-#[doc = "PRINCE_REGION2_IV_BODY8 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY8_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY8 =
-    crate::Reg<prince_region2_iv_body8::PRINCE_REGION2_IV_BODY8_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY8 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body8::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body8::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body8`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY8")]
+pub type PrinceRegion2IvBody8 =
+    crate::Reg<prince_region2_iv_body8::PrinceRegion2IvBody8Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body8;
-#[doc = "PRINCE_REGION2_IV_CODE10 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE10_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE10 =
-    crate::Reg<prince_region2_iv_code10::PRINCE_REGION2_IV_CODE10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code10`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE10")]
+pub type PrinceRegion2IvCode10 =
+    crate::Reg<prince_region2_iv_code10::PrinceRegion2IvCode10Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code10;
-#[doc = "PRINCE_REGION2_IV_BODY9 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY9_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY9 =
-    crate::Reg<prince_region2_iv_body9::PRINCE_REGION2_IV_BODY9_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY9 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body9::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body9::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body9`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY9")]
+pub type PrinceRegion2IvBody9 =
+    crate::Reg<prince_region2_iv_body9::PrinceRegion2IvBody9Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body9;
-#[doc = "PRINCE_REGION2_IV_CODE11 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE11_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE11 =
-    crate::Reg<prince_region2_iv_code11::PRINCE_REGION2_IV_CODE11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code11`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE11")]
+pub type PrinceRegion2IvCode11 =
+    crate::Reg<prince_region2_iv_code11::PrinceRegion2IvCode11Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code11;
-#[doc = "PRINCE_REGION2_IV_BODY10 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY10_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY10 =
-    crate::Reg<prince_region2_iv_body10::PRINCE_REGION2_IV_BODY10_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY10 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body10::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body10::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body10`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY10")]
+pub type PrinceRegion2IvBody10 =
+    crate::Reg<prince_region2_iv_body10::PrinceRegion2IvBody10Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body10;
-#[doc = "PRINCE_REGION2_IV_CODE12 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE12_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE12 =
-    crate::Reg<prince_region2_iv_code12::PRINCE_REGION2_IV_CODE12_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE12 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code12::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code12::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code12`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE12")]
+pub type PrinceRegion2IvCode12 =
+    crate::Reg<prince_region2_iv_code12::PrinceRegion2IvCode12Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code12;
-#[doc = "PRINCE_REGION2_IV_BODY11 register accessor: an alias for `Reg<PRINCE_REGION2_IV_BODY11_SPEC>`"]
-pub type PRINCE_REGION2_IV_BODY11 =
-    crate::Reg<prince_region2_iv_body11::PRINCE_REGION2_IV_BODY11_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_BODY11 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_body11::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_body11::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_body11`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_BODY11")]
+pub type PrinceRegion2IvBody11 =
+    crate::Reg<prince_region2_iv_body11::PrinceRegion2IvBody11Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_body11;
-#[doc = "PRINCE_REGION2_IV_CODE13 register accessor: an alias for `Reg<PRINCE_REGION2_IV_CODE13_SPEC>`"]
-pub type PRINCE_REGION2_IV_CODE13 =
-    crate::Reg<prince_region2_iv_code13::PRINCE_REGION2_IV_CODE13_SPEC>;
-#[doc = "."]
+#[doc = "PRINCE_REGION2_IV_CODE13 (rw) register accessor: no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_iv_code13::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_iv_code13::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@prince_region2_iv_code13`]
+module"]
+#[doc(alias = "PRINCE_REGION2_IV_CODE13")]
+pub type PrinceRegion2IvCode13 =
+    crate::Reg<prince_region2_iv_code13::PrinceRegion2IvCode13Spec>;
+#[doc = "no description available"]
 pub mod prince_region2_iv_code13;
-#[doc = "CUSTOMER_DEFINED register accessor: an alias for `Reg<CUSTOMER_DEFINED_SPEC>`"]
-pub type CUSTOMER_DEFINED = crate::Reg<customer_defined::CUSTOMER_DEFINED_SPEC>;
+#[doc = "CUSTOMER_DEFINED (rw) register accessor: Customer Defined (Programable through ROM API)\n\nYou can [`read`](crate::Reg::read) this register and get [`customer_defined::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`customer_defined::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@customer_defined`]
+module"]
+#[doc(alias = "CUSTOMER_DEFINED")]
+pub type CustomerDefined = crate::Reg<customer_defined::CustomerDefinedSpec>;
 #[doc = "Customer Defined (Programable through ROM API)"]
 pub mod customer_defined;
-#[doc = "SHA256_DIGEST register accessor: an alias for `Reg<SHA256_DIGEST_SPEC>`"]
-pub type SHA256_DIGEST = crate::Reg<sha256_digest::SHA256_DIGEST_SPEC>;
-#[doc = "SHA256_DIGEST0 for DIGEST\\[31:0\\]
-SHA256_DIGEST1 for DIGEST\\[63:32\\]
-SHA256_DIGEST2 for DIGEST\\[95:64\\]
-SHA256_DIGEST3 for DIGEST\\[127:96\\]
-SHA256_DIGEST4 for DIGEST\\[159:128\\]
-SHA256_DIGEST5 for DIGEST\\[191:160\\]
-SHA256_DIGEST6 for DIGEST\\[223:192\\]
-SHA256_DIGEST7 for DIGEST\\[255:224\\]"]
+#[doc = "SHA256_DIGEST (rw) register accessor: SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]\n\nYou can [`read`](crate::Reg::read) this register and get [`sha256_digest::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sha256_digest::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@sha256_digest`]
+module"]
+#[doc(alias = "SHA256_DIGEST")]
+pub type Sha256Digest = crate::Reg<sha256_digest::Sha256DigestSpec>;
+#[doc = "SHA256_DIGESTindex for DIGEST\\[((index * 32) + 31):(index * 32)\\]"]
 pub mod sha256_digest;

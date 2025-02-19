@@ -1,207 +1,67 @@
 #[doc = "Register `PORTMODE` reader"]
-pub struct R(crate::R<PORTMODE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PORTMODE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PORTMODE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PORTMODE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PortmodeSpec>;
 #[doc = "Register `PORTMODE` writer"]
-pub struct W(crate::W<PORTMODE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PORTMODE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PORTMODE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PORTMODE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PortmodeSpec>;
 #[doc = "Field `ID` reader - Port ID pin value."]
-pub struct ID_R(crate::FieldReader<bool, bool>);
-impl ID_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ID_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ID_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IdR = crate::BitReader;
 #[doc = "Field `ID` writer - Port ID pin value."]
-pub struct ID_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ID_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type IdW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `ID_EN` reader - Port ID pin pull-up enable."]
-pub struct ID_EN_R(crate::FieldReader<bool, bool>);
-impl ID_EN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ID_EN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ID_EN_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IdEnR = crate::BitReader;
 #[doc = "Field `ID_EN` writer - Port ID pin pull-up enable."]
-pub struct ID_EN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ID_EN_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
-        self.w
-    }
-}
+pub type IdEnW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `DEV_ENABLE` reader - 1: device 0: host."]
-pub struct DEV_ENABLE_R(crate::FieldReader<bool, bool>);
-impl DEV_ENABLE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        DEV_ENABLE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for DEV_ENABLE_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DevEnableR = crate::BitReader;
 #[doc = "Field `DEV_ENABLE` writer - 1: device 0: host."]
-pub struct DEV_ENABLE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DEV_ENABLE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 16)) | ((value as u32 & 0x01) << 16);
-        self.w
-    }
-}
+pub type DevEnableW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Port ID pin value."]
     #[inline(always)]
-    pub fn id(&self) -> ID_R {
-        ID_R::new((self.bits & 0x01) != 0)
+    pub fn id(&self) -> IdR {
+        IdR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 8 - Port ID pin pull-up enable."]
     #[inline(always)]
-    pub fn id_en(&self) -> ID_EN_R {
-        ID_EN_R::new(((self.bits >> 8) & 0x01) != 0)
+    pub fn id_en(&self) -> IdEnR {
+        IdEnR::new(((self.bits >> 8) & 1) != 0)
     }
     #[doc = "Bit 16 - 1: device 0: host."]
     #[inline(always)]
-    pub fn dev_enable(&self) -> DEV_ENABLE_R {
-        DEV_ENABLE_R::new(((self.bits >> 16) & 0x01) != 0)
+    pub fn dev_enable(&self) -> DevEnableR {
+        DevEnableR::new(((self.bits >> 16) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Port ID pin value."]
     #[inline(always)]
-    pub fn id(&mut self) -> ID_W {
-        ID_W { w: self }
+    pub fn id(&mut self) -> IdW<PortmodeSpec> {
+        IdW::new(self, 0)
     }
     #[doc = "Bit 8 - Port ID pin pull-up enable."]
     #[inline(always)]
-    pub fn id_en(&mut self) -> ID_EN_W {
-        ID_EN_W { w: self }
+    pub fn id_en(&mut self) -> IdEnW<PortmodeSpec> {
+        IdEnW::new(self, 8)
     }
     #[doc = "Bit 16 - 1: device 0: host."]
     #[inline(always)]
-    pub fn dev_enable(&mut self) -> DEV_ENABLE_W {
-        DEV_ENABLE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn dev_enable(&mut self) -> DevEnableW<PortmodeSpec> {
+        DevEnableW::new(self, 16)
     }
 }
-#[doc = "Controls the port if it is attached to the host block or the device block\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [portmode](index.html) module"]
-pub struct PORTMODE_SPEC;
-impl crate::RegisterSpec for PORTMODE_SPEC {
+#[doc = "Controls the port if it is attached to the host block or the device block\n\nYou can [`read`](crate::Reg::read) this register and get [`portmode::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`portmode::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PortmodeSpec;
+impl crate::RegisterSpec for PortmodeSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [portmode::R](R) reader structure"]
-impl crate::Readable for PORTMODE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [portmode::W](W) writer structure"]
-impl crate::Writable for PORTMODE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`portmode::R`](R) reader structure"]
+impl crate::Readable for PortmodeSpec {}
+#[doc = "`write(|w| ..)` method takes [`portmode::W`](W) writer structure"]
+impl crate::Writable for PortmodeSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PORTMODE to value 0"]
-impl crate::Resettable for PORTMODE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PortmodeSpec {
+    const RESET_VALUE: u32 = 0;
 }

@@ -1,348 +1,109 @@
 #[doc = "Register `CTRL` reader"]
-pub struct R(crate::R<CTRL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<CTRL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<CTRL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<CtrlSpec>;
 #[doc = "Register `CTRL` writer"]
-pub struct W(crate::W<CTRL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<CTRL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<CTRL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<CTRL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<CtrlSpec>;
 #[doc = "Field `zeroize` reader - Begin Zeroize operation for PUF and go to Error state"]
-pub struct ZEROIZE_R(crate::FieldReader<bool, bool>);
-impl ZEROIZE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ZEROIZE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ZEROIZE_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type ZeroizeR = crate::BitReader;
 #[doc = "Field `zeroize` writer - Begin Zeroize operation for PUF and go to Error state"]
-pub struct ZEROIZE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ZEROIZE_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
-    }
-}
+pub type ZeroizeW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `enroll` reader - Begin Enroll operation"]
-pub struct ENROLL_R(crate::FieldReader<bool, bool>);
-impl ENROLL_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        ENROLL_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for ENROLL_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type EnrollR = crate::BitReader;
 #[doc = "Field `enroll` writer - Begin Enroll operation"]
-pub struct ENROLL_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ENROLL_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
-    }
-}
+pub type EnrollW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `start` reader - Begin Start operation"]
-pub struct START_R(crate::FieldReader<bool, bool>);
-impl START_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        START_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for START_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type StartR = crate::BitReader;
 #[doc = "Field `start` writer - Begin Start operation"]
-pub struct START_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> START_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
-    }
-}
+pub type StartW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GENERATEKEY` reader - Begin Set Intrinsic Key operation"]
-pub struct GENERATEKEY_R(crate::FieldReader<bool, bool>);
-impl GENERATEKEY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GENERATEKEY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for GENERATEKEY_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type GeneratekeyR = crate::BitReader;
 #[doc = "Field `GENERATEKEY` writer - Begin Set Intrinsic Key operation"]
-pub struct GENERATEKEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GENERATEKEY_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
-    }
-}
+pub type GeneratekeyW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `SETKEY` reader - Begin Set User Key operation"]
-pub struct SETKEY_R(crate::FieldReader<bool, bool>);
-impl SETKEY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        SETKEY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SETKEY_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SetkeyR = crate::BitReader;
 #[doc = "Field `SETKEY` writer - Begin Set User Key operation"]
-pub struct SETKEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETKEY_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
-    }
-}
+pub type SetkeyW<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `GETKEY` reader - Begin Get Key operation"]
-pub struct GETKEY_R(crate::FieldReader<bool, bool>);
-impl GETKEY_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        GETKEY_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for GETKEY_R {
-    type Target = crate::FieldReader<bool, bool>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type GetkeyR = crate::BitReader;
 #[doc = "Field `GETKEY` writer - Begin Get Key operation"]
-pub struct GETKEY_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> GETKEY_W<'a> {
-    #[doc = r"Sets the field bit"]
-    #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r"Clears the field bit"]
-    #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
-    }
-}
+pub type GetkeyW<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
     #[doc = "Bit 0 - Begin Zeroize operation for PUF and go to Error state"]
     #[inline(always)]
-    pub fn zeroize(&self) -> ZEROIZE_R {
-        ZEROIZE_R::new((self.bits & 0x01) != 0)
+    pub fn zeroize(&self) -> ZeroizeR {
+        ZeroizeR::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Begin Enroll operation"]
     #[inline(always)]
-    pub fn enroll(&self) -> ENROLL_R {
-        ENROLL_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn enroll(&self) -> EnrollR {
+        EnrollR::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Begin Start operation"]
     #[inline(always)]
-    pub fn start(&self) -> START_R {
-        START_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn start(&self) -> StartR {
+        StartR::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Begin Set Intrinsic Key operation"]
     #[inline(always)]
-    pub fn generatekey(&self) -> GENERATEKEY_R {
-        GENERATEKEY_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn generatekey(&self) -> GeneratekeyR {
+        GeneratekeyR::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Begin Set User Key operation"]
     #[inline(always)]
-    pub fn setkey(&self) -> SETKEY_R {
-        SETKEY_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn setkey(&self) -> SetkeyR {
+        SetkeyR::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 6 - Begin Get Key operation"]
     #[inline(always)]
-    pub fn getkey(&self) -> GETKEY_R {
-        GETKEY_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn getkey(&self) -> GetkeyR {
+        GetkeyR::new(((self.bits >> 6) & 1) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Begin Zeroize operation for PUF and go to Error state"]
     #[inline(always)]
-    pub fn zeroize(&mut self) -> ZEROIZE_W {
-        ZEROIZE_W { w: self }
+    pub fn zeroize(&mut self) -> ZeroizeW<CtrlSpec> {
+        ZeroizeW::new(self, 0)
     }
     #[doc = "Bit 1 - Begin Enroll operation"]
     #[inline(always)]
-    pub fn enroll(&mut self) -> ENROLL_W {
-        ENROLL_W { w: self }
+    pub fn enroll(&mut self) -> EnrollW<CtrlSpec> {
+        EnrollW::new(self, 1)
     }
     #[doc = "Bit 2 - Begin Start operation"]
     #[inline(always)]
-    pub fn start(&mut self) -> START_W {
-        START_W { w: self }
+    pub fn start(&mut self) -> StartW<CtrlSpec> {
+        StartW::new(self, 2)
     }
     #[doc = "Bit 3 - Begin Set Intrinsic Key operation"]
     #[inline(always)]
-    pub fn generatekey(&mut self) -> GENERATEKEY_W {
-        GENERATEKEY_W { w: self }
+    pub fn generatekey(&mut self) -> GeneratekeyW<CtrlSpec> {
+        GeneratekeyW::new(self, 3)
     }
     #[doc = "Bit 4 - Begin Set User Key operation"]
     #[inline(always)]
-    pub fn setkey(&mut self) -> SETKEY_W {
-        SETKEY_W { w: self }
+    pub fn setkey(&mut self) -> SetkeyW<CtrlSpec> {
+        SetkeyW::new(self, 4)
     }
     #[doc = "Bit 6 - Begin Get Key operation"]
     #[inline(always)]
-    pub fn getkey(&mut self) -> GETKEY_W {
-        GETKEY_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn getkey(&mut self) -> GetkeyW<CtrlSpec> {
+        GetkeyW::new(self, 6)
     }
 }
-#[doc = "PUF Control register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [ctrl](index.html) module"]
-pub struct CTRL_SPEC;
-impl crate::RegisterSpec for CTRL_SPEC {
+#[doc = "PUF Control register\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct CtrlSpec;
+impl crate::RegisterSpec for CtrlSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [ctrl::R](R) reader structure"]
-impl crate::Readable for CTRL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [ctrl::W](W) writer structure"]
-impl crate::Writable for CTRL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`ctrl::R`](R) reader structure"]
+impl crate::Readable for CtrlSpec {}
+#[doc = "`write(|w| ..)` method takes [`ctrl::W`](W) writer structure"]
+impl crate::Writable for CtrlSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
-impl crate::Resettable for CTRL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for CtrlSpec {
+    const RESET_VALUE: u32 = 0;
 }

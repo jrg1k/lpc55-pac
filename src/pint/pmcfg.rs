@@ -1,2036 +1,1650 @@
 #[doc = "Register `PMCFG` reader"]
-pub struct R(crate::R<PMCFG_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PMCFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PMCFG_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PMCFG_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PmcfgSpec>;
 #[doc = "Register `PMCFG` writer"]
-pub struct W(crate::W<PMCFG_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PMCFG_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PMCFG_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PMCFG_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PmcfgSpec>;
 #[doc = "Determines whether slice 0 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS0_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts0 {
     #[doc = "0: No effect. Slice 0 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 0 is the endpoint of a product term (minterm). Pin interrupt 0 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS0_A> for bool {
+impl From<ProdEndpts0> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS0_A) -> Self {
+    fn from(variant: ProdEndpts0) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS0` reader - Determines whether slice 0 is an endpoint."]
-pub struct PROD_ENDPTS0_R(crate::FieldReader<bool, PROD_ENDPTS0_A>);
-impl PROD_ENDPTS0_R {
+pub type ProdEndpts0R = crate::BitReader<ProdEndpts0>;
+impl ProdEndpts0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS0_A {
+    pub const fn variant(&self) -> ProdEndpts0 {
         match self.bits {
-            false => PROD_ENDPTS0_A::NO_EFFECT,
-            true => PROD_ENDPTS0_A::ENDPOINT,
+            false => ProdEndpts0::NoEffect,
+            true => ProdEndpts0::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS0_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS0_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS0_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS0` writer - Determines whether slice 0 is an endpoint."]
-pub struct PROD_ENDPTS0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS0_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 0 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS0_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts0::NoEffect
     }
     #[doc = "endpoint. Slice 0 is the endpoint of a product term (minterm). Pin interrupt 0 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS0_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts0::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS0` writer - Determines whether slice 0 is an endpoint."]
+pub type ProdEndpts0W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts0>;
+impl<'a, REG> ProdEndpts0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 0 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts0::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 0 is the endpoint of a product term (minterm). Pin interrupt 0 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts0::Endpoint)
     }
 }
 #[doc = "Determines whether slice 1 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS1_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts1 {
     #[doc = "0: No effect. Slice 1 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 1 is the endpoint of a product term (minterm). Pin interrupt 1 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS1_A> for bool {
+impl From<ProdEndpts1> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS1_A) -> Self {
+    fn from(variant: ProdEndpts1) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS1` reader - Determines whether slice 1 is an endpoint."]
-pub struct PROD_ENDPTS1_R(crate::FieldReader<bool, PROD_ENDPTS1_A>);
-impl PROD_ENDPTS1_R {
+pub type ProdEndpts1R = crate::BitReader<ProdEndpts1>;
+impl ProdEndpts1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS1_A {
+    pub const fn variant(&self) -> ProdEndpts1 {
         match self.bits {
-            false => PROD_ENDPTS1_A::NO_EFFECT,
-            true => PROD_ENDPTS1_A::ENDPOINT,
+            false => ProdEndpts1::NoEffect,
+            true => ProdEndpts1::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS1_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS1_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS1_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS1` writer - Determines whether slice 1 is an endpoint."]
-pub struct PROD_ENDPTS1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS1_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 1 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS1_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts1::NoEffect
     }
     #[doc = "endpoint. Slice 1 is the endpoint of a product term (minterm). Pin interrupt 1 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS1_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts1::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS1` writer - Determines whether slice 1 is an endpoint."]
+pub type ProdEndpts1W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts1>;
+impl<'a, REG> ProdEndpts1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 1 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts1::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 1 is the endpoint of a product term (minterm). Pin interrupt 1 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts1::Endpoint)
     }
 }
 #[doc = "Determines whether slice 2 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS2_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts2 {
     #[doc = "0: No effect. Slice 2 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 2 is the endpoint of a product term (minterm). Pin interrupt 2 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS2_A> for bool {
+impl From<ProdEndpts2> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS2_A) -> Self {
+    fn from(variant: ProdEndpts2) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS2` reader - Determines whether slice 2 is an endpoint."]
-pub struct PROD_ENDPTS2_R(crate::FieldReader<bool, PROD_ENDPTS2_A>);
-impl PROD_ENDPTS2_R {
+pub type ProdEndpts2R = crate::BitReader<ProdEndpts2>;
+impl ProdEndpts2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS2_A {
+    pub const fn variant(&self) -> ProdEndpts2 {
         match self.bits {
-            false => PROD_ENDPTS2_A::NO_EFFECT,
-            true => PROD_ENDPTS2_A::ENDPOINT,
+            false => ProdEndpts2::NoEffect,
+            true => ProdEndpts2::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS2_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS2_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS2_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS2` writer - Determines whether slice 2 is an endpoint."]
-pub struct PROD_ENDPTS2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS2_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 2 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS2_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts2::NoEffect
     }
     #[doc = "endpoint. Slice 2 is the endpoint of a product term (minterm). Pin interrupt 2 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS2_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts2::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS2` writer - Determines whether slice 2 is an endpoint."]
+pub type ProdEndpts2W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts2>;
+impl<'a, REG> ProdEndpts2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 2 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts2::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 2 is the endpoint of a product term (minterm). Pin interrupt 2 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts2::Endpoint)
     }
 }
 #[doc = "Determines whether slice 3 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS3_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts3 {
     #[doc = "0: No effect. Slice 3 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 3 is the endpoint of a product term (minterm). Pin interrupt 3 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS3_A> for bool {
+impl From<ProdEndpts3> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS3_A) -> Self {
+    fn from(variant: ProdEndpts3) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS3` reader - Determines whether slice 3 is an endpoint."]
-pub struct PROD_ENDPTS3_R(crate::FieldReader<bool, PROD_ENDPTS3_A>);
-impl PROD_ENDPTS3_R {
+pub type ProdEndpts3R = crate::BitReader<ProdEndpts3>;
+impl ProdEndpts3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS3_A {
+    pub const fn variant(&self) -> ProdEndpts3 {
         match self.bits {
-            false => PROD_ENDPTS3_A::NO_EFFECT,
-            true => PROD_ENDPTS3_A::ENDPOINT,
+            false => ProdEndpts3::NoEffect,
+            true => ProdEndpts3::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS3_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS3_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS3_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS3` writer - Determines whether slice 3 is an endpoint."]
-pub struct PROD_ENDPTS3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS3_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 3 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS3_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts3::NoEffect
     }
     #[doc = "endpoint. Slice 3 is the endpoint of a product term (minterm). Pin interrupt 3 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS3_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts3::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS3` writer - Determines whether slice 3 is an endpoint."]
+pub type ProdEndpts3W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts3>;
+impl<'a, REG> ProdEndpts3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 3 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts3::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 3 is the endpoint of a product term (minterm). Pin interrupt 3 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts3::Endpoint)
     }
 }
 #[doc = "Determines whether slice 4 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS4_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts4 {
     #[doc = "0: No effect. Slice 4 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 4 is the endpoint of a product term (minterm). Pin interrupt 4 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS4_A> for bool {
+impl From<ProdEndpts4> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS4_A) -> Self {
+    fn from(variant: ProdEndpts4) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS4` reader - Determines whether slice 4 is an endpoint."]
-pub struct PROD_ENDPTS4_R(crate::FieldReader<bool, PROD_ENDPTS4_A>);
-impl PROD_ENDPTS4_R {
+pub type ProdEndpts4R = crate::BitReader<ProdEndpts4>;
+impl ProdEndpts4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS4_A {
+    pub const fn variant(&self) -> ProdEndpts4 {
         match self.bits {
-            false => PROD_ENDPTS4_A::NO_EFFECT,
-            true => PROD_ENDPTS4_A::ENDPOINT,
+            false => ProdEndpts4::NoEffect,
+            true => ProdEndpts4::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS4_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS4_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS4_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS4` writer - Determines whether slice 4 is an endpoint."]
-pub struct PROD_ENDPTS4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS4_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 4 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS4_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts4::NoEffect
     }
     #[doc = "endpoint. Slice 4 is the endpoint of a product term (minterm). Pin interrupt 4 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS4_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts4::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS4` writer - Determines whether slice 4 is an endpoint."]
+pub type ProdEndpts4W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts4>;
+impl<'a, REG> ProdEndpts4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 4 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts4::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 4 is the endpoint of a product term (minterm). Pin interrupt 4 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts4::Endpoint)
     }
 }
 #[doc = "Determines whether slice 5 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS5_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts5 {
     #[doc = "0: No effect. Slice 5 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 5 is the endpoint of a product term (minterm). Pin interrupt 5 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS5_A> for bool {
+impl From<ProdEndpts5> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS5_A) -> Self {
+    fn from(variant: ProdEndpts5) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS5` reader - Determines whether slice 5 is an endpoint."]
-pub struct PROD_ENDPTS5_R(crate::FieldReader<bool, PROD_ENDPTS5_A>);
-impl PROD_ENDPTS5_R {
+pub type ProdEndpts5R = crate::BitReader<ProdEndpts5>;
+impl ProdEndpts5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS5_A {
+    pub const fn variant(&self) -> ProdEndpts5 {
         match self.bits {
-            false => PROD_ENDPTS5_A::NO_EFFECT,
-            true => PROD_ENDPTS5_A::ENDPOINT,
+            false => ProdEndpts5::NoEffect,
+            true => ProdEndpts5::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS5_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS5_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS5_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS5` writer - Determines whether slice 5 is an endpoint."]
-pub struct PROD_ENDPTS5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS5_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 5 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS5_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts5::NoEffect
     }
     #[doc = "endpoint. Slice 5 is the endpoint of a product term (minterm). Pin interrupt 5 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS5_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts5::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS5` writer - Determines whether slice 5 is an endpoint."]
+pub type ProdEndpts5W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts5>;
+impl<'a, REG> ProdEndpts5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 5 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts5::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 5 is the endpoint of a product term (minterm). Pin interrupt 5 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts5::Endpoint)
     }
 }
 #[doc = "Determines whether slice 6 is an endpoint.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PROD_ENDPTS6_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ProdEndpts6 {
     #[doc = "0: No effect. Slice 6 is not an endpoint."]
-    NO_EFFECT = 0,
+    NoEffect = 0,
     #[doc = "1: endpoint. Slice 6 is the endpoint of a product term (minterm). Pin interrupt 6 in the NVIC is raised if the minterm evaluates as true."]
-    ENDPOINT = 1,
+    Endpoint = 1,
 }
-impl From<PROD_ENDPTS6_A> for bool {
+impl From<ProdEndpts6> for bool {
     #[inline(always)]
-    fn from(variant: PROD_ENDPTS6_A) -> Self {
+    fn from(variant: ProdEndpts6) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `PROD_ENDPTS6` reader - Determines whether slice 6 is an endpoint."]
-pub struct PROD_ENDPTS6_R(crate::FieldReader<bool, PROD_ENDPTS6_A>);
-impl PROD_ENDPTS6_R {
+pub type ProdEndpts6R = crate::BitReader<ProdEndpts6>;
+impl ProdEndpts6R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        PROD_ENDPTS6_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PROD_ENDPTS6_A {
+    pub const fn variant(&self) -> ProdEndpts6 {
         match self.bits {
-            false => PROD_ENDPTS6_A::NO_EFFECT,
-            true => PROD_ENDPTS6_A::ENDPOINT,
+            false => ProdEndpts6::NoEffect,
+            true => ProdEndpts6::Endpoint,
         }
-    }
-    #[doc = "Checks if the value of the field is `NO_EFFECT`"]
-    #[inline(always)]
-    pub fn is_no_effect(&self) -> bool {
-        **self == PROD_ENDPTS6_A::NO_EFFECT
-    }
-    #[doc = "Checks if the value of the field is `ENDPOINT`"]
-    #[inline(always)]
-    pub fn is_endpoint(&self) -> bool {
-        **self == PROD_ENDPTS6_A::ENDPOINT
-    }
-}
-impl core::ops::Deref for PROD_ENDPTS6_R {
-    type Target = crate::FieldReader<bool, PROD_ENDPTS6_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `PROD_ENDPTS6` writer - Determines whether slice 6 is an endpoint."]
-pub struct PROD_ENDPTS6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PROD_ENDPTS6_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PROD_ENDPTS6_A) -> &'a mut W {
-        self.bit(variant.into())
     }
     #[doc = "No effect. Slice 6 is not an endpoint."]
     #[inline(always)]
-    pub fn no_effect(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS6_A::NO_EFFECT)
+    pub fn is_no_effect(&self) -> bool {
+        *self == ProdEndpts6::NoEffect
     }
     #[doc = "endpoint. Slice 6 is the endpoint of a product term (minterm). Pin interrupt 6 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn endpoint(self) -> &'a mut W {
-        self.variant(PROD_ENDPTS6_A::ENDPOINT)
+    pub fn is_endpoint(&self) -> bool {
+        *self == ProdEndpts6::Endpoint
     }
-    #[doc = r"Sets the field bit"]
+}
+#[doc = "Field `PROD_ENDPTS6` writer - Determines whether slice 6 is an endpoint."]
+pub type ProdEndpts6W<'a, REG> = crate::BitWriter<'a, REG, ProdEndpts6>;
+impl<'a, REG> ProdEndpts6W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+{
+    #[doc = "No effect. Slice 6 is not an endpoint."]
     #[inline(always)]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
+    pub fn no_effect(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts6::NoEffect)
     }
-    #[doc = r"Clears the field bit"]
+    #[doc = "endpoint. Slice 6 is the endpoint of a product term (minterm). Pin interrupt 6 in the NVIC is raised if the minterm evaluates as true."]
     #[inline(always)]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
-        self.w
+    pub fn endpoint(self) -> &'a mut crate::W<REG> {
+        self.variant(ProdEndpts6::Endpoint)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 0.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG0_A {
+pub enum Cfg0 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG0_A> for u8 {
+impl From<Cfg0> for u8 {
     #[inline(always)]
-    fn from(variant: CFG0_A) -> Self {
+    fn from(variant: Cfg0) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg0 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg0 {}
 #[doc = "Field `CFG0` reader - Specifies the match contribution condition for bit slice 0."]
-pub struct CFG0_R(crate::FieldReader<u8, CFG0_A>);
-impl CFG0_R {
+pub type Cfg0R = crate::FieldReader<Cfg0>;
+impl Cfg0R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG0_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG0_A {
+    pub const fn variant(&self) -> Cfg0 {
         match self.bits {
-            0 => CFG0_A::CONSTANT_HIGH,
-            1 => CFG0_A::STICKY_RISING_EDGE,
-            2 => CFG0_A::STICKY_FALLING_EDGE,
-            3 => CFG0_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG0_A::HIGH_LEVEL,
-            5 => CFG0_A::LOW_LEVEL,
-            6 => CFG0_A::CONSTANT_ZERO,
-            7 => CFG0_A::EVENT,
+            0 => Cfg0::ConstantHigh,
+            1 => Cfg0::StickyRisingEdge,
+            2 => Cfg0::StickyFallingEdge,
+            3 => Cfg0::StickyRisingFallingEdge,
+            4 => Cfg0::HighLevel,
+            5 => Cfg0::LowLevel,
+            6 => Cfg0::ConstantZero,
+            7 => Cfg0::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG0_A::CONSTANT_HIGH
+        *self == Cfg0::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG0_A::STICKY_RISING_EDGE
+        *self == Cfg0::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG0_A::STICKY_FALLING_EDGE
+        *self == Cfg0::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG0_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg0::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG0_A::HIGH_LEVEL
+        *self == Cfg0::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG0_A::LOW_LEVEL
+        *self == Cfg0::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG0_A::CONSTANT_ZERO
+        *self == Cfg0::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG0_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG0_R {
-    type Target = crate::FieldReader<u8, CFG0_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg0::Event
     }
 }
 #[doc = "Field `CFG0` writer - Specifies the match contribution condition for bit slice 0."]
-pub struct CFG0_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG0_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG0_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg0W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg0, crate::Safe>;
+impl<'a, REG> Cfg0W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG0_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG0_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG0_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG0_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG0_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG0_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG0_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG0_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 8)) | ((value as u32 & 0x07) << 8);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg0::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 1.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG1_A {
+pub enum Cfg1 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG1_A> for u8 {
+impl From<Cfg1> for u8 {
     #[inline(always)]
-    fn from(variant: CFG1_A) -> Self {
+    fn from(variant: Cfg1) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg1 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg1 {}
 #[doc = "Field `CFG1` reader - Specifies the match contribution condition for bit slice 1."]
-pub struct CFG1_R(crate::FieldReader<u8, CFG1_A>);
-impl CFG1_R {
+pub type Cfg1R = crate::FieldReader<Cfg1>;
+impl Cfg1R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG1_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG1_A {
+    pub const fn variant(&self) -> Cfg1 {
         match self.bits {
-            0 => CFG1_A::CONSTANT_HIGH,
-            1 => CFG1_A::STICKY_RISING_EDGE,
-            2 => CFG1_A::STICKY_FALLING_EDGE,
-            3 => CFG1_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG1_A::HIGH_LEVEL,
-            5 => CFG1_A::LOW_LEVEL,
-            6 => CFG1_A::CONSTANT_ZERO,
-            7 => CFG1_A::EVENT,
+            0 => Cfg1::ConstantHigh,
+            1 => Cfg1::StickyRisingEdge,
+            2 => Cfg1::StickyFallingEdge,
+            3 => Cfg1::StickyRisingFallingEdge,
+            4 => Cfg1::HighLevel,
+            5 => Cfg1::LowLevel,
+            6 => Cfg1::ConstantZero,
+            7 => Cfg1::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG1_A::CONSTANT_HIGH
+        *self == Cfg1::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG1_A::STICKY_RISING_EDGE
+        *self == Cfg1::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG1_A::STICKY_FALLING_EDGE
+        *self == Cfg1::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG1_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg1::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG1_A::HIGH_LEVEL
+        *self == Cfg1::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG1_A::LOW_LEVEL
+        *self == Cfg1::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG1_A::CONSTANT_ZERO
+        *self == Cfg1::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG1_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG1_R {
-    type Target = crate::FieldReader<u8, CFG1_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg1::Event
     }
 }
 #[doc = "Field `CFG1` writer - Specifies the match contribution condition for bit slice 1."]
-pub struct CFG1_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG1_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG1_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg1W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg1, crate::Safe>;
+impl<'a, REG> Cfg1W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG1_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG1_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG1_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG1_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG1_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG1_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG1_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG1_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 11)) | ((value as u32 & 0x07) << 11);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg1::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 2.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG2_A {
+pub enum Cfg2 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG2_A> for u8 {
+impl From<Cfg2> for u8 {
     #[inline(always)]
-    fn from(variant: CFG2_A) -> Self {
+    fn from(variant: Cfg2) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg2 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg2 {}
 #[doc = "Field `CFG2` reader - Specifies the match contribution condition for bit slice 2."]
-pub struct CFG2_R(crate::FieldReader<u8, CFG2_A>);
-impl CFG2_R {
+pub type Cfg2R = crate::FieldReader<Cfg2>;
+impl Cfg2R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG2_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG2_A {
+    pub const fn variant(&self) -> Cfg2 {
         match self.bits {
-            0 => CFG2_A::CONSTANT_HIGH,
-            1 => CFG2_A::STICKY_RISING_EDGE,
-            2 => CFG2_A::STICKY_FALLING_EDGE,
-            3 => CFG2_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG2_A::HIGH_LEVEL,
-            5 => CFG2_A::LOW_LEVEL,
-            6 => CFG2_A::CONSTANT_ZERO,
-            7 => CFG2_A::EVENT,
+            0 => Cfg2::ConstantHigh,
+            1 => Cfg2::StickyRisingEdge,
+            2 => Cfg2::StickyFallingEdge,
+            3 => Cfg2::StickyRisingFallingEdge,
+            4 => Cfg2::HighLevel,
+            5 => Cfg2::LowLevel,
+            6 => Cfg2::ConstantZero,
+            7 => Cfg2::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG2_A::CONSTANT_HIGH
+        *self == Cfg2::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG2_A::STICKY_RISING_EDGE
+        *self == Cfg2::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG2_A::STICKY_FALLING_EDGE
+        *self == Cfg2::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG2_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg2::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG2_A::HIGH_LEVEL
+        *self == Cfg2::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG2_A::LOW_LEVEL
+        *self == Cfg2::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG2_A::CONSTANT_ZERO
+        *self == Cfg2::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG2_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG2_R {
-    type Target = crate::FieldReader<u8, CFG2_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg2::Event
     }
 }
 #[doc = "Field `CFG2` writer - Specifies the match contribution condition for bit slice 2."]
-pub struct CFG2_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG2_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG2_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg2W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg2, crate::Safe>;
+impl<'a, REG> Cfg2W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG2_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG2_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG2_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG2_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG2_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG2_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG2_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG2_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 14)) | ((value as u32 & 0x07) << 14);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg2::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 3.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG3_A {
+pub enum Cfg3 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG3_A> for u8 {
+impl From<Cfg3> for u8 {
     #[inline(always)]
-    fn from(variant: CFG3_A) -> Self {
+    fn from(variant: Cfg3) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg3 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg3 {}
 #[doc = "Field `CFG3` reader - Specifies the match contribution condition for bit slice 3."]
-pub struct CFG3_R(crate::FieldReader<u8, CFG3_A>);
-impl CFG3_R {
+pub type Cfg3R = crate::FieldReader<Cfg3>;
+impl Cfg3R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG3_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG3_A {
+    pub const fn variant(&self) -> Cfg3 {
         match self.bits {
-            0 => CFG3_A::CONSTANT_HIGH,
-            1 => CFG3_A::STICKY_RISING_EDGE,
-            2 => CFG3_A::STICKY_FALLING_EDGE,
-            3 => CFG3_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG3_A::HIGH_LEVEL,
-            5 => CFG3_A::LOW_LEVEL,
-            6 => CFG3_A::CONSTANT_ZERO,
-            7 => CFG3_A::EVENT,
+            0 => Cfg3::ConstantHigh,
+            1 => Cfg3::StickyRisingEdge,
+            2 => Cfg3::StickyFallingEdge,
+            3 => Cfg3::StickyRisingFallingEdge,
+            4 => Cfg3::HighLevel,
+            5 => Cfg3::LowLevel,
+            6 => Cfg3::ConstantZero,
+            7 => Cfg3::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG3_A::CONSTANT_HIGH
+        *self == Cfg3::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG3_A::STICKY_RISING_EDGE
+        *self == Cfg3::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG3_A::STICKY_FALLING_EDGE
+        *self == Cfg3::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG3_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg3::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG3_A::HIGH_LEVEL
+        *self == Cfg3::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG3_A::LOW_LEVEL
+        *self == Cfg3::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG3_A::CONSTANT_ZERO
+        *self == Cfg3::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG3_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG3_R {
-    type Target = crate::FieldReader<u8, CFG3_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg3::Event
     }
 }
 #[doc = "Field `CFG3` writer - Specifies the match contribution condition for bit slice 3."]
-pub struct CFG3_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG3_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG3_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg3W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg3, crate::Safe>;
+impl<'a, REG> Cfg3W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG3_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG3_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG3_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG3_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG3_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG3_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG3_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG3_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 17)) | ((value as u32 & 0x07) << 17);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg3::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 4.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG4_A {
+pub enum Cfg4 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG4_A> for u8 {
+impl From<Cfg4> for u8 {
     #[inline(always)]
-    fn from(variant: CFG4_A) -> Self {
+    fn from(variant: Cfg4) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg4 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg4 {}
 #[doc = "Field `CFG4` reader - Specifies the match contribution condition for bit slice 4."]
-pub struct CFG4_R(crate::FieldReader<u8, CFG4_A>);
-impl CFG4_R {
+pub type Cfg4R = crate::FieldReader<Cfg4>;
+impl Cfg4R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG4_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG4_A {
+    pub const fn variant(&self) -> Cfg4 {
         match self.bits {
-            0 => CFG4_A::CONSTANT_HIGH,
-            1 => CFG4_A::STICKY_RISING_EDGE,
-            2 => CFG4_A::STICKY_FALLING_EDGE,
-            3 => CFG4_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG4_A::HIGH_LEVEL,
-            5 => CFG4_A::LOW_LEVEL,
-            6 => CFG4_A::CONSTANT_ZERO,
-            7 => CFG4_A::EVENT,
+            0 => Cfg4::ConstantHigh,
+            1 => Cfg4::StickyRisingEdge,
+            2 => Cfg4::StickyFallingEdge,
+            3 => Cfg4::StickyRisingFallingEdge,
+            4 => Cfg4::HighLevel,
+            5 => Cfg4::LowLevel,
+            6 => Cfg4::ConstantZero,
+            7 => Cfg4::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG4_A::CONSTANT_HIGH
+        *self == Cfg4::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG4_A::STICKY_RISING_EDGE
+        *self == Cfg4::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG4_A::STICKY_FALLING_EDGE
+        *self == Cfg4::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG4_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg4::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG4_A::HIGH_LEVEL
+        *self == Cfg4::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG4_A::LOW_LEVEL
+        *self == Cfg4::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG4_A::CONSTANT_ZERO
+        *self == Cfg4::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG4_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG4_R {
-    type Target = crate::FieldReader<u8, CFG4_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg4::Event
     }
 }
 #[doc = "Field `CFG4` writer - Specifies the match contribution condition for bit slice 4."]
-pub struct CFG4_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG4_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG4_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg4W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg4, crate::Safe>;
+impl<'a, REG> Cfg4W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG4_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG4_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG4_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG4_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG4_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG4_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG4_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG4_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 20)) | ((value as u32 & 0x07) << 20);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg4::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 5.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG5_A {
+pub enum Cfg5 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG5_A> for u8 {
+impl From<Cfg5> for u8 {
     #[inline(always)]
-    fn from(variant: CFG5_A) -> Self {
+    fn from(variant: Cfg5) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg5 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg5 {}
 #[doc = "Field `CFG5` reader - Specifies the match contribution condition for bit slice 5."]
-pub struct CFG5_R(crate::FieldReader<u8, CFG5_A>);
-impl CFG5_R {
+pub type Cfg5R = crate::FieldReader<Cfg5>;
+impl Cfg5R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG5_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG5_A {
+    pub const fn variant(&self) -> Cfg5 {
         match self.bits {
-            0 => CFG5_A::CONSTANT_HIGH,
-            1 => CFG5_A::STICKY_RISING_EDGE,
-            2 => CFG5_A::STICKY_FALLING_EDGE,
-            3 => CFG5_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG5_A::HIGH_LEVEL,
-            5 => CFG5_A::LOW_LEVEL,
-            6 => CFG5_A::CONSTANT_ZERO,
-            7 => CFG5_A::EVENT,
+            0 => Cfg5::ConstantHigh,
+            1 => Cfg5::StickyRisingEdge,
+            2 => Cfg5::StickyFallingEdge,
+            3 => Cfg5::StickyRisingFallingEdge,
+            4 => Cfg5::HighLevel,
+            5 => Cfg5::LowLevel,
+            6 => Cfg5::ConstantZero,
+            7 => Cfg5::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG5_A::CONSTANT_HIGH
+        *self == Cfg5::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG5_A::STICKY_RISING_EDGE
+        *self == Cfg5::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG5_A::STICKY_FALLING_EDGE
+        *self == Cfg5::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG5_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg5::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG5_A::HIGH_LEVEL
+        *self == Cfg5::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG5_A::LOW_LEVEL
+        *self == Cfg5::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG5_A::CONSTANT_ZERO
+        *self == Cfg5::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG5_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG5_R {
-    type Target = crate::FieldReader<u8, CFG5_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg5::Event
     }
 }
 #[doc = "Field `CFG5` writer - Specifies the match contribution condition for bit slice 5."]
-pub struct CFG5_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG5_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG5_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg5W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg5, crate::Safe>;
+impl<'a, REG> Cfg5W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG5_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG5_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG5_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG5_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG5_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG5_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG5_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG5_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 23)) | ((value as u32 & 0x07) << 23);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg5::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 6.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG6_A {
+pub enum Cfg6 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG6_A> for u8 {
+impl From<Cfg6> for u8 {
     #[inline(always)]
-    fn from(variant: CFG6_A) -> Self {
+    fn from(variant: Cfg6) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg6 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg6 {}
 #[doc = "Field `CFG6` reader - Specifies the match contribution condition for bit slice 6."]
-pub struct CFG6_R(crate::FieldReader<u8, CFG6_A>);
-impl CFG6_R {
+pub type Cfg6R = crate::FieldReader<Cfg6>;
+impl Cfg6R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG6_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG6_A {
+    pub const fn variant(&self) -> Cfg6 {
         match self.bits {
-            0 => CFG6_A::CONSTANT_HIGH,
-            1 => CFG6_A::STICKY_RISING_EDGE,
-            2 => CFG6_A::STICKY_FALLING_EDGE,
-            3 => CFG6_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG6_A::HIGH_LEVEL,
-            5 => CFG6_A::LOW_LEVEL,
-            6 => CFG6_A::CONSTANT_ZERO,
-            7 => CFG6_A::EVENT,
+            0 => Cfg6::ConstantHigh,
+            1 => Cfg6::StickyRisingEdge,
+            2 => Cfg6::StickyFallingEdge,
+            3 => Cfg6::StickyRisingFallingEdge,
+            4 => Cfg6::HighLevel,
+            5 => Cfg6::LowLevel,
+            6 => Cfg6::ConstantZero,
+            7 => Cfg6::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
     pub fn is_constant_high(&self) -> bool {
-        **self == CFG6_A::CONSTANT_HIGH
+        *self == Cfg6::ConstantHigh
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG6_A::STICKY_RISING_EDGE
+        *self == Cfg6::StickyRisingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG6_A::STICKY_FALLING_EDGE
+        *self == Cfg6::StickyFallingEdge
     }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
     pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG6_A::STICKY_RISING_FALLING_EDGE
+        *self == Cfg6::StickyRisingFallingEdge
     }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
     pub fn is_high_level(&self) -> bool {
-        **self == CFG6_A::HIGH_LEVEL
+        *self == Cfg6::HighLevel
     }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
     pub fn is_low_level(&self) -> bool {
-        **self == CFG6_A::LOW_LEVEL
+        *self == Cfg6::LowLevel
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
     pub fn is_constant_zero(&self) -> bool {
-        **self == CFG6_A::CONSTANT_ZERO
+        *self == Cfg6::ConstantZero
     }
-    #[doc = "Checks if the value of the field is `EVENT`"]
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
     pub fn is_event(&self) -> bool {
-        **self == CFG6_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG6_R {
-    type Target = crate::FieldReader<u8, CFG6_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cfg6::Event
     }
 }
 #[doc = "Field `CFG6` writer - Specifies the match contribution condition for bit slice 6."]
-pub struct CFG6_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG6_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG6_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type Cfg6W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg6, crate::Safe>;
+impl<'a, REG> Cfg6W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG6_A::CONSTANT_HIGH)
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::ConstantHigh)
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG6_A::STICKY_RISING_EDGE)
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::StickyRisingEdge)
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG6_A::STICKY_FALLING_EDGE)
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::StickyFallingEdge)
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG6_A::STICKY_RISING_FALLING_EDGE)
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::StickyRisingFallingEdge)
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG6_A::HIGH_LEVEL)
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::HighLevel)
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG6_A::LOW_LEVEL)
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::LowLevel)
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG6_A::CONSTANT_ZERO)
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::ConstantZero)
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG6_A::EVENT)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 26)) | ((value as u32 & 0x07) << 26);
-        self.w
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg6::Event)
     }
 }
 #[doc = "Specifies the match contribution condition for bit slice 7.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CFG7_A {
+pub enum Cfg7 {
     #[doc = "0: Constant HIGH. This bit slice always contributes to a product term match."]
-    CONSTANT_HIGH = 0,
+    ConstantHigh = 0,
     #[doc = "1: Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_EDGE = 1,
+    StickyRisingEdge = 1,
     #[doc = "2: Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_FALLING_EDGE = 2,
+    StickyFallingEdge = 2,
     #[doc = "3: Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
-    STICKY_RISING_FALLING_EDGE = 3,
+    StickyRisingFallingEdge = 3,
     #[doc = "4: High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
-    HIGH_LEVEL = 4,
+    HighLevel = 4,
     #[doc = "5: Low level. Match occurs when there is a low level on the specified input."]
-    LOW_LEVEL = 5,
+    LowLevel = 5,
     #[doc = "6: Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
-    CONSTANT_ZERO = 6,
+    ConstantZero = 6,
     #[doc = "7: Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
-    EVENT = 7,
+    Event = 7,
 }
-impl From<CFG7_A> for u8 {
+impl From<Cfg7> for u8 {
     #[inline(always)]
-    fn from(variant: CFG7_A) -> Self {
+    fn from(variant: Cfg7) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cfg7 {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cfg7 {}
 #[doc = "Field `CFG7` reader - Specifies the match contribution condition for bit slice 7."]
-pub struct CFG7_R(crate::FieldReader<u8, CFG7_A>);
-impl CFG7_R {
+pub type Cfg7R = crate::FieldReader<Cfg7>;
+impl Cfg7R {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CFG7_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CFG7_A {
+    pub const fn variant(&self) -> Cfg7 {
         match self.bits {
-            0 => CFG7_A::CONSTANT_HIGH,
-            1 => CFG7_A::STICKY_RISING_EDGE,
-            2 => CFG7_A::STICKY_FALLING_EDGE,
-            3 => CFG7_A::STICKY_RISING_FALLING_EDGE,
-            4 => CFG7_A::HIGH_LEVEL,
-            5 => CFG7_A::LOW_LEVEL,
-            6 => CFG7_A::CONSTANT_ZERO,
-            7 => CFG7_A::EVENT,
+            0 => Cfg7::ConstantHigh,
+            1 => Cfg7::StickyRisingEdge,
+            2 => Cfg7::StickyFallingEdge,
+            3 => Cfg7::StickyRisingFallingEdge,
+            4 => Cfg7::HighLevel,
+            5 => Cfg7::LowLevel,
+            6 => Cfg7::ConstantZero,
+            7 => Cfg7::Event,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `CONSTANT_HIGH`"]
-    #[inline(always)]
-    pub fn is_constant_high(&self) -> bool {
-        **self == CFG7_A::CONSTANT_HIGH
-    }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_EDGE`"]
-    #[inline(always)]
-    pub fn is_sticky_rising_edge(&self) -> bool {
-        **self == CFG7_A::STICKY_RISING_EDGE
-    }
-    #[doc = "Checks if the value of the field is `STICKY_FALLING_EDGE`"]
-    #[inline(always)]
-    pub fn is_sticky_falling_edge(&self) -> bool {
-        **self == CFG7_A::STICKY_FALLING_EDGE
-    }
-    #[doc = "Checks if the value of the field is `STICKY_RISING_FALLING_EDGE`"]
-    #[inline(always)]
-    pub fn is_sticky_rising_falling_edge(&self) -> bool {
-        **self == CFG7_A::STICKY_RISING_FALLING_EDGE
-    }
-    #[doc = "Checks if the value of the field is `HIGH_LEVEL`"]
-    #[inline(always)]
-    pub fn is_high_level(&self) -> bool {
-        **self == CFG7_A::HIGH_LEVEL
-    }
-    #[doc = "Checks if the value of the field is `LOW_LEVEL`"]
-    #[inline(always)]
-    pub fn is_low_level(&self) -> bool {
-        **self == CFG7_A::LOW_LEVEL
-    }
-    #[doc = "Checks if the value of the field is `CONSTANT_ZERO`"]
-    #[inline(always)]
-    pub fn is_constant_zero(&self) -> bool {
-        **self == CFG7_A::CONSTANT_ZERO
-    }
-    #[doc = "Checks if the value of the field is `EVENT`"]
-    #[inline(always)]
-    pub fn is_event(&self) -> bool {
-        **self == CFG7_A::EVENT
-    }
-}
-impl core::ops::Deref for CFG7_R {
-    type Target = crate::FieldReader<u8, CFG7_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `CFG7` writer - Specifies the match contribution condition for bit slice 7."]
-pub struct CFG7_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CFG7_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CFG7_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn constant_high(self) -> &'a mut W {
-        self.variant(CFG7_A::CONSTANT_HIGH)
+    pub fn is_constant_high(&self) -> bool {
+        *self == Cfg7::ConstantHigh
     }
     #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_edge(self) -> &'a mut W {
-        self.variant(CFG7_A::STICKY_RISING_EDGE)
+    pub fn is_sticky_rising_edge(&self) -> bool {
+        *self == Cfg7::StickyRisingEdge
     }
     #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_falling_edge(self) -> &'a mut W {
-        self.variant(CFG7_A::STICKY_FALLING_EDGE)
+    pub fn is_sticky_falling_edge(&self) -> bool {
+        *self == Cfg7::StickyFallingEdge
     }
     #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
     #[inline(always)]
-    pub fn sticky_rising_falling_edge(self) -> &'a mut W {
-        self.variant(CFG7_A::STICKY_RISING_FALLING_EDGE)
+    pub fn is_sticky_rising_falling_edge(&self) -> bool {
+        *self == Cfg7::StickyRisingFallingEdge
     }
     #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
     #[inline(always)]
-    pub fn high_level(self) -> &'a mut W {
-        self.variant(CFG7_A::HIGH_LEVEL)
+    pub fn is_high_level(&self) -> bool {
+        *self == Cfg7::HighLevel
     }
     #[doc = "Low level. Match occurs when there is a low level on the specified input."]
     #[inline(always)]
-    pub fn low_level(self) -> &'a mut W {
-        self.variant(CFG7_A::LOW_LEVEL)
+    pub fn is_low_level(&self) -> bool {
+        *self == Cfg7::LowLevel
     }
     #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
     #[inline(always)]
-    pub fn constant_zero(self) -> &'a mut W {
-        self.variant(CFG7_A::CONSTANT_ZERO)
+    pub fn is_constant_zero(&self) -> bool {
+        *self == Cfg7::ConstantZero
     }
     #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
     #[inline(always)]
-    pub fn event(self) -> &'a mut W {
-        self.variant(CFG7_A::EVENT)
+    pub fn is_event(&self) -> bool {
+        *self == Cfg7::Event
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `CFG7` writer - Specifies the match contribution condition for bit slice 7."]
+pub type Cfg7W<'a, REG> = crate::FieldWriter<'a, REG, 3, Cfg7, crate::Safe>;
+impl<'a, REG> Cfg7W<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Constant HIGH. This bit slice always contributes to a product term match."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x07 << 29)) | ((value as u32 & 0x07) << 29);
-        self.w
+    pub fn constant_high(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::ConstantHigh)
+    }
+    #[doc = "Sticky rising edge. Match occurs if a rising edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
+    #[inline(always)]
+    pub fn sticky_rising_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::StickyRisingEdge)
+    }
+    #[doc = "Sticky falling edge. Match occurs if a falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
+    #[inline(always)]
+    pub fn sticky_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::StickyFallingEdge)
+    }
+    #[doc = "Sticky rising or falling edge. Match occurs if either a rising or falling edge on the specified input has occurred since the last time the edge detection for this bit slice was cleared. This bit is only cleared when the PMCFG or the PMSRC registers are written to."]
+    #[inline(always)]
+    pub fn sticky_rising_falling_edge(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::StickyRisingFallingEdge)
+    }
+    #[doc = "High level. Match (for this bit slice) occurs when there is a high level on the input specified for this bit slice in the PMSRC register."]
+    #[inline(always)]
+    pub fn high_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::HighLevel)
+    }
+    #[doc = "Low level. Match occurs when there is a low level on the specified input."]
+    #[inline(always)]
+    pub fn low_level(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::LowLevel)
+    }
+    #[doc = "Constant 0. This bit slice never contributes to a match (should be used to disable any unused bit slices)."]
+    #[inline(always)]
+    pub fn constant_zero(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::ConstantZero)
+    }
+    #[doc = "Event. Non-sticky rising or falling edge. Match occurs on an event - i.e. when either a rising or falling edge is first detected on the specified input (this is a non-sticky version of value 0x3) . This bit is cleared after one clock cycle."]
+    #[inline(always)]
+    pub fn event(self) -> &'a mut crate::W<REG> {
+        self.variant(Cfg7::Event)
     }
 }
 impl R {
     #[doc = "Bit 0 - Determines whether slice 0 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts0(&self) -> PROD_ENDPTS0_R {
-        PROD_ENDPTS0_R::new((self.bits & 0x01) != 0)
+    pub fn prod_endpts0(&self) -> ProdEndpts0R {
+        ProdEndpts0R::new((self.bits & 1) != 0)
     }
     #[doc = "Bit 1 - Determines whether slice 1 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts1(&self) -> PROD_ENDPTS1_R {
-        PROD_ENDPTS1_R::new(((self.bits >> 1) & 0x01) != 0)
+    pub fn prod_endpts1(&self) -> ProdEndpts1R {
+        ProdEndpts1R::new(((self.bits >> 1) & 1) != 0)
     }
     #[doc = "Bit 2 - Determines whether slice 2 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts2(&self) -> PROD_ENDPTS2_R {
-        PROD_ENDPTS2_R::new(((self.bits >> 2) & 0x01) != 0)
+    pub fn prod_endpts2(&self) -> ProdEndpts2R {
+        ProdEndpts2R::new(((self.bits >> 2) & 1) != 0)
     }
     #[doc = "Bit 3 - Determines whether slice 3 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts3(&self) -> PROD_ENDPTS3_R {
-        PROD_ENDPTS3_R::new(((self.bits >> 3) & 0x01) != 0)
+    pub fn prod_endpts3(&self) -> ProdEndpts3R {
+        ProdEndpts3R::new(((self.bits >> 3) & 1) != 0)
     }
     #[doc = "Bit 4 - Determines whether slice 4 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts4(&self) -> PROD_ENDPTS4_R {
-        PROD_ENDPTS4_R::new(((self.bits >> 4) & 0x01) != 0)
+    pub fn prod_endpts4(&self) -> ProdEndpts4R {
+        ProdEndpts4R::new(((self.bits >> 4) & 1) != 0)
     }
     #[doc = "Bit 5 - Determines whether slice 5 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts5(&self) -> PROD_ENDPTS5_R {
-        PROD_ENDPTS5_R::new(((self.bits >> 5) & 0x01) != 0)
+    pub fn prod_endpts5(&self) -> ProdEndpts5R {
+        ProdEndpts5R::new(((self.bits >> 5) & 1) != 0)
     }
     #[doc = "Bit 6 - Determines whether slice 6 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts6(&self) -> PROD_ENDPTS6_R {
-        PROD_ENDPTS6_R::new(((self.bits >> 6) & 0x01) != 0)
+    pub fn prod_endpts6(&self) -> ProdEndpts6R {
+        ProdEndpts6R::new(((self.bits >> 6) & 1) != 0)
     }
     #[doc = "Bits 8:10 - Specifies the match contribution condition for bit slice 0."]
     #[inline(always)]
-    pub fn cfg0(&self) -> CFG0_R {
-        CFG0_R::new(((self.bits >> 8) & 0x07) as u8)
+    pub fn cfg0(&self) -> Cfg0R {
+        Cfg0R::new(((self.bits >> 8) & 7) as u8)
     }
     #[doc = "Bits 11:13 - Specifies the match contribution condition for bit slice 1."]
     #[inline(always)]
-    pub fn cfg1(&self) -> CFG1_R {
-        CFG1_R::new(((self.bits >> 11) & 0x07) as u8)
+    pub fn cfg1(&self) -> Cfg1R {
+        Cfg1R::new(((self.bits >> 11) & 7) as u8)
     }
     #[doc = "Bits 14:16 - Specifies the match contribution condition for bit slice 2."]
     #[inline(always)]
-    pub fn cfg2(&self) -> CFG2_R {
-        CFG2_R::new(((self.bits >> 14) & 0x07) as u8)
+    pub fn cfg2(&self) -> Cfg2R {
+        Cfg2R::new(((self.bits >> 14) & 7) as u8)
     }
     #[doc = "Bits 17:19 - Specifies the match contribution condition for bit slice 3."]
     #[inline(always)]
-    pub fn cfg3(&self) -> CFG3_R {
-        CFG3_R::new(((self.bits >> 17) & 0x07) as u8)
+    pub fn cfg3(&self) -> Cfg3R {
+        Cfg3R::new(((self.bits >> 17) & 7) as u8)
     }
     #[doc = "Bits 20:22 - Specifies the match contribution condition for bit slice 4."]
     #[inline(always)]
-    pub fn cfg4(&self) -> CFG4_R {
-        CFG4_R::new(((self.bits >> 20) & 0x07) as u8)
+    pub fn cfg4(&self) -> Cfg4R {
+        Cfg4R::new(((self.bits >> 20) & 7) as u8)
     }
     #[doc = "Bits 23:25 - Specifies the match contribution condition for bit slice 5."]
     #[inline(always)]
-    pub fn cfg5(&self) -> CFG5_R {
-        CFG5_R::new(((self.bits >> 23) & 0x07) as u8)
+    pub fn cfg5(&self) -> Cfg5R {
+        Cfg5R::new(((self.bits >> 23) & 7) as u8)
     }
     #[doc = "Bits 26:28 - Specifies the match contribution condition for bit slice 6."]
     #[inline(always)]
-    pub fn cfg6(&self) -> CFG6_R {
-        CFG6_R::new(((self.bits >> 26) & 0x07) as u8)
+    pub fn cfg6(&self) -> Cfg6R {
+        Cfg6R::new(((self.bits >> 26) & 7) as u8)
     }
     #[doc = "Bits 29:31 - Specifies the match contribution condition for bit slice 7."]
     #[inline(always)]
-    pub fn cfg7(&self) -> CFG7_R {
-        CFG7_R::new(((self.bits >> 29) & 0x07) as u8)
+    pub fn cfg7(&self) -> Cfg7R {
+        Cfg7R::new(((self.bits >> 29) & 7) as u8)
     }
 }
 impl W {
     #[doc = "Bit 0 - Determines whether slice 0 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts0(&mut self) -> PROD_ENDPTS0_W {
-        PROD_ENDPTS0_W { w: self }
+    pub fn prod_endpts0(&mut self) -> ProdEndpts0W<PmcfgSpec> {
+        ProdEndpts0W::new(self, 0)
     }
     #[doc = "Bit 1 - Determines whether slice 1 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts1(&mut self) -> PROD_ENDPTS1_W {
-        PROD_ENDPTS1_W { w: self }
+    pub fn prod_endpts1(&mut self) -> ProdEndpts1W<PmcfgSpec> {
+        ProdEndpts1W::new(self, 1)
     }
     #[doc = "Bit 2 - Determines whether slice 2 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts2(&mut self) -> PROD_ENDPTS2_W {
-        PROD_ENDPTS2_W { w: self }
+    pub fn prod_endpts2(&mut self) -> ProdEndpts2W<PmcfgSpec> {
+        ProdEndpts2W::new(self, 2)
     }
     #[doc = "Bit 3 - Determines whether slice 3 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts3(&mut self) -> PROD_ENDPTS3_W {
-        PROD_ENDPTS3_W { w: self }
+    pub fn prod_endpts3(&mut self) -> ProdEndpts3W<PmcfgSpec> {
+        ProdEndpts3W::new(self, 3)
     }
     #[doc = "Bit 4 - Determines whether slice 4 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts4(&mut self) -> PROD_ENDPTS4_W {
-        PROD_ENDPTS4_W { w: self }
+    pub fn prod_endpts4(&mut self) -> ProdEndpts4W<PmcfgSpec> {
+        ProdEndpts4W::new(self, 4)
     }
     #[doc = "Bit 5 - Determines whether slice 5 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts5(&mut self) -> PROD_ENDPTS5_W {
-        PROD_ENDPTS5_W { w: self }
+    pub fn prod_endpts5(&mut self) -> ProdEndpts5W<PmcfgSpec> {
+        ProdEndpts5W::new(self, 5)
     }
     #[doc = "Bit 6 - Determines whether slice 6 is an endpoint."]
     #[inline(always)]
-    pub fn prod_endpts6(&mut self) -> PROD_ENDPTS6_W {
-        PROD_ENDPTS6_W { w: self }
+    pub fn prod_endpts6(&mut self) -> ProdEndpts6W<PmcfgSpec> {
+        ProdEndpts6W::new(self, 6)
     }
     #[doc = "Bits 8:10 - Specifies the match contribution condition for bit slice 0."]
     #[inline(always)]
-    pub fn cfg0(&mut self) -> CFG0_W {
-        CFG0_W { w: self }
+    pub fn cfg0(&mut self) -> Cfg0W<PmcfgSpec> {
+        Cfg0W::new(self, 8)
     }
     #[doc = "Bits 11:13 - Specifies the match contribution condition for bit slice 1."]
     #[inline(always)]
-    pub fn cfg1(&mut self) -> CFG1_W {
-        CFG1_W { w: self }
+    pub fn cfg1(&mut self) -> Cfg1W<PmcfgSpec> {
+        Cfg1W::new(self, 11)
     }
     #[doc = "Bits 14:16 - Specifies the match contribution condition for bit slice 2."]
     #[inline(always)]
-    pub fn cfg2(&mut self) -> CFG2_W {
-        CFG2_W { w: self }
+    pub fn cfg2(&mut self) -> Cfg2W<PmcfgSpec> {
+        Cfg2W::new(self, 14)
     }
     #[doc = "Bits 17:19 - Specifies the match contribution condition for bit slice 3."]
     #[inline(always)]
-    pub fn cfg3(&mut self) -> CFG3_W {
-        CFG3_W { w: self }
+    pub fn cfg3(&mut self) -> Cfg3W<PmcfgSpec> {
+        Cfg3W::new(self, 17)
     }
     #[doc = "Bits 20:22 - Specifies the match contribution condition for bit slice 4."]
     #[inline(always)]
-    pub fn cfg4(&mut self) -> CFG4_W {
-        CFG4_W { w: self }
+    pub fn cfg4(&mut self) -> Cfg4W<PmcfgSpec> {
+        Cfg4W::new(self, 20)
     }
     #[doc = "Bits 23:25 - Specifies the match contribution condition for bit slice 5."]
     #[inline(always)]
-    pub fn cfg5(&mut self) -> CFG5_W {
-        CFG5_W { w: self }
+    pub fn cfg5(&mut self) -> Cfg5W<PmcfgSpec> {
+        Cfg5W::new(self, 23)
     }
     #[doc = "Bits 26:28 - Specifies the match contribution condition for bit slice 6."]
     #[inline(always)]
-    pub fn cfg6(&mut self) -> CFG6_W {
-        CFG6_W { w: self }
+    pub fn cfg6(&mut self) -> Cfg6W<PmcfgSpec> {
+        Cfg6W::new(self, 26)
     }
     #[doc = "Bits 29:31 - Specifies the match contribution condition for bit slice 7."]
     #[inline(always)]
-    pub fn cfg7(&mut self) -> CFG7_W {
-        CFG7_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn cfg7(&mut self) -> Cfg7W<PmcfgSpec> {
+        Cfg7W::new(self, 29)
     }
 }
-#[doc = "Pattern match interrupt bit slice configuration register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pmcfg](index.html) module"]
-pub struct PMCFG_SPEC;
-impl crate::RegisterSpec for PMCFG_SPEC {
+#[doc = "Pattern match interrupt bit slice configuration register\n\nYou can [`read`](crate::Reg::read) this register and get [`pmcfg::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pmcfg::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PmcfgSpec;
+impl crate::RegisterSpec for PmcfgSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pmcfg::R](R) reader structure"]
-impl crate::Readable for PMCFG_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pmcfg::W](W) writer structure"]
-impl crate::Writable for PMCFG_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pmcfg::R`](R) reader structure"]
+impl crate::Readable for PmcfgSpec {}
+#[doc = "`write(|w| ..)` method takes [`pmcfg::W`](W) writer structure"]
+impl crate::Writable for PmcfgSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PMCFG to value 0"]
-impl crate::Resettable for PMCFG_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PmcfgSpec {
+    const RESET_VALUE: u32 = 0;
 }

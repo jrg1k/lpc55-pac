@@ -1,104 +1,40 @@
 #[doc = "Register `MSR[%s]` reader"]
-pub struct R(crate::R<MSR_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<MSR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<MSR_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<MSR_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<MsrSpec>;
 #[doc = "Register `MSR[%s]` writer"]
-pub struct W(crate::W<MSR_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<MSR_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<MSR_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<MSR_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<MsrSpec>;
 #[doc = "Field `SHADOW` reader - Timer counter match shadow value."]
-pub struct SHADOW_R(crate::FieldReader<u32, u32>);
-impl SHADOW_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        SHADOW_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SHADOW_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type ShadowR = crate::FieldReader<u32>;
 #[doc = "Field `SHADOW` writer - Timer counter match shadow value."]
-pub struct SHADOW_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SHADOW_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type ShadowW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Timer counter match shadow value."]
     #[inline(always)]
-    pub fn shadow(&self) -> SHADOW_R {
-        SHADOW_R::new(self.bits as u32)
+    pub fn shadow(&self) -> ShadowR {
+        ShadowR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Timer counter match shadow value."]
     #[inline(always)]
-    pub fn shadow(&mut self) -> SHADOW_W {
-        SHADOW_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn shadow(&mut self) -> ShadowW<MsrSpec> {
+        ShadowW::new(self, 0)
     }
 }
-#[doc = "Match Shadow Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [msr](index.html) module"]
-pub struct MSR_SPEC;
-impl crate::RegisterSpec for MSR_SPEC {
+#[doc = "Match Shadow Register\n\nYou can [`read`](crate::Reg::read) this register and get [`msr::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`msr::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct MsrSpec;
+impl crate::RegisterSpec for MsrSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [msr::R](R) reader structure"]
-impl crate::Readable for MSR_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [msr::W](W) writer structure"]
-impl crate::Writable for MSR_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`msr::R`](R) reader structure"]
+impl crate::Readable for MsrSpec {}
+#[doc = "`write(|w| ..)` method takes [`msr::W`](W) writer structure"]
+impl crate::Writable for MsrSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets MSR[%s]
 to value 0"]
-impl crate::Resettable for MSR_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for MsrSpec {
+    const RESET_VALUE: u32 = 0;
 }

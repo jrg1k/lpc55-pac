@@ -1,474 +1,402 @@
 #[doc = "Register `TSTAT` reader"]
-pub struct R(crate::R<TSTAT_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<TSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<TSTAT_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<TSTAT_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<TstatSpec>;
 #[doc = "Register `TSTAT` writer"]
-pub struct W(crate::W<TSTAT_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<TSTAT_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<TSTAT_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<TSTAT_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<TstatSpec>;
 #[doc = "Trigger Exception Number\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u16)]
-pub enum TEXC_NUM_A {
+pub enum TexcNum {
     #[doc = "0: No triggers have been interrupted by a high priority exception. Or CFG\\[TRES\\]
 = 1."]
-    TEXC_NUM_0 = 0,
+    TexcNum0 = 0,
     #[doc = "1: Trigger 0 has been interrupted by a high priority exception."]
-    TEXC_NUM_1 = 1,
+    TexcNum1 = 1,
     #[doc = "2: Trigger 1 has been interrupted by a high priority exception."]
-    TEXC_NUM_2 = 2,
+    TexcNum2 = 2,
     #[doc = "3: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_3 = 3,
+    TexcNum3 = 3,
     #[doc = "4: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_4 = 4,
+    TexcNum4 = 4,
     #[doc = "5: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_5 = 5,
+    TexcNum5 = 5,
     #[doc = "6: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_6 = 6,
+    TexcNum6 = 6,
     #[doc = "7: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_7 = 7,
+    TexcNum7 = 7,
     #[doc = "8: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_8 = 8,
+    TexcNum8 = 8,
     #[doc = "9: Associated trigger sequence has interrupted by a high priority exception."]
-    TEXC_NUM_9 = 9,
+    TexcNum9 = 9,
     #[doc = "65535: Every trigger sequence has been interrupted by a high priority exception."]
-    TEXC_NUM_65535 = 65535,
+    TexcNum65535 = 65535,
 }
-impl From<TEXC_NUM_A> for u16 {
+impl From<TexcNum> for u16 {
     #[inline(always)]
-    fn from(variant: TEXC_NUM_A) -> Self {
+    fn from(variant: TexcNum) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for TexcNum {
+    type Ux = u16;
+}
+impl crate::IsEnum for TexcNum {}
 #[doc = "Field `TEXC_NUM` reader - Trigger Exception Number"]
-pub struct TEXC_NUM_R(crate::FieldReader<u16, TEXC_NUM_A>);
-impl TEXC_NUM_R {
+pub type TexcNumR = crate::FieldReader<TexcNum>;
+impl TexcNumR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        TEXC_NUM_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<TEXC_NUM_A> {
+    pub const fn variant(&self) -> Option<TexcNum> {
         match self.bits {
-            0 => Some(TEXC_NUM_A::TEXC_NUM_0),
-            1 => Some(TEXC_NUM_A::TEXC_NUM_1),
-            2 => Some(TEXC_NUM_A::TEXC_NUM_2),
-            3 => Some(TEXC_NUM_A::TEXC_NUM_3),
-            4 => Some(TEXC_NUM_A::TEXC_NUM_4),
-            5 => Some(TEXC_NUM_A::TEXC_NUM_5),
-            6 => Some(TEXC_NUM_A::TEXC_NUM_6),
-            7 => Some(TEXC_NUM_A::TEXC_NUM_7),
-            8 => Some(TEXC_NUM_A::TEXC_NUM_8),
-            9 => Some(TEXC_NUM_A::TEXC_NUM_9),
-            65535 => Some(TEXC_NUM_A::TEXC_NUM_65535),
+            0 => Some(TexcNum::TexcNum0),
+            1 => Some(TexcNum::TexcNum1),
+            2 => Some(TexcNum::TexcNum2),
+            3 => Some(TexcNum::TexcNum3),
+            4 => Some(TexcNum::TexcNum4),
+            5 => Some(TexcNum::TexcNum5),
+            6 => Some(TexcNum::TexcNum6),
+            7 => Some(TexcNum::TexcNum7),
+            8 => Some(TexcNum::TexcNum8),
+            9 => Some(TexcNum::TexcNum9),
+            65535 => Some(TexcNum::TexcNum65535),
             _ => None,
         }
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_0`"]
-    #[inline(always)]
-    pub fn is_texc_num_0(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_0
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_1`"]
-    #[inline(always)]
-    pub fn is_texc_num_1(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_1
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_2`"]
-    #[inline(always)]
-    pub fn is_texc_num_2(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_2
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_3`"]
-    #[inline(always)]
-    pub fn is_texc_num_3(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_3
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_4`"]
-    #[inline(always)]
-    pub fn is_texc_num_4(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_4
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_5`"]
-    #[inline(always)]
-    pub fn is_texc_num_5(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_5
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_6`"]
-    #[inline(always)]
-    pub fn is_texc_num_6(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_6
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_7`"]
-    #[inline(always)]
-    pub fn is_texc_num_7(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_7
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_8`"]
-    #[inline(always)]
-    pub fn is_texc_num_8(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_8
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_9`"]
-    #[inline(always)]
-    pub fn is_texc_num_9(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_9
-    }
-    #[doc = "Checks if the value of the field is `TEXC_NUM_65535`"]
-    #[inline(always)]
-    pub fn is_texc_num_65535(&self) -> bool {
-        **self == TEXC_NUM_A::TEXC_NUM_65535
-    }
-}
-impl core::ops::Deref for TEXC_NUM_R {
-    type Target = crate::FieldReader<u16, TEXC_NUM_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TEXC_NUM` writer - Trigger Exception Number"]
-pub struct TEXC_NUM_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TEXC_NUM_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TEXC_NUM_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
     }
     #[doc = "No triggers have been interrupted by a high priority exception. Or CFG\\[TRES\\]
 = 1."]
     #[inline(always)]
-    pub fn texc_num_0(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_0)
+    pub fn is_texc_num_0(&self) -> bool {
+        *self == TexcNum::TexcNum0
     }
     #[doc = "Trigger 0 has been interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_1(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_1)
+    pub fn is_texc_num_1(&self) -> bool {
+        *self == TexcNum::TexcNum1
     }
     #[doc = "Trigger 1 has been interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_2(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_2)
+    pub fn is_texc_num_2(&self) -> bool {
+        *self == TexcNum::TexcNum2
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_3(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_3)
+    pub fn is_texc_num_3(&self) -> bool {
+        *self == TexcNum::TexcNum3
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_4(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_4)
+    pub fn is_texc_num_4(&self) -> bool {
+        *self == TexcNum::TexcNum4
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_5(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_5)
+    pub fn is_texc_num_5(&self) -> bool {
+        *self == TexcNum::TexcNum5
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_6(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_6)
+    pub fn is_texc_num_6(&self) -> bool {
+        *self == TexcNum::TexcNum6
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_7(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_7)
+    pub fn is_texc_num_7(&self) -> bool {
+        *self == TexcNum::TexcNum7
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_8(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_8)
+    pub fn is_texc_num_8(&self) -> bool {
+        *self == TexcNum::TexcNum8
     }
     #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_9(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_9)
+    pub fn is_texc_num_9(&self) -> bool {
+        *self == TexcNum::TexcNum9
     }
     #[doc = "Every trigger sequence has been interrupted by a high priority exception."]
     #[inline(always)]
-    pub fn texc_num_65535(self) -> &'a mut W {
-        self.variant(TEXC_NUM_A::TEXC_NUM_65535)
+    pub fn is_texc_num_65535(&self) -> bool {
+        *self == TexcNum::TexcNum65535
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `TEXC_NUM` writer - Trigger Exception Number"]
+pub type TexcNumW<'a, REG> = crate::FieldWriter<'a, REG, 16, TexcNum>;
+impl<'a, REG> TexcNumW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u16>,
+{
+    #[doc = "No triggers have been interrupted by a high priority exception. Or CFG\\[TRES\\]
+= 1."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0xffff) | (value as u32 & 0xffff);
-        self.w
+    pub fn texc_num_0(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum0)
+    }
+    #[doc = "Trigger 0 has been interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_1(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum1)
+    }
+    #[doc = "Trigger 1 has been interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_2(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum2)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_3(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum3)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_4(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum4)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_5(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum5)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_6(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum6)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_7(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum7)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_8(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum8)
+    }
+    #[doc = "Associated trigger sequence has interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_9(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum9)
+    }
+    #[doc = "Every trigger sequence has been interrupted by a high priority exception."]
+    #[inline(always)]
+    pub fn texc_num_65535(self) -> &'a mut crate::W<REG> {
+        self.variant(TexcNum::TexcNum65535)
     }
 }
 #[doc = "Trigger Completion Flag\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u16)]
-pub enum TCOMP_FLAG_A {
+pub enum TcompFlag {
     #[doc = "0: No triggers have been completed. Trigger completion interrupts are disabled."]
-    TCOMP_FLAG_0 = 0,
+    TcompFlag0 = 0,
     #[doc = "1: Trigger 0 has been completed and triger 0 has enabled completion interrupts."]
-    TCOMP_FLAG_1 = 1,
+    TcompFlag1 = 1,
     #[doc = "2: Trigger 1 has been completed and triger 1 has enabled completion interrupts."]
-    TCOMP_FLAG_2 = 2,
+    TcompFlag2 = 2,
     #[doc = "3: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_3 = 3,
+    TcompFlag3 = 3,
     #[doc = "4: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_4 = 4,
+    TcompFlag4 = 4,
     #[doc = "5: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_5 = 5,
+    TcompFlag5 = 5,
     #[doc = "6: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_6 = 6,
+    TcompFlag6 = 6,
     #[doc = "7: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_7 = 7,
+    TcompFlag7 = 7,
     #[doc = "8: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_8 = 8,
+    TcompFlag8 = 8,
     #[doc = "9: Associated trigger sequence has completed and has enabled completion interrupts."]
-    TCOMP_FLAG_9 = 9,
+    TcompFlag9 = 9,
     #[doc = "65535: Every trigger sequence has been completed and every trigger has enabled completion interrupts."]
-    TCOMP_FLAG_65535 = 65535,
+    TcompFlag65535 = 65535,
 }
-impl From<TCOMP_FLAG_A> for u16 {
+impl From<TcompFlag> for u16 {
     #[inline(always)]
-    fn from(variant: TCOMP_FLAG_A) -> Self {
+    fn from(variant: TcompFlag) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for TcompFlag {
+    type Ux = u16;
+}
+impl crate::IsEnum for TcompFlag {}
 #[doc = "Field `TCOMP_FLAG` reader - Trigger Completion Flag"]
-pub struct TCOMP_FLAG_R(crate::FieldReader<u16, TCOMP_FLAG_A>);
-impl TCOMP_FLAG_R {
+pub type TcompFlagR = crate::FieldReader<TcompFlag>;
+impl TcompFlagR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        TCOMP_FLAG_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<TCOMP_FLAG_A> {
+    pub const fn variant(&self) -> Option<TcompFlag> {
         match self.bits {
-            0 => Some(TCOMP_FLAG_A::TCOMP_FLAG_0),
-            1 => Some(TCOMP_FLAG_A::TCOMP_FLAG_1),
-            2 => Some(TCOMP_FLAG_A::TCOMP_FLAG_2),
-            3 => Some(TCOMP_FLAG_A::TCOMP_FLAG_3),
-            4 => Some(TCOMP_FLAG_A::TCOMP_FLAG_4),
-            5 => Some(TCOMP_FLAG_A::TCOMP_FLAG_5),
-            6 => Some(TCOMP_FLAG_A::TCOMP_FLAG_6),
-            7 => Some(TCOMP_FLAG_A::TCOMP_FLAG_7),
-            8 => Some(TCOMP_FLAG_A::TCOMP_FLAG_8),
-            9 => Some(TCOMP_FLAG_A::TCOMP_FLAG_9),
-            65535 => Some(TCOMP_FLAG_A::TCOMP_FLAG_65535),
+            0 => Some(TcompFlag::TcompFlag0),
+            1 => Some(TcompFlag::TcompFlag1),
+            2 => Some(TcompFlag::TcompFlag2),
+            3 => Some(TcompFlag::TcompFlag3),
+            4 => Some(TcompFlag::TcompFlag4),
+            5 => Some(TcompFlag::TcompFlag5),
+            6 => Some(TcompFlag::TcompFlag6),
+            7 => Some(TcompFlag::TcompFlag7),
+            8 => Some(TcompFlag::TcompFlag8),
+            9 => Some(TcompFlag::TcompFlag9),
+            65535 => Some(TcompFlag::TcompFlag65535),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_0`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_0(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_0
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_1`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_1(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_1
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_2`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_2(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_2
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_3`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_3(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_3
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_4`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_4(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_4
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_5`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_5(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_5
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_6`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_6(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_6
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_7`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_7(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_7
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_8`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_8(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_8
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_9`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_9(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_9
-    }
-    #[doc = "Checks if the value of the field is `TCOMP_FLAG_65535`"]
-    #[inline(always)]
-    pub fn is_tcomp_flag_65535(&self) -> bool {
-        **self == TCOMP_FLAG_A::TCOMP_FLAG_65535
-    }
-}
-impl core::ops::Deref for TCOMP_FLAG_R {
-    type Target = crate::FieldReader<u16, TCOMP_FLAG_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `TCOMP_FLAG` writer - Trigger Completion Flag"]
-pub struct TCOMP_FLAG_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TCOMP_FLAG_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: TCOMP_FLAG_A) -> &'a mut W {
-        unsafe { self.bits(variant.into()) }
-    }
     #[doc = "No triggers have been completed. Trigger completion interrupts are disabled."]
     #[inline(always)]
-    pub fn tcomp_flag_0(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_0)
+    pub fn is_tcomp_flag_0(&self) -> bool {
+        *self == TcompFlag::TcompFlag0
     }
     #[doc = "Trigger 0 has been completed and triger 0 has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_1(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_1)
+    pub fn is_tcomp_flag_1(&self) -> bool {
+        *self == TcompFlag::TcompFlag1
     }
     #[doc = "Trigger 1 has been completed and triger 1 has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_2(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_2)
+    pub fn is_tcomp_flag_2(&self) -> bool {
+        *self == TcompFlag::TcompFlag2
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_3(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_3)
+    pub fn is_tcomp_flag_3(&self) -> bool {
+        *self == TcompFlag::TcompFlag3
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_4(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_4)
+    pub fn is_tcomp_flag_4(&self) -> bool {
+        *self == TcompFlag::TcompFlag4
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_5(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_5)
+    pub fn is_tcomp_flag_5(&self) -> bool {
+        *self == TcompFlag::TcompFlag5
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_6(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_6)
+    pub fn is_tcomp_flag_6(&self) -> bool {
+        *self == TcompFlag::TcompFlag6
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_7(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_7)
+    pub fn is_tcomp_flag_7(&self) -> bool {
+        *self == TcompFlag::TcompFlag7
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_8(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_8)
+    pub fn is_tcomp_flag_8(&self) -> bool {
+        *self == TcompFlag::TcompFlag8
     }
     #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_9(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_9)
+    pub fn is_tcomp_flag_9(&self) -> bool {
+        *self == TcompFlag::TcompFlag9
     }
     #[doc = "Every trigger sequence has been completed and every trigger has enabled completion interrupts."]
     #[inline(always)]
-    pub fn tcomp_flag_65535(self) -> &'a mut W {
-        self.variant(TCOMP_FLAG_A::TCOMP_FLAG_65535)
+    pub fn is_tcomp_flag_65535(&self) -> bool {
+        *self == TcompFlag::TcompFlag65535
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `TCOMP_FLAG` writer - Trigger Completion Flag"]
+pub type TcompFlagW<'a, REG> = crate::FieldWriter<'a, REG, 16, TcompFlag>;
+impl<'a, REG> TcompFlagW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u16>,
+{
+    #[doc = "No triggers have been completed. Trigger completion interrupts are disabled."]
     #[inline(always)]
-    pub unsafe fn bits(self, value: u16) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0xffff << 16)) | ((value as u32 & 0xffff) << 16);
-        self.w
+    pub fn tcomp_flag_0(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag0)
+    }
+    #[doc = "Trigger 0 has been completed and triger 0 has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_1(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag1)
+    }
+    #[doc = "Trigger 1 has been completed and triger 1 has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_2(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag2)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_3(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag3)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_4(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag4)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_5(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag5)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_6(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag6)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_7(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag7)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_8(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag8)
+    }
+    #[doc = "Associated trigger sequence has completed and has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_9(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag9)
+    }
+    #[doc = "Every trigger sequence has been completed and every trigger has enabled completion interrupts."]
+    #[inline(always)]
+    pub fn tcomp_flag_65535(self) -> &'a mut crate::W<REG> {
+        self.variant(TcompFlag::TcompFlag65535)
     }
 }
 impl R {
     #[doc = "Bits 0:15 - Trigger Exception Number"]
     #[inline(always)]
-    pub fn texc_num(&self) -> TEXC_NUM_R {
-        TEXC_NUM_R::new((self.bits & 0xffff) as u16)
+    pub fn texc_num(&self) -> TexcNumR {
+        TexcNumR::new((self.bits & 0xffff) as u16)
     }
     #[doc = "Bits 16:31 - Trigger Completion Flag"]
     #[inline(always)]
-    pub fn tcomp_flag(&self) -> TCOMP_FLAG_R {
-        TCOMP_FLAG_R::new(((self.bits >> 16) & 0xffff) as u16)
+    pub fn tcomp_flag(&self) -> TcompFlagR {
+        TcompFlagR::new(((self.bits >> 16) & 0xffff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:15 - Trigger Exception Number"]
     #[inline(always)]
-    pub fn texc_num(&mut self) -> TEXC_NUM_W {
-        TEXC_NUM_W { w: self }
+    pub fn texc_num(&mut self) -> TexcNumW<TstatSpec> {
+        TexcNumW::new(self, 0)
     }
     #[doc = "Bits 16:31 - Trigger Completion Flag"]
     #[inline(always)]
-    pub fn tcomp_flag(&mut self) -> TCOMP_FLAG_W {
-        TCOMP_FLAG_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn tcomp_flag(&mut self) -> TcompFlagW<TstatSpec> {
+        TcompFlagW::new(self, 16)
     }
 }
-#[doc = "Trigger Status Register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [tstat](index.html) module"]
-pub struct TSTAT_SPEC;
-impl crate::RegisterSpec for TSTAT_SPEC {
+#[doc = "Trigger Status Register\n\nYou can [`read`](crate::Reg::read) this register and get [`tstat::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tstat::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct TstatSpec;
+impl crate::RegisterSpec for TstatSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [tstat::R](R) reader structure"]
-impl crate::Readable for TSTAT_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [tstat::W](W) writer structure"]
-impl crate::Writable for TSTAT_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`tstat::R`](R) reader structure"]
+impl crate::Readable for TstatSpec {}
+#[doc = "`write(|w| ..)` method takes [`tstat::W`](W) writer structure"]
+impl crate::Writable for TstatSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0xffff_ffff;
 }
 #[doc = "`reset()` method sets TSTAT to value 0"]
-impl crate::Resettable for TSTAT_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for TstatSpec {
+    const RESET_VALUE: u32 = 0;
 }

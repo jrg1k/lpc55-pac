@@ -1,103 +1,39 @@
 #[doc = "Register `SET0` reader"]
-pub struct R(crate::R<SET0_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SET0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SET0_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SET0_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<Set0Spec>;
 #[doc = "Register `SET0` writer"]
-pub struct W(crate::W<SET0_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SET0_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SET0_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SET0_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<Set0Spec>;
 #[doc = "Field `SETP` reader - Read or set output bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = Read: output bit: write: no operation. 1 = Read: output bit; write: set output bit."]
-pub struct SETP_R(crate::FieldReader<u32, u32>);
-impl SETP_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        SETP_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SETP_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SetpR = crate::FieldReader<u32>;
 #[doc = "Field `SETP` writer - Read or set output bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = Read: output bit: write: no operation. 1 = Read: output bit; write: set output bit."]
-pub struct SETP_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SETP_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type SetpW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
     #[doc = "Bits 0:31 - Read or set output bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = Read: output bit: write: no operation. 1 = Read: output bit; write: set output bit."]
     #[inline(always)]
-    pub fn setp(&self) -> SETP_R {
-        SETP_R::new(self.bits as u32)
+    pub fn setp(&self) -> SetpR {
+        SetpR::new(self.bits)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Read or set output bits (bit 0 = PIOn_0, bit 1 = PIOn_1, etc.). Supported pins depends on the specific device and package. 0 = Read: output bit: write: no operation. 1 = Read: output bit; write: set output bit."]
     #[inline(always)]
-    pub fn setp(&mut self) -> SETP_W {
-        SETP_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn setp(&mut self) -> SetpW<Set0Spec> {
+        SetpW::new(self, 0)
     }
 }
-#[doc = "Write: Set register for port. Read: output bits for port\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [set0](index.html) module"]
-pub struct SET0_SPEC;
-impl crate::RegisterSpec for SET0_SPEC {
+#[doc = "Write: Set register for port. Read: output bits for port\n\nYou can [`read`](crate::Reg::read) this register and get [`set0::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`set0::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct Set0Spec;
+impl crate::RegisterSpec for Set0Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [set0::R](R) reader structure"]
-impl crate::Readable for SET0_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [set0::W](W) writer structure"]
-impl crate::Writable for SET0_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`set0::R`](R) reader structure"]
+impl crate::Readable for Set0Spec {}
+#[doc = "`write(|w| ..)` method takes [`set0::W`](W) writer structure"]
+impl crate::Writable for Set0Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SET0 to value 0"]
-impl crate::Resettable for SET0_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for Set0Spec {
+    const RESET_VALUE: u32 = 0;
 }

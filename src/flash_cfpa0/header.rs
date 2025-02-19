@@ -1,103 +1,39 @@
 #[doc = "Register `HEADER` reader"]
-pub struct R(crate::R<HEADER_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<HEADER_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<HEADER_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<HEADER_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<HeaderSpec>;
 #[doc = "Register `HEADER` writer"]
-pub struct W(crate::W<HEADER_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<HEADER_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<HEADER_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<HEADER_SPEC>) -> Self {
-        W(writer)
-    }
-}
-#[doc = "Field `FIELD` reader - ."]
-pub struct FIELD_R(crate::FieldReader<u32, u32>);
-impl FIELD_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u32) -> Self {
-        FIELD_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for FIELD_R {
-    type Target = crate::FieldReader<u32, u32>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `FIELD` writer - ."]
-pub struct FIELD_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> FIELD_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u32) -> &'a mut W {
-        self.w.bits = value as u32;
-        self.w
-    }
-}
+pub type W = crate::W<HeaderSpec>;
+#[doc = "Field `FIELD` reader - no description available"]
+pub type FieldR = crate::FieldReader<u32>;
+#[doc = "Field `FIELD` writer - no description available"]
+pub type FieldW<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
 impl R {
-    #[doc = "Bits 0:31 - ."]
+    #[doc = "Bits 0:31 - no description available"]
     #[inline(always)]
-    pub fn field(&self) -> FIELD_R {
-        FIELD_R::new(self.bits as u32)
+    pub fn field(&self) -> FieldR {
+        FieldR::new(self.bits)
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - ."]
+    #[doc = "Bits 0:31 - no description available"]
     #[inline(always)]
-    pub fn field(&mut self) -> FIELD_W {
-        FIELD_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn field(&mut self) -> FieldW<HeaderSpec> {
+        FieldW::new(self, 0)
     }
 }
-#[doc = ".\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [header](index.html) module"]
-pub struct HEADER_SPEC;
-impl crate::RegisterSpec for HEADER_SPEC {
+#[doc = "no description available\n\nYou can [`read`](crate::Reg::read) this register and get [`header::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`header::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct HeaderSpec;
+impl crate::RegisterSpec for HeaderSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [header::R](R) reader structure"]
-impl crate::Readable for HEADER_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [header::W](W) writer structure"]
-impl crate::Writable for HEADER_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`header::R`](R) reader structure"]
+impl crate::Readable for HeaderSpec {}
+#[doc = "`write(|w| ..)` method takes [`header::W`](W) writer structure"]
+impl crate::Writable for HeaderSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets HEADER to value 0"]
-impl crate::Resettable for HEADER_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for HeaderSpec {
+    const RESET_VALUE: u32 = 0;
 }

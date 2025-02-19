@@ -1,484 +1,421 @@
 #[doc = "Register `RESFIFO[%s]` reader"]
-pub struct R(crate::R<RESFIFO_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<RESFIFO_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<RESFIFO_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<RESFIFO_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<ResfifoSpec>;
 #[doc = "Field `D` reader - Data result"]
-pub struct D_R(crate::FieldReader<u16, u16>);
-impl D_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u16) -> Self {
-        D_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for D_R {
-    type Target = crate::FieldReader<u16, u16>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type DR = crate::FieldReader<u16>;
 #[doc = "Trigger Source\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum TSRC_A {
+pub enum Tsrc {
     #[doc = "0: Trigger source 0 initiated this conversion."]
-    TSRC_0 = 0,
+    Tsrc0 = 0,
     #[doc = "1: Trigger source 1 initiated this conversion."]
-    TSRC_1 = 1,
+    Tsrc1 = 1,
     #[doc = "2: Corresponding trigger source initiated this conversion."]
-    TSRC_2 = 2,
+    Tsrc2 = 2,
     #[doc = "3: Corresponding trigger source initiated this conversion."]
-    TSRC_3 = 3,
+    Tsrc3 = 3,
     #[doc = "4: Corresponding trigger source initiated this conversion."]
-    TSRC_4 = 4,
+    Tsrc4 = 4,
     #[doc = "5: Corresponding trigger source initiated this conversion."]
-    TSRC_5 = 5,
+    Tsrc5 = 5,
     #[doc = "6: Corresponding trigger source initiated this conversion."]
-    TSRC_6 = 6,
+    Tsrc6 = 6,
     #[doc = "7: Corresponding trigger source initiated this conversion."]
-    TSRC_7 = 7,
+    Tsrc7 = 7,
     #[doc = "8: Corresponding trigger source initiated this conversion."]
-    TSRC_8 = 8,
+    Tsrc8 = 8,
     #[doc = "9: Corresponding trigger source initiated this conversion."]
-    TSRC_9 = 9,
+    Tsrc9 = 9,
     #[doc = "15: Trigger source 15 initiated this conversion."]
-    TSRC_15 = 15,
+    Tsrc15 = 15,
 }
-impl From<TSRC_A> for u8 {
+impl From<Tsrc> for u8 {
     #[inline(always)]
-    fn from(variant: TSRC_A) -> Self {
+    fn from(variant: Tsrc) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Tsrc {
+    type Ux = u8;
+}
+impl crate::IsEnum for Tsrc {}
 #[doc = "Field `TSRC` reader - Trigger Source"]
-pub struct TSRC_R(crate::FieldReader<u8, TSRC_A>);
-impl TSRC_R {
+pub type TsrcR = crate::FieldReader<Tsrc>;
+impl TsrcR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        TSRC_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<TSRC_A> {
+    pub const fn variant(&self) -> Option<Tsrc> {
         match self.bits {
-            0 => Some(TSRC_A::TSRC_0),
-            1 => Some(TSRC_A::TSRC_1),
-            2 => Some(TSRC_A::TSRC_2),
-            3 => Some(TSRC_A::TSRC_3),
-            4 => Some(TSRC_A::TSRC_4),
-            5 => Some(TSRC_A::TSRC_5),
-            6 => Some(TSRC_A::TSRC_6),
-            7 => Some(TSRC_A::TSRC_7),
-            8 => Some(TSRC_A::TSRC_8),
-            9 => Some(TSRC_A::TSRC_9),
-            15 => Some(TSRC_A::TSRC_15),
+            0 => Some(Tsrc::Tsrc0),
+            1 => Some(Tsrc::Tsrc1),
+            2 => Some(Tsrc::Tsrc2),
+            3 => Some(Tsrc::Tsrc3),
+            4 => Some(Tsrc::Tsrc4),
+            5 => Some(Tsrc::Tsrc5),
+            6 => Some(Tsrc::Tsrc6),
+            7 => Some(Tsrc::Tsrc7),
+            8 => Some(Tsrc::Tsrc8),
+            9 => Some(Tsrc::Tsrc9),
+            15 => Some(Tsrc::Tsrc15),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `TSRC_0`"]
+    #[doc = "Trigger source 0 initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_0(&self) -> bool {
-        **self == TSRC_A::TSRC_0
+        *self == Tsrc::Tsrc0
     }
-    #[doc = "Checks if the value of the field is `TSRC_1`"]
+    #[doc = "Trigger source 1 initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_1(&self) -> bool {
-        **self == TSRC_A::TSRC_1
+        *self == Tsrc::Tsrc1
     }
-    #[doc = "Checks if the value of the field is `TSRC_2`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_2(&self) -> bool {
-        **self == TSRC_A::TSRC_2
+        *self == Tsrc::Tsrc2
     }
-    #[doc = "Checks if the value of the field is `TSRC_3`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_3(&self) -> bool {
-        **self == TSRC_A::TSRC_3
+        *self == Tsrc::Tsrc3
     }
-    #[doc = "Checks if the value of the field is `TSRC_4`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_4(&self) -> bool {
-        **self == TSRC_A::TSRC_4
+        *self == Tsrc::Tsrc4
     }
-    #[doc = "Checks if the value of the field is `TSRC_5`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_5(&self) -> bool {
-        **self == TSRC_A::TSRC_5
+        *self == Tsrc::Tsrc5
     }
-    #[doc = "Checks if the value of the field is `TSRC_6`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_6(&self) -> bool {
-        **self == TSRC_A::TSRC_6
+        *self == Tsrc::Tsrc6
     }
-    #[doc = "Checks if the value of the field is `TSRC_7`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_7(&self) -> bool {
-        **self == TSRC_A::TSRC_7
+        *self == Tsrc::Tsrc7
     }
-    #[doc = "Checks if the value of the field is `TSRC_8`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_8(&self) -> bool {
-        **self == TSRC_A::TSRC_8
+        *self == Tsrc::Tsrc8
     }
-    #[doc = "Checks if the value of the field is `TSRC_9`"]
+    #[doc = "Corresponding trigger source initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_9(&self) -> bool {
-        **self == TSRC_A::TSRC_9
+        *self == Tsrc::Tsrc9
     }
-    #[doc = "Checks if the value of the field is `TSRC_15`"]
+    #[doc = "Trigger source 15 initiated this conversion."]
     #[inline(always)]
     pub fn is_tsrc_15(&self) -> bool {
-        **self == TSRC_A::TSRC_15
-    }
-}
-impl core::ops::Deref for TSRC_R {
-    type Target = crate::FieldReader<u8, TSRC_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Tsrc::Tsrc15
     }
 }
 #[doc = "Loop count value\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum LOOPCNT_A {
+pub enum Loopcnt {
     #[doc = "0: Result is from initial conversion in command."]
-    LOOPCNT_0 = 0,
+    Loopcnt0 = 0,
     #[doc = "1: Result is from second conversion in command."]
-    LOOPCNT_1 = 1,
+    Loopcnt1 = 1,
     #[doc = "2: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_2 = 2,
+    Loopcnt2 = 2,
     #[doc = "3: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_3 = 3,
+    Loopcnt3 = 3,
     #[doc = "4: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_4 = 4,
+    Loopcnt4 = 4,
     #[doc = "5: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_5 = 5,
+    Loopcnt5 = 5,
     #[doc = "6: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_6 = 6,
+    Loopcnt6 = 6,
     #[doc = "7: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_7 = 7,
+    Loopcnt7 = 7,
     #[doc = "8: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_8 = 8,
+    Loopcnt8 = 8,
     #[doc = "9: Result is from LOOPCNT+1 conversion in command."]
-    LOOPCNT_9 = 9,
+    Loopcnt9 = 9,
     #[doc = "15: Result is from 16th conversion in command."]
-    LOOPCNT_15 = 15,
+    Loopcnt15 = 15,
 }
-impl From<LOOPCNT_A> for u8 {
+impl From<Loopcnt> for u8 {
     #[inline(always)]
-    fn from(variant: LOOPCNT_A) -> Self {
+    fn from(variant: Loopcnt) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Loopcnt {
+    type Ux = u8;
+}
+impl crate::IsEnum for Loopcnt {}
 #[doc = "Field `LOOPCNT` reader - Loop count value"]
-pub struct LOOPCNT_R(crate::FieldReader<u8, LOOPCNT_A>);
-impl LOOPCNT_R {
+pub type LoopcntR = crate::FieldReader<Loopcnt>;
+impl LoopcntR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        LOOPCNT_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<LOOPCNT_A> {
+    pub const fn variant(&self) -> Option<Loopcnt> {
         match self.bits {
-            0 => Some(LOOPCNT_A::LOOPCNT_0),
-            1 => Some(LOOPCNT_A::LOOPCNT_1),
-            2 => Some(LOOPCNT_A::LOOPCNT_2),
-            3 => Some(LOOPCNT_A::LOOPCNT_3),
-            4 => Some(LOOPCNT_A::LOOPCNT_4),
-            5 => Some(LOOPCNT_A::LOOPCNT_5),
-            6 => Some(LOOPCNT_A::LOOPCNT_6),
-            7 => Some(LOOPCNT_A::LOOPCNT_7),
-            8 => Some(LOOPCNT_A::LOOPCNT_8),
-            9 => Some(LOOPCNT_A::LOOPCNT_9),
-            15 => Some(LOOPCNT_A::LOOPCNT_15),
+            0 => Some(Loopcnt::Loopcnt0),
+            1 => Some(Loopcnt::Loopcnt1),
+            2 => Some(Loopcnt::Loopcnt2),
+            3 => Some(Loopcnt::Loopcnt3),
+            4 => Some(Loopcnt::Loopcnt4),
+            5 => Some(Loopcnt::Loopcnt5),
+            6 => Some(Loopcnt::Loopcnt6),
+            7 => Some(Loopcnt::Loopcnt7),
+            8 => Some(Loopcnt::Loopcnt8),
+            9 => Some(Loopcnt::Loopcnt9),
+            15 => Some(Loopcnt::Loopcnt15),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_0`"]
+    #[doc = "Result is from initial conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_0(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_0
+        *self == Loopcnt::Loopcnt0
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_1`"]
+    #[doc = "Result is from second conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_1(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_1
+        *self == Loopcnt::Loopcnt1
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_2`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_2(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_2
+        *self == Loopcnt::Loopcnt2
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_3`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_3(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_3
+        *self == Loopcnt::Loopcnt3
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_4`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_4(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_4
+        *self == Loopcnt::Loopcnt4
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_5`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_5(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_5
+        *self == Loopcnt::Loopcnt5
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_6`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_6(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_6
+        *self == Loopcnt::Loopcnt6
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_7`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_7(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_7
+        *self == Loopcnt::Loopcnt7
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_8`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_8(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_8
+        *self == Loopcnt::Loopcnt8
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_9`"]
+    #[doc = "Result is from LOOPCNT+1 conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_9(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_9
+        *self == Loopcnt::Loopcnt9
     }
-    #[doc = "Checks if the value of the field is `LOOPCNT_15`"]
+    #[doc = "Result is from 16th conversion in command."]
     #[inline(always)]
     pub fn is_loopcnt_15(&self) -> bool {
-        **self == LOOPCNT_A::LOOPCNT_15
-    }
-}
-impl core::ops::Deref for LOOPCNT_R {
-    type Target = crate::FieldReader<u8, LOOPCNT_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Loopcnt::Loopcnt15
     }
 }
 #[doc = "Command Buffer Source\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CMDSRC_A {
+pub enum Cmdsrc {
     #[doc = "0: Not a valid value CMDSRC value for a dataword in RESFIFO. 0x0 is only found in initial FIFO state prior to an ADC conversion result dataword being stored to a RESFIFO buffer."]
-    CMDSRC_0 = 0,
+    Cmdsrc0 = 0,
     #[doc = "1: CMD1 buffer used as control settings for this conversion."]
-    CMDSRC_1 = 1,
+    Cmdsrc1 = 1,
     #[doc = "2: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_2 = 2,
+    Cmdsrc2 = 2,
     #[doc = "3: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_3 = 3,
+    Cmdsrc3 = 3,
     #[doc = "4: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_4 = 4,
+    Cmdsrc4 = 4,
     #[doc = "5: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_5 = 5,
+    Cmdsrc5 = 5,
     #[doc = "6: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_6 = 6,
+    Cmdsrc6 = 6,
     #[doc = "7: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_7 = 7,
+    Cmdsrc7 = 7,
     #[doc = "8: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_8 = 8,
+    Cmdsrc8 = 8,
     #[doc = "9: Corresponding command buffer used as control settings for this conversion."]
-    CMDSRC_9 = 9,
+    Cmdsrc9 = 9,
     #[doc = "15: CMD15 buffer used as control settings for this conversion."]
-    CMDSRC_15 = 15,
+    Cmdsrc15 = 15,
 }
-impl From<CMDSRC_A> for u8 {
+impl From<Cmdsrc> for u8 {
     #[inline(always)]
-    fn from(variant: CMDSRC_A) -> Self {
+    fn from(variant: Cmdsrc) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Cmdsrc {
+    type Ux = u8;
+}
+impl crate::IsEnum for Cmdsrc {}
 #[doc = "Field `CMDSRC` reader - Command Buffer Source"]
-pub struct CMDSRC_R(crate::FieldReader<u8, CMDSRC_A>);
-impl CMDSRC_R {
+pub type CmdsrcR = crate::FieldReader<Cmdsrc>;
+impl CmdsrcR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CMDSRC_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> Option<CMDSRC_A> {
+    pub const fn variant(&self) -> Option<Cmdsrc> {
         match self.bits {
-            0 => Some(CMDSRC_A::CMDSRC_0),
-            1 => Some(CMDSRC_A::CMDSRC_1),
-            2 => Some(CMDSRC_A::CMDSRC_2),
-            3 => Some(CMDSRC_A::CMDSRC_3),
-            4 => Some(CMDSRC_A::CMDSRC_4),
-            5 => Some(CMDSRC_A::CMDSRC_5),
-            6 => Some(CMDSRC_A::CMDSRC_6),
-            7 => Some(CMDSRC_A::CMDSRC_7),
-            8 => Some(CMDSRC_A::CMDSRC_8),
-            9 => Some(CMDSRC_A::CMDSRC_9),
-            15 => Some(CMDSRC_A::CMDSRC_15),
+            0 => Some(Cmdsrc::Cmdsrc0),
+            1 => Some(Cmdsrc::Cmdsrc1),
+            2 => Some(Cmdsrc::Cmdsrc2),
+            3 => Some(Cmdsrc::Cmdsrc3),
+            4 => Some(Cmdsrc::Cmdsrc4),
+            5 => Some(Cmdsrc::Cmdsrc5),
+            6 => Some(Cmdsrc::Cmdsrc6),
+            7 => Some(Cmdsrc::Cmdsrc7),
+            8 => Some(Cmdsrc::Cmdsrc8),
+            9 => Some(Cmdsrc::Cmdsrc9),
+            15 => Some(Cmdsrc::Cmdsrc15),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_0`"]
+    #[doc = "Not a valid value CMDSRC value for a dataword in RESFIFO. 0x0 is only found in initial FIFO state prior to an ADC conversion result dataword being stored to a RESFIFO buffer."]
     #[inline(always)]
     pub fn is_cmdsrc_0(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_0
+        *self == Cmdsrc::Cmdsrc0
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_1`"]
+    #[doc = "CMD1 buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_1(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_1
+        *self == Cmdsrc::Cmdsrc1
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_2`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_2(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_2
+        *self == Cmdsrc::Cmdsrc2
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_3`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_3(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_3
+        *self == Cmdsrc::Cmdsrc3
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_4`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_4(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_4
+        *self == Cmdsrc::Cmdsrc4
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_5`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_5(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_5
+        *self == Cmdsrc::Cmdsrc5
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_6`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_6(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_6
+        *self == Cmdsrc::Cmdsrc6
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_7`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_7(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_7
+        *self == Cmdsrc::Cmdsrc7
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_8`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_8(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_8
+        *self == Cmdsrc::Cmdsrc8
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_9`"]
+    #[doc = "Corresponding command buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_9(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_9
+        *self == Cmdsrc::Cmdsrc9
     }
-    #[doc = "Checks if the value of the field is `CMDSRC_15`"]
+    #[doc = "CMD15 buffer used as control settings for this conversion."]
     #[inline(always)]
     pub fn is_cmdsrc_15(&self) -> bool {
-        **self == CMDSRC_A::CMDSRC_15
-    }
-}
-impl core::ops::Deref for CMDSRC_R {
-    type Target = crate::FieldReader<u8, CMDSRC_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Cmdsrc::Cmdsrc15
     }
 }
 #[doc = "FIFO entry is valid\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum VALID_A {
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Valid {
     #[doc = "0: FIFO is empty. Discard any read from RESFIFO."]
-    VALID_0 = 0,
+    Valid0 = 0,
     #[doc = "1: FIFO record read from RESFIFO is valid."]
-    VALID_1 = 1,
+    Valid1 = 1,
 }
-impl From<VALID_A> for bool {
+impl From<Valid> for bool {
     #[inline(always)]
-    fn from(variant: VALID_A) -> Self {
+    fn from(variant: Valid) -> Self {
         variant as u8 != 0
     }
 }
 #[doc = "Field `VALID` reader - FIFO entry is valid"]
-pub struct VALID_R(crate::FieldReader<bool, VALID_A>);
-impl VALID_R {
+pub type ValidR = crate::BitReader<Valid>;
+impl ValidR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: bool) -> Self {
-        VALID_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> VALID_A {
+    pub const fn variant(&self) -> Valid {
         match self.bits {
-            false => VALID_A::VALID_0,
-            true => VALID_A::VALID_1,
+            false => Valid::Valid0,
+            true => Valid::Valid1,
         }
     }
-    #[doc = "Checks if the value of the field is `VALID_0`"]
+    #[doc = "FIFO is empty. Discard any read from RESFIFO."]
     #[inline(always)]
     pub fn is_valid_0(&self) -> bool {
-        **self == VALID_A::VALID_0
+        *self == Valid::Valid0
     }
-    #[doc = "Checks if the value of the field is `VALID_1`"]
+    #[doc = "FIFO record read from RESFIFO is valid."]
     #[inline(always)]
     pub fn is_valid_1(&self) -> bool {
-        **self == VALID_A::VALID_1
-    }
-}
-impl core::ops::Deref for VALID_R {
-    type Target = crate::FieldReader<bool, VALID_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == Valid::Valid1
     }
 }
 impl R {
     #[doc = "Bits 0:15 - Data result"]
     #[inline(always)]
-    pub fn d(&self) -> D_R {
-        D_R::new((self.bits & 0xffff) as u16)
+    pub fn d(&self) -> DR {
+        DR::new((self.bits & 0xffff) as u16)
     }
     #[doc = "Bits 16:19 - Trigger Source"]
     #[inline(always)]
-    pub fn tsrc(&self) -> TSRC_R {
-        TSRC_R::new(((self.bits >> 16) & 0x0f) as u8)
+    pub fn tsrc(&self) -> TsrcR {
+        TsrcR::new(((self.bits >> 16) & 0x0f) as u8)
     }
     #[doc = "Bits 20:23 - Loop count value"]
     #[inline(always)]
-    pub fn loopcnt(&self) -> LOOPCNT_R {
-        LOOPCNT_R::new(((self.bits >> 20) & 0x0f) as u8)
+    pub fn loopcnt(&self) -> LoopcntR {
+        LoopcntR::new(((self.bits >> 20) & 0x0f) as u8)
     }
     #[doc = "Bits 24:27 - Command Buffer Source"]
     #[inline(always)]
-    pub fn cmdsrc(&self) -> CMDSRC_R {
-        CMDSRC_R::new(((self.bits >> 24) & 0x0f) as u8)
+    pub fn cmdsrc(&self) -> CmdsrcR {
+        CmdsrcR::new(((self.bits >> 24) & 0x0f) as u8)
     }
     #[doc = "Bit 31 - FIFO entry is valid"]
     #[inline(always)]
-    pub fn valid(&self) -> VALID_R {
-        VALID_R::new(((self.bits >> 31) & 0x01) != 0)
+    pub fn valid(&self) -> ValidR {
+        ValidR::new(((self.bits >> 31) & 1) != 0)
     }
 }
-#[doc = "ADC Data Result FIFO Register\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [resfifo](index.html) module"]
-pub struct RESFIFO_SPEC;
-impl crate::RegisterSpec for RESFIFO_SPEC {
+#[doc = "ADC Data Result FIFO Register\n\nYou can [`read`](crate::Reg::read) this register and get [`resfifo::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct ResfifoSpec;
+impl crate::RegisterSpec for ResfifoSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [resfifo::R](R) reader structure"]
-impl crate::Readable for RESFIFO_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`resfifo::R`](R) reader structure"]
+impl crate::Readable for ResfifoSpec {}
 #[doc = "`reset()` method sets RESFIFO[%s]
 to value 0"]
-impl crate::Resettable for RESFIFO_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for ResfifoSpec {
+    const RESET_VALUE: u32 = 0;
 }

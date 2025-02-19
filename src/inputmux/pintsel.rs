@@ -1,104 +1,40 @@
 #[doc = "Register `PINTSEL[%s]` reader"]
-pub struct R(crate::R<PINTSEL_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PINTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PINTSEL_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PINTSEL_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PintselSpec>;
 #[doc = "Register `PINTSEL[%s]` writer"]
-pub struct W(crate::W<PINTSEL_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PINTSEL_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PINTSEL_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PINTSEL_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PintselSpec>;
 #[doc = "Field `INTPIN` reader - Pin number select for pin interrupt or pattern match engine input. For PIOx_y: INTPIN = (x * 32) + y. PIO0_0 to PIO1_31 correspond to numbers 0 to 63."]
-pub struct INTPIN_R(crate::FieldReader<u8, u8>);
-impl INTPIN_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INTPIN_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INTPIN_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IntpinR = crate::FieldReader;
 #[doc = "Field `INTPIN` writer - Pin number select for pin interrupt or pattern match engine input. For PIOx_y: INTPIN = (x * 32) + y. PIO0_0 to PIO1_31 correspond to numbers 0 to 63."]
-pub struct INTPIN_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INTPIN_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x7f) | (value as u32 & 0x7f);
-        self.w
-    }
-}
+pub type IntpinW<'a, REG> = crate::FieldWriter<'a, REG, 7>;
 impl R {
     #[doc = "Bits 0:6 - Pin number select for pin interrupt or pattern match engine input. For PIOx_y: INTPIN = (x * 32) + y. PIO0_0 to PIO1_31 correspond to numbers 0 to 63."]
     #[inline(always)]
-    pub fn intpin(&self) -> INTPIN_R {
-        INTPIN_R::new((self.bits & 0x7f) as u8)
+    pub fn intpin(&self) -> IntpinR {
+        IntpinR::new((self.bits & 0x7f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:6 - Pin number select for pin interrupt or pattern match engine input. For PIOx_y: INTPIN = (x * 32) + y. PIO0_0 to PIO1_31 correspond to numbers 0 to 63."]
     #[inline(always)]
-    pub fn intpin(&mut self) -> INTPIN_W {
-        INTPIN_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn intpin(&mut self) -> IntpinW<PintselSpec> {
+        IntpinW::new(self, 0)
     }
 }
-#[doc = "Pin interrupt select register\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pintsel](index.html) module"]
-pub struct PINTSEL_SPEC;
-impl crate::RegisterSpec for PINTSEL_SPEC {
+#[doc = "Pin interrupt select register\n\nYou can [`read`](crate::Reg::read) this register and get [`pintsel::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`pintsel::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PintselSpec;
+impl crate::RegisterSpec for PintselSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [pintsel::R](R) reader structure"]
-impl crate::Readable for PINTSEL_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [pintsel::W](W) writer structure"]
-impl crate::Writable for PINTSEL_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`pintsel::R`](R) reader structure"]
+impl crate::Readable for PintselSpec {}
+#[doc = "`write(|w| ..)` method takes [`pintsel::W`](W) writer structure"]
+impl crate::Writable for PintselSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PINTSEL[%s]
 to value 0x7f"]
-impl crate::Resettable for PINTSEL_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0x7f
-    }
+impl crate::Resettable for PintselSpec {
+    const RESET_VALUE: u32 = 0x7f;
 }

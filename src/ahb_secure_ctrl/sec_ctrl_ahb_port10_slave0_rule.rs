@@ -1,850 +1,703 @@
 #[doc = "Register `SEC_CTRL_AHB_PORT10_SLAVE0_RULE` reader"]
-pub struct R(crate::R<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<SecCtrlAhbPort10Slave0RuleSpec>;
 #[doc = "Register `SEC_CTRL_AHB_PORT10_SLAVE0_RULE` writer"]
-pub struct W(crate::W<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<SecCtrlAhbPort10Slave0RuleSpec>;
 #[doc = "ADC\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum ADC_RULE_A {
+pub enum AdcRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<ADC_RULE_A> for u8 {
+impl From<AdcRule> for u8 {
     #[inline(always)]
-    fn from(variant: ADC_RULE_A) -> Self {
+    fn from(variant: AdcRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for AdcRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for AdcRule {}
 #[doc = "Field `ADC_RULE` reader - ADC"]
-pub struct ADC_RULE_R(crate::FieldReader<u8, ADC_RULE_A>);
-impl ADC_RULE_R {
+pub type AdcRuleR = crate::FieldReader<AdcRule>;
+impl AdcRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        ADC_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> ADC_RULE_A {
+    pub const fn variant(&self) -> AdcRule {
         match self.bits {
-            0 => ADC_RULE_A::ENUM_NS_NP,
-            1 => ADC_RULE_A::ENUM_NS_P,
-            2 => ADC_RULE_A::ENUM_S_NP,
-            3 => ADC_RULE_A::ENUM_S_P,
+            0 => AdcRule::EnumNsNp,
+            1 => AdcRule::EnumNsP,
+            2 => AdcRule::EnumSNp,
+            3 => AdcRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == ADC_RULE_A::ENUM_NS_NP
+        *self == AdcRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == ADC_RULE_A::ENUM_NS_P
+        *self == AdcRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == ADC_RULE_A::ENUM_S_NP
+        *self == AdcRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == ADC_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for ADC_RULE_R {
-    type Target = crate::FieldReader<u8, ADC_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == AdcRule::EnumSP
     }
 }
 #[doc = "Field `ADC_RULE` writer - ADC"]
-pub struct ADC_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> ADC_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: ADC_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type AdcRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, AdcRule, crate::Safe>;
+impl<'a, REG> AdcRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(ADC_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(ADC_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(ADC_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(ADC_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(AdcRule::EnumSP)
     }
 }
 #[doc = "USB Full Speed Host registers.\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum USB_FS_HOST_RULE_A {
+pub enum UsbFsHostRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<USB_FS_HOST_RULE_A> for u8 {
+impl From<UsbFsHostRule> for u8 {
     #[inline(always)]
-    fn from(variant: USB_FS_HOST_RULE_A) -> Self {
+    fn from(variant: UsbFsHostRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for UsbFsHostRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for UsbFsHostRule {}
 #[doc = "Field `USB_FS_HOST_RULE` reader - USB Full Speed Host registers."]
-pub struct USB_FS_HOST_RULE_R(crate::FieldReader<u8, USB_FS_HOST_RULE_A>);
-impl USB_FS_HOST_RULE_R {
+pub type UsbFsHostRuleR = crate::FieldReader<UsbFsHostRule>;
+impl UsbFsHostRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        USB_FS_HOST_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> USB_FS_HOST_RULE_A {
+    pub const fn variant(&self) -> UsbFsHostRule {
         match self.bits {
-            0 => USB_FS_HOST_RULE_A::ENUM_NS_NP,
-            1 => USB_FS_HOST_RULE_A::ENUM_NS_P,
-            2 => USB_FS_HOST_RULE_A::ENUM_S_NP,
-            3 => USB_FS_HOST_RULE_A::ENUM_S_P,
+            0 => UsbFsHostRule::EnumNsNp,
+            1 => UsbFsHostRule::EnumNsP,
+            2 => UsbFsHostRule::EnumSNp,
+            3 => UsbFsHostRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == USB_FS_HOST_RULE_A::ENUM_NS_NP
+        *self == UsbFsHostRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == USB_FS_HOST_RULE_A::ENUM_NS_P
+        *self == UsbFsHostRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == USB_FS_HOST_RULE_A::ENUM_S_NP
+        *self == UsbFsHostRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == USB_FS_HOST_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for USB_FS_HOST_RULE_R {
-    type Target = crate::FieldReader<u8, USB_FS_HOST_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == UsbFsHostRule::EnumSP
     }
 }
 #[doc = "Field `USB_FS_HOST_RULE` writer - USB Full Speed Host registers."]
-pub struct USB_FS_HOST_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_FS_HOST_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: USB_FS_HOST_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type UsbFsHostRuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, UsbFsHostRule, crate::Safe>;
+impl<'a, REG> UsbFsHostRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(USB_FS_HOST_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbFsHostRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(USB_FS_HOST_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbFsHostRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(USB_FS_HOST_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbFsHostRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(USB_FS_HOST_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 8)) | ((value as u32 & 0x03) << 8);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbFsHostRule::EnumSP)
     }
 }
 #[doc = "USB High speed host registers\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum USB_HS_HOST_RULE_A {
+pub enum UsbHsHostRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<USB_HS_HOST_RULE_A> for u8 {
+impl From<UsbHsHostRule> for u8 {
     #[inline(always)]
-    fn from(variant: USB_HS_HOST_RULE_A) -> Self {
+    fn from(variant: UsbHsHostRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for UsbHsHostRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for UsbHsHostRule {}
 #[doc = "Field `USB_HS_HOST_RULE` reader - USB High speed host registers"]
-pub struct USB_HS_HOST_RULE_R(crate::FieldReader<u8, USB_HS_HOST_RULE_A>);
-impl USB_HS_HOST_RULE_R {
+pub type UsbHsHostRuleR = crate::FieldReader<UsbHsHostRule>;
+impl UsbHsHostRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        USB_HS_HOST_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> USB_HS_HOST_RULE_A {
+    pub const fn variant(&self) -> UsbHsHostRule {
         match self.bits {
-            0 => USB_HS_HOST_RULE_A::ENUM_NS_NP,
-            1 => USB_HS_HOST_RULE_A::ENUM_NS_P,
-            2 => USB_HS_HOST_RULE_A::ENUM_S_NP,
-            3 => USB_HS_HOST_RULE_A::ENUM_S_P,
+            0 => UsbHsHostRule::EnumNsNp,
+            1 => UsbHsHostRule::EnumNsP,
+            2 => UsbHsHostRule::EnumSNp,
+            3 => UsbHsHostRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == USB_HS_HOST_RULE_A::ENUM_NS_NP
+        *self == UsbHsHostRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == USB_HS_HOST_RULE_A::ENUM_NS_P
+        *self == UsbHsHostRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == USB_HS_HOST_RULE_A::ENUM_S_NP
+        *self == UsbHsHostRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == USB_HS_HOST_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for USB_HS_HOST_RULE_R {
-    type Target = crate::FieldReader<u8, USB_HS_HOST_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == UsbHsHostRule::EnumSP
     }
 }
 #[doc = "Field `USB_HS_HOST_RULE` writer - USB High speed host registers"]
-pub struct USB_HS_HOST_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> USB_HS_HOST_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: USB_HS_HOST_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type UsbHsHostRuleW<'a, REG> =
+    crate::FieldWriter<'a, REG, 2, UsbHsHostRule, crate::Safe>;
+impl<'a, REG> UsbHsHostRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(USB_HS_HOST_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbHsHostRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(USB_HS_HOST_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbHsHostRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(USB_HS_HOST_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbHsHostRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(USB_HS_HOST_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 12)) | ((value as u32 & 0x03) << 12);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(UsbHsHostRule::EnumSP)
     }
 }
 #[doc = "SHA-2 crypto registers\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum HASH_RULE_A {
+pub enum HashRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<HASH_RULE_A> for u8 {
+impl From<HashRule> for u8 {
     #[inline(always)]
-    fn from(variant: HASH_RULE_A) -> Self {
+    fn from(variant: HashRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for HashRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for HashRule {}
 #[doc = "Field `HASH_RULE` reader - SHA-2 crypto registers"]
-pub struct HASH_RULE_R(crate::FieldReader<u8, HASH_RULE_A>);
-impl HASH_RULE_R {
+pub type HashRuleR = crate::FieldReader<HashRule>;
+impl HashRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        HASH_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> HASH_RULE_A {
+    pub const fn variant(&self) -> HashRule {
         match self.bits {
-            0 => HASH_RULE_A::ENUM_NS_NP,
-            1 => HASH_RULE_A::ENUM_NS_P,
-            2 => HASH_RULE_A::ENUM_S_NP,
-            3 => HASH_RULE_A::ENUM_S_P,
+            0 => HashRule::EnumNsNp,
+            1 => HashRule::EnumNsP,
+            2 => HashRule::EnumSNp,
+            3 => HashRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == HASH_RULE_A::ENUM_NS_NP
+        *self == HashRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == HASH_RULE_A::ENUM_NS_P
+        *self == HashRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == HASH_RULE_A::ENUM_S_NP
+        *self == HashRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == HASH_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for HASH_RULE_R {
-    type Target = crate::FieldReader<u8, HASH_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == HashRule::EnumSP
     }
 }
 #[doc = "Field `HASH_RULE` writer - SHA-2 crypto registers"]
-pub struct HASH_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> HASH_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: HASH_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type HashRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, HashRule, crate::Safe>;
+impl<'a, REG> HashRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(HASH_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(HashRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(HASH_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(HashRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(HASH_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(HashRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(HASH_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 16)) | ((value as u32 & 0x03) << 16);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(HashRule::EnumSP)
     }
 }
 #[doc = "RSA/ECC crypto accelerator\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum CASPER_RULE_A {
+pub enum CasperRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<CASPER_RULE_A> for u8 {
+impl From<CasperRule> for u8 {
     #[inline(always)]
-    fn from(variant: CASPER_RULE_A) -> Self {
+    fn from(variant: CasperRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for CasperRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for CasperRule {}
 #[doc = "Field `CASPER_RULE` reader - RSA/ECC crypto accelerator"]
-pub struct CASPER_RULE_R(crate::FieldReader<u8, CASPER_RULE_A>);
-impl CASPER_RULE_R {
+pub type CasperRuleR = crate::FieldReader<CasperRule>;
+impl CasperRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        CASPER_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> CASPER_RULE_A {
+    pub const fn variant(&self) -> CasperRule {
         match self.bits {
-            0 => CASPER_RULE_A::ENUM_NS_NP,
-            1 => CASPER_RULE_A::ENUM_NS_P,
-            2 => CASPER_RULE_A::ENUM_S_NP,
-            3 => CASPER_RULE_A::ENUM_S_P,
+            0 => CasperRule::EnumNsNp,
+            1 => CasperRule::EnumNsP,
+            2 => CasperRule::EnumSNp,
+            3 => CasperRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == CASPER_RULE_A::ENUM_NS_NP
+        *self == CasperRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == CASPER_RULE_A::ENUM_NS_P
+        *self == CasperRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == CASPER_RULE_A::ENUM_S_NP
+        *self == CasperRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == CASPER_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for CASPER_RULE_R {
-    type Target = crate::FieldReader<u8, CASPER_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == CasperRule::EnumSP
     }
 }
 #[doc = "Field `CASPER_RULE` writer - RSA/ECC crypto accelerator"]
-pub struct CASPER_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> CASPER_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: CASPER_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type CasperRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, CasperRule, crate::Safe>;
+impl<'a, REG> CasperRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(CASPER_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(CasperRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(CASPER_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(CasperRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(CASPER_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(CasperRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(CASPER_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(CasperRule::EnumSP)
     }
 }
 #[doc = "Power Quad (CPU0 processor hardware accelerator)\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum PQ_RULE_A {
+pub enum PqRule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<PQ_RULE_A> for u8 {
+impl From<PqRule> for u8 {
     #[inline(always)]
-    fn from(variant: PQ_RULE_A) -> Self {
+    fn from(variant: PqRule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for PqRule {
+    type Ux = u8;
+}
+impl crate::IsEnum for PqRule {}
 #[doc = "Field `PQ_RULE` reader - Power Quad (CPU0 processor hardware accelerator)"]
-pub struct PQ_RULE_R(crate::FieldReader<u8, PQ_RULE_A>);
-impl PQ_RULE_R {
+pub type PqRuleR = crate::FieldReader<PqRule>;
+impl PqRuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        PQ_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> PQ_RULE_A {
+    pub const fn variant(&self) -> PqRule {
         match self.bits {
-            0 => PQ_RULE_A::ENUM_NS_NP,
-            1 => PQ_RULE_A::ENUM_NS_P,
-            2 => PQ_RULE_A::ENUM_S_NP,
-            3 => PQ_RULE_A::ENUM_S_P,
+            0 => PqRule::EnumNsNp,
+            1 => PqRule::EnumNsP,
+            2 => PqRule::EnumSNp,
+            3 => PqRule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_np(&self) -> bool {
-        **self == PQ_RULE_A::ENUM_NS_NP
+        *self == PqRule::EnumNsNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
+    #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
     pub fn is_enum_ns_p(&self) -> bool {
-        **self == PQ_RULE_A::ENUM_NS_P
+        *self == PqRule::EnumNsP
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
+    #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_np(&self) -> bool {
-        **self == PQ_RULE_A::ENUM_S_NP
+        *self == PqRule::EnumSNp
     }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
+    #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
     pub fn is_enum_s_p(&self) -> bool {
-        **self == PQ_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for PQ_RULE_R {
-    type Target = crate::FieldReader<u8, PQ_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
+        *self == PqRule::EnumSP
     }
 }
 #[doc = "Field `PQ_RULE` writer - Power Quad (CPU0 processor hardware accelerator)"]
-pub struct PQ_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> PQ_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: PQ_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
+pub type PqRuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, PqRule, crate::Safe>;
+impl<'a, REG> PqRuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(PQ_RULE_A::ENUM_NS_NP)
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(PqRule::EnumNsNp)
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(PQ_RULE_A::ENUM_NS_P)
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(PqRule::EnumNsP)
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(PQ_RULE_A::ENUM_S_NP)
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(PqRule::EnumSNp)
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(PQ_RULE_A::ENUM_S_P)
-    }
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 24)) | ((value as u32 & 0x03) << 24);
-        self.w
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(PqRule::EnumSP)
     }
 }
 #[doc = "DMA Controller (Secure)\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
-pub enum DMA1_RULE_A {
+pub enum Dma1Rule {
     #[doc = "0: Non-secure and Non-priviledge user access allowed."]
-    ENUM_NS_NP = 0,
+    EnumNsNp = 0,
     #[doc = "1: Non-secure and Privilege access allowed."]
-    ENUM_NS_P = 1,
+    EnumNsP = 1,
     #[doc = "2: Secure and Non-priviledge user access allowed."]
-    ENUM_S_NP = 2,
+    EnumSNp = 2,
     #[doc = "3: Secure and Priviledge user access allowed."]
-    ENUM_S_P = 3,
+    EnumSP = 3,
 }
-impl From<DMA1_RULE_A> for u8 {
+impl From<Dma1Rule> for u8 {
     #[inline(always)]
-    fn from(variant: DMA1_RULE_A) -> Self {
+    fn from(variant: Dma1Rule) -> Self {
         variant as _
     }
 }
+impl crate::FieldSpec for Dma1Rule {
+    type Ux = u8;
+}
+impl crate::IsEnum for Dma1Rule {}
 #[doc = "Field `DMA1_RULE` reader - DMA Controller (Secure)"]
-pub struct DMA1_RULE_R(crate::FieldReader<u8, DMA1_RULE_A>);
-impl DMA1_RULE_R {
+pub type Dma1RuleR = crate::FieldReader<Dma1Rule>;
+impl Dma1RuleR {
+    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        DMA1_RULE_R(crate::FieldReader::new(bits))
-    }
-    #[doc = r"Get enumerated values variant"]
-    #[inline(always)]
-    pub fn variant(&self) -> DMA1_RULE_A {
+    pub const fn variant(&self) -> Dma1Rule {
         match self.bits {
-            0 => DMA1_RULE_A::ENUM_NS_NP,
-            1 => DMA1_RULE_A::ENUM_NS_P,
-            2 => DMA1_RULE_A::ENUM_S_NP,
-            3 => DMA1_RULE_A::ENUM_S_P,
+            0 => Dma1Rule::EnumNsNp,
+            1 => Dma1Rule::EnumNsP,
+            2 => Dma1Rule::EnumSNp,
+            3 => Dma1Rule::EnumSP,
             _ => unreachable!(),
         }
     }
-    #[doc = "Checks if the value of the field is `ENUM_NS_NP`"]
-    #[inline(always)]
-    pub fn is_enum_ns_np(&self) -> bool {
-        **self == DMA1_RULE_A::ENUM_NS_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_NS_P`"]
-    #[inline(always)]
-    pub fn is_enum_ns_p(&self) -> bool {
-        **self == DMA1_RULE_A::ENUM_NS_P
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_NP`"]
-    #[inline(always)]
-    pub fn is_enum_s_np(&self) -> bool {
-        **self == DMA1_RULE_A::ENUM_S_NP
-    }
-    #[doc = "Checks if the value of the field is `ENUM_S_P`"]
-    #[inline(always)]
-    pub fn is_enum_s_p(&self) -> bool {
-        **self == DMA1_RULE_A::ENUM_S_P
-    }
-}
-impl core::ops::Deref for DMA1_RULE_R {
-    type Target = crate::FieldReader<u8, DMA1_RULE_A>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-#[doc = "Field `DMA1_RULE` writer - DMA Controller (Secure)"]
-pub struct DMA1_RULE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> DMA1_RULE_W<'a> {
-    #[doc = r"Writes `variant` to the field"]
-    #[inline(always)]
-    pub fn variant(self, variant: DMA1_RULE_A) -> &'a mut W {
-        self.bits(variant.into())
-    }
     #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_ns_np(self) -> &'a mut W {
-        self.variant(DMA1_RULE_A::ENUM_NS_NP)
+    pub fn is_enum_ns_np(&self) -> bool {
+        *self == Dma1Rule::EnumNsNp
     }
     #[doc = "Non-secure and Privilege access allowed."]
     #[inline(always)]
-    pub fn enum_ns_p(self) -> &'a mut W {
-        self.variant(DMA1_RULE_A::ENUM_NS_P)
+    pub fn is_enum_ns_p(&self) -> bool {
+        *self == Dma1Rule::EnumNsP
     }
     #[doc = "Secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_np(self) -> &'a mut W {
-        self.variant(DMA1_RULE_A::ENUM_S_NP)
+    pub fn is_enum_s_np(&self) -> bool {
+        *self == Dma1Rule::EnumSNp
     }
     #[doc = "Secure and Priviledge user access allowed."]
     #[inline(always)]
-    pub fn enum_s_p(self) -> &'a mut W {
-        self.variant(DMA1_RULE_A::ENUM_S_P)
+    pub fn is_enum_s_p(&self) -> bool {
+        *self == Dma1Rule::EnumSP
     }
-    #[doc = r"Writes raw bits to the field"]
+}
+#[doc = "Field `DMA1_RULE` writer - DMA Controller (Secure)"]
+pub type Dma1RuleW<'a, REG> = crate::FieldWriter<'a, REG, 2, Dma1Rule, crate::Safe>;
+impl<'a, REG> Dma1RuleW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Non-secure and Non-priviledge user access allowed."]
     #[inline(always)]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x03 << 28)) | ((value as u32 & 0x03) << 28);
-        self.w
+    pub fn enum_ns_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma1Rule::EnumNsNp)
+    }
+    #[doc = "Non-secure and Privilege access allowed."]
+    #[inline(always)]
+    pub fn enum_ns_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma1Rule::EnumNsP)
+    }
+    #[doc = "Secure and Non-priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_np(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma1Rule::EnumSNp)
+    }
+    #[doc = "Secure and Priviledge user access allowed."]
+    #[inline(always)]
+    pub fn enum_s_p(self) -> &'a mut crate::W<REG> {
+        self.variant(Dma1Rule::EnumSP)
     }
 }
 impl R {
     #[doc = "Bits 0:1 - ADC"]
     #[inline(always)]
-    pub fn adc_rule(&self) -> ADC_RULE_R {
-        ADC_RULE_R::new((self.bits & 0x03) as u8)
+    pub fn adc_rule(&self) -> AdcRuleR {
+        AdcRuleR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 8:9 - USB Full Speed Host registers."]
     #[inline(always)]
-    pub fn usb_fs_host_rule(&self) -> USB_FS_HOST_RULE_R {
-        USB_FS_HOST_RULE_R::new(((self.bits >> 8) & 0x03) as u8)
+    pub fn usb_fs_host_rule(&self) -> UsbFsHostRuleR {
+        UsbFsHostRuleR::new(((self.bits >> 8) & 3) as u8)
     }
     #[doc = "Bits 12:13 - USB High speed host registers"]
     #[inline(always)]
-    pub fn usb_hs_host_rule(&self) -> USB_HS_HOST_RULE_R {
-        USB_HS_HOST_RULE_R::new(((self.bits >> 12) & 0x03) as u8)
+    pub fn usb_hs_host_rule(&self) -> UsbHsHostRuleR {
+        UsbHsHostRuleR::new(((self.bits >> 12) & 3) as u8)
     }
     #[doc = "Bits 16:17 - SHA-2 crypto registers"]
     #[inline(always)]
-    pub fn hash_rule(&self) -> HASH_RULE_R {
-        HASH_RULE_R::new(((self.bits >> 16) & 0x03) as u8)
+    pub fn hash_rule(&self) -> HashRuleR {
+        HashRuleR::new(((self.bits >> 16) & 3) as u8)
     }
     #[doc = "Bits 20:21 - RSA/ECC crypto accelerator"]
     #[inline(always)]
-    pub fn casper_rule(&self) -> CASPER_RULE_R {
-        CASPER_RULE_R::new(((self.bits >> 20) & 0x03) as u8)
+    pub fn casper_rule(&self) -> CasperRuleR {
+        CasperRuleR::new(((self.bits >> 20) & 3) as u8)
     }
     #[doc = "Bits 24:25 - Power Quad (CPU0 processor hardware accelerator)"]
     #[inline(always)]
-    pub fn pq_rule(&self) -> PQ_RULE_R {
-        PQ_RULE_R::new(((self.bits >> 24) & 0x03) as u8)
+    pub fn pq_rule(&self) -> PqRuleR {
+        PqRuleR::new(((self.bits >> 24) & 3) as u8)
     }
     #[doc = "Bits 28:29 - DMA Controller (Secure)"]
     #[inline(always)]
-    pub fn dma1_rule(&self) -> DMA1_RULE_R {
-        DMA1_RULE_R::new(((self.bits >> 28) & 0x03) as u8)
+    pub fn dma1_rule(&self) -> Dma1RuleR {
+        Dma1RuleR::new(((self.bits >> 28) & 3) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - ADC"]
     #[inline(always)]
-    pub fn adc_rule(&mut self) -> ADC_RULE_W {
-        ADC_RULE_W { w: self }
+    pub fn adc_rule(&mut self) -> AdcRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        AdcRuleW::new(self, 0)
     }
     #[doc = "Bits 8:9 - USB Full Speed Host registers."]
     #[inline(always)]
-    pub fn usb_fs_host_rule(&mut self) -> USB_FS_HOST_RULE_W {
-        USB_FS_HOST_RULE_W { w: self }
+    pub fn usb_fs_host_rule(
+        &mut self,
+    ) -> UsbFsHostRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        UsbFsHostRuleW::new(self, 8)
     }
     #[doc = "Bits 12:13 - USB High speed host registers"]
     #[inline(always)]
-    pub fn usb_hs_host_rule(&mut self) -> USB_HS_HOST_RULE_W {
-        USB_HS_HOST_RULE_W { w: self }
+    pub fn usb_hs_host_rule(
+        &mut self,
+    ) -> UsbHsHostRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        UsbHsHostRuleW::new(self, 12)
     }
     #[doc = "Bits 16:17 - SHA-2 crypto registers"]
     #[inline(always)]
-    pub fn hash_rule(&mut self) -> HASH_RULE_W {
-        HASH_RULE_W { w: self }
+    pub fn hash_rule(&mut self) -> HashRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        HashRuleW::new(self, 16)
     }
     #[doc = "Bits 20:21 - RSA/ECC crypto accelerator"]
     #[inline(always)]
-    pub fn casper_rule(&mut self) -> CASPER_RULE_W {
-        CASPER_RULE_W { w: self }
+    pub fn casper_rule(&mut self) -> CasperRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        CasperRuleW::new(self, 20)
     }
     #[doc = "Bits 24:25 - Power Quad (CPU0 processor hardware accelerator)"]
     #[inline(always)]
-    pub fn pq_rule(&mut self) -> PQ_RULE_W {
-        PQ_RULE_W { w: self }
+    pub fn pq_rule(&mut self) -> PqRuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        PqRuleW::new(self, 24)
     }
     #[doc = "Bits 28:29 - DMA Controller (Secure)"]
     #[inline(always)]
-    pub fn dma1_rule(&mut self) -> DMA1_RULE_W {
-        DMA1_RULE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn dma1_rule(&mut self) -> Dma1RuleW<SecCtrlAhbPort10Slave0RuleSpec> {
+        Dma1RuleW::new(self, 28)
     }
 }
-#[doc = "Security access rules for AHB peripherals.\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [sec_ctrl_ahb_port10_slave0_rule](index.html) module"]
-pub struct SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC;
-impl crate::RegisterSpec for SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC {
+#[doc = "Security access rules for AHB peripherals.\n\nYou can [`read`](crate::Reg::read) this register and get [`sec_ctrl_ahb_port10_slave0_rule::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`sec_ctrl_ahb_port10_slave0_rule::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct SecCtrlAhbPort10Slave0RuleSpec;
+impl crate::RegisterSpec for SecCtrlAhbPort10Slave0RuleSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [sec_ctrl_ahb_port10_slave0_rule::R](R) reader structure"]
-impl crate::Readable for SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [sec_ctrl_ahb_port10_slave0_rule::W](W) writer structure"]
-impl crate::Writable for SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`sec_ctrl_ahb_port10_slave0_rule::R`](R) reader structure"]
+impl crate::Readable for SecCtrlAhbPort10Slave0RuleSpec {}
+#[doc = "`write(|w| ..)` method takes [`sec_ctrl_ahb_port10_slave0_rule::W`](W) writer structure"]
+impl crate::Writable for SecCtrlAhbPort10Slave0RuleSpec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets SEC_CTRL_AHB_PORT10_SLAVE0_RULE to value 0"]
-impl crate::Resettable for SEC_CTRL_AHB_PORT10_SLAVE0_RULE_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for SecCtrlAhbPort10Slave0RuleSpec {
+    const RESET_VALUE: u32 = 0;
 }

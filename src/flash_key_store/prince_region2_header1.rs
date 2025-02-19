@@ -1,177 +1,67 @@
 #[doc = "Register `PRINCE_REGION2_HEADER1` reader"]
-pub struct R(crate::R<PRINCE_REGION2_HEADER1_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PRINCE_REGION2_HEADER1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PRINCE_REGION2_HEADER1_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PRINCE_REGION2_HEADER1_SPEC>) -> Self {
-        R(reader)
-    }
-}
+pub type R = crate::R<PrinceRegion2Header1Spec>;
 #[doc = "Register `PRINCE_REGION2_HEADER1` writer"]
-pub struct W(crate::W<PRINCE_REGION2_HEADER1_SPEC>);
-impl core::ops::Deref for W {
-    type Target = crate::W<PRINCE_REGION2_HEADER1_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl core::ops::DerefMut for W {
-    #[inline(always)]
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
-    }
-}
-impl From<crate::W<PRINCE_REGION2_HEADER1_SPEC>> for W {
-    #[inline(always)]
-    fn from(writer: crate::W<PRINCE_REGION2_HEADER1_SPEC>) -> Self {
-        W(writer)
-    }
-}
+pub type W = crate::W<PrinceRegion2Header1Spec>;
 #[doc = "Field `TYPE` reader - ."]
-pub struct TYPE_R(crate::FieldReader<u8, u8>);
-impl TYPE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        TYPE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for TYPE_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type TypeR = crate::FieldReader;
 #[doc = "Field `TYPE` writer - ."]
-pub struct TYPE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> TYPE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
-        self.w
-    }
-}
+pub type TypeW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
 #[doc = "Field `INDEX` reader - ."]
-pub struct INDEX_R(crate::FieldReader<u8, u8>);
-impl INDEX_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        INDEX_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for INDEX_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type IndexR = crate::FieldReader;
 #[doc = "Field `INDEX` writer - ."]
-pub struct INDEX_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> INDEX_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x0f << 8)) | ((value as u32 & 0x0f) << 8);
-        self.w
-    }
-}
+pub type IndexW<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `SIZE` reader - ."]
-pub struct SIZE_R(crate::FieldReader<u8, u8>);
-impl SIZE_R {
-    #[inline(always)]
-    pub(crate) fn new(bits: u8) -> Self {
-        SIZE_R(crate::FieldReader::new(bits))
-    }
-}
-impl core::ops::Deref for SIZE_R {
-    type Target = crate::FieldReader<u8, u8>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
+pub type SizeR = crate::FieldReader;
 #[doc = "Field `SIZE` writer - ."]
-pub struct SIZE_W<'a> {
-    w: &'a mut W,
-}
-impl<'a> SIZE_W<'a> {
-    #[doc = r"Writes raw bits to the field"]
-    #[inline(always)]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        self.w.bits = (self.w.bits & !(0x3f << 24)) | ((value as u32 & 0x3f) << 24);
-        self.w
-    }
-}
+pub type SizeW<'a, REG> = crate::FieldWriter<'a, REG, 6>;
 impl R {
     #[doc = "Bits 0:1 - ."]
     #[inline(always)]
-    pub fn type_(&self) -> TYPE_R {
-        TYPE_R::new((self.bits & 0x03) as u8)
+    pub fn type_(&self) -> TypeR {
+        TypeR::new((self.bits & 3) as u8)
     }
     #[doc = "Bits 8:11 - ."]
     #[inline(always)]
-    pub fn index(&self) -> INDEX_R {
-        INDEX_R::new(((self.bits >> 8) & 0x0f) as u8)
+    pub fn index(&self) -> IndexR {
+        IndexR::new(((self.bits >> 8) & 0x0f) as u8)
     }
     #[doc = "Bits 24:29 - ."]
     #[inline(always)]
-    pub fn size(&self) -> SIZE_R {
-        SIZE_R::new(((self.bits >> 24) & 0x3f) as u8)
+    pub fn size(&self) -> SizeR {
+        SizeR::new(((self.bits >> 24) & 0x3f) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - ."]
     #[inline(always)]
-    pub fn type_(&mut self) -> TYPE_W {
-        TYPE_W { w: self }
+    pub fn type_(&mut self) -> TypeW<PrinceRegion2Header1Spec> {
+        TypeW::new(self, 0)
     }
     #[doc = "Bits 8:11 - ."]
     #[inline(always)]
-    pub fn index(&mut self) -> INDEX_W {
-        INDEX_W { w: self }
+    pub fn index(&mut self) -> IndexW<PrinceRegion2Header1Spec> {
+        IndexW::new(self, 8)
     }
     #[doc = "Bits 24:29 - ."]
     #[inline(always)]
-    pub fn size(&mut self) -> SIZE_W {
-        SIZE_W { w: self }
-    }
-    #[doc = "Writes raw bits to the register."]
-    #[inline(always)]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.0.bits(bits);
-        self
+    pub fn size(&mut self) -> SizeW<PrinceRegion2Header1Spec> {
+        SizeW::new(self, 24)
     }
 }
-#[doc = ".\n\nThis register you can [`read`](crate::generic::Reg::read), [`write_with_zero`](crate::generic::Reg::write_with_zero), [`reset`](crate::generic::Reg::reset), [`write`](crate::generic::Reg::write), [`modify`](crate::generic::Reg::modify). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [prince_region2_header1](index.html) module"]
-pub struct PRINCE_REGION2_HEADER1_SPEC;
-impl crate::RegisterSpec for PRINCE_REGION2_HEADER1_SPEC {
+#[doc = ".\n\nYou can [`read`](crate::Reg::read) this register and get [`prince_region2_header1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`prince_region2_header1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PrinceRegion2Header1Spec;
+impl crate::RegisterSpec for PrinceRegion2Header1Spec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [prince_region2_header1::R](R) reader structure"]
-impl crate::Readable for PRINCE_REGION2_HEADER1_SPEC {
-    type Reader = R;
-}
-#[doc = "`write(|w| ..)` method takes [prince_region2_header1::W](W) writer structure"]
-impl crate::Writable for PRINCE_REGION2_HEADER1_SPEC {
-    type Writer = W;
+#[doc = "`read()` method returns [`prince_region2_header1::R`](R) reader structure"]
+impl crate::Readable for PrinceRegion2Header1Spec {}
+#[doc = "`write(|w| ..)` method takes [`prince_region2_header1::W`](W) writer structure"]
+impl crate::Writable for PrinceRegion2Header1Spec {
+    type Safety = crate::Unsafe;
+    const ZERO_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
+    const ONE_TO_MODIFY_FIELDS_BITMAP: u32 = 0;
 }
 #[doc = "`reset()` method sets PRINCE_REGION2_HEADER1 to value 0"]
-impl crate::Resettable for PRINCE_REGION2_HEADER1_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0
-    }
+impl crate::Resettable for PrinceRegion2Header1Spec {
+    const RESET_VALUE: u32 = 0;
 }

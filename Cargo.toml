@@ -3,8 +3,8 @@ name = "lpc55-pac"
 version = "0.5.0"
 edition = "2021"
 authors = [
-  "Nicolas Stalder <n@stalder.io>",
-  "Conor Patrick <conorpp94@gmail.com>",
+    "Nicolas Stalder <n@stalder.io>",
+    "Conor Patrick <conorpp94@gmail.com>",
 ]
 description = "Peripheral access API for NXP LPC55 microcontrollers"
 repository = "https://github.com/lpc55/lpc55-pac"
@@ -13,10 +13,7 @@ readme = "README.md"
 documentation = "https://docs.rs/lpc55-pac"
 categories = ["embedded", "no-std"]
 keywords = ["no-std", "cortex-m", "nxp", "lpc", "svd2rust"]
-exclude = [
-  "svd/*",
-  "lpc55.svd",
-]
+exclude = ["svd/*", "lpc55.svd"]
 
 [package.metadata.docs.rs]
 features = ["rt"]
@@ -26,9 +23,10 @@ targets = []
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-cortex-m = "0.7.4"
-cortex-m-rt = { version = "0.7.1", optional = true }
-vcell = "0.1.2"
+cortex-m = "0.7.7"
+cortex-m-rt = { version = "0.7.5", optional = true }
+critical-section = { version = "1.2.0", optional = true }
+vcell = "0.1.3"
 
 [features]
 rt = ["cortex-m-rt/device"]

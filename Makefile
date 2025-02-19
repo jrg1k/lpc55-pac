@@ -1,9 +1,9 @@
 YAML = lpc55.yaml
 SVD = lpc55.svd.patched
-PACK_VERSION = 13.0.0
+PACK_VERSION = 19.0.0
 
 # Path to `svd`/`svdtools`
-SVDTOOLS ?= svd
+SVDTOOLS ?= svdtools
 
 # this make target runs under svdtools, ensure it works at all times.
 check: patch generate
@@ -17,20 +17,19 @@ doc: setup patch generate
 doc-open: setup patch generate
 	cargo doc --open
 
-setup: update-venv fetch-svd
-	cargo install svd2rust --version 0.20.0
+setup: fetch-svd
+	cargo install svd2rust --version 0.35.0
 	cargo install form
 
 patch:
-	$(SVDTOOLS) patch $(YAML)
-	sed -i '/alternateGroup/d' $(SVD)
+	$(SVDTOOLS) patch $(YAML) $(SVD)
 
 # Generates PAC source code from (patched) SVD
 generate:
-	rm -rf src
-	mkdir src
-	svd2rust -i ./$(SVD)
+	rm -rf src/
+	svd2rust -s --ignore-groups -i ./$(SVD)
 	form -i lib.rs -o src/ && rm lib.rs
+	cargo fix --allow-dirty
 	cargo fmt
 
 show-latest-pack:
@@ -38,8 +37,8 @@ show-latest-pack:
 
 PACK := NXP.LPC55S69_DFP.$(PACK_VERSION).pack
 fetch-svd:
-	wget -qqO- https://mcuxpresso.nxp.com/cmsis_pack/repo/$(PACK) | bsdtar -xf- LPC55S69_cm33_core0.xml
-	mv LPC55S69_cm33_core0.xml svd/pack-$(PACK_VERSION)-LPC55S69_cm33_core0.xml
+	wget -qqO- https://mcuxpresso.nxp.com/cmsis_pack/repo/$(PACK) | bsdtar -xf- devices/LPC55S69/LPC55S69_cm33_core0.xml
+	mv devices/LPC55S69/LPC55S69_cm33_core0.xml svd/pack-$(PACK_VERSION)-LPC55S69_cm33_core0.xml
 	ln -sf svd/pack-$(PACK_VERSION)-LPC55S69_cm33_core0.xml lpc55.svd
 
 # External documentation
@@ -68,10 +67,3 @@ rustup:
 
 version:
 	echo $(VERSION)
-
-update-venv: venv
-	venv/bin/pip install -U pip
-	venv/bin/pip install -r requirements.txt
-
-venv:
-	python3 -m venv venv

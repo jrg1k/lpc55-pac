@@ -4601,7 +4601,7 @@ impl core::fmt::Debug for Rpu {
 }
 #[doc = "NXP ROM patch unit. Undocumented by NXP, this peripheral is experimentally modeled following research by Oxide Computer Company: <https://oxide.computer/blog/lpc55/>."]
 pub mod rpu;
-#[no_mangle]
+#[unsafe(no_mangle)]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
 #[allow(non_snake_case)]
@@ -4813,7 +4813,7 @@ impl Peripherals {
     #[doc = r""]
     #[doc = r" Each of the returned peripherals must be used at most once."]
     #[inline]
-    pub unsafe fn steal() -> Self {
+    pub unsafe fn steal() -> Self { unsafe {
         DEVICE_PERIPHERALS = true;
         Peripherals {
             flash_cfpa0: FlashCfpa0::steal(),
@@ -4911,5 +4911,5 @@ impl Peripherals {
             usb0: Usb0::steal(),
             rpu: Rpu::steal(),
         }
-    }
+    }}
 }
